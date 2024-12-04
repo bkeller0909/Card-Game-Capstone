@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
@@ -20,7 +18,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -44,14 +42,13 @@ public class InputManager : MonoBehaviour
     {
         gamepad = Gamepad.current;
 
-        if(gamepad != null)
+        if (gamepad != null)
         {
             gamepad.SetMotorSpeeds(lowFreq, highFreq);
-            StartCoroutine(StopRumble(duration, gamepad));
         }
     }
 
-    private IEnumerator StopRumble(float duration, Gamepad gamepad)
+    public IEnumerator StopRumble(float duration, Gamepad gamepad)
     {
         float time = 0f;
         while (time < duration)
