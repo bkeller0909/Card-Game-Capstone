@@ -268,6 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654685542}
   - component: {fileID: 654685543}
+  - component: {fileID: 654685544}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -302,30 +303,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da0f9d864f2b8c409237ff381670936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1240577569
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1240577571}
-  - component: {fileID: 1240577570}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1240577570
+--- !u!114 &654685544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240577569}
+  m_GameObject: {fileID: 654685541}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
@@ -346,25 +330,10 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: Player
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!4 &1240577571
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240577569}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679609026
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +458,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 192709278}
   - {fileID: 1679609028}
-  - {fileID: 1240577571}
   - {fileID: 654685542}
   - {fileID: 15885025}

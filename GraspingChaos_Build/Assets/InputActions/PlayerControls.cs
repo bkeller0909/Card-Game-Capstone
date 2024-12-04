@@ -823,7 +823,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0867e799-4a3a-4211-9c48-2ab3f54ffdef"",
-                    ""path"": ""<DualShockGamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
