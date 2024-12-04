@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        InputManager.instance.playerInput.onControlsChanged += SwitchControls;
+        playerInput.onControlsChanged += SwitchControls;
     }
 
     private void Awake()
@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
-        InputManager.instance.playerInput.onControlsChanged -= SwitchControls;
+        playerInput.onControlsChanged -= SwitchControls;
     }
 
     public void ControllerRumble(float lowFreq, float highFreq, float duration)
