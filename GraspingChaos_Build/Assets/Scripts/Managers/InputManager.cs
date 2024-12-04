@@ -9,8 +9,14 @@ public class InputManager : MonoBehaviour
     public static InputManager instance;
 
     public PlayerControls controls;
+    public PlayerInput playerInput;
 
     private Gamepad gamepad;
+
+    private void Start()
+    {
+        InputManager.instance.playerInput.onControlsChanged += SwitchControls;
+    }
 
     private void Awake()
     {
@@ -20,6 +26,7 @@ public class InputManager : MonoBehaviour
         }
 
         controls = new PlayerControls();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void OnEnable()
@@ -30,6 +37,7 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
+        InputManager.instance.playerInput.onControlsChanged -= SwitchControls;
     }
 
     public void ControllerRumble(float lowFreq, float highFreq, float duration)
@@ -53,5 +61,10 @@ public class InputManager : MonoBehaviour
         }
 
         gamepad.SetMotorSpeeds(0f, 0f);
+    }
+
+    private void SwitchControls(PlayerInput input)
+    {
+        Debug.Log("Device is now: " + input.currentControlScheme);
     }
 }
