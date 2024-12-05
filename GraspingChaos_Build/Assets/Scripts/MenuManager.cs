@@ -3,14 +3,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Proto_Menus : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseButtonSelected;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject optionsButtonSelected;
-
-    PlayerControls playerControls;
 
     bool isPaused = false;
 
@@ -21,21 +19,21 @@ public class Proto_Menus : MonoBehaviour
         {
             Pause(!isPaused);
         }
-        Options();
     }
 
-    public void Pause(bool paused)
+    public void Pause(bool pause)
     {
-        isPaused = paused;
-        pauseMenu.SetActive(paused);
-        if(pauseMenu.activeSelf == true)
+        isPaused = pause;
+        pauseMenu.SetActive(pause);
+        if (pauseMenu.activeSelf == true)
         {
             EventSystem.current.SetSelectedGameObject(pauseButtonSelected);
         }
     }
 
-    public void Options()
+    public void Options(bool options)
     {
+        optionsMenu.SetActive(options);
         if (optionsMenu.activeSelf == true)
         {
             EventSystem.current.SetSelectedGameObject(optionsButtonSelected);

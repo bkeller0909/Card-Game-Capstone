@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StopRumble(float duration, Gamepad gamepad)
+    private IEnumerator StopRumble(float duration, Gamepad gamepad)
     {
         float time = 0f;
         while (time < duration)
