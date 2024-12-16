@@ -1,0 +1,95 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+/// <summary>
+/// A script that will be applied to all spell cards.
+/// Handles card selection and will apply small animations to cards when they are selected and highlighted.
+/// Implements IPointer interfaces to allow control over card select and deselect.
+/// </summary>
+/// Brandon Keller
+public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+{
+    [SerializeField] private float verticalAdjustAmount = 30f;
+    [SerializeField] private float adjustTime = 0.2f;
+    [SerializeField] private float scaleAmount = 1.2f;
+    
+    private Vector3 startPosition;
+    private Vector3 startScale;
+
+    void Start()
+    {
+        startPosition = transform.position;
+        startScale = transform.localScale;
+    }
+
+    /// <summary>
+    /// Will adjust the card to be slightly enlarged over a very short period of time. 
+    /// </summary>
+    /// <param name="start">Start for the card animation.</param>
+    private IEnumerator AdjustCard(bool start)
+    {
+        Vector3 endPosition;
+        Vector3 endScale;
+
+        float timer = 0.0f;
+        while (timer < adjustTime) // while the timer for the card being adjusted is less than the timer
+        {
+            timer += Time.deltaTime; // incriment the timer
+            if (start) // if the animation has started
+            {
+                endPosition = startPosition + new Vector3(0f, verticalAdjustAmount, 0f);
+                endScale = startScale * scaleAmount;
+            }
+            else // no animation reset the card
+            {
+                endPosition = startPosition;
+                endScale = startScale;
+            }
+
+            // Lerp amounts
+            Vector3 lerpPosition = Vector3.Lerp(transform.position, endPosition, (timer / adjustTime));
+            Vector3 lerpScale = Vector3.Lerp(transform.localScale, endScale, (timer / adjustTime)); 
+
+            // apply lerp
+            transform.position = lerpPosition;
+            transform.localScale = lerpScale;
+
+            yield return null;
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // when the card is selected, the selected object is this game object
+        eventData.selectedObject = gameObject;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // when the card is deselected, the selected object is null
+        eventData.selectedObject = null;
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        StartCoroutine(AdjustCard(true));   // when selected, adjusting the card is true
+        CardSelectManager.instance.lastSelectedCard = gameObject;   // set the last selected card to this game object
+
+        // finds the index of the last selected card
+        for(int i = 0; i < CardSelectManager.instance.cards.Length; i++)
+        {
+            if (CardSelectManager.instance.cards[i] == gameObject)
+            {
+                CardSelectManager.instance.lastSelectedCardIndex = i;
+                return;
+            }
+        }
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        StartCoroutine(AdjustCard(false));  // when deselected, adjusting the card is false
+    }
+}

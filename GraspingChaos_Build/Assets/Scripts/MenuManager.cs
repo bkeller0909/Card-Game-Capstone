@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject pauseButtonSelected;
-    [SerializeField] GameObject optionsMenu;
-    [SerializeField] GameObject optionsButtonSelected;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseButtonSelected;
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject optionsButtonSelected;
 
     bool isPaused = false;
 
