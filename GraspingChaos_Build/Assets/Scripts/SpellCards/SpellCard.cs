@@ -26,7 +26,7 @@ public class SpellCard : MonoBehaviour
     public int healValue;
 
     //Duration (Rings)
-    public int legnthAmount;
+    public int lengthAmount;
 
     //QTE (Quick Time Event)
     public int qteAmount;
