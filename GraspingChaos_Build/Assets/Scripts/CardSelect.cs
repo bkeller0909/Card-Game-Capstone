@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,7 +13,7 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private float verticalAdjustAmount = 30f;
     [SerializeField] private float adjustTime = 0.2f;
     [SerializeField] private float scaleAmount = 1.2f;
-    
+
     private Vector3 startPosition;
     private Vector3 startScale;
 
@@ -50,7 +49,7 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
             // Lerp amounts
             Vector3 lerpPosition = Vector3.Lerp(transform.position, endPosition, (timer / adjustTime));
-            Vector3 lerpScale = Vector3.Lerp(transform.localScale, endScale, (timer / adjustTime)); 
+            Vector3 lerpScale = Vector3.Lerp(transform.localScale, endScale, (timer / adjustTime));
 
             // apply lerp
             transform.position = lerpPosition;
@@ -78,7 +77,7 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         CardSelectManager.instance.lastSelectedCard = gameObject;   // set the last selected card to this game object
 
         // finds the index of the last selected card
-        for(int i = 0; i < CardSelectManager.instance.cards.Length; i++)
+        for (int i = 0; i < CardSelectManager.instance.cards.Length; i++)
         {
             if (CardSelectManager.instance.cards[i] == gameObject)
             {

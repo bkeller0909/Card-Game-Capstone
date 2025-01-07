@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Test the rumble stuff.
+/// </summary>
+/// Brandon Keller
 public class Rumble : MonoBehaviour
 {
     // Update is called once per frame
