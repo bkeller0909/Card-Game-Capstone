@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 /// <summary>
 /// Manages the different control schemes within the input system and handles the rumble function of a controller.
+/// 
+/// Instance: Yes
 /// </summary>
 /// Brandon Keller
 public class InputManager : MonoBehaviour

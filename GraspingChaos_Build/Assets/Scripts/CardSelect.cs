@@ -6,13 +6,20 @@ using UnityEngine.EventSystems;
 /// A script that will be applied to all spell cards.
 /// Handles card selection and will apply small animations to cards when they are selected and highlighted.
 /// Implements IPointer interfaces to allow control over card select and deselect.
+/// 
+/// Instance: No
 /// </summary>
 /// Brandon Keller
 public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
+
+    [Tooltip("How high the card will travel once selected.")]
     [SerializeField] private float verticalAdjustAmount = 30f;
-    [SerializeField] private float adjustTime = 0.2f;
-    [SerializeField] private float scaleAmount = 1.2f;
+
+    [Tooltip("Scale size of the card once it is selected.")]
+    [SerializeField, Range(1, 2)] private float scaleAmount = 1.2f;
+
+    private float adjustTime = 0.2f;
 
     private Vector3 startPosition;
     private Vector3 startScale;
