@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
+/// Keller
+/// 
 /// Keep track of the index of selected card to smooth navigation of the controller.
 /// 
 /// Instance: Yes

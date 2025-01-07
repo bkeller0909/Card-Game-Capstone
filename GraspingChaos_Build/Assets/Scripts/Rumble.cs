@@ -1,11 +1,12 @@
 using UnityEngine;
 
 /// <summary>
+/// Keller
+/// 
 /// Test the rumble stuff.
 /// 
 /// Does not need to be added within a scene.
 /// </summary>
-/// Brandon Keller
 public class Rumble : MonoBehaviour
 {
     // Update is called once per frame

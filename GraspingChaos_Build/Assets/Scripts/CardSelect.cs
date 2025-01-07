@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
+/// Keller
+/// 
 /// A script that will be applied to all spell cards.
 /// Handles card selection and will apply small animations to cards when they are selected and highlighted.
 /// Implements IPointer interfaces to allow control over card select and deselect.
 /// 
 /// Instance: No
 /// </summary>
-/// Brandon Keller
 public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
 
