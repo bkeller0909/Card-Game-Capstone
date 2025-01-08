@@ -12,13 +12,14 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
 
-    PlayerHealth health;
-    int Mana;
+    public PlayerHealth health;
+    public int entireHP;
+    public int Mana;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        entireHP = 28;
     }
 
     // Update is called once per frame
