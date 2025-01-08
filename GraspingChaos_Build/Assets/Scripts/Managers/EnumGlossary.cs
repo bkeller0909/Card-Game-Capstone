@@ -22,3 +22,10 @@ public enum PlayerHands
     LeftHand = 0,
     RightHand = 1
 }
+
+public enum SpellType
+{
+    ATTACK,
+    RESTORATION,
+    RING
+}
