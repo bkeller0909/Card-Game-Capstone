@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
 {
 
     public PlayerHealth health;
+
     public int entireHP;
     public int Mana;
 
@@ -20,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         entireHP = 28;
+
     }
 
     // Update is called once per frame
