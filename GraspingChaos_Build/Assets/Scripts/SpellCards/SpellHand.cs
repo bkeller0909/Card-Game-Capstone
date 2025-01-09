@@ -1,6 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+//----------------------------------------------------------------
+//  OG Author:    Sebastian
+//  Title:        SpellHand
+//  Date Created: 01/07/2025
+//  Purpose:      Class for spells on the players hand
+//  Instance?     No
+//-----------------------------------------------------------------
 public class SpellHand : MonoBehaviour
 {
     List<SpellCard> playerSpells = new List<SpellCard>();
