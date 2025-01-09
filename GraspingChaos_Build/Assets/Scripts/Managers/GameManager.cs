@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
 
     private bool isLoading = false;
 
+    [Tooltip("This is the visual loading screen")]
+    public LoadingScreen loadingScreen;
+
+    //how the cameras get assigned to there displayes
     private CameraAssigner cameraAssigner;
 
     //Everything below here are names for the scenes to showoff at milestones
@@ -84,6 +88,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < Display.displays.Length; i++)
+        {
+            if (i < 2)
+            {
+                Display.displays[i].Activate();
+            }
+        }
+
         StartLoadingLevel(ln_MainMenuName);
     }
 
@@ -107,6 +119,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadLevel(string levelName)
     {
         isLoading = true;
+
+        loadingScreen.SetLoadingScreenActive(true);
 
         yield return new WaitForSeconds(.25f);
 
@@ -135,15 +149,14 @@ public class GameManager : MonoBehaviour
 
         cameraAssigner = FindAnyObjectByType<CameraAssigner>();
 
-        for (int i = 0; i < Display.displays.Length; i++)
-        {
-            Display.displays[i].Activate();
-        }
-
         cameraAssigner.playerOneCamera.targetDisplay = 0;
         cameraAssigner.playerTwoCamera.targetDisplay = 1;
 
         ln_CurrentLevelName = levelName;
+
+        yield return new WaitForSeconds(.5f);
+
+        loadingScreen.SetLoadingScreenActive(false);
 
         isLoading = false;
     }
