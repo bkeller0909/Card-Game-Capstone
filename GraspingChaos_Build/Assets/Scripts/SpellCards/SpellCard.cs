@@ -44,6 +44,7 @@ public class SpellCard : MonoBehaviour
         {
             //function needed to know what hands and fingers are needed in the selecting of damage script
             GameManager.Instance.currentCaster.health.DamageFinger(PlayerHands.LeftHand, PlayerFingers.Middle);
+            GameManager.Instance.currentCaster.entireHP -= 1;
         }
     }
 
@@ -54,6 +55,7 @@ public class SpellCard : MonoBehaviour
         {
             //function needed to know what hands and fingers are needed in the selecting of damage script
             GameManager.Instance.currentCaster.health.HealFinger(PlayerHands.LeftHand, PlayerFingers.Middle);
+            GameManager.Instance.currentCaster.entireHP += 1;
         }
     }
 
