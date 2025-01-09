@@ -54,6 +54,23 @@ public class Fingers : MonoBehaviour
         fingerSegmentsRemoved.Push(removed);
         removed.GetComponent<MeshRenderer>().enabled = false;
     }
+
+    public void SelectedFinger()
+    {
+        for (int i = 0; i < fingerParts.Length; i++)
+        {
+            fingerParts[i].GetComponent<Renderer>().material.color = Color.red;
+        }
+    }
+
+    public void DeselectFinger()
+    {
+        for (int i = 0; i < fingerParts.Length; i++)
+        {
+            fingerParts[i].GetComponent<Renderer>().material.color = Color.white;
+        }
+    }
+
     private void Update()
     {
         if (remove)

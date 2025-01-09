@@ -2,12 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 /// <summary>
-/// Keller
-/// 
-/// Manages the different control schemes within the input system. 
-/// Handles the rumble function of a controller.
-/// 
-/// Instance: Yes
+///----------------------------------------------------------------
+///  Author: Keller
+///  Date Created: 01/07/2025
+///  Purpose: Manages the different control schemes within the input system. 
+///           Handles the rumble function of a controller.
+///  Instance: Yes
+///-----------------------------------------------------------------
 /// </summary>
 public class InputManager : MonoBehaviour
 {

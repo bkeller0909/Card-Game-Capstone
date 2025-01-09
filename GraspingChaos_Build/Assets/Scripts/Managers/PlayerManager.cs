@@ -17,10 +17,20 @@ public class PlayerManager : MonoBehaviour
     public int entireHP;
     public int Mana;
 
+    public Hands leftHand;
+    public Hands rightHand;
+
+    public GameObject[] indexOfFingers;
+
     // Start is called before the first frame update
     void Start()
     {
         entireHP = 28;
+
+    }
+
+    public void fillFingers()
+    {
 
     }
 

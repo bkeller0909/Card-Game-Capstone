@@ -9,6 +9,9 @@ using UnityEngine;
 //-----------------------------------------------------------------
 public class Hands : MonoBehaviour
 {
-    [SerializeField] List<Fingers> fingersInHand = new List<Fingers>();
+    public List<Fingers> fingersInHand = new List<Fingers>();
     public PlayerHands hand;
+
+
+
 }

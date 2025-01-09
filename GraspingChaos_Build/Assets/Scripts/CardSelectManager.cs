@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// Keller
-/// 
-/// Keep track of the index of selected card to smooth navigation of the controller.
-/// 
-/// Instance: Yes
+///----------------------------------------------------------------
+///  Author: Keller
+///  Date Created: 01/07/2025
+///  Purpose: Keep track of the index of selected card to smooth navigation of the controller.
+///  Instance: Yes
+///-----------------------------------------------------------------
 /// </summary>
 public class CardSelectManager : MonoBehaviour
 {

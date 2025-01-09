@@ -37,6 +37,42 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Navigate Finger Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f7d127b-4cc3-4874-8694-f43676a77080"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Navigate Finger Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""d51820a4-bcf2-4aa8-aeb2-6c4b2e770ae2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Navigate Finger Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""23ca8a23-c3f2-4108-b862-ab74ec3a7b26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Navigate Finger Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""4905f20d-9850-4556-bdbb-459c86a23920"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""See Player Health"",
                     ""type"": ""Button"",
                     ""id"": ""1d9309d1-71b0-47fc-9ee4-49b594807a7f"",
@@ -210,6 +246,94 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da12a368-c48f-4f1c-b4d5-d470bd67708e"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate Finger Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dfd3ae1-29d2-41f6-8fc5-124d91627fa8"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate Finger Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71409c87-e6fc-4575-bcb9-fc5b662280f9"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate Finger Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a689474b-c02a-4986-b2b0-46835fd24e12"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate Finger Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4dbb2ed4-e39d-434a-9f24-43ddc0adfa57"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate Finger Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4141d372-466c-4cce-84af-4ccccd44bf10"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate Finger Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62673624-523b-4742-8dcf-7c0cb9b9ef93"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate Finger Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76e7215d-bc21-4e91-bad3-7d3a5f3ab27b"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate Finger Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -367,6 +491,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_NavigateCards = m_Player.FindAction("Navigate Cards", throwIfNotFound: true);
+        m_Player_NavigateFingerUp = m_Player.FindAction("Navigate Finger Up", throwIfNotFound: true);
+        m_Player_NavigateFingerDown = m_Player.FindAction("Navigate Finger Down", throwIfNotFound: true);
+        m_Player_NavigateFingerLeft = m_Player.FindAction("Navigate Finger Left", throwIfNotFound: true);
+        m_Player_NavigateFingerRight = m_Player.FindAction("Navigate Finger Right", throwIfNotFound: true);
         m_Player_SeePlayerHealth = m_Player.FindAction("See Player Health", throwIfNotFound: true);
         m_Player_SeeEnemyHealth = m_Player.FindAction("See Enemy Health", throwIfNotFound: true);
         m_Player_SeePlayerMana = m_Player.FindAction("See Player Mana", throwIfNotFound: true);
@@ -443,6 +571,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_NavigateCards;
+    private readonly InputAction m_Player_NavigateFingerUp;
+    private readonly InputAction m_Player_NavigateFingerDown;
+    private readonly InputAction m_Player_NavigateFingerLeft;
+    private readonly InputAction m_Player_NavigateFingerRight;
     private readonly InputAction m_Player_SeePlayerHealth;
     private readonly InputAction m_Player_SeeEnemyHealth;
     private readonly InputAction m_Player_SeePlayerMana;
@@ -455,6 +587,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @NavigateCards => m_Wrapper.m_Player_NavigateCards;
+        public InputAction @NavigateFingerUp => m_Wrapper.m_Player_NavigateFingerUp;
+        public InputAction @NavigateFingerDown => m_Wrapper.m_Player_NavigateFingerDown;
+        public InputAction @NavigateFingerLeft => m_Wrapper.m_Player_NavigateFingerLeft;
+        public InputAction @NavigateFingerRight => m_Wrapper.m_Player_NavigateFingerRight;
         public InputAction @SeePlayerHealth => m_Wrapper.m_Player_SeePlayerHealth;
         public InputAction @SeeEnemyHealth => m_Wrapper.m_Player_SeeEnemyHealth;
         public InputAction @SeePlayerMana => m_Wrapper.m_Player_SeePlayerMana;
@@ -474,6 +610,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @NavigateCards.started += instance.OnNavigateCards;
             @NavigateCards.performed += instance.OnNavigateCards;
             @NavigateCards.canceled += instance.OnNavigateCards;
+            @NavigateFingerUp.started += instance.OnNavigateFingerUp;
+            @NavigateFingerUp.performed += instance.OnNavigateFingerUp;
+            @NavigateFingerUp.canceled += instance.OnNavigateFingerUp;
+            @NavigateFingerDown.started += instance.OnNavigateFingerDown;
+            @NavigateFingerDown.performed += instance.OnNavigateFingerDown;
+            @NavigateFingerDown.canceled += instance.OnNavigateFingerDown;
+            @NavigateFingerLeft.started += instance.OnNavigateFingerLeft;
+            @NavigateFingerLeft.performed += instance.OnNavigateFingerLeft;
+            @NavigateFingerLeft.canceled += instance.OnNavigateFingerLeft;
+            @NavigateFingerRight.started += instance.OnNavigateFingerRight;
+            @NavigateFingerRight.performed += instance.OnNavigateFingerRight;
+            @NavigateFingerRight.canceled += instance.OnNavigateFingerRight;
             @SeePlayerHealth.started += instance.OnSeePlayerHealth;
             @SeePlayerHealth.performed += instance.OnSeePlayerHealth;
             @SeePlayerHealth.canceled += instance.OnSeePlayerHealth;
@@ -502,6 +650,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @NavigateCards.started -= instance.OnNavigateCards;
             @NavigateCards.performed -= instance.OnNavigateCards;
             @NavigateCards.canceled -= instance.OnNavigateCards;
+            @NavigateFingerUp.started -= instance.OnNavigateFingerUp;
+            @NavigateFingerUp.performed -= instance.OnNavigateFingerUp;
+            @NavigateFingerUp.canceled -= instance.OnNavigateFingerUp;
+            @NavigateFingerDown.started -= instance.OnNavigateFingerDown;
+            @NavigateFingerDown.performed -= instance.OnNavigateFingerDown;
+            @NavigateFingerDown.canceled -= instance.OnNavigateFingerDown;
+            @NavigateFingerLeft.started -= instance.OnNavigateFingerLeft;
+            @NavigateFingerLeft.performed -= instance.OnNavigateFingerLeft;
+            @NavigateFingerLeft.canceled -= instance.OnNavigateFingerLeft;
+            @NavigateFingerRight.started -= instance.OnNavigateFingerRight;
+            @NavigateFingerRight.performed -= instance.OnNavigateFingerRight;
+            @NavigateFingerRight.canceled -= instance.OnNavigateFingerRight;
             @SeePlayerHealth.started -= instance.OnSeePlayerHealth;
             @SeePlayerHealth.performed -= instance.OnSeePlayerHealth;
             @SeePlayerHealth.canceled -= instance.OnSeePlayerHealth;
@@ -688,6 +848,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnNavigateCards(InputAction.CallbackContext context);
+        void OnNavigateFingerUp(InputAction.CallbackContext context);
+        void OnNavigateFingerDown(InputAction.CallbackContext context);
+        void OnNavigateFingerLeft(InputAction.CallbackContext context);
+        void OnNavigateFingerRight(InputAction.CallbackContext context);
         void OnSeePlayerHealth(InputAction.CallbackContext context);
         void OnSeeEnemyHealth(InputAction.CallbackContext context);
         void OnSeePlayerMana(InputAction.CallbackContext context);

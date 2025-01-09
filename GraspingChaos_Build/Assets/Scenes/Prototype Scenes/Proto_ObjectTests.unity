@@ -717,6 +717,8 @@ GameObject:
   - component: {fileID: 56522135}
   - component: {fileID: 56522137}
   - component: {fileID: 56522136}
+  - component: {fileID: 56522138}
+  - component: {fileID: 56522139}
   m_Layer: 0
   m_Name: Segment 2
   m_TagString: Untagged
@@ -789,6 +791,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56522134}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &56522138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56522134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.65947556, b: 0, a: 1}
+    m_PressedColor: {r: 1, g: 0.76408356, b: 0, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+--- !u!114 &56522139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56522134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &63582027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1080,6 +1138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124208952}
+  - component: {fileID: 124208953}
   m_Layer: 0
   m_Name: Ring Finger
   m_TagString: Untagged
@@ -1105,6 +1164,25 @@ Transform:
   - {fileID: 517101671}
   m_Father: {fileID: 568269514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124208953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124208951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 3
+  fingerParts:
+  - {fileID: 517101670}
+  - {fileID: 1263941540}
+  - {fileID: 1209949960}
+  remove: 0
+  add: 0
 --- !u!1 &132745655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2088,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff1def3117bbf5418370bfb09d41cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  entireHP: 0
+  Mana: 0
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  indexOfFingers: []
 --- !u!1 &236530846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415952780}
+  - component: {fileID: 415952781}
   m_Layer: 0
   m_Name: Pinky Finger
   m_TagString: Untagged
@@ -3104,6 +3189,25 @@ Transform:
   - {fileID: 1153977039}
   m_Father: {fileID: 568269514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415952781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415952779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 4
+  fingerParts:
+  - {fileID: 1153977038}
+  - {fileID: 830248357}
+  - {fileID: 1167641196}
+  remove: 0
+  add: 0
 --- !u!1 &421372351
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,6 +3394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488116983}
+  - component: {fileID: 488116984}
   m_Layer: 0
   m_Name: Thumb
   m_TagString: Untagged
@@ -3314,6 +3419,24 @@ Transform:
   - {fileID: 1089906421}
   m_Father: {fileID: 568269514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &488116984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488116982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 0
+  fingerParts:
+  - {fileID: 1089906420}
+  - {fileID: 421372351}
+  remove: 0
+  add: 0
 --- !u!1001 &498107946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4093,6 +4216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 568269514}
+  - component: {fileID: 568269515}
   m_Layer: 0
   m_Name: Player Hand Left
   m_TagString: Untagged
@@ -4121,6 +4245,25 @@ Transform:
   - {fileID: 488116983}
   m_Father: {fileID: 736850279}
   m_LocalEulerAnglesHint: {x: 66.112, y: 0, z: 0}
+--- !u!114 &568269515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568269513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a332c9a0cc8384fbbf9d2707283630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingersInHand:
+  - {fileID: 593008062}
+  - {fileID: 1985252511}
+  - {fileID: 124208953}
+  - {fileID: 415952781}
+  - {fileID: 488116984}
+  hand: 0
 --- !u!1001 &569200448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4391,6 +4534,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593008061}
+  - component: {fileID: 593008062}
+  - component: {fileID: 593008063}
   m_Layer: 0
   m_Name: Index Finger
   m_TagString: Untagged
@@ -4416,6 +4561,44 @@ Transform:
   - {fileID: 738334741}
   m_Father: {fileID: 568269514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593008062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593008060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 1
+  fingerParts:
+  - {fileID: 738334740}
+  - {fileID: 56522134}
+  - {fileID: 1908072306}
+  remove: 0
+  add: 0
+--- !u!114 &593008063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593008060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566357722f276f349a9e56de473268c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 1
+  fingerParts:
+  - {fileID: 1908072306}
+  - {fileID: 56522134}
+  - {fileID: 738334740}
+  remove: 0
+  add: 0
 --- !u!1 &598659412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5415,6 +5598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732660823}
+  - component: {fileID: 732660824}
   m_Layer: 0
   m_Name: Player Hand Right
   m_TagString: Untagged
@@ -5443,6 +5627,20 @@ Transform:
   - {fileID: 2124957761}
   m_Father: {fileID: 736850279}
   m_LocalEulerAnglesHint: {x: 66.112, y: 0, z: 0}
+--- !u!114 &732660824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732660822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a332c9a0cc8384fbbf9d2707283630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingersInHand: []
+  hand: 1
 --- !u!1 &736850278
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,6 +5689,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff1def3117bbf5418370bfb09d41cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  entireHP: 0
+  Mana: 0
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  indexOfFingers: []
 --- !u!1 &738334740
 GameObject:
   m_ObjectHideFlags: 0
@@ -5502,6 +5706,7 @@ GameObject:
   - component: {fileID: 738334741}
   - component: {fileID: 738334743}
   - component: {fileID: 738334742}
+  - component: {fileID: 738334744}
   m_Layer: 0
   m_Name: Segment 3
   m_TagString: Untagged
@@ -5574,6 +5779,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738334740}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &738334744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738334740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 0.85510486, b: 0, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
 --- !u!1001 &800997749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11883,7 +12129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800081752}
   - component: {fileID: 1800081751}
-  - component: {fileID: 1800081750}
+  - component: {fileID: 1800081753}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -11891,26 +12137,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1800081750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800081749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1800081751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11941,6 +12167,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800081753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800081749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &1801214979
 GameObject:
   m_ObjectHideFlags: 0
@@ -13781,6 +14048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1985252510}
+  - component: {fileID: 1985252511}
   m_Layer: 0
   m_Name: Middle Finger
   m_TagString: Untagged
@@ -13806,6 +14074,25 @@ Transform:
   - {fileID: 200949462}
   m_Father: {fileID: 568269514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985252511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985252509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 2
+  fingerParts:
+  - {fileID: 200949461}
+  - {fileID: 1911280409}
+  - {fileID: 1261904947}
+  remove: 0
+  add: 0
 --- !u!1001 &2003671826
 PrefabInstance:
   m_ObjectHideFlags: 0
