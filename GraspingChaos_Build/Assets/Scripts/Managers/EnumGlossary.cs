@@ -25,7 +25,7 @@ public enum PlayerHands
 
 public enum SpellType
 {
-    ATTACK,
-    RESTORATION,
-    RING
+    ATTACK = 0,
+    RESTORATION = 1,
+    RING = 2
 }
