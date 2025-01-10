@@ -58,7 +58,11 @@ public class GameManager : MonoBehaviour
     public string ln_ProtoCardSelection;
 
     [Tooltip("This need to be the name of the prototype Object test scene")]
-    public string ln_ObjectTests;
+    public string ln_ProtoObjectTests;
+
+    [Tooltip("This need to the name of the prototype finger select scene")]
+    public string ln_ProtoFingerSelection;
+
     #endregion
 
     [Tooltip("This is the base mana value each")]

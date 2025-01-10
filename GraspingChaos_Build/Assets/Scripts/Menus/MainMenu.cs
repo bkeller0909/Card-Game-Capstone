@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
 
     public void ObjectTestBtnClicked()
     {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ObjectTests);
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoObjectTests);
+    }
+
+    public void FingerSelectionBtnClicked()
+    {
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoFingerSelection);
     }
 }
