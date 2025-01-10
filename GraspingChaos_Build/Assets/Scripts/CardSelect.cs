@@ -2,15 +2,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//----------------------------------------------------------------
+//  Author:       Keller
+//  Title:        CardSelect
+//  Date Created: 01/07/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
 /// <summary>
-///----------------------------------------------------------------
-///  Author: Keller
-///  Date Created: 01/07/2025
-///  Purpose: A script that will be applied to all spell cards.
-///           Handles card selection and will apply small animations to cards when they are selected and highlighted.
-///           Implements IPointer interfaces to allow control over card select and deselect.
-///  Instance: No
-///-----------------------------------------------------------------
+/// A script that will be applied to all spell cards.
+/// Handles card selection and will apply small animations to cards when they are selected and highlighted.
+/// Implements IPointer interfaces to allow control over card select and deselect.
 /// </summary>
 public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
@@ -83,14 +85,14 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnSelect(BaseEventData eventData)
     {
         StartCoroutine(AdjustCard(true));   // when selected, adjusting the card is true
-        CardSelectManager.instance.lastSelectedCard = gameObject;   // set the last selected card to this game object
+        CardSelectManager.instance.LastSelectedCard = gameObject;   // set the last selected card to this game object
 
         // finds the index of the last selected card
         for (int i = 0; i < CardSelectManager.instance.cards.Length; i++)
         {
             if (CardSelectManager.instance.cards[i] == gameObject)
             {
-                CardSelectManager.instance.lastSelectedCardIndex = i;
+                CardSelectManager.instance.LastSelectedCardIndex = i;
                 return;
             }
         }

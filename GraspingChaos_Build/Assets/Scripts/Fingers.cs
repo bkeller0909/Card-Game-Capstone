@@ -1,14 +1,24 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 //----------------------------------------------------------------
-//  OG Author:    Sebastian
+//  Author:       Sebastian
 //  Title:        Fingers
 //  Date Created: 01/07/2025
-//  Purpose:      finger class for damage dealing and healing
 //  Instance?     No
 //-----------------------------------------------------------------
+
+/// <summary>
+/// Script for damage dealing and healing.
+/// Apply to the fingers in the hand not the joints
+/// </summary>
+
+[Serializable]
 public class Fingers : MonoBehaviour
 {
+    public List<GameObject> fingerJoints;
+
     [Tooltip("Type of Finger")]
     public PlayerFingers finger;
     [Tooltip("the finger segments should be serielized backwards, the last segments should be the first in teh editor")]

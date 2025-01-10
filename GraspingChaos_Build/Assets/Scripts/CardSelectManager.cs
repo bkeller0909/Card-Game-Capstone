@@ -2,13 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
+//----------------------------------------------------------------
+//  Author:       Keller
+//  Title:        CardSelectManager
+//  Date Created: 01/07/2025
+//  Instance:     Yes
+//-----------------------------------------------------------------
+
 /// <summary>
-///----------------------------------------------------------------
-///  Author: Keller
-///  Date Created: 01/07/2025
-///  Purpose: Keep track of the index of selected card to smooth navigation of the controller.
-///  Instance: Yes
-///-----------------------------------------------------------------
+/// Keep track of the index of selected card to smooth navigation of the controller.
 /// </summary>
 public class CardSelectManager : MonoBehaviour
 {
@@ -16,8 +19,8 @@ public class CardSelectManager : MonoBehaviour
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
     public GameObject[] cards;  // array for the cards to keep track of what is selected
-    public GameObject lastSelectedCard { get; set; }
-    public int lastSelectedCardIndex { get; set; }
+    public GameObject LastSelectedCard { get; set; }
+    public int LastSelectedCardIndex { get; set; }
 
     private void Awake()
     {
