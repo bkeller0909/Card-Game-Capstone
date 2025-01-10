@@ -16,7 +16,8 @@ public class Fingers : MonoBehaviour
     Stack fingerSegments = new Stack();
     Stack fingerSegmentsRemoved = new Stack();
 
-    private void Start()
+
+    private void Awake()
     {
         Fill();
     }

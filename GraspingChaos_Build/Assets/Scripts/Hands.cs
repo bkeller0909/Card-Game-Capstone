@@ -9,9 +9,7 @@ using UnityEngine;
 //-----------------------------------------------------------------
 public class Hands : MonoBehaviour
 {
-    public List<Fingers> fingersInHand = new List<Fingers>();
+    public List<GameObject> fingersInHand = new List<GameObject>();
     public PlayerHands hand;
-
-
 
 }
