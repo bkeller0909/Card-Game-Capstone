@@ -203,9 +203,20 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: ba107a4795c6d2b40b7d9b4d43bea562, type: 3}
-    m_AddedGameObjects: []
+    - {fileID: 65702495048144492, guid: ba107a4795c6d2b40b7d9b4d43bea562, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba107a4795c6d2b40b7d9b4d43bea562,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1771962804}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba107a4795c6d2b40b7d9b4d43bea562, type: 3}
+--- !u!4 &45665008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba107a4795c6d2b40b7d9b4d43bea562,
+    type: 3}
+  m_PrefabInstance: {fileID: 45665007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &180549322
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +440,7 @@ GameObject:
   - component: {fileID: 1771962802}
   - component: {fileID: 1771962801}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -514,12 +525,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771962800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7, y: 8.92, z: -0}
-  m_LocalScale: {x: 0.63761, y: 5.0009522, z: 0.22784357}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -9.869276, y: 8.643314, z: 3.216488}
+  m_LocalScale: {x: 0.5298845, y: 4.156031, z: 0.18934895}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 45665008}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -528,4 +539,3 @@ SceneRoots:
   - {fileID: 1092550344}
   - {fileID: 180549324}
   - {fileID: 45665007}
-  - {fileID: 1771962804}
