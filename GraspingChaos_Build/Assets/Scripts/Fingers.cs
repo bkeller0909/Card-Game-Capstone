@@ -17,6 +17,7 @@ using UnityEngine;
 [Serializable]
 public class Fingers : MonoBehaviour
 {
+    [Tooltip("List of finger joints, this will act as rows.")]
     public List<GameObject> fingerJoints;
 
     [Tooltip("Type of Finger")]

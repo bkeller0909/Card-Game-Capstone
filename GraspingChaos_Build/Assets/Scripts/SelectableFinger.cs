@@ -1,10 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering.UI;
-using UnityEngine.UI;
 
 //----------------------------------------------------------------
 //  Author:       Keller
@@ -22,7 +17,7 @@ using UnityEngine.UI;
 public class SelectableFinger : MonoBehaviour
 {
     [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
-    public List<FingerColumns> fingers;
+    public List<Fingers> fingers;
 
     [Tooltip("Color for the selected object.")]
     public Color selectedColor = Color.green;
@@ -34,6 +29,8 @@ public class SelectableFinger : MonoBehaviour
 
     private bool toggleFullFingerSelect = true; // start by fully selecting fingers
 
+
+
     void Start()
     {
         defaultColor = gameObject.GetComponentInChildren<Renderer>().material.color;
@@ -42,6 +39,17 @@ public class SelectableFinger : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            fingers[currentFingerIndex].remove = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.H))
+        {
+            fingers[currentFingerIndex].add = true;
+        }
+
+
+
         // the button to toggle between full finger selection or joint selection
         if (Input.GetKeyDown(KeyCode.Space))
         {
