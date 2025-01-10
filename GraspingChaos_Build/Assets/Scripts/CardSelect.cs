@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 //----------------------------------------------------------------
 //  Author:       Keller
@@ -14,11 +13,11 @@ using UnityEngine.EventSystems;
 /// Handles card selection and will apply small animations to cards when they are selected and highlighted.
 /// Implements IPointer interfaces to allow control over card select and deselect.
 /// </summary>
-public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class CardSelect : MonoBehaviour
 {
 
     [Tooltip("How high the card will travel once selected.")]
-    [SerializeField] private float verticalAdjustAmount = 30f;
+    [SerializeField] private float verticalAdjustAmount = 2f;
 
     [Tooltip("Scale size of the card once it is selected.")]
     [SerializeField, Range(1, 2)] private float scaleAmount = 1.2f;
@@ -27,6 +26,8 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private Vector3 startPosition;
     private Vector3 startScale;
+
+    private bool isCardSelected = false;
 
     void Start()
     {
@@ -69,8 +70,24 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             yield return null;
         }
     }
+    public void SelectCard()
+    {
+        // card will need to be selected
+        isCardSelected = true;
+        CardSelectManager.instance.LastSelectedCard = this;
+        StartCoroutine(AdjustCard(true));
+    }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void DeselectCard()
+    {
+        // card will need to be deselected
+        isCardSelected = false;
+        StartCoroutine(AdjustCard(false));
+    }
+
+
+
+    /*public void OnPointerEnter(PointerEventData eventData)
     {
         // when the card is selected, the selected object is this game object
         eventData.selectedObject = gameObject;
@@ -101,5 +118,5 @@ public class CardSelect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnDeselect(BaseEventData eventData)
     {
         StartCoroutine(AdjustCard(false));  // when deselected, adjusting the card is false
-    }
+    }*/
 }

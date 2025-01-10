@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CardHover : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float hoverSpeed = 1;
     [SerializeField] private float rotationSpeed = 1;
+    [SerializeField] private float travelHeight = 0.1f;
     [SerializeField] private bool enableSpin = false;
 
     private float MAX_HEIGHT;   // max height of the object
@@ -17,8 +15,8 @@ public class CardHover : MonoBehaviour
     private void Awake()
     {
         direction = -1f;
-        MAX_HEIGHT = transform.position.y + 0.2f;
-        MIN_HEIGHT = transform.position.y - 0.2f;
+        MAX_HEIGHT = transform.position.y + travelHeight;
+        MIN_HEIGHT = transform.position.y - travelHeight;
     }
 
     // Update is called once per frame

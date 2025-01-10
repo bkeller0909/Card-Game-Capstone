@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 
 //----------------------------------------------------------------
@@ -19,7 +17,7 @@ public class CardSelectManager : MonoBehaviour
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
     public GameObject[] cards;  // array for the cards to keep track of what is selected
-    public GameObject LastSelectedCard { get; set; }
+    public CardSelect LastSelectedCard { get; set; }
     public int LastSelectedCardIndex { get; set; }
 
     private void Awake()
@@ -33,16 +31,48 @@ public class CardSelectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (cards.Length > 0)
+        {
+            SetSelectedCard(0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (InputManager.instance.playerControls.Player.NavigateFingerRight.WasPressedThisFrame())
+        {
+            MoveSelection(1);
+        }
+        else if (InputManager.instance.playerControls.Player.NavigateFingerLeft.WasPressedThisFrame())
+        {
+            MoveSelection(-1);
+        }
     }
 
-    private void OnEnable()
+    public void SetSelectedCard(int cardIndex)
+    {
+        if (LastSelectedCard != null)
+        {
+            LastSelectedCard.DeselectCard();
+        }
+
+        LastSelectedCardIndex = cardIndex;
+        LastSelectedCard = cards[cardIndex].GetComponent<CardSelect>();
+        LastSelectedCard.SelectCard();
+    }
+
+    public void MoveSelection(int selectDirection)
+    {
+        int newCardIndex = Mathf.Clamp(LastSelectedCardIndex + selectDirection, 0, cards.Length - 1);
+
+        if (newCardIndex != LastSelectedCardIndex)
+        {
+            SetSelectedCard(newCardIndex);
+        }
+    }
+
+    /*private void OnEnable()
     {
         StartCoroutine(SetSelectedAfterFrame());
     }
@@ -55,5 +85,5 @@ public class CardSelectManager : MonoBehaviour
     {
         yield return null;
         EventSystem.current.SetSelectedGameObject(cards[0]);
-    }
+    }*/
 }
