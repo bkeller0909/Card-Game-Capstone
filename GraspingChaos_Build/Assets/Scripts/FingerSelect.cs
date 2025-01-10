@@ -11,8 +11,6 @@ using UnityEngine;
 public class FingerSelect : Fingers
 {
 
-
-
     // colours for the fingers
     private Color selectedFingerColour = Color.red;
     private Color defaultFingerColor = Color.white;
@@ -24,22 +22,103 @@ public class FingerSelect : Fingers
     {
 
         OutlineSelectedFinger();
+
+        if (selectedFingerIndex == 0)
+        {
+            GameManager.Instance.player1.arrayOfFingers[0].GetComponent<Fingers>().SelectedFinger();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         // Navigate between objects (e.g., using controller input)
         if (InputManager.instance.playerControls.Player.NavigateFingerDown.WasPressedThisFrame())
         {
-            if (GameManager.Instance.currentCaster.leftHand.fingersInHand[0])
+            selectedFingerIndex++;
+            if (selectedFingerIndex == 1)
             {
+                GameManager.Instance.player1.arrayOfFingers[1].GetComponent<Fingers>().SelectedFinger();
+            }
+            else if (selectedFingerIndex == 2)
+            {
+                GameManager.Instance.player1.arrayOfFingers[2].GetComponent<Fingers>().SelectedFinger();
+            }
+            else if (selectedFingerIndex == 3)
+            {
+                GameManager.Instance.player1.arrayOfFingers[3].GetComponent<Fingers>().SelectedFinger();
+            }
+            else if (selectedFingerIndex == 4)
+            {
+                GameManager.Instance.player1.arrayOfFingers[4].GetComponent<Fingers>().SelectedFinger();
+            }
+            else if (selectedFingerIndex == 5)
+            {
+                GameManager.Instance.player1.arrayOfFingers[5].GetComponent<Fingers>().SelectedFinger();
+            }
+            else if (selectedFingerIndex == 6)
+            {
+                GameManager.Instance.player1.arrayOfFingers[6].GetComponent<Fingers>().SelectedFinger();
 
+            }
+            else if (selectedFingerIndex == 7)
+            {
+                GameManager.Instance.player1.arrayOfFingers[7].GetComponent<Fingers>().SelectedFinger();
+
+            }
+            else if (selectedFingerIndex == 8)
+            {
+                GameManager.Instance.player1.arrayOfFingers[8].GetComponent<Fingers>().SelectedFinger();
+
+            }
+            else if (selectedFingerIndex == 9)
+            {
+                GameManager.Instance.player1.arrayOfFingers[9].GetComponent<Fingers>().SelectedFinger();
             }
         }
         if (InputManager.instance.playerControls.Player.NavigateFingerUp.WasPressedThisFrame())
         {
-            DeselectFinger();
+            //selectedFingerIndex--;
+            //if (selectedFingerIndex == 1)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[1].GetComponent<Fingers>().DeselectFinger();
+            //}
+            //else if (selectedFingerIndex == 2)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[2].GetComponent<Fingers>().DeselectFinger();
+            //}
+            //else if (selectedFingerIndex == 3)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[3].GetComponent<Fingers>().DeselectFinger();
+            //}
+            //else if (selectedFingerIndex == 4)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[4].GetComponent<Fingers>().DeselectFinger();
+            //}
+            //else if (selectedFingerIndex == 5)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[5].GetComponent<Fingers>().DeselectFinger();
+            //}
+            //else if (selectedFingerIndex == 6)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[6].GetComponent<Fingers>().DeselectFinger();
+
+            //}
+            //else if (selectedFingerIndex == 7)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[7].GetComponent<Fingers>().DeselectFinger();
+
+            //}
+            //else if (selectedFingerIndex == 8)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[8].GetComponent<Fingers>().DeselectFinger();
+
+            //}
+            //else if (selectedFingerIndex == 9)
+            //{
+            //    GameManager.Instance.currentCaster.arrayOfFingers[9].GetComponent<Fingers>().DeselectFinger();
+            //}
         }
     }
 

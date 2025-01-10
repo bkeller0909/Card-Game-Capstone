@@ -2093,7 +2093,7 @@ MonoBehaviour:
   Mana: 0
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
-  indexOfFingers: []
+  arrayOfFingers: []
 --- !u!1 &236530846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,11 +4258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fingersInHand:
-  - {fileID: 593008062}
-  - {fileID: 1985252511}
-  - {fileID: 124208953}
-  - {fileID: 415952781}
-  - {fileID: 488116984}
+  - {fileID: 415952779}
+  - {fileID: 124208951}
+  - {fileID: 1985252509}
+  - {fileID: 593008060}
+  - {fileID: 488116982}
   hand: 0
 --- !u!1001 &569200448
 PrefabInstance:
@@ -4535,7 +4535,6 @@ GameObject:
   m_Component:
   - component: {fileID: 593008061}
   - component: {fileID: 593008062}
-  - component: {fileID: 593008063}
   m_Layer: 0
   m_Name: Index Finger
   m_TagString: Untagged
@@ -4578,25 +4577,6 @@ MonoBehaviour:
   - {fileID: 738334740}
   - {fileID: 56522134}
   - {fileID: 1908072306}
-  remove: 0
-  add: 0
---- !u!114 &593008063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593008060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566357722f276f349a9e56de473268c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  finger: 1
-  fingerParts:
-  - {fileID: 1908072306}
-  - {fileID: 56522134}
-  - {fileID: 738334740}
   remove: 0
   add: 0
 --- !u!1 &598659412
@@ -5639,7 +5619,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a332c9a0cc8384fbbf9d2707283630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingersInHand: []
+  fingersInHand:
+  - {fileID: 2124957760}
+  - {fileID: 374992248}
+  - {fileID: 213168630}
+  - {fileID: 1394459732}
+  - {fileID: 1468719968}
   hand: 1
 --- !u!1 &736850278
 GameObject:
@@ -5651,6 +5636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736850279}
   - component: {fileID: 736850280}
+  - component: {fileID: 736850281}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -5692,9 +5678,25 @@ MonoBehaviour:
   health: {fileID: 0}
   entireHP: 0
   Mana: 0
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
-  indexOfFingers: []
+  leftHand: {fileID: 568269515}
+  rightHand: {fileID: 732660824}
+  arrayOfFingers: []
+--- !u!114 &736850281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736850278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566357722f276f349a9e56de473268c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finger: 0
+  fingerParts: []
+  remove: 0
+  add: 0
 --- !u!1 &738334740
 GameObject:
   m_ObjectHideFlags: 0
