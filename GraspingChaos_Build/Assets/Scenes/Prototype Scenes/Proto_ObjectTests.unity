@@ -225,6 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6785537}
+  - component: {fileID: 6785538}
   m_Layer: 0
   m_Name: Ring Finger
   m_TagString: Untagged
@@ -250,6 +251,25 @@ Transform:
   - {fileID: 940636001}
   m_Father: {fileID: 1896296789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6785538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 620845721}
+  - {fileID: 533372735}
+  - {fileID: 940636000}
+  finger: 3
+  remove: 0
+  add: 0
 --- !u!1 &13087525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,12 +1567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerJoints: []
-  finger: 3
-  fingerParts:
-  - {fileID: 517101670}
-  - {fileID: 1263941540}
+  fingerJoints:
   - {fileID: 1209949960}
+  - {fileID: 1263941540}
+  - {fileID: 517101670}
+  finger: 3
   remove: 0
   add: 0
 --- !u!1 &132745655
@@ -2575,6 +2594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 213168631}
+  - component: {fileID: 213168632}
   m_Layer: 0
   m_Name: Middle Finger
   m_TagString: Untagged
@@ -2600,6 +2620,25 @@ Transform:
   - {fileID: 389886090}
   m_Father: {fileID: 732660823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213168632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213168630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 825687264}
+  - {fileID: 132745655}
+  - {fileID: 389886089}
+  finger: 2
+  remove: 0
+  add: 0
 --- !u!1001 &230864063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3122,6 +3161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 265017441}
+  - component: {fileID: 265017442}
   m_Layer: 0
   m_Name: Index Finger
   m_TagString: Untagged
@@ -3147,6 +3187,25 @@ Transform:
   - {fileID: 1184644906}
   m_Father: {fileID: 1896296789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &265017442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265017440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 995562795}
+  - {fileID: 1846994986}
+  - {fileID: 1184644905}
+  finger: 1
+  remove: 0
+  add: 0
 --- !u!1001 &278134679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3958,6 +4017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 374992249}
+  - component: {fileID: 374992250}
   m_Layer: 0
   m_Name: Index Finger
   m_TagString: Untagged
@@ -3983,6 +4043,25 @@ Transform:
   - {fileID: 1928556946}
   m_Father: {fileID: 732660823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374992250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374992248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1070317686}
+  - {fileID: 958200393}
+  - {fileID: 1928556945}
+  finger: 1
+  remove: 0
+  add: 0
 --- !u!1 &378709075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,12 +4404,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerJoints: []
-  finger: 4
-  fingerParts:
-  - {fileID: 1153977038}
-  - {fileID: 830248357}
+  fingerJoints:
   - {fileID: 1167641196}
+  - {fileID: 830248357}
+  - {fileID: 1153977038}
+  finger: 4
   remove: 0
   add: 0
 --- !u!1 &421372351
@@ -4650,11 +4728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerJoints: []
-  finger: 0
-  fingerParts:
-  - {fileID: 1089906420}
+  fingerJoints:
   - {fileID: 421372351}
+  - {fileID: 1089906420}
+  finger: 0
   remove: 0
   add: 0
 --- !u!1001 &497662627
@@ -6749,12 +6826,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerJoints: []
-  finger: 1
-  fingerParts:
-  - {fileID: 738334740}
-  - {fileID: 56522134}
+  fingerJoints:
   - {fileID: 1908072306}
+  - {fileID: 56522134}
+  - {fileID: 738334740}
+  finger: 1
   remove: 0
   add: 0
 --- !u!1 &598659412
@@ -8247,14 +8323,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 736850278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566357722f276f349a9e56de473268c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b4a65bd419c02243a4de08f1f4db187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerJoints: []
-  finger: 0
-  fingerParts: []
-  remove: 0
-  add: 0
+  fingersP1:
+  - {fileID: 415952781}
+  - {fileID: 124208953}
+  - {fileID: 1985252511}
+  - {fileID: 593008062}
+  - {fileID: 488116984}
+  - {fileID: 2124957762}
+  - {fileID: 374992250}
+  - {fileID: 213168632}
+  - {fileID: 1394459734}
+  - {fileID: 1468719970}
+  fingersP2:
+  - {fileID: 1459517376}
+  - {fileID: 6785538}
+  - {fileID: 1736079941}
+  - {fileID: 265017442}
+  - {fileID: 1482455663}
+  - {fileID: 1963448974}
+  - {fileID: 1286053312}
+  - {fileID: 1207769754}
+  - {fileID: 1302227084}
+  - {fileID: 1633427999}
+  selectedColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &738334740
 GameObject:
   m_ObjectHideFlags: 0
@@ -11655,6 +11749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1207769753}
+  - component: {fileID: 1207769754}
   m_Layer: 0
   m_Name: Middle Finger
   m_TagString: Untagged
@@ -11680,6 +11775,25 @@ Transform:
   - {fileID: 236530847}
   m_Father: {fileID: 329318291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207769754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207769752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 2040129305}
+  - {fileID: 598659412}
+  - {fileID: 236530846}
+  finger: 2
+  remove: 0
+  add: 0
 --- !u!1 &1209949960
 GameObject:
   m_ObjectHideFlags: 0
@@ -12598,6 +12712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1286053311}
+  - component: {fileID: 1286053312}
   m_Layer: 0
   m_Name: Index Finger
   m_TagString: Untagged
@@ -12623,6 +12738,25 @@ Transform:
   - {fileID: 13087526}
   m_Father: {fileID: 329318291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1286053312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286053310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1663132312}
+  - {fileID: 1438049816}
+  - {fileID: 13087525}
+  finger: 1
+  remove: 0
+  add: 0
 --- !u!1001 &1288263273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12726,6 +12860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1302227083}
+  - component: {fileID: 1302227084}
   m_Layer: 0
   m_Name: Ring Finger
   m_TagString: Untagged
@@ -12751,6 +12886,25 @@ Transform:
   - {fileID: 143227311}
   m_Father: {fileID: 329318291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1302227084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302227082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1305667559}
+  - {fileID: 1164775167}
+  - {fileID: 143227310}
+  finger: 3
+  remove: 0
+  add: 0
 --- !u!1 &1305667559
 GameObject:
   m_ObjectHideFlags: 0
@@ -13606,6 +13760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1394459733}
+  - component: {fileID: 1394459734}
   m_Layer: 0
   m_Name: Ring Finger
   m_TagString: Untagged
@@ -13631,6 +13786,25 @@ Transform:
   - {fileID: 1773517349}
   m_Father: {fileID: 732660823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1394459734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394459732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1393339574}
+  - {fileID: 1522093990}
+  - {fileID: 1773517348}
+  finger: 3
+  remove: 0
+  add: 0
 --- !u!1001 &1395893083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14488,6 +14662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1459517375}
+  - component: {fileID: 1459517376}
   m_Layer: 0
   m_Name: Pinky Finger
   m_TagString: Untagged
@@ -14513,6 +14688,25 @@ Transform:
   - {fileID: 1276396188}
   m_Father: {fileID: 1896296789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1459517376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459517374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1842014072}
+  - {fileID: 1546611279}
+  - {fileID: 1276396187}
+  finger: 4
+  remove: 0
+  add: 0
 --- !u!1001 &1461574242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14804,6 +14998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1468719969}
+  - component: {fileID: 1468719970}
   m_Layer: 0
   m_Name: Pinky Finger
   m_TagString: Untagged
@@ -14829,6 +15024,25 @@ Transform:
   - {fileID: 165083896}
   m_Father: {fileID: 732660823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1468719970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468719968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1801214979}
+  - {fileID: 356831075}
+  - {fileID: 165083895}
+  finger: 4
+  remove: 0
+  add: 0
 --- !u!1001 &1470603925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14932,6 +15146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1482455662}
+  - component: {fileID: 1482455663}
   m_Layer: 0
   m_Name: Thumb
   m_TagString: Untagged
@@ -14956,6 +15171,24 @@ Transform:
   - {fileID: 2080205533}
   m_Father: {fileID: 1896296789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1482455663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482455661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 189219440}
+  - {fileID: 2080205532}
+  finger: 0
+  remove: 0
+  add: 0
 --- !u!1 &1522093990
 GameObject:
   m_ObjectHideFlags: 0
@@ -16271,6 +16504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633427998}
+  - component: {fileID: 1633427999}
   m_Layer: 0
   m_Name: Pinky Finger
   m_TagString: Untagged
@@ -16296,6 +16530,25 @@ Transform:
   - {fileID: 1453843300}
   m_Father: {fileID: 329318291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1633427999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633427997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 717512307}
+  - {fileID: 1612035983}
+  - {fileID: 1453843299}
+  finger: 4
+  remove: 0
+  add: 0
 --- !u!1001 &1645958218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17238,6 +17491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1736079940}
+  - component: {fileID: 1736079941}
   m_Layer: 0
   m_Name: Middle Finger
   m_TagString: Untagged
@@ -17263,6 +17517,25 @@ Transform:
   - {fileID: 1064552092}
   m_Father: {fileID: 1896296789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1736079941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736079939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 1542573239}
+  - {fileID: 1955304749}
+  - {fileID: 1064552091}
+  finger: 2
+  remove: 0
+  add: 0
 --- !u!1001 &1742105395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20960,6 +21233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963448973}
+  - component: {fileID: 1963448974}
   m_Layer: 0
   m_Name: Thumb
   m_TagString: Untagged
@@ -20984,6 +21258,24 @@ Transform:
   - {fileID: 207047267}
   m_Father: {fileID: 329318291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1963448974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963448972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 904916624}
+  - {fileID: 207047266}
+  finger: 0
+  remove: 0
+  add: 0
 --- !u!1001 &1978484430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21125,12 +21417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerJoints: []
-  finger: 2
-  fingerParts:
-  - {fileID: 200949461}
-  - {fileID: 1911280409}
+  fingerJoints:
   - {fileID: 1261904947}
+  - {fileID: 1911280409}
+  - {fileID: 200949461}
+  finger: 2
   remove: 0
   add: 0
 --- !u!1001 &2003671826
@@ -22554,6 +22845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2124957761}
+  - component: {fileID: 2124957762}
   m_Layer: 0
   m_Name: Thumb
   m_TagString: Untagged
@@ -22578,6 +22870,24 @@ Transform:
   - {fileID: 1280969349}
   m_Father: {fileID: 732660823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2124957762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124957760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4508cf59fb09409cb5fc432c45fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerJoints:
+  - {fileID: 580620223}
+  - {fileID: 1280969348}
+  finger: 0
+  remove: 0
+  add: 0
 --- !u!1 &2135910875
 GameObject:
   m_ObjectHideFlags: 0

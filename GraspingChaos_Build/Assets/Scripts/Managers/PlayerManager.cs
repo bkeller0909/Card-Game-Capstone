@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
     {
         arrayOfFingers = new GameObject[10];
         entireHP = 28;
-        fillFingers();
+        //fillFingers();
     }
 
     public void fillFingers()

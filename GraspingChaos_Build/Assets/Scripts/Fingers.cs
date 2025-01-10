@@ -17,13 +17,12 @@ using UnityEngine;
 [Serializable]
 public class Fingers : MonoBehaviour
 {
-    [Tooltip("List of finger joints, this will act as rows.")]
+    [Tooltip("List of finger joints, this will act as rows, the finger segments should be serielized backwards, the last segments should be the first in teh editor")]
     public List<GameObject> fingerJoints;
 
     [Tooltip("Type of Finger")]
     public PlayerFingers finger;
     [Tooltip("the finger segments should be serielized backwards, the last segments should be the first in teh editor")]
-    public GameObject[] fingerParts;
     Stack fingerSegments = new Stack();
     Stack fingerSegmentsRemoved = new Stack();
 
@@ -37,9 +36,9 @@ public class Fingers : MonoBehaviour
     //fill stack
     private void Fill()
     {
-        for (int i = 0; i < fingerParts.Length; i++)
+        for (int i = 0; i < fingerJoints.Count; i++)
         {
-            fingerSegments.Push(fingerParts[i]);
+            fingerSegments.Push(fingerJoints[i]);
         }
     }
 
@@ -65,22 +64,6 @@ public class Fingers : MonoBehaviour
         //removed.SetActive(false);
         fingerSegmentsRemoved.Push(removed);
         removed.GetComponent<MeshRenderer>().enabled = false;
-    }
-
-    public void SelectedFinger()
-    {
-        for (int i = 0; i < fingerParts.Length; i++)
-        {
-            fingerParts[i].GetComponent<Renderer>().material.color = Color.red;
-        }
-    }
-
-    public void DeselectFinger()
-    {
-        for (int i = 0; i < fingerParts.Length; i++)
-        {
-            fingerParts[i].GetComponent<Renderer>().material.color = Color.white;
-        }
     }
 
     private void Update()
