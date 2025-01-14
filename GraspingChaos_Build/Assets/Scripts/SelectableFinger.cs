@@ -49,7 +49,9 @@ public class SelectableFinger : MonoBehaviour
             if (GameManager.Instance.currentCaster == GameManager.Instance.player2)
             {
                 GameManager.Instance.currentCaster = GameManager.Instance.player1;
+
             }
+            playerOneHands = true;
         }
 
         if (Input.GetKeyUp(KeyCode.W))
@@ -57,7 +59,9 @@ public class SelectableFinger : MonoBehaviour
             if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
             {
                 GameManager.Instance.currentCaster = GameManager.Instance.player2;
+
             }
+            playerOneHands = false;
         }
 
 
@@ -68,10 +72,12 @@ public class SelectableFinger : MonoBehaviour
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
+                GameManager.Instance.player1.entireHP -= 1;
             }
             else if (Input.GetKeyUp(KeyCode.H))
             {
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
+                GameManager.Instance.player1.entireHP += 1;
             }
         }
         else
@@ -79,11 +85,13 @@ public class SelectableFinger : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.D))
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
-                GameManager.Instance.player2.fingers[currentFingerIndexP1].remove = true;
+                GameManager.Instance.player2.fingers[currentFingerIndexP2].remove = true;
+                GameManager.Instance.player2.entireHP -= 1;
             }
             else if (Input.GetKeyUp(KeyCode.H))
             {
-                GameManager.Instance.player2.fingers[currentFingerIndexP1].add = true;
+                GameManager.Instance.player2.fingers[currentFingerIndexP2].add = true;
+                GameManager.Instance.player2.entireHP += 1;
             }
         }
 
