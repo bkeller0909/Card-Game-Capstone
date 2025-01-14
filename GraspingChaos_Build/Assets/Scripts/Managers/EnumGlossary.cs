@@ -10,11 +10,16 @@
 
 public enum PlayerFingers
 {
-    Pinky = 4,
-    Ring = 3,
-    Middle = 2,
-    Index = 1,
-    Thumb = 0
+    LH_Pinky = 0,
+    LH_Ring = 1,
+    LH_Middle = 2,
+    LH_Index = 3,
+    LH_Thumb = 4,
+    RH_Pinky = 5,
+    RH_Ring = 6,
+    RH_Middle = 7,
+    RH_Index = 8,
+    RH_Thumb = 9
 }
 
 public enum PlayerHands
@@ -28,4 +33,10 @@ public enum SpellType
     ATTACK = 0,
     RESTORATION = 1,
     RING = 2
+}
+
+public enum PlayerType
+{
+    PLAYER1 = 0,
+    PLAYER2 = 1,
 }

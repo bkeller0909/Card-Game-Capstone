@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -17,36 +18,43 @@ public class PlayerManager : MonoBehaviour
     public int entireHP;
     public int Mana;
 
-    [Tooltip("Players right hand")]
-    public Hands leftHand;
-    [Tooltip("players left Hand")]
-    public Hands rightHand;
+    [SerializeField] public PlayerType playerNum;
+    [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
+    public List<Fingers> fingers;
 
-    [Tooltip("Array of all fingers of players")]
-    public GameObject[] arrayOfFingers;
+    private void Awake()
+    {
+        if (playerNum == PlayerType.PLAYER1)
+        {
+            GameManager.Instance.player1 = this;
+        }
+        else if (playerNum == PlayerType.PLAYER2)
+        {
+            GameManager.Instance.player2 = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        arrayOfFingers = new GameObject[10];
         entireHP = 28;
         //fillFingers();
     }
 
     public void fillFingers()
     {
-        int index = 0;
-        foreach (GameObject finger in leftHand.fingersInHand)
-        {
-            arrayOfFingers[index] = finger;
-            index++;
-        }
+        //int index = 0;
+        //foreach (GameObject finger in leftHand.fingersInHand)
+        //{
+        //    arrayOfFingers[index] = finger;
+        //    index++;
+        //}
 
-        foreach (GameObject finger in rightHand.fingersInHand)
-        {
-            arrayOfFingers[index] = finger;
-            index++;
-        }
+        //foreach (GameObject finger in rightHand.fingersInHand)
+        //{
+        //    arrayOfFingers[index] = finger;
+        //    index++;
+        //}
     }
 
     // Update is called once per frame

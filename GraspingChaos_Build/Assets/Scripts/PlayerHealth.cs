@@ -11,15 +11,15 @@ using UnityEngine;
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {
-    int[,] playerHealthStats;
+    int[] playerHealthStats;
 
-    public static int MAX_AMT_FINGERS = 5;
-    public static int MAX_AMT_HANDS = 2;
+    public static int MAX_AMT_FINGERS = 10;
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        playerHealthStats = new int[2, 5];
+        playerHealthStats = new int[MAX_AMT_FINGERS];
     }
 
     private void Start()
@@ -34,50 +34,48 @@ public class PlayerHealth : MonoBehaviour
     {
         int health;
 
-        for (int whatHand = (int)PlayerHands.LeftHand; whatHand < MAX_AMT_HANDS; whatHand++)
+
+        for (int whatFinger = (int)PlayerFingers.LH_Pinky; whatFinger < MAX_AMT_FINGERS; whatFinger++)
         {
-            for (int whatFinger = (int)PlayerFingers.Thumb; whatFinger < MAX_AMT_FINGERS; whatFinger++)
+            health = 3;
+
+            if (whatFinger == (int)PlayerFingers.LH_Thumb || whatFinger == (int)PlayerFingers.RH_Thumb)
             {
-                health = 3;
-
-                if (whatFinger == (int)PlayerFingers.Thumb)
-                {
-                    health = 2;
-                }
-
-                playerHealthStats[whatHand, whatFinger] = health;
+                health = 2;
             }
+
+            playerHealthStats[whatFinger] = health;
         }
     }
 
-    public int getFingerHealth(PlayerHands whatHand, PlayerFingers whatFinger)
+    public int getFingerHealth(PlayerFingers whatFinger)
     {
-        return playerHealthStats[(int)whatHand, (int)whatFinger];
+        return playerHealthStats[(int)whatFinger];
     }
 
     /// <summary>
     ///  Deals 1 Damage to a finger
     /// </summary>
-    public void DamageFinger(PlayerHands whatHand, PlayerFingers whatFinger)
+    public void DamageFinger(PlayerFingers whatFinger)
     {
-        if (playerHealthStats[(int)whatHand, (int)whatFinger] != 0)
+        if (playerHealthStats[(int)whatFinger] != 0)
         {
-            playerHealthStats[(int)whatHand, (int)whatFinger] -= 1;
+            playerHealthStats[(int)whatFinger] -= 1;
         }
     }
 
     /// <summary>
     ///  Heals 1 health to a finger
     /// </summary>
-    public void HealFinger(PlayerHands whatHand, PlayerFingers whatFinger)
+    public void HealFinger(PlayerFingers whatFinger)
     {
-        if ((playerHealthStats[(int)whatHand, (int)whatFinger] >= 3) && (whatFinger != PlayerFingers.Thumb))
+        if ((playerHealthStats[(int)whatFinger] >= 3) && (whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
         {
-            playerHealthStats[(int)whatHand, (int)whatFinger] += 1;
+            playerHealthStats[(int)whatFinger] += 1;
         }
-        else if ((playerHealthStats[(int)whatHand, (int)whatFinger] >= 2) && (whatFinger == PlayerFingers.Thumb))
+        else if ((playerHealthStats[(int)whatFinger] >= 2) && (whatFinger == PlayerFingers.LH_Thumb) && (whatFinger == PlayerFingers.RH_Thumb))
         {
-            playerHealthStats[(int)whatHand, (int)whatFinger] += 1;
+            playerHealthStats[(int)whatFinger] += 1;
         }
     }
 }

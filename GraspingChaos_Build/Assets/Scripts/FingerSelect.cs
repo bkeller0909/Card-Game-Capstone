@@ -39,10 +39,10 @@ public class FingerSelect : Fingers
 
     public void CycleFingers()
     {
-        for (int i = 0; i < GameManager.Instance.currentCaster.leftHand.fingersInHand.Count; i++)
-        {
+        //for (int i = 0; i < GameManager.Instance.currentCaster.leftHand.fingersInHand.Count; i++)
+        //{
 
-        }
+        //}
     }
 
     void SelectFinger()

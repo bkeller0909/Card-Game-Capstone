@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -16,11 +15,6 @@ using UnityEngine;
 /// </summary>
 public class SelectableFinger : MonoBehaviour
 {
-    [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
-    public List<Fingers> fingersP1;
-    //used for enemy as of now for testing, likely will be altered for specific situations or maybe deleted depending on game loop
-    public List<Fingers> fingersP2;
-
     [Tooltip("Color for the selected object.")]
     public Color selectedColor = Color.green;
     public Color deselect = Color.white;
@@ -43,6 +37,7 @@ public class SelectableFinger : MonoBehaviour
     void Start()
     {
         defaultColor = gameObject.GetComponentInChildren<Renderer>().material.color;
+        GameManager.Instance.currentCaster = GameManager.Instance.player2;
         UpdateSelection();
     }
 
@@ -51,12 +46,18 @@ public class SelectableFinger : MonoBehaviour
         //set up for testing, change it to controller input, this swaps the select of each players hands
         if (Input.GetKeyUp(KeyCode.S))
         {
-            playerOneHands = false;
+            if (GameManager.Instance.currentCaster == GameManager.Instance.player2)
+            {
+                GameManager.Instance.currentCaster = GameManager.Instance.player1;
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.W))
         {
-            playerOneHands = true;
+            if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
+            {
+                GameManager.Instance.currentCaster = GameManager.Instance.player2;
+            }
         }
 
 
@@ -65,22 +66,24 @@ public class SelectableFinger : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.D))
             {
-                fingersP1[currentFingerIndexP1].remove = true;
+                //fingersP2[currentFingerIndexP2].remove = true;
+                GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
             }
             else if (Input.GetKeyUp(KeyCode.H))
             {
-                fingersP1[currentFingerIndexP1].add = true;
+                GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
             }
         }
         else
         {
             if (Input.GetKeyUp(KeyCode.D))
             {
-                fingersP2[currentFingerIndexP2].remove = true;
+                //fingersP2[currentFingerIndexP2].remove = true;
+                GameManager.Instance.player2.fingers[currentFingerIndexP1].remove = true;
             }
             else if (Input.GetKeyUp(KeyCode.H))
             {
-                fingersP2[currentFingerIndexP2].add = true;
+                GameManager.Instance.player2.fingers[currentFingerIndexP1].add = true;
             }
         }
 
@@ -135,14 +138,14 @@ public class SelectableFinger : MonoBehaviour
             currentFingerP2 = -1;
             currentFingerJointP2 = -1;
             // deselect all finger joints for the finger
-            for (int i = 0; i < fingersP1[currentFingerIndexP1].fingerJoints.Count; i++)
+            for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
             {
-                SetObjectColor(fingersP1[currentFingerIndexP1].fingerJoints[i], defaultColor);
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColor);
             }
 
             // update the index
-            currentFingerIndexP1 = Mathf.Clamp(currentFingerIndexP1 + currentFingerP1, 0, fingersP1.Count - 1); // clamp to stay in bounds
-            currentFingerJointIndexP1 = Mathf.Clamp(currentFingerJointIndexP1 + currentFingerJointP1, 0, fingersP1[currentFingerIndexP1].fingerJoints.Count - 1);
+            currentFingerIndexP1 = Mathf.Clamp(currentFingerIndexP1 + currentFingerP1, 0, GameManager.Instance.player1.fingers.Count - 1); // clamp to stay in bounds
+            currentFingerJointIndexP1 = Mathf.Clamp(currentFingerJointIndexP1 + currentFingerJointP1, 0, GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count - 1);
         }
         else
         {
@@ -152,14 +155,14 @@ public class SelectableFinger : MonoBehaviour
             //currentFingerP2 = currentFingerIndexP2;
             //currentFingerJointP2 = currentFingerIndexP2;
             // deselect all finger joints for the finger
-            for (int i = 0; i < fingersP2[currentFingerIndexP2].fingerJoints.Count; i++)
+            for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
             {
-                SetObjectColor(fingersP2[currentFingerIndexP2].fingerJoints[i], defaultColor);
+                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColor);
             }
 
             // update the index
-            currentFingerIndexP2 = Mathf.Clamp(currentFingerIndexP2 + currentFingerP2, 0, fingersP2.Count - 1); // clamp to stay in bounds
-            currentFingerJointIndexP2 = Mathf.Clamp(currentFingerJointIndexP2 + currentFingerJointP2, 0, fingersP2[currentFingerIndexP2].fingerJoints.Count - 1);
+            currentFingerIndexP2 = Mathf.Clamp(currentFingerIndexP2 + currentFingerP2, 0, GameManager.Instance.player2.fingers.Count - 1); // clamp to stay in bounds
+            currentFingerJointIndexP2 = Mathf.Clamp(currentFingerJointIndexP2 + currentFingerJointP2, 0, GameManager.Instance.player1.fingers[currentFingerIndexP2].fingerJoints.Count - 1);
         }
 
         // apply a new selected finger
@@ -178,9 +181,9 @@ public class SelectableFinger : MonoBehaviour
             {
 
                 // deselect all joints in the current finger if switching from full column selection
-                for (int i = 0; i < fingersP1[currentFingerIndexP1].fingerJoints.Count; i++)
+                for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
                 {
-                    SetObjectColor(fingersP1[currentFingerIndexP1].fingerJoints[i], defaultColor);
+                    SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColor);
                 }
             }
 
@@ -194,7 +197,7 @@ public class SelectableFinger : MonoBehaviour
             }
             else
             {
-                currentFingerIndexP1 = Mathf.Clamp(currentFingerIndexP1, 0, fingersP1.Count - 1); // copied the clamp to stay in bounds
+                currentFingerIndexP1 = Mathf.Clamp(currentFingerIndexP1, 0, GameManager.Instance.player1.fingers.Count - 1); // copied the clamp to stay in bounds
                 currentFingerJointIndexP1 = 0;  // reset to the first cube in the column
             }
         }
@@ -206,9 +209,9 @@ public class SelectableFinger : MonoBehaviour
             {
 
                 // deselect all joints in the current finger if switching from full column selection
-                for (int i = 0; i < fingersP2[currentFingerIndexP2].fingerJoints.Count; i++)
+                for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
                 {
-                    SetObjectColor(fingersP2[currentFingerIndexP2].fingerJoints[i], defaultColor);
+                    SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColor);
                 }
             }
 
@@ -222,7 +225,7 @@ public class SelectableFinger : MonoBehaviour
             }
             else
             {
-                currentFingerIndexP2 = Mathf.Clamp(currentFingerIndexP2, 0, fingersP2.Count - 1); // copied the clamp to stay in bounds
+                currentFingerIndexP2 = Mathf.Clamp(currentFingerIndexP2, 0, GameManager.Instance.player2.fingers.Count - 1); // copied the clamp to stay in bounds
                 currentFingerJointIndexP2 = 0;  // reset to the first cube in the column
             }
         }
@@ -239,46 +242,46 @@ public class SelectableFinger : MonoBehaviour
         if (playerOneHands)
         {
             // highlight the entire finger
-            for (int i = 0; i < fingersP2[currentFingerIndexP2].fingerJoints.Count; i++)
+            for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
             {
-                SetObjectColor(fingersP2[currentFingerIndexP2].fingerJoints[i], deselect);
+                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], deselect);
             }
 
             if (toggleFullFingerSelect)
             {
                 // highlight the entire finger
-                for (int i = 0; i < fingersP1[currentFingerIndexP1].fingerJoints.Count; i++)
+                for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
                 {
-                    SetObjectColor(fingersP1[currentFingerIndexP1].fingerJoints[i], selectedColor);
+                    SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], selectedColor);
                 }
             }
             else
             {
                 // highlight the selected joint of the finger
-                SetObjectColor(fingersP1[currentFingerIndexP1].fingerJoints[currentFingerJointIndexP1], selectedColor);
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[currentFingerJointIndexP1], selectedColor);
             }
         }
         else
         {
             //used for enemy as of now for testing, likely will be altered for specific situations or maybe deleted depending on game loop
             // highlight the entire finger
-            for (int i = 0; i < fingersP1[currentFingerIndexP1].fingerJoints.Count; i++)
+            for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
             {
-                SetObjectColor(fingersP1[currentFingerIndexP1].fingerJoints[i], deselect);
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], deselect);
             }
 
             if (toggleFullFingerSelect)
             {
                 // highlight the entire finger
-                for (int i = 0; i < fingersP2[currentFingerIndexP2].fingerJoints.Count; i++)
+                for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
                 {
-                    SetObjectColor(fingersP2[currentFingerIndexP2].fingerJoints[i], selectedColor);
+                    SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], selectedColor);
                 }
             }
             else
             {
                 // highlight the selected joint of the finger
-                SetObjectColor(fingersP2[currentFingerIndexP2].fingerJoints[currentFingerJointIndexP2], selectedColor);
+                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[currentFingerJointIndexP2], selectedColor);
             }
         }
     }

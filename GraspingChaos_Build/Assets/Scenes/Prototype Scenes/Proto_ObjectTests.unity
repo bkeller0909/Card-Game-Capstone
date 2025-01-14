@@ -2902,9 +2902,18 @@ MonoBehaviour:
   health: {fileID: 0}
   entireHP: 0
   Mana: 0
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
-  arrayOfFingers: []
+  playerNum: 1
+  fingers:
+  - {fileID: 1459517376}
+  - {fileID: 6785538}
+  - {fileID: 1736079941}
+  - {fileID: 265017442}
+  - {fileID: 1482455663}
+  - {fileID: 1963448974}
+  - {fileID: 1286053312}
+  - {fileID: 1207769754}
+  - {fileID: 1302227084}
+  - {fileID: 1633427999}
 --- !u!1 &236530846
 GameObject:
   m_ObjectHideFlags: 0
@@ -8429,9 +8438,18 @@ MonoBehaviour:
   health: {fileID: 0}
   entireHP: 0
   Mana: 0
-  leftHand: {fileID: 568269515}
-  rightHand: {fileID: 732660824}
-  arrayOfFingers: []
+  playerNum: 0
+  fingers:
+  - {fileID: 415952781}
+  - {fileID: 124208953}
+  - {fileID: 1985252511}
+  - {fileID: 593008062}
+  - {fileID: 488116984}
+  - {fileID: 2124957762}
+  - {fileID: 374992250}
+  - {fileID: 213168632}
+  - {fileID: 1394459734}
+  - {fileID: 1468719970}
 --- !u!114 &736850281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8444,28 +8462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4a65bd419c02243a4de08f1f4db187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingersP1:
-  - {fileID: 415952781}
-  - {fileID: 124208953}
-  - {fileID: 1985252511}
-  - {fileID: 593008062}
-  - {fileID: 488116984}
-  - {fileID: 2124957762}
-  - {fileID: 374992250}
-  - {fileID: 213168632}
-  - {fileID: 1394459734}
-  - {fileID: 1468719970}
-  fingersP2:
-  - {fileID: 1459517376}
-  - {fileID: 6785538}
-  - {fileID: 1736079941}
-  - {fileID: 265017442}
-  - {fileID: 1482455663}
-  - {fileID: 1963448974}
-  - {fileID: 1286053312}
-  - {fileID: 1207769754}
-  - {fileID: 1302227084}
-  - {fileID: 1633427999}
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselect: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &738334740
