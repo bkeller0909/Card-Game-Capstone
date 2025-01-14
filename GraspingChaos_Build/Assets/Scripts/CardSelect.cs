@@ -15,6 +15,7 @@ using UnityEngine;
 /// </summary>
 public class CardSelect : MonoBehaviour
 {
+    [SerializeField] private MeshRenderer glowRender;
 
     [Tooltip("How high the card will travel once selected.")]
     [SerializeField] private float verticalAdjustAmount = 2f;
@@ -31,6 +32,7 @@ public class CardSelect : MonoBehaviour
 
     void Start()
     {
+        glowRender.enabled = false;
         startPosition = transform.position;
         startScale = transform.localScale;
     }
@@ -76,6 +78,7 @@ public class CardSelect : MonoBehaviour
         isCardSelected = true;
         CardSelectManager.instance.LastSelectedCard = this;
         StartCoroutine(AdjustCard(true));
+        CardGlow(isCardSelected);
     }
 
     public void DeselectCard()
@@ -83,9 +86,20 @@ public class CardSelect : MonoBehaviour
         // card will need to be deselected
         isCardSelected = false;
         StartCoroutine(AdjustCard(false));
+        CardGlow(isCardSelected);
     }
 
-
+    public void CardGlow(bool glow)
+    {
+        if (glow)
+        {
+            glowRender.enabled = true;
+        }
+        if (!glow)
+        {
+            glowRender.enabled = false;
+        }
+    }
 
     /*public void OnPointerEnter(PointerEventData eventData)
     {
