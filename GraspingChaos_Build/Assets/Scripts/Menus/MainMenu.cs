@@ -12,8 +12,4 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoObjectTests);
     }
 
-    public void FingerSelectionBtnClicked()
-    {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoFingerSelection);
-    }
 }
