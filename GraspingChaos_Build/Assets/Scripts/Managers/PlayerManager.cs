@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public PlayerInput playerInput;
 
     // The players health system
-    public PlayerHealth health;
+    [HideInInspector] public PlayerHealth health;
 
     //debug utilty value, just to reflect current health
     public TMP_Text healthValue;
