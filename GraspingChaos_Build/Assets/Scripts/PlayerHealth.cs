@@ -1,6 +1,7 @@
 using UnityEngine;
 
-/// <summary>
+
+
 //----------------------------------------------------------------
 //  OG Author:    Wyatt
 //  Title:        Player Health
@@ -8,6 +9,9 @@ using UnityEngine;
 //  Purpose:      This is the player health and how it is interacted with and held
 //  Instance?     no
 //-----------------------------------------------------------------
+
+/// <summary>
+/// This is the player health and how it is interacted with and held
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {

@@ -1,8 +1,17 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
+
+//----------------------------------------------------------------
+//  OG Author:    Keller
+//  Title:        Menu Manager
+//  Date Created: 01/07/2025
+//  Instance?     no
+//-----------------------------------------------------------------
+
+/// <summary>
+/// This scene holds each of the buttons and functions for in game menus
+/// </summary>
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
