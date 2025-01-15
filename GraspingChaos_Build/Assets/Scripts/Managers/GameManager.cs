@@ -56,12 +56,14 @@ public class GameManager : MonoBehaviour
     private CameraAssigner cameraAssigner;
 
     //Everything below here are names for the scenes to showoff at milestones
-    [Tooltip("This need to be the name of the prototype card selection scene")]
+    [Tooltip("This needs to be the name of the prototype card selection scene")]
     public string ln_ProtoCardSelection;
 
-    [Tooltip("This need to be the name of the prototype Object test scene")]
+    [Tooltip("This needs to be the name of the prototype Object test scene")]
     public string ln_ProtoObjectTests;
 
+    [Tooltip("This needs to be the name of the prototype Art Show Case")]
+    public string ln_ProtoArtShowCase;
     #endregion
 
     [Tooltip("This is the base mana value each")]

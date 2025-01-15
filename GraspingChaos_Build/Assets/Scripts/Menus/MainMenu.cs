@@ -13,4 +13,8 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoObjectTests);
     }
 
+    public void ObjectArtShowCase()
+    {
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoArtShowCase);
+    }
 }
