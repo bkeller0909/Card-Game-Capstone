@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.instance.playerControls.Player.Pause.WasPressedThisFrame())
+        if (InputManager.Instance.playerControls.Player.Pause.WasPressedThisFrame())
         {
             Pause(!isPaused);
         }

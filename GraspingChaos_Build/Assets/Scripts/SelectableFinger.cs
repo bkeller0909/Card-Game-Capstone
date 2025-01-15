@@ -105,11 +105,11 @@ public class SelectableFinger : MonoBehaviour
         // we only want to select full fingers individually left and right on our hand
         if (toggleFullFingerSelect)
         {
-            if (InputManager.instance.playerControls.Player.NavigateFingerLeft.WasPressedThisFrame())
+            if (InputManager.Instance.playerControls.Player.NavigateFingerLeft.WasPressedThisFrame())
             {
                 MoveSelection(-1, 0, -1, 0); // move left
             }
-            else if (InputManager.instance.playerControls.Player.NavigateFingerRight.WasPressedThisFrame())
+            else if (InputManager.Instance.playerControls.Player.NavigateFingerRight.WasPressedThisFrame())
             {
                 MoveSelection(1, 0, 1, 0); // move right
             }
@@ -118,11 +118,11 @@ public class SelectableFinger : MonoBehaviour
         // once we select a finger only move up and down the finger for each joint
         else
         {
-            if (InputManager.instance.playerControls.Player.NavigateFingerUp.WasPressedThisFrame())
+            if (InputManager.Instance.playerControls.Player.NavigateFingerUp.WasPressedThisFrame())
             {
                 MoveSelection(0, -1, 0, -1); // move up
             }
-            else if (InputManager.instance.playerControls.Player.NavigateFingerDown.WasPressedThisFrame())
+            else if (InputManager.Instance.playerControls.Player.NavigateFingerDown.WasPressedThisFrame())
             {
                 MoveSelection(0, 1, 0, 1); // move down
             }

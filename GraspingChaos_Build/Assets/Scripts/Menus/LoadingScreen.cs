@@ -1,5 +1,16 @@
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  OG Author:    Wyatt
+//  Title:        Loading Screen
+//  Date Created: 01/07/2025
+//  Purpose:      This is to manage the the two loading screen canvases
+//  Instance?     no
+//-----------------------------------------------------------------
+
+/// <summary>
+/// This is to manage the the two loading screen canvases
+/// </summary>
 public class LoadingScreen : MonoBehaviour
 {
     [Tooltip("This is the loading screen gameobject that displays on display 1")]

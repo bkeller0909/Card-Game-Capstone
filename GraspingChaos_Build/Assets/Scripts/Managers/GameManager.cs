@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
 //----------------------------------------------------------------
 //  OG Author:    Wyatt
 //  Title:        Game Manager
@@ -10,6 +9,9 @@ using UnityEngine.SceneManagement;
 //  Purpose:      This is to manage the base game fundamentals
 //  Instance?     Yes
 //-----------------------------------------------------------------
+
+/// <summary>
+/// This is to manage the base game fundamentals
 /// </summary>
 public class GameManager : MonoBehaviour
 {
