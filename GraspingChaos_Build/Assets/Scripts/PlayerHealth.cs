@@ -15,8 +15,10 @@ using UnityEngine;
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {
+    // This is the health value of each digit a player has
     int[] playerHealthStats;
 
+    // The max amount of fingers a player can have
     public static int MAX_AMT_FINGERS = 10;
 
 

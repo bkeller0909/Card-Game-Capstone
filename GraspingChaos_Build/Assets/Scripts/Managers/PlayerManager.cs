@@ -14,15 +14,21 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerManager : MonoBehaviour
 {
+    // The players input system
     [HideInInspector] public PlayerInput playerInput;
+
+    // The players health system
     public PlayerHealth health;
 
     //debug utilty value, just to reflect current health
     public TMP_Text healthValue;
 
+    [Tooltip("The players hp as a whole")]
     public int entireHP;
+    [Tooltip("The players mana value")]
     public int Mana;
 
+    [Tooltip("What number of player they are")]
     [SerializeField] public PlayerType playerNum;
     [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
     public List<Fingers> fingers;
