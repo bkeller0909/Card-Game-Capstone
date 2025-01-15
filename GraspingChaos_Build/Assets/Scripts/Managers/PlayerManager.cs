@@ -16,14 +16,8 @@ public class PlayerManager : MonoBehaviour
 {
     // The players input system
     [HideInInspector] public PlayerInput playerInput;
-<<<<<<< Updated upstream
-
-    // The players health system
-    [HideInInspector] public PlayerHealth health;
-=======
     public Gamepad gamepad;
     public PlayerHealth health;
->>>>>>> Stashed changes
 
     //debug utilty value, just to reflect current health
     public TMP_Text healthValue;
@@ -54,6 +48,8 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+
+        entireHP = 28;
         for (int i = 0; i < playerInput.devices.Count; i++)
         {
             if (playerInput.devices[i] is Gamepad)
@@ -62,8 +58,22 @@ public class PlayerManager : MonoBehaviour
                 break;
             }
         }
+    }
 
-        entireHP = 28;
+    public void fillFingers()
+    {
+        //int index = 0;
+        //foreach (GameObject finger in leftHand.fingersInHand)
+        //{
+        //    arrayOfFingers[index] = finger;
+        //    index++;
+        //}
+
+        //foreach (GameObject finger in rightHand.fingersInHand)
+        //{
+        //    arrayOfFingers[index] = finger;
+        //    index++;
+        //}
     }
 
     // Update is called once per frame
