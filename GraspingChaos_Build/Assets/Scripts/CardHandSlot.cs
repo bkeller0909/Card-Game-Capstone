@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 //----------------------------------------------------------------
 //  Author:       Keller
-//  Title:        CardSelectManager
+//  Title:        CardHandSlot
 //  Date Created: 01/07/2025
 //  Instance:     Yes
 //-----------------------------------------------------------------
