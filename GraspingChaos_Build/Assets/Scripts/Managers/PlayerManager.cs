@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 //----------------------------------------------------------------
@@ -13,7 +14,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerManager : MonoBehaviour
 {
-
+    [HideInInspector] public PlayerInput playerInput;
     public PlayerHealth health;
 
     //debug utilty value, just to reflect current health
@@ -41,6 +42,8 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+
         entireHP = 28;
         //fillFingers();
     }

@@ -15,7 +15,9 @@ using UnityEngine;
 /// </summary>
 public class CardSelect : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer glowRender;
+    private CardHandSlot cardHandSlot;
+
+    [SerializeField] private MeshRenderer cardGlowRender;
 
     [Tooltip("How high the card will travel once selected.")]
     [SerializeField] private float verticalAdjustAmount = 2f;
@@ -32,7 +34,8 @@ public class CardSelect : MonoBehaviour
 
     void Start()
     {
-        glowRender.enabled = false;
+        cardHandSlot = gameObject.GetComponentInParent<CardHandSlot>();
+        cardGlowRender.enabled = false;
         startPosition = transform.position;
         startScale = transform.localScale;
     }
@@ -76,8 +79,8 @@ public class CardSelect : MonoBehaviour
     {
         // card will need to be selected
         isCardSelected = true;
-        CardSelectManager.instance.LastSelectedCard = this;
-        StartCoroutine(AdjustCard(true));
+        cardHandSlot.LastSelectedCard = this;
+        StartCoroutine(AdjustCard(isCardSelected));
         CardGlow(isCardSelected);
     }
 
@@ -85,52 +88,12 @@ public class CardSelect : MonoBehaviour
     {
         // card will need to be deselected
         isCardSelected = false;
-        StartCoroutine(AdjustCard(false));
+        StartCoroutine(AdjustCard(isCardSelected));
         CardGlow(isCardSelected);
     }
 
     public void CardGlow(bool glow)
     {
-        if (glow)
-        {
-            glowRender.enabled = true;
-        }
-        if (!glow)
-        {
-            glowRender.enabled = false;
-        }
+        cardGlowRender.enabled = glow;
     }
-
-    /*public void OnPointerEnter(PointerEventData eventData)
-    {
-        // when the card is selected, the selected object is this game object
-        eventData.selectedObject = gameObject;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        // when the card is deselected, the selected object is null
-        eventData.selectedObject = null;
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        StartCoroutine(AdjustCard(true));   // when selected, adjusting the card is true
-        CardSelectManager.instance.LastSelectedCard = gameObject;   // set the last selected card to this game object
-
-        // finds the index of the last selected card
-        for (int i = 0; i < CardSelectManager.instance.cards.Length; i++)
-        {
-            if (CardSelectManager.instance.cards[i] == gameObject)
-            {
-                CardSelectManager.instance.LastSelectedCardIndex = i;
-                return;
-            }
-        }
-    }
-
-    public void OnDeselect(BaseEventData eventData)
-    {
-        StartCoroutine(AdjustCard(false));  // when deselected, adjusting the card is false
-    }*/
 }

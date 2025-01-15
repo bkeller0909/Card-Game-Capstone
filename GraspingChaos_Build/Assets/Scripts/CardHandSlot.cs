@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 //----------------------------------------------------------------
@@ -11,26 +12,20 @@ using UnityEngine;
 /// <summary>
 /// Keep track of the index of selected card to smooth navigation of the controller.
 /// </summary>
-public class CardSelectManager : MonoBehaviour
+public class CardHandSlot : MonoBehaviour
 {
-    public static CardSelectManager instance;
+    private PlayerManager player;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
     public GameObject[] cards;  // array for the cards to keep track of what is selected
     public CardSelect LastSelectedCard { get; set; }
     public int LastSelectedCardIndex { get; set; }
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        player = gameObject.GetComponentInParent<PlayerManager>();
+
         if (cards.Length > 0)
         {
             SetSelectedCard(0);
@@ -40,11 +35,12 @@ public class CardSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.instance.playerControls.Player.NavigateFingerRight.WasPressedThisFrame())
+        
+        if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
         {
             MoveSelection(1);
         }
-        else if (InputManager.instance.playerControls.Player.NavigateFingerLeft.WasPressedThisFrame())
+        else if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
         {
             MoveSelection(-1);
         }
@@ -58,7 +54,7 @@ public class CardSelectManager : MonoBehaviour
         }
 
         LastSelectedCardIndex = cardIndex;
-        LastSelectedCard = cards[cardIndex].GetComponent<CardSelect>();
+        LastSelectedCard = cards[cardIndex].GetComponentInChildren<CardSelect>();
         LastSelectedCard.SelectCard();
     }
 
@@ -71,19 +67,4 @@ public class CardSelectManager : MonoBehaviour
             SetSelectedCard(newCardIndex);
         }
     }
-
-    /*private void OnEnable()
-    {
-        StartCoroutine(SetSelectedAfterFrame());
-    }
-
-    /// <summary>
-    /// Waits one frame then sets the selected game object in the hand of cards.
-    /// Weird glitch that Unity UI system isn't setting correct transform position unless 1 frame has passed. Idk.
-    /// </summary>
-    private IEnumerator SetSelectedAfterFrame()
-    {
-        yield return null;
-        EventSystem.current.SetSelectedGameObject(cards[0]);
-    }*/
 }
