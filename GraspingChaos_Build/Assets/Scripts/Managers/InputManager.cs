@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance;
     public PlayerControls playerControls;
 
-    private PlayerManager[] players;
+    [HideInInspector] public PlayerManager[] players;
 
     private void Awake()
     {
@@ -23,25 +23,18 @@ public class InputManager : MonoBehaviour
         {
             Instance = this;
         }
+        playerControls = new PlayerControls();
     }
 
     private void Start()
     {
+        //FindPlayers();
     }
 
     private void Update()
     {
-        if (GameManager.Instance.ln_CurrentLevelName == GameManager.Instance.ln_ProtoCardSelection)
-        {
-            if (players[0].playerInput.actions["Select"].WasPressedThisFrame())
-            {
-                RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, players[0].gamepad);
-            }
-            if (players[1].playerInput.actions["Select"].WasPressedThisFrame())
-            {
-                RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, players[1].gamepad);
-            }
-        }
+
+
     }
 
     public void FindPlayers()
@@ -54,5 +47,7 @@ public class InputManager : MonoBehaviour
                 players[i].gamepad = (Gamepad)players[i].playerInput.devices[i];
             }
         }
+
+        Debug.Log("We found players");
     }
 }

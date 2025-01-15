@@ -872,6 +872,50 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 462526590}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &510407187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510407189}
+  - component: {fileID: 510407188}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &510407188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510407187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0b3a6f54cf38c4aa9a441eae3ad306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &510407189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510407187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.728763, y: -2.6803205, z: -7.776474}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &510617076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1567,6 +1611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1347606429}
   - component: {fileID: 1347606430}
+  - component: {fileID: 1347606431}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -1633,6 +1678,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &1347606431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347606426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da0f9d864f2b8c409237ff381670936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
 --- !u!1 &1486734352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,3 +2616,4 @@ SceneRoots:
   - {fileID: 194531847}
   - {fileID: 1218006785}
   - {fileID: 1236049391}
+  - {fileID: 510407189}

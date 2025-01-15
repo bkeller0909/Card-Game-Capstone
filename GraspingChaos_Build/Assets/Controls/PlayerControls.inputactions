@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Swap Player Hands",
+                    "type": "Button",
+                    "id": "941744c0-fa64-47b3-9a45-5e8713eb7747",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -310,6 +319,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "NavigateFingerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30d75d9d-89bc-4e03-a9ee-b940b71e2b38",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swap Player Hands",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

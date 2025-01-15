@@ -62,18 +62,7 @@ public class PlayerManager : MonoBehaviour
 
     public void fillFingers()
     {
-        //int index = 0;
-        //foreach (GameObject finger in leftHand.fingersInHand)
-        //{
-        //    arrayOfFingers[index] = finger;
-        //    index++;
-        //}
 
-        //foreach (GameObject finger in rightHand.fingersInHand)
-        //{
-        //    arrayOfFingers[index] = finger;
-        //    index++;
-        //}
     }
 
     // Update is called once per frame

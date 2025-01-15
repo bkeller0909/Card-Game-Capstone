@@ -3562,6 +3562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 232253123}
   - component: {fileID: 232253124}
+  - component: {fileID: 232253125}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -3617,6 +3618,37 @@ MonoBehaviour:
   - {fileID: 1207769754}
   - {fileID: 1302227084}
   - {fileID: 1633427999}
+--- !u!114 &232253125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232253122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: df910091f53b92b4db3a4d7fdb4f39d8,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &236330738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8632,7 +8664,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 568269514}
-  - component: {fileID: 568269515}
   m_Layer: 0
   m_Name: Player Hand Left
   m_TagString: Untagged
@@ -8661,18 +8692,6 @@ Transform:
   - {fileID: 488116983}
   m_Father: {fileID: 736850279}
   m_LocalEulerAnglesHint: {x: 74.823, y: 0, z: 0}
---- !u!114 &568269515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568269513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a332c9a0cc8384fbbf9d2707283630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &568832661
 GameObject:
   m_ObjectHideFlags: 0
@@ -11618,7 +11637,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732660823}
-  - component: {fileID: 732660824}
   m_Layer: 0
   m_Name: Player Hand Right
   m_TagString: Untagged
@@ -11647,18 +11665,6 @@ Transform:
   - {fileID: 2124957761}
   m_Father: {fileID: 736850279}
   m_LocalEulerAnglesHint: {x: 75.612, y: 0, z: 0}
---- !u!114 &732660824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732660822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a332c9a0cc8384fbbf9d2707283630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &734250590
 GameObject:
   m_ObjectHideFlags: 0
@@ -11753,6 +11759,7 @@ GameObject:
   - component: {fileID: 736850279}
   - component: {fileID: 736850280}
   - component: {fileID: 736850281}
+  - component: {fileID: 736850282}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -11822,6 +11829,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselect: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &736850282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736850278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: df910091f53b92b4db3a4d7fdb4f39d8,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &738334740
 GameObject:
   m_ObjectHideFlags: 0

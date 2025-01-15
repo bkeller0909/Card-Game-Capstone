@@ -15,6 +15,8 @@ using UnityEngine;
 /// </summary>
 public class SelectableFinger : MonoBehaviour
 {
+    private PlayerManager player;
+
     [Tooltip("Color for the selected object.")]
     public Color selectedColor = Color.green;
     public Color deselect = Color.white;
@@ -36,6 +38,7 @@ public class SelectableFinger : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<PlayerManager>();
         defaultColor = gameObject.GetComponentInChildren<Renderer>().material.color;
         GameManager.Instance.currentCaster = GameManager.Instance.player2;
         UpdateSelection();
@@ -44,7 +47,7 @@ public class SelectableFinger : MonoBehaviour
     void Update()
     {
         //set up for testing, change it to controller input, this swaps the select of each players hands
-        if (Input.GetKeyUp(KeyCode.S))
+        if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == false)
         {
             if (GameManager.Instance.currentCaster == GameManager.Instance.player2)
             {
@@ -54,7 +57,7 @@ public class SelectableFinger : MonoBehaviour
             playerOneHands = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == true)
         {
             if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
             {
@@ -68,13 +71,13 @@ public class SelectableFinger : MonoBehaviour
         //damage and heal for both players with the above check, also swap fro controller support
         if (playerOneHands)
         {
-            if (Input.GetKeyUp(KeyCode.D))
+            if (player.playerInput.actions["Select"].WasPressedThisFrame())
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
                 GameManager.Instance.player1.entireHP -= 1;
             }
-            else if (Input.GetKeyUp(KeyCode.H))
+            else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
                 GameManager.Instance.player1.entireHP += 1;
@@ -82,13 +85,13 @@ public class SelectableFinger : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyUp(KeyCode.D))
+            if (player.playerInput.actions["Select"].WasPressedThisFrame())
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player2.entireHP -= 1;
             }
-            else if (Input.GetKeyUp(KeyCode.H))
+            else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].add = true;
                 GameManager.Instance.player2.entireHP += 1;
@@ -105,11 +108,11 @@ public class SelectableFinger : MonoBehaviour
         // we only want to select full fingers individually left and right on our hand
         if (toggleFullFingerSelect)
         {
-            if (InputManager.Instance.playerControls.Player.NavigateFingerLeft.WasPressedThisFrame())
+            if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
             {
                 MoveSelection(-1, 0, -1, 0); // move left
             }
-            else if (InputManager.Instance.playerControls.Player.NavigateFingerRight.WasPressedThisFrame())
+            else if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
             {
                 MoveSelection(1, 0, 1, 0); // move right
             }
@@ -118,11 +121,11 @@ public class SelectableFinger : MonoBehaviour
         // once we select a finger only move up and down the finger for each joint
         else
         {
-            if (InputManager.Instance.playerControls.Player.NavigateFingerUp.WasPressedThisFrame())
+            if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
             {
                 MoveSelection(0, -1, 0, -1); // move up
             }
-            else if (InputManager.Instance.playerControls.Player.NavigateFingerDown.WasPressedThisFrame())
+            else if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
             {
                 MoveSelection(0, 1, 0, 1); // move down
             }

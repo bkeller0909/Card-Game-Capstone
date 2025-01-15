@@ -42,6 +42,11 @@ public class CardHandSlot : MonoBehaviour
         {
             MoveSelection(-1);
         }
+        if (player.playerInput.actions["Select"].WasPressedThisFrame())
+        {
+            Debug.Log("rumble");
+            RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
+        }
     }
 
     public void SetSelectedCard(int cardIndex)
