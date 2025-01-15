@@ -79,7 +79,6 @@ public class CardSelect : MonoBehaviour
     {
         // card will need to be selected
         isCardSelected = true;
-        cardHandSlot.LastSelectedCard = this;
         StartCoroutine(AdjustCard(isCardSelected));
         CardGlow(isCardSelected);
     }

@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 //----------------------------------------------------------------
 //  Author:       Keller
 //  Title:        CardHandSlot
 //  Date Created: 01/07/2025
-//  Instance:     Yes
+//  Instance:     No
 //-----------------------------------------------------------------
 
 /// <summary>
@@ -35,7 +34,6 @@ public class CardHandSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
         {
             MoveSelection(1);

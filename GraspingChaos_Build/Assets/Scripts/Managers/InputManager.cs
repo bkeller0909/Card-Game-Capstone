@@ -13,10 +13,9 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
-
     public PlayerControls playerControls;
 
-    private Gamepad gamepad;
+    private PlayerManager[] players;
 
     private void Awake()
     {
@@ -24,23 +23,29 @@ public class InputManager : MonoBehaviour
         {
             instance = this;
         }
-
-        playerControls = new PlayerControls();
     }
 
-    /// <summary>
-    /// Enables the control scheme once a controller is connected to the device.
-    /// </summary>
-    private void OnEnable()
+    private void Start()
     {
-        playerControls.Enable();
+        players = FindObjectsOfType<PlayerManager>();
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].gamepad is Gamepad)
+            {
+                players[i].gamepad = (Gamepad)players[i].playerInput.devices[i];
+            }
+        }
     }
 
-    /// <summary>
-    /// Disables the control scheme when a controller is disconnected.
-    /// </summary>
-    private void OnDisable()
+    private void Update()
     {
-        playerControls.Disable();
+        if (players[0].playerInput.actions["Select"].WasPressedThisFrame())
+        {
+            RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, players[0].gamepad);
+        }
+        if (players[1].playerInput.actions["Select"].WasPressedThisFrame())
+        {
+            RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, players[1].gamepad);
+        }
     }
 }
