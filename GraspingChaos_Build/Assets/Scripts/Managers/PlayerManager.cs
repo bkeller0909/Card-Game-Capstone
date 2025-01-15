@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -14,6 +15,9 @@ public class PlayerManager : MonoBehaviour
 {
 
     public PlayerHealth health;
+
+    //debug utilty value, just to reflect current health
+    public TMP_Text healthValue;
 
     public int entireHP;
     public int Mana;
@@ -60,6 +64,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        healthValue.text = entireHP.ToString();
     }
 }
