@@ -46,6 +46,11 @@ public class SelectableFinger : MonoBehaviour
 
     void Update()
     {
+        if (player.playerInput.actions["Pause"].WasPressedThisFrame())
+        {
+            GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
+        }
+
         //set up for testing, change it to controller input, this swaps the select of each players hands
         if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == false)
         {
@@ -57,7 +62,7 @@ public class SelectableFinger : MonoBehaviour
             playerOneHands = true;
         }
 
-        if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == true)
+        else if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == true)
         {
             if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
             {
@@ -76,11 +81,13 @@ public class SelectableFinger : MonoBehaviour
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
                 GameManager.Instance.player1.entireHP -= 1;
+                RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
             }
             else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
                 GameManager.Instance.player1.entireHP += 1;
+                RumbleManager.instance.ControllerRumble(0.25f, 0.15f, 0.25f, player.gamepad);
             }
         }
         else
@@ -90,11 +97,13 @@ public class SelectableFinger : MonoBehaviour
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player2.entireHP -= 1;
+                RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
             }
             else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].add = true;
                 GameManager.Instance.player2.entireHP += 1;
+                RumbleManager.instance.ControllerRumble(0.25f, 0.15f, 0.25f, player.gamepad);
             }
         }
 
@@ -121,11 +130,11 @@ public class SelectableFinger : MonoBehaviour
         // once we select a finger only move up and down the finger for each joint
         else
         {
-            if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
+            if (player.playerInput.actions["Navigate Finger Up"].WasPressedThisFrame())
             {
                 MoveSelection(0, -1, 0, -1); // move up
             }
-            else if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
+            else if (player.playerInput.actions["Navigate Finger Down"].WasPressedThisFrame())
             {
                 MoveSelection(0, 1, 0, 1); // move down
             }

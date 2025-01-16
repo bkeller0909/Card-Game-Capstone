@@ -34,18 +34,21 @@ public class CardHandSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
+        if (player.playerInput.actions["NavCardRight"].WasPressedThisFrame())
         {
             MoveSelection(1);
         }
-        else if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
+        else if (player.playerInput.actions["NavCardLeft"].WasPressedThisFrame())
         {
             MoveSelection(-1);
         }
         if (player.playerInput.actions["Select"].WasPressedThisFrame())
         {
-            Debug.Log("rumble");
             RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
+        }
+        if (player.playerInput.actions["Pause"].WasPressedThisFrame())
+        {
+            GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
     }
 

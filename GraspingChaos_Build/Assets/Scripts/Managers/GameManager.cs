@@ -110,13 +110,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ln_CurrentLevelName != ln_MainMenuName)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                StartLoadingLevel(ln_MainMenuName);
-            }
-        }
+
     }
 
     public void StartLoadingLevel(string levelName)
