@@ -62,8 +62,11 @@ public class GameManager : MonoBehaviour
     [Tooltip("This needs to be the name of the prototype Object test scene")]
     public string ln_ProtoObjectTests;
 
-    [Tooltip("This needs to be the name of the prototype Art Show Case")]
+    [Tooltip("This needs to be the name of the prototype Art Showcase")]
     public string ln_ProtoArtShowCase;
+
+    [Tooltip("This needs to be the name of the prototype Particle Showcase")]
+    public string ln_ProtoParticleShowCase;
     #endregion
 
     [Tooltip("This is the base mana value each")]
