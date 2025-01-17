@@ -10,31 +10,36 @@ using UnityEngine;
 /// </summary>
 public class QTEButton : MonoBehaviour
 {
-    public bool revealBorder = false;
-    public bool correctTest = false;
+    public bool dir = false;
     public Color correct = Color.green;
     public Color incorrect = Color.red;
-
+    public bool pressed = false;
+    public KeyCode AssignedBTN;
 
     void Update()
     {
-        if (revealBorder)
+        if(Input.GetKeyDown(AssignedBTN))
         {
+            pressed = true;
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            if (correctTest)
+            gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            if (dir)
             {
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else
-            {
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
         }
-        else
+        else if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            //still gotta figure out a way to check for other buttons without hardcode
+            pressed = true;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+            if (dir)
+            {
+                gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+            }
         }
-
-        Destroy(gameObject, GameManager.Instance.timerQTE);
     }
 }

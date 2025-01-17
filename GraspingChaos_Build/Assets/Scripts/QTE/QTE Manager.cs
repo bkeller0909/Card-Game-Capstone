@@ -27,15 +27,15 @@ public class QTEManager : MonoBehaviour
     public List<GameObject> Buttons = new List<GameObject>();
     public List<GameObject> CreatedButtons = new List<GameObject>();
     public GameObject firstPosition;
-    private GameObject toDestroy;
     private Vector3 space = new Vector3(2f, 0f, 0f);
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            DestoryCurrent();
-        }
+        //if (//still need a check so it can stop looking at button availability, maybe add qte timer here)
+        //{
+        //    CheckAvailability();
+        //}
+        CheckAvailability();
     }
 
     private GameObject RandomizeBTN()
@@ -51,19 +51,41 @@ public class QTEManager : MonoBehaviour
         for (int i = 0; i < qteAmount; i++)
         {
             hold = RandomizeBTN();
-            Instantiate(hold, firstPosition.transform.position, Quaternion.identity);
-            CreatedButtons.Add(hold);
+            GameObject actualObject = Instantiate(hold, firstPosition.transform.position, Quaternion.identity);
+            CreatedButtons.Add(actualObject);
+            hold.GetComponent<QTEButton>().enabled = false;
             firstPosition.transform.position += space;
         }
+        CreatedButtons[0].GetComponent<QTEButton>().enabled = true;
+       // DestroyQTEBTN();
     }
 
-    public void DestoryCurrent()
+    public void CheckAvailability()
     {
         for (int i = 0; i < CreatedButtons.Count; i++)
         {
-            toDestroy = CreatedButtons[i];
-            Destroy(toDestroy);
+            if (CreatedButtons[i].GetComponent<QTEButton>().pressed)
+            {
+                CreatedButtons[i].GetComponent<QTEButton>().enabled = false;
+                if (i != CreatedButtons.Count - 1)
+                {
+                    CreatedButtons[i + 1].GetComponent<QTEButton>().enabled = true;
+                }
+            }
+            else
+            {
+                break;
+            }
         }
+    }
+
+    public void DestroyQTEBTN()
+    {
+        for (int i = 0; i < CreatedButtons.Count; i++)
+        {
+            Destroy(CreatedButtons[i], GameManager.Instance.timerQTE);
+        }
+
     }
 
 }

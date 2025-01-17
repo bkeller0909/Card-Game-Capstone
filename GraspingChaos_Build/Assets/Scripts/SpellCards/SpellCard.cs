@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 //----------------------------------------------------------------
@@ -67,13 +68,19 @@ public class SpellCard : MonoBehaviour
     {
         if (Input.GetKeyDown(debugTester))
         {
-            QTEManager.Instance.Create(qteAmount);
+            StartCoroutine(testing());
         }
     }
 
     private void Update()
     {
         TestSpellReleaseQTE();
+    }
+
+    IEnumerator testing()
+    {
+        yield return new WaitForSeconds(5);
+        QTEManager.Instance.Create(qteAmount);
     }
 
 }
