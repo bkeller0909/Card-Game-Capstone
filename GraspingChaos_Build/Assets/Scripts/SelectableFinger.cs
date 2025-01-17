@@ -80,13 +80,31 @@ public class SelectableFinger : MonoBehaviour
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
-                GameManager.Instance.player1.entireHP -= 1;
+                if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 0)
+                {
+                    GameManager.Instance.player1.entireHP -= 1;
+                }
                 RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
             }
             else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
-                GameManager.Instance.player1.entireHP += 1;
+                if (GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.RH_Thumb || GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.LH_Thumb)
+                {
+                    if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 2)
+                    {
+                        GameManager.Instance.player1.entireHP += 1;
+                    }
+                }
+                else
+                {
+
+                    //IF THE HP IS 3 STOP ADDING
+                    if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 3)
+                    {
+                        GameManager.Instance.player1.entireHP += 1;
+                    }
+                }
                 RumbleManager.instance.ControllerRumble(0.25f, 0.15f, 0.25f, player.gamepad);
             }
         }
@@ -96,13 +114,30 @@ public class SelectableFinger : MonoBehaviour
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].remove = true;
-                GameManager.Instance.player2.entireHP -= 1;
+                if (GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerHP != 0)
+                {
+                    GameManager.Instance.player2.entireHP -= 1;
+                }
                 RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
             }
             else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].add = true;
-                GameManager.Instance.player2.entireHP += 1;
+                if (GameManager.Instance.player2.fingers[currentFingerIndexP2].finger == PlayerFingers.RH_Thumb || GameManager.Instance.player2.fingers[currentFingerIndexP2].finger == PlayerFingers.LH_Thumb)
+                {
+                    if (GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerHP != 2)
+                    {
+                        GameManager.Instance.player2.entireHP += 1;
+                    }
+                }
+                else
+                {
+                    //IF THE HP IS 3 STOP ADDING
+                    if (GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerHP != 3)
+                    {
+                        GameManager.Instance.player2.entireHP += 1;
+                    }
+                }
                 RumbleManager.instance.ControllerRumble(0.25f, 0.15f, 0.25f, player.gamepad);
             }
         }

@@ -26,6 +26,9 @@ public class Fingers : MonoBehaviour
     Stack fingerSegments = new Stack();
     Stack fingerSegmentsRemoved = new Stack();
 
+    //testing
+    public int fingerHP;
+
 
     private void Awake()
     {
@@ -45,9 +48,13 @@ public class Fingers : MonoBehaviour
     //add (reveal) finger segment
     public void addSegment()
     {
-        GameObject added = (GameObject)fingerSegmentsRemoved.Pop();
-        fingerSegments.Push(added);
-        added.GetComponent<MeshRenderer>().enabled = true;
+        if (fingerJoints.Count != fingerSegments.Count)
+        {
+            GameObject added = (GameObject)fingerSegmentsRemoved.Pop();
+            fingerSegments.Push(added);
+            added.GetComponent<MeshRenderer>().enabled = true;
+            fingerHP += 1;
+        }
 
     }
 
@@ -59,11 +66,15 @@ public class Fingers : MonoBehaviour
     //remove (hide) finger segment
     public void removeCurrentSegment()
     {
-        GameObject removed = (GameObject)fingerSegments.Pop();
+        if (fingerSegments.Count > 0)
+        {
+            GameObject removed = (GameObject)fingerSegments.Pop();
 
-        //removed.SetActive(false);
-        fingerSegmentsRemoved.Push(removed);
-        removed.GetComponent<MeshRenderer>().enabled = false;
+            //removed.SetActive(false);
+            fingerSegmentsRemoved.Push(removed);
+            removed.GetComponent<MeshRenderer>().enabled = false;
+            fingerHP -= 1;
+        }
     }
 
     private void Update()
