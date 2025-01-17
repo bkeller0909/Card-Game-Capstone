@@ -142,15 +142,8 @@ public class SelectableFinger : MonoBehaviour
             }
         }
 
-
-        // the button to toggle between full finger selection or joint selection
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ToggleFingerSelection();
-        }
-
         // we only want to select full fingers individually left and right on our hand
-        if (toggleFullFingerSelect)
+        if (playerOneHands)
         {
             if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
             {
@@ -159,6 +152,17 @@ public class SelectableFinger : MonoBehaviour
             else if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
             {
                 MoveSelection(1, 0, 1, 0); // move right
+            }
+        }
+        else if (!playerOneHands)
+        {
+            if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
+            {
+                MoveSelection(1, 0, 1, 0); // move left
+            }
+            else if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
+            {
+                MoveSelection(-1, 0, -1, 0); // move right
             }
         }
 
