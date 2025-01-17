@@ -292,7 +292,7 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   currentCaster: {fileID: 0}
-  timerQTE: 5
+  timerQTE: 10
 --- !u!4 &316609414
 Transform:
   m_ObjectHideFlags: 0
@@ -1013,6 +1013,8 @@ MonoBehaviour:
   - {fileID: 6880405577169645239, guid: 0bfb200b8967ed545b4bf38ba85a9e13, type: 3}
   CreatedButtons: []
   firstPosition: {fileID: 1516826804}
+  remainingTime: 0
+  startTimer: 0
 --- !u!4 &1680499014
 Transform:
   m_ObjectHideFlags: 0

@@ -28,14 +28,32 @@ public class QTEManager : MonoBehaviour
     public List<GameObject> CreatedButtons = new List<GameObject>();
     public GameObject firstPosition;
     private Vector3 space = new Vector3(2f, 0f, 0f);
+    public float remainingTime;
+    public bool startTimer;
+
+    private void Start()
+    {
+        startTimer = false;
+        remainingTime = GameManager.Instance.timerQTE;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
-        //if (//still need a check so it can stop looking at button availability, maybe add qte timer here)
-        //{
-        //    CheckAvailability();
-        //}
-        CheckAvailability();
+        if (startTimer)
+        {
+            if (remainingTime > 0)
+            {
+                remainingTime -= Time.deltaTime;
+            }
+            else if (remainingTime < 0)
+            {
+                remainingTime = 0;
+                startTimer = false;
+            }
+            CheckAvailability();
+        }
     }
 
     private GameObject RandomizeBTN()
@@ -46,6 +64,7 @@ public class QTEManager : MonoBehaviour
 
     public void Create(int qteAmount)
     {
+        //remainingTime = GameManager.Instance.timerQTE;
         GameObject hold = new GameObject();
         firstPosition.transform.position = new Vector3(-5.21f, -1.19f, 0);
         for (int i = 0; i < qteAmount; i++)
@@ -57,24 +76,31 @@ public class QTEManager : MonoBehaviour
             firstPosition.transform.position += space;
         }
         CreatedButtons[0].GetComponent<QTEButton>().enabled = true;
-       // DestroyQTEBTN();
+        startTimer = true;
+        DestroyQTEBTN();
     }
 
     public void CheckAvailability()
     {
-        for (int i = 0; i < CreatedButtons.Count; i++)
+        if (startTimer)
         {
-            if (CreatedButtons[i].GetComponent<QTEButton>().pressed)
+            if (CreatedButtons[0] != null)
             {
-                CreatedButtons[i].GetComponent<QTEButton>().enabled = false;
-                if (i != CreatedButtons.Count - 1)
+                for (int i = 0; i < CreatedButtons.Count; i++)
                 {
-                    CreatedButtons[i + 1].GetComponent<QTEButton>().enabled = true;
+                    if (CreatedButtons[i].GetComponent<QTEButton>().pressed)
+                    {
+                        CreatedButtons[i].GetComponent<QTEButton>().enabled = false;
+                        if (i != CreatedButtons.Count - 1)
+                        {
+                            CreatedButtons[i + 1].GetComponent<QTEButton>().enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-            }
-            else
-            {
-                break;
             }
         }
     }
@@ -85,7 +111,6 @@ public class QTEManager : MonoBehaviour
         {
             Destroy(CreatedButtons[i], GameManager.Instance.timerQTE);
         }
-
     }
 
 }

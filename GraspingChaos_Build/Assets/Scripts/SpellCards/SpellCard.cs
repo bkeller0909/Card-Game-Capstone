@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 /// <summary>
 //----------------------------------------------------------------
@@ -79,7 +79,7 @@ public class SpellCard : MonoBehaviour
 
     IEnumerator testing()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         QTEManager.Instance.Create(qteAmount);
     }
 
