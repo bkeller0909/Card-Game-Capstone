@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is which player is currently casting a spell")]
     public PlayerManager currentCaster;
 
+    [Tooltip("This is which player is currently casting a spell")]
+    public int timerQTE = 5;
+
     private void Awake()
     {
         if (instance == null)

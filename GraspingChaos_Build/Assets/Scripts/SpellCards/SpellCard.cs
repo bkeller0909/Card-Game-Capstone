@@ -36,6 +36,8 @@ public class SpellCard : MonoBehaviour
     //Type of Spell (global spell type enum)
     public SpellType type;
 
+    public KeyCode debugTester;
+
 
     //damage dealing function
     public virtual void DamageDealing()
@@ -61,6 +63,17 @@ public class SpellCard : MonoBehaviour
 
     //QTE evaluation function
 
+    public void TestSpellReleaseQTE()
+    {
+        if (Input.GetKeyDown(debugTester))
+        {
+            QTEManager.Instance.Create(qteAmount);
+        }
+    }
 
+    private void Update()
+    {
+        TestSpellReleaseQTE();
+    }
 
 }
