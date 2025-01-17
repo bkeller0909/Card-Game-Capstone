@@ -39,7 +39,15 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _CardTexture:
+        m_Texture: {fileID: 2800000, guid: 98baae3b7ea24d64baa7f2e0baba217b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpellIconTexture:
+        m_Texture: {fileID: 2800000, guid: 10c5329f99cc36440a92541e01906668, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []
     m_Colors:
