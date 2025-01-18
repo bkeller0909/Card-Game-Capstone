@@ -666,6 +666,502 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""QTE"",
+            ""id"": ""4475d2fe-57ba-4a60-9c4c-15aa55c556d8"",
+            ""actions"": [
+                {
+                    ""name"": ""North"",
+                    ""type"": ""Button"",
+                    ""id"": ""65dddba1-7d64-4b46-957f-f675994d211e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""South"",
+                    ""type"": ""Button"",
+                    ""id"": ""15509ad1-4c26-4a45-b324-2a3c8cf7a09f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""East"",
+                    ""type"": ""Button"",
+                    ""id"": ""5311653b-c272-4ecb-8831-160984249618"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""West"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcc7165a-27b9-4aed-9827-321e3a227816"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DPad Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""d966bf5a-a3b9-4bc3-ad0a-99814ce473b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dpad Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""baa302ea-41d5-4bdd-8943-77cd8fc0bab7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DPad Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""51d78d06-fb10-4ded-a7e7-b6f0872ca7c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DPad Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""681f615c-707b-4d9c-9dd2-8e3713adcc14"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LS Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""28850366-06ae-424d-be52-bd7c6619a331"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LS Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""583d444f-8d27-488c-a2b8-cf92cbaae065"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LS Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""089a447b-21f1-4b97-b8e5-e01d3d7f906d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LS Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""344efd4d-ada1-4678-a5e4-35c80558e495"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RS Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""662b93b7-4733-428e-9f77-1ff8762f8b00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RS Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""c8810a08-09c0-4fb4-a08b-55240ba60647"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RS Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae2fecc9-beac-4084-87bf-d72273093a40"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RS Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""0eca3d8a-bf48-4c12-a47a-2793ada81bd8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RB"",
+                    ""type"": ""Button"",
+                    ""id"": ""224f4ea7-fab6-4f55-ba91-6a5a2f0403ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LB"",
+                    ""type"": ""Button"",
+                    ""id"": ""88329351-71cb-4a79-bd2f-9846fc949b26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RT"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e641c5e-ee6e-4f95-a0ca-3ea7413fe41e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LT"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d0b37da-9f7f-42f2-91d2-8a4201966e59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""25b4ce89-5a22-4727-8bf4-42a0c29abfb1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""South"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""406d67ee-be46-42d3-9e78-3f6dc2e5b402"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""South"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18eb3166-49b6-4641-bc47-ffffcc9adb07"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""North"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67b4950c-9e5d-4e91-83cc-4ee2ceeec136"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""North"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd3d728a-c353-4839-ba2f-f87fcf8adb92"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""East"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f883c4c6-908b-4047-9511-d893c34560a1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""East"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8619d141-d0d0-4a81-8862-ddeaa2abc735"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""West"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""decb5244-95e3-4c16-a59e-9695d44158df"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""West"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8002b9bb-a438-4fcb-a2cb-dd0271c5db5c"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DPad Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""868b0471-1cd0-4e6e-a431-58c130f096ef"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DPad Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b0d41c7-e2cb-4871-b53c-c4d7a0f4e65a"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Dpad Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""838ce385-7e84-4459-a25c-51d698a7c72f"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dpad Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4cb1fb2-92b6-4583-8548-b4bd8b5c2f79"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DPad Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f4eba23-bf72-4791-89f0-4ff3390259c9"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPad Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57ec50e8-d1d7-4f2d-a8cd-491bc7caf9fe"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DPad Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b62604f3-5776-4cff-9a93-0ccb9c17dc8a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPad Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1964073-8279-4ff4-8308-8d5542773985"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LS Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0024f8e-00c7-4dda-801c-2d4e7f5493b9"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LS Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29a6069d-1e82-4162-a60e-7b4b728835a5"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LS Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5784cd49-9233-46a5-852b-ba4fa39ad09a"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LS Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c467c651-1a3d-4d30-91f1-208d8fa07588"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RS Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""995fb6f4-ddf7-41ea-b62f-78864bcca767"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RS Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78037597-8980-4f88-a2ae-3428b4435a7d"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RS Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76820899-de79-4861-bb7a-8530c386bda4"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RS Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58bd1502-6d1f-49cf-bf5a-97b415407264"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25d30902-e476-4bac-b011-dd9d6a88c77f"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7676c0c3-8548-4060-a01c-8ee977314fbe"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3617bc8-41f8-45ef-8fb7-a30b791a0e81"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -751,6 +1247,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UI_Move = m_UI.FindAction("UI_Move", throwIfNotFound: true);
         m_UI_UI_Select = m_UI.FindAction("UI_Select", throwIfNotFound: true);
+        // QTE
+        m_QTE = asset.FindActionMap("QTE", throwIfNotFound: true);
+        m_QTE_North = m_QTE.FindAction("North", throwIfNotFound: true);
+        m_QTE_South = m_QTE.FindAction("South", throwIfNotFound: true);
+        m_QTE_East = m_QTE.FindAction("East", throwIfNotFound: true);
+        m_QTE_West = m_QTE.FindAction("West", throwIfNotFound: true);
+        m_QTE_DPadUp = m_QTE.FindAction("DPad Up", throwIfNotFound: true);
+        m_QTE_DpadDown = m_QTE.FindAction("Dpad Down", throwIfNotFound: true);
+        m_QTE_DPadLeft = m_QTE.FindAction("DPad Left", throwIfNotFound: true);
+        m_QTE_DPadRight = m_QTE.FindAction("DPad Right", throwIfNotFound: true);
+        m_QTE_LSUp = m_QTE.FindAction("LS Up", throwIfNotFound: true);
+        m_QTE_LSDown = m_QTE.FindAction("LS Down", throwIfNotFound: true);
+        m_QTE_LSLeft = m_QTE.FindAction("LS Left", throwIfNotFound: true);
+        m_QTE_LSRight = m_QTE.FindAction("LS Right", throwIfNotFound: true);
+        m_QTE_RSUp = m_QTE.FindAction("RS Up", throwIfNotFound: true);
+        m_QTE_RSDown = m_QTE.FindAction("RS Down", throwIfNotFound: true);
+        m_QTE_RSLeft = m_QTE.FindAction("RS Left", throwIfNotFound: true);
+        m_QTE_RSRight = m_QTE.FindAction("RS Right", throwIfNotFound: true);
+        m_QTE_RB = m_QTE.FindAction("RB", throwIfNotFound: true);
+        m_QTE_LB = m_QTE.FindAction("LB", throwIfNotFound: true);
+        m_QTE_RT = m_QTE.FindAction("RT", throwIfNotFound: true);
+        m_QTE_LT = m_QTE.FindAction("LT", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1012,6 +1530,204 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // QTE
+    private readonly InputActionMap m_QTE;
+    private List<IQTEActions> m_QTEActionsCallbackInterfaces = new List<IQTEActions>();
+    private readonly InputAction m_QTE_North;
+    private readonly InputAction m_QTE_South;
+    private readonly InputAction m_QTE_East;
+    private readonly InputAction m_QTE_West;
+    private readonly InputAction m_QTE_DPadUp;
+    private readonly InputAction m_QTE_DpadDown;
+    private readonly InputAction m_QTE_DPadLeft;
+    private readonly InputAction m_QTE_DPadRight;
+    private readonly InputAction m_QTE_LSUp;
+    private readonly InputAction m_QTE_LSDown;
+    private readonly InputAction m_QTE_LSLeft;
+    private readonly InputAction m_QTE_LSRight;
+    private readonly InputAction m_QTE_RSUp;
+    private readonly InputAction m_QTE_RSDown;
+    private readonly InputAction m_QTE_RSLeft;
+    private readonly InputAction m_QTE_RSRight;
+    private readonly InputAction m_QTE_RB;
+    private readonly InputAction m_QTE_LB;
+    private readonly InputAction m_QTE_RT;
+    private readonly InputAction m_QTE_LT;
+    public struct QTEActions
+    {
+        private @PlayerControls m_Wrapper;
+        public QTEActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @North => m_Wrapper.m_QTE_North;
+        public InputAction @South => m_Wrapper.m_QTE_South;
+        public InputAction @East => m_Wrapper.m_QTE_East;
+        public InputAction @West => m_Wrapper.m_QTE_West;
+        public InputAction @DPadUp => m_Wrapper.m_QTE_DPadUp;
+        public InputAction @DpadDown => m_Wrapper.m_QTE_DpadDown;
+        public InputAction @DPadLeft => m_Wrapper.m_QTE_DPadLeft;
+        public InputAction @DPadRight => m_Wrapper.m_QTE_DPadRight;
+        public InputAction @LSUp => m_Wrapper.m_QTE_LSUp;
+        public InputAction @LSDown => m_Wrapper.m_QTE_LSDown;
+        public InputAction @LSLeft => m_Wrapper.m_QTE_LSLeft;
+        public InputAction @LSRight => m_Wrapper.m_QTE_LSRight;
+        public InputAction @RSUp => m_Wrapper.m_QTE_RSUp;
+        public InputAction @RSDown => m_Wrapper.m_QTE_RSDown;
+        public InputAction @RSLeft => m_Wrapper.m_QTE_RSLeft;
+        public InputAction @RSRight => m_Wrapper.m_QTE_RSRight;
+        public InputAction @RB => m_Wrapper.m_QTE_RB;
+        public InputAction @LB => m_Wrapper.m_QTE_LB;
+        public InputAction @RT => m_Wrapper.m_QTE_RT;
+        public InputAction @LT => m_Wrapper.m_QTE_LT;
+        public InputActionMap Get() { return m_Wrapper.m_QTE; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(QTEActions set) { return set.Get(); }
+        public void AddCallbacks(IQTEActions instance)
+        {
+            if (instance == null || m_Wrapper.m_QTEActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_QTEActionsCallbackInterfaces.Add(instance);
+            @North.started += instance.OnNorth;
+            @North.performed += instance.OnNorth;
+            @North.canceled += instance.OnNorth;
+            @South.started += instance.OnSouth;
+            @South.performed += instance.OnSouth;
+            @South.canceled += instance.OnSouth;
+            @East.started += instance.OnEast;
+            @East.performed += instance.OnEast;
+            @East.canceled += instance.OnEast;
+            @West.started += instance.OnWest;
+            @West.performed += instance.OnWest;
+            @West.canceled += instance.OnWest;
+            @DPadUp.started += instance.OnDPadUp;
+            @DPadUp.performed += instance.OnDPadUp;
+            @DPadUp.canceled += instance.OnDPadUp;
+            @DpadDown.started += instance.OnDpadDown;
+            @DpadDown.performed += instance.OnDpadDown;
+            @DpadDown.canceled += instance.OnDpadDown;
+            @DPadLeft.started += instance.OnDPadLeft;
+            @DPadLeft.performed += instance.OnDPadLeft;
+            @DPadLeft.canceled += instance.OnDPadLeft;
+            @DPadRight.started += instance.OnDPadRight;
+            @DPadRight.performed += instance.OnDPadRight;
+            @DPadRight.canceled += instance.OnDPadRight;
+            @LSUp.started += instance.OnLSUp;
+            @LSUp.performed += instance.OnLSUp;
+            @LSUp.canceled += instance.OnLSUp;
+            @LSDown.started += instance.OnLSDown;
+            @LSDown.performed += instance.OnLSDown;
+            @LSDown.canceled += instance.OnLSDown;
+            @LSLeft.started += instance.OnLSLeft;
+            @LSLeft.performed += instance.OnLSLeft;
+            @LSLeft.canceled += instance.OnLSLeft;
+            @LSRight.started += instance.OnLSRight;
+            @LSRight.performed += instance.OnLSRight;
+            @LSRight.canceled += instance.OnLSRight;
+            @RSUp.started += instance.OnRSUp;
+            @RSUp.performed += instance.OnRSUp;
+            @RSUp.canceled += instance.OnRSUp;
+            @RSDown.started += instance.OnRSDown;
+            @RSDown.performed += instance.OnRSDown;
+            @RSDown.canceled += instance.OnRSDown;
+            @RSLeft.started += instance.OnRSLeft;
+            @RSLeft.performed += instance.OnRSLeft;
+            @RSLeft.canceled += instance.OnRSLeft;
+            @RSRight.started += instance.OnRSRight;
+            @RSRight.performed += instance.OnRSRight;
+            @RSRight.canceled += instance.OnRSRight;
+            @RB.started += instance.OnRB;
+            @RB.performed += instance.OnRB;
+            @RB.canceled += instance.OnRB;
+            @LB.started += instance.OnLB;
+            @LB.performed += instance.OnLB;
+            @LB.canceled += instance.OnLB;
+            @RT.started += instance.OnRT;
+            @RT.performed += instance.OnRT;
+            @RT.canceled += instance.OnRT;
+            @LT.started += instance.OnLT;
+            @LT.performed += instance.OnLT;
+            @LT.canceled += instance.OnLT;
+        }
+
+        private void UnregisterCallbacks(IQTEActions instance)
+        {
+            @North.started -= instance.OnNorth;
+            @North.performed -= instance.OnNorth;
+            @North.canceled -= instance.OnNorth;
+            @South.started -= instance.OnSouth;
+            @South.performed -= instance.OnSouth;
+            @South.canceled -= instance.OnSouth;
+            @East.started -= instance.OnEast;
+            @East.performed -= instance.OnEast;
+            @East.canceled -= instance.OnEast;
+            @West.started -= instance.OnWest;
+            @West.performed -= instance.OnWest;
+            @West.canceled -= instance.OnWest;
+            @DPadUp.started -= instance.OnDPadUp;
+            @DPadUp.performed -= instance.OnDPadUp;
+            @DPadUp.canceled -= instance.OnDPadUp;
+            @DpadDown.started -= instance.OnDpadDown;
+            @DpadDown.performed -= instance.OnDpadDown;
+            @DpadDown.canceled -= instance.OnDpadDown;
+            @DPadLeft.started -= instance.OnDPadLeft;
+            @DPadLeft.performed -= instance.OnDPadLeft;
+            @DPadLeft.canceled -= instance.OnDPadLeft;
+            @DPadRight.started -= instance.OnDPadRight;
+            @DPadRight.performed -= instance.OnDPadRight;
+            @DPadRight.canceled -= instance.OnDPadRight;
+            @LSUp.started -= instance.OnLSUp;
+            @LSUp.performed -= instance.OnLSUp;
+            @LSUp.canceled -= instance.OnLSUp;
+            @LSDown.started -= instance.OnLSDown;
+            @LSDown.performed -= instance.OnLSDown;
+            @LSDown.canceled -= instance.OnLSDown;
+            @LSLeft.started -= instance.OnLSLeft;
+            @LSLeft.performed -= instance.OnLSLeft;
+            @LSLeft.canceled -= instance.OnLSLeft;
+            @LSRight.started -= instance.OnLSRight;
+            @LSRight.performed -= instance.OnLSRight;
+            @LSRight.canceled -= instance.OnLSRight;
+            @RSUp.started -= instance.OnRSUp;
+            @RSUp.performed -= instance.OnRSUp;
+            @RSUp.canceled -= instance.OnRSUp;
+            @RSDown.started -= instance.OnRSDown;
+            @RSDown.performed -= instance.OnRSDown;
+            @RSDown.canceled -= instance.OnRSDown;
+            @RSLeft.started -= instance.OnRSLeft;
+            @RSLeft.performed -= instance.OnRSLeft;
+            @RSLeft.canceled -= instance.OnRSLeft;
+            @RSRight.started -= instance.OnRSRight;
+            @RSRight.performed -= instance.OnRSRight;
+            @RSRight.canceled -= instance.OnRSRight;
+            @RB.started -= instance.OnRB;
+            @RB.performed -= instance.OnRB;
+            @RB.canceled -= instance.OnRB;
+            @LB.started -= instance.OnLB;
+            @LB.performed -= instance.OnLB;
+            @LB.canceled -= instance.OnLB;
+            @RT.started -= instance.OnRT;
+            @RT.performed -= instance.OnRT;
+            @RT.canceled -= instance.OnRT;
+            @LT.started -= instance.OnLT;
+            @LT.performed -= instance.OnLT;
+            @LT.canceled -= instance.OnLT;
+        }
+
+        public void RemoveCallbacks(IQTEActions instance)
+        {
+            if (m_Wrapper.m_QTEActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IQTEActions instance)
+        {
+            foreach (var item in m_Wrapper.m_QTEActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_QTEActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public QTEActions @QTE => new QTEActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1078,5 +1794,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnUI_Move(InputAction.CallbackContext context);
         void OnUI_Select(InputAction.CallbackContext context);
+    }
+    public interface IQTEActions
+    {
+        void OnNorth(InputAction.CallbackContext context);
+        void OnSouth(InputAction.CallbackContext context);
+        void OnEast(InputAction.CallbackContext context);
+        void OnWest(InputAction.CallbackContext context);
+        void OnDPadUp(InputAction.CallbackContext context);
+        void OnDpadDown(InputAction.CallbackContext context);
+        void OnDPadLeft(InputAction.CallbackContext context);
+        void OnDPadRight(InputAction.CallbackContext context);
+        void OnLSUp(InputAction.CallbackContext context);
+        void OnLSDown(InputAction.CallbackContext context);
+        void OnLSLeft(InputAction.CallbackContext context);
+        void OnLSRight(InputAction.CallbackContext context);
+        void OnRSUp(InputAction.CallbackContext context);
+        void OnRSDown(InputAction.CallbackContext context);
+        void OnRSLeft(InputAction.CallbackContext context);
+        void OnRSRight(InputAction.CallbackContext context);
+        void OnRB(InputAction.CallbackContext context);
+        void OnLB(InputAction.CallbackContext context);
+        void OnRT(InputAction.CallbackContext context);
+        void OnLT(InputAction.CallbackContext context);
     }
 }
