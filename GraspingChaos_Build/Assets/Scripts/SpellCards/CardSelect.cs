@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -15,27 +16,30 @@ using UnityEngine;
 /// </summary>
 public class CardSelect : MonoBehaviour
 {
-    private CardHandSlot cardHandSlot;
-
+    [Tooltip("Child object of the Card prefab.")]
     [SerializeField] private MeshRenderer cardGlowRender;
+    private MeshRenderer cardGlowRenderDefault;
 
+    [Header("Card Adjustments")]
     [Tooltip("How high the card will travel once selected.")]
     [SerializeField] private float verticalAdjustAmount = 2f;
-
     [Tooltip("Scale size of the card once it is selected.")]
     [SerializeField, Range(1, 2)] private float scaleAmount = 1.2f;
 
-    private float adjustTime = 0.2f;
+    private readonly float adjustTime = 0.2f;
 
     private Vector3 startPosition;
     private Vector3 startScale;
 
-    private bool isCardSelected = false;
+    [Header("States of the cards")]
+    public bool isHovered = false;
+    public bool isSelected = false;
 
     void Start()
     {
-        cardHandSlot = gameObject.GetComponentInParent<CardHandSlot>();
         cardGlowRender.enabled = false;
+        cardGlowRenderDefault = cardGlowRender.GetComponent<MeshRenderer>();
+        cardGlowRenderDefault.material.color = cardGlowRenderDefault.material.GetColor("_GlowColour");
         startPosition = transform.position;
         startScale = transform.localScale;
     }
@@ -75,20 +79,38 @@ public class CardSelect : MonoBehaviour
             yield return null;
         }
     }
+    public void OnHoverCard()
+    {
+        // card is hovered
+        isHovered = true;
+        StartCoroutine(AdjustCard(isHovered));
+        CardGlow(isHovered);
+    }
+
+    public void OffHoverCard()
+    {
+        // card is no longer hovered
+        isHovered = false;
+        StartCoroutine(AdjustCard(isHovered));
+        CardGlow(isHovered);
+    }
+
     public void SelectCard()
     {
-        // card will need to be selected
-        isCardSelected = true;
-        StartCoroutine(AdjustCard(isCardSelected));
-        CardGlow(isCardSelected);
+        isHovered = false;
+        isSelected = true;
+        cardGlowRender.material.SetColor("_GlowColour", Color.white);
+        StartCoroutine(AdjustCard(isSelected));
+        CardGlow(isSelected);
     }
 
     public void DeselectCard()
     {
-        // card will need to be deselected
-        isCardSelected = false;
-        StartCoroutine(AdjustCard(isCardSelected));
-        CardGlow(isCardSelected);
+        isHovered = true;
+        isSelected = false;
+        cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
+        StartCoroutine(AdjustCard(isSelected));
+        CardGlow(isSelected);
     }
 
     public void CardGlow(bool glow)
