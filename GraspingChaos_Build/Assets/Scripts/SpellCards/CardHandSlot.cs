@@ -17,20 +17,20 @@ public class CardHandSlot : MonoBehaviour
     private PlayerManager player;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
-    public GameObject[] cards;                                          // array for the cards to keep track of what is being hovered and selected.
+    public List<CardSelect> cards;                                          // array for the cards to keep track of what is being hovered and selected.
 
-    private List<CardSelect> selectedCards = new List<CardSelect>();    // for the cards that are selected.
+    public List<CardSelect> selectedCards = new List<CardSelect>();    // for the cards that are selected.
     public CardSelect LastHoveredCard { get; set; }
     public int LastHoveredCardIndex { get; set; }
 
-    private int maxSelectedCards = 3;                                   // can select up to three cards.
+    private readonly int maxSelectedCards = 3;                                          // can select up to three cards.
 
     // Start is called before the first frame update
     void Start()
     {
         player = gameObject.GetComponentInParent<PlayerManager>();
 
-        if (cards.Length > 0)
+        if (cards.Count > 0)
         {
             SetHoveredCard(0);
         }
@@ -72,7 +72,7 @@ public class CardHandSlot : MonoBehaviour
 
         // update index to the new card that is hovered
         LastHoveredCardIndex = cardIndex;
-        LastHoveredCard = cards[cardIndex].GetComponentInChildren<CardSelect>();
+        LastHoveredCard = cards[cardIndex];
 
         // use hover effect if the card is not selected
         if (!selectedCards.Contains(LastHoveredCard))
@@ -88,7 +88,7 @@ public class CardHandSlot : MonoBehaviour
     /// <param name="selectDirection">Direction to move through the hand of cards (-1 for left, 1 for right).</param>
     public void MoveSelection(int selectDirection)
     {
-        int newCardIndex = Mathf.Clamp(LastHoveredCardIndex + selectDirection, 0, cards.Length - 1);
+        int newCardIndex = Mathf.Clamp(LastHoveredCardIndex + selectDirection, 0, cards.Count - 1);
 
         if (newCardIndex != LastHoveredCardIndex)
         {

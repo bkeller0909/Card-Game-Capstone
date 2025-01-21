@@ -152,6 +152,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayCards"",
+                    ""type"": ""Button"",
+                    ""id"": ""d641cd7f-3913-4e2e-8355-b78b750ebfc5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -261,6 +270,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92d95cfd-2143-4be8-ac4f-15282a4bb032"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -449,6 +469,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""NavigateFingerRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fdb1ea9-04b3-4dad-ab21-bba2dc15c2a2"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PlayCards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1243,6 +1274,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Deselect = m_Player.FindAction("Deselect", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_SwapPlayerHands = m_Player.FindAction("Swap Player Hands", throwIfNotFound: true);
+        m_Player_PlayCards = m_Player.FindAction("PlayCards", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UI_Move = m_UI.FindAction("UI_Move", throwIfNotFound: true);
@@ -1344,6 +1376,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Deselect;
     private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_SwapPlayerHands;
+    private readonly InputAction m_Player_PlayCards;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1362,6 +1395,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Deselect => m_Wrapper.m_Player_Deselect;
         public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @SwapPlayerHands => m_Wrapper.m_Player_SwapPlayerHands;
+        public InputAction @PlayCards => m_Wrapper.m_Player_PlayCards;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1413,6 +1447,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwapPlayerHands.started += instance.OnSwapPlayerHands;
             @SwapPlayerHands.performed += instance.OnSwapPlayerHands;
             @SwapPlayerHands.canceled += instance.OnSwapPlayerHands;
+            @PlayCards.started += instance.OnPlayCards;
+            @PlayCards.performed += instance.OnPlayCards;
+            @PlayCards.canceled += instance.OnPlayCards;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1459,6 +1496,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwapPlayerHands.started -= instance.OnSwapPlayerHands;
             @SwapPlayerHands.performed -= instance.OnSwapPlayerHands;
             @SwapPlayerHands.canceled -= instance.OnSwapPlayerHands;
+            @PlayCards.started -= instance.OnPlayCards;
+            @PlayCards.performed -= instance.OnPlayCards;
+            @PlayCards.canceled -= instance.OnPlayCards;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1789,6 +1829,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDeselect(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnSwapPlayerHands(InputAction.CallbackContext context);
+        void OnPlayCards(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
