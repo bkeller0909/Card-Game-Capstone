@@ -79,8 +79,8 @@ public class SpellCard : MonoBehaviour
 
     IEnumerator testing()
     {
-        yield return new WaitForSeconds(2);
-        QTEManager.Instance.Create(qteAmount);
+        yield return new WaitForSeconds(0);
+        QTEManager.Instance.Create(qteAmount, GameManager.Instance.currentCaster);
     }
 
 }

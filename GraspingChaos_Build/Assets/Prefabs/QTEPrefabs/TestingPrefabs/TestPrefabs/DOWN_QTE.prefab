@@ -98,12 +98,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69292dcee01547d4c8b2bd987d3de32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerQTE: {fileID: 0}
+  inputActionAsset: {fileID: -944628639613478452, guid: df910091f53b92b4db3a4d7fdb4f39d8,
+    type: 3}
   dir: 1
-  correctTest: 0
   correct: {r: 0, g: 1, b: 0, a: 1}
   incorrect: {r: 1, g: 0, b: 0, a: 1}
   pressed: 0
   AssignedBTN: 274
+  CurrentBTN:
+    m_Name: Current BTN
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fe934cbb-62cc-4976-9936-efe6e444d52f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8a0aacef-1b05-4f8c-b80a-280211208451
+      m_Path: <Gamepad>/dpad/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Current BTN
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &4354812932963033497
 GameObject:
   m_ObjectHideFlags: 0

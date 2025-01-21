@@ -24,18 +24,34 @@ public class QTEManager : MonoBehaviour
         }
     }
 
+    public PlayerManager player;
+    public PlayerManager p1, p2; //temp
     public List<GameObject> Buttons = new List<GameObject>();
     public List<GameObject> CreatedButtons = new List<GameObject>();
     public GameObject firstPosition;
     private Vector3 space = new Vector3(2f, 0f, 0f);
     public float remainingTime;
     public bool startTimer;
+    public bool checkSituation = false;
 
     private void Start()
     {
         startTimer = false;
+        player = GetComponent<PlayerManager>();
         remainingTime = GameManager.Instance.timerQTE;
     }
+
+    //private void OnEnable()
+    //{
+    //    player.playerInput.actions["SwapModes"].performed += SwitchActionMap;
+    //}
+
+    //private void SwitchActionMap(InputAction.CallbackContext context)
+    //{
+    //    player.playerInput.actions.FindAction("Player").Disable();
+    //    player.playerInput.actions.FindAction("QTE").Enable();
+    //    checkSituation = true;
+    //}
 
 
     // Update is called once per frame
@@ -54,6 +70,11 @@ public class QTEManager : MonoBehaviour
             }
             CheckAvailability();
         }
+
+        if (checkSituation)
+        {
+            DestroyQTEBTN();
+        }
     }
 
     private GameObject RandomizeBTN()
@@ -62,24 +83,47 @@ public class QTEManager : MonoBehaviour
         return Buttons[button];
     }
 
-    public void Create(int qteAmount)
+    public void Create(int qteAmount, PlayerManager caster)
     {
         //remainingTime = GameManager.Instance.timerQTE;
+        caster.playerInput.SwitchCurrentActionMap("QTE");
+        // caster.playerInput.SwitchCurrentControlScheme("Gamepad");
         GameObject hold = new GameObject();
         firstPosition.transform.position = new Vector3(-5.21f, -1.19f, 0);
         for (int i = 0; i < qteAmount; i++)
         {
             hold = RandomizeBTN();
             GameObject actualObject = Instantiate(hold, firstPosition.transform.position, Quaternion.identity);
+            actualObject.GetComponent<QTEButton>().playerQTE = caster;
+            //actualObject.GetComponent<testingQTEBTN>().player = caster;  //testing
+            if (caster == p1)
+            {
+                actualObject.layer = LayerMask.NameToLayer("The Skull");
+                actualObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                if (actualObject.GetComponent<QTEButton>().dir)
+                {
+                    actualObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                }
+            }
+            else if (caster == p2)
+            {
+                actualObject.layer = LayerMask.NameToLayer("The Stag");
+                actualObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                if (actualObject.GetComponent<QTEButton>().dir)
+                {
+                    actualObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                }
+            }
             CreatedButtons.Add(actualObject);
-            hold.GetComponent<QTEButton>().enabled = false;
+            actualObject.GetComponent<QTEButton>().enabled = false;
             firstPosition.transform.position += space;
         }
         CreatedButtons[0].GetComponent<QTEButton>().enabled = true;
         startTimer = true;
-        DestroyQTEBTN();
+        //DestroyQTEBTN();
     }
 
+    //CHANGE FROM FOR LOOP TO SIMPLE IF CHECKS TO ENSURE THERE ARE NO ERRORS IN CHECKUP
     public void CheckAvailability()
     {
         if (startTimer)

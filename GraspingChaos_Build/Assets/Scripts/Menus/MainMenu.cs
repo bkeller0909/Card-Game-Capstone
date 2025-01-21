@@ -30,17 +30,9 @@ public class MainMenu : MonoBehaviour
         InputManager.Instance.FindPlayers();
     }
 
-    public void Questions()
+    public void QTECase()
     {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].gameObject.SetActive(false);
-        }
-
-        for (int i = 0; i < questionText.Length; i++)
-        {
-            questionText[i].SetActive(true);
-        }
-
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoQTECase);
+        InputManager.Instance.FindPlayers();
     }
 }

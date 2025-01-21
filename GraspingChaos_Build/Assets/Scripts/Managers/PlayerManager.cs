@@ -47,6 +47,10 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if (playerNum == PlayerType.PLAYER2)
+        //{
+        //    GameManager.Instance.currentCaster = this;
+        //}
         playerInput = GetComponent<PlayerInput>();
 
         entireHP = 28;
@@ -68,6 +72,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthValue.text = entireHP.ToString();
+        //healthValue.text = entireHP.ToString();
     }
 }

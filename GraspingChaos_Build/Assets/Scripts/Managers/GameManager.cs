@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("This needs to be the name of the prototype Particle Showcase")]
     public string ln_ProtoParticleShowCase;
+
+    [Tooltip("This needs to be the name of the prototype Particle Showcase")]
+    public string ln_ProtoQTECase;
     #endregion
 
     [Tooltip("This is the base mana value each")]
@@ -86,6 +89,9 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("This is which player is currently casting a spell")]
     public int timerQTE = 5;
+
+
+    public bool testingCurrentP1 = true;
 
     private void Awake()
     {
@@ -113,7 +119,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (testingCurrentP1)
+        {
+            currentCaster = player1;
+        }
+        else
+        {
+            currentCaster = player2;
+        }
     }
 
     public void StartLoadingLevel(string levelName)

@@ -267,8 +267,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69292dcee01547d4c8b2bd987d3de32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerQTE: {fileID: 0}
+  inputActionAsset: {fileID: -944628639613478452, guid: df910091f53b92b4db3a4d7fdb4f39d8,
+    type: 3}
   dir: 1
   correct: {r: 0, g: 1, b: 0, a: 1}
   incorrect: {r: 1, g: 0, b: 0, a: 1}
   pressed: 0
   AssignedBTN: 276
+  CurrentBTN:
+    m_Name: Current BTN
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 09a6c2f6-e88f-4e26-93e3-315fb9cf6285
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 76f7585b-4b53-40e0-a566-8711748999fe
+      m_Path: <Gamepad>/dpad/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Current BTN
+      m_Flags: 0
+    m_Flags: 0
