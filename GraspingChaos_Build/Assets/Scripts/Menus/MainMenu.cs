@@ -35,4 +35,10 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoQTECase);
         InputManager.Instance.FindPlayers();
     }
+
+    public void FSMTesting()
+    {
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_StateTesting);
+        InputManager.Instance.FindPlayers();
+    }
 }

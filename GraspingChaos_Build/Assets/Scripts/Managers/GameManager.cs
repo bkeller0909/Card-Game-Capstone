@@ -70,7 +70,13 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("This needs to be the name of the prototype Particle Showcase")]
     public string ln_ProtoQTECase;
+
+    [Tooltip("This is the testing scene for the FSM")]
+    public string ln_StateTesting;
     #endregion
+
+    [Tooltip("This is whether the actual duel has started")]
+    public bool hasDuelStarted;
 
     [Tooltip("This is the base mana value each")]
     public int startingMana;
@@ -99,6 +105,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        hasDuelStarted = false;
     }
 
 
@@ -166,6 +173,11 @@ public class GameManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(levelName));
 
         cameraAssigner = FindAnyObjectByType<CameraAssigner>();
+
+        if (levelName == ln_Duelscene)
+        {
+            hasDuelStarted = true;
+        }
 
         cameraAssigner.playerOneCamera.targetDisplay = 0;
         cameraAssigner.playerTwoCamera.targetDisplay = 1;

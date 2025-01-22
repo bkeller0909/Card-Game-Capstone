@@ -166,11 +166,13 @@ public class PlayerState : AdvancedFSM
 
         CurrentState.Reason(player, enemy);
         CurrentState.Act(player, enemy);
+
+        player.healthValue.text = "State: " + GetStateString();
     }
 
     private void ConstructFSM()
     {
-        DefualtState defualt = new DefualtState();
+        DefualtState defualt = new DefualtState(this);
         defualt.AddTransition(Transition.Start, FSMStateID.DealStats);
 
         DealStatsState dealStats = new DealStatsState(this);
