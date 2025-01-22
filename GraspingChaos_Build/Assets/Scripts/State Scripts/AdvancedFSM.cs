@@ -21,13 +21,100 @@ using UnityEngine;
 public enum Transition
 {
     None = 0,
+    Start,
+    StatsGained,
+    NeedDecision,
+    FasterSpell,
+    SlowerSpell,
+    Challenge,
+    EndOfRound,
+    died,
+
+    #region The Casting Spell States
+    ///////////////////////////////
+    // C A S T I N G   TRANSITIONS
+    //////////////////////////////
+    //Attack Spells
+    TA_FireBolt,
+    TA_RockThrow,
+    TA_RighteousEnvy,
+    TA_LefteousEnvy,
+    TA_Icicles,
+    TA_CollectorsCurse,
+    TA_StaticBlast,
+    TA_RightningBolt,
+    TA_LeftningBolt,
+    TA_TidalWave,
+    TA_PointerOfDeath,
+    ////////////////////////////
+    //Restoration Spells
+    TRe_ForTheCause,
+    TRe_QuickHeal,
+    TRe_ThumbsUp,
+    TRe_LifeDrain,
+    TRe_CursedConversion,
+    TRe_GreenThumb,
+    TRe_Materialise,
+    TRe_EchoingMana,
+    ////////////////////////////
+    //Ring Spells
+    TRi_ThornsOfAgony,
+    TRi_GuardiansTouch,
+    TRi_SpectralChain,
+    TRi_ManaMerchant,
+    TRi_VengefulMirror,
+    TRi_VampiricSurge,
+    TRi_VeilOfFortitude,
+    #endregion
 
 }
 
 public enum FSMStateID
 {
     None = 0,
+    Defualt,
+    DealStats,
+    ChoosingSpells,
+    Deciding,
+    QTE,
+    Dead,
 
+    #region The Casting Spell States
+    ///////////////////////////////
+    // C A S T I N G   S T A T E S
+    //////////////////////////////
+    //Attack Spells
+    A_FireBolt,
+    A_RockThrow,
+    A_RighteousEnvy,
+    A_LefteousEnvy,
+    A_Icicles,
+    A_CollectorsCurse,
+    A_StaticBlast,
+    A_RightningBolt,
+    A_LeftningBolt,
+    A_TidalWave,
+    A_PointerOfDeath,
+    ////////////////////////////
+    //Restoration Spells
+    Re_ForTheCause,
+    Re_QuickHeal,
+    Re_ThumbsUp,
+    Re_LifeDrain,
+    Re_CursedConversion,
+    Re_GreenThumb,
+    Re_Materialise,
+    Re_EchoingMana,
+    ////////////////////////////
+    //Ring Spells
+    Ri_ThornsOfAgony,
+    Ri_GuardiansTouch,
+    Ri_SpectralChain,
+    Ri_ManaMerchant,
+    Ri_VengefulMirror,
+    Ri_VampiricSurge,
+    Ri_VeilOfFortitude,
+    #endregion
 }
 
 public class AdvancedFSM : FSM
