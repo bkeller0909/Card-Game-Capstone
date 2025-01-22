@@ -40,3 +40,15 @@ public enum PlayerType
     PLAYER1 = 0,
     PLAYER2 = 1,
 }
+
+public enum QTEButtonType
+{
+    Y = 0,
+    X = 1,
+    B = 2,
+    A = 3,
+    UP = 4,
+    LEFT = 5,
+    RIGHT = 6,
+    DOWN = 7
+}

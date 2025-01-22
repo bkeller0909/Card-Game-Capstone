@@ -45,6 +45,11 @@ public class QTEButton : MonoBehaviour
             || playerQTE.playerInput.actions["DPad Down"].triggered || playerQTE.playerInput.actions["DPad Up"].triggered
             || playerQTE.playerInput.actions["DPad Left"].triggered || playerQTE.playerInput.actions["DPad Right"].triggered)*/
 
+        //if (pressed)
+        //{
+        //    gameObject.GetComponent<QTEButton>().enabled = false;
+        //}
+
         if (IsActionPressed())
         {
             if (testCheck() == playerQTE.playerInput.actions["South"] && AssignedBTN == KeyCode.A)
