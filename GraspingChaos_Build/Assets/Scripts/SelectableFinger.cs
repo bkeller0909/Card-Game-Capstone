@@ -46,13 +46,13 @@ public class SelectableFinger : MonoBehaviour
 
     void Update()
     {
-        if (player.playerInput.actions["Pause"].WasPressedThisFrame())
+        if (player.playerInput.actions["Pause"].triggered)
         {
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
 
         //set up for testing, change it to controller input, this swaps the select of each players hands
-        if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == false)
+        if (player.playerInput.actions["Swap Player Hands"].triggered && playerOneHands == false)
         {
             if (GameManager.Instance.currentCaster == GameManager.Instance.player2)
             {
@@ -62,7 +62,7 @@ public class SelectableFinger : MonoBehaviour
             playerOneHands = true;
         }
 
-        else if (player.playerInput.actions["Swap Player Hands"].WasPressedThisFrame() && playerOneHands == true)
+        else if (player.playerInput.actions["Swap Player Hands"].triggered && playerOneHands == true)
         {
             if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
             {
@@ -76,7 +76,7 @@ public class SelectableFinger : MonoBehaviour
         //damage and heal for both players with the above check, also swap fro controller support
         if (playerOneHands)
         {
-            if (player.playerInput.actions["Select"].WasPressedThisFrame())
+            if (player.playerInput.actions["Select"].triggered)
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
@@ -86,7 +86,7 @@ public class SelectableFinger : MonoBehaviour
                 }
                 RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
             }
-            else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
+            else if (player.playerInput.actions["Deselect"].triggered)
             {
                 GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
                 if (GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.RH_Thumb || GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.LH_Thumb)
@@ -110,7 +110,7 @@ public class SelectableFinger : MonoBehaviour
         }
         else
         {
-            if (player.playerInput.actions["Select"].WasPressedThisFrame())
+            if (player.playerInput.actions["Select"].triggered)
             {
                 //fingersP2[currentFingerIndexP2].remove = true;
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].remove = true;
@@ -120,7 +120,7 @@ public class SelectableFinger : MonoBehaviour
                 }
                 RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
             }
-            else if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
+            else if (player.playerInput.actions["Deselect"].triggered)
             {
                 GameManager.Instance.player2.fingers[currentFingerIndexP2].add = true;
                 if (GameManager.Instance.player2.fingers[currentFingerIndexP2].finger == PlayerFingers.RH_Thumb || GameManager.Instance.player2.fingers[currentFingerIndexP2].finger == PlayerFingers.LH_Thumb)
@@ -145,22 +145,22 @@ public class SelectableFinger : MonoBehaviour
         // we only want to select full fingers individually left and right on our hand
         if (playerOneHands)
         {
-            if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
+            if (player.playerInput.actions["NavigateFingerLeft"].triggered)
             {
                 MoveSelection(-1, 0, -1, 0); // move left
             }
-            else if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
+            else if (player.playerInput.actions["NavigateFingerRight"].triggered)
             {
                 MoveSelection(1, 0, 1, 0); // move right
             }
         }
         else if (!playerOneHands)
         {
-            if (player.playerInput.actions["NavigateFingerLeft"].WasPressedThisFrame())
+            if (player.playerInput.actions["NavigateFingerLeft"].triggered)
             {
                 MoveSelection(1, 0, 1, 0); // move left
             }
-            else if (player.playerInput.actions["NavigateFingerRight"].WasPressedThisFrame())
+            else if (player.playerInput.actions["NavigateFingerRight"].triggered)
             {
                 MoveSelection(-1, 0, -1, 0); // move right
             }
@@ -169,11 +169,11 @@ public class SelectableFinger : MonoBehaviour
         // once we select a finger only move up and down the finger for each joint
         else
         {
-            if (player.playerInput.actions["Navigate Finger Up"].WasPressedThisFrame())
+            if (player.playerInput.actions["Navigate Finger Up"].triggered)
             {
                 MoveSelection(0, -1, 0, -1); // move up
             }
-            else if (player.playerInput.actions["Navigate Finger Down"].WasPressedThisFrame())
+            else if (player.playerInput.actions["Navigate Finger Down"].triggered)
             {
                 MoveSelection(0, 1, 0, 1); // move down
             }

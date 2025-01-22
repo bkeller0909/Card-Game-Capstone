@@ -52,7 +52,7 @@ public class Fingers : MonoBehaviour
         {
             GameObject added = (GameObject)fingerSegmentsRemoved.Pop();
             fingerSegments.Push(added);
-            added.GetComponent<MeshRenderer>().enabled = true;
+            added.GetComponent<SkinnedMeshRenderer>().enabled = true;
             fingerHP += 1;
         }
 
@@ -72,7 +72,7 @@ public class Fingers : MonoBehaviour
 
             //removed.SetActive(false);
             fingerSegmentsRemoved.Push(removed);
-            removed.GetComponent<MeshRenderer>().enabled = false;
+            removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
             fingerHP -= 1;
         }
     }

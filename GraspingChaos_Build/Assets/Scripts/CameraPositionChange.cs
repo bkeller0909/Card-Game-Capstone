@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,40 +17,36 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraPositionChange : MonoBehaviour
 {
+    PlayerManager player;
+
     //Private Variables
     [Tooltip("List of transforms that the camera can change to")]
     [SerializeField] private List<Transform> CamPos;
     [SerializeField] private float lerpTime;
 
-    private int testIndex = 0;
+    private int cameraIndex = 0;
     private float elapsedTime;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GetComponentInParent<PlayerManager>();
+        cameraIndex = Mathf.Clamp(cameraIndex, 0, CamPos.Count);
     }
 
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (player.playerInput.actions["NavDown"].triggered)
         {
-            testIndex--;
-            elapsedTime = 0;
+            cameraIndex--;
+            StartCoroutine(MoveCameratoNewPosition(cameraIndex));
         }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (player.playerInput.actions["NavUp"].triggered)
         {
-            testIndex++;
-            elapsedTime = 0;
+            cameraIndex++;
+            StartCoroutine(MoveCameratoNewPosition(cameraIndex));
         }
-
-        testIndex = Mathf.Clamp(testIndex, 0, 3);
-
-        MoveCameratoNewPosition(testIndex);
     }
 
     /// <summary>
@@ -60,17 +57,24 @@ public class CameraPositionChange : MonoBehaviour
     /// 4 - Opponent Hand View
     /// </summary>
     /// <param name="positionIndex">The index within the list of camera positions</param>
-    public void MoveCameratoNewPosition(int positionIndex)
+    public IEnumerator MoveCameratoNewPosition(int positionIndex)
     {
+        elapsedTime = 0.0f;
+        while(elapsedTime < lerpTime)
+        {
+            elapsedTime += Time.deltaTime;
 
-        float percentCompleteForPosition = elapsedTime / lerpTime;
-        float percentCompleteForRotation = (elapsedTime * 0.5f) / lerpTime;
+            float percentCompleteForPosition = elapsedTime / lerpTime;
+            float percentCompleteForRotation = (elapsedTime * 0.5f) / lerpTime;
 
-        //Rotate and Move the camera to the desired location
-        transform.position = Vector3.Lerp(transform.position, CamPos[positionIndex].position, percentCompleteForPosition);
-        transform.rotation = Quaternion.Lerp(transform.rotation, CamPos[positionIndex].rotation, percentCompleteForRotation);
+            //Rotate and Move the camera to the desired location
+            transform.position = Vector3.Lerp(transform.position, CamPos[positionIndex].position, percentCompleteForPosition);
+            transform.rotation = Quaternion.Lerp(transform.rotation, CamPos[positionIndex].rotation, percentCompleteForRotation);
 
-        percentCompleteForPosition = 0;
-        percentCompleteForRotation = 0;
+            percentCompleteForPosition = 0;
+            percentCompleteForRotation = 0;
+
+            yield return null;
+        }
     }
 }

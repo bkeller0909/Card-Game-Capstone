@@ -46,7 +46,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Navigate Finger Up"",
+                    ""name"": ""NavUp"",
                     ""type"": ""Button"",
                     ""id"": ""6f7d127b-4cc3-4874-8694-f43676a77080"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +55,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Navigate Finger Down"",
+                    ""name"": ""NavDown"",
                     ""type"": ""Button"",
                     ""id"": ""d51820a4-bcf2-4aa8-aeb2-6c4b2e770ae2"",
                     ""expectedControlType"": ""Button"",
@@ -292,7 +292,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Navigate Finger Up"",
+                    ""action"": ""NavUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -303,7 +303,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate Finger Up"",
+                    ""action"": ""NavUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27a4859d-3614-45b4-9b2b-003cb026de34"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NavUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -314,7 +325,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Navigate Finger Down"",
+                    ""action"": ""NavDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -325,7 +336,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate Finger Down"",
+                    ""action"": ""NavDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f34560b-b0a3-42d4-86d9-4b255ea3cb0f"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NavDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1262,8 +1284,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_NavCardLeft = m_Player.FindAction("NavCardLeft", throwIfNotFound: true);
         m_Player_NavCardRight = m_Player.FindAction("NavCardRight", throwIfNotFound: true);
-        m_Player_NavigateFingerUp = m_Player.FindAction("Navigate Finger Up", throwIfNotFound: true);
-        m_Player_NavigateFingerDown = m_Player.FindAction("Navigate Finger Down", throwIfNotFound: true);
+        m_Player_NavUp = m_Player.FindAction("NavUp", throwIfNotFound: true);
+        m_Player_NavDown = m_Player.FindAction("NavDown", throwIfNotFound: true);
         m_Player_NavigateFingerLeft = m_Player.FindAction("NavigateFingerLeft", throwIfNotFound: true);
         m_Player_NavigateFingerRight = m_Player.FindAction("NavigateFingerRight", throwIfNotFound: true);
         m_Player_SeePlayerHealth = m_Player.FindAction("See Player Health", throwIfNotFound: true);
@@ -1364,8 +1386,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_NavCardLeft;
     private readonly InputAction m_Player_NavCardRight;
-    private readonly InputAction m_Player_NavigateFingerUp;
-    private readonly InputAction m_Player_NavigateFingerDown;
+    private readonly InputAction m_Player_NavUp;
+    private readonly InputAction m_Player_NavDown;
     private readonly InputAction m_Player_NavigateFingerLeft;
     private readonly InputAction m_Player_NavigateFingerRight;
     private readonly InputAction m_Player_SeePlayerHealth;
@@ -1383,8 +1405,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @NavCardLeft => m_Wrapper.m_Player_NavCardLeft;
         public InputAction @NavCardRight => m_Wrapper.m_Player_NavCardRight;
-        public InputAction @NavigateFingerUp => m_Wrapper.m_Player_NavigateFingerUp;
-        public InputAction @NavigateFingerDown => m_Wrapper.m_Player_NavigateFingerDown;
+        public InputAction @NavUp => m_Wrapper.m_Player_NavUp;
+        public InputAction @NavDown => m_Wrapper.m_Player_NavDown;
         public InputAction @NavigateFingerLeft => m_Wrapper.m_Player_NavigateFingerLeft;
         public InputAction @NavigateFingerRight => m_Wrapper.m_Player_NavigateFingerRight;
         public InputAction @SeePlayerHealth => m_Wrapper.m_Player_SeePlayerHealth;
@@ -1411,12 +1433,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @NavCardRight.started += instance.OnNavCardRight;
             @NavCardRight.performed += instance.OnNavCardRight;
             @NavCardRight.canceled += instance.OnNavCardRight;
-            @NavigateFingerUp.started += instance.OnNavigateFingerUp;
-            @NavigateFingerUp.performed += instance.OnNavigateFingerUp;
-            @NavigateFingerUp.canceled += instance.OnNavigateFingerUp;
-            @NavigateFingerDown.started += instance.OnNavigateFingerDown;
-            @NavigateFingerDown.performed += instance.OnNavigateFingerDown;
-            @NavigateFingerDown.canceled += instance.OnNavigateFingerDown;
+            @NavUp.started += instance.OnNavUp;
+            @NavUp.performed += instance.OnNavUp;
+            @NavUp.canceled += instance.OnNavUp;
+            @NavDown.started += instance.OnNavDown;
+            @NavDown.performed += instance.OnNavDown;
+            @NavDown.canceled += instance.OnNavDown;
             @NavigateFingerLeft.started += instance.OnNavigateFingerLeft;
             @NavigateFingerLeft.performed += instance.OnNavigateFingerLeft;
             @NavigateFingerLeft.canceled += instance.OnNavigateFingerLeft;
@@ -1460,12 +1482,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @NavCardRight.started -= instance.OnNavCardRight;
             @NavCardRight.performed -= instance.OnNavCardRight;
             @NavCardRight.canceled -= instance.OnNavCardRight;
-            @NavigateFingerUp.started -= instance.OnNavigateFingerUp;
-            @NavigateFingerUp.performed -= instance.OnNavigateFingerUp;
-            @NavigateFingerUp.canceled -= instance.OnNavigateFingerUp;
-            @NavigateFingerDown.started -= instance.OnNavigateFingerDown;
-            @NavigateFingerDown.performed -= instance.OnNavigateFingerDown;
-            @NavigateFingerDown.canceled -= instance.OnNavigateFingerDown;
+            @NavUp.started -= instance.OnNavUp;
+            @NavUp.performed -= instance.OnNavUp;
+            @NavUp.canceled -= instance.OnNavUp;
+            @NavDown.started -= instance.OnNavDown;
+            @NavDown.performed -= instance.OnNavDown;
+            @NavDown.canceled -= instance.OnNavDown;
             @NavigateFingerLeft.started -= instance.OnNavigateFingerLeft;
             @NavigateFingerLeft.performed -= instance.OnNavigateFingerLeft;
             @NavigateFingerLeft.canceled -= instance.OnNavigateFingerLeft;
@@ -1817,8 +1839,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnNavCardLeft(InputAction.CallbackContext context);
         void OnNavCardRight(InputAction.CallbackContext context);
-        void OnNavigateFingerUp(InputAction.CallbackContext context);
-        void OnNavigateFingerDown(InputAction.CallbackContext context);
+        void OnNavUp(InputAction.CallbackContext context);
+        void OnNavDown(InputAction.CallbackContext context);
         void OnNavigateFingerLeft(InputAction.CallbackContext context);
         void OnNavigateFingerRight(InputAction.CallbackContext context);
         void OnSeePlayerHealth(InputAction.CallbackContext context);

@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Navigate Finger Up",
+                    "name": "NavUp",
                     "type": "Button",
                     "id": "6f7d127b-4cc3-4874-8694-f43676a77080",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Navigate Finger Down",
+                    "name": "NavDown",
                     "type": "Button",
                     "id": "d51820a4-bcf2-4aa8-aeb2-6c4b2e770ae2",
                     "expectedControlType": "Button",
@@ -270,7 +270,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Navigate Finger Up",
+                    "action": "NavUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -281,7 +281,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate Finger Up",
+                    "action": "NavUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27a4859d-3614-45b4-9b2b-003cb026de34",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NavUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -292,7 +303,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Navigate Finger Down",
+                    "action": "NavDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -303,7 +314,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate Finger Down",
+                    "action": "NavDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f34560b-b0a3-42d4-86d9-4b255ea3cb0f",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NavDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
