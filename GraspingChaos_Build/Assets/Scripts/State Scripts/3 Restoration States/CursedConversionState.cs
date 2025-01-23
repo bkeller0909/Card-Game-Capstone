@@ -5,6 +5,7 @@ public class CursedConversionState : FSMState
     public CursedConversionState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_CursedConversion;
     }
 
     //Reason

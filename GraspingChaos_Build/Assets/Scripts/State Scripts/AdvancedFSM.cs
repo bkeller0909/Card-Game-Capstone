@@ -72,12 +72,12 @@ public enum Transition
 public enum FSMStateID
 {
     None = 0,
-    Defualt,
-    DealStats,
-    ChoosingSpells,
-    Deciding,
-    QTE,
-    Dead,
+    Defualt = 1,
+    DealStats = 2,
+    ChoosingSpells = 3,
+    Deciding = 4,
+    QTE = 5,
+    Dead = 6,
 
     #region The Casting Spell States
     ///////////////////////////////

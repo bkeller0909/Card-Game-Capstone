@@ -6,6 +6,7 @@ public class QTEState : FSMState
     public QTEState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.QTE;
     }
 
     //Reason

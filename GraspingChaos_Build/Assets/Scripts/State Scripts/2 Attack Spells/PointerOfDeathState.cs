@@ -5,6 +5,7 @@ public class PointerOfDeathState : FSMState
     public PointerOfDeathState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_PointerOfDeath;
     }
 
     //Reason

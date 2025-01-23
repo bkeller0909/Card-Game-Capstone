@@ -5,6 +5,7 @@ public class StaticBlastState : FSMState
     public StaticBlastState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_StaticBlast;
     }
 
     //Reason

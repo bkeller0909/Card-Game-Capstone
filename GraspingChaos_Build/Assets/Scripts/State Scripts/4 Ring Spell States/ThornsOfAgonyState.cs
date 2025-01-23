@@ -5,6 +5,7 @@ public class ThornsOfAgonyState : FSMState
     public ThornsOfAgonyState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_ThornsOfAgony;
     }
 
     //Reason

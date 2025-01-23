@@ -5,6 +5,7 @@ public class CollectorsCurseState : FSMState
     public CollectorsCurseState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_CollectorsCurse;
     }
 
     //Reason

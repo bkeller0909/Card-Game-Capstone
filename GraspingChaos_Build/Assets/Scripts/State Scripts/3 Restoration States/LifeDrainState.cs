@@ -5,6 +5,7 @@ public class LifeDrainState : FSMState
     public LifeDrainState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_LifeDrain;
     }
 
     //Reason

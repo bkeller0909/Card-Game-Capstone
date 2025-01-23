@@ -5,6 +5,7 @@ public class SpectralChainState : FSMState
     public SpectralChainState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_SpectralChain;
     }
 
     //Reason

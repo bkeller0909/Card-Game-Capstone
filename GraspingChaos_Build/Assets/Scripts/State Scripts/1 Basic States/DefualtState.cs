@@ -6,7 +6,7 @@ public class DefualtState : FSMState
     public DefualtState(PlayerState ps)
     {
         playerState = ps;
-
+        stateID = FSMStateID.Defualt;
     }
 
     //Reason

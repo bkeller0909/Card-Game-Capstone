@@ -5,6 +5,7 @@ public class DecidingState : FSMState
     public DecidingState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Deciding;
     }
 
     //Reason

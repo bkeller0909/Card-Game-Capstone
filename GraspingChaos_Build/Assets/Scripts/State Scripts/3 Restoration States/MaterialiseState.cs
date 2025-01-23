@@ -5,6 +5,7 @@ public class MaterialiseState : FSMState
     public MaterialiseState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_Materialise;
     }
 
     //Reason

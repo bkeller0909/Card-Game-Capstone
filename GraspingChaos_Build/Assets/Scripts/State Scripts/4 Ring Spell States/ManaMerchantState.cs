@@ -5,6 +5,7 @@ public class ManaMerchantState : FSMState
     public ManaMerchantState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_ManaMerchant;
     }
 
     //Reason

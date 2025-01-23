@@ -5,6 +5,7 @@ public class EchoingManaState : FSMState
     public EchoingManaState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_EchoingMana;
     }
 
     //Reason

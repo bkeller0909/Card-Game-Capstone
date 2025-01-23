@@ -5,6 +5,7 @@ public class FireBoltState : FSMState
     public FireBoltState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_FireBolt;
     }
 
     //Reason

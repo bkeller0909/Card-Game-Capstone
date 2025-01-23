@@ -5,6 +5,7 @@ public class TidalWaveState : FSMState
     public TidalWaveState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_TidalWave;
     }
 
     //Reason
