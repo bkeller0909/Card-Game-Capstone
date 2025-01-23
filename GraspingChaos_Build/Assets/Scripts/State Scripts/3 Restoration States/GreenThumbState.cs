@@ -5,6 +5,7 @@ public class GreenThumbState : FSMState
     public GreenThumbState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_GreenThumb;
     }
 
     //Reason

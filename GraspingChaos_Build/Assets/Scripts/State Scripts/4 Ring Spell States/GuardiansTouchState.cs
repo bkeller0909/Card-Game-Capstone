@@ -5,6 +5,7 @@ public class GuardiansTouchState : FSMState
     public GuardiansTouchState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_GuardiansTouch;
     }
 
     //Reason

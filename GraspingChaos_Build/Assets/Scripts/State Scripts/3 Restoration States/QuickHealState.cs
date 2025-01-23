@@ -5,6 +5,7 @@ public class QuickHealState : FSMState
     public QuickHealState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_QuickHeal;
     }
 
     //Reason

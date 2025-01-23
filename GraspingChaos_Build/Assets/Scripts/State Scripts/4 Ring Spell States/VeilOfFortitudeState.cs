@@ -5,6 +5,7 @@ public class VeilOfFortitudeState : FSMState
     public VeilOfFortitudeState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_VeilOfFortitude;
     }
 
     //Reason

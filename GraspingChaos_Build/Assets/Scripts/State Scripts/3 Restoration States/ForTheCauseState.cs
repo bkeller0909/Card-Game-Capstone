@@ -5,6 +5,7 @@ public class ForTheCauseState : FSMState
     public ForTheCauseState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_ForTheCause;
     }
 
     //Reason

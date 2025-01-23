@@ -5,6 +5,7 @@ public class VampiricSurgeState : FSMState
     public VampiricSurgeState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_VampiricSurge;
     }
 
     //Reason
