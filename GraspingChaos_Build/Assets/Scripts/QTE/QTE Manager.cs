@@ -30,6 +30,7 @@ public class QTEManager : MonoBehaviour
     public PlayerManager player;
     public PlayerManager p1, p2; //temp
     public List<GameObject> Buttons = new List<GameObject>();
+    public List<GameObject> PreviuosButtons = new List<GameObject>();
     public List<GameObject> CreatedButtons = new List<GameObject>();
     public GameObject firstPosition;
     private Vector3 space = new Vector3(2f, 0f, 0f);
@@ -79,8 +80,8 @@ public class QTEManager : MonoBehaviour
 
     private GameObject RandomizeBTN()
     {
-        int button = UnityEngine.Random.Range(0, Buttons.Count);
-        return Buttons[button];
+        int button = UnityEngine.Random.Range(0, PreviuosButtons.Count);
+        return PreviuosButtons[button];
     }
 
     private static QTEButtonType RandomizeBTNV2()
@@ -126,40 +127,84 @@ public class QTEManager : MonoBehaviour
     }
 
     //TAKE IN A INDEX VALUE
-    private void AssignSprite()
+    private void AssignSprite(int indexBTN)
     {
         if (RandoBTN == QTEButtonType.Y)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = Y;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = Y;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.Y;
         }
         else if (RandoBTN == QTEButtonType.X)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = X;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = X;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.X;
         }
         else if (RandoBTN == QTEButtonType.B)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = B;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = B;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.B;
         }
         else if (RandoBTN == QTEButtonType.A)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = A;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = A;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.A;
         }
         else if (RandoBTN == QTEButtonType.UP)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = DU;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = DU;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.UpArrow;
         }
         else if (RandoBTN == QTEButtonType.LEFT)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = DL;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = DL;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.LeftArrow;
         }
         else if (RandoBTN == QTEButtonType.RIGHT)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = DR;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = DR;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.RightArrow;
         }
         else if (RandoBTN == QTEButtonType.DOWN)
         {
-            Buttons[0].GetComponent<SpriteRenderer>().sprite = DD;
+            Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = DD;
+            Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.DownArrow;
         }
+    }
+
+    public void CreateV2(int qteAmount, PlayerManager caster)
+    {
+        caster.playerInput.SwitchCurrentActionMap("QTE");
+        for (int i = 0; i < qteAmount; i++)
+        {
+            RandoBTN = RandomizeBTNV2();
+            AssignSprite(i);
+            Buttons[i].SetActive(true);
+            Buttons[i].GetComponent<QTEButton>().playerQTE = caster;
+            if (caster == p1)
+            {
+                Buttons[i].layer = LayerMask.NameToLayer("The Skull");
+                Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                if (Buttons[i].GetComponent<QTEButton>().dir)
+                {
+                    Buttons[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                }
+            }
+            else if (caster == p2)
+            {
+                Buttons[i].layer = LayerMask.NameToLayer("The Stag");
+                Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                if (Buttons[i].GetComponent<QTEButton>().dir)
+                {
+                    Buttons[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                }
+            }
+            CreatedButtons.Add(Buttons[i]);
+            Buttons[i].GetComponent<QTEButton>().enabled = false;
+            firstPosition.transform.position += space;
+        }
+        CreatedButtons[0].GetComponent<QTEButton>().enabled = true;
+        startTimer = true;
+        index = 0;
     }
 
     public void Create(int qteAmount, PlayerManager caster)
@@ -202,11 +247,6 @@ public class QTEManager : MonoBehaviour
         startTimer = true;
         index = 0;
         //DestroyQTEBTN();
-    }
-
-    public void CreateV2(int qteAmount, PlayerManager caster)
-    {
-
     }
 
     //CHANGE FROM FOR LOOP TO SIMPLE IF CHECKS TO ENSURE THERE ARE NO ERRORS IN CHECKUP
