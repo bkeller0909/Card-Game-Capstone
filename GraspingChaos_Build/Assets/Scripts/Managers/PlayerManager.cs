@@ -26,6 +26,8 @@ public class PlayerManager : MonoBehaviour
     public int entireHP;
     [Tooltip("The players mana value")]
     public int Mana;
+    [Tooltip("The players Spell Hand")]
+    public SpellHand spellHand;
 
     [Tooltip("What number of player they are")]
     [SerializeField] public PlayerType playerNum;
@@ -52,6 +54,8 @@ public class PlayerManager : MonoBehaviour
         //    GameManager.Instance.currentCaster = this;
         //}
         playerInput = GetComponent<PlayerInput>();
+
+        spellHand = new SpellHand();
 
         entireHP = 28;
         for (int i = 0; i < playerInput.devices.Count; i++)
