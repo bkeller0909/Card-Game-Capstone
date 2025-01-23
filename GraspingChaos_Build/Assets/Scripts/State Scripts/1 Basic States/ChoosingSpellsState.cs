@@ -5,6 +5,7 @@ public class ChoosingSpellsState : FSMState
     public ChoosingSpellsState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.ChoosingSpells;
     }
 
     //Reason

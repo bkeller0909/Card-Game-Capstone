@@ -5,6 +5,7 @@ public class IciclesState : FSMState
     public IciclesState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_Icicles;
     }
 
     //Reason

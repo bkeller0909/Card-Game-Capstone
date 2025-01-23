@@ -5,6 +5,7 @@ public class LeftningBoltState : FSMState
     public LeftningBoltState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_LeftningBolt;
     }
 
     //Reason

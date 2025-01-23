@@ -6,6 +6,7 @@ public class DeadState : FSMState
     public DeadState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Dead;
     }
 
     //Reason

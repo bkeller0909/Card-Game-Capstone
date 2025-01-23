@@ -5,6 +5,7 @@ public class DealStatsState : FSMState
     public DealStatsState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.DealStats;
     }
 
     //Reason

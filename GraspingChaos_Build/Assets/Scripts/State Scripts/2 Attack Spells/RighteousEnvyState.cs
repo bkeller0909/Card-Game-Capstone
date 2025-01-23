@@ -5,6 +5,7 @@ public class RighteousEnvyState : FSMState
     public RighteousEnvyState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.A_RighteousEnvy;
     }
 
     //Reason
