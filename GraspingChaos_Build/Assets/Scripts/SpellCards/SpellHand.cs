@@ -14,7 +14,7 @@ public class SpellHand : MonoBehaviour
     //add spells, call each time players have to draw a cad
     public void AddSpells()
     {
-        for (int i = 0; i < GameManager.Instance.playerHandSize; i++)
+        for (int i = 0; i < GameManager.Instance.maxPlayerHandSize; i++)
         {
             //will reach for card algorithm script fro drawing cards
             //SpellCard newCard = call algorithm to copy card into value then add value to list

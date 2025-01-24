@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour
     public void FSMTesting()
     {
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_StateTesting);
+        GameManager.Instance.hasDuelStarted = true;
         InputManager.Instance.FindPlayers();
     }
 }

@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     public int manaPerTurn;
 
     [Tooltip("This is the max hand size of a player")]
-    public int playerHandSize;
+    public int maxPlayerHandSize;
 
     [Tooltip("This is one of the players in the game")]
     public PlayerManager player1, player2;
