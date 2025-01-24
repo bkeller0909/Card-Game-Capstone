@@ -8,24 +8,11 @@ using UnityEngine;
 //  Title:        QTE Manager
 //  Date Created: 01/16/2025
 //  Purpose:      Manage the creation and success check of all the Quick time Events of each player
-//  Instance?     YES
+//  Instance?     no
 //-----------------------------------------------------------------
 /// </summary>
 public class QTEManager : MonoBehaviour
 {
-    private static QTEManager instance;
-    public static QTEManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<QTEManager>();
-            }
-            return instance;
-        }
-    }
-
     public int index;
     public QTEButtonType RandoBTN;
     public Sprite A, B, Y, X, DU, DL, DR, DD;
@@ -199,18 +186,23 @@ public class QTEManager : MonoBehaviour
             QTECounter = 0;
             RandoBTN = RandomizeBTNV2();
             AssignSprite(i);
+            //make another list with p2 buttons
+            //dont reveal here yet
             Buttons[i].SetActive(true);
             Buttons[i].GetComponent<QTEButton>().playerQTE = caster;
             if (caster == p1)
             {
+                //reveal the list here depending on what player has to be revealed
                 Buttons[i].layer = LayerMask.NameToLayer("The Skull");
                 Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Skull");
                 Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
             }
             else if (caster == p2)
             {
                 Buttons[i].layer = LayerMask.NameToLayer("The Stag");
                 Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Stag");
                 Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
             }
             CreatedButtons.Add(Buttons[i]);
@@ -290,6 +282,7 @@ public class QTEManager : MonoBehaviour
 
         if (CreatedButtons.Count == index)
         {
+            index = -1;
             StartCoroutine(DisableQTEButtons());
         }
 
@@ -297,18 +290,21 @@ public class QTEManager : MonoBehaviour
 
     public void EvauateQTEResults()
     {
-        intpercent = QTECounter * 100 / CreatedButtons.Count;
-        if (intpercent < 50)
+        if (CreatedButtons.Count > 0)
         {
-            qteCheckPercent.text = "Below 50%";
-        }
-        else if (intpercent >= 50 && intpercent < 99)
-        {
-            qteCheckPercent.text = "Above 50%";
-        }
-        else if (intpercent == 100)
-        {
-            qteCheckPercent.text = "100%";
+            intpercent = QTECounter * 100 / CreatedButtons.Count;
+            if (intpercent < 50)
+            {
+                qteCheckPercent.text = "Below 50%";
+            }
+            else if (intpercent >= 50 && intpercent < 99)
+            {
+                qteCheckPercent.text = "Above 50%";
+            }
+            else if (intpercent == 100)
+            {
+                qteCheckPercent.text = "100%";
+            }
         }
     }
 

@@ -1060,6 +1060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5857f2e16c54cb49b3fd205f0fa9f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1: {fileID: 1680499012}
+  p2: {fileID: 653969904}
   spellName: 
   targetSelf: 0
   manaCost: 0
@@ -1420,6 +1422,7 @@ GameObject:
   - component: {fileID: 653969906}
   - component: {fileID: 653969905}
   - component: {fileID: 653969907}
+  - component: {fileID: 653969908}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -1444,6 +1447,7 @@ MonoBehaviour:
   healthValue: {fileID: 0}
   entireHP: 27
   Mana: 5
+  spellHand: {fileID: 0}
   playerNum: 1
   fingers: []
 --- !u!4 &653969906
@@ -1492,6 +1496,65 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &653969908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653969904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b16e7c2c9aabe448cef13e2be441a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  RandoBTN: 0
+  A: {fileID: 21300000, guid: 5272b37d28b01de4a9a5191dd8e4a817, type: 3}
+  B: {fileID: 21300000, guid: a564e2b6b41aece4a89e308ae7e9fce8, type: 3}
+  Y: {fileID: 21300000, guid: 5562a3175915010408efea4ee9422922, type: 3}
+  X: {fileID: 21300000, guid: 683ed09dc6b0c3146bd763f4af0847c2, type: 3}
+  DU: {fileID: 21300000, guid: f11980dae841a7f4a8eb5c775a70a12b, type: 3}
+  DL: {fileID: 21300000, guid: ec0b2862d11f116498da4dd05aa861c7, type: 3}
+  DR: {fileID: 21300000, guid: a9a1818aba90a2643b4fc10f175b1e00, type: 3}
+  DD: {fileID: 21300000, guid: 5e7982b1c2cffcb4bb75994a89196645, type: 3}
+  player: {fileID: 653969905}
+  p1: {fileID: 1680499015}
+  p2: {fileID: 653969905}
+  Buttons:
+  - {fileID: 2267522597003381915}
+  - {fileID: 975980329}
+  - {fileID: 213085069}
+  - {fileID: 1942260558}
+  - {fileID: 168567203}
+  - {fileID: 1460417719}
+  - {fileID: 268308176}
+  - {fileID: 1491348133}
+  - {fileID: 1041005112}
+  - {fileID: 1239558424}
+  - {fileID: 958253590}
+  - {fileID: 1384550684}
+  - {fileID: 1791212384}
+  - {fileID: 2035362779}
+  PreviuosButtons:
+  - {fileID: 3946714459620540693, guid: f0a750c32d0ff3240b980a0d8ad9a871, type: 3}
+  - {fileID: 1238014270366363255, guid: 00bee716b4a3fc64d8b5211ea790c066, type: 3}
+  - {fileID: 4044421748947407629, guid: 4e03d9838d770664b981832fd4e8cf28, type: 3}
+  - {fileID: 6880405577169645239, guid: 0bfb200b8967ed545b4bf38ba85a9e13, type: 3}
+  - {fileID: 3622695624966375374, guid: abd9f0fc99fb7854eaba0d6158ad340b, type: 3}
+  - {fileID: 7913481973231038507, guid: b937103039dfd35468cf33bfcd548906, type: 3}
+  - {fileID: 586624325882050071, guid: 8e09e8257ad6dd44caf9ebef445c23b5, type: 3}
+  - {fileID: 4442344822070236482, guid: 6ec0f3622a764924b8ed20dbfe3e30bf, type: 3}
+  CreatedButtons: []
+  dirScale: {x: 0.1278096, y: 0.1278096, z: 0.1278096}
+  firstPosition: {fileID: 1516826804}
+  remainingTime: 0
+  startTimer: 0
+  enumAmount: 0
+  QTECounter: 0
+  qteCheck: {fileID: 1877860213}
+  qteCheckPercent: {fileID: 1736098366}
+  intpercent: 0
 --- !u!1 &658143847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,7 +1885,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783279056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15b16e7c2c9aabe448cef13e2be441a3, type: 3}
   m_Name: 
@@ -3147,7 +3210,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f3094cb2da2a14c4998514c05940451c, type: 2}
+      objectReference: {fileID: 2100000, guid: bb8954bfb363fc34d9018662c1fd3855, type: 2}
     - target: {fileID: 919132149155446097, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_Name
@@ -3185,6 +3248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5857f2e16c54cb49b3fd205f0fa9f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1: {fileID: 1680499012}
+  p2: {fileID: 653969904}
   spellName: 
   targetSelf: 0
   manaCost: 0
@@ -4318,6 +4383,7 @@ GameObject:
   - component: {fileID: 1680499014}
   - component: {fileID: 1680499015}
   - component: {fileID: 1680499016}
+  - component: {fileID: 1680499017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4357,6 +4423,7 @@ MonoBehaviour:
   healthValue: {fileID: 0}
   entireHP: 27
   Mana: 5
+  spellHand: {fileID: 0}
   playerNum: 0
   fingers: []
 --- !u!114 &1680499016
@@ -4390,6 +4457,65 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1680499017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680499012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b16e7c2c9aabe448cef13e2be441a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  RandoBTN: 0
+  A: {fileID: 21300000, guid: 5272b37d28b01de4a9a5191dd8e4a817, type: 3}
+  B: {fileID: 21300000, guid: a564e2b6b41aece4a89e308ae7e9fce8, type: 3}
+  Y: {fileID: 21300000, guid: 5562a3175915010408efea4ee9422922, type: 3}
+  X: {fileID: 21300000, guid: 683ed09dc6b0c3146bd763f4af0847c2, type: 3}
+  DU: {fileID: 21300000, guid: f11980dae841a7f4a8eb5c775a70a12b, type: 3}
+  DL: {fileID: 21300000, guid: ec0b2862d11f116498da4dd05aa861c7, type: 3}
+  DR: {fileID: 21300000, guid: a9a1818aba90a2643b4fc10f175b1e00, type: 3}
+  DD: {fileID: 21300000, guid: 5e7982b1c2cffcb4bb75994a89196645, type: 3}
+  player: {fileID: 1680499015}
+  p1: {fileID: 1680499015}
+  p2: {fileID: 653969905}
+  Buttons:
+  - {fileID: 2267522597003381915}
+  - {fileID: 975980329}
+  - {fileID: 213085069}
+  - {fileID: 1942260558}
+  - {fileID: 168567203}
+  - {fileID: 1460417719}
+  - {fileID: 268308176}
+  - {fileID: 1491348133}
+  - {fileID: 1041005112}
+  - {fileID: 1239558424}
+  - {fileID: 958253590}
+  - {fileID: 1384550684}
+  - {fileID: 1791212384}
+  - {fileID: 2035362779}
+  PreviuosButtons:
+  - {fileID: 3946714459620540693, guid: f0a750c32d0ff3240b980a0d8ad9a871, type: 3}
+  - {fileID: 1238014270366363255, guid: 00bee716b4a3fc64d8b5211ea790c066, type: 3}
+  - {fileID: 4044421748947407629, guid: 4e03d9838d770664b981832fd4e8cf28, type: 3}
+  - {fileID: 6880405577169645239, guid: 0bfb200b8967ed545b4bf38ba85a9e13, type: 3}
+  - {fileID: 3622695624966375374, guid: abd9f0fc99fb7854eaba0d6158ad340b, type: 3}
+  - {fileID: 7913481973231038507, guid: b937103039dfd35468cf33bfcd548906, type: 3}
+  - {fileID: 586624325882050071, guid: 8e09e8257ad6dd44caf9ebef445c23b5, type: 3}
+  - {fileID: 4442344822070236482, guid: 6ec0f3622a764924b8ed20dbfe3e30bf, type: 3}
+  CreatedButtons: []
+  dirScale: {x: 0.1278096, y: 0.1278096, z: 0.1278096}
+  firstPosition: {fileID: 1516826804}
+  remainingTime: 0
+  startTimer: 0
+  enumAmount: 0
+  QTECounter: 0
+  qteCheck: {fileID: 1877860213}
+  qteCheckPercent: {fileID: 1736098366}
+  intpercent: 0
 --- !u!1 &1707234686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4601,7 +4727,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9cdabd6b6e4d3b04e91432ea47bc014a, type: 2}
+      objectReference: {fileID: 2100000, guid: bb8954bfb363fc34d9018662c1fd3855, type: 2}
     - target: {fileID: 919132149155446097, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_Name
@@ -4639,6 +4765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5857f2e16c54cb49b3fd205f0fa9f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1: {fileID: 1680499012}
+  p2: {fileID: 653969904}
   spellName: 
   targetSelf: 0
   manaCost: 0
