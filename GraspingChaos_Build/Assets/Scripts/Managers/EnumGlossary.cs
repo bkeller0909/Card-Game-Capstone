@@ -52,3 +52,35 @@ public enum QTEButtonType
     RIGHT = 6,
     DOWN = 7
 }
+
+public enum SpellNames
+{
+    none = 0,
+    FireBolt = 1,
+    Rockthrow,
+    RighteousEnvy,
+    LefteousEnvy,
+    Icicles,
+    CollectorsCurse,
+    StaticBlast,
+    Quake,
+    RightingBolt,
+    LeftingBolt,
+    TidalWave,
+    PointerOfDeath,
+    ForTheCause,
+    QuickHeal,
+    ThumbsUp,
+    LifeDrain,
+    CursedConversion,
+    TheGreenThumb,
+    Materialise,
+    EchoingMana,
+    ThornsOfAgony,
+    GuardiansTouch,
+    SpectralChain,
+    ManaMerchant,
+    VengefulMirror,
+    VampiricSurge,
+    VeilOfFortitude
+}

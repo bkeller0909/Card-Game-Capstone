@@ -12,6 +12,10 @@ using UnityEngine;
 /// </summary>
 public class SpellCard : MonoBehaviour
 {
+    //temp
+    public GameObject p1;
+    public GameObject p2;
+
     //General
     public string spellName;
     public bool targetSelf;
@@ -80,7 +84,15 @@ public class SpellCard : MonoBehaviour
     IEnumerator testing()
     {
         yield return new WaitForSeconds(0);
-        QTEManager.Instance.CreateV2(qteAmount, GameManager.Instance.currentCaster);
+        //QTEManager.Instance.CreateV2(qteAmount, GameManager.Instance.currentCaster);
+        if (GameManager.Instance.testingCurrentP1)
+        {
+            p1.GetComponent<QTEHandler>().Create(qteAmount, p1.GetComponent<PlayerManager>());
+        }
+        else
+        {
+            p2.GetComponent<QTEHandler>().Create(qteAmount, p2.GetComponent<PlayerManager>());
+        }
     }
 
 }
