@@ -87,11 +87,11 @@ public class SpellCard : MonoBehaviour
         //QTEManager.Instance.CreateV2(qteAmount, GameManager.Instance.currentCaster);
         if (GameManager.Instance.testingCurrentP1)
         {
-            p1.GetComponent<QTEManager>().CreateV2(qteAmount, p1.GetComponent<PlayerManager>());
+            p1.GetComponent<QTEHandler>().CreateV2(qteAmount, p1.GetComponent<PlayerManager>());
         }
         else
         {
-            p2.GetComponent<QTEManager>().CreateV2(qteAmount, p2.GetComponent<PlayerManager>());
+            p2.GetComponent<QTEHandler>().CreateV2(qteAmount, p2.GetComponent<PlayerManager>());
         }
     }
 

@@ -11,7 +11,7 @@ using UnityEngine;
 //  Instance?     no
 //-----------------------------------------------------------------
 /// </summary>
-public class QTEManager : MonoBehaviour
+public class QTEHandler : MonoBehaviour
 {
     public int index;
     public QTEButtonType RandoBTN;
