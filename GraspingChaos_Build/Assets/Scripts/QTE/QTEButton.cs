@@ -14,76 +14,72 @@ public class QTEButton : MonoBehaviour
     // If you wish to test the new input actions I made for you. Un-comment everything and try it out.
     // ABXY are WASD on the keyboard and the DPad is the arrow keys. 
 
+    [Tooltip("player using the QTE")]
     public PlayerManager playerQTE;
+    //needed for actionMap
     private InputActionMap actionQTE;
+    [Tooltip("needed to set/find action map")]
     [SerializeField] private InputActionAsset inputActionAsset;
-
-    public bool dir;
-    public Color correct = Color.green;
-    public Color incorrect = Color.red;
+    //colors for visual representation only
+    private Color correct = Color.green;
+    private Color incorrect = Color.red;
+    [Tooltip("check to verify if the button was pressed")]
     public bool pressed = false;
+    [Tooltip("Check to verify if the input was correct")]
     public bool correctPress = false;
-    public KeyCode AssignedBTN;             // replace this with IsActionPressed() in the if statements.
-    public InputAction CurrentBTN;
-
+    [Tooltip("Assigned value for identifiyng the button")]
+    public KeyCode AssignedBTN;
 
     private void Awake()
     {
+        //set the proper action map on awake as a precuasing, might not be working 100% of time, requires further testing with action maps
         actionQTE = inputActionAsset.FindActionMap("QTE", true);
-        //dir = true;
     }
 
-    private void Start()
-    {
-        //CurrentBTN = playerQTE.playerInput.GetComponent<InputAction>();
-        //playerQTE = GetComponent<PlayerManager>();
-        //actionQTE = inputActionAsset.FindActionMap("QTE", true);
-        //dir = true;
-    }
-
+    /// <summary>
+    /// On the update function we are running the main confirm loop of the script, in here all the main functionality of the button runs
+    /// first we check the function IsActionPressed() to check uif the input pressed is a valid one (see function for more details) then
+    /// we check if the function BTNCheck() has a valid value and if that value matches with the assigned button value (see function for more details)
+    /// and we also check if the assigned keycode matches the buttons keycode (the keycode gets assigned upon the spawing of the button) then
+    /// we set all the info the button will have confirming that the button was pressed and if it was a correct input or not
+    /// </summary>
     void Update()
     {
-        /*if (playerQTE.playerInput.actions["South"].triggered || playerQTE.playerInput.actions["East"].triggered
-            || playerQTE.playerInput.actions["West"].triggered || playerQTE.playerInput.actions["North"].triggered
-            || playerQTE.playerInput.actions["DPad Down"].triggered || playerQTE.playerInput.actions["DPad Up"].triggered
-            || playerQTE.playerInput.actions["DPad Left"].triggered || playerQTE.playerInput.actions["DPad Right"].triggered)*/
-
-        //if (pressed)
-        //{
-        //    gameObject.GetComponent<QTEButton>().enabled = false;
-        //}
-
+        //check function for possible input
         if (IsActionPressed())
         {
-            if (testCheck() == playerQTE.playerInput.actions["South"] && AssignedBTN == KeyCode.A)
+            //verify the input matches the button
+            if (BTNCheck() == playerQTE.playerInput.actions["South"] && AssignedBTN == KeyCode.A)
+            {
+                //set the value of the button to pressed and if the input was correct set it to correct
+                pressed = true;
+                correctPress = true;
+                //visual representation of correct value
+                gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            }
+            else if (BTNCheck() == playerQTE.playerInput.actions["North"] && AssignedBTN == KeyCode.Y)
             {
                 pressed = true;
                 correctPress = true;
                 gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
-            else if (testCheck() == playerQTE.playerInput.actions["North"] && AssignedBTN == KeyCode.Y)
+            else if (BTNCheck() == playerQTE.playerInput.actions["East"] && AssignedBTN == KeyCode.B)
             {
                 pressed = true;
                 correctPress = true;
                 gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
-            else if (testCheck() == playerQTE.playerInput.actions["East"] && AssignedBTN == KeyCode.B)
+            else if (BTNCheck() == playerQTE.playerInput.actions["West"] && AssignedBTN == KeyCode.X)
             {
                 pressed = true;
                 correctPress = true;
                 gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
-            else if (testCheck() == playerQTE.playerInput.actions["West"] && AssignedBTN == KeyCode.X)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (testCheck() == playerQTE.playerInput.actions["DPad Down"] && AssignedBTN == KeyCode.DownArrow)
+            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Down"] && AssignedBTN == KeyCode.DownArrow)
             {
                 pressed = true;
                 correctPress = true;
@@ -92,7 +88,7 @@ public class QTEButton : MonoBehaviour
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
-            else if (testCheck() == playerQTE.playerInput.actions["DPad Up"] && AssignedBTN == KeyCode.UpArrow)
+            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Up"] && AssignedBTN == KeyCode.UpArrow)
             {
                 pressed = true;
                 correctPress = true;
@@ -101,7 +97,7 @@ public class QTEButton : MonoBehaviour
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
-            else if (testCheck() == playerQTE.playerInput.actions["DPad Left"] && AssignedBTN == KeyCode.LeftArrow)
+            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Left"] && AssignedBTN == KeyCode.LeftArrow)
             {
                 pressed = true;
                 correctPress = true;
@@ -110,7 +106,7 @@ public class QTEButton : MonoBehaviour
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
-            else if (testCheck() == playerQTE.playerInput.actions["DPad Right"] && AssignedBTN == KeyCode.RightArrow)
+            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Right"] && AssignedBTN == KeyCode.RightArrow)
             {
                 pressed = true;
                 correctPress = true;
@@ -120,14 +116,16 @@ public class QTEButton : MonoBehaviour
                 gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
             }
             else
-            //else if (!CurrentBTN.triggered)
             {
+                //set the value of the button to pressed and if the input was incorrect set it to incorrect
                 pressed = true;
                 correctPress = false;
                 gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                //visual representation of correct value
                 gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
                 if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
                 {
+                    //visual representation of incorrect value
                     gameObject.transform.GetChild(0).gameObject.SetActive(false);
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -136,54 +134,38 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-
-        //if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        //{
-        //    if (Input.GetKeyDown(AssignedBTN))
-        //    {
-        //        pressed = true;
-        //        gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        //        gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-        //        if (dir)
-        //        {
-        //            gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        //            gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-        //        }
-        //    }
-        //    else if (!Input.GetKeyDown(AssignedBTN))
-        //    {
-        //        pressed = true;
-        //        gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        //        gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-        //        if (dir)
-        //        {
-        //            gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        //            gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-        //        }
-        //    }
-        //}
     }
 
     /// <summary>
-    /// Checks if the action map is triggered.
+    /// This function checks that whatever input we pressed with the controller, it is one of the 8 possible inputs, that way if the player 
+    /// pressed anything else it wont count as an error, this ensures that the only possible contact with the QTE system is with the proper
+    /// inputs, This script is called on update before any other button check is verified.
     /// </summary>
-    /// <returns>True is action is triggered. False if not.</returns>
     private bool IsActionPressed()
     {
+        //checks to see if any of the inputs made are the possible QTE input options, if so return true
         if (playerQTE.playerInput.actions["South"].triggered || playerQTE.playerInput.actions["East"].triggered || playerQTE.playerInput.actions["West"].triggered
             || playerQTE.playerInput.actions["North"].triggered || playerQTE.playerInput.actions["DPad Down"].triggered || playerQTE.playerInput.actions["DPad Up"].triggered
             || playerQTE.playerInput.actions["DPad Left"].triggered || playerQTE.playerInput.actions["DPad Right"].triggered)
         {
             return true;
         }
+        //if the input is not that of a possible button then return false
         return false;
     }
 
 
-    private InputAction testCheck()
+
+    /// <summary>
+    /// This Function exists to check and return the correct input the player pressed, that way we can properly identify the QTE Button
+    /// It is called in update when checking for the input confirmation so that the QTE manager has the right info about each button.
+    /// </summary>
+    private InputAction BTNCheck()
     {
+        //the if checks verify the button pressed
         if (playerQTE.playerInput.actions["South"].triggered)
         {
+            //and the return in turn returns the proper button
             return playerQTE.playerInput.actions["South"];
         }
         else if (playerQTE.playerInput.actions["East"].triggered)
@@ -214,20 +196,7 @@ public class QTEButton : MonoBehaviour
         {
             return playerQTE.playerInput.actions["DPad Right"];
         }
-        return null;
-
-    }
-
-    private InputAction BTNCheck()
-    {
-        for (int i = 0; i < actionQTE.actions.Count; i++)
-        {
-            Debug.Log(actionQTE.actions[i]);
-            if (actionQTE.actions[i].triggered)
-            {
-                return actionQTE.actions[i];
-            }
-        }
+        //if nothing was pressed then the input returns as null
         return null;
     }
 }

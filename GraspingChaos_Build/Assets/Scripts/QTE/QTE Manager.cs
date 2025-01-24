@@ -149,25 +149,21 @@ public class QTEManager : MonoBehaviour
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = Y;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.Y;
-            Buttons[indexBTN].GetComponent<QTEButton>().dir = false;
         }
         else if (RandoBTN == QTEButtonType.X)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = X;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.X;
-            Buttons[indexBTN].GetComponent<QTEButton>().dir = false;
         }
         else if (RandoBTN == QTEButtonType.B)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = B;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.B;
-            Buttons[indexBTN].GetComponent<QTEButton>().dir = false;
         }
         else if (RandoBTN == QTEButtonType.A)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = A;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.A;
-            Buttons[indexBTN].GetComponent<QTEButton>().dir = false;
         }
         else if (RandoBTN == QTEButtonType.UP)
         {
@@ -209,19 +205,13 @@ public class QTEManager : MonoBehaviour
             {
                 Buttons[i].layer = LayerMask.NameToLayer("The Skull");
                 Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                if (Buttons[i].GetComponent<QTEButton>().dir)
-                {
-                    Buttons[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                }
+                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
             }
             else if (caster == p2)
             {
                 Buttons[i].layer = LayerMask.NameToLayer("The Stag");
                 Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                if (Buttons[i].GetComponent<QTEButton>().dir)
-                {
-                    Buttons[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                }
+                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
             }
             CreatedButtons.Add(Buttons[i]);
             Buttons[i].GetComponent<QTEButton>().enabled = false;
@@ -251,19 +241,19 @@ public class QTEManager : MonoBehaviour
             {
                 actualObject.layer = LayerMask.NameToLayer("The Skull");
                 actualObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                if (actualObject.GetComponent<QTEButton>().dir)
-                {
-                    actualObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                }
+                //if (actualObject.GetComponent<QTEButton>().dir)
+                //{
+                //    actualObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                //}
             }
             else if (caster == p2)
             {
                 actualObject.layer = LayerMask.NameToLayer("The Stag");
                 actualObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                if (actualObject.GetComponent<QTEButton>().dir)
-                {
-                    actualObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                }
+                //if (actualObject.GetComponent<QTEButton>().dir)
+                //{
+                //    actualObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                //}
             }
             CreatedButtons.Add(actualObject);
             actualObject.GetComponent<QTEButton>().enabled = false;
