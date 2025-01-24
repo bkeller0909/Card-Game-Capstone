@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29312978e19d84c9511fa1a48ad0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardGlowRender: {fileID: 0}
+  cardGlowRender: {fileID: 54503680157137209}
   verticalAdjustAmount: 0.15
   scaleAmount: 1.09
+  isHovered: 0
+  isSelected: 0
 --- !u!1001 &1657385613761258941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,6 +208,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a634260e31f6ad44b5f243e72f217e3, type: 3}
+--- !u!23 &54503680157137209 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5a634260e31f6ad44b5f243e72f217e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1657385613761258941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1191921260471796310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5a634260e31f6ad44b5f243e72f217e3,

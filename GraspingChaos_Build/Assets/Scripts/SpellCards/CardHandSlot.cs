@@ -15,15 +15,29 @@ using UnityEngine;
 public class CardHandSlot : MonoBehaviour
 {
     private PlayerManager player;
+    [SerializeField] private GameObject cardPrefab;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
-    public List<CardSelect> cards;                                          // array for the cards to keep track of what is being hovered and selected.
+    public List<CardSelect> cards = new List<CardSelect>();         // array for the cards to keep track of what is being hovered and selected.
+    [Tooltip("List for cards when they are selected. Keep EMPTY in editor.")]
+    public List<CardSelect> selectedCards = new List<CardSelect>(); // for the cards that are selected.
+    [Tooltip("Slot positions for the cards.")]
+    public Transform[] cardSlots;                                   // slot positions for each card
+    [Tooltip("Determines if a slot is empty. TRUE in editor.")]
+    public bool[] emptySlots;                                       // bool for the slot position being empty
 
-    public List<CardSelect> selectedCards = new List<CardSelect>();    // for the cards that are selected.
     public CardSelect LastHoveredCard { get; set; }
     public int LastHoveredCardIndex { get; set; }
 
-    private readonly int maxSelectedCards = 3;                                          // can select up to three cards.
+    private readonly int maxSelectedCards = 3;                      // can select up to three cards.
+
+    private void Awake()
+    {
+        if(cards.Count <= 0)
+        {
+            InitializeCards();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +52,27 @@ public class CardHandSlot : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        CardControls();
+    }
+
+    public void InitializeCards()
+    {
+        GameObject card = cardPrefab;
+
+        for(int i = 0; i < emptySlots.Length; i++)
+        {
+            if (emptySlots[i] == true)
+            {
+                Instantiate(card);
+                card.transform.position = cardSlots[i].position;
+                cards.Add(card.GetComponent<CardSelect>());
+                emptySlots[i] = false;
+            }
+        }
+    }
+
+    private void CardControls()
     {
         if (player.playerInput.actions["NavCardRight"].triggered)
         {
@@ -80,6 +115,7 @@ public class CardHandSlot : MonoBehaviour
             LastHoveredCard.OnHoverCard();
         }
 
+        Debug.Log(LastHoveredCard + " " + LastHoveredCardIndex);
     }
 
     /// <summary>

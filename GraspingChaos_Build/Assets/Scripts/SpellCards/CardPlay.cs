@@ -6,7 +6,7 @@ public class CardPlay : MonoBehaviour
     private PlayerManager player;
     private CardHandSlot cardHandSlot;
 
-    public Transform playSlotPos;
+    public Transform[] playSlots;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,9 @@ public class CardPlay : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the cards from the list of cards in the player's hand. Runs the coroutine to move the cards to the play slots.
+    /// </summary>
     public void PlayCards()
     {
         for (int i = 0; i < cardHandSlot.selectedCards.Count; i++)
@@ -32,11 +35,18 @@ public class CardPlay : MonoBehaviour
             {
                 cardHandSlot.cards.Remove(cardHandSlot.cards[i]);
             }
-            StartCoroutine(MoveCards(cardHandSlot.selectedCards[i].gameObject, cardHandSlot.selectedCards[i].transform.position, playSlotPos.transform.position));
+            StartCoroutine(MoveCard(cardHandSlot.selectedCards[i].gameObject, cardHandSlot.selectedCards[i].transform.position, playSlots[i].position));
         }
     }
 
-    private IEnumerator MoveCards(GameObject go, Vector3 startPos, Vector3 endPos)
+    /// <summary>
+    /// Moves a card from a starting position to an end position.
+    /// </summary>
+    /// <param name="go">The card game object.</param>
+    /// <param name="startPos">Starting position of the card.</param>
+    /// <param name="endPos">Ending position of card.</param>
+    /// <returns></returns>
+    private IEnumerator MoveCard(GameObject go, Vector3 startPos, Vector3 endPos)
     {
         float moveTimer = 1.0f;
         float time = 0.0f;
