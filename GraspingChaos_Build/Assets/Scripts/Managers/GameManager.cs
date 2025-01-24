@@ -96,6 +96,11 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is which player is currently casting a spell")]
     public int timerQTE = 5;
 
+    [Tooltip("This is which player is currently casting a spell")]
+    public int amtOfSpellsBeingCast = 0;
+
+    [Tooltip("This is a test bool for moving to the next state")]
+    public bool nextTestState = false;
 
     public bool testingCurrentP1 = true;
 
