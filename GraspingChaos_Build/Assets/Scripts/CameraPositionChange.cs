@@ -27,25 +27,43 @@ public class CameraPositionChange : MonoBehaviour
     private int cameraIndex = 0;
     private float elapsedTime;
 
+    private bool canInput = true;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponentInParent<PlayerManager>();
-        cameraIndex = Mathf.Clamp(cameraIndex, 0, CamPos.Count);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.playerInput.actions["NavDown"].triggered)
+        //Gets the player input
+        GetInput();
+    }
+
+    private void GetInput()
+    {
+        //Checks if the player can input
+        if (canInput)
         {
-            cameraIndex--;
-            StartCoroutine(MoveCameratoNewPosition(cameraIndex));
-        }
-        if (player.playerInput.actions["NavUp"].triggered)
-        {
-            cameraIndex++;
-            StartCoroutine(MoveCameratoNewPosition(cameraIndex));
+            //Get the player input for Up and Down and check if there is a camera position to go to
+            if (player.playerInput.actions["NavDown"].triggered && cameraIndex > 0)
+            {
+                cameraIndex--;
+                StartCoroutine(MoveCameratoNewPosition(cameraIndex));
+
+                //Lock player input till move is complete
+                canInput = false;
+            }
+            else if (player.playerInput.actions["NavUp"].triggered && cameraIndex < 2)
+            {
+                cameraIndex++;
+                StartCoroutine(MoveCameratoNewPosition(cameraIndex));
+
+                //Lock player input till move is complete
+                canInput = false;
+            }
         }
     }
 
@@ -59,11 +77,15 @@ public class CameraPositionChange : MonoBehaviour
     /// <param name="positionIndex">The index within the list of camera positions</param>
     public IEnumerator MoveCameratoNewPosition(int positionIndex)
     {
+        //Sets the cameras move timer to 0 (starting the move)
         elapsedTime = 0.0f;
-        while(elapsedTime < lerpTime)
+
+        //Loop and move the camera until the elapsed time reaches the desired time
+        while (elapsedTime < lerpTime)
         {
             elapsedTime += Time.deltaTime;
 
+            //Set 2 different progressions for the position and rotation
             float percentCompleteForPosition = elapsedTime / lerpTime;
             float percentCompleteForRotation = (elapsedTime * 0.5f) / lerpTime;
 
@@ -71,10 +93,15 @@ public class CameraPositionChange : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, CamPos[positionIndex].position, percentCompleteForPosition);
             transform.rotation = Quaternion.Lerp(transform.rotation, CamPos[positionIndex].rotation, percentCompleteForRotation);
 
+            //Reset the complete percent for next move
             percentCompleteForPosition = 0;
             percentCompleteForRotation = 0;
 
-            yield return null;
+            //wait till the next frame to move again
+            yield return new WaitForEndOfFrame();
         }
+
+        //Unlock player input allowing the next move
+        canInput = true;
     }
 }

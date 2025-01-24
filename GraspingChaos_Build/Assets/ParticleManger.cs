@@ -5,8 +5,8 @@ using UnityEngine.VFX;
 public class ParticleManger : MonoBehaviour
 {
 
-    [SerializeField]
-    private List<VisualEffect> effects;
+    [SerializeField] private List<VisualEffect> FullEffects;
+    [SerializeField] private List<VisualEffect> lowEffects;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,6 @@ public class ParticleManger : MonoBehaviour
 
     public void StartParticle(int particleID)
     {
-        effects[particleID].SendEvent("OnPlay");
+
     }
 }
