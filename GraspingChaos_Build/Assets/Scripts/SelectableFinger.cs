@@ -34,11 +34,16 @@ public class SelectableFinger : MonoBehaviour
 
     private bool playerOneHands = true;
 
+    private InputHandler playerInput;
+
+    private bool wasPressed = false;
+
 
 
     void Start()
     {
         player = GetComponent<PlayerManager>();
+        playerInput = GetComponent<InputHandler>();
         defaultColor = gameObject.GetComponentInChildren<Fingers>().GetComponentInChildren<SkinnedMeshRenderer>().material.color;
         GameManager.Instance.currentCaster = GameManager.Instance.player2;
         UpdateSelection();
@@ -145,13 +150,21 @@ public class SelectableFinger : MonoBehaviour
         // we only want to select full fingers individually left and right on our hand
         if (playerOneHands)
         {
-            if (player.playerInput.actions["NavigateFingerLeft"].triggered)
+            if (playerInput.moveLeft)
             {
-                MoveSelection(-1, 0, -1, 0); // move left
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(-1, 0, -1, 0); // move left
+                }
             }
             else if (player.playerInput.actions["NavigateFingerRight"].triggered)
             {
                 MoveSelection(1, 0, 1, 0); // move right
+            }
+            else
+            {
+                wasPressed = false;
             }
         }
         else if (!playerOneHands)
