@@ -19,7 +19,8 @@ public enum PlayerFingers
     RH_Ring = 6,
     RH_Middle = 7,
     RH_Index = 8,
-    RH_Thumb = 9
+    RH_Thumb = 9,
+    none = 15
 }
 
 public enum PlayerHands

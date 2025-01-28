@@ -20,6 +20,11 @@ public class ChoosingSpellsState : FSMState
         GameManager.Instance.nextTestState = false;
         testStates = playerState.gameObject.GetComponent<TestStates>();
 
+        foreach (Button button in testStates.choosingFingerButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+
         foreach (Button button in testStates.choosingSpellButtons)
         {
             button.gameObject.SetActive(true);
@@ -167,6 +172,51 @@ public class ChoosingSpellsState : FSMState
             else if (testStates.spellsChosen[i] == SpellNames.VeilOfFortitude)
             {
                 testStates.spellsBeingCast[i].text = "VeilOfFortitude";
+            }
+
+            if (testStates.fingersChosen[i] == PlayerFingers.none)
+            {
+                testStates.fingersBeingChosen[i].text = " ";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.LH_Pinky)
+            {
+                testStates.fingersBeingChosen[i].text = "LH Pinky";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.LH_Ring)
+            {
+                testStates.fingersBeingChosen[i].text = "LH Ring";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.LH_Middle)
+            {
+                testStates.fingersBeingChosen[i].text = "LH Middle";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.LH_Index)
+            {
+                testStates.fingersBeingChosen[i].text = "LH Index";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.LH_Thumb)
+            {
+                testStates.fingersBeingChosen[i].text = "LH Thumb";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.RH_Pinky)
+            {
+                testStates.fingersBeingChosen[i].text = "RH Pinky";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.RH_Ring)
+            {
+                testStates.fingersBeingChosen[i].text = "RH Ring";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.RH_Middle)
+            {
+                testStates.fingersBeingChosen[i].text = "RH Middle";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.RH_Index)
+            {
+                testStates.fingersBeingChosen[i].text = "RH Index";
+            }
+            else if (testStates.fingersChosen[i] == PlayerFingers.RH_Thumb)
+            {
+                testStates.fingersBeingChosen[i].text = "RH Thumb";
             }
         }
     }

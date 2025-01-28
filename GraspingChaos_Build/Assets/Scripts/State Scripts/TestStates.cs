@@ -13,9 +13,15 @@ public class TestStates : MonoBehaviour
     public GameObject[] spellsBeingChosenPanels;
 
     [SerializeField]
+    public TMP_Text[] fingersBeingChosen;
+    public GameObject[] fingersBeingChosenPanels;
+
+    [SerializeField]
     public Button[] choosingSpellButtons;
+    public Button[] choosingFingerButtons;
 
     public SpellNames[] spellsChosen;
+    public PlayerFingers[] fingersChosen;
     public int amtOfSpells;
 
     public void Start()
@@ -59,6 +65,7 @@ public class TestStates : MonoBehaviour
             GameManager.Instance.amtOfSpellsBeingCast--;
             aOSC_text.text = "Amt of spells Chosen: " + GameManager.Instance.amtOfSpellsBeingCast.ToString();
             spellsChosen[whichChosenSpell] = SpellNames.none;
+            fingersChosen[whichChosenSpell] = PlayerFingers.none;
 
             if (whichChosenSpell == 0)
             {
@@ -67,11 +74,18 @@ public class TestStates : MonoBehaviour
                     spellsChosen[0] = spellsChosen[1];
                     spellsChosen[1] = spellsChosen[2];
                     spellsChosen[2] = SpellNames.none;
+
+                    fingersChosen[0] = fingersChosen[1];
+                    fingersChosen[1] = fingersChosen[2];
+                    fingersChosen[2] = PlayerFingers.none;
                 }
                 else if (spellsChosen[1] != SpellNames.none)
                 {
                     spellsChosen[0] = spellsChosen[1];
                     spellsChosen[1] = SpellNames.none;
+
+                    fingersChosen[0] = fingersChosen[1];
+                    fingersChosen[1] = PlayerFingers.none;
                 }
             }
             else if (whichChosenSpell == 1)
@@ -80,6 +94,9 @@ public class TestStates : MonoBehaviour
                 {
                     spellsChosen[1] = spellsChosen[2];
                     spellsChosen[2] = SpellNames.none;
+
+                    fingersChosen[1] = fingersChosen[2];
+                    fingersChosen[2] = PlayerFingers.none;
                 }
             }
         }
@@ -95,6 +112,60 @@ public class TestStates : MonoBehaviour
                     spellsChosen[i] = whatSpell.name;
                     break;
                 }
+            }
+
+            //Turns off Spell btns
+            foreach (Button button in choosingSpellButtons)
+            {
+                button.gameObject.SetActive(false);
+            }
+
+            bool firstFingerBtnCreated = false;
+
+            foreach (Button button in choosingFingerButtons)
+            {
+                button.gameObject.SetActive(true);
+
+                if (!firstFingerBtnCreated)
+                {
+                    firstFingerBtnCreated = true;
+                    button.Select();
+                }
+            }
+        }
+    }
+
+    public void choosingFinger(WhatFingerAmI whatFinger)
+    {
+        if (spellsChosen[1] == SpellNames.none && spellsChosen[2] == SpellNames.none)
+        {
+            fingersChosen[0] = whatFinger.fingerName;
+        }
+        else if (spellsChosen[2] == SpellNames.none)
+        {
+            fingersChosen[1] = whatFinger.fingerName;
+        }
+        else
+        {
+            fingersChosen[2] = whatFinger.fingerName;
+        }
+
+        //Turns off finger btns
+        foreach (Button button in choosingFingerButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+
+        bool firstSpellBtnCreated = false;
+
+        foreach (Button button in choosingSpellButtons)
+        {
+            button.gameObject.SetActive(true);
+
+            if (!firstSpellBtnCreated)
+            {
+                firstSpellBtnCreated = true;
+                button.Select();
             }
         }
     }
