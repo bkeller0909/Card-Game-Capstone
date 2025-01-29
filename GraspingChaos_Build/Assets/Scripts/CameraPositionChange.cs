@@ -48,7 +48,7 @@ public class CameraPositionChange : MonoBehaviour
         if (canInput)
         {
             //Get the player input for Up and Down and check if there is a camera position to go to
-            if (player.playerInput.actions["NavDown"].triggered && cameraIndex > 0)
+            if (player.playerInput.actions["CameraDown"].triggered && cameraIndex > 0)
             {
                 cameraIndex--;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
@@ -56,7 +56,7 @@ public class CameraPositionChange : MonoBehaviour
                 //Lock player input till move is complete
                 canInput = false;
             }
-            else if (player.playerInput.actions["NavUp"].triggered && cameraIndex < 2)
+            else if (player.playerInput.actions["CameraUp"].triggered && cameraIndex < 2)
             {
                 cameraIndex++;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
@@ -65,6 +65,12 @@ public class CameraPositionChange : MonoBehaviour
                 canInput = false;
             }
         }
+    }
+
+
+    public void callRoutine()
+    {
+        StartCoroutine(MoveCameratoNewPosition(4));
     }
 
     /// <summary>

@@ -31,9 +31,15 @@ public class CardHandSlot : MonoBehaviour
 
     private readonly int maxSelectedCards = 3;                      // can select up to three cards.
 
+    private InputHandler playerInput;
+    private bool cardNavPressed = false;
+
+    private CameraPositionChange camPosScript;
+    private bool finalPressed = false;
+
     private void Awake()
     {
-        if(cards.Count <= 0)
+        if (cards.Count <= 0)
         {
             InitializeCards();
         }
@@ -43,6 +49,8 @@ public class CardHandSlot : MonoBehaviour
     void Start()
     {
         player = gameObject.GetComponentInParent<PlayerManager>();
+        playerInput = gameObject.GetComponentInParent<InputHandler>();
+        camPosScript = player.gameObject.GetComponentInChildren<CameraPositionChange>();
 
         if (cards.Count > 0)
         {
@@ -60,7 +68,7 @@ public class CardHandSlot : MonoBehaviour
     {
         GameObject card = cardPrefab;
 
-        for(int i = 0; i < emptySlots.Length; i++)
+        for (int i = 0; i < emptySlots.Length; i++)
         {
             if (emptySlots[i] == true)
             {
@@ -74,17 +82,50 @@ public class CardHandSlot : MonoBehaviour
 
     private void CardControls()
     {
-        if (player.playerInput.actions["NavCardRight"].triggered)
+        if (playerInput.cardMoveRight)
         {
-            MoveSelection(1);
+            if (!cardNavPressed)
+            {
+                cardNavPressed = true;
+                MoveSelection(1);
+            }
         }
-        else if (player.playerInput.actions["NavCardLeft"].triggered)
+        else if (playerInput.cardMoveLeft)
         {
-            MoveSelection(-1);
+            if (!cardNavPressed)
+            {
+                cardNavPressed = true;
+                MoveSelection(-1);
+            }
         }
+        else
+        {
+            cardNavPressed = false;
+        }
+
+        if (playerInput.finishSelection)
+        {
+            if (selectedCards.Count > 0)
+            {
+                if (!finalPressed)
+                {
+                    finalPressed = true;
+                    player.playerInput.SwitchCurrentActionMap("QTE");
+                }
+            }
+        }
+        else
+        {
+            finalPressed = false;
+        }
+
+
         if (player.playerInput.actions["Select"].triggered)
         {
             SetSelectedCard();
+            player.playerInput.SwitchCurrentActionMap("Player");
+            //camPosScript.callRoutine();
+            //StartCoroutine(camPosScript.MoveCameratoNewPosition(4));
             RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
         }
         if (player.playerInput.actions["Pause"].triggered)

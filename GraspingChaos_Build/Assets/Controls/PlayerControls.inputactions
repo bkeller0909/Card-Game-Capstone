@@ -24,8 +24,8 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "NavigateFingerLeft",
-                    "type": "Button",
+                    "name": "FingerLeft",
+                    "type": "PassThrough",
                     "id": "23ca8a23-c3f2-4108-b862-ab74ec3a7b26",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -33,8 +33,8 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "NavigateFingerRight",
-                    "type": "Button",
+                    "name": "FingerRight",
+                    "type": "PassThrough",
                     "id": "4905f20d-9850-4556-bdbb-459c86a23920",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -51,8 +51,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Deselect",
-                    "type": "Button",
+                    "name": "DebugHealth",
+                    "type": "PassThrough",
                     "id": "4a146562-77fe-4804-9d9e-9ad294970083",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -60,8 +60,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Select",
-                    "type": "Button",
+                    "name": "DebugDamage",
+                    "type": "PassThrough",
                     "id": "a19647d5-ad39-46ae-8644-3c2b6f22e7f5",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -69,8 +69,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Swap Player Hands",
-                    "type": "Button",
+                    "name": "DebugHandSwap",
+                    "type": "PassThrough",
                     "id": "941744c0-fa64-47b3-9a45-5e8713eb7747",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -117,7 +117,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Deselect",
+                    "action": "DebugHealth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -128,7 +128,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Select",
+                    "action": "DebugDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -139,7 +139,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "DebugDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -216,7 +216,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Swap Player Hands",
+                    "action": "DebugHandSwap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -227,7 +227,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NavigateFingerLeft",
+                    "action": "FingerLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -238,7 +238,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "NavigateFingerLeft",
+                    "action": "FingerLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -249,7 +249,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "NavigateFingerLeft",
+                    "action": "FingerLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +260,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "NavigateFingerRight",
+                    "action": "FingerRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -271,7 +271,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "NavigateFingerRight",
+                    "action": "FingerRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,7 +282,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "NavigateFingerRight",
+                    "action": "FingerRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -518,7 +518,7 @@
             "actions": [
                 {
                     "name": "North",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "65dddba1-7d64-4b46-957f-f675994d211e",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -527,7 +527,7 @@
                 },
                 {
                     "name": "South",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "15509ad1-4c26-4a45-b324-2a3c8cf7a09f",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -536,7 +536,7 @@
                 },
                 {
                     "name": "East",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "5311653b-c272-4ecb-8831-160984249618",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -545,7 +545,7 @@
                 },
                 {
                     "name": "West",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "bcc7165a-27b9-4aed-9827-321e3a227816",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -553,8 +553,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DPad Up",
-                    "type": "Button",
+                    "name": "DPadUp",
+                    "type": "PassThrough",
                     "id": "d966bf5a-a3b9-4bc3-ad0a-99814ce473b4",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -562,8 +562,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dpad Down",
-                    "type": "Button",
+                    "name": "DPadDown",
+                    "type": "PassThrough",
                     "id": "baa302ea-41d5-4bdd-8943-77cd8fc0bab7",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -571,8 +571,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DPad Left",
-                    "type": "Button",
+                    "name": "DPadLeft",
+                    "type": "PassThrough",
                     "id": "51d78d06-fb10-4ded-a7e7-b6f0872ca7c2",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -580,8 +580,8 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DPad Right",
-                    "type": "Button",
+                    "name": "DPadRight",
+                    "type": "PassThrough",
                     "id": "681f615c-707b-4d9c-9dd2-8e3713adcc14",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -793,7 +793,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DPad Up",
+                    "action": "DPadUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -804,7 +804,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "DPad Up",
+                    "action": "DPadUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -815,7 +815,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Dpad Down",
+                    "action": "DPadDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -826,7 +826,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dpad Down",
+                    "action": "DPadDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -837,7 +837,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DPad Left",
+                    "action": "DPadLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -848,7 +848,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DPad Left",
+                    "action": "DPadLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -859,7 +859,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DPad Right",
+                    "action": "DPadRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -870,7 +870,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DPad Right",
+                    "action": "DPadRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1013,9 +1013,18 @@
             "id": "57d2df53-2581-4f41-a44d-603402ed5ebc",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Deselect",
                     "type": "Button",
-                    "id": "d4d86e43-fed8-4430-910b-936ba88545cc",
+                    "id": "b6ce535f-4e61-4efe-8601-07b3beb25429",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "e9f11fe7-7bb9-4885-b8e2-1c896be1f815",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1023,7 +1032,7 @@
                 },
                 {
                     "name": "NavCardLeft",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "ee8fbd1e-e676-4acc-8fbc-f357059195de",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -1032,7 +1041,7 @@
                 },
                 {
                     "name": "NavCardRight",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "1c414d8d-cd80-4686-9f3f-ed973d994587",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -1056,20 +1065,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SetFinal",
+                    "type": "PassThrough",
+                    "id": "fb9f5e7c-dcac-49aa-9bc0-8feed6a5d567",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "aa10cd26-3f71-4e33-999e-878c04a89cf9",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "5f3f031b-5959-441b-a187-2a834831aaa6",
@@ -1199,6 +1206,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "CameraDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9592d9ca-c6a6-45a4-bb21-341511a18ecf",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2929a0f4-9ded-4c5e-969b-a290abacbe86",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d16f49e-84c7-4f05-82dd-f992a3511281",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Deselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02814ff1-58ed-40a3-8dac-9ab60599a1df",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SetFinal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

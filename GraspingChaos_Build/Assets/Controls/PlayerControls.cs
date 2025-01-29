@@ -46,8 +46,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""NavigateFingerLeft"",
-                    ""type"": ""Button"",
+                    ""name"": ""FingerLeft"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""23ca8a23-c3f2-4108-b862-ab74ec3a7b26"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -55,8 +55,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""NavigateFingerRight"",
-                    ""type"": ""Button"",
+                    ""name"": ""FingerRight"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""4905f20d-9850-4556-bdbb-459c86a23920"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -73,8 +73,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Deselect"",
-                    ""type"": ""Button"",
+                    ""name"": ""DebugHealth"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""4a146562-77fe-4804-9d9e-9ad294970083"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -82,8 +82,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select"",
-                    ""type"": ""Button"",
+                    ""name"": ""DebugDamage"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""a19647d5-ad39-46ae-8644-3c2b6f22e7f5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -91,8 +91,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Swap Player Hands"",
-                    ""type"": ""Button"",
+                    ""name"": ""DebugHandSwap"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""941744c0-fa64-47b3-9a45-5e8713eb7747"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -139,7 +139,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Deselect"",
+                    ""action"": ""DebugHealth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -150,7 +150,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Select"",
+                    ""action"": ""DebugDamage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -161,7 +161,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""DebugDamage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -238,7 +238,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Swap Player Hands"",
+                    ""action"": ""DebugHandSwap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -249,7 +249,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NavigateFingerLeft"",
+                    ""action"": ""FingerLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -260,7 +260,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""NavigateFingerLeft"",
+                    ""action"": ""FingerLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -271,7 +271,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""NavigateFingerLeft"",
+                    ""action"": ""FingerLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -282,7 +282,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""NavigateFingerRight"",
+                    ""action"": ""FingerRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -293,7 +293,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""NavigateFingerRight"",
+                    ""action"": ""FingerRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -304,7 +304,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""NavigateFingerRight"",
+                    ""action"": ""FingerRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -540,7 +540,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""North"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""65dddba1-7d64-4b46-957f-f675994d211e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -549,7 +549,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""South"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""15509ad1-4c26-4a45-b324-2a3c8cf7a09f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -558,7 +558,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""East"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""5311653b-c272-4ecb-8831-160984249618"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -567,7 +567,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""West"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""bcc7165a-27b9-4aed-9827-321e3a227816"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -575,8 +575,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DPad Up"",
-                    ""type"": ""Button"",
+                    ""name"": ""DPadUp"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""d966bf5a-a3b9-4bc3-ad0a-99814ce473b4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -584,8 +584,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dpad Down"",
-                    ""type"": ""Button"",
+                    ""name"": ""DPadDown"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""baa302ea-41d5-4bdd-8943-77cd8fc0bab7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -593,8 +593,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DPad Left"",
-                    ""type"": ""Button"",
+                    ""name"": ""DPadLeft"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""51d78d06-fb10-4ded-a7e7-b6f0872ca7c2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -602,8 +602,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DPad Right"",
-                    ""type"": ""Button"",
+                    ""name"": ""DPadRight"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""681f615c-707b-4d9c-9dd2-8e3713adcc14"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -815,7 +815,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""DPad Up"",
+                    ""action"": ""DPadUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -826,7 +826,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""DPad Up"",
+                    ""action"": ""DPadUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -837,7 +837,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Dpad Down"",
+                    ""action"": ""DPadDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -848,7 +848,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dpad Down"",
+                    ""action"": ""DPadDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -859,7 +859,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""DPad Left"",
+                    ""action"": ""DPadLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -870,7 +870,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DPad Left"",
+                    ""action"": ""DPadLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -881,7 +881,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""DPad Right"",
+                    ""action"": ""DPadRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -892,7 +892,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DPad Right"",
+                    ""action"": ""DPadRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1035,9 +1035,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""57d2df53-2581-4f41-a44d-603402ed5ebc"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Deselect"",
                     ""type"": ""Button"",
-                    ""id"": ""d4d86e43-fed8-4430-910b-936ba88545cc"",
+                    ""id"": ""b6ce535f-4e61-4efe-8601-07b3beb25429"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9f11fe7-7bb9-4885-b8e2-1c896be1f815"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1045,7 +1054,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""NavCardLeft"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""ee8fbd1e-e676-4acc-8fbc-f357059195de"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1054,7 +1063,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""NavCardRight"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""1c414d8d-cd80-4686-9f3f-ed973d994587"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1078,20 +1087,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SetFinal"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fb9f5e7c-dcac-49aa-9bc0-8feed6a5d567"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""aa10cd26-3f71-4e33-999e-878c04a89cf9"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""5f3f031b-5959-441b-a187-2a834831aaa6"",
@@ -1223,6 +1230,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""CameraDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9592d9ca-c6a6-45a4-bb21-341511a18ecf"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2929a0f4-9ded-4c5e-969b-a290abacbe86"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d16f49e-84c7-4f05-82dd-f992a3511281"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Deselect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02814ff1-58ed-40a3-8dac-9ab60599a1df"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SetFinal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1294,12 +1345,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_CameraUp = m_Player.FindAction("CameraUp", throwIfNotFound: true);
         m_Player_CameraDown = m_Player.FindAction("CameraDown", throwIfNotFound: true);
-        m_Player_NavigateFingerLeft = m_Player.FindAction("NavigateFingerLeft", throwIfNotFound: true);
-        m_Player_NavigateFingerRight = m_Player.FindAction("NavigateFingerRight", throwIfNotFound: true);
+        m_Player_FingerLeft = m_Player.FindAction("FingerLeft", throwIfNotFound: true);
+        m_Player_FingerRight = m_Player.FindAction("FingerRight", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_Deselect = m_Player.FindAction("Deselect", throwIfNotFound: true);
-        m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
-        m_Player_SwapPlayerHands = m_Player.FindAction("Swap Player Hands", throwIfNotFound: true);
+        m_Player_DebugHealth = m_Player.FindAction("DebugHealth", throwIfNotFound: true);
+        m_Player_DebugDamage = m_Player.FindAction("DebugDamage", throwIfNotFound: true);
+        m_Player_DebugHandSwap = m_Player.FindAction("DebugHandSwap", throwIfNotFound: true);
         m_Player_PlayCards = m_Player.FindAction("PlayCards", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1311,10 +1362,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_QTE_South = m_QTE.FindAction("South", throwIfNotFound: true);
         m_QTE_East = m_QTE.FindAction("East", throwIfNotFound: true);
         m_QTE_West = m_QTE.FindAction("West", throwIfNotFound: true);
-        m_QTE_DPadUp = m_QTE.FindAction("DPad Up", throwIfNotFound: true);
-        m_QTE_DpadDown = m_QTE.FindAction("Dpad Down", throwIfNotFound: true);
-        m_QTE_DPadLeft = m_QTE.FindAction("DPad Left", throwIfNotFound: true);
-        m_QTE_DPadRight = m_QTE.FindAction("DPad Right", throwIfNotFound: true);
+        m_QTE_DPadUp = m_QTE.FindAction("DPadUp", throwIfNotFound: true);
+        m_QTE_DPadDown = m_QTE.FindAction("DPadDown", throwIfNotFound: true);
+        m_QTE_DPadLeft = m_QTE.FindAction("DPadLeft", throwIfNotFound: true);
+        m_QTE_DPadRight = m_QTE.FindAction("DPadRight", throwIfNotFound: true);
         m_QTE_LSUp = m_QTE.FindAction("LS Up", throwIfNotFound: true);
         m_QTE_LSDown = m_QTE.FindAction("LS Down", throwIfNotFound: true);
         m_QTE_LSLeft = m_QTE.FindAction("LS Left", throwIfNotFound: true);
@@ -1329,11 +1380,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_QTE_LT = m_QTE.FindAction("LT", throwIfNotFound: true);
         // Card
         m_Card = asset.FindActionMap("Card", throwIfNotFound: true);
-        m_Card_Newaction = m_Card.FindAction("New action", throwIfNotFound: true);
+        m_Card_Deselect = m_Card.FindAction("Deselect", throwIfNotFound: true);
+        m_Card_Select = m_Card.FindAction("Select", throwIfNotFound: true);
         m_Card_NavCardLeft = m_Card.FindAction("NavCardLeft", throwIfNotFound: true);
         m_Card_NavCardRight = m_Card.FindAction("NavCardRight", throwIfNotFound: true);
         m_Card_CameraUp = m_Card.FindAction("CameraUp", throwIfNotFound: true);
         m_Card_CameraDown = m_Card.FindAction("CameraDown", throwIfNotFound: true);
+        m_Card_SetFinal = m_Card.FindAction("SetFinal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1397,12 +1450,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_CameraUp;
     private readonly InputAction m_Player_CameraDown;
-    private readonly InputAction m_Player_NavigateFingerLeft;
-    private readonly InputAction m_Player_NavigateFingerRight;
+    private readonly InputAction m_Player_FingerLeft;
+    private readonly InputAction m_Player_FingerRight;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_Deselect;
-    private readonly InputAction m_Player_Select;
-    private readonly InputAction m_Player_SwapPlayerHands;
+    private readonly InputAction m_Player_DebugHealth;
+    private readonly InputAction m_Player_DebugDamage;
+    private readonly InputAction m_Player_DebugHandSwap;
     private readonly InputAction m_Player_PlayCards;
     public struct PlayerActions
     {
@@ -1410,12 +1463,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @CameraUp => m_Wrapper.m_Player_CameraUp;
         public InputAction @CameraDown => m_Wrapper.m_Player_CameraDown;
-        public InputAction @NavigateFingerLeft => m_Wrapper.m_Player_NavigateFingerLeft;
-        public InputAction @NavigateFingerRight => m_Wrapper.m_Player_NavigateFingerRight;
+        public InputAction @FingerLeft => m_Wrapper.m_Player_FingerLeft;
+        public InputAction @FingerRight => m_Wrapper.m_Player_FingerRight;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @Deselect => m_Wrapper.m_Player_Deselect;
-        public InputAction @Select => m_Wrapper.m_Player_Select;
-        public InputAction @SwapPlayerHands => m_Wrapper.m_Player_SwapPlayerHands;
+        public InputAction @DebugHealth => m_Wrapper.m_Player_DebugHealth;
+        public InputAction @DebugDamage => m_Wrapper.m_Player_DebugDamage;
+        public InputAction @DebugHandSwap => m_Wrapper.m_Player_DebugHandSwap;
         public InputAction @PlayCards => m_Wrapper.m_Player_PlayCards;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -1432,24 +1485,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraDown.started += instance.OnCameraDown;
             @CameraDown.performed += instance.OnCameraDown;
             @CameraDown.canceled += instance.OnCameraDown;
-            @NavigateFingerLeft.started += instance.OnNavigateFingerLeft;
-            @NavigateFingerLeft.performed += instance.OnNavigateFingerLeft;
-            @NavigateFingerLeft.canceled += instance.OnNavigateFingerLeft;
-            @NavigateFingerRight.started += instance.OnNavigateFingerRight;
-            @NavigateFingerRight.performed += instance.OnNavigateFingerRight;
-            @NavigateFingerRight.canceled += instance.OnNavigateFingerRight;
+            @FingerLeft.started += instance.OnFingerLeft;
+            @FingerLeft.performed += instance.OnFingerLeft;
+            @FingerLeft.canceled += instance.OnFingerLeft;
+            @FingerRight.started += instance.OnFingerRight;
+            @FingerRight.performed += instance.OnFingerRight;
+            @FingerRight.canceled += instance.OnFingerRight;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Deselect.started += instance.OnDeselect;
-            @Deselect.performed += instance.OnDeselect;
-            @Deselect.canceled += instance.OnDeselect;
-            @Select.started += instance.OnSelect;
-            @Select.performed += instance.OnSelect;
-            @Select.canceled += instance.OnSelect;
-            @SwapPlayerHands.started += instance.OnSwapPlayerHands;
-            @SwapPlayerHands.performed += instance.OnSwapPlayerHands;
-            @SwapPlayerHands.canceled += instance.OnSwapPlayerHands;
+            @DebugHealth.started += instance.OnDebugHealth;
+            @DebugHealth.performed += instance.OnDebugHealth;
+            @DebugHealth.canceled += instance.OnDebugHealth;
+            @DebugDamage.started += instance.OnDebugDamage;
+            @DebugDamage.performed += instance.OnDebugDamage;
+            @DebugDamage.canceled += instance.OnDebugDamage;
+            @DebugHandSwap.started += instance.OnDebugHandSwap;
+            @DebugHandSwap.performed += instance.OnDebugHandSwap;
+            @DebugHandSwap.canceled += instance.OnDebugHandSwap;
             @PlayCards.started += instance.OnPlayCards;
             @PlayCards.performed += instance.OnPlayCards;
             @PlayCards.canceled += instance.OnPlayCards;
@@ -1463,24 +1516,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraDown.started -= instance.OnCameraDown;
             @CameraDown.performed -= instance.OnCameraDown;
             @CameraDown.canceled -= instance.OnCameraDown;
-            @NavigateFingerLeft.started -= instance.OnNavigateFingerLeft;
-            @NavigateFingerLeft.performed -= instance.OnNavigateFingerLeft;
-            @NavigateFingerLeft.canceled -= instance.OnNavigateFingerLeft;
-            @NavigateFingerRight.started -= instance.OnNavigateFingerRight;
-            @NavigateFingerRight.performed -= instance.OnNavigateFingerRight;
-            @NavigateFingerRight.canceled -= instance.OnNavigateFingerRight;
+            @FingerLeft.started -= instance.OnFingerLeft;
+            @FingerLeft.performed -= instance.OnFingerLeft;
+            @FingerLeft.canceled -= instance.OnFingerLeft;
+            @FingerRight.started -= instance.OnFingerRight;
+            @FingerRight.performed -= instance.OnFingerRight;
+            @FingerRight.canceled -= instance.OnFingerRight;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Deselect.started -= instance.OnDeselect;
-            @Deselect.performed -= instance.OnDeselect;
-            @Deselect.canceled -= instance.OnDeselect;
-            @Select.started -= instance.OnSelect;
-            @Select.performed -= instance.OnSelect;
-            @Select.canceled -= instance.OnSelect;
-            @SwapPlayerHands.started -= instance.OnSwapPlayerHands;
-            @SwapPlayerHands.performed -= instance.OnSwapPlayerHands;
-            @SwapPlayerHands.canceled -= instance.OnSwapPlayerHands;
+            @DebugHealth.started -= instance.OnDebugHealth;
+            @DebugHealth.performed -= instance.OnDebugHealth;
+            @DebugHealth.canceled -= instance.OnDebugHealth;
+            @DebugDamage.started -= instance.OnDebugDamage;
+            @DebugDamage.performed -= instance.OnDebugDamage;
+            @DebugDamage.canceled -= instance.OnDebugDamage;
+            @DebugHandSwap.started -= instance.OnDebugHandSwap;
+            @DebugHandSwap.performed -= instance.OnDebugHandSwap;
+            @DebugHandSwap.canceled -= instance.OnDebugHandSwap;
             @PlayCards.started -= instance.OnPlayCards;
             @PlayCards.performed -= instance.OnPlayCards;
             @PlayCards.canceled -= instance.OnPlayCards;
@@ -1564,7 +1617,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_QTE_East;
     private readonly InputAction m_QTE_West;
     private readonly InputAction m_QTE_DPadUp;
-    private readonly InputAction m_QTE_DpadDown;
+    private readonly InputAction m_QTE_DPadDown;
     private readonly InputAction m_QTE_DPadLeft;
     private readonly InputAction m_QTE_DPadRight;
     private readonly InputAction m_QTE_LSUp;
@@ -1588,7 +1641,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @East => m_Wrapper.m_QTE_East;
         public InputAction @West => m_Wrapper.m_QTE_West;
         public InputAction @DPadUp => m_Wrapper.m_QTE_DPadUp;
-        public InputAction @DpadDown => m_Wrapper.m_QTE_DpadDown;
+        public InputAction @DPadDown => m_Wrapper.m_QTE_DPadDown;
         public InputAction @DPadLeft => m_Wrapper.m_QTE_DPadLeft;
         public InputAction @DPadRight => m_Wrapper.m_QTE_DPadRight;
         public InputAction @LSUp => m_Wrapper.m_QTE_LSUp;
@@ -1627,9 +1680,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DPadUp.started += instance.OnDPadUp;
             @DPadUp.performed += instance.OnDPadUp;
             @DPadUp.canceled += instance.OnDPadUp;
-            @DpadDown.started += instance.OnDpadDown;
-            @DpadDown.performed += instance.OnDpadDown;
-            @DpadDown.canceled += instance.OnDpadDown;
+            @DPadDown.started += instance.OnDPadDown;
+            @DPadDown.performed += instance.OnDPadDown;
+            @DPadDown.canceled += instance.OnDPadDown;
             @DPadLeft.started += instance.OnDPadLeft;
             @DPadLeft.performed += instance.OnDPadLeft;
             @DPadLeft.canceled += instance.OnDPadLeft;
@@ -1691,9 +1744,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DPadUp.started -= instance.OnDPadUp;
             @DPadUp.performed -= instance.OnDPadUp;
             @DPadUp.canceled -= instance.OnDPadUp;
-            @DpadDown.started -= instance.OnDpadDown;
-            @DpadDown.performed -= instance.OnDpadDown;
-            @DpadDown.canceled -= instance.OnDpadDown;
+            @DPadDown.started -= instance.OnDPadDown;
+            @DPadDown.performed -= instance.OnDPadDown;
+            @DPadDown.canceled -= instance.OnDPadDown;
             @DPadLeft.started -= instance.OnDPadLeft;
             @DPadLeft.performed -= instance.OnDPadLeft;
             @DPadLeft.canceled -= instance.OnDPadLeft;
@@ -1757,20 +1810,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Card
     private readonly InputActionMap m_Card;
     private List<ICardActions> m_CardActionsCallbackInterfaces = new List<ICardActions>();
-    private readonly InputAction m_Card_Newaction;
+    private readonly InputAction m_Card_Deselect;
+    private readonly InputAction m_Card_Select;
     private readonly InputAction m_Card_NavCardLeft;
     private readonly InputAction m_Card_NavCardRight;
     private readonly InputAction m_Card_CameraUp;
     private readonly InputAction m_Card_CameraDown;
+    private readonly InputAction m_Card_SetFinal;
     public struct CardActions
     {
         private @PlayerControls m_Wrapper;
         public CardActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Card_Newaction;
+        public InputAction @Deselect => m_Wrapper.m_Card_Deselect;
+        public InputAction @Select => m_Wrapper.m_Card_Select;
         public InputAction @NavCardLeft => m_Wrapper.m_Card_NavCardLeft;
         public InputAction @NavCardRight => m_Wrapper.m_Card_NavCardRight;
         public InputAction @CameraUp => m_Wrapper.m_Card_CameraUp;
         public InputAction @CameraDown => m_Wrapper.m_Card_CameraDown;
+        public InputAction @SetFinal => m_Wrapper.m_Card_SetFinal;
         public InputActionMap Get() { return m_Wrapper.m_Card; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1780,9 +1837,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CardActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CardActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Deselect.started += instance.OnDeselect;
+            @Deselect.performed += instance.OnDeselect;
+            @Deselect.canceled += instance.OnDeselect;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
             @NavCardLeft.started += instance.OnNavCardLeft;
             @NavCardLeft.performed += instance.OnNavCardLeft;
             @NavCardLeft.canceled += instance.OnNavCardLeft;
@@ -1795,13 +1855,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraDown.started += instance.OnCameraDown;
             @CameraDown.performed += instance.OnCameraDown;
             @CameraDown.canceled += instance.OnCameraDown;
+            @SetFinal.started += instance.OnSetFinal;
+            @SetFinal.performed += instance.OnSetFinal;
+            @SetFinal.canceled += instance.OnSetFinal;
         }
 
         private void UnregisterCallbacks(ICardActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Deselect.started -= instance.OnDeselect;
+            @Deselect.performed -= instance.OnDeselect;
+            @Deselect.canceled -= instance.OnDeselect;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
             @NavCardLeft.started -= instance.OnNavCardLeft;
             @NavCardLeft.performed -= instance.OnNavCardLeft;
             @NavCardLeft.canceled -= instance.OnNavCardLeft;
@@ -1814,6 +1880,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraDown.started -= instance.OnCameraDown;
             @CameraDown.performed -= instance.OnCameraDown;
             @CameraDown.canceled -= instance.OnCameraDown;
+            @SetFinal.started -= instance.OnSetFinal;
+            @SetFinal.performed -= instance.OnSetFinal;
+            @SetFinal.canceled -= instance.OnSetFinal;
         }
 
         public void RemoveCallbacks(ICardActions instance)
@@ -1880,12 +1949,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnCameraUp(InputAction.CallbackContext context);
         void OnCameraDown(InputAction.CallbackContext context);
-        void OnNavigateFingerLeft(InputAction.CallbackContext context);
-        void OnNavigateFingerRight(InputAction.CallbackContext context);
+        void OnFingerLeft(InputAction.CallbackContext context);
+        void OnFingerRight(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnDeselect(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
-        void OnSwapPlayerHands(InputAction.CallbackContext context);
+        void OnDebugHealth(InputAction.CallbackContext context);
+        void OnDebugDamage(InputAction.CallbackContext context);
+        void OnDebugHandSwap(InputAction.CallbackContext context);
         void OnPlayCards(InputAction.CallbackContext context);
     }
     public interface IUIActions
@@ -1900,7 +1969,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnEast(InputAction.CallbackContext context);
         void OnWest(InputAction.CallbackContext context);
         void OnDPadUp(InputAction.CallbackContext context);
-        void OnDpadDown(InputAction.CallbackContext context);
+        void OnDPadDown(InputAction.CallbackContext context);
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadRight(InputAction.CallbackContext context);
         void OnLSUp(InputAction.CallbackContext context);
@@ -1918,10 +1987,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     }
     public interface ICardActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnDeselect(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
         void OnNavCardLeft(InputAction.CallbackContext context);
         void OnNavCardRight(InputAction.CallbackContext context);
         void OnCameraUp(InputAction.CallbackContext context);
         void OnCameraDown(InputAction.CallbackContext context);
+        void OnSetFinal(InputAction.CallbackContext context);
     }
 }
