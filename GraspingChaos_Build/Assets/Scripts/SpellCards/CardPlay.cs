@@ -29,11 +29,12 @@ public class CardPlay : MonoBehaviour
     /// </summary>
     public void PlayCards()
     {
-        for (int i = 0; i < cardHandSlot.selectedCards.Count; i++)
+        for (int i = 0; i < cardHandSlot.cards.Count; i++)
         {
             if (cardHandSlot.cards[i].isSelected == true)
             {
                 cardHandSlot.cards.Remove(cardHandSlot.cards[i]);
+                cardHandSlot.emptySlots[i] = true;
             }
             StartCoroutine(MoveCard(cardHandSlot.selectedCards[i].gameObject, cardHandSlot.selectedCards[i].transform.position, playSlots[i].position));
         }

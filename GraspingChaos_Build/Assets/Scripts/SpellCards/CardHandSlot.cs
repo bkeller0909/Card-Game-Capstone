@@ -123,8 +123,8 @@ public class CardHandSlot : MonoBehaviour
     /// <param name="cardIndex">Index of the card to hover.</param>
     public void SetHoveredCard(int cardIndex)
     {
-        // Remove hover effect from the previously hovered card.
-        if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count)
+        // Remove hover effect from the previously hovered card if it's not selected.
+        if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
             cards[currentHoverIndex].OffHoverCard();
         }
@@ -132,8 +132,8 @@ public class CardHandSlot : MonoBehaviour
         // Update the current hover index.
         currentHoverIndex = cardIndex;
 
-        // Apply hover effect to the new card.
-        if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count)
+        // Apply hover effect to the new card if it's not selected.
+        if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
             cards[currentHoverIndex].OnHoverCard();
         }
