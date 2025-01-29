@@ -18,18 +18,16 @@ public class CardHandSlot : MonoBehaviour
     [SerializeField] private GameObject cardPrefab;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
-    public List<CardSelect> cards = new List<CardSelect>();         // array for the cards to keep track of what is being hovered and selected.
+    public List<CardSelect> cards = new List<CardSelect>();         // List to keep track of cards in the hand.
     [Tooltip("List for cards when they are selected. Keep EMPTY in editor.")]
-    public List<CardSelect> selectedCards = new List<CardSelect>(); // for the cards that are selected.
+    public List<CardSelect> selectedCards = new List<CardSelect>(); // List for selected cards.
     [Tooltip("Slot positions for the cards.")]
-    public Transform[] cardSlots;                                   // slot positions for each card
+    public Transform[] cardSlots;                                   // Slot positions for each card.
     [Tooltip("Determines if a slot is empty. TRUE in editor.")]
-    public bool[] emptySlots;                                       // bool for the slot position being empty
+    public bool[] emptySlots;                                       // Bool for the slot position being empty.
 
-    public CardSelect LastHoveredCard { get; set; }
-    public int LastHoveredCardIndex { get; set; }
-
-    private readonly int maxSelectedCards = 3;                      // can select up to three cards.
+    private int currentHoverIndex = 0;                              // Index of the currently hovered card.
+    private readonly int maxSelectedCards = 3;                      // Maximum number of cards that can be selected.
 
     private InputHandler playerInput;
     private bool cardNavPressed = false;
@@ -45,8 +43,7 @@ public class CardHandSlot : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         player = gameObject.GetComponentInParent<PlayerManager>();
         playerInput = gameObject.GetComponentInParent<InputHandler>();
@@ -54,26 +51,22 @@ public class CardHandSlot : MonoBehaviour
 
         if (cards.Count > 0)
         {
-            SetHoveredCard(0);
+            SetHoveredCard(currentHoverIndex); // Initialize hover on the first card.
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CardControls();
     }
 
     public void InitializeCards()
     {
-        GameObject card = cardPrefab;
-
         for (int i = 0; i < emptySlots.Length; i++)
         {
-            if (emptySlots[i] == true)
+            if (emptySlots[i])
             {
-                Instantiate(card);
-                card.transform.position = cardSlots[i].position;
+                GameObject card = Instantiate(cardPrefab, cardSlots[i].position, Quaternion.identity);
                 cards.Add(card.GetComponent<CardSelect>());
                 emptySlots[i] = false;
             }
@@ -82,52 +75,42 @@ public class CardHandSlot : MonoBehaviour
 
     private void CardControls()
     {
-        if (playerInput.cardMoveRight)
+        // Handle card navigation (left/right).
+        if (playerInput.cardMoveRight && !cardNavPressed)
         {
-            if (!cardNavPressed)
-            {
-                cardNavPressed = true;
-                MoveSelection(1);
-            }
+            cardNavPressed = true;
+            MoveSelection(1);
         }
-        else if (playerInput.cardMoveLeft)
+        else if (playerInput.cardMoveLeft && !cardNavPressed)
         {
-            if (!cardNavPressed)
-            {
-                cardNavPressed = true;
-                MoveSelection(-1);
-            }
+            cardNavPressed = true;
+            MoveSelection(-1);
         }
-        else
+        else if (!playerInput.cardMoveRight && !playerInput.cardMoveLeft)
         {
             cardNavPressed = false;
         }
 
-        if (playerInput.finishSelection)
+        // Handle final selection (e.g., confirm selected cards).
+        if (playerInput.finishSelection && selectedCards.Count > 0 && !finalPressed)
         {
-            if (selectedCards.Count > 0)
-            {
-                if (!finalPressed)
-                {
-                    finalPressed = true;
-                    player.playerInput.SwitchCurrentActionMap("QTE");
-                }
-            }
+            finalPressed = true;
+            player.playerInput.SwitchCurrentActionMap("QTE");
         }
-        else
+        else if (!playerInput.finishSelection)
         {
             finalPressed = false;
         }
 
-
+        // Handle card selection/deselection.
         if (player.playerInput.actions["Select"].triggered)
         {
-            SetSelectedCard();
+            ToggleSelectedCard();
             player.playerInput.SwitchCurrentActionMap("Player");
-            //camPosScript.callRoutine();
-            //StartCoroutine(camPosScript.MoveCameratoNewPosition(4));
             RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
         }
+
+        // Handle pause input.
         if (player.playerInput.actions["Pause"].triggered)
         {
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
@@ -135,28 +118,25 @@ public class CardHandSlot : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds the effect to indicate the card is hovered.
+    /// Sets the hovered card based on the provided index.
     /// </summary>
-    /// <param name="cardIndex">Index of the card that is hovered.</param>
+    /// <param name="cardIndex">Index of the card to hover.</param>
     public void SetHoveredCard(int cardIndex)
     {
-        // remove hover effect from the hovered card if it's not selected
-        if (LastHoveredCard != null && !selectedCards.Contains(LastHoveredCard))
+        // Remove hover effect from the previously hovered card.
+        if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count)
         {
-            LastHoveredCard.OffHoverCard();
+            cards[currentHoverIndex].OffHoverCard();
         }
 
-        // update index to the new card that is hovered
-        LastHoveredCardIndex = cardIndex;
-        LastHoveredCard = cards[cardIndex];
+        // Update the current hover index.
+        currentHoverIndex = cardIndex;
 
-        // use hover effect if the card is not selected
-        if (!selectedCards.Contains(LastHoveredCard))
+        // Apply hover effect to the new card.
+        if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count)
         {
-            LastHoveredCard.OnHoverCard();
+            cards[currentHoverIndex].OnHoverCard();
         }
-
-        Debug.Log(LastHoveredCard + " " + LastHoveredCardIndex);
     }
 
     /// <summary>
@@ -165,41 +145,38 @@ public class CardHandSlot : MonoBehaviour
     /// <param name="selectDirection">Direction to move through the hand of cards (-1 for left, 1 for right).</param>
     public void MoveSelection(int selectDirection)
     {
-        int newCardIndex = Mathf.Clamp(LastHoveredCardIndex + selectDirection, 0, cards.Count - 1);
+        int newCardIndex = Mathf.Clamp(currentHoverIndex + selectDirection, 0, cards.Count - 1);
 
-        if (newCardIndex != LastHoveredCardIndex)
+        if (newCardIndex != currentHoverIndex)
         {
             SetHoveredCard(newCardIndex);
         }
     }
 
     /// <summary>
-    /// Toggles the state of the card.
+    /// Toggles the selected state of the currently hovered card.
     /// </summary>
-    private void SetSelectedCard()
+    private void ToggleSelectedCard()
     {
-        if (LastHoveredCard == null)
+        if (currentHoverIndex < 0 || currentHoverIndex >= cards.Count)
         {
             return;
         }
 
-        if (selectedCards.Contains(LastHoveredCard))
+        CardSelect card = cards[currentHoverIndex];
+
+        if (selectedCards.Contains(card))
         {
-            // deselect the card if it's already selected
-            // add the hover effect back
-            selectedCards.Remove(LastHoveredCard);
-            LastHoveredCard.DeselectCard();
-            LastHoveredCard.OnHoverCard();
+            // Deselect the card if it's already selected.
+            selectedCards.Remove(card);
+            card.DeselectCard();
+            card.OnHoverCard(); // Reapply hover effect after deselecting.
         }
-        else
+        else if (selectedCards.Count < maxSelectedCards)
         {
-            // select the card if it's not already selected
-            // can only have total of 3 cards selected at a time
-            if (selectedCards.Count < maxSelectedCards)
-            {
-                selectedCards.Add(LastHoveredCard);
-                LastHoveredCard.SelectCard();
-            }
+            // Select the card if it's not already selected and the max selection limit hasn't been reached.
+            selectedCards.Add(card);
+            card.SelectCard();
         }
     }
 }

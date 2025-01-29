@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CardPlay : MonoBehaviour
 {
-    private PlayerManager player;
+    private InputHandler playerInput;
     private CardHandSlot cardHandSlot;
 
     public Transform[] playSlots;
@@ -11,14 +11,14 @@ public class CardPlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponentInParent<PlayerManager>();
+        playerInput = GetComponentInParent<InputHandler>();
         cardHandSlot = GetComponent<CardHandSlot>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.playerInput.actions["PlayCards"].triggered)
+        if (playerInput.finishSelection)
         {
             PlayCards();
         }
