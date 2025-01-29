@@ -19,6 +19,7 @@ public class InputHandler : MonoBehaviour
     public bool DownBtn = false;
     public bool LeftBtn = false;
     public bool RightBtn = false;
+    public bool debugQTE = false;
 
     //player
     public void OnFingerLeft(InputValue value)
@@ -107,6 +108,11 @@ public class InputHandler : MonoBehaviour
     public void OnDPadUp(InputValue value)
     {
         UpBtn = value.isPressed;
+    }
+
+    public void OnDebugTriggerQTE(InputValue value)
+    {
+        debugQTE = value.isPressed;
     }
 
 }

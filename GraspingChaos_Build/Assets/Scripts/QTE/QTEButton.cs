@@ -30,6 +30,10 @@ public class QTEButton : MonoBehaviour
     [Tooltip("Assigned value for identifiyng the button")]
     public KeyCode AssignedBTN;
 
+
+    [SerializeField] private InputHandler playerInput;
+    bool wasPressed = false;
+
     private void Awake()
     {
         //set the proper action map on awake as a precuasing, might not be working 100% of time, requires further testing with action maps
@@ -46,93 +50,98 @@ public class QTEButton : MonoBehaviour
     void Update()
     {
         //check function for possible input
+         //BTNCheck();
+
         if (IsActionPressed())
         {
+
+            BTNCheck();
+
             //verify the input matches the button
-            if (BTNCheck() == playerQTE.playerInput.actions["South"] && AssignedBTN == KeyCode.A)
-            {
-                //set the value of the button to pressed and if the input was correct set it to correct
-                pressed = true;
-                correctPress = true;
-                //visual representation of correct value
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["North"] && AssignedBTN == KeyCode.Y)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["East"] && AssignedBTN == KeyCode.B)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["West"] && AssignedBTN == KeyCode.X)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Down"] && AssignedBTN == KeyCode.DownArrow)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Up"] && AssignedBTN == KeyCode.UpArrow)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Left"] && AssignedBTN == KeyCode.LeftArrow)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else if (BTNCheck() == playerQTE.playerInput.actions["DPad Right"] && AssignedBTN == KeyCode.RightArrow)
-            {
-                pressed = true;
-                correctPress = true;
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-            }
-            else
-            {
-                //set the value of the button to pressed and if the input was incorrect set it to incorrect
-                pressed = true;
-                correctPress = false;
-                gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                //visual representation of correct value
-                gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                {
-                    //visual representation of incorrect value
-                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                }
-            }
+            //if (BTNCheck() == playerQTE.playerInput.actions["South"] && AssignedBTN == KeyCode.A)
+            //{
+            //    //set the value of the button to pressed and if the input was correct set it to correct
+            //    pressed = true;
+            //    correctPress = true;
+            //    //visual representation of correct value
+            //    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["North"] && AssignedBTN == KeyCode.Y)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["East"] && AssignedBTN == KeyCode.B)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["West"] && AssignedBTN == KeyCode.X)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["DPadDown"] && AssignedBTN == KeyCode.DownArrow)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["DPadUp"] && AssignedBTN == KeyCode.UpArrow)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["DPadLeft"] && AssignedBTN == KeyCode.LeftArrow)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else if (BTNCheck() == playerQTE.playerInput.actions["DPadRight"] && AssignedBTN == KeyCode.RightArrow)
+            //{
+            //    pressed = true;
+            //    correctPress = true;
+            //    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+            //}
+            //else
+            //{
+            //    //set the value of the button to pressed and if the input was incorrect set it to incorrect
+            //    pressed = true;
+            //    correctPress = false;
+            //    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //    //visual representation of correct value
+            //    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+            //    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+            //    {
+            //        //visual representation of incorrect value
+            //        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            //        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            //        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+            //        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+            //    }
+            //}
         }
     }
 
@@ -145,8 +154,8 @@ public class QTEButton : MonoBehaviour
     {
         //checks to see if any of the inputs made are the possible QTE input options, if so return true
         if (playerQTE.playerInput.actions["South"].triggered || playerQTE.playerInput.actions["East"].triggered || playerQTE.playerInput.actions["West"].triggered
-            || playerQTE.playerInput.actions["North"].triggered || playerQTE.playerInput.actions["DPad Down"].triggered || playerQTE.playerInput.actions["DPad Up"].triggered
-            || playerQTE.playerInput.actions["DPad Left"].triggered || playerQTE.playerInput.actions["DPad Right"].triggered)
+            || playerQTE.playerInput.actions["North"].triggered || playerQTE.playerInput.actions["DPadDown"].triggered || playerQTE.playerInput.actions["DPadUp"].triggered
+            || playerQTE.playerInput.actions["DPadLeft"].triggered || playerQTE.playerInput.actions["DPadRight"].triggered)
         {
             return true;
         }
@@ -154,49 +163,309 @@ public class QTEButton : MonoBehaviour
         return false;
     }
 
-
-
     /// <summary>
     /// This Function exists to check and return the correct input the player pressed, that way we can properly identify the QTE Button
     /// It is called in update when checking for the input confirmation so that the QTE manager has the right info about each button.
     /// </summary>
-    private InputAction BTNCheck()
+    private void BTNCheck()
     {
-        //the if checks verify the button pressed
-        if (playerQTE.playerInput.actions["South"].triggered)
+        ////the if checks verify the button pressed
+        //if (playerQTE.playerInput.actions["South"].triggered)
+        //{
+        //    //and the return in turn returns the proper button
+        //    return playerQTE.playerInput.actions["South"];
+        //}
+        //else if (playerQTE.playerInput.actions["East"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["East"];
+        //}
+        //else if (playerQTE.playerInput.actions["West"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["West"];
+        //}
+        //else if (playerQTE.playerInput.actions["North"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["North"];
+        //}
+        //else if (playerQTE.playerInput.actions["DPadDown"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["DPadDown"];
+        //}
+        //else if (playerQTE.playerInput.actions["DPadUp"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["DPadUp"];
+        //}
+        //else if (playerQTE.playerInput.actions["DPadLeft"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["DPadLeft"];
+        //}
+        //else if (playerQTE.playerInput.actions["DPadRight"].triggered)
+        //{
+        //    return playerQTE.playerInput.actions["DPadRight"];
+        //}
+
+
+        if(playerInput.Abtn)
         {
-            //and the return in turn returns the proper button
-            return playerQTE.playerInput.actions["South"];
+            if(!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.A)
+                {
+                    Debug.Log("A");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["East"].triggered)
+        else if(playerInput.Bbtn)
         {
-            return playerQTE.playerInput.actions["East"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.B)
+                {
+                    Debug.Log("B");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["West"].triggered)
+        else if (playerInput.Xbtn)
         {
-            return playerQTE.playerInput.actions["West"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.X)
+                {
+                    Debug.Log("X");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["North"].triggered)
+        else if (playerInput.Ybtn)
         {
-            return playerQTE.playerInput.actions["North"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.Y)
+                {
+                    Debug.Log("Y");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["DPad Down"].triggered)
+        else if (playerInput.DownBtn)
         {
-            return playerQTE.playerInput.actions["DPad Down"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.DownArrow)
+                {
+                    Debug.Log("DOWN");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["DPad Up"].triggered)
+        else if (playerInput.UpBtn)
         {
-            return playerQTE.playerInput.actions["DPad Up"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.UpArrow)
+                {
+                    Debug.Log("UP");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["DPad Left"].triggered)
+        else if (playerInput.LeftBtn)
         {
-            return playerQTE.playerInput.actions["DPad Left"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.LeftArrow)
+                {
+                    Debug.Log("LEFT");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
         }
-        else if (playerQTE.playerInput.actions["DPad Right"].triggered)
+        else if (playerInput.RightBtn)
         {
-            return playerQTE.playerInput.actions["DPad Right"];
+            if (!wasPressed)
+            {
+                wasPressed = true;
+                if (AssignedBTN == KeyCode.RightArrow)
+                {
+                    Debug.Log("RIGHT");
+                    pressed = true;
+                    correctPress = true;
+                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                }
+                else
+                {
+                    Debug.Log("nel bro");
+                    pressed = true;
+                    correctPress = false;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    {
+                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
+                    }
+                }
+            }
+        }
+        else
+        {
+            wasPressed = false;
         }
         //if nothing was pressed then the input returns as null
-        return null;
+
     }
 }

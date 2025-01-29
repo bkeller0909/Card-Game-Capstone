@@ -67,6 +67,10 @@ public class QTEHandler : MonoBehaviour
     //everything bellow 50% is low, everything below 100% is mid, everyting 100% is full
     //everything bellow 50% is low, above 50% is mid (completed if there is only 2 options)
 
+    private InputHandler playerInput;
+    private bool qteInput = false;
+
+
     private void Start()
     {
         //start the timer at false
@@ -77,6 +81,7 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = -1;
         //set the amount of qte pressed correctly to 0 since you havent yet done a qte
         QTECounter = 0;
+        playerInput = gameObject.GetComponentInParent<InputHandler>();
     }
 
     /// <summary>
@@ -99,8 +104,21 @@ public class QTEHandler : MonoBehaviour
             {
                 remainingTime = 0;
                 startTimer = false;
-                DisableQTEButtonsTimer();
+                //DisableQTEButtonsTimer();
             }
+        }
+
+        if (playerInput.debugQTE)
+        {
+            if (!qteInput)
+            {
+                qteInput = true;
+                Create(7, gameObject.GetComponent<PlayerManager>());
+            }
+        }
+        else
+        {
+            qteInput = false;
         }
 
         //function that checks the values of each QTE Button on the sequence to determine which is currently active (more info in the function)
