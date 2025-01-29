@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113710050}
   - component: {fileID: 113710049}
+  - component: {fileID: 113710051}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -305,6 +306,7 @@ MonoBehaviour:
   timerQTE: 5
   amtOfSpellsBeingCast: 0
   nextTestState: 0
+  spellsBeingCast: []
   testingCurrentP1: 1
 --- !u!4 &113710050
 Transform:
@@ -321,6 +323,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113710051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113710048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ae6d2c39787764f9e258032299a20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmtOfCards: 27
+  spellCards: []
 --- !u!1 &237244001
 GameObject:
   m_ObjectHideFlags: 0

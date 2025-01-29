@@ -1,5 +1,16 @@
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  OG Author:    Wyatt
+//  Title:        Active Spell Cards
+//  Date Created: 01/28/2025
+//  Purpose:      This holds every spellcard, with each of the base stats assigned
+//  Instance?     Yes
+//-----------------------------------------------------------------
+
+/// <summary>
+/// This holds every spellcard, with each of the base stats assigned
+/// </summary>
 public class ActiveSpellCards : MonoBehaviour
 {
     private static ActiveSpellCards instance;
@@ -45,6 +56,7 @@ public class ActiveSpellCards : MonoBehaviour
             switch (i)
             {
                 case 0:
+                    // spell.name = "FireBolt";
                     spell.spellName = SpellNames.FireBolt;
                     spell.type = SpellType.ATTACK;
                     spell.targetSelf = false;
@@ -334,7 +346,7 @@ public class ActiveSpellCards : MonoBehaviour
                     spellCards[i] = spell;
                     break;
                 case 17:
-                    spell.spellName = SpellNames.TheGreenThumb;
+                    spell.spellName = SpellNames.GreenThumb;
                     spell.type = SpellType.RESTORATION;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
@@ -386,16 +398,16 @@ public class ActiveSpellCards : MonoBehaviour
                     break;
                 ////////////////////////////////////////////////////////////////////Start here
                 case 20:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
-                    spell.targetSelf = false;
-                    spell.TargetRandomFinger = false;
+                    spell.spellName = SpellNames.ThornsOfAgony;
+                    spell.type = SpellType.RING;
+                    spell.targetSelf = true;
+                    spell.TargetRandomFinger = true;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 2;
                     spell.manaGain = -100;
                     spell.damageValue = 1;
                     spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.lengthAmount = 5;
                     spell.amtQTEOutcomes = 2;
                     spell.qteAmount = 5;
                     spell.qteMidCheck = spell.qteAmount / 2;
@@ -403,16 +415,16 @@ public class ActiveSpellCards : MonoBehaviour
                     spellCards[i] = spell;
                     break;
                 case 21:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
-                    spell.targetSelf = false;
+                    spell.spellName = SpellNames.GuardiansTouch;
+                    spell.type = SpellType.RING;
+                    spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 2;
                     spell.manaGain = -100;
-                    spell.damageValue = 1;
+                    spell.damageValue = -100;
                     spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.lengthAmount = 3;
                     spell.amtQTEOutcomes = 2;
                     spell.qteAmount = 5;
                     spell.qteMidCheck = spell.qteAmount / 2;
@@ -420,33 +432,33 @@ public class ActiveSpellCards : MonoBehaviour
                     spellCards[i] = spell;
                     break;
                 case 22:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
+                    spell.spellName = SpellNames.SpectralChain;
+                    spell.type = SpellType.RING;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 2;
                     spell.manaGain = -100;
-                    spell.damageValue = 1;
+                    spell.damageValue = -100;
                     spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.lengthAmount = 3;
                     spell.amtQTEOutcomes = 2;
-                    spell.qteAmount = 5;
+                    spell.qteAmount = 4;
                     spell.qteMidCheck = spell.qteAmount / 2;
 
                     spellCards[i] = spell;
                     break;
                 case 23:
-                    spell.spellName = SpellNames.FireBolt;
+                    spell.spellName = SpellNames.ManaMerchant;
                     spell.type = SpellType.ATTACK;
-                    spell.targetSelf = false;
+                    spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
-                    spell.manaGain = -100;
-                    spell.damageValue = 1;
+                    spell.manaCost = 3;
+                    spell.manaGain = 1;
+                    spell.damageValue = -100;
                     spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.lengthAmount = 8;
                     spell.amtQTEOutcomes = 2;
                     spell.qteAmount = 5;
                     spell.qteMidCheck = spell.qteAmount / 2;
@@ -454,33 +466,33 @@ public class ActiveSpellCards : MonoBehaviour
                     spellCards[i] = spell;
                     break;
                 case 24:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
-                    spell.targetSelf = false;
+                    spell.spellName = SpellNames.VengefulMirror;
+                    spell.type = SpellType.RING;
+                    spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 3;
                     spell.manaGain = -100;
                     spell.damageValue = 1;
                     spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.lengthAmount = 3;
                     spell.amtQTEOutcomes = 2;
-                    spell.qteAmount = 5;
+                    spell.qteAmount = 8;
                     spell.qteMidCheck = spell.qteAmount / 2;
 
                     spellCards[i] = spell;
                     break;
                 case 25:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
+                    spell.spellName = SpellNames.VampiricSurge;
+                    spell.type = SpellType.RING;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 5;
                     spell.manaGain = -100;
-                    spell.damageValue = 1;
-                    spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.damageValue = -100;
+                    spell.healValue = 1;
+                    spell.lengthAmount = 3;
                     spell.amtQTEOutcomes = 2;
                     spell.qteAmount = 5;
                     spell.qteMidCheck = spell.qteAmount / 2;
@@ -488,35 +500,18 @@ public class ActiveSpellCards : MonoBehaviour
                     spellCards[i] = spell;
                     break;
                 case 26:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
-                    spell.targetSelf = false;
+                    spell.spellName = SpellNames.VeilOfFortitude;
+                    spell.type = SpellType.RING;
+                    spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 5;
                     spell.manaGain = -100;
-                    spell.damageValue = 1;
+                    spell.damageValue = -100;
                     spell.healValue = -100;
-                    spell.lengthAmount = -100;
+                    spell.lengthAmount = 3;
                     spell.amtQTEOutcomes = 2;
-                    spell.qteAmount = 5;
-                    spell.qteMidCheck = spell.qteAmount / 2;
-
-                    spellCards[i] = spell;
-                    break;
-                case 27:
-                    spell.spellName = SpellNames.FireBolt;
-                    spell.type = SpellType.ATTACK;
-                    spell.targetSelf = false;
-                    spell.TargetRandomFinger = false;
-                    spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
-                    spell.manaGain = -100;
-                    spell.damageValue = 1;
-                    spell.healValue = -100;
-                    spell.lengthAmount = -100;
-                    spell.amtQTEOutcomes = 2;
-                    spell.qteAmount = 5;
+                    spell.qteAmount = 8;
                     spell.qteMidCheck = spell.qteAmount / 2;
 
                     spellCards[i] = spell;

@@ -56,9 +56,9 @@ public enum QTEButtonType
 
 public enum SpellNames
 {
-    none = 0,
+    none = -1,
     //Attack Spells
-    FireBolt = 1,
+    FireBolt = 0,
     Rockthrow,
     RighteousEnvy,
     LefteousEnvy,
@@ -76,7 +76,7 @@ public enum SpellNames
     ThumbsUp,
     LifeDrain,
     CursedConversion,
-    TheGreenThumb,
+    GreenThumb,
     Materialise,
     EchoingMana,
     //Ring Spells

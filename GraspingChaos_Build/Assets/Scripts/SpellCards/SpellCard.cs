@@ -12,6 +12,7 @@ using UnityEngine;
 /// </summary>
 public class SpellCard : MonoBehaviour
 {
+
     //temp
     public GameObject p1;
     public GameObject p2;
