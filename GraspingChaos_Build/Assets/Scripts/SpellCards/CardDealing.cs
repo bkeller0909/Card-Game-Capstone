@@ -24,497 +24,281 @@ public class CardDealing : MonoBehaviour
     {
         int cardChance = Random.Range(0, 100);
 
-        // Player mana is 1 or 2
+        // Player mana is 1 or 2 (can only get manaCost 1 cards)
         if (player.Mana == 1 || player.Mana == 2)
         {
-            if (card.manaCost == 1) // Card cost is 1
+            if (card.manaCost == 1)
             {
                 return card;
             }
         }
 
         // Player mana is 3
-        if (player.Mana == 3)
+        else if (player.Mana == 3)
         {
-            if (card.manaCost == 1) // Card cost is 1
+            if (card.manaCost == 1 && cardChance >= 1 && cardChance <= 30)
             {
-                switch (cardChance)
-                {
-                    case 1 - 30:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 2) // Card cost is 2
+            if (card.manaCost == 2 && cardChance >= 31 && cardChance <= 75)
             {
-                switch (cardChance)
-                {
-                    case 31 - 75:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 76 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 76 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 4
-        if (player.Mana == 4)
+        else if (player.Mana == 4)
         {
-            if (card.manaCost == 1) // Card cost is 1
+            if (card.manaCost == 1 && cardChance >= 1 && cardChance <= 15)
             {
-                switch (cardChance)
-                {
-                    case 1 - 15:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 2) // Card cost is 2
+            if (card.manaCost == 2 && cardChance >= 16 && cardChance <= 50)
             {
-                switch (cardChance)
-                {
-                    case 16 - 50:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 51 && cardChance <= 80)
             {
-                switch (cardChance)
-                {
-                    case 51 - 80:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 81 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 81 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
-        // Player Mana is 5
-        if (player.Mana == 5)
+        // Player mana is 5
+        else if (player.Mana == 5)
         {
-            if (card.manaCost == 1) // Card cost is 1
+            if (card.manaCost == 1 && cardChance >= 1 && cardChance <= 5)
             {
-                switch (cardChance)
-                {
-                    case 1 - 5:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 2) // Card cost is 2
+            if (card.manaCost == 2 && cardChance >= 6 && cardChance <= 25)
             {
-                switch (cardChance)
-                {
-                    case 6 - 25:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 26 && cardChance <= 60)
             {
-                switch (cardChance)
-                {
-                    case 26 - 60:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 61 && cardChance <= 70)
             {
-                switch (cardChance)
-                {
-                    case 61 - 70:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 71 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 71 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 6
-        if (player.Mana == 6)
+        else if (player.Mana == 6)
         {
-            if (card.manaCost == 2) // Card cost is 2
+            if (card.manaCost == 2 && cardChance >= 1 && cardChance <= 20)
             {
-                switch (cardChance)
-                {
-                    case 1 - 20:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 21 && cardChance <= 35)
             {
-                switch (cardChance)
-                {
-                    case 21 - 35:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 36 && cardChance <= 45)
             {
-                switch (cardChance)
-                {
-                    case 36 - 45:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 46 && cardChance <= 75)
             {
-                switch (cardChance)
-                {
-                    case 46 - 75:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 6 && cardChance >= 76 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 76 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 7
-        if (player.Mana == 7)
+        else if (player.Mana == 7)
         {
-            if (card.manaCost == 2) // Card cost is 2
+            if (card.manaCost == 2 && cardChance >= 1 && cardChance <= 15)
             {
-                switch (cardChance)
-                {
-                    case 1 - 15:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 16 && cardChance <= 25)
             {
-                switch (cardChance)
-                {
-                    case 16 - 25:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 26 && cardChance <= 35)
             {
-                switch (cardChance)
-                {
-                    case 26 - 35:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 36 && cardChance <= 60)
             {
-                switch (cardChance)
-                {
-                    case 36 - 60:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 6 && cardChance >= 61 && cardChance <= 90)
             {
-                switch (cardChance)
-                {
-                    case 61 - 90:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 7) // Card cost is 7
+            if (card.manaCost == 7 && cardChance >= 91 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 91 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 8
-        if (player.Mana == 8)
+        else if (player.Mana == 8)
         {
-            if (card.manaCost == 2) // Card cost is 2
+            if (card.manaCost == 2 && cardChance >= 1 && cardChance <= 8)
             {
-                switch (cardChance)
-                {
-                    case 1 - 8:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 9 && cardChance <= 12)
             {
-                switch (cardChance)
-                {
-                    case 9 - 12:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 13 && cardChance <= 14)
             {
-                switch (cardChance)
-                {
-                    case 13 - 14:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 15 && cardChance <= 42)
             {
-                switch (cardChance)
-                {
-                    case 15 - 42:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 6 && cardChance >= 43 && cardChance <= 70)
             {
-                switch (cardChance)
-                {
-                    case 42 - 70:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 7) // Card cost is 7
+            if (card.manaCost == 7 && cardChance >= 71 && cardChance <= 90)
             {
-                switch (cardChance)
-                {
-                    case 71 - 90:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 8) // Card cost is 8
+            if (card.manaCost == 8 && cardChance >= 91 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 91 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
-
         // Player mana is 9
-        if (player.Mana == 9)
+        else if (player.Mana == 9)
         {
-            if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 1 && cardChance <= 8)
             {
-                switch (cardChance)
-                {
-                    case 1 - 8:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 9 && cardChance <= 10)
             {
-                switch (cardChance)
-                {
-                    case 9 - 10:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 11 && cardChance <= 32)
             {
-                switch (cardChance)
-                {
-                    case 11 - 32:
-                        return card;
-                }
+                return card;
+            }    
+            if (card.manaCost == 6 && cardChance >= 33 && cardChance <= 54)
+            {
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 7 && cardChance >= 55 && cardChance <= 75)
             {
-                switch (cardChance)
-                {
-                    case 33 - 54:
-                        return card;
-                }
+               return card;
             }
-            else if (card.manaCost == 7) // Card cost is 7
+            if (card.manaCost == 8 && cardChance >= 76 && cardChance <= 90)
             {
-                switch (cardChance)
-                {
-                    case 55 - 75:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 8) // Card cost is 8
+            if (card.manaCost == 9 && cardChance >= 91 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 76 - 90:
-                        return card;
-                }
-            }
-            else if (card.manaCost == 9) // Card cost is 9
-            {
-                switch (cardChance)
-                {
-                    case 91 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 10
-        if (player.Mana == 10)
+        else if (player.Mana == 10)
         {
-            if (card.manaCost == 3) // Card cost is 3
+            if (card.manaCost == 3 && cardChance >= 1 && cardChance <= 8)
             {
-                switch (cardChance)
-                {
-                    case 1 - 8:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 4) // Card cost is 4
+            if (card.manaCost == 4 && cardChance >= 9 && cardChance <= 10)
             {
-                switch (cardChance)
-                {
-                    case 9 - 10:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 11 && cardChance <= 30)
             {
-                switch (cardChance)
-                {
-                    case 11 - 30:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 6 && cardChance >= 31 && cardChance <= 50)
             {
-                switch (cardChance)
-                {
-                    case 31 - 50:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 7) // Card cost is 7
+            if (card.manaCost == 7 && cardChance >= 51 && cardChance <= 70)
             {
-                switch (cardChance)
-                {
-                    case 51 - 70:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 8) // Card cost is 8
+            if (card.manaCost == 8 && cardChance >= 71 && cardChance <= 90)
             {
-                switch (cardChance)
-                {
-                    case 71 - 90:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 9) // Card cost is 9
+            if (card.manaCost == 9 && cardChance >= 91 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 91 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 11
-        if (player.Mana == 11)
+        else if (player.Mana == 11)
         {
-            if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 1 && cardChance <= 5)
             {
-                switch (cardChance)
-                {
-                    case 1 - 5:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 6 && cardChance >= 6 && cardChance <= 25)
             {
-                switch (cardChance)
-                {
-                    case 6 - 25:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 7) // Card cost is 7
+            if (card.manaCost == 7 && cardChance >= 26 && cardChance <= 50)
             {
-                switch (cardChance)
-                {
-                    case 26 - 50:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 8) // Card cost is 8
+            if (card.manaCost == 8 && cardChance >= 51 && cardChance <= 75)
             {
-                switch (cardChance)
-                {
-                    case 51 - 75:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 9) // Card cost is 9
+            if (card.manaCost == 9 && cardChance >= 76 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 76 - 100:
-                        return card;
-                }
+                return card;
             }
         }
 
         // Player mana is 12
-        if (player.Mana == 12)
+        else if (player.Mana == 12)
         {
-            if (card.manaCost == 5) // Card cost is 5
+            if (card.manaCost == 5 && cardChance >= 1 && cardChance <= 5)
             {
-                switch (cardChance)
-                {
-                    case 1 - 5:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 6) // Card cost is 6
+            if (card.manaCost == 6 && cardChance >= 6 && cardChance <= 15)
             {
-                switch (cardChance)
-                {
-                    case 6 - 15:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 7) // Card cost is 7
+            if (card.manaCost == 7 && cardChance >= 16 && cardChance <= 40)
             {
-                switch (cardChance)
-                {
-                    case 16 - 40:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 8) // Card cost is 8
+            if (card.manaCost == 8 && cardChance >= 41 && cardChance <= 70)
             {
-                switch (cardChance)
-                {
-                    case 41 - 70:
-                        return card;
-                }
+                return card;
             }
-            else if (card.manaCost == 9) // Card cost is 9
+            if (card.manaCost == 9 && cardChance >= 71 && cardChance <= 100)
             {
-                switch (cardChance)
-                {
-                    case 71 - 100:
-                        return card;
-                }
+                return card;
             }
         }
-        return card;
+
+        return null; // no card selected
     }
 }
