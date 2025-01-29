@@ -17,8 +17,10 @@ public class SpellCard : MonoBehaviour
     public GameObject p2;
 
     //General
-    public string spellName;
+    public SpellNames spellName;
     public bool targetSelf;
+    public bool TargetRandomFinger;
+    public int amtOfFingers;
 
     //Mana
     public int manaCost;
@@ -34,9 +36,9 @@ public class SpellCard : MonoBehaviour
     public int lengthAmount;
 
     //QTE (Quick Time Event)
+    public int amtQTEOutcomes;
     public int qteAmount;
     public int qteMidCheck;
-    public int qteLowCheck;
 
     //Type of Spell (global spell type enum)
     public SpellType type;

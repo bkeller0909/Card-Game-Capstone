@@ -49,8 +49,33 @@ public class ChoosingSpellsState : FSMState
 
             for (int i = 0; i < testStates.spellsBeingCast.Length; i++)
             {
+                if (testStates.spellsChosen[i] != SpellNames.none)
+                {
+                    //Moving each spell that is beings casted info over to the GameManager to move to the desicion state
+                    SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
+                    spellInfo.whoIsCasting = playerState.player;
+                    spellInfo.whatSpellName = testStates.spellsChosen[i];
+                    spellInfo.whatFinger = testStates.fingersChosen[i];
+
+                    if (testStates.spellsChosen[i] == SpellNames.FireBolt || testStates.spellsChosen[i] == SpellNames.Rockthrow || testStates.spellsChosen[i] == SpellNames.RighteousEnvy || testStates.spellsChosen[i] == SpellNames.LefteousEnvy || testStates.spellsChosen[i] == SpellNames.Icicles || testStates.spellsChosen[i] == SpellNames.CollectorsCurse
+                        || testStates.spellsChosen[i] == SpellNames.StaticBlast || testStates.spellsChosen[i] == SpellNames.Quake || testStates.spellsChosen[i] == SpellNames.RightingBolt ||
+                           testStates.spellsChosen[i] == SpellNames.LeftingBolt || testStates.spellsChosen[i] == SpellNames.TidalWave || testStates.spellsChosen[i] == SpellNames.PointerOfDeath
+                           || testStates.spellsChosen[i] == SpellNames.SpectralChain || testStates.spellsChosen[i] == SpellNames.SpectralChain)
+                    {
+                        spellInfo.whoIsBeingCastedOn = playerState.enemy;
+                    }
+                    else
+                    {
+                        spellInfo.whoIsBeingCastedOn = playerState.player;
+                    }
+
+                    GameManager.Instance.spellsBeingCast.Add(spellInfo);
+                }
+
                 testStates.spellsBeingCast[i].gameObject.SetActive(false);
                 testStates.spellsBeingChosenPanels[i].gameObject.SetActive(false);
+                testStates.fingersBeingChosenPanels[i].gameObject.SetActive(false);
+                testStates.fingersBeingChosen[i].gameObject.SetActive(false);
             }
 
             playerState.PerformTransition(Transition.NeedDecision);

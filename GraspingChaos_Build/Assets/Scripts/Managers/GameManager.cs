@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -102,6 +103,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is a test bool for moving to the next state")]
     public bool nextTestState = false;
 
+    public List<SpellsBeingCastInfo> spellsBeingCast;
+
+
     public bool testingCurrentP1 = true;
 
     private void Awake()
@@ -194,5 +198,10 @@ public class GameManager : MonoBehaviour
         loadingScreen.SetLoadingScreenActive(false);
 
         isLoading = false;
+    }
+
+    public void OrganizeSpellsBeingCast()
+    {
+
     }
 }

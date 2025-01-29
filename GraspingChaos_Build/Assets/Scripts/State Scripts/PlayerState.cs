@@ -1,7 +1,7 @@
 public class PlayerState : AdvancedFSM
 {
 
-    PlayerManager player, enemy;
+    public PlayerManager player, enemy;
     public bool finishedCurrentQTE;
     private string GetStateString()
     {
