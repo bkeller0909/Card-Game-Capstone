@@ -69,26 +69,25 @@ public class CameraPositionChange : MonoBehaviour
 
     public void GetInputForced(int currentCamera)
     {
-        if(canInput)
+        if (canInput)
         {
-            if(currentCamera == 0)
+            if (currentCamera == 0)
             {
                 StartCoroutine(MoveCameratoNewPosition(0));
+                cameraIndex = 0;
                 canInput = false;
             }
-            else if(currentCamera == 1)
+            else if (currentCamera == 1)
             {
                 StartCoroutine(MoveCameratoNewPosition(1));
+                cameraIndex = 1;
                 canInput = false;
             }
-            else if(currentCamera == 2)
+            else if (currentCamera == 2)
             {
                 StartCoroutine(MoveCameratoNewPosition(2));
+                cameraIndex = 2;
                 canInput = false;
-            }
-            else if(currentCamera == 4)
-            {
-                StartCoroutine(MoveCameratoNewPosition(4));
             }
         }
     }
