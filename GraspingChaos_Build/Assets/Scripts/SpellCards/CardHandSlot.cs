@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,6 +61,44 @@ public class CardHandSlot : MonoBehaviour
         CardControls();
     }
 
+    IEnumerator QTECountOne()
+    {
+        player.playerInput.SwitchCurrentActionMap("QTE");
+        playerInput.Xbtn = false;
+        yield return new WaitForSeconds(1f);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
+        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
+        playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
+    }
+
+    IEnumerator QTECountTwo()
+    {
+        player.playerInput.SwitchCurrentActionMap("QTE");
+        playerInput.Xbtn = false;
+        yield return new WaitForSeconds(1f);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
+        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(5, player);
+        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
+        playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
+    }
+
+    IEnumerator QTECountThree()
+    {
+        player.playerInput.SwitchCurrentActionMap("QTE");
+        playerInput.Xbtn = false;
+        yield return new WaitForSeconds(1f);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
+        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(5, player);
+        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(7, player);
+        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
+        playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
+    }
+
+
+
     public void InitializeCards()
     {
         for (int i = 0; i < emptySlots.Length; i++)
@@ -94,8 +133,26 @@ public class CardHandSlot : MonoBehaviour
         // Handle final selection (e.g., confirm selected cards).
         if (playerInput.finishSelection && selectedCards.Count > 0 && !finalPressed)
         {
+            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
             finalPressed = true;
-            player.playerInput.SwitchCurrentActionMap("QTE");
+            if(selectedCards.Count == 1)
+            {
+                playerInput.finishSelection = false;
+                playerInput.selectCard = false;
+                StartCoroutine(QTECountOne());
+            }
+            else if(selectedCards.Count == 2)
+            {
+                playerInput.finishSelection = false;
+                playerInput.selectCard = false;
+                StartCoroutine(QTECountTwo());
+            }
+            else if(selectedCards.Count == 3)
+            {
+                playerInput.finishSelection = false;
+                playerInput.selectCard = false;
+                StartCoroutine(QTECountThree());
+            }
         }
         else if (!playerInput.finishSelection)
         {
@@ -106,7 +163,6 @@ public class CardHandSlot : MonoBehaviour
         if (player.playerInput.actions["Select"].triggered)
         {
             ToggleSelectedCard();
-            player.playerInput.SwitchCurrentActionMap("Player");
             RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
         }
 
@@ -177,6 +233,8 @@ public class CardHandSlot : MonoBehaviour
             // Select the card if it's not already selected and the max selection limit hasn't been reached.
             selectedCards.Add(card);
             card.SelectCard();
+            player.playerInput.SwitchCurrentActionMap("Player");
+            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(2);
         }
     }
 }

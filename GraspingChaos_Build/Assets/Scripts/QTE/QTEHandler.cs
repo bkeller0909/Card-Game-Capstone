@@ -70,6 +70,8 @@ public class QTEHandler : MonoBehaviour
     private InputHandler playerInput;
     private bool qteInput = false;
 
+    public bool resetLoop = false;
+
 
     private void Start()
     {
@@ -89,6 +91,14 @@ public class QTEHandler : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if(resetLoop)
+        {
+            resetLoop = false;
+            playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
+            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
+        }
+
+
         //main loop of the QTE Handler
 
         //check if the timer has started
@@ -104,7 +114,7 @@ public class QTEHandler : MonoBehaviour
             {
                 remainingTime = 0;
                 startTimer = false;
-                //DisableQTEButtonsTimer();
+                DisableQTEButtonsTimer();
             }
         }
 
@@ -113,7 +123,8 @@ public class QTEHandler : MonoBehaviour
             if (!qteInput)
             {
                 qteInput = true;
-                Create(14, gameObject.GetComponent<PlayerManager>());
+                //Create(14, gameObject.GetComponent<PlayerManager>());
+                //playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
             }
         }
         else
@@ -341,7 +352,7 @@ public class QTEHandler : MonoBehaviour
             //set the index back to default
             createdBTNIndex = -1;
             //remove the buttons since the QTE Sequence has been completed
-            StartCoroutine(DisableQTEButtons());
+            //StartCoroutine(DisableQTEButtons());
         }
 
     }

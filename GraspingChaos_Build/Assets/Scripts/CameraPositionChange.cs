@@ -42,7 +42,7 @@ public class CameraPositionChange : MonoBehaviour
         GetInput();
     }
 
-    private void GetInput()
+    public void GetInput()
     {
         //Checks if the player can input
         if (canInput)
@@ -67,10 +67,52 @@ public class CameraPositionChange : MonoBehaviour
         }
     }
 
-
-    public void callRoutine()
+    public void GetInputForced(int currentCamera)
     {
-        StartCoroutine(MoveCameratoNewPosition(4));
+        if(canInput)
+        {
+            if(currentCamera == 0)
+            {
+                StartCoroutine(MoveCameratoNewPosition(0));
+                canInput = false;
+            }
+            else if(currentCamera == 1)
+            {
+                StartCoroutine(MoveCameratoNewPosition(1));
+                canInput = false;
+            }
+            else if(currentCamera == 2)
+            {
+                StartCoroutine(MoveCameratoNewPosition(2));
+                canInput = false;
+            }
+            else if(currentCamera == 4)
+            {
+                StartCoroutine(MoveCameratoNewPosition(4));
+            }
+        }
+    }
+
+
+    public void MoveToEnemy()
+    {
+        elapsedTime = 0.0f;
+        while (elapsedTime < lerpTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            //Set 2 different progressions for the position and rotation
+            float percentCompleteForPosition = elapsedTime / lerpTime;
+            float percentCompleteForRotation = (elapsedTime * 0.5f) / lerpTime;
+
+            //Rotate and Move the camera to the desired location
+            transform.position = Vector3.Lerp(transform.position, CamPos[3].position, percentCompleteForPosition);
+            transform.rotation = Quaternion.Lerp(transform.rotation, CamPos[3].rotation, percentCompleteForRotation);
+
+            //Reset the complete percent for next move
+            percentCompleteForPosition = 0;
+            percentCompleteForRotation = 0;
+        }
     }
 
     /// <summary>
