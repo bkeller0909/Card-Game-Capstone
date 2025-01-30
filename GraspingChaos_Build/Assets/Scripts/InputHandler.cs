@@ -20,6 +20,7 @@ public class InputHandler : MonoBehaviour
     public bool LeftBtn = false;
     public bool RightBtn = false;
     public bool debugQTE = false;
+    public bool selectCard = false;
 
     //player
     public void OnFingerLeft(InputValue value)
@@ -67,6 +68,12 @@ public class InputHandler : MonoBehaviour
     public void OnSetFinal(InputValue value)
     {
         finishSelection = value.isPressed;
+    }
+
+    //card
+    public void OnSelect(InputValue value)
+    {
+        selectCard = value.isPressed;
     }
 
     //qte

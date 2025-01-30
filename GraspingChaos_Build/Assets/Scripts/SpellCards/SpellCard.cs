@@ -81,7 +81,7 @@ public class SpellCard : MonoBehaviour
 
     private void Update()
     {
-        TestSpellReleaseQTE();
+        //TestSpellReleaseQTE();
     }
 
     IEnumerator testing()

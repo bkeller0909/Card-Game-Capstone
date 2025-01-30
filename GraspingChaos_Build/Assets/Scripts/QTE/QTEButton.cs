@@ -32,7 +32,7 @@ public class QTEButton : MonoBehaviour
 
 
     [SerializeField] private InputHandler playerInput;
-    bool wasPressed = false;
+    public bool wasPressed = false;
 
     private void Awake()
     {

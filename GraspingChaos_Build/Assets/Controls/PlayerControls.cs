@@ -107,15 +107,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""DebugTriggerQTE"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""29442938-aa00-4e31-9e5f-2fe4ea9095a9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -325,17 +316,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PlayCards"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9a3159cf-70e6-4a68-91f3-4271f16ce0d7"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""DebugTriggerQTE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -737,6 +717,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugTriggerQTE"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7f5426c0-3314-474a-bb24-d8a224e2c09a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1045,6 +1034,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""LT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80d05058-9068-4f6a-a393-11fd4c5f830a"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DebugTriggerQTE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1372,7 +1372,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_DebugDamage = m_Player.FindAction("DebugDamage", throwIfNotFound: true);
         m_Player_DebugHandSwap = m_Player.FindAction("DebugHandSwap", throwIfNotFound: true);
         m_Player_PlayCards = m_Player.FindAction("PlayCards", throwIfNotFound: true);
-        m_Player_DebugTriggerQTE = m_Player.FindAction("DebugTriggerQTE", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UI_Move = m_UI.FindAction("UI_Move", throwIfNotFound: true);
@@ -1399,6 +1398,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_QTE_LB = m_QTE.FindAction("LB", throwIfNotFound: true);
         m_QTE_RT = m_QTE.FindAction("RT", throwIfNotFound: true);
         m_QTE_LT = m_QTE.FindAction("LT", throwIfNotFound: true);
+        m_QTE_DebugTriggerQTE = m_QTE.FindAction("DebugTriggerQTE", throwIfNotFound: true);
         // Card
         m_Card = asset.FindActionMap("Card", throwIfNotFound: true);
         m_Card_Deselect = m_Card.FindAction("Deselect", throwIfNotFound: true);
@@ -1478,7 +1478,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_DebugDamage;
     private readonly InputAction m_Player_DebugHandSwap;
     private readonly InputAction m_Player_PlayCards;
-    private readonly InputAction m_Player_DebugTriggerQTE;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1492,7 +1491,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @DebugDamage => m_Wrapper.m_Player_DebugDamage;
         public InputAction @DebugHandSwap => m_Wrapper.m_Player_DebugHandSwap;
         public InputAction @PlayCards => m_Wrapper.m_Player_PlayCards;
-        public InputAction @DebugTriggerQTE => m_Wrapper.m_Player_DebugTriggerQTE;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1529,9 +1527,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PlayCards.started += instance.OnPlayCards;
             @PlayCards.performed += instance.OnPlayCards;
             @PlayCards.canceled += instance.OnPlayCards;
-            @DebugTriggerQTE.started += instance.OnDebugTriggerQTE;
-            @DebugTriggerQTE.performed += instance.OnDebugTriggerQTE;
-            @DebugTriggerQTE.canceled += instance.OnDebugTriggerQTE;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1563,9 +1558,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PlayCards.started -= instance.OnPlayCards;
             @PlayCards.performed -= instance.OnPlayCards;
             @PlayCards.canceled -= instance.OnPlayCards;
-            @DebugTriggerQTE.started -= instance.OnDebugTriggerQTE;
-            @DebugTriggerQTE.performed -= instance.OnDebugTriggerQTE;
-            @DebugTriggerQTE.canceled -= instance.OnDebugTriggerQTE;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1661,6 +1653,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_QTE_LB;
     private readonly InputAction m_QTE_RT;
     private readonly InputAction m_QTE_LT;
+    private readonly InputAction m_QTE_DebugTriggerQTE;
     public struct QTEActions
     {
         private @PlayerControls m_Wrapper;
@@ -1685,6 +1678,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @LB => m_Wrapper.m_QTE_LB;
         public InputAction @RT => m_Wrapper.m_QTE_RT;
         public InputAction @LT => m_Wrapper.m_QTE_LT;
+        public InputAction @DebugTriggerQTE => m_Wrapper.m_QTE_DebugTriggerQTE;
         public InputActionMap Get() { return m_Wrapper.m_QTE; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1754,6 +1748,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LT.started += instance.OnLT;
             @LT.performed += instance.OnLT;
             @LT.canceled += instance.OnLT;
+            @DebugTriggerQTE.started += instance.OnDebugTriggerQTE;
+            @DebugTriggerQTE.performed += instance.OnDebugTriggerQTE;
+            @DebugTriggerQTE.canceled += instance.OnDebugTriggerQTE;
         }
 
         private void UnregisterCallbacks(IQTEActions instance)
@@ -1818,6 +1815,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LT.started -= instance.OnLT;
             @LT.performed -= instance.OnLT;
             @LT.canceled -= instance.OnLT;
+            @DebugTriggerQTE.started -= instance.OnDebugTriggerQTE;
+            @DebugTriggerQTE.performed -= instance.OnDebugTriggerQTE;
+            @DebugTriggerQTE.canceled -= instance.OnDebugTriggerQTE;
         }
 
         public void RemoveCallbacks(IQTEActions instance)
@@ -1985,7 +1985,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDebugDamage(InputAction.CallbackContext context);
         void OnDebugHandSwap(InputAction.CallbackContext context);
         void OnPlayCards(InputAction.CallbackContext context);
-        void OnDebugTriggerQTE(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -2014,6 +2013,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
         void OnLT(InputAction.CallbackContext context);
+        void OnDebugTriggerQTE(InputAction.CallbackContext context);
     }
     public interface ICardActions
     {

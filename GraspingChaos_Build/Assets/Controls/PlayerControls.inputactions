@@ -85,15 +85,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "DebugTriggerQTE",
-                    "type": "PassThrough",
-                    "id": "29442938-aa00-4e31-9e5f-2fe4ea9095a9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -303,17 +294,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PlayCards",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a3159cf-70e6-4a68-91f3-4271f16ce0d7",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "DebugTriggerQTE",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -715,6 +695,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugTriggerQTE",
+                    "type": "PassThrough",
+                    "id": "7f5426c0-3314-474a-bb24-d8a224e2c09a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1023,6 +1012,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "LT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80d05058-9068-4f6a-a393-11fd4c5f830a",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DebugTriggerQTE",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

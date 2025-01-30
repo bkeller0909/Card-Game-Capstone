@@ -60,9 +60,9 @@ public class QTEHandler : MonoBehaviour
     [SerializeField] private TMP_Text qteCheck;
     [SerializeField] private TMP_Text qteCheckPercent;
     //debug value for making the direction sprites be the same size
-    private Vector3 dirScale = new Vector3(0.1278096f, 0.1278096f, 0.1278096f);
+    private Vector3 dirScale = new Vector3(0.02f, 0.02f, 0.02f);
     //debug value for making the button sprites be the same size
-    private Vector3 btnScale = new Vector3(0.1782163f, 0.1782163f, 0.1782163f);
+    private Vector3 btnScale = new Vector3(0.03f, 0.03f, 0.03f);
 
     //everything bellow 50% is low, everything below 100% is mid, everyting 100% is full
     //everything bellow 50% is low, above 50% is mid (completed if there is only 2 options)
@@ -113,7 +113,7 @@ public class QTEHandler : MonoBehaviour
             if (!qteInput)
             {
                 qteInput = true;
-                Create(7, gameObject.GetComponent<PlayerManager>());
+                Create(14, gameObject.GetComponent<PlayerManager>());
             }
         }
         else
@@ -125,10 +125,10 @@ public class QTEHandler : MonoBehaviour
         CheckAvailability();
 
         //debug string value for cehcking correct amount of QTE
-        qteCheck.text = QTECounter.ToString();
+        //qteCheck.text = QTECounter.ToString();
 
         //function that checks the percentage of correct QTE for the card evaluation results
-        EvauateQTEResults();
+        //EvauateQTEResults();
     }
 
     /// <summary>
@@ -264,6 +264,7 @@ public class QTEHandler : MonoBehaviour
             Buttons[i].SetActive(true);
             //assign the proper caster to the button input checks
             Buttons[i].GetComponent<QTEButton>().playerQTE = caster;
+            Buttons[i].GetComponent<QTEButton>().wasPressed = false;
             //check to verify whcih caster is the one that needs this QTE Sequence
             if (caster == p1)
             {
