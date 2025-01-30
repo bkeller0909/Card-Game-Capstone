@@ -46,6 +46,7 @@ public enum Transition
     TA_LeftningBolt,
     TA_TidalWave,
     TA_PointerOfDeath,
+    TA_Quake,
     ////////////////////////////
     //Restoration Spells
     TRe_ForTheCause,
@@ -95,6 +96,7 @@ public enum FSMStateID
     A_LeftningBolt,
     A_TidalWave,
     A_PointerOfDeath,
+    A_Quake,
     ////////////////////////////
     //Restoration Spells
     Re_ForTheCause,

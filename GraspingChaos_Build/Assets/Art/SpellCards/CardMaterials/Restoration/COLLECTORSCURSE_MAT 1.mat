@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: COLLECTORSCURSE_MAT 1
-  m_Shader: {fileID: -6465566751694194690, guid: 0960a87fd80c9804aae3f7fdaafd4bf4,
+  m_Shader: {fileID: -6465566751694194690, guid: 88a212e02deff424f89c189790695976,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,11 +41,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _CardTexture:
-        m_Texture: {fileID: 2800000, guid: 98baae3b7ea24d64baa7f2e0baba217b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 70ade25ab8d13fd4fbf849f5159a1519, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpellIconTexture:
-        m_Texture: {fileID: 2800000, guid: 02f5aef75fcdd414cb2161b85c2db1ba, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7e16dde7b0c5f6848849f27135a7e307, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -65,9 +65,11 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
+    - _CardBrightness: 2.92
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
+    - _PageGritAmount: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
@@ -77,5 +79,5 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _IconColour: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColour: {r: 0.363808, g: 0.5660378, b: 0.26432896, a: 0}
+    - _TintColour: {r: 0.62264144, g: 0.2654852, b: 0.20265216, a: 0}
   m_BuildTextureStacks: []

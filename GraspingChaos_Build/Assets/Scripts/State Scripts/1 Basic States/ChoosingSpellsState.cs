@@ -82,12 +82,12 @@ public class ChoosingSpellsState : FSMState
                     if (testStates.spellsChosen[i] != SpellNames.none)
                     {
                         spellInfo.whoIsCasting = playerState.player;
-                        spellInfo.whatSpellName = testStates.spellsChosen[i];
+                        spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)testStates.spellsChosen[i]];
                         spellInfo.whatFinger = testStates.fingersChosen[i];
 
                         if (testStates.spellsChosen[i] == SpellNames.FireBolt || testStates.spellsChosen[i] == SpellNames.Rockthrow || testStates.spellsChosen[i] == SpellNames.RighteousEnvy || testStates.spellsChosen[i] == SpellNames.LefteousEnvy || testStates.spellsChosen[i] == SpellNames.Icicles || testStates.spellsChosen[i] == SpellNames.CollectorsCurse
                             || testStates.spellsChosen[i] == SpellNames.StaticBlast || testStates.spellsChosen[i] == SpellNames.Quake || testStates.spellsChosen[i] == SpellNames.RightingBolt ||
-                               testStates.spellsChosen[i] == SpellNames.LeftingBolt || testStates.spellsChosen[i] == SpellNames.TidalWave || testStates.spellsChosen[i] == SpellNames.PointerOfDeath
+                               testStates.spellsChosen[i] == SpellNames.LeftningBolt || testStates.spellsChosen[i] == SpellNames.TidalWave || testStates.spellsChosen[i] == SpellNames.PointerOfDeath
                                || testStates.spellsChosen[i] == SpellNames.SpectralChain || testStates.spellsChosen[i] == SpellNames.SpectralChain)
                         {
                             spellInfo.whoIsBeingCastedOn = playerState.enemy;
@@ -102,7 +102,7 @@ public class ChoosingSpellsState : FSMState
                     else
                     {
                         spellInfo.whoIsCasting = playerState.player;
-                        spellInfo.whatSpellName = SpellNames.none;
+                        spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
                         spellInfo.whatFinger = PlayerFingers.none;
                         spellInfo.whoIsBeingCastedOn = playerState.player;
                         GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
@@ -124,19 +124,19 @@ public class ChoosingSpellsState : FSMState
             SpellsBeingCastInfo spellInfoTEST = new SpellsBeingCastInfo();
             spellInfoTEST.whoIsCasting = playerState.enemy;
             spellInfoTEST.numOfSpell = 1;
-            spellInfoTEST.whatSpellName = SpellNames.StaticBlast;
+            spellInfoTEST.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast];
             spellInfoTEST.whatFinger = PlayerFingers.RH_Ring;
             spellInfoTEST.whoIsBeingCastedOn = playerState.player;
             GameManager.Instance.spellsBeingCast[0, 1] = spellInfoTEST;
             spellInfoTEST.whoIsCasting = playerState.enemy;
             spellInfoTEST.numOfSpell = 2;
-            spellInfoTEST.whatSpellName = SpellNames.Icicles;
+            spellInfoTEST.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Icicles];
             spellInfoTEST.whatFinger = PlayerFingers.LH_Ring;
             spellInfoTEST.whoIsBeingCastedOn = playerState.player;
             GameManager.Instance.spellsBeingCast[1, 1] = spellInfoTEST;
             spellInfoTEST.whoIsCasting = playerState.enemy;
             spellInfoTEST.numOfSpell = 3;
-            spellInfoTEST.whatSpellName = SpellNames.none;
+            spellInfoTEST.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
             spellInfoTEST.whatFinger = PlayerFingers.none;
             spellInfoTEST.whoIsBeingCastedOn = playerState.enemy;
             GameManager.Instance.spellsBeingCast[2, 1] = spellInfoTEST;
@@ -191,7 +191,7 @@ public class ChoosingSpellsState : FSMState
             {
                 testStates.spellsBeingCast[i].text = "RightingBolt";
             }
-            else if (testStates.spellsChosen[i] == SpellNames.LeftingBolt)
+            else if (testStates.spellsChosen[i] == SpellNames.LeftningBolt)
             {
                 testStates.spellsBeingCast[i].text = "LeftingBolt";
             }
