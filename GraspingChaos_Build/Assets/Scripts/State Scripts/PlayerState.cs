@@ -76,6 +76,10 @@ public class PlayerState : AdvancedFSM
         {
             state = "Casting Pointer Of Death";
         }
+        else if (CurrentState.ID == FSMStateID.A_Quake)
+        {
+            state = "Casting Quake";
+        }
         else if (CurrentState.ID == FSMStateID.Re_ForTheCause)
         {
             state = "Casting For The Cause";
@@ -194,6 +198,7 @@ public class PlayerState : AdvancedFSM
         deciding.AddTransition(Transition.TA_LeftningBolt, FSMStateID.A_LeftningBolt);
         deciding.AddTransition(Transition.TA_TidalWave, FSMStateID.A_TidalWave);
         deciding.AddTransition(Transition.TA_PointerOfDeath, FSMStateID.A_PointerOfDeath);
+        deciding.AddTransition(Transition.TA_Quake, FSMStateID.A_Quake);
         // Casting Restoration Spell State transitions
         deciding.AddTransition(Transition.TRe_ForTheCause, FSMStateID.Re_ForTheCause);
         deciding.AddTransition(Transition.TRe_QuickHeal, FSMStateID.Re_QuickHeal);
@@ -231,6 +236,7 @@ public class PlayerState : AdvancedFSM
         qte.AddTransition(Transition.TA_LeftningBolt, FSMStateID.A_LeftningBolt);
         qte.AddTransition(Transition.TA_TidalWave, FSMStateID.A_TidalWave);
         qte.AddTransition(Transition.TA_PointerOfDeath, FSMStateID.A_PointerOfDeath);
+        qte.AddTransition(Transition.TA_Quake, FSMStateID.A_Quake);
         // Casting Restoration Spell State transitions
         qte.AddTransition(Transition.TRe_ForTheCause, FSMStateID.Re_ForTheCause);
         qte.AddTransition(Transition.TRe_QuickHeal, FSMStateID.Re_QuickHeal);
@@ -298,6 +304,10 @@ public class PlayerState : AdvancedFSM
         PointerOfDeathState pointerOfDeath = new PointerOfDeathState(this);
         pointerOfDeath.AddTransition(Transition.NeedDecision, FSMStateID.Deciding);
         pointerOfDeath.AddTransition(Transition.Challenge, FSMStateID.QTE);
+
+        QuakeState quake = new QuakeState(this);
+        quake.AddTransition(Transition.NeedDecision, FSMStateID.Deciding);
+        quake.AddTransition(Transition.Challenge, FSMStateID.QTE);
         #endregion
 
         #region Restoration Spell States
@@ -386,6 +396,7 @@ public class PlayerState : AdvancedFSM
         AddFSMState(staticBlast);
         AddFSMState(tidalWave);
         AddFSMState(pointerOfDeath);
+        AddFSMState(quake);
         AddFSMState(forTheCause);
         AddFSMState(quickHeal);
         AddFSMState(thumbsUp);

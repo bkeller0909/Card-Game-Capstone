@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -100,11 +99,17 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is which player is currently casting a spell")]
     public int amtOfSpellsBeingCast = 0;
 
+    [Tooltip("What Slected spells are being played")]
+    public int spellIndex = 1;
+
+    [Tooltip("This sets up which spell goes first")]
+    public bool roundCheck = false;
+
     [Tooltip("This is a test bool for moving to the next state")]
     public bool nextTestState = false;
 
     public SpellsBeingCastInfo[,] spellsBeingCast;
-
+    public Decider[] whoesOnFirst;
 
     public bool testingCurrentP1 = true;
 
@@ -129,7 +134,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        spellsBeingCast = new SpellsBeingCastInfo[3,2];
+        spellsBeingCast = new SpellsBeingCastInfo[3, 2];
+        whoesOnFirst = new Decider[3];
+        roundCheck = false;
 
         StartLoadingLevel(ln_MainMenuName);
     }

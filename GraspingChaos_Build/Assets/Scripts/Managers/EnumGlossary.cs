@@ -56,7 +56,7 @@ public enum QTEButtonType
 
 public enum SpellNames
 {
-    none = -1,
+    none = 28,
     //Attack Spells
     FireBolt = 0,
     Rockthrow,
@@ -67,7 +67,7 @@ public enum SpellNames
     StaticBlast,
     Quake,
     RightingBolt,
-    LeftingBolt,
+    LeftningBolt,
     TidalWave,
     PointerOfDeath,
     //Restoration Spells
@@ -87,4 +87,12 @@ public enum SpellNames
     VengefulMirror,
     VampiricSurge,
     VeilOfFortitude
+}
+
+public enum Decider
+{
+    none = 0,
+    PlayerOneIsFaster = 1,
+    PlayerTwoIsFaster = 2,
+    Tie
 }

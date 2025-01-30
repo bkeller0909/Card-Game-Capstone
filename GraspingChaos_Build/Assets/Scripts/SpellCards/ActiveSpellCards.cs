@@ -50,7 +50,7 @@ public class ActiveSpellCards : MonoBehaviour
         spellCards = new SpellCard[AmtOfCards];
 
         // Equals -100 if that state is not used on that card
-        for (int i = 0; i < AmtOfCards; i++)
+        for (int i = 0; i < AmtOfCards + 1; i++)
         {
             SpellCard spell = new SpellCard();
             switch (i)
@@ -210,7 +210,7 @@ public class ActiveSpellCards : MonoBehaviour
                     spellCards[i] = spell;
                     break;
                 case 9:
-                    spell.spellName = SpellNames.LeftingBolt;
+                    spell.spellName = SpellNames.LeftningBolt;
                     spell.type = SpellType.ATTACK;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
@@ -396,7 +396,6 @@ public class ActiveSpellCards : MonoBehaviour
 
                     spellCards[i] = spell;
                     break;
-                ////////////////////////////////////////////////////////////////////Start here
                 case 20:
                     spell.spellName = SpellNames.ThornsOfAgony;
                     spell.type = SpellType.RING;
@@ -513,6 +512,23 @@ public class ActiveSpellCards : MonoBehaviour
                     spell.amtQTEOutcomes = 2;
                     spell.qteAmount = 8;
                     spell.qteMidCheck = spell.qteAmount / 2;
+
+                    spellCards[i] = spell;
+                    break;
+                case 28:
+                    spell.spellName = SpellNames.none;
+                    spell.type = SpellType.ATTACK;
+                    spell.targetSelf = false;
+                    spell.TargetRandomFinger = false;
+                    spell.amtOfFingers = -100;
+                    spell.manaCost = -100;
+                    spell.manaGain = -100;
+                    spell.damageValue = -100;
+                    spell.healValue = -100;
+                    spell.lengthAmount = -100;
+                    spell.amtQTEOutcomes = -100;
+                    spell.qteAmount = -100;
+                    spell.qteMidCheck = -100;
 
                     spellCards[i] = spell;
                     break;

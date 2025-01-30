@@ -7,7 +7,7 @@ public class SpellsBeingCastInfo : MonoBehaviour
     [Tooltip("Was the spell the first one chosen, the second, or the third")]
     public int numOfSpell;
     [Tooltip("What is the spell name that is currently beiing casted")]
-    public SpellNames whatSpellName;
+    public SpellCard whatSpell;
     [Tooltip("What finger is the spell being cast on")]
     public PlayerFingers whatFinger;
     [Tooltip("Who is this spell being casted on")]
