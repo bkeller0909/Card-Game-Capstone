@@ -9,7 +9,7 @@ using UnityEngine;
 //-----------------------------------------------------------------
 public class SpellHand : MonoBehaviour
 {
-    List<SpellCard> playerSpells = new List<SpellCard>();
+    public List<SpellCard> playerSpells = new List<SpellCard>();
     public int amtOfSpellsInHand = 0;
     //add spells, call each time players have to draw a cad
     public void AddSpells()
