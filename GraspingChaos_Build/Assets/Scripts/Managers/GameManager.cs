@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is a test bool for moving to the next state")]
     public bool nextTestState = false;
 
-    public List<SpellsBeingCastInfo> spellsBeingCast;
+    public SpellsBeingCastInfo[,] spellsBeingCast;
 
 
     public bool testingCurrentP1 = true;
@@ -128,6 +128,8 @@ public class GameManager : MonoBehaviour
                 Display.displays[i].Activate();
             }
         }
+
+        spellsBeingCast = new SpellsBeingCastInfo[3,2];
 
         StartLoadingLevel(ln_MainMenuName);
     }
@@ -200,8 +202,4 @@ public class GameManager : MonoBehaviour
         isLoading = false;
     }
 
-    public void OrganizeSpellsBeingCast()
-    {
-
-    }
 }

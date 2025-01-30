@@ -51,28 +51,39 @@ public class ChoosingSpellsState : FSMState
                     button.gameObject.SetActive(false);
                 }
 
+                int whoAmI = -100;
+                if (player == GameManager.Instance.player1)
+                {
+                    whoAmI = 0;
+                }
+                else
+                {
+                    whoAmI = 1;
+                }
+
                 for (int i = 0; i < testStates.spellsBeingCast.Length; i++)
                 {
+                    //Moving each spell that is beings casted info over to the GameManager to move to the desicion state
+                    SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
+
+                    if (i == 0)
+                    {
+                        spellInfo.numOfSpell = 1;
+                    }
+                    else if (i == 1)
+                    {
+                        spellInfo.numOfSpell = 2;
+                    }
+                    else if (i == 2)
+                    {
+                        spellInfo.numOfSpell = 3;
+                    }
+
                     if (testStates.spellsChosen[i] != SpellNames.none)
                     {
-                        //Moving each spell that is beings casted info over to the GameManager to move to the desicion state
-                        SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
                         spellInfo.whoIsCasting = playerState.player;
                         spellInfo.whatSpellName = testStates.spellsChosen[i];
                         spellInfo.whatFinger = testStates.fingersChosen[i];
-
-                        if (i == 0)
-                        {
-                            spellInfo.numOfSpell = 1;
-                        }
-                        else if (i == 1)
-                        {
-                            spellInfo.numOfSpell = 2;
-                        }
-                        else if (i == 2)
-                        {
-                            spellInfo.numOfSpell = 3;
-                        }
 
                         if (testStates.spellsChosen[i] == SpellNames.FireBolt || testStates.spellsChosen[i] == SpellNames.Rockthrow || testStates.spellsChosen[i] == SpellNames.RighteousEnvy || testStates.spellsChosen[i] == SpellNames.LefteousEnvy || testStates.spellsChosen[i] == SpellNames.Icicles || testStates.spellsChosen[i] == SpellNames.CollectorsCurse
                             || testStates.spellsChosen[i] == SpellNames.StaticBlast || testStates.spellsChosen[i] == SpellNames.Quake || testStates.spellsChosen[i] == SpellNames.RightingBolt ||
@@ -86,7 +97,15 @@ public class ChoosingSpellsState : FSMState
                             spellInfo.whoIsBeingCastedOn = playerState.player;
                         }
 
-                        GameManager.Instance.spellsBeingCast.Add(spellInfo);
+                        GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
+                    }
+                    else
+                    {
+                        spellInfo.whoIsCasting = playerState.player;
+                        spellInfo.whatSpellName = SpellNames.none;
+                        spellInfo.whatFinger = PlayerFingers.none;
+                        spellInfo.whoIsBeingCastedOn = playerState.player;
+                        GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
                     }
 
                     testStates.spellsBeingCast[i].gameObject.SetActive(false);
@@ -95,6 +114,33 @@ public class ChoosingSpellsState : FSMState
                     testStates.fingersBeingChosen[i].gameObject.SetActive(false);
                 }
             }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///           Remove these for they are for testing if there was two players
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            GameManager.Instance.amtOfSpellsBeingCast++;
+            GameManager.Instance.amtOfSpellsBeingCast++;
+            GameManager.Instance.amtOfSpellsBeingCast++;
+            SpellsBeingCastInfo spellInfoTEST = new SpellsBeingCastInfo();
+            spellInfoTEST.whoIsCasting = playerState.enemy;
+            spellInfoTEST.numOfSpell = 1;
+            spellInfoTEST.whatSpellName = SpellNames.StaticBlast;
+            spellInfoTEST.whatFinger = PlayerFingers.RH_Ring;
+            spellInfoTEST.whoIsBeingCastedOn = playerState.player;
+            GameManager.Instance.spellsBeingCast[0, 1] = spellInfoTEST;
+            spellInfoTEST.whoIsCasting = playerState.enemy;
+            spellInfoTEST.numOfSpell = 2;
+            spellInfoTEST.whatSpellName = SpellNames.Icicles;
+            spellInfoTEST.whatFinger = PlayerFingers.LH_Ring;
+            spellInfoTEST.whoIsBeingCastedOn = playerState.player;
+            GameManager.Instance.spellsBeingCast[1, 1] = spellInfoTEST;
+            spellInfoTEST.whoIsCasting = playerState.enemy;
+            spellInfoTEST.numOfSpell = 3;
+            spellInfoTEST.whatSpellName = SpellNames.none;
+            spellInfoTEST.whatFinger = PlayerFingers.none;
+            spellInfoTEST.whoIsBeingCastedOn = playerState.enemy;
+            GameManager.Instance.spellsBeingCast[2, 1] = spellInfoTEST;
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             playerState.PerformTransition(Transition.NeedDecision);
 
