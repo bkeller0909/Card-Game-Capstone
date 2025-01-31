@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 /// <summary>
 //----------------------------------------------------------------
@@ -33,6 +34,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public PlayerType playerNum;
     [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
     public List<Fingers> fingers;
+
+    [Tooltip("What number of player they are")]
+    public List<VisualEffect> spellEffects;
 
     private void Awake()
     {
@@ -77,5 +81,18 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //healthValue.text = entireHP.ToString();
+    }
+
+    public PlayerFingers GetRandomFinger()
+    {
+        int rand = 0;
+
+        do
+        {
+            Random.Range(0, fingers.Count);
+        } while (fingers[rand].fingerHP == 0);
+
+        return fingers[rand].finger;
+
     }
 }

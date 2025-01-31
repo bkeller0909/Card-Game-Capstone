@@ -87,6 +87,7 @@ MonoBehaviour:
   healthValue: {fileID: 0}
   entireHP: 0
   Mana: 0
+  spellHand: {fileID: 0}
   playerNum: 0
   fingers:
   - {fileID: 2900714004615386573}
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselect: {r: 1, g: 1, b: 1, a: 1}
+  playerOneHands: 1
 --- !u!114 &3657729513265261746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc3b6b79ce41124980733162b9ff9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
   cards:
   - {fileID: 3770958240481459605}
   - {fileID: 3525969782844059447}
@@ -390,6 +393,8 @@ MonoBehaviour:
   - {fileID: 754993634177556580}
   - {fileID: 7778132989566490051}
   selectedCards: []
+  cardSlots: []
+  emptySlots: 
 --- !u!1 &6191324234354841691
 GameObject:
   m_ObjectHideFlags: 0

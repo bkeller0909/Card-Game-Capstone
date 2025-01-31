@@ -96,3 +96,12 @@ public enum Decider
     PlayerTwoIsFaster = 2,
     Tie
 }
+
+
+public enum QTEOUTCOMES
+{
+    none = 0,
+    Failure = 1,
+    Half = 2,
+    Success = 3,
+}
