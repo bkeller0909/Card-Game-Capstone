@@ -1,11 +1,25 @@
 public class FireBoltState : FSMState
 {
     PlayerState playerState;
+    private int playerIndex;
     //Constructor
     public FireBoltState(PlayerState pS)
     {
         playerState = pS;
         stateID = FSMStateID.A_FireBolt;
+    }
+
+    public override void EnterStateInit()
+    {
+        playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].qteAmount;
+        if (playerState.player == GameManager.Instance.player1)
+        {
+            playerIndex = 0;
+        }
+        else
+        {
+            playerIndex = 1;
+        }
     }
 
     //Reason
@@ -22,7 +36,18 @@ public class FireBoltState : FSMState
         }
         else
         {
+            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            {
 
+            }
+            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            {
+
+            }
+            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            {
+                enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
+            }
         }
     }
 
