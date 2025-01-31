@@ -706,6 +706,8 @@ GameObject:
   - component: {fileID: 543450651726378220}
   - component: {fileID: 919132147806809687}
   - component: {fileID: 919132147806809688}
+  - component: {fileID: 919132147806809690}
+  - component: {fileID: 919132147806809689}
   m_Layer: 0
   m_Name: HandsIdleOut
   m_TagString: Untagged
@@ -746,6 +748,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee8630883a9c8841a8888a85314b5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &919132147806809689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147806809686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: df910091f53b92b4db3a4d7fdb4f39d8,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: QTE
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &919132147806809690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147806809686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb261acb204b8e641bb492cb32a5e4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveLeft: 0
+  moveRight: 0
+  debugDmg: 0
+  debugHp: 0
+  debugSwap: 0
+  cardMoveRight: 0
+  cardMoveLeft: 0
+  finishSelection: 0
+  Abtn: 0
+  Bbtn: 0
+  Xbtn: 0
+  Ybtn: 0
+  UpBtn: 0
+  DownBtn: 0
+  LeftBtn: 0
+  RightBtn: 0
+  debugQTE: 0
+  selectCard: 0
 --- !u!1 &968212550294014137
 GameObject:
   m_ObjectHideFlags: 0
