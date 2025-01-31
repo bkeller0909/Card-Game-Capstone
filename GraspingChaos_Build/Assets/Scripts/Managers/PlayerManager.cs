@@ -82,4 +82,17 @@ public class PlayerManager : MonoBehaviour
     {
         //healthValue.text = entireHP.ToString();
     }
+
+    public PlayerFingers GetRandomFinger()
+    {
+        int rand = 0;
+
+        do
+        {
+            Random.Range(0, fingers.Count);
+        } while (fingers[rand].fingerHP == 0);
+
+        return fingers[rand].finger;
+
+    }
 }
