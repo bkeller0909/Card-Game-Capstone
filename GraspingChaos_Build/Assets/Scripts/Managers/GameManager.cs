@@ -56,20 +56,14 @@ public class GameManager : MonoBehaviour
     private CameraAssigner cameraAssigner;
 
     //Everything below here are names for the scenes to showoff at milestones
-    [Tooltip("This needs to be the name of the prototype card selection scene")]
-    public string ln_ProtoCardSelection;
-
-    [Tooltip("This needs to be the name of the prototype Object test scene")]
-    public string ln_ProtoObjectTests;
-
     [Tooltip("This needs to be the name of the prototype Art Showcase")]
     public string ln_ProtoArtShowCase;
 
-    [Tooltip("This needs to be the name of the prototype Particle Showcase")]
-    public string ln_ProtoParticleShowCase;
+    [Tooltip("This needs to be the name of the prototype full showcase")]
+    public string ln_ProtoFull;
 
-    [Tooltip("This needs to be the name of the prototype Particle Showcase")]
-    public string ln_ProtoQTECase;
+    [Tooltip("This needs to be the name of the prototype hand animation showcase")]
+    public string ln_ProtoHandAnims;
 
     [Tooltip("This is the testing scene for the FSM")]
     public string ln_StateTesting;

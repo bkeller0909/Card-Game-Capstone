@@ -290,11 +290,9 @@ MonoBehaviour:
   ln_MainMenuName: GC_MainMenu
   ln_Duelscene: GC_DualScene
   loadingScreen: {fileID: 679422703}
-  ln_ProtoCardSelection: Proto_CardSelection
-  ln_ProtoObjectTests: Proto_ObjectTests
   ln_ProtoArtShowCase: Proto_ArtShowCase
-  ln_ProtoParticleShowCase: Proto_Particles
-  ln_ProtoQTECase: Proto_QTE_Testing
+  ln_ProtoFull: Proto_Full
+  ln_ProtoHandAnims: Proto_HandAnimations
   ln_StateTesting: Proto_FSM
   hasDuelStarted: 0
   startingMana: 0
@@ -305,9 +303,13 @@ MonoBehaviour:
   currentCaster: {fileID: 0}
   timerQTE: 5
   amtOfSpellsBeingCast: 0
+  spellIndex: 1
+  roundCheck: 0
   nextTestState: 0
-  spellsBeingCast: []
+  whoesOnFirst: 
   testingCurrentP1: 1
+  P1QTESpeed: 0
+  P2QTESpeed: 0
 --- !u!4 &113710050
 Transform:
   m_ObjectHideFlags: 0

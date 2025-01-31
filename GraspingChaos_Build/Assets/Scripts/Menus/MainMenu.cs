@@ -6,33 +6,21 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button[] buttons;
     [SerializeField] GameObject[] questionText;
 
-    public void CardSelectionBtnClicked()
-    {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoCardSelection);
-        InputManager.Instance.FindPlayers();
-    }
-
-    public void ObjectTestBtnClicked()
-    {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoObjectTests);
-        InputManager.Instance.FindPlayers();
-    }
-
     public void ObjectArtShowCase()
     {
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoArtShowCase);
         InputManager.Instance.FindPlayers();
     }
 
-    public void ObjectParticleCase()
+    public void ProtoFullCase()
     {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoParticleShowCase);
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoFull);
         InputManager.Instance.FindPlayers();
     }
 
-    public void QTECase()
+    public void ProtoHandAnimCase()
     {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoQTECase);
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoHandAnims);
         InputManager.Instance.FindPlayers();
     }
 
