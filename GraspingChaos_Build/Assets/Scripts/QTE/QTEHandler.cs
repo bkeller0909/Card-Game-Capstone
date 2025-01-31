@@ -72,6 +72,10 @@ public class QTEHandler : MonoBehaviour
 
     public bool resetLoop = false;
 
+    public bool timeisDone = false;
+
+    public float checkSpeed = 0;
+
 
     private void Start()
     {
@@ -115,6 +119,7 @@ public class QTEHandler : MonoBehaviour
                 remainingTime = 0;
                 startTimer = false;
                 DisableQTEButtonsTimer();
+                timeisDone = true;
             }
         }
 
@@ -306,6 +311,7 @@ public class QTEHandler : MonoBehaviour
         startTimer = true;
         //set the index to the proper value to start
         createdBTNIndex = 0;
+        timeisDone = false;
     }
 
     /// <summary>
@@ -353,6 +359,7 @@ public class QTEHandler : MonoBehaviour
             createdBTNIndex = -1;
             //remove the buttons since the QTE Sequence has been completed
             //StartCoroutine(DisableQTEButtons());
+            SetTimeValue();
         }
 
     }
@@ -360,7 +367,7 @@ public class QTEHandler : MonoBehaviour
     /// <summary>
     /// This function turns the correct amount of QTE inputs of the entire QTE Sequence into a percentage so that we can use it for card results
     /// </summary>
-    public string EvauateQTEResults()
+    public QTEOUTCOMES EvauateQTEResults()
     {
         //check if the sequence exists
         if (CreatedButtons.Count > 0)
@@ -371,18 +378,20 @@ public class QTEHandler : MonoBehaviour
             if (QTEPercent < 50)
             {
                 qteCheckPercent.text = "Low";
+                return QTEOUTCOMES.Failure;
             }
             else if (QTEPercent >= 50 && QTEPercent < 99)
             {
                 qteCheckPercent.text = "Mid";
+                return QTEOUTCOMES.Half;
             }
             else if (QTEPercent == 100)
             {
                 qteCheckPercent.text = "High";
+                return QTEOUTCOMES.Success;
             }
         }
-
-        return qteCheckPercent.text;
+        return QTEOUTCOMES.none;
     }
 
     /// <summary>
@@ -407,6 +416,20 @@ public class QTEHandler : MonoBehaviour
         CreatedButtons.Clear();
         //set the index back to default
         createdBTNIndex = -1;
+    }
+
+    public void SetTimeValue()
+    {
+        if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player1)
+        {
+            GameManager.Instance.P1QTESpeed = remainingTime;
+            checkSpeed = remainingTime;
+        }
+        else if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player2)
+        {
+            GameManager.Instance.P2QTESpeed = remainingTime;
+            checkSpeed = remainingTime;
+        }
     }
 
 
@@ -434,6 +457,5 @@ public class QTEHandler : MonoBehaviour
         CreatedButtons.Clear();
         //set the index back to default
         createdBTNIndex = -1;
-
     }
 }

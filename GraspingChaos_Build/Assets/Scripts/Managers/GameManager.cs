@@ -113,6 +113,9 @@ public class GameManager : MonoBehaviour
 
     public bool testingCurrentP1 = true;
 
+    public float P1QTESpeed;
+    public float P2QTESpeed;
+
     private void Awake()
     {
         if (instance == null)

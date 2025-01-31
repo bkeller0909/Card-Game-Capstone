@@ -36,15 +36,15 @@ public class FireBoltState : FSMState
         }
         else
         {
-            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == "Low")
+            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
             {
 
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == "Med")
+            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
             {
 
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == "High")
+            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
             {
                 enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
             }
