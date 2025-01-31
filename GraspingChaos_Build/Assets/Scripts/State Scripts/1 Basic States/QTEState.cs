@@ -38,6 +38,30 @@ public class QTEState : FSMState
 
         if (player.gameObject.GetComponent<QTEHandler>().timeisDone == true && enemy.gameObject.GetComponent<QTEHandler>().timeisDone == true)
         {
+            if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.Tie)
+            {
+                if (GameManager.Instance.P1QTESpeed < GameManager.Instance.P2QTESpeed)
+                {
+                    GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
+                }
+                else if (GameManager.Instance.P1QTESpeed > GameManager.Instance.P2QTESpeed)
+                {
+                    GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
+                }
+                else
+                {
+                    int rand = UnityEngine.Random.Range(0, 2);
+                    if (rand == 0)
+                    {
+                        GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
+                    }
+                    else if (rand == 1)
+                    {
+                        GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
+                    }
+                }
+
+            }
             changeState = true;
         }
     }
