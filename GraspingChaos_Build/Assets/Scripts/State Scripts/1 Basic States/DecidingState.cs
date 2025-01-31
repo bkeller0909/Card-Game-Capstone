@@ -2,6 +2,7 @@
 public class DecidingState : FSMState
 {
     PlayerState playerState;
+    bool castASpell, performAct;
     //Constructor
     public DecidingState(PlayerState pS)
     {
@@ -16,7 +17,15 @@ public class DecidingState : FSMState
             for (int i = 0; i < 3; i++)
             {
                 // If player 1's first card and player 2's first card have the same mana cost
-                if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost == GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
+                if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.none)
+                {
+                    GameManager.Instance.whoesOnFirst[i] = Decider.PlayerTwoIsFaster;
+                }
+                else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.spellName == SpellNames.none)
+                {
+                    GameManager.Instance.whoesOnFirst[i] = Decider.PlayerOneIsFaster;
+                }
+                else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost == GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
                 {
                     GameManager.Instance.whoesOnFirst[i] = Decider.Tie;
                 }
@@ -29,14 +38,21 @@ public class DecidingState : FSMState
                     GameManager.Instance.whoesOnFirst[i] = Decider.PlayerTwoIsFaster;
                 }
             }
+            performAct = false;
             GameManager.Instance.roundCheck = true;
+            castASpell = true;
+        }
+        else
+        {
+            castASpell = false;
+            performAct = true;
         }
     }
 
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
-        if (GameManager.Instance.roundCheck)
+        if (GameManager.Instance.roundCheck && castASpell)
         {
             if (player == GameManager.Instance.player1)
             {
@@ -264,11 +280,25 @@ public class DecidingState : FSMState
                 }
             }
         }
+        if (player.entireHP <= 0 || enemy.entireHP <= 0)
+        {
+            playerState.PerformTransition(Transition.died);
+        }
     }
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
-
+        if (!castASpell && performAct)
+        {
+            if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerOneIsFaster && player == GameManager.Instance.player1)
+            {
+                castASpell = true;
+            }
+            else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerTwoIsFaster && player == GameManager.Instance.player2)
+            {
+                castASpell = true;
+            }
+        }
     }
 
 }
