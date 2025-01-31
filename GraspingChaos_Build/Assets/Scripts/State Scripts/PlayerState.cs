@@ -3,6 +3,8 @@ public class PlayerState : AdvancedFSM
 
     public PlayerManager player, enemy;
     public bool finishedCurrentQTE;
+    public int currentQTEAmount;
+
     private string GetStateString()
     {
         string state = "NONE";

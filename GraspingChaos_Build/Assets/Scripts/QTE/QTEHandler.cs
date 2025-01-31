@@ -91,7 +91,7 @@ public class QTEHandler : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(resetLoop)
+        if (resetLoop)
         {
             resetLoop = false;
             playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
@@ -360,7 +360,7 @@ public class QTEHandler : MonoBehaviour
     /// <summary>
     /// This function turns the correct amount of QTE inputs of the entire QTE Sequence into a percentage so that we can use it for card results
     /// </summary>
-    public void EvauateQTEResults()
+    public string EvauateQTEResults()
     {
         //check if the sequence exists
         if (CreatedButtons.Count > 0)
@@ -370,17 +370,19 @@ public class QTEHandler : MonoBehaviour
             //debug check to see in what state the result ends with, below 50%, above 50% and 100%
             if (QTEPercent < 50)
             {
-                qteCheckPercent.text = "Below 50%";
+                qteCheckPercent.text = "Low";
             }
             else if (QTEPercent >= 50 && QTEPercent < 99)
             {
-                qteCheckPercent.text = "Above 50%";
+                qteCheckPercent.text = "Mid";
             }
             else if (QTEPercent == 100)
             {
-                qteCheckPercent.text = "100%";
+                qteCheckPercent.text = "High";
             }
         }
+
+        return qteCheckPercent.text;
     }
 
     /// <summary>
