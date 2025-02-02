@@ -29,7 +29,19 @@ public class ChoosingSpellsState : FSMState
 
         foreach (Button button in testStates.choosingSpellButtons)
         {
-            button.gameObject.SetActive(true);
+            WhatSpellAmI spell = button.gameObject.GetComponent<WhatSpellAmI>();
+            SpellHand playerHand = playerState.player.spellHand;
+            foreach (SpellCard card in playerHand.playerSpells)
+            {
+                if (spell.name == card.spellName)
+                {
+                    button.gameObject.SetActive(true);
+                }
+                else
+                {
+                    button.gameObject.SetActive(false);
+                }
+            }
         }
 
         for (int i = 0; i < testStates.spellsBeingCast.Length; i++)

@@ -9,6 +9,7 @@ public class DealStatsState : FSMState
     {
         playerState = pS;
         stateID = FSMStateID.DealStats;
+        cardDealing = new CardDealing();
     }
 
     public override void EnterStateInit()
