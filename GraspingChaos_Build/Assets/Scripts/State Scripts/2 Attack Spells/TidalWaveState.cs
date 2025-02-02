@@ -7,7 +7,7 @@ public class TidalWaveState : FSMState
     public TidalWaveState(PlayerState pS)
     {
         playerState = pS;
-        stateID = FSMStateID.A_FireBolt;
+        stateID = FSMStateID.A_TidalWave;
     }
 
     public override void EnterStateInit()

@@ -7,7 +7,7 @@ public class StaticBlastState : FSMState
     public StaticBlastState(PlayerState pS)
     {
         playerState = pS;
-        stateID = FSMStateID.A_FireBolt;
+        stateID = FSMStateID.A_StaticBlast;
     }
 
     public override void EnterStateInit()

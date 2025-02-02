@@ -7,7 +7,7 @@ public class RockThrowState : FSMState
     public RockThrowState(PlayerState pS)
     {
         playerState = pS;
-        stateID = FSMStateID.A_FireBolt;
+        stateID = FSMStateID.A_RockThrow;
     }
 
     public override void EnterStateInit()

@@ -87,10 +87,16 @@ public class PlayerManager : MonoBehaviour
     {
         int rand = 0;
 
-        do
+        //do
+        //{
+        //    rand = Random.Range(0, fingers.Count);
+        //} while (fingers[rand].fingerHP == 0);
+
+        rand = Random.Range(0, fingers.Count);
+        if (fingers[rand].fingerHP == 0)
         {
-            Random.Range(0, fingers.Count);
-        } while (fingers[rand].fingerHP == 0);
+            return fingers[rand].finger;
+        }
 
         return fingers[rand].finger;
 

@@ -5,6 +5,7 @@ public class ThumbsUpState : FSMState
     public ThumbsUpState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Re_ThumbsUp;
     }
 
     //Reason

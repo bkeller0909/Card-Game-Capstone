@@ -7,7 +7,7 @@ public class PointerOfDeathState : FSMState
     public PointerOfDeathState(PlayerState pS)
     {
         playerState = pS;
-        stateID = FSMStateID.A_FireBolt;
+        stateID = FSMStateID.A_PointerOfDeath;
     }
 
     public override void EnterStateInit()
