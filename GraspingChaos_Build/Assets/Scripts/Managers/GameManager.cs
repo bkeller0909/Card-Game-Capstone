@@ -100,7 +100,10 @@ public class GameManager : MonoBehaviour
     public bool roundCheck = false;
 
     [Tooltip("This is a test bool for moving to the next state")]
-    public bool nextTestState = false;
+    public bool nextTestStateP1 = false;
+
+    [Tooltip("This is a test bool for moving to the next state")]
+    public bool nextTestStateP2 = false;
 
     public SpellsBeingCastInfo[,] spellsBeingCast;
     public Decider[] whoesOnFirst;

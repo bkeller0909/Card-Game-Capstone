@@ -9,6 +9,9 @@ public class TestStates : MonoBehaviour
     public TMP_Text aOSC_text;
 
     [SerializeField]
+    PlayerManager player;
+
+    [SerializeField]
     public TMP_Text[] spellsBeingCast;
     public GameObject[] spellsBeingChosenPanels;
 
@@ -48,6 +51,11 @@ public class TestStates : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        aOSC_text.text = "Amt of spells Chosen: " + GameManager.Instance.amtOfSpellsBeingCast.ToString();
+    }
+
     public void choosingSpell(WhatSpellAmI whatSpell)
     {
         bool spellHasBeenChosen = false;
@@ -66,7 +74,6 @@ public class TestStates : MonoBehaviour
         {
             amtOfSpells--;
             GameManager.Instance.amtOfSpellsBeingCast--;
-            aOSC_text.text = "Amt of spells Chosen: " + GameManager.Instance.amtOfSpellsBeingCast.ToString();
             spellsChosen[whichChosenSpell] = SpellNames.none;
             fingersChosen[whichChosenSpell] = PlayerFingers.none;
 
@@ -107,7 +114,6 @@ public class TestStates : MonoBehaviour
         {
             amtOfSpells++;
             GameManager.Instance.amtOfSpellsBeingCast++;
-            aOSC_text.text = "Amt of spells Chosen: " + GameManager.Instance.amtOfSpellsBeingCast.ToString();
             for (int i = 0; i < 3; i++)
             {
                 if (spellsChosen[i] == SpellNames.none)
@@ -199,7 +205,14 @@ public class TestStates : MonoBehaviour
     {
         if (GameManager.Instance.amtOfSpellsBeingCast != 0)
         {
-            GameManager.Instance.nextTestState = true;
+            if (player == GameManager.Instance.player1)
+            {
+                GameManager.Instance.nextTestStateP1 = true;
+            }
+            else
+            {
+                GameManager.Instance.nextTestStateP2 = true;
+            }
         }
     }
 }

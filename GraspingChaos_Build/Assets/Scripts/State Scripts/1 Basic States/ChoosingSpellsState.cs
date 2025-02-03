@@ -17,9 +17,12 @@ public class ChoosingSpellsState : FSMState
 
     public override void EnterStateInit()
     {
+        GameManager.Instance.nextTestStateP1 = false;
+        GameManager.Instance.nextTestStateP2 = false;
+
         hasAddedSpells = false;
         GameManager.Instance.amtOfSpellsBeingCast = 0;
-        GameManager.Instance.nextTestState = false;
+        GameManager.Instance.nextTestStateP1 = false;
         testStates = playerState.gameObject.GetComponent<TestStates>();
 
         testStates.castBtn.gameObject.SetActive(true);
@@ -55,7 +58,7 @@ public class ChoosingSpellsState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
-        if (GameManager.Instance.nextTestState)
+        if (GameManager.Instance.nextTestStateP1 && GameManager.Instance.nextTestStateP2)
         {
             if (!hasAddedSpells)
             {
@@ -128,32 +131,7 @@ public class ChoosingSpellsState : FSMState
                 }
             }
 
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ///           Remove these for they are for testing if there was two players
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            GameManager.Instance.amtOfSpellsBeingCast++;
-            GameManager.Instance.amtOfSpellsBeingCast++;
-            GameManager.Instance.amtOfSpellsBeingCast++;
-            SpellsBeingCastInfo spellInfoTEST = new SpellsBeingCastInfo();
-            spellInfoTEST.whoIsCasting = playerState.enemy;
-            spellInfoTEST.numOfSpell = 1;
-            spellInfoTEST.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast];
-            spellInfoTEST.whatFinger = PlayerFingers.RH_Ring;
-            spellInfoTEST.whoIsBeingCastedOn = playerState.player;
-            GameManager.Instance.spellsBeingCast[0, 1] = spellInfoTEST;
-            spellInfoTEST.whoIsCasting = playerState.enemy;
-            spellInfoTEST.numOfSpell = 2;
-            spellInfoTEST.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Icicles];
-            spellInfoTEST.whatFinger = PlayerFingers.LH_Ring;
-            spellInfoTEST.whoIsBeingCastedOn = playerState.player;
-            GameManager.Instance.spellsBeingCast[1, 1] = spellInfoTEST;
-            spellInfoTEST.whoIsCasting = playerState.enemy;
-            spellInfoTEST.numOfSpell = 3;
-            spellInfoTEST.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
-            spellInfoTEST.whatFinger = PlayerFingers.none;
-            spellInfoTEST.whoIsBeingCastedOn = playerState.enemy;
-            GameManager.Instance.spellsBeingCast[2, 1] = spellInfoTEST;
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            testStates.castBtn.gameObject.SetActive(false);
 
             playerState.PerformTransition(Transition.NeedDecision);
 

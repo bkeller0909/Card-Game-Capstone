@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 9
+  fingerName: 5
 --- !u!114 &173337238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,6 +2487,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 221729092}
+    - targetCorrespondingSourceObject: {fileID: 5909041564364097440, guid: 464e39884c7357c48b7c260b0584cd41,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 221729093}
   m_SourcePrefab: {fileID: 100100000, guid: 464e39884c7357c48b7c260b0584cd41, type: 3}
 --- !u!1 &221729088 stripped
 GameObject:
@@ -2535,6 +2539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aOSC_text: {fileID: 714374486}
+  player: {fileID: 359643152}
   spellsBeingCast:
   - {fileID: 1185802589}
   - {fileID: 1650778274}
@@ -2594,6 +2599,36 @@ MonoBehaviour:
   spellsChosen: 000000000000000000000000
   fingersChosen: 0f0000000f0000000f000000
   amtOfSpells: 0
+--- !u!114 &221729093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221729088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb261acb204b8e641bb492cb32a5e4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveLeft: 0
+  moveRight: 0
+  debugDmg: 0
+  debugHp: 0
+  debugSwap: 0
+  cardMoveRight: 0
+  cardMoveLeft: 0
+  finishSelection: 0
+  Abtn: 0
+  Bbtn: 0
+  Xbtn: 0
+  Ybtn: 0
+  UpBtn: 0
+  DownBtn: 0
+  LeftBtn: 0
+  RightBtn: 0
+  debugQTE: 0
+  selectCard: 0
 --- !u!1 &221829604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,7 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 5
+  fingerName: 9
 --- !u!114 &243516315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4006,6 +4041,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352350760}
   m_CullTransparentMesh: 1
+--- !u!114 &359643152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2284729000841569658, guid: 464e39884c7357c48b7c260b0584cd41,
+    type: 3}
+  m_PrefabInstance: {fileID: 221729087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221729088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff1def3117bbf5418370bfb09d41cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &371057893
 GameObject:
   m_ObjectHideFlags: 0
@@ -5290,7 +5337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 5
+  fingerName: 9
 --- !u!114 &498999252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6668,7 +6715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 6
+  fingerName: 8
 --- !u!114 &590263583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13109,7 +13156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 8
+  fingerName: 6
 --- !u!114 &1111498429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16465,7 +16512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 8
+  fingerName: 6
 --- !u!114 &1348993495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17700,7 +17747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 6
+  fingerName: 8
 --- !u!114 &1451946961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17847,7 +17894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835bfd42dc48ec848907f1a526a9d396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerName: 9
+  fingerName: 5
 --- !u!114 &1485422309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19903,6 +19950,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1873083169}
+    - targetCorrespondingSourceObject: {fileID: 5909041564364097440, guid: 464e39884c7357c48b7c260b0584cd41,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873083174}
   m_SourcePrefab: {fileID: 100100000, guid: 464e39884c7357c48b7c260b0584cd41, type: 3}
 --- !u!20 &1639141532 stripped
 Camera:
@@ -19910,6 +19961,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1639141531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1639141533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2284729000841569658, guid: 464e39884c7357c48b7c260b0584cd41,
+    type: 3}
+  m_PrefabInstance: {fileID: 1639141531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873083168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff1def3117bbf5418370bfb09d41cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1642316030
 GameObject:
   m_ObjectHideFlags: 0
@@ -22997,6 +23060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aOSC_text: {fileID: 1376649475}
+  player: {fileID: 1639141533}
   spellsBeingCast:
   - {fileID: 1547243748}
   - {fileID: 1227988529}
@@ -23078,6 +23142,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1639141531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1873083174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873083168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb261acb204b8e641bb492cb32a5e4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveLeft: 0
+  moveRight: 0
+  debugDmg: 0
+  debugHp: 0
+  debugSwap: 0
+  cardMoveRight: 0
+  cardMoveLeft: 0
+  finishSelection: 0
+  Abtn: 0
+  Bbtn: 0
+  Xbtn: 0
+  Ybtn: 0
+  UpBtn: 0
+  DownBtn: 0
+  LeftBtn: 0
+  RightBtn: 0
+  debugQTE: 0
+  selectCard: 0
 --- !u!1 &1881954210
 GameObject:
   m_ObjectHideFlags: 0
