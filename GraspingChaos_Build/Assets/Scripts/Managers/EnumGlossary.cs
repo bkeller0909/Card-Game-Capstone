@@ -15,11 +15,11 @@ public enum PlayerFingers
     LH_Middle = 2,
     LH_Index = 3,
     LH_Thumb = 4,
-    RH_Pinky = 5,
-    RH_Ring = 6,
+    RH_Pinky = 9,
+    RH_Ring = 8,
     RH_Middle = 7,
-    RH_Index = 8,
-    RH_Thumb = 9,
+    RH_Index = 6,
+    RH_Thumb = 5,
     none = 15
 }
 
