@@ -19,6 +19,7 @@ public class TestStates : MonoBehaviour
     [SerializeField]
     public Button[] choosingSpellButtons;
     public Button[] choosingFingerButtons;
+    public Button castBtn;
 
     public SpellNames[] spellsChosen;
     public PlayerFingers[] fingersChosen;
@@ -26,6 +27,8 @@ public class TestStates : MonoBehaviour
 
     public void Start()
     {
+        castBtn.gameObject.SetActive(false);
+
         foreach (Button button in choosingSpellButtons)
         {
             button.gameObject.SetActive(false);
@@ -115,6 +118,8 @@ public class TestStates : MonoBehaviour
             }
 
             //Turns off Spell btns
+            castBtn.gameObject.SetActive(false);
+
             foreach (Button button in choosingSpellButtons)
             {
                 button.gameObject.SetActive(false);
@@ -157,6 +162,8 @@ public class TestStates : MonoBehaviour
         }
 
         bool firstSpellBtnCreated = false;
+
+        castBtn.gameObject.SetActive(true);
 
         foreach (Button button in choosingSpellButtons)
         {

@@ -47,7 +47,7 @@ public class ActiveSpellCards : MonoBehaviour
 
     private void Start()
     {
-        spellCards = new SpellCard[AmtOfCards];
+        spellCards = new SpellCard[AmtOfCards + 1];
 
         // Equals -100 if that state is not used on that card
         for (int i = 0; i < AmtOfCards + 1; i++)
@@ -515,7 +515,7 @@ public class ActiveSpellCards : MonoBehaviour
 
                     spellCards[i] = spell;
                     break;
-                case 28:
+                case 27:
                     spell.spellName = SpellNames.none;
                     spell.type = SpellType.ATTACK;
                     spell.targetSelf = false;

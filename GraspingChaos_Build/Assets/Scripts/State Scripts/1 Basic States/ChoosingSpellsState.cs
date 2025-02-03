@@ -22,6 +22,8 @@ public class ChoosingSpellsState : FSMState
         GameManager.Instance.nextTestState = false;
         testStates = playerState.gameObject.GetComponent<TestStates>();
 
+        testStates.castBtn.gameObject.SetActive(true);
+
         foreach (Button button in testStates.choosingFingerButtons)
         {
             button.gameObject.SetActive(false);
@@ -29,17 +31,16 @@ public class ChoosingSpellsState : FSMState
 
         foreach (Button button in testStates.choosingSpellButtons)
         {
+            button.gameObject.SetActive(true);
+            button.interactable = false;
+
             WhatSpellAmI spell = button.gameObject.GetComponent<WhatSpellAmI>();
             SpellHand playerHand = playerState.player.spellHand;
             foreach (SpellCard card in playerHand.playerSpells)
             {
                 if (spell.name == card.spellName)
                 {
-                    button.gameObject.SetActive(true);
-                }
-                else
-                {
-                    button.gameObject.SetActive(false);
+                    button.interactable = true;
                 }
             }
         }

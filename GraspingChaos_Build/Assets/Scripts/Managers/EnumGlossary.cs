@@ -56,7 +56,7 @@ public enum QTEButtonType
 
 public enum SpellNames
 {
-    none = 28,
+    none = 27,
     //Attack Spells
     FireBolt = 0,
     Rockthrow,
