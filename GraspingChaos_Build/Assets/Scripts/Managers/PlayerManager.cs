@@ -87,18 +87,37 @@ public class PlayerManager : MonoBehaviour
     {
         int rand = 0;
 
-        //do
-        //{
-        //    rand = Random.Range(0, fingers.Count);
-        //} while (fingers[rand].fingerHP == 0);
-
-        rand = Random.Range(0, fingers.Count);
-        if (fingers[rand].fingerHP == 0)
+        do
         {
-            return fingers[rand].finger;
-        }
+            rand = UnityEngine.Random.Range(0, fingers.Count);
+        } while (fingers[rand].fingerHP == 0);
 
         return fingers[rand].finger;
+    }
 
+    public PlayerFingers GetAdjacentFingerLeft(PlayerFingers selectedFinger)
+    {
+        int newFingerValue = (int)selectedFinger - 1;
+        if (health.getFingerHealth((PlayerFingers)newFingerValue) != 0)
+        {
+            return (PlayerFingers)newFingerValue;
+        }
+        else
+        {
+            return PlayerFingers.none;
+        }
+    }
+
+    public PlayerFingers GetAdjacentFingerRight(PlayerFingers selectedFinger)
+    {
+        int newFingerValue = (int)selectedFinger + 1;
+        if (health.getFingerHealth((PlayerFingers)newFingerValue) != 0)
+        {
+            return (PlayerFingers)newFingerValue;
+        }
+        else
+        {
+            return PlayerFingers.none;
+        }
     }
 }
