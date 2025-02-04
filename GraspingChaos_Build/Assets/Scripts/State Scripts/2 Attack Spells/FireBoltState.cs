@@ -2,6 +2,7 @@ public class FireBoltState : FSMState
 {
     PlayerState playerState;
     private int playerIndex;
+    private string nextState;
     //Constructor
     public FireBoltState(PlayerState pS)
     {
@@ -25,14 +26,21 @@ public class FireBoltState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
-
+        if (nextState == "Deciding")
+        {
+            playerState.PerformTransition(Transition.NeedDecision);
+        }
+        else if (nextState == "QTE")
+        {
+            playerState.PerformTransition(Transition.Challenge);
+        }
     }
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
         if (!playerState.finishedCurrentQTE)
         {
-
+            nextState = "QTE";
         }
         else
         {
@@ -49,6 +57,8 @@ public class FireBoltState : FSMState
                 //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
             }
+
+            nextState = "Deciding";
         }
     }
 

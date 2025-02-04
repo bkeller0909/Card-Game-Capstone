@@ -46,14 +46,15 @@ public class RighteousEnvyState : FSMState
         {
             if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
             {
-
+                //do nothing
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
             {
-
+                //do nothing
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
             {
+                int totalDamage = player.GetRightHandFingerDeath();
 
             }
 

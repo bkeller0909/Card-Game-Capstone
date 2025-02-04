@@ -5,6 +5,7 @@ public class VengefulMirrorState : FSMState
     public VengefulMirrorState(PlayerState pS)
     {
         playerState = pS;
+        stateID = FSMStateID.Ri_VengefulMirror;
     }
 
     //Reason

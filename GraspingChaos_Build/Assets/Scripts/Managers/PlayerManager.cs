@@ -120,4 +120,102 @@ public class PlayerManager : MonoBehaviour
             return PlayerFingers.none;
         }
     }
+
+    public int GetLeftHandFingerDeath()
+    {
+        PlayerFingers currentFingers = PlayerFingers.LH_Pinky;
+        int damageDealt = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            if (currentFingers == PlayerFingers.LH_Pinky)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.LH_Ring;
+            }
+            else if (currentFingers == PlayerFingers.LH_Ring)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.LH_Middle;
+            }
+            else if (currentFingers == PlayerFingers.LH_Middle)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.LH_Index;
+            }
+            else if (currentFingers == PlayerFingers.LH_Index)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.LH_Thumb;
+            }
+            else if (currentFingers == PlayerFingers.LH_Thumb)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+            }
+        }
+        return damageDealt;
+    }
+
+    public int GetRightHandFingerDeath()
+    {
+        PlayerFingers currentFingers = PlayerFingers.RH_Pinky;
+        int damageDealt = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            if (currentFingers == PlayerFingers.RH_Pinky)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.RH_Ring;
+            }
+            else if (currentFingers == PlayerFingers.RH_Ring)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.RH_Middle;
+            }
+            else if (currentFingers == PlayerFingers.RH_Middle)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.RH_Index;
+            }
+            else if (currentFingers == PlayerFingers.RH_Index)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+                currentFingers = PlayerFingers.RH_Thumb;
+            }
+            else if (currentFingers == PlayerFingers.RH_Thumb)
+            {
+                if (health.playerHealthStats[(int)currentFingers] == 0)
+                {
+                    damageDealt += 1;
+                }
+            }
+        }
+        return damageDealt;
+    }
 }
