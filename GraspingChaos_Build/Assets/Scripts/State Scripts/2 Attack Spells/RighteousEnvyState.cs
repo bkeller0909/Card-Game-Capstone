@@ -55,7 +55,19 @@ public class RighteousEnvyState : FSMState
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
             {
                 int totalDamage = player.GetRightHandFingerDeath();
+                int partDamage = totalDamage / 2;
+                PlayerFingers randomFinger = enemy.GetRandomFinger();
+                for (int i = 0; i < partDamage; i++)
+                {
+                    enemy.health.DamageFinger(randomFinger);
+                }
 
+                partDamage = totalDamage - partDamage;
+                randomFinger = enemy.GetRandomFinger();
+                for (int i = 0; i < partDamage; i++)
+                {
+                    enemy.health.DamageFinger(randomFinger);
+                }
             }
 
             nextState = "Deciding";
