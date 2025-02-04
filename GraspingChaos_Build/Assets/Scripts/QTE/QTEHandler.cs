@@ -98,8 +98,8 @@ public class QTEHandler : MonoBehaviour
         if (resetLoop)
         {
             resetLoop = false;
-            playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
-            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
+            //playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
+            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
         }
 
 
@@ -266,7 +266,7 @@ public class QTEHandler : MonoBehaviour
     public void Create(int qteAmount, PlayerManager caster)
     {
         //set the proper action map for QTE Action
-        caster.playerInput.SwitchCurrentActionMap("QTE");
+        //caster.playerInput.SwitchCurrentActionMap("QTE");
         //loop the amount of times equeal to the amount of QTE that need to be in the sequence
         for (int i = 0; i < qteAmount; i++)
         {
