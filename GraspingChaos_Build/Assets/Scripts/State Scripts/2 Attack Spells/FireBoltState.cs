@@ -8,11 +8,13 @@ public class FireBoltState : FSMState
     {
         playerState = pS;
         stateID = FSMStateID.A_FireBolt;
+        nextState = "";
     }
 
     public override void EnterStateInit()
     {
         playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].qteAmount;
+        nextState = "";
         if (playerState.player == GameManager.Instance.player1)
         {
             playerIndex = 0;
