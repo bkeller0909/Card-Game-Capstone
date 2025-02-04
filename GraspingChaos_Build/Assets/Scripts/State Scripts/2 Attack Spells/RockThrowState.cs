@@ -51,13 +51,13 @@ public class RockThrowState : FSMState
             {
                 //player.fingers[(int)player.GetRandomFinger()].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow].damageValue;
                 PlayerFingers randomFinger = player.GetRandomFinger();
-                enemy.health.DamageFinger(randomFinger);
+                player.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
             {
                 //player.fingers[(int)player.GetRandomFinger()].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow].damageValue;
                 PlayerFingers randomFinger = player.GetRandomFinger();
-                enemy.health.DamageFinger(randomFinger);
+                player.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
             {
