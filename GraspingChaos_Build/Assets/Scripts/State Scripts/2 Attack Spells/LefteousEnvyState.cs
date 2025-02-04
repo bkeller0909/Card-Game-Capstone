@@ -73,6 +73,9 @@ public class LefteousEnvyState : FSMState
                 }
             }
 
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
     }

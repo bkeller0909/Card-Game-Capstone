@@ -58,11 +58,14 @@ public class QuakeState : FSMState
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
             {
-                for(int i = 0; i < 3;  i++)
+                for (int i = 0; i < 3; i++)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
             }
+
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
 
             nextState = "Deciding";
         }

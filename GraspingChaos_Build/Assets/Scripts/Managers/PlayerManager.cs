@@ -62,14 +62,14 @@ public class PlayerManager : MonoBehaviour
         spellHand = new SpellHand();
 
         entireHP = 28;
-        for (int i = 0; i < playerInput.devices.Count; i++)
-        {
-            if (playerInput.devices[i] is Gamepad)
-            {
-                gamepad = (Gamepad)playerInput.devices[i];
-                break;
-            }
-        }
+        //for (int i = 0; i < playerInput.devices.Count; i++)
+        //{
+        //    if (playerInput.devices[i] is Gamepad)
+        //    {
+        //        gamepad = (Gamepad)playerInput.devices[i];
+        //        break;
+        //    }
+        //}
     }
 
     public void fillFingers()

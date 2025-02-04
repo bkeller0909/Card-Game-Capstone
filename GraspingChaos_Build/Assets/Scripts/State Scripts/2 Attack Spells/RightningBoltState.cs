@@ -108,6 +108,9 @@ public class RightningBoltState : FSMState
 
             }
 
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
     }

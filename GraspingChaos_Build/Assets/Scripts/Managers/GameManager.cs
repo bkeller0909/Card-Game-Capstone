@@ -96,6 +96,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("What Slected spells are being played")]
     public int spellIndex = 0;
 
+    [Tooltip("keep track of all spells played per round")]
+    public int playedSpells = 0;
+
     [Tooltip("This sets up which spell goes first")]
     public bool roundCheck = false;
 
@@ -143,6 +146,7 @@ public class GameManager : MonoBehaviour
         spellsBeingCast = new SpellsBeingCastInfo[3, 2];
         whoesOnFirst = new Decider[3];
         roundCheck = false;
+        currentCaster = null;
 
         player1IsHere = false;
         player2IsHere = false;
@@ -153,14 +157,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (testingCurrentP1)
-        {
-            currentCaster = player1;
-        }
-        else
-        {
-            currentCaster = player2;
-        }
+
     }
 
     public void StartLoadingLevel(string levelName)
@@ -216,6 +213,18 @@ public class GameManager : MonoBehaviour
         loadingScreen.SetLoadingScreenActive(false);
 
         isLoading = false;
+    }
+
+    public void ChangeCurrentCaster()
+    {
+        if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
+        {
+            GameManager.Instance.currentCaster = GameManager.Instance.player2;
+        }
+        else if (GameManager.Instance.currentCaster == GameManager.Instance.player2)
+        {
+            GameManager.Instance.currentCaster = GameManager.Instance.player1;
+        }
     }
 
 }
