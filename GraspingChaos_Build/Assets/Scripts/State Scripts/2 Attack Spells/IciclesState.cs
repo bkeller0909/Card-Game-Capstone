@@ -76,6 +76,9 @@ public class IciclesState : FSMState
                 }
             }
 
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
     }

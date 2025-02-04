@@ -134,6 +134,9 @@ public class PointerOfDeathState : FSMState
                 }
             }
 
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
     }

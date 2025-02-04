@@ -40,10 +40,20 @@ public class DecidingState : FSMState
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.none)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerTwoIsFaster;
+
+                        if (i == 0)
+                        {
+                            GameManager.Instance.currentCaster = GameManager.Instance.player2;
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.spellName == SpellNames.none)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerOneIsFaster;
+
+                        if (i == 0)
+                        {
+                            GameManager.Instance.currentCaster = GameManager.Instance.player1;
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost == GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
                     {
@@ -52,10 +62,20 @@ public class DecidingState : FSMState
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost < GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerOneIsFaster;
+
+                        if (i == 0)
+                        {
+                            GameManager.Instance.currentCaster = GameManager.Instance.player1;
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost > GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerTwoIsFaster;
+
+                        if (i == 0)
+                        {
+                            GameManager.Instance.currentCaster = GameManager.Instance.player2;
+                        }
                     }
                 }
                 GameManager.Instance.roundCheck = true;
@@ -189,8 +209,6 @@ public class DecidingState : FSMState
                 {
                     playerState.PerformTransition(Transition.TRi_VeilOfFortitude);
                 }
-
-
             }
             // Player 2
             else
@@ -315,17 +333,45 @@ public class DecidingState : FSMState
     {
         if (!castASpell && performAct)
         {
-            if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerOneIsFaster && player == GameManager.Instance.player1)
+            if (GameManager.Instance.playedSpells >= 2 && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 0].whatSpell.spellName != SpellNames.none &&
+                GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 1].whatSpell.spellName != SpellNames.none)
             {
+                GameManager.Instance.spellIndex++;
+                GameManager.Instance.playedSpells = 0;
+                performAct = false;
                 castASpell = true;
             }
-            else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerTwoIsFaster && player == GameManager.Instance.player2)
+            else if (GameManager.Instance.playedSpells >= 1 && ((GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 0].whatSpell.spellName != SpellNames.none &&
+               GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 1].whatSpell.spellName == SpellNames.none)
+               || (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 0].whatSpell.spellName == SpellNames.none &&
+               GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 1].whatSpell.spellName != SpellNames.none)))
             {
+                GameManager.Instance.spellIndex++;
+                GameManager.Instance.playedSpells = 0;
+                performAct = false;
                 castASpell = true;
             }
             else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.NoSpellsChosen)
             {
                 roundEnd = true;
+            }
+            else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerOneIsFaster &&
+            GameManager.Instance.currentCaster == GameManager.Instance.player1 && player == GameManager.Instance.player1)
+            {
+                castASpell = true;
+            }
+            else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerTwoIsFaster &&
+                GameManager.Instance.currentCaster == GameManager.Instance.player2 && player == GameManager.Instance.player2)
+            {
+                castASpell = true;
+            }
+            else if (GameManager.Instance.currentCaster == GameManager.Instance.player1 && player == GameManager.Instance.player1)
+            {
+                castASpell = true;
+            }
+            else if (GameManager.Instance.currentCaster == GameManager.Instance.player2 && player == GameManager.Instance.player2)
+            {
+                castASpell = true;
             }
         }
     }

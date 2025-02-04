@@ -64,6 +64,9 @@ public class CollectorsCurseState : FSMState
                 //steal ring not yet implemented
             }
 
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
 

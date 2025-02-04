@@ -65,6 +65,9 @@ public class RockThrowState : FSMState
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
             }
 
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
     }

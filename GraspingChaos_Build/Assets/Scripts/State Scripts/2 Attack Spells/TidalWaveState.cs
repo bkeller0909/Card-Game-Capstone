@@ -71,7 +71,7 @@ public class TidalWaveState : FSMState
                 }
 
                 PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                for(int s = 0; s < 2; s++)
+                for (int s = 0; s < 2; s++)
                 {
                     enemy.health.DamageFinger(currentAdjacent);
                 }
@@ -82,6 +82,9 @@ public class TidalWaveState : FSMState
                     enemy.health.DamageFinger(currentAdjacent);
                 }
             }
+
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
 
             nextState = "Deciding";
         }

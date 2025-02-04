@@ -61,6 +61,11 @@ public class FireBoltState : FSMState
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
             }
 
+            //check if i am the second spell but the first cast
+
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+
             nextState = "Deciding";
         }
     }

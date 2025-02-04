@@ -40,13 +40,15 @@ public class QTEState : FSMState
         {
             if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.Tie)
             {
-                if (GameManager.Instance.P1QTESpeed < GameManager.Instance.P2QTESpeed)
+                if (GameManager.Instance.P1QTESpeed > GameManager.Instance.P2QTESpeed)
                 {
                     GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
+                    GameManager.Instance.currentCaster = GameManager.Instance.player1;
                 }
-                else if (GameManager.Instance.P1QTESpeed > GameManager.Instance.P2QTESpeed)
+                else if (GameManager.Instance.P1QTESpeed < GameManager.Instance.P2QTESpeed)
                 {
                     GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
+                    GameManager.Instance.currentCaster = GameManager.Instance.player2;
                 }
                 else
                 {
@@ -54,10 +56,12 @@ public class QTEState : FSMState
                     if (rand == 0)
                     {
                         GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
+                        GameManager.Instance.currentCaster = GameManager.Instance.player1;
                     }
                     else if (rand == 1)
                     {
                         GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
+                        GameManager.Instance.currentCaster = GameManager.Instance.player2;
                     }
                 }
 
