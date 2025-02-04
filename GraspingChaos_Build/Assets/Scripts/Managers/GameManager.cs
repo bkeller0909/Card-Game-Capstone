@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     public int amtOfSpellsBeingCast = 0;
 
     [Tooltip("What Slected spells are being played")]
-    public int spellIndex = 1;
+    public int spellIndex = 0;
 
     [Tooltip("This sets up which spell goes first")]
     public bool roundCheck = false;
@@ -104,6 +104,12 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("This is a test bool for moving to the next state")]
     public bool nextTestStateP2 = false;
+
+    [Tooltip("This is checking if player one has entered the state")]
+    public bool player1IsHere = false;
+
+    [Tooltip("This is checking if player two has entered the state")]
+    public bool player2IsHere = false;
 
     public SpellsBeingCastInfo[,] spellsBeingCast;
     public Decider[] whoesOnFirst;
@@ -137,6 +143,9 @@ public class GameManager : MonoBehaviour
         spellsBeingCast = new SpellsBeingCastInfo[3, 2];
         whoesOnFirst = new Decider[3];
         roundCheck = false;
+
+        player1IsHere = false;
+        player2IsHere = false;
 
         StartLoadingLevel(ln_MainMenuName);
     }

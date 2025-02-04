@@ -94,7 +94,8 @@ public enum Decider
     none = 0,
     PlayerOneIsFaster = 1,
     PlayerTwoIsFaster = 2,
-    Tie
+    Tie,
+    NoSpellsChosen
 }
 
 
