@@ -8,11 +8,13 @@ public class PointerOfDeathState : FSMState
     {
         playerState = pS;
         stateID = FSMStateID.A_PointerOfDeath;
+        nextState = "";
     }
 
     public override void EnterStateInit()
     {
         playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath].qteAmount;
+        nextState = "";
         if (playerState.player == GameManager.Instance.player1)
         {
             playerIndex = 0;
@@ -40,6 +42,7 @@ public class PointerOfDeathState : FSMState
     {
         if (!playerState.finishedCurrentQTE)
         {
+            playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath].qteAmount;
             nextState = "QTE";
         }
         else

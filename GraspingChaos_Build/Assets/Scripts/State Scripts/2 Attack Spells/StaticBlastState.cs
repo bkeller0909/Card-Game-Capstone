@@ -8,11 +8,13 @@ public class StaticBlastState : FSMState
     {
         playerState = pS;
         stateID = FSMStateID.A_StaticBlast;
+        nextState = "";
     }
 
     public override void EnterStateInit()
     {
         playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast].qteAmount;
+        nextState = "";
         if (playerState.player == GameManager.Instance.player1)
         {
             playerIndex = 0;
@@ -40,6 +42,7 @@ public class StaticBlastState : FSMState
     {
         if (!playerState.finishedCurrentQTE)
         {
+            playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast].qteAmount;
             nextState = "QTE";
         }
         else

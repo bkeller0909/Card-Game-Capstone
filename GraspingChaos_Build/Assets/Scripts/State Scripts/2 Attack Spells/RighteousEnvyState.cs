@@ -8,11 +8,13 @@ public class RighteousEnvyState : FSMState
     {
         playerState = pS;
         stateID = FSMStateID.A_RighteousEnvy;
+        nextState = "";
     }
 
     public override void EnterStateInit()
     {
         playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.RighteousEnvy].qteAmount;
+        nextState = "";
         if (playerState.player == GameManager.Instance.player1)
         {
             playerIndex = 0;
@@ -40,6 +42,7 @@ public class RighteousEnvyState : FSMState
     {
         if (!playerState.finishedCurrentQTE)
         {
+            playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.RighteousEnvy].qteAmount;
             nextState = "QTE";
         }
         else

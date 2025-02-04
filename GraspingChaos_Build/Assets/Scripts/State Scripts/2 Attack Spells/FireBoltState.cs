@@ -42,6 +42,7 @@ public class FireBoltState : FSMState
     {
         if (!playerState.finishedCurrentQTE)
         {
+            playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].qteAmount;
             nextState = "QTE";
         }
         else

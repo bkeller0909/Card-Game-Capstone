@@ -62,6 +62,7 @@ public class QTEState : FSMState
                 }
 
             }
+            playerState.finishedCurrentQTE = true;
             changeState = true;
         }
     }

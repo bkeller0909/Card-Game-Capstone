@@ -1,11 +1,13 @@
 public class RightningBoltState : FSMState
 {
     PlayerState playerState;
+    string nextState;
     //Constructor
     public RightningBoltState(PlayerState pS)
     {
         playerState = pS;
         stateID = FSMStateID.A_RightningBolt;
+        nextState = "";
     }
 
     //Reason

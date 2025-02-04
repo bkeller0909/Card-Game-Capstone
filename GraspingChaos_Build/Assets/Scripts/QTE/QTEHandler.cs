@@ -287,16 +287,16 @@ public class QTEHandler : MonoBehaviour
                 //assign the buttons to the correct layers so that it can be showned properly (this might change later once in the game scene the handler uses different buttons)
                 Buttons[i].layer = LayerMask.NameToLayer("The Skull");
                 Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                //Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                //Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
             }
             else if (caster == p2)
             {
                 //assign the buttons to the correct layers so that it can be showned properly (this might change later once in the game scene the handler uses different buttons)
                 Buttons[i].layer = LayerMask.NameToLayer("The Stag");
                 Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                //Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                //Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
             }
             //add the sequence to a list for evaluation
             CreatedButtons.Add(Buttons[i]);
@@ -403,8 +403,8 @@ public class QTEHandler : MonoBehaviour
         foreach (GameObject button in CreatedButtons)
         {
             button.transform.GetChild(0).gameObject.SetActive(false);
-            button.transform.GetChild(1).gameObject.SetActive(false);
-            button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            //button.transform.GetChild(1).gameObject.SetActive(false);
+            // button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
             button.GetComponent<QTEButton>().pressed = false;
             button.SetActive(false);
         }
@@ -444,8 +444,8 @@ public class QTEHandler : MonoBehaviour
         foreach (GameObject button in CreatedButtons)
         {
             button.transform.GetChild(0).gameObject.SetActive(false);
-            button.transform.GetChild(1).gameObject.SetActive(false);
-            button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            //button.transform.GetChild(1).gameObject.SetActive(false);
+            //button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
             button.GetComponent<QTEButton>().pressed = false;
             button.SetActive(false);
         }
