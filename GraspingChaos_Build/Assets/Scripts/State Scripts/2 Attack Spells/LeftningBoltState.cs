@@ -17,11 +17,11 @@ public class LeftningBoltState : FSMState
         nextState = "";
         if (playerState.player == GameManager.Instance.player1)
         {
-            playerIndex = 0;
+            playerIndex = (int)PlayerType.PLAYER1;
         }
         else
         {
-            playerIndex = 1;
+            playerIndex = (int)PlayerType.PLAYER2;
         }
     }
 
