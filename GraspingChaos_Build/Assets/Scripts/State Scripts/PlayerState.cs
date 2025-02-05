@@ -186,7 +186,7 @@ public class PlayerState : AdvancedFSM
 
         #region Deciding State
         DecidingState deciding = new DecidingState(this);
-        deciding.AddTransition(Transition.NeedDecision, FSMStateID.Deciding);
+        deciding.AddTransition(Transition.EndOfRound, FSMStateID.DealStats);
         deciding.AddTransition(Transition.Challenge, FSMStateID.QTE);
         // Casting Attack Spell State transitions
         deciding.AddTransition(Transition.TA_FireBolt, FSMStateID.A_FireBolt);

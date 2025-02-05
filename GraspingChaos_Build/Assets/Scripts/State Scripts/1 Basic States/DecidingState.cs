@@ -97,12 +97,16 @@ public class DecidingState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
+        if (player.entireHP <= 0 || enemy.entireHP <= 0)
+        {
+            playerState.PerformTransition(Transition.died);
+        }
+        if (roundEnd)
+        {
+            playerState.PerformTransition(Transition.EndOfRound);
+        }
         if (GameManager.Instance.roundCheck && castASpell)
         {
-            if (roundEnd)
-            {
-                playerState.PerformTransition(Transition.EndOfRound);
-            }
             if (player == GameManager.Instance.player1)
             {
                 if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.FireBolt)
@@ -327,15 +331,15 @@ public class DecidingState : FSMState
                 }
             }
         }
-        if (player.entireHP <= 0 || enemy.entireHP <= 0)
-        {
-            playerState.PerformTransition(Transition.died);
-        }
     }
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
-        if (!castASpell && performAct)
+        if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.NoSpellsChosen)
+        {
+            roundEnd = true;
+        }
+        else if (!castASpell && performAct)
         {
             if (GameManager.Instance.playedSpells == 2)
             {
@@ -374,11 +378,6 @@ public class DecidingState : FSMState
                     GameManager.Instance.spellIndex++;
                     playerState.finishedCurrentQTE = false;
                 }
-            }
-
-            else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.NoSpellsChosen)
-            {
-                roundEnd = true;
             }
             else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerOneIsFaster &&
             GameManager.Instance.currentCaster == GameManager.Instance.player1 && player == GameManager.Instance.player1)

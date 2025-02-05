@@ -223,13 +223,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeCurrentCaster()
     {
-        if (GameManager.Instance.currentCaster == GameManager.Instance.player1)
+        if (currentCaster == player1)
         {
-            GameManager.Instance.currentCaster = GameManager.Instance.player2;
+            currentCaster = player2;
         }
-        else if (GameManager.Instance.currentCaster == GameManager.Instance.player2)
+        else if (currentCaster == player2)
         {
-            GameManager.Instance.currentCaster = GameManager.Instance.player1;
+            currentCaster = player1;
         }
     }
 

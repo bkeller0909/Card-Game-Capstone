@@ -26,7 +26,14 @@ public class SpellHand : MonoBehaviour
     public void RemoveSpells(SpellCard cardUsed)
     {
         //might need more functionality based on how the trigger events are handled in the game loop
-        playerSpells.Remove(cardUsed);
+        for (int w = 0; w < playerSpells.Count; w++)
+        {
+            if (playerSpells[w] == cardUsed)
+            {
+                playerSpells.Remove(cardUsed);
+                amtOfSpellsInHand--;
+            }
+        }
     }
 
     //Filter by mana amount and spell type

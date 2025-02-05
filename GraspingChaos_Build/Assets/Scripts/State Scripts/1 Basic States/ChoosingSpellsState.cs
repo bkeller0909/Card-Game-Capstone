@@ -17,6 +17,16 @@ public class ChoosingSpellsState : FSMState
 
     public override void EnterStateInit()
     {
+        //Remove pass spells
+        for (int w = 0; w < 3; w++)
+        {
+            for (int y = 0; y < 2; y++)
+            {
+                GameManager.Instance.spellsBeingCast[w, y].whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
+
+            }
+        }
+
         GameManager.Instance.nextTestStateP1 = false;
         GameManager.Instance.nextTestStateP2 = false;
 
@@ -50,6 +60,7 @@ public class ChoosingSpellsState : FSMState
 
         for (int i = 0; i < testStates.spellsBeingCast.Length; i++)
         {
+            testStates.spellsBeingCast[i].text = "";
             testStates.spellsBeingCast[i].gameObject.SetActive(true);
             testStates.spellsBeingChosenPanels[i].gameObject.SetActive(true);
         }
@@ -70,11 +81,11 @@ public class ChoosingSpellsState : FSMState
                 int whoAmI = -100;
                 if (player == GameManager.Instance.player1)
                 {
-                    whoAmI = 0;
+                    whoAmI = (int)PlayerType.PLAYER1;
                 }
                 else
                 {
-                    whoAmI = 1;
+                    whoAmI = (int)PlayerType.PLAYER2;
                 }
 
                 for (int i = 0; i < testStates.spellsBeingCast.Length; i++)
@@ -123,6 +134,13 @@ public class ChoosingSpellsState : FSMState
                         spellInfo.whoIsBeingCastedOn = playerState.player;
                         GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
                     }
+
+                    // Remove the spell from the players hand
+                    if (spellInfo.whatSpell.spellName != SpellNames.none)
+                    {
+                        player.spellHand.RemoveSpells(spellInfo.whatSpell);
+                    }
+
 
                     testStates.spellsBeingCast[i].gameObject.SetActive(false);
                     testStates.spellsBeingChosenPanels[i].gameObject.SetActive(false);
