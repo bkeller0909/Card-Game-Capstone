@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         QuakeState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Quake Spell
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class QuakeState : FSMState
 {
     PlayerState playerState;

@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         CollectorsCurseState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Collectors curse spell
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class CollectorsCurseState : FSMState
 {
     PlayerState playerState;

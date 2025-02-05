@@ -1,3 +1,12 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Sebastian
+//  Title:         LefteousEnvyState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Left-eous envy spells
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class LefteousEnvyState : FSMState
 {
     PlayerState playerState;

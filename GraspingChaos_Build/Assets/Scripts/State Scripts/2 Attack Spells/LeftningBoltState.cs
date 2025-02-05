@@ -1,3 +1,12 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Sebastian
+//  Title:         LeftningBoltState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Left-ning Bolt spells
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class LeftningBoltState : FSMState
 {
     PlayerState playerState;

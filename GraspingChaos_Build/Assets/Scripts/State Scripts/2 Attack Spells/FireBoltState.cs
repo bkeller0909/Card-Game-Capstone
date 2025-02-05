@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         FireBoltState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for FireBolt
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class FireBoltState : FSMState
 {
     PlayerState playerState;

@@ -1,3 +1,12 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Sebastian
+//  Title:         IciclesState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Icicles spells
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class IciclesState : FSMState
 {
     PlayerState playerState;

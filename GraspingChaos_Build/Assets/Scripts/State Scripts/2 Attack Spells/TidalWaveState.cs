@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         TidalWaveState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Tidal Wave spell
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class TidalWaveState : FSMState
 {
     PlayerState playerState;

@@ -1,3 +1,12 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:    Sebastian
+//  Title:        QuickHealState
+//  Date Created: 02/5/2025
+//  Purpose:      spell state for quick heal spell
+//  Instance?     no
+//-----------------------------------------------------------------
+/// </summary>
 public class QuickHealState : FSMState
 {
     PlayerState playerState;
@@ -42,11 +51,30 @@ public class QuickHealState : FSMState
     {
         if (!playerState.finishedCurrentQTE)
         {
-
+            playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.QuickHeal].qteAmount;
+            nextState = "QTE";
         }
         else
         {
+            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            {
+                //does nothing
+            }
+            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            {
+                //does nothing
+            }
+            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            {
+                player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+            }
 
+            //check if i am the second spell but the first cast
+
+            GameManager.Instance.ChangeCurrentCaster();
+            GameManager.Instance.playedSpells++;
+            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+            nextState = "Deciding";
         }
     }
 

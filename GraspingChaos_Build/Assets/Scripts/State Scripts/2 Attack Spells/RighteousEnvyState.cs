@@ -1,3 +1,12 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Sebastian
+//  Title:         RighteousEnvyState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Right-eous envy spells
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class RighteousEnvyState : FSMState
 {
     PlayerState playerState;

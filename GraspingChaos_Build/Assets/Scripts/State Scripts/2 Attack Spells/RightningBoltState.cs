@@ -1,3 +1,12 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Sebastian
+//  Title:         RightningBoltState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Right-ning Bolt spells
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class RightningBoltState : FSMState
 {
     PlayerState playerState;

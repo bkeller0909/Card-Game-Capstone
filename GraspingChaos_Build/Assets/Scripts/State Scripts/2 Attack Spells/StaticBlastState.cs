@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         StaticBastState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Static Blast spell
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class StaticBlastState : FSMState
 {
     PlayerState playerState;

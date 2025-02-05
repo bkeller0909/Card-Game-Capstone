@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         PointerOfDeathState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Pointer of Death state 
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class PointerOfDeathState : FSMState
 {
     PlayerState playerState;

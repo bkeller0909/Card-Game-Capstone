@@ -1,3 +1,13 @@
+/// <summary>
+//----------------------------------------------------------------
+//  OG Author:     Cooper
+//  other Authors: Sebastian
+//  Title:         RockThrowState
+//  Date Created:  01/16/2025
+//  Purpose:       Spell State for Rock throw spell
+//  Instance?      no
+//-----------------------------------------------------------------
+/// </summary>
 public class RockThrowState : FSMState
 {
     PlayerState playerState;
