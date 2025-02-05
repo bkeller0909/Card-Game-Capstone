@@ -4,6 +4,7 @@ public class ChoosingSpellsState : FSMState
 {
     PlayerState playerState;
     bool hasAddedSpells;
+    bool firstEnter;
 
     //Testing
     TestStates testStates;
@@ -17,13 +18,20 @@ public class ChoosingSpellsState : FSMState
 
     public override void EnterStateInit()
     {
-        //Remove pass spells
+        //Remove past spells
+        firstEnter = false;
+
+        SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
+
         for (int w = 0; w < 3; w++)
         {
             for (int y = 0; y < 2; y++)
             {
-                GameManager.Instance.spellsBeingCast[w, y].whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
-
+                spellInfo.whoIsCasting = playerState.player;
+                spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
+                spellInfo.whatFinger = PlayerFingers.none;
+                spellInfo.whoIsBeingCastedOn = playerState.player;
+                GameManager.Instance.spellsBeingCast[w, y] = spellInfo;
             }
         }
 
@@ -60,9 +68,12 @@ public class ChoosingSpellsState : FSMState
 
         for (int i = 0; i < testStates.spellsBeingCast.Length; i++)
         {
-            testStates.spellsBeingCast[i].text = "";
             testStates.spellsBeingCast[i].gameObject.SetActive(true);
+            testStates.spellsBeingCast[i].text = "";
             testStates.spellsBeingChosenPanels[i].gameObject.SetActive(true);
+            testStates.fingersBeingChosen[i].gameObject.SetActive(true);
+            testStates.fingersBeingChosen[i].text = "";
+            testStates.fingersBeingChosenPanels[i].gameObject.SetActive(true);
         }
     }
 
@@ -158,6 +169,16 @@ public class ChoosingSpellsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        if (!firstEnter)
+        {
+            firstEnter = true;
+            for (int i = 0; i < 3; i++)
+            {
+                testStates.spellsChosen[i] = SpellNames.none;
+                testStates.fingersChosen[i] = PlayerFingers.none;
+            }
+        }
+
         for (int i = 0; i < 3; i++)
         {
             if (testStates.spellsChosen[i] == SpellNames.none)

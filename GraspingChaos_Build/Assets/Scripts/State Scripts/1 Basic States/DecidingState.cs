@@ -101,10 +101,11 @@ public class DecidingState : FSMState
         {
             playerState.PerformTransition(Transition.died);
         }
-        if (roundEnd)
+        if (roundEnd || GameManager.Instance.spellIndex >= 3)
         {
             playerState.PerformTransition(Transition.EndOfRound);
         }
+
         if (GameManager.Instance.roundCheck && castASpell)
         {
             if (player == GameManager.Instance.player1)

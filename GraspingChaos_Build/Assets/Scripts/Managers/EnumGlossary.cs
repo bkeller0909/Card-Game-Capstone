@@ -40,6 +40,7 @@ public enum PlayerType
 {
     PLAYER1 = 0,
     PLAYER2 = 1,
+    None = 300
 }
 
 public enum QTEButtonType
