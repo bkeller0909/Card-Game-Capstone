@@ -29,7 +29,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""CameraUp"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""6f7d127b-4cc3-4874-8694-f43676a77080"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -38,7 +38,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""CameraDown"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""d51820a4-bcf2-4aa8-aeb2-6c4b2e770ae2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1092,7 +1092,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""CameraUp"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""ee3ca8fe-005d-4874-bc80-e9bf3e914fc2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1101,7 +1101,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""CameraDown"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""1274b357-e977-45d0-b321-2c67ffbd2da0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

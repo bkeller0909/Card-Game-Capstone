@@ -58,7 +58,7 @@ public class SelectableFinger : MonoBehaviour
         if (setState)
         {
             player.playerInput.SwitchCurrentActionMap("Card");
-            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
+            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
             setState = false;
         }
 

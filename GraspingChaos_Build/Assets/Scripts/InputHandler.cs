@@ -21,7 +21,10 @@ public class InputHandler : MonoBehaviour
     public bool RightBtn = false;
     public bool debugQTE = false;
     public bool selectCard = false;
+    public bool cameraUp = false;
+    public bool cameraDown = false;
 
+    #region Player Controls
     //player
     public void OnFingerLeft(InputValue value)
     {
@@ -52,6 +55,18 @@ public class InputHandler : MonoBehaviour
         debugSwap = value.isPressed;
     }
 
+    public void OnCameraUp(InputValue value)
+    {
+        cameraUp = value.isPressed;
+    }
+
+    public void OnCameraDown(InputValue value)
+    {
+        cameraDown = value.isPressed;
+    }
+    #endregion
+
+    #region Card Controls
     //card
     public void OnNavCardRight(InputValue value)
     {
@@ -75,7 +90,9 @@ public class InputHandler : MonoBehaviour
     {
         selectCard = value.isPressed;
     }
+    #endregion
 
+    #region QTE Controls
     //qte
     public void OnSouth(InputValue value)
     {
@@ -121,5 +138,5 @@ public class InputHandler : MonoBehaviour
     {
         debugQTE = value.isPressed;
     }
-
+    #endregion
 }
