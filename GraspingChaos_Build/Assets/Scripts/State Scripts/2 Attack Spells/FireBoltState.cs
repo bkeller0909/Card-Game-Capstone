@@ -65,7 +65,7 @@ public class FireBoltState : FSMState
 
             GameManager.Instance.ChangeCurrentCaster();
             GameManager.Instance.playedSpells++;
-
+            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
             nextState = "Deciding";
         }
     }

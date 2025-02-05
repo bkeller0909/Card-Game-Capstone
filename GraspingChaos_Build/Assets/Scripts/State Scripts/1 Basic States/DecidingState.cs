@@ -82,6 +82,10 @@ public class DecidingState : FSMState
             }
             performAct = false;
             castASpell = true;
+            GameManager.Instance.spellIndex = 0;
+            GameManager.Instance.playedSpells = 0;
+            GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER1] = false;
+            GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER2] = false;
         }
         else
         {
@@ -333,24 +337,45 @@ public class DecidingState : FSMState
     {
         if (!castASpell && performAct)
         {
-            if (GameManager.Instance.playedSpells >= 2 && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 0].whatSpell.spellName != SpellNames.none &&
-                GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 1].whatSpell.spellName != SpellNames.none)
+            if (GameManager.Instance.playedSpells == 2)
             {
-                GameManager.Instance.spellIndex++;
-                GameManager.Instance.playedSpells = 0;
-                performAct = false;
-                castASpell = true;
+                int whoAmI = -1;
+                if (player == GameManager.Instance.player1)
+                {
+                    whoAmI = (int)PlayerType.PLAYER1;
+                }
+                else
+                {
+                    whoAmI = (int)PlayerType.PLAYER2;
+                }
+
+                if (GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER1] == true && GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER2] == true)
+                {
+                    GameManager.Instance.spellsThatHaveBeenCast[whoAmI] = false;
+                    castASpell = true;
+                    performAct = false;
+                    playerState.finishedCurrentQTE = false;
+                }
+                else if (GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER1] == false && GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER2] == true)
+                {
+                    castASpell = true;
+                    performAct = false;
+                    GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER2] = false;
+                    GameManager.Instance.playedSpells = 0;
+                    GameManager.Instance.spellIndex++;
+                    playerState.finishedCurrentQTE = false;
+                }
+                else if (GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER2] == false && GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER1] == true)
+                {
+                    castASpell = true;
+                    performAct = false;
+                    GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER1] = false;
+                    GameManager.Instance.playedSpells = 0;
+                    GameManager.Instance.spellIndex++;
+                    playerState.finishedCurrentQTE = false;
+                }
             }
-            else if (GameManager.Instance.playedSpells >= 1 && ((GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 0].whatSpell.spellName != SpellNames.none &&
-               GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 1].whatSpell.spellName == SpellNames.none)
-               || (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 0].whatSpell.spellName == SpellNames.none &&
-               GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, 1].whatSpell.spellName != SpellNames.none)))
-            {
-                GameManager.Instance.spellIndex++;
-                GameManager.Instance.playedSpells = 0;
-                performAct = false;
-                castASpell = true;
-            }
+
             else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.NoSpellsChosen)
             {
                 roundEnd = true;

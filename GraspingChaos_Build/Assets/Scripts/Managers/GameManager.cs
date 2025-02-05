@@ -114,6 +114,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is checking if player two has entered the state")]
     public bool player2IsHere = false;
 
+    [Tooltip("This is checking if player two has entered the state")]
+    public bool[] spellsThatHaveBeenCast;
+
     public SpellsBeingCastInfo[,] spellsBeingCast;
     public Decider[] whoesOnFirst;
 
@@ -121,6 +124,8 @@ public class GameManager : MonoBehaviour
 
     public float P1QTESpeed;
     public float P2QTESpeed;
+
+
 
     private void Awake()
     {
@@ -144,6 +149,7 @@ public class GameManager : MonoBehaviour
         }
 
         spellsBeingCast = new SpellsBeingCastInfo[3, 2];
+        spellsThatHaveBeenCast = new bool[2];
         whoesOnFirst = new Decider[3];
         roundCheck = false;
         currentCaster = null;
