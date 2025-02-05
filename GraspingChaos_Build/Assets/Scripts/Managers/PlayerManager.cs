@@ -38,6 +38,25 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("What number of player they are")]
     public List<VisualEffect> spellEffects;
 
+    [Tooltip("damage tracker of each player per round")]
+    public int DamageTrackedPerTurn;
+
+    [Tooltip("check for curse convertion on dealing state")]
+    public bool SucessfulCursedConversion;
+
+    [Tooltip("Check for if the player played cursed Convertion")]
+    public bool PlayedCursedConvertion = false;
+
+    [Tooltip("mana tracker of each player per round")]
+    public int ManaTrackedPerTurn;
+
+    [Tooltip("Check for if the player played Echoing Mana")]
+    public bool SucessfulEchoingMana;
+
+    [Tooltip("Check for if the player played Echoing Mana")]
+    public bool PlayedEchoingMana = false;
+
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -81,6 +100,70 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //healthValue.text = entireHP.ToString();
+    }
+
+    public void GetMana(int manaAmount)
+    {
+        Mana += manaAmount;
+        if (Mana > 12)
+        {
+            Mana = 12;
+        }
+    }
+
+    public void LoseMana(int manaAmount)
+    {
+        Mana -= manaAmount;
+        if (Mana < 0)
+        {
+            Mana = 0;
+        }
+    }
+
+    public void TrackMana()
+    {
+        if (!PlayedEchoingMana)
+        {
+            //anything but sucess
+            ManaTrackedPerTurn = ManaTrackedPerTurn / 2;
+            Mana += ManaTrackedPerTurn;
+            if (Mana > 12)
+            {
+                Mana = 12;
+            }
+        }
+        else
+        {
+            //on success
+            Mana += ManaTrackedPerTurn;
+            if (Mana > 12)
+            {
+                Mana = 12;
+            }
+        }
+    }
+
+    public void TrackDamage()
+    {
+        if (!SucessfulCursedConversion)
+        {
+            //anything but success
+            DamageTrackedPerTurn = DamageTrackedPerTurn / 2;
+            Mana += DamageTrackedPerTurn;
+            if (Mana > 12)
+            {
+                Mana = 12;
+            }
+        }
+        else
+        {
+            //on success
+            Mana += DamageTrackedPerTurn;
+            if (Mana > 12)
+            {
+                Mana = 12;
+            }
+        }
     }
 
     public PlayerFingers GetRandomFinger()

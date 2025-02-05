@@ -30,11 +30,15 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
-
         if (!gainedMana)
         {
             player.Mana += GameManager.Instance.manaPerTurn;
             gainedMana = true;
+            if (player.PlayedCursedConvertion)
+            {
+                player.PlayedCursedConvertion = false;
+                player.TrackDamage();
+            }
         }
         if (player.spellHand.amtOfSpellsInHand < 5)
         {

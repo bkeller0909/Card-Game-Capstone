@@ -60,20 +60,23 @@ public class CursedConversionState : FSMState
             {
                 //track damage taken of each turn
                 //make function for mana gain and ensure that it cant go beyond 12
+                player.SucessfulCursedConversion = false;
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
             {
                 //track damage taken of each turn
                 //make function for mana gain and ensure that it cant go beyond 12
+                player.SucessfulCursedConversion = false;
             }
             else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
             {
                 //track damage taken of each turn
                 //make function for mana gain and ensure that it cant go beyond 12
+                player.SucessfulCursedConversion = true;
             }
 
             //check if i am the second spell but the first cast
-
+            player.PlayedCursedConvertion = true;
             GameManager.Instance.ChangeCurrentCaster();
             GameManager.Instance.playedSpells++;
             GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
