@@ -9,7 +9,7 @@ public class HANDTEST : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<InputHandler>();
+        playerInput = GetComponentInParent<InputHandler>();
         animator = gameObject.GetComponent<Animator>();
     }
 

@@ -18,6 +18,7 @@ using UnityEngine;
 public class CameraPositionChange : MonoBehaviour
 {
     PlayerManager player;
+    InputHandler playerInput;
 
     //Private Variables
     [Tooltip("List of transforms that the camera can change to")]
@@ -29,10 +30,13 @@ public class CameraPositionChange : MonoBehaviour
 
     private bool canInput = true;
 
+    private bool cameraInputPressed = false;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponentInParent<PlayerManager>();
+        playerInput = GetComponentInParent<InputHandler>();
     }
 
     // Update is called once per frame
@@ -48,21 +52,27 @@ public class CameraPositionChange : MonoBehaviour
         if (canInput)
         {
             //Get the player input for Up and Down and check if there is a camera position to go to
-            if (player.playerInput.actions["CameraDown"].triggered && cameraIndex > 0)
+            if (playerInput.cameraDown && cameraIndex > 0 && !cameraInputPressed)
             {
+                cameraInputPressed = true;
                 cameraIndex--;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
 
                 //Lock player input till move is complete
                 canInput = false;
             }
-            else if (player.playerInput.actions["CameraUp"].triggered && cameraIndex < 2)
+            else if (playerInput.cameraUp && cameraIndex < 2 && !cameraInputPressed)
             {
+                cameraInputPressed = true;
                 cameraIndex++;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
 
                 //Lock player input till move is complete
                 canInput = false;
+            }
+            else if (!playerInput.cameraDown && !playerInput.cameraUp)
+            {
+                cameraInputPressed = false;
             }
         }
     }
@@ -89,28 +99,6 @@ public class CameraPositionChange : MonoBehaviour
                 cameraIndex = 2;
                 canInput = false;
             }
-        }
-    }
-
-
-    public void MoveToEnemy()
-    {
-        elapsedTime = 0.0f;
-        while (elapsedTime < lerpTime)
-        {
-            elapsedTime += Time.deltaTime;
-
-            //Set 2 different progressions for the position and rotation
-            float percentCompleteForPosition = elapsedTime / lerpTime;
-            float percentCompleteForRotation = (elapsedTime * 0.5f) / lerpTime;
-
-            //Rotate and Move the camera to the desired location
-            transform.position = Vector3.Lerp(transform.position, CamPos[3].position, percentCompleteForPosition);
-            transform.rotation = Quaternion.Lerp(transform.rotation, CamPos[3].rotation, percentCompleteForRotation);
-
-            //Reset the complete percent for next move
-            percentCompleteForPosition = 0;
-            percentCompleteForRotation = 0;
         }
     }
 

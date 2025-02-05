@@ -135,19 +135,19 @@ public class CardHandSlot : MonoBehaviour
         {
             playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
             finalPressed = true;
-            if(selectedCards.Count == 1)
+            if (selectedCards.Count == 1)
             {
                 playerInput.finishSelection = false;
                 playerInput.selectCard = false;
                 StartCoroutine(QTECountOne());
             }
-            else if(selectedCards.Count == 2)
+            else if (selectedCards.Count == 2)
             {
                 playerInput.finishSelection = false;
                 playerInput.selectCard = false;
                 StartCoroutine(QTECountTwo());
             }
-            else if(selectedCards.Count == 3)
+            else if (selectedCards.Count == 3)
             {
                 playerInput.finishSelection = false;
                 playerInput.selectCard = false;
