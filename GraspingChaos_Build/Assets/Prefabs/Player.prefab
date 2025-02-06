@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 7591703772443870832}
   - component: {fileID: 5602276691505007210}
   - component: {fileID: 6021311753385111915}
+  - component: {fileID: 2844247077668704164}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -452,6 +453,12 @@ MonoBehaviour:
   - {fileID: 3222555817660770248}
   - {fileID: 439735199791554890}
   spellEffects: []
+  DamageTrackedPerTurn: 0
+  SucessfulCursedConversion: 0
+  PlayedCursedConvertion: 0
+  ManaTrackedPerTurn: 0
+  SucessfulEchoingMana: 0
+  PlayedEchoingMana: 0
 --- !u!114 &5602276691505007210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +522,22 @@ MonoBehaviour:
   resetLoop: 0
   timeisDone: 0
   checkSpeed: 0
+--- !u!114 &2844247077668704164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710627885018120521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbc5e0fd140db741b27fa3ea1323871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  finishedCurrentQTE: 0
+  currentQTEAmount: 0
 --- !u!1 &780213710919803595
 GameObject:
   m_ObjectHideFlags: 0
