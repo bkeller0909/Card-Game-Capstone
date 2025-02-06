@@ -1346,6 +1346,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728969e9f00e0fc45a9cde7f6cdb9a60, type: 3}
+--- !u!1 &1111533822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111533824}
+  - component: {fileID: 1111533823}
+  m_Layer: 0
+  m_Name: CameraAssigner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1111533823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111533822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ce3033d84d20d4ebabdfad704a7afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOneCamera: {fileID: 1693830827}
+  playerTwoCamera: {fileID: 1328186026}
+--- !u!4 &1111533824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111533822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1213159968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2837,6 +2883,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff1def3117bbf5418370bfb09d41cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1328186026 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1128161581497501664, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328186024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1376999865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61e5e0368b29bb54496f06fd8f912221,
@@ -4739,6 +4791,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff1def3117bbf5418370bfb09d41cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1693830827 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1128161581497501664, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693830825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1833529702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4930,79 +4988,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 92.926704, y: 25.565174, z: 32.298145}
   m_Center: {x: 0, y: 0.828846, z: 0}
---- !u!1 &1957782113
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1957782115}
-  - component: {fileID: 1957782114}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1957782114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957782113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266ac83d0739d5949a31d1e15c78a81a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ln_CurrentLevelName: 
-  ln_MainMenuName: 
-  ln_Duelscene: 
-  loadingScreen: {fileID: 0}
-  ln_ProtoArtShowCase: 
-  ln_ProtoFull: 
-  ln_ProtoHandAnims: 
-  ln_StateTesting: 
-  hasDuelStarted: 0
-  startingMana: 0
-  manaPerTurn: 0
-  maxPlayerHandSize: 0
-  player1: {fileID: 1693830826}
-  player2: {fileID: 1328186025}
-  currentCaster: {fileID: 1693830826}
-  timerQTE: 5
-  amtOfSpellsBeingCast: 0
-  spellIndex: 0
-  playedSpells: 0
-  roundCheck: 0
-  nextTestStateP1: 0
-  nextTestStateP2: 0
-  player1IsHere: 0
-  player2IsHere: 0
-  spellsThatHaveBeenCast: 
-  whoesOnFirst: 
-  testingCurrentP1: 1
-  P1QTESpeed: 0
-  P2QTESpeed: 0
---- !u!4 &1957782115
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957782113}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.303205, y: -2.6494827, z: 5.591219}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2007048570
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,7 +5361,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 148482512}
   - {fileID: 1039682129}
-  - {fileID: 1957782115}
+  - {fileID: 1111533824}
   - {fileID: 1524670662}
   - {fileID: 1281455437}
   - {fileID: 455751467}

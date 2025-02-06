@@ -12,18 +12,11 @@ public class MainMenu : MonoBehaviour
         InputManager.Instance.FindPlayers();
     }
 
-    public void ProtoFullCase()
+    public void LoadDuelScene()
     {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoFull);
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_Duelscene);
         InputManager.Instance.FindPlayers();
     }
-
-    public void ProtoHandAnimCase()
-    {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoHandAnims);
-        InputManager.Instance.FindPlayers();
-    }
-
     public void FSMTesting()
     {
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_StateTesting);
