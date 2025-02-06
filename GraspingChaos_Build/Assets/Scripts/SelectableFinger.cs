@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -146,26 +147,101 @@ public class SelectableFinger : MonoBehaviour
             dmgAndHpPressed = false;
         }
 
-        if (playerInput.moveLeft)
+
+        //flips teh directions of the input so that if your selecting an opponents hand then you can still move the right directin
+        if (playerOneHands && player == GameManager.Instance.player1)
         {
-            if (!wasPressed)
+            if (playerInput.moveLeft)
             {
-                wasPressed = true;
-                MoveSelection(-1, 0, -1, 0); // move left
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(-1, 0, -1, 0); // move left
+                }
+            }
+            else if (playerInput.moveRight)
+            {
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(1, 0, 1, 0); // move right
+                }
+            }
+            else
+            {
+                wasPressed = false;
             }
         }
-        else if (playerInput.moveRight)
+        else if (!playerOneHands && player == GameManager.Instance.player1)
         {
-            if (!wasPressed)
+            if (playerInput.moveLeft)
             {
-                wasPressed = true;
-                MoveSelection(1, 0, 1, 0); // move right
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(1, 0, 1, 0); // move right
+                }
+            }
+            else if (playerInput.moveRight)
+            {
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(-1, 0, -1, 0); // move left
+                }
+            }
+            else
+            {
+                wasPressed = false;
             }
         }
-        else
+        else if (playerOneHands && player == GameManager.Instance.player2)
         {
-            wasPressed = false;
+            if (playerInput.moveLeft)
+            {
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(1, 0, 1, 0); // move right
+                }
+            }
+            else if (playerInput.moveRight)
+            {
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(-1, 0, -1, 0); // move left
+                }
+            }
+            else
+            {
+                wasPressed = false;
+            }
         }
+        else if (!playerOneHands && player == GameManager.Instance.player2)
+        {
+            if (playerInput.moveLeft)
+            {
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(-1, 0, -1, 0); // move left
+                }
+            }
+            else if (playerInput.moveRight)
+            {
+                if (!wasPressed)
+                {
+                    wasPressed = true;
+                    MoveSelection(1, 0, 1, 0); // move right
+                }
+            }
+            else
+            {
+                wasPressed = false;
+            }
+        }
+
     }
 
     /// <summary>

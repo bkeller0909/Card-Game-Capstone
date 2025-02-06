@@ -257,12 +257,7 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// This Function is the one that "Creates" or assignes the buttons that will be used for the QTE Sequence, this function handles most of the proccess with the sequence 
-    /// which includes, assigning the proper buttons, fitting them into the proper list for evaluation, runs the randomize and assignsprite functions, ensures that the correct
-    /// caster is seeing the correct QTE Sequence on their screen, sets the timer for the QTE Sequence and sets the index of the created Sequence, the 2 values the function
-    /// takes in are the QTE Amount so that it knows how many buttons to create and the caster it has to display it to
-    /// </summary>
+    
     public void Create(int qteAmount, PlayerManager caster)
     {
         switch(qteAmount)
@@ -304,6 +299,12 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This Function is the one that "Creates" or assignes the buttons that will be used for the QTE Sequence, this function handles most of the proccess with the sequence 
+    /// which includes, assigning the proper buttons, fitting them into the proper list for evaluation, runs the randomize and assignsprite functions, ensures that the correct
+    /// caster is seeing the correct QTE Sequence on their screen, sets the timer for the QTE Sequence and sets the index of the created Sequence, the 2 values the function
+    /// takes in are the QTE Amount so that it knows how many buttons to create and the caster it has to display it to
+    /// </summary>
     private void CreationLoop(int index, int qteAmount, PlayerManager caster)
     {
         //set the proper action map for QTE Action

@@ -53,7 +53,7 @@ public class CardHandSlot : MonoBehaviour
         if (cards.Count > 0)
         {
             //SetHoveredCard(currentHoverIndex); // Initialize hover on the first card.
-            cards[currentHoverIndex].OnHoverCard();
+
         }
     }
 
@@ -91,9 +91,9 @@ public class CardHandSlot : MonoBehaviour
         yield return new WaitForSeconds(1f);
         playerInput.gameObject.GetComponent<QTEHandler>().Create(4, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(5, player);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(7, player);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(12, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
         playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
     }
