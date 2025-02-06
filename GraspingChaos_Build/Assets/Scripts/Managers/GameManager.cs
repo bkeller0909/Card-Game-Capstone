@@ -59,6 +59,12 @@ public class GameManager : MonoBehaviour
     [Tooltip("This needs to be the name of the prototype Art Showcase")]
     public string ln_ProtoArtShowCase;
 
+    [Tooltip("This needs to be the name of the prototype full showcase")]
+    public string ln_ProtoFull;
+
+    [Tooltip("This needs to be the name of the prototype hand animation showcase")]
+    public string ln_ProtoHandAnims;
+
     [Tooltip("This is the testing scene for the FSM")]
     public string ln_StateTesting;
     #endregion
