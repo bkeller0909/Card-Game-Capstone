@@ -5,6 +5,7 @@ using UnityEngine;
 
 //----------------------------------------------------------------
 //  Author:       Keller
+//  Contributors: Sebastian
 //  Title:        CardHandSlot
 //  Date Created: 01/07/2025
 //  Instance:     No

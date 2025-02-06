@@ -13,6 +13,7 @@ using UnityEngine;
 /// </summary>
 public class CardDealing : MonoBehaviour
 {
+    #region Card Mana Amount Lists
     private List<SpellCard> oneManaCards = new List<SpellCard>();
     private List<SpellCard> twoManaCards = new List<SpellCard>();
     private List<SpellCard> threeManaCards = new List<SpellCard>();
@@ -22,10 +23,11 @@ public class CardDealing : MonoBehaviour
     private List<SpellCard> sevenManaCards = new List<SpellCard>();
     private List<SpellCard> eightManaCards = new List<SpellCard>();
     private List<SpellCard> nineManaCards = new List<SpellCard>();
-    private List<SpellCard> tenManaCards = new List<SpellCard>();
-    private List<SpellCard> elevenManaCards = new List<SpellCard>();
-    private List<SpellCard> twelveManaCards = new List<SpellCard>();
+    #endregion
 
+    /// <summary>
+    /// Initializes all cards to be in their respective List based on the mana cost.
+    /// </summary>
     public void InitializeCardCosts()
     {
         for (int i = 0; i < ActiveSpellCards.Instance.spellCards.Length; i++)
@@ -65,18 +67,6 @@ public class CardDealing : MonoBehaviour
             else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 9)
             {
                 nineManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 10)
-            {
-                tenManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 11)
-            {
-                elevenManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 12)
-            {
-                twelveManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
             }
         }
     }

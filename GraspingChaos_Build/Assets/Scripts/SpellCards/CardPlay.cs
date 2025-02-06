@@ -1,6 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author:       Keller
+//  Title:        CardPlay
+//  Date Created: 02/06/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Moves the selected cards to a specified position for display.
+/// </summary>
 public class CardPlay : MonoBehaviour
 {
     private InputHandler playerInput;
