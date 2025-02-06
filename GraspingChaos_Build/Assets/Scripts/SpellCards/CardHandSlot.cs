@@ -52,7 +52,8 @@ public class CardHandSlot : MonoBehaviour
 
         if (cards.Count > 0)
         {
-            SetHoveredCard(currentHoverIndex); // Initialize hover on the first card.
+            //SetHoveredCard(currentHoverIndex); // Initialize hover on the first card.
+            cards[currentHoverIndex].OnHoverCard();
         }
     }
 
@@ -76,7 +77,7 @@ public class CardHandSlot : MonoBehaviour
         player.playerInput.SwitchCurrentActionMap("QTE");
         playerInput.Xbtn = false;
         yield return new WaitForSeconds(1f);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(12, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
         playerInput.gameObject.GetComponent<QTEHandler>().Create(5, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
@@ -88,7 +89,7 @@ public class CardHandSlot : MonoBehaviour
         player.playerInput.SwitchCurrentActionMap("QTE");
         playerInput.Xbtn = false;
         yield return new WaitForSeconds(1f);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
+        playerInput.gameObject.GetComponent<QTEHandler>().Create(4, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
         playerInput.gameObject.GetComponent<QTEHandler>().Create(5, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);

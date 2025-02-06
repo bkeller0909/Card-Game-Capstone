@@ -265,9 +265,51 @@ public class QTEHandler : MonoBehaviour
     /// </summary>
     public void Create(int qteAmount, PlayerManager caster)
     {
+        switch(qteAmount)
+        {
+            case 3:
+                CreationLoop(6, qteAmount, caster);
+                break;
+            case 4:
+                CreationLoop(5, qteAmount, caster);
+                break;
+            case 5:
+                CreationLoop(5, qteAmount, caster);
+                break;
+            case 6:
+                CreationLoop(4, qteAmount, caster);
+                break;
+            case 7:
+                CreationLoop(4, qteAmount, caster);
+                break;
+            case 8:
+                CreationLoop(3, qteAmount, caster);
+                break;
+            case 9:
+                CreationLoop(3, qteAmount, caster);
+                break;
+            case 10:
+                CreationLoop(2, qteAmount, caster);
+                break;
+            case 11:
+                CreationLoop(2, qteAmount, caster);
+                break;
+            case 12:
+                CreationLoop(1, qteAmount, caster);
+                break;
+            case 14:
+                CreationLoop(0, qteAmount, caster);
+                break;
+
+        }
+    }
+
+    private void CreationLoop(int index, int qteAmount, PlayerManager caster)
+    {
         //set the proper action map for QTE Action
         //caster.playerInput.SwitchCurrentActionMap("QTE");
         //loop the amount of times equeal to the amount of QTE that need to be in the sequence
+
         for (int i = 0; i < qteAmount; i++)
         {
             //set the counter to 0 since you havent completed any input
@@ -275,33 +317,34 @@ public class QTEHandler : MonoBehaviour
             //set the randomized button 
             RandoBTN = RandomizeBTN();
             //assign the button properly
-            AssignSprite(i, RandoBTN);
+            AssignSprite(index, RandoBTN);
             //activete the proper button on the sequence
-            Buttons[i].SetActive(true);
+            Buttons[index].SetActive(true);
             //assign the proper caster to the button input checks
-            Buttons[i].GetComponent<QTEButton>().playerQTE = caster;
-            Buttons[i].GetComponent<QTEButton>().wasPressed = false;
+            Buttons[index].GetComponent<QTEButton>().playerQTE = caster;
+            Buttons[index].GetComponent<QTEButton>().wasPressed = false;
             //check to verify whcih caster is the one that needs this QTE Sequence
             if (caster == p1)
             {
                 //assign the buttons to the correct layers so that it can be showned properly (this might change later once in the game scene the handler uses different buttons)
-                Buttons[i].layer = LayerMask.NameToLayer("The Skull");
-                Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                //Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                //Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                Buttons[index].layer = LayerMask.NameToLayer("The Skull");
+                Buttons[index].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Skull");
+                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
             }
             else if (caster == p2)
             {
                 //assign the buttons to the correct layers so that it can be showned properly (this might change later once in the game scene the handler uses different buttons)
-                Buttons[i].layer = LayerMask.NameToLayer("The Stag");
-                Buttons[i].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                //Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                //Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                Buttons[index].layer = LayerMask.NameToLayer("The Stag");
+                Buttons[index].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Stag");
+                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
             }
             //add the sequence to a list for evaluation
-            CreatedButtons.Add(Buttons[i]);
+            CreatedButtons.Add(Buttons[index]);
             //then set every button to "Inactive" so the sequence can satrt where it supposed to
-            Buttons[i].GetComponent<QTEButton>().enabled = false;
+            Buttons[index].GetComponent<QTEButton>().enabled = false;
+            index++;
         }
         //once all buttons are ready activate the first button on the sequence added
         CreatedButtons[0].GetComponent<QTEButton>().enabled = true;
@@ -313,6 +356,7 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = 0;
         timeisDone = false;
     }
+
 
     /// <summary>
     /// This Function is responsible for checking the status of each button on the QTE sequence, this function knows whcih button is the current "Active" button and which
@@ -403,8 +447,8 @@ public class QTEHandler : MonoBehaviour
         foreach (GameObject button in CreatedButtons)
         {
             button.transform.GetChild(0).gameObject.SetActive(false);
-            //button.transform.GetChild(1).gameObject.SetActive(false);
-            // button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            button.transform.GetChild(1).gameObject.SetActive(false);
+            button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
             button.GetComponent<QTEButton>().pressed = false;
             button.SetActive(false);
         }
@@ -444,8 +488,8 @@ public class QTEHandler : MonoBehaviour
         foreach (GameObject button in CreatedButtons)
         {
             button.transform.GetChild(0).gameObject.SetActive(false);
-            //button.transform.GetChild(1).gameObject.SetActive(false);
-            //button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            button.transform.GetChild(1).gameObject.SetActive(false);
+            button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
             button.GetComponent<QTEButton>().pressed = false;
             button.SetActive(false);
         }
