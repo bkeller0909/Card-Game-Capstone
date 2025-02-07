@@ -1,6 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//----------------------------------------------------------------
+//  Author:       Sebastian
+//  Contributors: Keller
+//  Title:        InputHandler
+//  Date Created: 02/06/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Attached to the Player GameObject.
+/// 
+/// Handles all input from the Input Actions on each Input Action Map.
+/// </summary>
 public class InputHandler : MonoBehaviour
 {
     public bool moveLeft = false;

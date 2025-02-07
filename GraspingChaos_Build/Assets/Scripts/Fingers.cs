@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //----------------------------------------------------------------
 //  Author:       Sebastian
+//  Contributors: Keller
 //  Title:        Fingers
 //  Date Created: 01/07/2025
 //  Instance?     No

@@ -26,17 +26,6 @@ public class InputManager : MonoBehaviour
         playerControls = new PlayerControls();
     }
 
-    private void Start()
-    {
-        //FindPlayers();
-    }
-
-    private void Update()
-    {
-
-
-    }
-
     public void FindPlayers()
     {
         players = FindObjectsOfType<PlayerManager>();

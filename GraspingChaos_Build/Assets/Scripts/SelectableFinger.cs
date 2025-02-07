@@ -1,8 +1,8 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 //----------------------------------------------------------------
-//  Author:       Keller, Sebastian
+//  Author:       Keller
+//  Contributors: Sebastian
 //  Title:        SelectableFinger
 //  Date Created: 01/09/2025
 //  Instance:     No
