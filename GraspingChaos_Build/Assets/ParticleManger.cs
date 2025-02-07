@@ -29,13 +29,6 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] Transform adjasentPosition2;
     [SerializeField] Transform adjasentPosition3;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-
     /// <summary>
     /// Call this function with the "Spell Name" and the "Target Finger" to play the desired particle
     /// </summary>
