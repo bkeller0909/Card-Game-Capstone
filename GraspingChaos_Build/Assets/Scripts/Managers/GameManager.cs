@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     public float P1QTESpeed;
     public float P2QTESpeed;
 
-
+    public CardsObjectPool cardPool;
 
     private void Awake()
     {
@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        cardPool = new CardsObjectPool();
         spellsBeingCast = new SpellsBeingCastInfo[3, 2];
         spellsThatHaveBeenCast = new bool[2];
         whoesOnFirst = new Decider[3];
@@ -200,6 +201,8 @@ public class GameManager : MonoBehaviour
 
         if (levelName == ln_Duelscene)
         {
+            GameObject tempObj = GameObject.FindGameObjectWithTag("CardObjectPool");
+            cardPool = tempObj.GetComponent<CardsObjectPool>();
             hasDuelStarted = true;
         }
 

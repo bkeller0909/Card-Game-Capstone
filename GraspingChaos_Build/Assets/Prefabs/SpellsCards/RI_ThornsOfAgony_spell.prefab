@@ -80,6 +80,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6485551730633363308}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2362711118112327049}
   m_SourcePrefab: {fileID: 100100000, guid: 94b0e116ee1813845b7bc5bf71134b8a, type: 3}
 --- !u!4 &1503389889025606833 stripped
 Transform:
@@ -110,6 +114,34 @@ MonoBehaviour:
   scaleAmount: 1.09
   isHovered: 0
   isSelected: 0
+--- !u!114 &-2362711118112327049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276232676232486411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5857f2e16c54cb49b3fd205f0fa9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1: {fileID: 0}
+  p2: {fileID: 0}
+  spellName: 0
+  targetSelf: 0
+  TargetRandomFinger: 0
+  amtOfFingers: 0
+  manaCost: 0
+  manaGain: 0
+  damageValue: 0
+  healValue: 0
+  lengthAmount: 0
+  amtQTEOutcomes: 0
+  qteAmount: 0
+  qteMidCheck: 0
+  type: 0
+  debugTester: 0
 --- !u!1001 &1657385613761258941
 PrefabInstance:
   m_ObjectHideFlags: 0

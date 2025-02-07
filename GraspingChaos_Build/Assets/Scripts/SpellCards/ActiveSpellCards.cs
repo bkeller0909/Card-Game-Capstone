@@ -449,7 +449,7 @@ public class ActiveSpellCards : MonoBehaviour
                     break;
                 case 23:
                     spell.spellName = SpellNames.ManaMerchant;
-                    spell.type = SpellType.ATTACK;
+                    spell.type = SpellType.RING;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;

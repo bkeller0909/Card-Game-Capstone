@@ -1,7 +1,9 @@
 public class DealStatsState : FSMState
 {
     CardDealing cardDealing;
+    CardsObjectPool cardObjPool;
     PlayerState playerState;
+    SpellCard card;
     bool gainedMana;
 
     //Constructor
@@ -10,10 +12,12 @@ public class DealStatsState : FSMState
         playerState = pS;
         stateID = FSMStateID.DealStats;
         cardDealing = new CardDealing();
+        cardObjPool = GameManager.Instance.cardPool;
     }
 
     public override void EnterStateInit()
     {
+        cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();
         gainedMana = false;
     }
@@ -43,10 +47,15 @@ public class DealStatsState : FSMState
         if (player.spellHand.amtOfSpellsInHand < 5)
         {
             // add a card to the player spell list
-            player.spellHand.playerSpells.Add(cardDealing.CardDealtChance(player));
+            card = cardDealing.CardDealtChance(player);
+            if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
+            {
+                player.spellHand.playerSpells.Add(card);
+                cardObjPool.SetCardsFromPool(player, card);
+                // increase the amount of spells the player has in their hand
+                player.spellHand.amtOfSpellsInHand++;
 
-            // increase the amount of spells the player has in their hand
-            player.spellHand.amtOfSpellsInHand++;
+            }
         }
     }
 

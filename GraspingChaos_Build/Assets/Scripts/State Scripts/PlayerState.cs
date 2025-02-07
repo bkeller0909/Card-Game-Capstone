@@ -1,9 +1,16 @@
+using TMPro;
+using UnityEngine;
+
 public class PlayerState : AdvancedFSM
 {
 
     public PlayerManager player, enemy;
     public bool finishedCurrentQTE;
     public int currentQTEAmount;
+    [SerializeField]
+    public TMP_Text test_text;
+
+    public bool debugActive;
 
     private string GetStateString()
     {
@@ -147,6 +154,15 @@ public class PlayerState : AdvancedFSM
 
     protected override void Initialize()
     {
+        if (debugActive)
+        {
+            test_text.gameObject.SetActive(true);
+        }
+        else
+        {
+            test_text.gameObject.SetActive(false);
+        }
+
         finishedCurrentQTE = false;
 
         player = this.gameObject.GetComponent<PlayerManager>();
@@ -173,7 +189,7 @@ public class PlayerState : AdvancedFSM
         CurrentState.Reason(player, enemy);
         CurrentState.Act(player, enemy);
 
-        player.healthValue.text = "State: " + GetStateString();
+        test_text.text = "State: " + GetStateString();
     }
 
     private void ConstructFSM()

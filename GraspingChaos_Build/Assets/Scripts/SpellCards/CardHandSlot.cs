@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,11 +36,13 @@ public class CardHandSlot : MonoBehaviour
     private CameraPositionChange camPosScript;
     private bool finalPressed = false;
 
+    public CardsObjectPool ALLCards;
+
     private void Awake()
     {
         if (cards.Count <= 0)
         {
-            InitializeCards();
+            //InitializeCards();
         }
     }
 
@@ -63,7 +64,7 @@ public class CardHandSlot : MonoBehaviour
         CardControls();
     }
 
-    IEnumerator QTECountOne()
+    /*IEnumerator QTECountOne()
     {
         player.playerInput.SwitchCurrentActionMap("QTE");
         playerInput.Xbtn = false;
@@ -97,7 +98,8 @@ public class CardHandSlot : MonoBehaviour
         playerInput.gameObject.GetComponent<QTEHandler>().Create(12, player);
         yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
         playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
-    }
+    }*/
+
 
 
 
@@ -133,28 +135,29 @@ public class CardHandSlot : MonoBehaviour
         }
 
         // Handle final selection (e.g., confirm selected cards).
-        if (playerInput.finishSelection && selectedCards.Count > 0 && !finalPressed)
+        if (playerInput.finishSelection && !finalPressed)
         {
-            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+            //finalPressed = true;
+            //if (selectedCards.Count == 1)
+            //{
+            //    playerInput.finishSelection = false;
+            //    playerInput.selectCard = false;
+            //    //StartCoroutine(QTECountOne());
+            //}
+            //else if (selectedCards.Count == 2)
+            //{
+            //    playerInput.finishSelection = false;
+            //    playerInput.selectCard = false;
+            //    //StartCoroutine(QTECountTwo());
+            //}
+            //else if (selectedCards.Count == 3)
+            //{
+            //    playerInput.finishSelection = false;
+            //    playerInput.selectCard = false;
+            //    //StartCoroutine(QTECountThree());
+            //}
             finalPressed = true;
-            if (selectedCards.Count == 1)
-            {
-                playerInput.finishSelection = false;
-                playerInput.selectCard = false;
-                StartCoroutine(QTECountOne());
-            }
-            else if (selectedCards.Count == 2)
-            {
-                playerInput.finishSelection = false;
-                playerInput.selectCard = false;
-                StartCoroutine(QTECountTwo());
-            }
-            else if (selectedCards.Count == 3)
-            {
-                playerInput.finishSelection = false;
-                playerInput.selectCard = false;
-                StartCoroutine(QTECountThree());
-            }
         }
         else if (!playerInput.finishSelection)
         {

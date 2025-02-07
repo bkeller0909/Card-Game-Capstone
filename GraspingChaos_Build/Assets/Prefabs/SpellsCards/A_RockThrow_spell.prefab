@@ -10,6 +10,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.70772
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.70772
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08505644
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 3
       objectReference: {fileID: 0}
@@ -31,7 +46,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000008146034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
@@ -41,7 +56,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
@@ -80,6 +95,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5875828324730259105}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6463652695647793348}
   m_SourcePrefab: {fileID: 100100000, guid: 94b0e116ee1813845b7bc5bf71134b8a, type: 3}
 --- !u!1 &3462801360268311719 stripped
 GameObject:
@@ -104,6 +123,34 @@ MonoBehaviour:
   scaleAmount: 1.09
   isHovered: 0
   isSelected: 0
+--- !u!114 &-6463652695647793348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462801360268311719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5857f2e16c54cb49b3fd205f0fa9f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1: {fileID: 0}
+  p2: {fileID: 0}
+  spellName: 1
+  targetSelf: 0
+  TargetRandomFinger: 0
+  amtOfFingers: 0
+  manaCost: 0
+  manaGain: 0
+  damageValue: 0
+  healValue: 0
+  lengthAmount: 0
+  amtQTEOutcomes: 0
+  qteAmount: 0
+  qteMidCheck: 0
+  type: 0
+  debugTester: 0
 --- !u!4 &4270969153687938589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,

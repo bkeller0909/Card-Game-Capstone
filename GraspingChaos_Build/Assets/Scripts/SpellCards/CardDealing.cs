@@ -32,44 +32,49 @@ public class CardDealing : MonoBehaviour
     {
         for (int i = 0; i < ActiveSpellCards.Instance.spellCards.Length; i++)
         {
-            if (ActiveSpellCards.Instance.spellCards[i].manaCost == 1)
+            if (ActiveSpellCards.Instance.spellCards[i].type == SpellType.ATTACK || ActiveSpellCards.Instance.spellCards[i].type == SpellType.RESTORATION)
             {
-                oneManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 2)
-            {
-                twoManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 3)
-            {
-                threeManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 4)
-            {
-                fourManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 5)
-            {
-                fiveManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 6)
-            {
-                sixManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 7)
-            {
-                sevenManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 8)
-            {
-                eightManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
-            }
-            else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 9)
-            {
-                nineManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                if (ActiveSpellCards.Instance.spellCards[i].manaCost == 1)
+                {
+                    oneManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 2)
+                {
+                    twoManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 3)
+                {
+                    threeManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 4)
+                {
+                    fourManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 5)
+                {
+                    fiveManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 6)
+                {
+                    sixManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 7)
+                {
+                    sevenManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 8)
+                {
+                    eightManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
+                else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 9)
+                {
+                    nineManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
             }
         }
     }
+
+
 
 
     /// <summary>
@@ -97,6 +102,7 @@ public class CardDealing : MonoBehaviour
             {
                 int oneManaChance = Random.Range(0, oneManaCards.Count);
                 return oneManaCards[oneManaChance];
+
             }
             if (cardChance >= 31 && cardChance <= 75)     // 2 mana
             {
