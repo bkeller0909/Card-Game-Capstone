@@ -119,63 +119,63 @@ public class CardHandSlot : MonoBehaviour
     private void CardControls()
     {
         // Handle card navigation (left/right).
-        if (playerInput.cardMoveRight && !cardNavPressed)
-        {
-            cardNavPressed = true;
-            MoveSelection(1);
-        }
-        else if (playerInput.cardMoveLeft && !cardNavPressed)
-        {
-            cardNavPressed = true;
-            MoveSelection(-1);
-        }
-        else if (!playerInput.cardMoveRight && !playerInput.cardMoveLeft)
-        {
-            cardNavPressed = false;
-        }
+        //if (playerInput.cardMoveRight && !cardNavPressed)
+        //{
+        //    cardNavPressed = true;
+        //    MoveSelection(1);
+        //}
+        //else if (playerInput.cardMoveLeft && !cardNavPressed)
+        //{
+        //    cardNavPressed = true;
+        //    MoveSelection(-1);
+        //}
+        //else if (!playerInput.cardMoveRight && !playerInput.cardMoveLeft)
+        //{
+        //    cardNavPressed = false;
+        //}
 
         // Handle final selection (e.g., confirm selected cards).
-        if (playerInput.finishSelection && !finalPressed)
-        {
-            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
-            //finalPressed = true;
-            //if (selectedCards.Count == 1)
-            //{
-            //    playerInput.finishSelection = false;
-            //    playerInput.selectCard = false;
-            //    //StartCoroutine(QTECountOne());
-            //}
-            //else if (selectedCards.Count == 2)
-            //{
-            //    playerInput.finishSelection = false;
-            //    playerInput.selectCard = false;
-            //    //StartCoroutine(QTECountTwo());
-            //}
-            //else if (selectedCards.Count == 3)
-            //{
-            //    playerInput.finishSelection = false;
-            //    playerInput.selectCard = false;
-            //    //StartCoroutine(QTECountThree());
-            //}
-            finalPressed = true;
-        }
-        else if (!playerInput.finishSelection)
-        {
-            finalPressed = false;
-        }
+        //if (playerInput.finishSelection && !finalPressed)
+        //{
+        //    //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+        //    //finalPressed = true;
+        //    //if (selectedCards.Count == 1)
+        //    //{
+        //    //    playerInput.finishSelection = false;
+        //    //    playerInput.selectCard = false;
+        //    //    //StartCoroutine(QTECountOne());
+        //    //}
+        //    //else if (selectedCards.Count == 2)
+        //    //{
+        //    //    playerInput.finishSelection = false;
+        //    //    playerInput.selectCard = false;
+        //    //    //StartCoroutine(QTECountTwo());
+        //    //}
+        //    //else if (selectedCards.Count == 3)
+        //    //{
+        //    //    playerInput.finishSelection = false;
+        //    //    playerInput.selectCard = false;
+        //    //    //StartCoroutine(QTECountThree());
+        //    //}
+        //    finalPressed = true;
+        //}
+        //else if (!playerInput.finishSelection)
+        //{
+        //    finalPressed = false;
+        //}
 
         // Handle card selection/deselection.
-        if (player.playerInput.actions["Select"].triggered)
-        {
-            ToggleSelectedCard();
-            RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
-        }
+        //if (player.playerInput.actions["Select"].triggered)
+        //{
+        //    ToggleSelectedCard();
+        //    RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
+        //}
 
-        // Handle pause input.
-        if (player.playerInput.actions["Pause"].triggered)
-        {
-            GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
-        }
+        //// Handle pause input.
+        //if (player.playerInput.actions["Pause"].triggered)
+        //{
+        //    GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
+        //}
     }
 
     /// <summary>
@@ -217,7 +217,7 @@ public class CardHandSlot : MonoBehaviour
     /// <summary>
     /// Toggles the selected state of the currently hovered card.
     /// </summary>
-    private void ToggleSelectedCard()
+    public void ToggleSelectedCard()
     {
         if (currentHoverIndex < 0 || currentHoverIndex >= cards.Count)
         {

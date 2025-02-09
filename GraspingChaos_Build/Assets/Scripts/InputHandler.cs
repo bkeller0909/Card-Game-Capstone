@@ -18,8 +18,8 @@ public class InputHandler : MonoBehaviour
 {
     public bool moveLeft = false;
     public bool moveRight = false;
-    public bool debugDmg = false;
-    public bool debugHp = false;
+    public bool selectFinger = false;
+    public bool cancelFingerSelect = false;
     public bool debugSwap = false;
     public bool cardMoveRight = false;
     public bool cardMoveLeft = false;
@@ -51,15 +51,15 @@ public class InputHandler : MonoBehaviour
     }
 
     //player
-    public void OnDebugHealth(InputValue value)
+    public void OnCancel(InputValue value)
     {
-        debugHp = value.isPressed;
+        cancelFingerSelect = value.isPressed;
     }
 
     //player
-    public void OnDebugDamage(InputValue value)
+    public void OnSelectFinger(InputValue value)
     {
-        debugDmg = value.isPressed;
+        selectFinger = value.isPressed;
     }
 
     //player

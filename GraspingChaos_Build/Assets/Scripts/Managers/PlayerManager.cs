@@ -56,6 +56,8 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("Check for if the player played Echoing Mana")]
     public bool PlayedEchoingMana = false;
 
+    public bool playerOneHands = false;
+
 
     private void Awake()
     {

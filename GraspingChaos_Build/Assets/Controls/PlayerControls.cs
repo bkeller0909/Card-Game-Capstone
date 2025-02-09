@@ -65,7 +65,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Pause"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""b848d38f-42b4-4cd7-96c6-96db386dd32a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -73,7 +73,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DebugHealth"",
+                    ""name"": ""Cancel"",
                     ""type"": ""PassThrough"",
                     ""id"": ""4a146562-77fe-4804-9d9e-9ad294970083"",
                     ""expectedControlType"": ""Button"",
@@ -82,7 +82,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DebugDamage"",
+                    ""name"": ""SelectFinger"",
                     ""type"": ""PassThrough"",
                     ""id"": ""a19647d5-ad39-46ae-8644-3c2b6f22e7f5"",
                     ""expectedControlType"": ""Button"",
@@ -139,7 +139,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""DebugHealth"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -150,7 +150,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""DebugDamage"",
+                    ""action"": ""SelectFinger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -161,7 +161,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DebugDamage"",
+                    ""action"": ""SelectFinger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -546,6 +546,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""96ed138b-15d3-47b7-a236-71cefc7a2ced"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""South"",
@@ -1047,6 +1056,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""DebugTriggerQTE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""640996d5-e294-4ba5-9bb2-7808a95e408c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""655bd5ab-63c9-4406-b521-18d5507e6fc7"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1116,6 +1147,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5dceca5b-dfa1-4d6f-9ecc-5122f279db73"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1294,6 +1334,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""SetFinal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4121e832-a3c4-4443-a9b0-e3c8800ffc30"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""384c35e1-cf0f-4e2c-9841-2ccb7cf62a57"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1368,8 +1430,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_FingerLeft = m_Player.FindAction("FingerLeft", throwIfNotFound: true);
         m_Player_FingerRight = m_Player.FindAction("FingerRight", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_DebugHealth = m_Player.FindAction("DebugHealth", throwIfNotFound: true);
-        m_Player_DebugDamage = m_Player.FindAction("DebugDamage", throwIfNotFound: true);
+        m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
+        m_Player_SelectFinger = m_Player.FindAction("SelectFinger", throwIfNotFound: true);
         m_Player_DebugHandSwap = m_Player.FindAction("DebugHandSwap", throwIfNotFound: true);
         m_Player_PlayCards = m_Player.FindAction("PlayCards", throwIfNotFound: true);
         // UI
@@ -1379,6 +1441,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // QTE
         m_QTE = asset.FindActionMap("QTE", throwIfNotFound: true);
         m_QTE_North = m_QTE.FindAction("North", throwIfNotFound: true);
+        m_QTE_Pause = m_QTE.FindAction("Pause", throwIfNotFound: true);
         m_QTE_South = m_QTE.FindAction("South", throwIfNotFound: true);
         m_QTE_East = m_QTE.FindAction("East", throwIfNotFound: true);
         m_QTE_West = m_QTE.FindAction("West", throwIfNotFound: true);
@@ -1408,6 +1471,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Card_CameraUp = m_Card.FindAction("CameraUp", throwIfNotFound: true);
         m_Card_CameraDown = m_Card.FindAction("CameraDown", throwIfNotFound: true);
         m_Card_SetFinal = m_Card.FindAction("SetFinal", throwIfNotFound: true);
+        m_Card_Pause = m_Card.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1474,8 +1538,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_FingerLeft;
     private readonly InputAction m_Player_FingerRight;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_DebugHealth;
-    private readonly InputAction m_Player_DebugDamage;
+    private readonly InputAction m_Player_Cancel;
+    private readonly InputAction m_Player_SelectFinger;
     private readonly InputAction m_Player_DebugHandSwap;
     private readonly InputAction m_Player_PlayCards;
     public struct PlayerActions
@@ -1487,8 +1551,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @FingerLeft => m_Wrapper.m_Player_FingerLeft;
         public InputAction @FingerRight => m_Wrapper.m_Player_FingerRight;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @DebugHealth => m_Wrapper.m_Player_DebugHealth;
-        public InputAction @DebugDamage => m_Wrapper.m_Player_DebugDamage;
+        public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
+        public InputAction @SelectFinger => m_Wrapper.m_Player_SelectFinger;
         public InputAction @DebugHandSwap => m_Wrapper.m_Player_DebugHandSwap;
         public InputAction @PlayCards => m_Wrapper.m_Player_PlayCards;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1515,12 +1579,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @DebugHealth.started += instance.OnDebugHealth;
-            @DebugHealth.performed += instance.OnDebugHealth;
-            @DebugHealth.canceled += instance.OnDebugHealth;
-            @DebugDamage.started += instance.OnDebugDamage;
-            @DebugDamage.performed += instance.OnDebugDamage;
-            @DebugDamage.canceled += instance.OnDebugDamage;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
+            @SelectFinger.started += instance.OnSelectFinger;
+            @SelectFinger.performed += instance.OnSelectFinger;
+            @SelectFinger.canceled += instance.OnSelectFinger;
             @DebugHandSwap.started += instance.OnDebugHandSwap;
             @DebugHandSwap.performed += instance.OnDebugHandSwap;
             @DebugHandSwap.canceled += instance.OnDebugHandSwap;
@@ -1546,12 +1610,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @DebugHealth.started -= instance.OnDebugHealth;
-            @DebugHealth.performed -= instance.OnDebugHealth;
-            @DebugHealth.canceled -= instance.OnDebugHealth;
-            @DebugDamage.started -= instance.OnDebugDamage;
-            @DebugDamage.performed -= instance.OnDebugDamage;
-            @DebugDamage.canceled -= instance.OnDebugDamage;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
+            @SelectFinger.started -= instance.OnSelectFinger;
+            @SelectFinger.performed -= instance.OnSelectFinger;
+            @SelectFinger.canceled -= instance.OnSelectFinger;
             @DebugHandSwap.started -= instance.OnDebugHandSwap;
             @DebugHandSwap.performed -= instance.OnDebugHandSwap;
             @DebugHandSwap.canceled -= instance.OnDebugHandSwap;
@@ -1634,6 +1698,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_QTE;
     private List<IQTEActions> m_QTEActionsCallbackInterfaces = new List<IQTEActions>();
     private readonly InputAction m_QTE_North;
+    private readonly InputAction m_QTE_Pause;
     private readonly InputAction m_QTE_South;
     private readonly InputAction m_QTE_East;
     private readonly InputAction m_QTE_West;
@@ -1659,6 +1724,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public QTEActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @North => m_Wrapper.m_QTE_North;
+        public InputAction @Pause => m_Wrapper.m_QTE_Pause;
         public InputAction @South => m_Wrapper.m_QTE_South;
         public InputAction @East => m_Wrapper.m_QTE_East;
         public InputAction @West => m_Wrapper.m_QTE_West;
@@ -1691,6 +1757,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @North.started += instance.OnNorth;
             @North.performed += instance.OnNorth;
             @North.canceled += instance.OnNorth;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
             @South.started += instance.OnSouth;
             @South.performed += instance.OnSouth;
             @South.canceled += instance.OnSouth;
@@ -1758,6 +1827,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @North.started -= instance.OnNorth;
             @North.performed -= instance.OnNorth;
             @North.canceled -= instance.OnNorth;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
             @South.started -= instance.OnSouth;
             @South.performed -= instance.OnSouth;
             @South.canceled -= instance.OnSouth;
@@ -1846,6 +1918,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Card_CameraUp;
     private readonly InputAction m_Card_CameraDown;
     private readonly InputAction m_Card_SetFinal;
+    private readonly InputAction m_Card_Pause;
     public struct CardActions
     {
         private @PlayerControls m_Wrapper;
@@ -1857,6 +1930,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @CameraUp => m_Wrapper.m_Card_CameraUp;
         public InputAction @CameraDown => m_Wrapper.m_Card_CameraDown;
         public InputAction @SetFinal => m_Wrapper.m_Card_SetFinal;
+        public InputAction @Pause => m_Wrapper.m_Card_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Card; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1887,6 +1961,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SetFinal.started += instance.OnSetFinal;
             @SetFinal.performed += instance.OnSetFinal;
             @SetFinal.canceled += instance.OnSetFinal;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(ICardActions instance)
@@ -1912,6 +1989,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SetFinal.started -= instance.OnSetFinal;
             @SetFinal.performed -= instance.OnSetFinal;
             @SetFinal.canceled -= instance.OnSetFinal;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(ICardActions instance)
@@ -1981,8 +2061,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnFingerLeft(InputAction.CallbackContext context);
         void OnFingerRight(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnDebugHealth(InputAction.CallbackContext context);
-        void OnDebugDamage(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnSelectFinger(InputAction.CallbackContext context);
         void OnDebugHandSwap(InputAction.CallbackContext context);
         void OnPlayCards(InputAction.CallbackContext context);
     }
@@ -1994,6 +2074,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IQTEActions
     {
         void OnNorth(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         void OnSouth(InputAction.CallbackContext context);
         void OnEast(InputAction.CallbackContext context);
         void OnWest(InputAction.CallbackContext context);
@@ -2024,5 +2105,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnCameraUp(InputAction.CallbackContext context);
         void OnCameraDown(InputAction.CallbackContext context);
         void OnSetFinal(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

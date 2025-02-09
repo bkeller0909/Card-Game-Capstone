@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "Pause",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "b848d38f-42b4-4cd7-96c6-96db386dd32a",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DebugHealth",
+                    "name": "Cancel",
                     "type": "PassThrough",
                     "id": "4a146562-77fe-4804-9d9e-9ad294970083",
                     "expectedControlType": "Button",
@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DebugDamage",
+                    "name": "SelectFinger",
                     "type": "PassThrough",
                     "id": "a19647d5-ad39-46ae-8644-3c2b6f22e7f5",
                     "expectedControlType": "Button",
@@ -117,7 +117,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DebugHealth",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -128,7 +128,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DebugDamage",
+                    "action": "SelectFinger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -139,7 +139,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DebugDamage",
+                    "action": "SelectFinger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -524,6 +524,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "PassThrough",
+                    "id": "96ed138b-15d3-47b7-a236-71cefc7a2ced",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "South",
@@ -1025,6 +1034,28 @@
                     "action": "DebugTriggerQTE",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "640996d5-e294-4ba5-9bb2-7808a95e408c",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "655bd5ab-63c9-4406-b521-18d5507e6fc7",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1094,6 +1125,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "PassThrough",
+                    "id": "5dceca5b-dfa1-4d6f-9ecc-5122f279db73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1270,6 +1310,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "SetFinal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4121e832-a3c4-4443-a9b0-e3c8800ffc30",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "384c35e1-cf0f-4e2c-9841-2ccb7cf62a57",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

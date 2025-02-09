@@ -55,192 +55,192 @@ public class SelectableFinger : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(player.playerInput.currentActionMap);
-        if (setState)
-        {
-            //player.playerInput.SwitchCurrentActionMap("Card");
-            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
-            setState = false;
-        }
+        //Debug.Log(player.playerInput.currentActionMap);
+        //if (setState)
+        //{
+        //    //player.playerInput.SwitchCurrentActionMap("Card");
+        //    //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
+        //    setState = false;
+        //}
 
-        if (player.playerInput.actions["Pause"].triggered)
-        {
-            GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
-        }
+        //if (player.playerInput.actions["Pause"].triggered)
+        //{
+        //    GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
+        //}
 
-        //set up for testing, change it to controller input, this swaps the select of each players hands
-        if (playerInput.debugSwap && playerOneHands == false)
-        {
-            if (!switchPresses)
-            {
-                switchPresses = true;
-                if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player2)
-                {
-                    GameManager.Instance.currentCaster = GameManager.Instance.player1;
-                }
-                playerOneHands = true;
-            }
-        }
-        else if (playerInput.debugSwap && playerOneHands == true)
-        {
-            if (!switchPresses)
-            {
-                switchPresses = true;
-                if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player1)
-                {
-                    GameManager.Instance.currentCaster = GameManager.Instance.player2;
-                }
-                playerOneHands = false;
-            }
-        }
-        else
-        {
-            switchPresses = false;
-        }
-
-
-        if (playerInput.debugDmg)
-        {
-            if (!dmgAndHpPressed)
-            {
-                dmgAndHpPressed = true;
-                //player.playerInput.SwitchCurrentActionMap("Card");
-                playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
-                playerInput.debugDmg = false;
-                //player.gameObject.GetComponentInChildren<CameraPositionChange>().callRoutine(2);
-
-                //GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
-                //if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 0)
-                //{
-                //    GameManager.Instance.player1.entireHP -= 1;
-                //}
-                RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
-            }
-        }
-        else if (playerInput.debugHp)
-        {
-            if (!dmgAndHpPressed)
-            {
-                dmgAndHpPressed = true;
-                GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
-                if (GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.RH_Thumb || GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.LH_Thumb)
-                {
-                    if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 2)
-                    {
-                        GameManager.Instance.player1.entireHP += 1;
-                    }
-                }
-                else
-                {
-
-                    //IF THE HP IS 3 STOP ADDING
-                    if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 3)
-                    {
-                        GameManager.Instance.player1.entireHP += 1;
-                    }
-                }
-                RumbleManager.instance.ControllerRumble(0.25f, 0.15f, 0.25f, player.gamepad);
-            }
-        }
-        else
-        {
-            dmgAndHpPressed = false;
-        }
+        ////set up for testing, change it to controller input, this swaps the select of each players hands
+        //if (playerInput.debugSwap && playerOneHands == false)
+        //{
+        //    if (!switchPresses)
+        //    {
+        //        switchPresses = true;
+        //        if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player2)
+        //        {
+        //            GameManager.Instance.currentCaster = GameManager.Instance.player1;
+        //        }
+        //        playerOneHands = true;
+        //    }
+        //}
+        //else if (playerInput.debugSwap && playerOneHands == true)
+        //{
+        //    if (!switchPresses)
+        //    {
+        //        switchPresses = true;
+        //        if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player1)
+        //        {
+        //            GameManager.Instance.currentCaster = GameManager.Instance.player2;
+        //        }
+        //        playerOneHands = false;
+        //    }
+        //}
+        //else
+        //{
+        //    switchPresses = false;
+        //}
 
 
-        //flips teh directions of the input so that if your selecting an opponents hand then you can still move the right directin
-        if (playerOneHands && player == GameManager.Instance.player1)
-        {
-            if (playerInput.moveLeft)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(-1, 0, -1, 0); // move left
-                }
-            }
-            else if (playerInput.moveRight)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(1, 0, 1, 0); // move right
-                }
-            }
-            else
-            {
-                wasPressed = false;
-            }
-        }
-        else if (!playerOneHands && player == GameManager.Instance.player1)
-        {
-            if (playerInput.moveLeft)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(1, 0, 1, 0); // move right
-                }
-            }
-            else if (playerInput.moveRight)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(-1, 0, -1, 0); // move left
-                }
-            }
-            else
-            {
-                wasPressed = false;
-            }
-        }
-        else if (playerOneHands && player == GameManager.Instance.player2)
-        {
-            if (playerInput.moveLeft)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(1, 0, 1, 0); // move right
-                }
-            }
-            else if (playerInput.moveRight)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(-1, 0, -1, 0); // move left
-                }
-            }
-            else
-            {
-                wasPressed = false;
-            }
-        }
-        else if (!playerOneHands && player == GameManager.Instance.player2)
-        {
-            if (playerInput.moveLeft)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(-1, 0, -1, 0); // move left
-                }
-            }
-            else if (playerInput.moveRight)
-            {
-                if (!wasPressed)
-                {
-                    wasPressed = true;
-                    MoveSelection(1, 0, 1, 0); // move right
-                }
-            }
-            else
-            {
-                wasPressed = false;
-            }
-        }
+        //if (playerInput.selectFinger)
+        //{
+        //    if (!dmgAndHpPressed)
+        //    {
+        //        dmgAndHpPressed = true;
+        //        //player.playerInput.SwitchCurrentActionMap("Card");
+        //        playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
+        //        playerInput.selectFinger = false;
+        //        //player.gameObject.GetComponentInChildren<CameraPositionChange>().callRoutine(2);
+
+        //        //GameManager.Instance.player1.fingers[currentFingerIndexP1].remove = true;
+        //        //if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 0)
+        //        //{
+        //        //    GameManager.Instance.player1.entireHP -= 1;
+        //        //}
+        //        RumbleManager.instance.ControllerRumble(0.75f, 0.5f, 0.25f, player.gamepad);
+        //    }
+        //}
+        //else if (playerInput.cancelFingerSelect)
+        //{
+        //    if (!dmgAndHpPressed)
+        //    {
+        //        dmgAndHpPressed = true;
+        //        GameManager.Instance.player1.fingers[currentFingerIndexP1].add = true;
+        //        if (GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.RH_Thumb || GameManager.Instance.player1.fingers[currentFingerIndexP1].finger == PlayerFingers.LH_Thumb)
+        //        {
+        //            if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 2)
+        //            {
+        //                GameManager.Instance.player1.entireHP += 1;
+        //            }
+        //        }
+        //        else
+        //        {
+
+        //            //IF THE HP IS 3 STOP ADDING
+        //            if (GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerHP != 3)
+        //            {
+        //                GameManager.Instance.player1.entireHP += 1;
+        //            }
+        //        }
+        //        RumbleManager.instance.ControllerRumble(0.25f, 0.15f, 0.25f, player.gamepad);
+        //    }
+        //}
+        //else
+        //{
+        //    dmgAndHpPressed = false;
+        //}
+
+
+        ////flips teh directions of the input so that if your selecting an opponents hand then you can still move the right directin
+        //if (playerOneHands && player == GameManager.Instance.player1)
+        //{
+        //    if (playerInput.moveLeft)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(-1, 0, -1, 0); // move left
+        //        }
+        //    }
+        //    else if (playerInput.moveRight)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(1, 0, 1, 0); // move right
+        //        }
+        //    }
+        //    else
+        //    {
+        //        wasPressed = false;
+        //    }
+        //}
+        //else if (!playerOneHands && player == GameManager.Instance.player1)
+        //{
+        //    if (playerInput.moveLeft)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(1, 0, 1, 0); // move right
+        //        }
+        //    }
+        //    else if (playerInput.moveRight)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(-1, 0, -1, 0); // move left
+        //        }
+        //    }
+        //    else
+        //    {
+        //        wasPressed = false;
+        //    }
+        //}
+        //else if (playerOneHands && player == GameManager.Instance.player2)
+        //{
+        //    if (playerInput.moveLeft)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(1, 0, 1, 0); // move right
+        //        }
+        //    }
+        //    else if (playerInput.moveRight)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(-1, 0, -1, 0); // move left
+        //        }
+        //    }
+        //    else
+        //    {
+        //        wasPressed = false;
+        //    }
+        //}
+        //else if (!playerOneHands && player == GameManager.Instance.player2)
+        //{
+        //    if (playerInput.moveLeft)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(-1, 0, -1, 0); // move left
+        //        }
+        //    }
+        //    else if (playerInput.moveRight)
+        //    {
+        //        if (!wasPressed)
+        //        {
+        //            wasPressed = true;
+        //            MoveSelection(1, 0, 1, 0); // move right
+        //        }
+        //    }
+        //    else
+        //    {
+        //        wasPressed = false;
+        //    }
+        //}
 
     }
 
@@ -252,9 +252,9 @@ public class SelectableFinger : MonoBehaviour
     /// <param name="currentFingerJoint">Vertical index for the finger joint.</param>
     /// 
     //MoveSelection has been altered as of now for testing both players, will likely get altered or changed to fit the game loop
-    private void MoveSelection(int currentFingerP1, int currentFingerJointP1, int currentFingerP2, int currentFingerJointP2)
+    public void MoveSelection(int currentFingerP1, int currentFingerJointP1, int currentFingerP2, int currentFingerJointP2)
     {
-        if (playerOneHands)
+        if (player.playerOneHands)
         {
             //currentFingerP1 = currentFingerIndexP1;
             //currentFingerJointP1 = currentFingerJointIndexP1;
@@ -297,7 +297,7 @@ public class SelectableFinger : MonoBehaviour
     /// </summary>
     private void ToggleFingerSelection()
     {
-        if (playerOneHands)
+        if (player.playerOneHands)
         {
             // only reset the finger if we are not already on a joint
             if (toggleFullFingerSelect)
@@ -362,7 +362,7 @@ public class SelectableFinger : MonoBehaviour
     /// </summary>
     private void UpdateSelection()
     {
-        if (playerOneHands)
+        if (player.playerOneHands)
         {
             // highlight the entire finger
             for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
