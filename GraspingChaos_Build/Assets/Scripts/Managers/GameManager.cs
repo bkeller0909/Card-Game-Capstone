@@ -97,10 +97,10 @@ public class GameManager : MonoBehaviour
     public bool roundCheck = false;
 
     [Tooltip("This is a test bool for moving to the next state")]
-    public bool nextTestStateP1 = false;
+    public bool nextStateP1 = false;
 
     [Tooltip("This is a test bool for moving to the next state")]
-    public bool nextTestStateP2 = false;
+    public bool nextStateP2 = false;
 
     [Tooltip("This is checking if player one has entered the state")]
     public bool player1IsHere = false;

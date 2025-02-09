@@ -207,11 +207,11 @@ public class TestStates : MonoBehaviour
         {
             if (player == GameManager.Instance.player1)
             {
-                GameManager.Instance.nextTestStateP1 = true;
+                GameManager.Instance.nextStateP1 = true;
             }
             else
             {
-                GameManager.Instance.nextTestStateP2 = true;
+                GameManager.Instance.nextStateP2 = true;
             }
         }
     }
