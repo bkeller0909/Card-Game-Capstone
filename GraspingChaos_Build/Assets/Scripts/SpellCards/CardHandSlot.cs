@@ -238,7 +238,7 @@ public class CardHandSlot : MonoBehaviour
             // Select the card if it's not already selected and the max selection limit hasn't been reached.
             selectedCards.Add(card);
             card.SelectCard();
-            player.playerInput.SwitchCurrentActionMap("Player");
+            //player.playerInput.SwitchCurrentActionMap("Player");
             playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(2);
         }
     }

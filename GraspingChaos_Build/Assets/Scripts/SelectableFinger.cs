@@ -58,7 +58,7 @@ public class SelectableFinger : MonoBehaviour
         Debug.Log(player.playerInput.currentActionMap);
         if (setState)
         {
-            player.playerInput.SwitchCurrentActionMap("Card");
+            //player.playerInput.SwitchCurrentActionMap("Card");
             //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
             setState = false;
         }
@@ -104,7 +104,7 @@ public class SelectableFinger : MonoBehaviour
             if (!dmgAndHpPressed)
             {
                 dmgAndHpPressed = true;
-                player.playerInput.SwitchCurrentActionMap("Card");
+                //player.playerInput.SwitchCurrentActionMap("Card");
                 playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
                 playerInput.debugDmg = false;
                 //player.gameObject.GetComponentInChildren<CameraPositionChange>().callRoutine(2);
