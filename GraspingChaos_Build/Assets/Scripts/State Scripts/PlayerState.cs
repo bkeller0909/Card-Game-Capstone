@@ -470,9 +470,9 @@ public class PlayerState : AdvancedFSM
 
     IEnumerator QTECreation(int currentQTEAmount, PlayerManager player)
     {
-        player.gameObject.GetComponent<QTEHandler>().Create(currentQTEAmount, player);
-        yield return new WaitForSeconds(0.01f);
         player.playerInput.SwitchCurrentActionMap("QTE");
+        yield return new WaitForSeconds(1f);
+        player.gameObject.GetComponent<QTEHandler>().Create(currentQTEAmount, player);
     }
 
 }
