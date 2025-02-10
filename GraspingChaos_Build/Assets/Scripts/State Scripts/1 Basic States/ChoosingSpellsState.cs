@@ -4,17 +4,31 @@ public class ChoosingSpellsState : FSMState
     bool hasAddedSpells;
     bool firstEnter;
 
+    public SpellNames[] spellsChosen;
+    public PlayerFingers[] fingersChosen;
+    int amtOfSpells;
+
     //Constructor
     public ChoosingSpellsState(PlayerState pS)
     {
         playerState = pS;
         stateID = FSMStateID.ChoosingSpells;
+        spellsChosen = new SpellNames[3];
+        fingersChosen = new PlayerFingers[3];
     }
 
     public override void EnterStateInit()
     {
         //Remove past spells
         firstEnter = false;
+
+        amtOfSpells = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            spellsChosen[i] = SpellNames.none;
+            fingersChosen[i] = PlayerFingers.none;
+        }
 
         SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
 
@@ -36,7 +50,7 @@ public class ChoosingSpellsState : FSMState
         hasAddedSpells = false;
         GameManager.Instance.amtOfSpellsBeingCast = 0;
 
-        playerState.player.playerInput.SwitchCurrentActionMap("Cards");
+        playerState.player.playerInput.SwitchCurrentActionMap("Card");
     }
 
     //Reason
@@ -56,68 +70,183 @@ public class ChoosingSpellsState : FSMState
                     whoAmI = (int)PlayerType.PLAYER2;
                 }
 
-                //for (int i = 0; i < testStates.spellsBeingCast.Length; i++)
-                //{
-                //    //Moving each spell that is beings casted info over to the GameManager to move to the desicion state
-                //    SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
+                for (int i = 0; i < spellsChosen.Length; i++)
+                {
+                    //Moving each spell that is beings casted info over to the GameManager to move to the desicion state
+                    SpellsBeingCastInfo spellInfo = new SpellsBeingCastInfo();
 
-                //    if (i == 0)
-                //    {
-                //        spellInfo.numOfSpell = 1;
-                //    }
-                //    else if (i == 1)
-                //    {
-                //        spellInfo.numOfSpell = 2;
-                //    }
-                //    else if (i == 2)
-                //    {
-                //        spellInfo.numOfSpell = 3;
-                //    }
+                    if (i == 0)
+                    {
+                        spellInfo.numOfSpell = 1;
+                    }
+                    else if (i == 1)
+                    {
+                        spellInfo.numOfSpell = 2;
+                    }
+                    else if (i == 2)
+                    {
+                        spellInfo.numOfSpell = 3;
+                    }
 
-                //    if (testStates.spellsChosen[i] != SpellNames.none)
-                //    {
-                //        spellInfo.whoIsCasting = playerState.player;
-                //        spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)testStates.spellsChosen[i]];
-                //        spellInfo.whatFinger = testStates.fingersChosen[i];
+                    if (spellsChosen[i] != SpellNames.none)
+                    {
+                        spellInfo.whoIsCasting = playerState.player;
+                        spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)spellsChosen[i]];
+                        spellInfo.whatFinger = fingersChosen[i];
 
-                //        if (testStates.spellsChosen[i] == SpellNames.FireBolt || testStates.spellsChosen[i] == SpellNames.Rockthrow || testStates.spellsChosen[i] == SpellNames.RighteousEnvy || testStates.spellsChosen[i] == SpellNames.LefteousEnvy || testStates.spellsChosen[i] == SpellNames.Icicles || testStates.spellsChosen[i] == SpellNames.CollectorsCurse
-                //            || testStates.spellsChosen[i] == SpellNames.StaticBlast || testStates.spellsChosen[i] == SpellNames.Quake || testStates.spellsChosen[i] == SpellNames.RightingBolt ||
-                //               testStates.spellsChosen[i] == SpellNames.LeftningBolt || testStates.spellsChosen[i] == SpellNames.TidalWave || testStates.spellsChosen[i] == SpellNames.PointerOfDeath
-                //               || testStates.spellsChosen[i] == SpellNames.SpectralChain || testStates.spellsChosen[i] == SpellNames.SpectralChain)
-                //        {
-                //            spellInfo.whoIsBeingCastedOn = playerState.enemy;
-                //        }
-                //        else
-                //        {
-                //            spellInfo.whoIsBeingCastedOn = playerState.player;
-                //        }
+                        if (spellsChosen[i] == SpellNames.FireBolt || spellsChosen[i] == SpellNames.Rockthrow || spellsChosen[i] == SpellNames.RighteousEnvy ||
+                            spellsChosen[i] == SpellNames.LefteousEnvy || spellsChosen[i] == SpellNames.Icicles || spellsChosen[i] == SpellNames.CollectorsCurse
+                            || spellsChosen[i] == SpellNames.StaticBlast || spellsChosen[i] == SpellNames.Quake || spellsChosen[i] == SpellNames.RightingBolt ||
+                               spellsChosen[i] == SpellNames.LeftningBolt || spellsChosen[i] == SpellNames.TidalWave || spellsChosen[i] == SpellNames.PointerOfDeath
+                               || spellsChosen[i] == SpellNames.SpectralChain)
+                        {
+                            spellInfo.whoIsBeingCastedOn = playerState.enemy;
+                        }
+                        else
+                        {
+                            spellInfo.whoIsBeingCastedOn = playerState.player;
+                        }
 
-                //        GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
-                //    }
-                //    else
-                //    {
-                //        spellInfo.whoIsCasting = playerState.player;
-                //        spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
-                //        spellInfo.whatFinger = PlayerFingers.none;
-                //        spellInfo.whoIsBeingCastedOn = playerState.player;
-                //        GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
-                //    }
+                        GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
+                    }
+                    else
+                    {
+                        spellInfo.whoIsCasting = playerState.player;
+                        spellInfo.whatSpell = ActiveSpellCards.Instance.spellCards[(int)SpellNames.none];
+                        spellInfo.whatFinger = PlayerFingers.none;
+                        spellInfo.whoIsBeingCastedOn = playerState.player;
+                        GameManager.Instance.spellsBeingCast[i, whoAmI] = spellInfo;
+                    }
 
-                //    // Remove the spell from the players hand
-                //    if (spellInfo.whatSpell.spellName != SpellNames.none)
-                //    {
-                //        player.spellHand.RemoveSpells(spellInfo.whatSpell);
-                //    }
-                //}
+                    // Remove the spell from the players hand
+                    if (spellInfo.whatSpell.spellName != SpellNames.none)
+                    {
+                        player.spellHand.RemoveSpells(spellInfo.whatSpell);
+                    }
+                }
             }
 
+            playerState.finishedCastingImage.SetActive(false);
             playerState.PerformTransition(Transition.NeedDecision);
-
         }
     }
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        if (playerState.readyToCast)
+        {
+            if (player == GameManager.Instance.player1)
+            {
+                if (!GameManager.Instance.nextStateP1)
+                {
+                    GameManager.Instance.nextStateP1 = true;
+                    playerState.finishedCastingImage.SetActive(true);
+                }
+                else
+                {
+                    GameManager.Instance.nextStateP1 = false;
+                    playerState.finishedCastingImage.SetActive(false);
+                }
+            }
+            else
+            {
+                if (!GameManager.Instance.nextStateP2)
+                {
+                    GameManager.Instance.nextStateP2 = true;
+                    playerState.finishedCastingImage.SetActive(true);
+                }
+                else
+                {
+                    GameManager.Instance.nextStateP2 = false;
+                    playerState.finishedCastingImage.SetActive(false);
+                }
+            }
+            playerState.readyToCast = false;
+        }
+        else if (playerState.cardSelected)
+        {
+            if (amtOfSpells == 0)
+            {
+                spellsChosen[0] = playerState.currentSpellName;
+            }
+            else if (amtOfSpells == 1)
+            {
+                spellsChosen[1] = playerState.currentSpellName;
+            }
+            else if (amtOfSpells == 2)
+            {
+                spellsChosen[2] = playerState.currentSpellName;
+            }
+            if (spellsChosen[amtOfSpells] == SpellNames.FireBolt || spellsChosen[amtOfSpells] == SpellNames.Rockthrow || spellsChosen[amtOfSpells] == SpellNames.RighteousEnvy ||
+                            spellsChosen[amtOfSpells] == SpellNames.LefteousEnvy || spellsChosen[amtOfSpells] == SpellNames.Icicles || spellsChosen[amtOfSpells] == SpellNames.CollectorsCurse
+                            || spellsChosen[amtOfSpells] == SpellNames.StaticBlast || spellsChosen[amtOfSpells] == SpellNames.Quake || spellsChosen[amtOfSpells] == SpellNames.RightingBolt ||
+                               spellsChosen[amtOfSpells] == SpellNames.LeftningBolt || spellsChosen[amtOfSpells] == SpellNames.TidalWave || spellsChosen[amtOfSpells] == SpellNames.PointerOfDeath
+                               || spellsChosen[amtOfSpells] == SpellNames.SpectralChain)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    player.playerOneHands = false;
+                }
+                else
+                {
+                    player.playerOneHands = true;
+                }
+            }
+            else
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    player.playerOneHands = true;
+                }
+                else
+                {
+                    player.playerOneHands = false;
+                }
+            }
+            //player.playerInput.SwitchCurrentActionMap("Player");
+            playerState.cardSelected = false;
 
+        }
+        else if (playerState.cardDeselected)
+        {
+            if (amtOfSpells == 1)
+            {
+                spellsChosen[0] = SpellNames.none;
+                fingersChosen[0] = PlayerFingers.none;
+                amtOfSpells--;
+            }
+            else if (amtOfSpells == 2)
+            {
+                spellsChosen[1] = SpellNames.none;
+                fingersChosen[1] = PlayerFingers.none;
+                amtOfSpells--;
+            }
+            else if (amtOfSpells == 3)
+            {
+                spellsChosen[2] = SpellNames.none;
+                fingersChosen[2] = PlayerFingers.none;
+                amtOfSpells--;
+            }
+            playerState.cardDeselected = false;
+        }
+        else if (playerState.fingerSelected)
+        {
+            if (amtOfSpells == 0)
+            {
+                fingersChosen[0] = playerState.currentFingerName;
+                amtOfSpells++;
+            }
+            else if (amtOfSpells == 1)
+            {
+                fingersChosen[1] = playerState.currentFingerName;
+                amtOfSpells++;
+            }
+            else if (amtOfSpells == 2)
+            {
+                fingersChosen[2] = playerState.currentFingerName;
+                amtOfSpells++;
+            }
+            playerState.fingerSelected = false;
+        }
     }
 }

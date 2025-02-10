@@ -36,6 +36,7 @@ public class InputHandler : MonoBehaviour
     public bool selectCard = false;
     public bool cameraUp = false;
     public bool cameraDown = false;
+    public bool deselectCard = false;
 
     #region Player Controls
     //player
@@ -103,6 +104,12 @@ public class InputHandler : MonoBehaviour
     {
         selectCard = value.isPressed;
     }
+
+    public void OnDeselect(InputValue value)
+    {
+        deselectCard = value.isPressed;
+    }
+
     #endregion
 
     #region QTE Controls

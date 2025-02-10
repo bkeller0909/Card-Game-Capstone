@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -5,12 +6,19 @@ public class PlayerState : AdvancedFSM
 {
 
     public PlayerManager player, enemy;
+    public bool cardSelected, cardDeselected, readyToCast;
+    public bool fingerSelected;
     public bool finishedCurrentQTE;
     public int currentQTEAmount;
     [SerializeField]
     public TMP_Text test_text;
 
     public bool debugActive;
+
+    public GameObject finishedCastingImage;
+
+    public SpellNames currentSpellName;
+    public PlayerFingers currentFingerName;
 
     private string GetStateString()
     {
@@ -166,6 +174,10 @@ public class PlayerState : AdvancedFSM
         finishedCurrentQTE = false;
 
         player = this.gameObject.GetComponent<PlayerManager>();
+
+        cardSelected = false;
+
+        finishedCastingImage.SetActive(false);
 
         if (player.playerNum == PlayerType.PLAYER1)
         {
@@ -431,4 +443,36 @@ public class PlayerState : AdvancedFSM
         AddFSMState(vampiricSurge);
         AddFSMState(veilOfFortitude);
     }
+
+    public void CardHasBeenSelected()
+    {
+        cardSelected = true;
+    }
+
+    public void FingerHasBeenSelected()
+    {
+        fingerSelected = true;
+    }
+
+    public void CardHasBeenDeselected()
+    {
+        cardDeselected = true;
+    }
+    public void ReadyToCast()
+    {
+        readyToCast = true;
+    }
+
+    public void StartQTECreation(int currentQTEAmount, PlayerManager player)
+    {
+        StartCoroutine(QTECreation(currentQTEAmount, player));
+    }
+
+    IEnumerator QTECreation(int currentQTEAmount, PlayerManager player)
+    {
+        player.gameObject.GetComponent<QTEHandler>().Create(currentQTEAmount, player);
+        yield return new WaitForSeconds(0.01f);
+        player.playerInput.SwitchCurrentActionMap("QTE");
+    }
+
 }

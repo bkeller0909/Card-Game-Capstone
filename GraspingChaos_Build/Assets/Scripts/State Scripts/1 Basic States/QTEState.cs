@@ -33,7 +33,9 @@ public class QTEState : FSMState
         if (makeQTESequence)
         {
             makeQTESequence = false;
-            player.gameObject.GetComponent<QTEHandler>().Create(playerState.currentQTEAmount, player);
+            playerState.StartQTECreation(playerState.currentQTEAmount, player);
+            //player.gameObject.GetComponent<QTEHandler>().Create(playerState.currentQTEAmount, player);
+            //playerState.player.playerInput.SwitchCurrentActionMap("QTE");
         }
 
         if (player.gameObject.GetComponent<QTEHandler>().timeisDone == true && enemy.gameObject.GetComponent<QTEHandler>().timeisDone == true)

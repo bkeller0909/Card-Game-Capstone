@@ -16,6 +16,8 @@ using UnityEngine;
 public class CardHandSlot : MonoBehaviour
 {
     private PlayerManager player;
+    private PlayerState playerState;
+
     [SerializeField] private GameObject cardPrefab;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
@@ -26,6 +28,8 @@ public class CardHandSlot : MonoBehaviour
     public Transform[] cardSlots;                                   // Slot positions for each card.
     [Tooltip("Determines if a slot is empty. TRUE in editor.")]
     public bool[] emptySlots;                                       // Bool for the slot position being empty.
+
+    SpellCard whatCard;
 
     private int currentHoverIndex = 0;                              // Index of the currently hovered card.
     private readonly int maxSelectedCards = 3;                      // Maximum number of cards that can be selected.
@@ -51,6 +55,7 @@ public class CardHandSlot : MonoBehaviour
         player = gameObject.GetComponentInParent<PlayerManager>();
         playerInput = gameObject.GetComponentInParent<InputHandler>();
         camPosScript = player.gameObject.GetComponentInChildren<CameraPositionChange>();
+        playerState = player.gameObject.GetComponent<PlayerState>();
 
         if (cards.Count > 0)
         {
@@ -61,7 +66,7 @@ public class CardHandSlot : MonoBehaviour
 
     private void Update()
     {
-        CardControls();
+        //CardControls();
     }
 
     /*IEnumerator QTECountOne()
@@ -118,64 +123,64 @@ public class CardHandSlot : MonoBehaviour
 
     private void CardControls()
     {
-        // Handle card navigation (left/right).
-        //if (playerInput.cardMoveRight && !cardNavPressed)
-        //{
-        //    cardNavPressed = true;
-        //    MoveSelection(1);
-        //}
-        //else if (playerInput.cardMoveLeft && !cardNavPressed)
-        //{
-        //    cardNavPressed = true;
-        //    MoveSelection(-1);
-        //}
-        //else if (!playerInput.cardMoveRight && !playerInput.cardMoveLeft)
-        //{
-        //    cardNavPressed = false;
-        //}
+        //Handle card navigation(left / right).
+        if (playerInput.cardMoveRight && !cardNavPressed)
+        {
+            cardNavPressed = true;
+            MoveSelection(1);
+        }
+        else if (playerInput.cardMoveLeft && !cardNavPressed)
+        {
+            cardNavPressed = true;
+            MoveSelection(-1);
+        }
+        else if (!playerInput.cardMoveRight && !playerInput.cardMoveLeft)
+        {
+            cardNavPressed = false;
+        }
 
-        // Handle final selection (e.g., confirm selected cards).
-        //if (playerInput.finishSelection && !finalPressed)
-        //{
-        //    //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
-        //    //finalPressed = true;
-        //    //if (selectedCards.Count == 1)
-        //    //{
-        //    //    playerInput.finishSelection = false;
-        //    //    playerInput.selectCard = false;
-        //    //    //StartCoroutine(QTECountOne());
-        //    //}
-        //    //else if (selectedCards.Count == 2)
-        //    //{
-        //    //    playerInput.finishSelection = false;
-        //    //    playerInput.selectCard = false;
-        //    //    //StartCoroutine(QTECountTwo());
-        //    //}
-        //    //else if (selectedCards.Count == 3)
-        //    //{
-        //    //    playerInput.finishSelection = false;
-        //    //    playerInput.selectCard = false;
-        //    //    //StartCoroutine(QTECountThree());
-        //    //}
-        //    finalPressed = true;
-        //}
-        //else if (!playerInput.finishSelection)
-        //{
-        //    finalPressed = false;
-        //}
+        //Handle final selection(e.g., confirm selected cards).
+        if (playerInput.finishSelection && !finalPressed)
+        {
+            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+            //finalPressed = true;
+            //if (selectedCards.Count == 1)
+            //{
+            //    playerInput.finishSelection = false;
+            //    playerInput.selectCard = false;
+            //    //StartCoroutine(QTECountOne());
+            //}
+            //else if (selectedCards.Count == 2)
+            //{
+            //    playerInput.finishSelection = false;
+            //    playerInput.selectCard = false;
+            //    //StartCoroutine(QTECountTwo());
+            //}
+            //else if (selectedCards.Count == 3)
+            //{
+            //    playerInput.finishSelection = false;
+            //    playerInput.selectCard = false;
+            //    //StartCoroutine(QTECountThree());
+            //}
+            finalPressed = true;
+        }
+        else if (!playerInput.finishSelection)
+        {
+            finalPressed = false;
+        }
 
-        // Handle card selection/deselection.
-        //if (player.playerInput.actions["Select"].triggered)
-        //{
-        //    ToggleSelectedCard();
-        //    RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
-        //}
+        //Handle card selection / deselection.
+        if (player.playerInput.actions["Select"].triggered)
+        {
+            ToggleSelectedCard();
+            RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
+        }
 
-        //// Handle pause input.
-        //if (player.playerInput.actions["Pause"].triggered)
-        //{
-        //    GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
-        //}
+        // Handle pause input.
+        if (player.playerInput.actions["Pause"].triggered)
+        {
+            GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
+        }
     }
 
     /// <summary>
@@ -226,8 +231,12 @@ public class CardHandSlot : MonoBehaviour
 
         CardSelect card = cards[currentHoverIndex];
 
+        whatCard = card.gameObject.GetComponent<SpellCard>();
+
         if (selectedCards.Contains(card))
         {
+            playerState.currentSpellName = SpellNames.none;
+
             // Deselect the card if it's already selected.
             selectedCards.Remove(card);
             card.DeselectCard();
@@ -235,10 +244,11 @@ public class CardHandSlot : MonoBehaviour
         }
         else if (selectedCards.Count < maxSelectedCards)
         {
+            playerState.currentSpellName = whatCard.spellName;
+
             // Select the card if it's not already selected and the max selection limit hasn't been reached.
             selectedCards.Add(card);
             card.SelectCard();
-            //player.playerInput.SwitchCurrentActionMap("Player");
             playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(2);
         }
     }

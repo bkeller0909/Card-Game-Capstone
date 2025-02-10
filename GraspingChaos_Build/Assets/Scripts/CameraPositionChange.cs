@@ -43,7 +43,7 @@ public class CameraPositionChange : MonoBehaviour
     void Update()
     {
         //Gets the player input
-        GetInput();
+        //GetInput();
     }
 
     public void GetInput()

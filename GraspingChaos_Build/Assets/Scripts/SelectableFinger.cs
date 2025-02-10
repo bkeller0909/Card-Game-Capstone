@@ -17,6 +17,7 @@ using UnityEngine;
 public class SelectableFinger : MonoBehaviour
 {
     private PlayerManager player;
+    private PlayerState playerState;
 
     [Tooltip("Color for the selected object.")]
     public Color selectedColor = Color.green;
@@ -48,17 +49,18 @@ public class SelectableFinger : MonoBehaviour
         player = GetComponent<PlayerManager>();
         playerInput = GetComponent<InputHandler>();
         defaultColor = gameObject.GetComponentInChildren<Fingers>().GetComponentInChildren<SkinnedMeshRenderer>().material.color;
+        playerState = GetComponent<PlayerState>();
         GameManager.Instance.currentCaster = GameManager.Instance.player2;
         UpdateSelection();
     }
 
     void Update()
     {
-
+        Debug.Log(player.playerInput.currentActionMap);
         //Debug.Log(player.playerInput.currentActionMap);
         //if (setState)
         //{
-        //    //player.playerInput.SwitchCurrentActionMap("Card");
+        //    player.playerInput.SwitchCurrentActionMap("Card");
         //    //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
         //    setState = false;
         //}
@@ -307,6 +309,7 @@ public class SelectableFinger : MonoBehaviour
                 for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
                 {
                     SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColor);
+                    //playerState.currentFingerName = player.fingers[currentFingerIndexP1].finger;
                 }
             }
 
@@ -335,6 +338,7 @@ public class SelectableFinger : MonoBehaviour
                 for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
                 {
                     SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColor);
+                    //playerState.currentFingerName = player.fingers[currentFingerIndexP2].finger;
                 }
             }
 
@@ -420,6 +424,18 @@ public class SelectableFinger : MonoBehaviour
         if (renderer != null)
         {
             renderer.material.color = color;
+        }
+    }
+
+    public void SelectFinger()
+    {
+        if (player.playerOneHands)
+        {
+            playerState.currentFingerName = player.fingers[currentFingerIndexP1].finger;
+        }
+        else
+        {
+            playerState.currentFingerName = player.fingers[currentFingerIndexP2].finger;
         }
     }
 }

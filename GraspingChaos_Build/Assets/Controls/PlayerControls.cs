@@ -47,7 +47,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""FingerLeft"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""23ca8a23-c3f2-4108-b862-ab74ec3a7b26"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -56,7 +56,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""FingerRight"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""4905f20d-9850-4556-bdbb-459c86a23920"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -65,7 +65,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Pause"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""b848d38f-42b4-4cd7-96c6-96db386dd32a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -74,7 +74,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""4a146562-77fe-4804-9d9e-9ad294970083"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -83,7 +83,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""SelectFinger"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""a19647d5-ad39-46ae-8644-3c2b6f22e7f5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1105,7 +1105,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""NavCardLeft"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""ee8fbd1e-e676-4acc-8fbc-f357059195de"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1114,7 +1114,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""NavCardRight"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""1c414d8d-cd80-4686-9f3f-ed973d994587"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

@@ -257,10 +257,10 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
-    
+
     public void Create(int qteAmount, PlayerManager caster)
     {
-        switch(qteAmount)
+        switch (qteAmount)
         {
             case 3:
                 CreationLoop(6, qteAmount, caster);
@@ -308,7 +308,6 @@ public class QTEHandler : MonoBehaviour
     private void CreationLoop(int index, int qteAmount, PlayerManager caster)
     {
         //set the proper action map for QTE Action
-        //caster.playerInput.SwitchCurrentActionMap("QTE");
         //loop the amount of times equeal to the amount of QTE that need to be in the sequence
 
         for (int i = 0; i < qteAmount; i++)

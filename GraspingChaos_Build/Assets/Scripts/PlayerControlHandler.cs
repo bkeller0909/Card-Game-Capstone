@@ -8,6 +8,7 @@ public class PlayerControlHandler : MonoBehaviour
     private InputHandler playerInput;
     [SerializeField] CardHandSlot pickCards;
     [SerializeField] CameraPositionChange changeCameras;
+    public int index = 0;
 
     private void Start()
     {
@@ -25,79 +26,119 @@ public class PlayerControlHandler : MonoBehaviour
             //Selecting Finger (Player action Map)
             if (player.playerOneHands && player == GameManager.Instance.player1)
             {
-                if (player.playerInput.actions["FingerLeft"].triggered)
+                if (player.playerInput.actions["FingerLeft"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(-1, 0, -1, 0);
+                    playerInput.moveLeft = false;
                 }
-                else if (player.playerInput.actions["FingerRight"].triggered)
+                else if (player.playerInput.actions["FingerRight"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(1, 0, 1, 0);
+                    playerInput.moveRight = false;
                 }
             }
             else if (!player.playerOneHands && player == GameManager.Instance.player1)
             {
-                if (player.playerInput.actions["FingerLeft"].triggered)
+                if (player.playerInput.actions["FingerLeft"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(1, 0, 1, 0);
+                    playerInput.moveLeft = false;
                 }
-                else if (player.playerInput.actions["FingerRight"].triggered)
+                else if (player.playerInput.actions["FingerRight"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(-1, 0, -1, 0);
+                    playerInput.moveRight = false;
                 }
             }
             else if (player.playerOneHands && player == GameManager.Instance.player2)
             {
-                if (player.playerInput.actions["FingerLeft"].triggered)
+                if (player.playerInput.actions["FingerLeft"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(1, 0, 1, 0);
+                    playerInput.moveLeft = false;
                 }
-                else if (player.playerInput.actions["FingerRight"].triggered)
+                else if (player.playerInput.actions["FingerRight"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(-1, 0, -1, 0);
+                    playerInput.moveRight = false;
                 }
             }
             else if (!player.playerOneHands && player == GameManager.Instance.player2)
             {
-                if (player.playerInput.actions["FingerLeft"].triggered)
+                if (player.playerInput.actions["FingerLeft"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(-1, 0, -1, 0);
+                    playerInput.moveLeft = false;
                 }
-                else if (player.playerInput.actions["FingerRight"].triggered)
+                else if (player.playerInput.actions["FingerRight"].WasPressedThisFrame())
                 {
                     pickFinger.MoveSelection(1, 0, 1, 0);
+                    playerInput.moveRight = false;
                 }
             }
 
-            if (player.playerInput.actions["SelectFinger"].triggered)
+            if (player.playerInput.actions["SelectFinger"].WasPressedThisFrame())
             {
                 //need function for setting or storing finger selected
+                pickFinger.SelectFinger();
+                stateHandler.FingerHasBeenSelected();
                 player.playerInput.SwitchCurrentActionMap("Card");
+                changeCameras.GetInputForced(1);
+                playerInput.selectFinger = false;
+                playerInput.Abtn = false;
             }
 
-            if (player.playerInput.actions["Cancel"].triggered)
+            if (player.playerInput.actions["Cancel"].WasPressedThisFrame())
             {
                 //deselect card
                 player.playerInput.SwitchCurrentActionMap("Card");
+                playerInput.cancelFingerSelect = false;
+                playerInput.Bbtn = false;
             }
 
             //Selecting Card (Card action Map)
-            if (player.playerInput.actions["NavCardLeft"].triggered)
-            {
-                pickCards.MoveSelection(1);
-            }
-            else if (player.playerInput.actions["NavCardRight"].triggered)
+            if (player.playerInput.actions["NavCardLeft"].WasPressedThisFrame())
             {
                 pickCards.MoveSelection(-1);
+                playerInput.cardMoveLeft = false;
+            }
+            else if (player.playerInput.actions["NavCardRight"].WasPressedThisFrame())
+            {
+                pickCards.MoveSelection(1);
+                playerInput.cardMoveRight = false;
             }
 
-            if (player.playerInput.actions["Select"].triggered)
+            if (player.playerInput.actions["Select"].WasPressedThisFrame())
             {
                 pickCards.ToggleSelectedCard();
+                stateHandler.CardHasBeenSelected();
+                player.playerInput.SwitchCurrentActionMap("Player");
+                changeCameras.GetInputForced(2);
+                playerInput.selectCard = false;
+                playerInput.Abtn = false;
             }
 
-            if (player.playerInput.actions["Deselect"].triggered)
+            if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
                 pickCards.ToggleSelectedCard();
+                stateHandler.CardHasBeenDeselected();
+                playerInput.deselectCard = false;
+                playerInput.Bbtn = false;
+            }
+
+            //if (playerInput.finishSelection)
+            //{
+            //    stateHandler.ReadyToCast();
+            //    playerInput.finishSelection = false;
+            //    index++;
+            //}
+
+            if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
+            {
+                stateHandler.ReadyToCast();
+                playerInput.finishSelection = false;
+                playerInput.Xbtn = false;
+                index++;
             }
 
 

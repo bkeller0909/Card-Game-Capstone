@@ -53,11 +53,10 @@ public class QTEButton : MonoBehaviour
     void Update()
     {
         //check function for possible input
-         //BTNCheck();
+        //BTNCheck();
 
         if (IsActionPressed())
         {
-
             BTNCheck();
 
         }
@@ -87,9 +86,9 @@ public class QTEButton : MonoBehaviour
     /// </summary>
     private void BTNCheck()
     {
-        if(playerInput.Abtn)
+        if (playerInput.Abtn)
         {
-            if(!wasPressed)
+            if (!wasPressed)
             {
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.A)
@@ -120,7 +119,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if(playerInput.Bbtn)
+        else if (playerInput.Bbtn)
         {
             if (!wasPressed)
             {
