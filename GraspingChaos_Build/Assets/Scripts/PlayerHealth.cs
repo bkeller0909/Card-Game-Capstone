@@ -15,6 +15,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {
+    PlayerManager player;
+
     // This is the health value of each digit a player has
     public int[] playerHealthStats;
 
@@ -25,21 +27,19 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerHealthStats = new int[MAX_AMT_FINGERS];
-    }
-
-    private void Start()
-    {
-        SetUpHealth();
     }
 
     /// <summary>
     ///  Assigns the amount of healh is required for each finger at the start of the game
     /// </summary>
-    public void SetUpHealth()
+    public void SetUpHealth(PlayerManager whoAmI)
     {
-        int health;
+        //Getting which player they are
+        player = whoAmI;
 
+        playerHealthStats = new int[MAX_AMT_FINGERS];
+
+        int health;
 
         for (int whatFinger = (int)PlayerFingers.LH_Pinky; whatFinger < MAX_AMT_FINGERS; whatFinger++)
         {
@@ -67,6 +67,8 @@ public class PlayerHealth : MonoBehaviour
         if (playerHealthStats[(int)whatFinger] != 0)
         {
             playerHealthStats[(int)whatFinger] -= 1;
+            player.fingers[(int)whatFinger].removeCurrentSegment();
+            player.entireHP--;
         }
     }
 
@@ -78,10 +80,14 @@ public class PlayerHealth : MonoBehaviour
         if ((playerHealthStats[(int)whatFinger] >= 3) && (whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
         {
             playerHealthStats[(int)whatFinger] += 1;
+            player.fingers[(int)whatFinger].addSegment();
+            player.entireHP++;
         }
         else if ((playerHealthStats[(int)whatFinger] >= 2) && (whatFinger == PlayerFingers.LH_Thumb) && (whatFinger == PlayerFingers.RH_Thumb))
         {
             playerHealthStats[(int)whatFinger] += 1;
+            player.fingers[(int)whatFinger].addSegment();
+            player.entireHP++;
         }
     }
 }

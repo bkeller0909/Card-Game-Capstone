@@ -2173,6 +2173,7 @@ MonoBehaviour:
   - {fileID: 1107258687530595816}
   emptySlots: 0000000000
   ALLCards: {fileID: 0}
+  RemovingCards: []
 --- !u!1 &5248467575911585309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4277,6 +4278,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: -7648218890932872662, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: LH_Index
+      objectReference: {fileID: 0}
     - target: {fileID: -7368158263840763810, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4292,6 +4298,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: -5955769890690431892, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: LH_Middle
+      objectReference: {fileID: 0}
+    - target: {fileID: -5885723119954390432, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: RH_Palm
+      objectReference: {fileID: 0}
     - target: {fileID: -5863128826456310602, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4317,6 +4333,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: -2680452817175797761, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: LH_Thumb
+      objectReference: {fileID: 0}
     - target: {fileID: -2450157002271153325, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4327,6 +4348,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: -1493144380100818205, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: LH_Ring
+      objectReference: {fileID: 0}
     - target: {fileID: -1455968478451195289, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4337,6 +4363,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: -334213033376669063, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: RH_Pinky
+      objectReference: {fileID: 0}
+    - target: {fileID: 916169845010415269, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: RH_Ring
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Name
@@ -4382,6 +4418,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: 4324978085025758321, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: RH_Thumb
+      objectReference: {fileID: 0}
     - target: {fileID: 4398794771089068142, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4392,6 +4433,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: 4784094953075336584, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: RH_Index
+      objectReference: {fileID: 0}
     - target: {fileID: 4861215610736867428, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4409,9 +4455,24 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
     - target: {fileID: 8443931058964212358, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443931058964212358, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: 8459862551218885402, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: LH_Pinky
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819879589228685283, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Name
+      value: RH_Middle
+      objectReference: {fileID: 0}
     - target: {fileID: 9135858051324624664, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4510,6 +4571,9 @@ MonoBehaviour:
   - {fileID: 9009932864370037416}
   - {fileID: 1916325363564722507}
   - {fileID: 2349687367995106388}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 2
   fingerHP: 0
   remove: 0
@@ -4541,6 +4605,9 @@ MonoBehaviour:
   fingerJoints:
   - {fileID: 6552703236074722202}
   - {fileID: 2677375590351768382}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 5
   fingerHP: 0
   remove: 0
@@ -4636,6 +4703,9 @@ MonoBehaviour:
   - {fileID: 7313934521836918050}
   - {fileID: 7081173672427628723}
   - {fileID: 7153695892741285476}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 8
   fingerHP: 0
   remove: 0
@@ -4674,6 +4744,9 @@ MonoBehaviour:
   - {fileID: 6500270366238714663}
   - {fileID: 3957237252512527434}
   - {fileID: 3117367468897625146}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 3
   fingerHP: 0
   remove: 0
@@ -4730,6 +4803,9 @@ MonoBehaviour:
   - {fileID: 4477315099323478232}
   - {fileID: 8337158423866703747}
   - {fileID: 2877509539929563842}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 1
   fingerHP: 0
   remove: 0
@@ -4756,6 +4832,9 @@ MonoBehaviour:
   - {fileID: 3964055873323229730}
   - {fileID: 6451022725748355121}
   - {fileID: 8036050918004742434}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 0
   fingerHP: 0
   remove: 0
@@ -4800,6 +4879,9 @@ MonoBehaviour:
   - {fileID: 249971315680634171}
   - {fileID: 9151153246497694204}
   - {fileID: 7919794499350239574}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 7
   fingerHP: 0
   remove: 0
@@ -4832,6 +4914,9 @@ MonoBehaviour:
   - {fileID: 3000032379196733226}
   - {fileID: 6840319053948708575}
   - {fileID: 8679510499134436118}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 9
   fingerHP: 0
   remove: 0
@@ -4876,6 +4961,9 @@ MonoBehaviour:
   - {fileID: 285426326743730758}
   - {fileID: 4350760367662737019}
   - {fileID: 1300249555005204006}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 6
   fingerHP: 0
   remove: 0
@@ -4931,6 +5019,9 @@ MonoBehaviour:
   fingerJoints:
   - {fileID: 3790453009315441244}
   - {fileID: 567519199539879134}
+  bone_Mat: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+  damP1_Mat: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+  damP2_Mat: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
   finger: 4
   fingerHP: 0
   remove: 0

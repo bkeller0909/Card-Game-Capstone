@@ -144,7 +144,7 @@ public class QTEHandler : MonoBehaviour
         //qteCheck.text = QTECounter.ToString();
 
         //function that checks the percentage of correct QTE for the card evaluation results
-        //EvauateQTEResults();
+        EvauateQTEResults();
     }
 
     /// <summary>
@@ -396,27 +396,20 @@ public class QTEHandler : MonoBehaviour
     /// </summary>
     public QTEOUTCOMES EvauateQTEResults()
     {
-        //check if the sequence exists
-        if (CreatedButtons.Count > 0)
+        //convert the values of the completed sequence into a percentage of 100%
+        QTEPercent = QTECounter * 100 / CreatedButtons.Count;
+        //debug check to see in what state the result ends with, below 50%, above 50% and 100%
+        if (QTEPercent < 50)
         {
-            //convert the values of the completed sequence into a percentage of 100%
-            QTEPercent = QTECounter * 100 / CreatedButtons.Count;
-            //debug check to see in what state the result ends with, below 50%, above 50% and 100%
-            if (QTEPercent < 50)
-            {
-                qteCheckPercent.text = "Low";
-                return QTEOUTCOMES.Failure;
-            }
-            else if (QTEPercent >= 50 && QTEPercent < 99)
-            {
-                qteCheckPercent.text = "Mid";
-                return QTEOUTCOMES.Half;
-            }
-            else if (QTEPercent == 100)
-            {
-                qteCheckPercent.text = "High";
-                return QTEOUTCOMES.Success;
-            }
+            return QTEOUTCOMES.Failure;
+        }
+        else if (QTEPercent >= 50 && QTEPercent < 99)
+        {
+            return QTEOUTCOMES.Half;
+        }
+        else if (QTEPercent == 100)
+        {
+            return QTEOUTCOMES.Success;
         }
         return QTEOUTCOMES.none;
     }
