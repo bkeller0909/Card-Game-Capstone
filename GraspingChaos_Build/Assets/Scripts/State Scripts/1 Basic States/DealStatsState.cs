@@ -44,7 +44,7 @@ public class DealStatsState : FSMState
                 player.TrackDamage();
             }
         }
-        if (player.spellHand.amtOfSpellsInHand < 5) //player.cardsAmountSelected
+        if (player.spellHand.amtOfSpellsInHand < 5)
         {
             // add a card to the player spell list
             card = cardDealing.CardDealtChance(player);

@@ -199,7 +199,6 @@ public class CardHandSlot : MonoBehaviour
                     if (cards[i] == selectedCard)
                     {
                         RemovingCards.Add(cards[i]);
-                        selectedCard.isSelected = false;
                         cards.Remove(cards[i]);
                         emptySlots[i] = true;
                     }
@@ -208,7 +207,7 @@ public class CardHandSlot : MonoBehaviour
 
         }
 
-        if (selectedCards.Count != 0)
+        if (RemovingCards.Count != 0)
         {
             foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
             {
@@ -222,38 +221,9 @@ public class CardHandSlot : MonoBehaviour
                     }
                 }
             }
-            //RemovingCards.Clear();
+            RemovingCards.Clear();
             //ALLCards.cardsCurrentlyInHand.Clear();
             selectedCards.Clear();
-        }
-    }
-
-    public void KeepCardPos()
-    {
-        if (RemovingCards.Count != 0)
-        {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                cards[i].transform.position = cardSlots[i].transform.position;
-                emptySlots[i] = false;
-
-                if (RemovingCards.Count == 1)
-                {
-                    emptySlots[4] = true;
-                }
-                else if (RemovingCards.Count == 2)
-                {
-                    emptySlots[3] = true;
-                    emptySlots[4] = true;
-                }
-                else if (RemovingCards.Count == 3)
-                {
-                    emptySlots[2] = true;
-                    emptySlots[3] = true;
-                    emptySlots[4] = true;
-                }
-            }
-            RemovingCards.Clear();
         }
     }
 
