@@ -138,6 +138,10 @@ public class PlayerControlHandler : MonoBehaviour
                 stateHandler.ReadyToCast();
                 playerInput.finishSelection = false;
                 playerInput.Xbtn = false;
+                foreach (CardSelect card in pickCards.selectedCards)
+                {
+                    player.cardsAmountSelected++;
+                }
                 index++;
             }
 

@@ -58,7 +58,6 @@ public class PlayerManager : MonoBehaviour
 
     public bool playerOneHands = false;
 
-
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
