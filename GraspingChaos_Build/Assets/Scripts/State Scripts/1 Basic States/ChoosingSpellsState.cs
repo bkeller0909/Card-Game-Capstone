@@ -19,7 +19,7 @@ public class ChoosingSpellsState : FSMState
 
     public override void EnterStateInit()
     {
-        //Remove past spells
+
         firstEnter = false;
 
         amtOfSpells = 0;
@@ -123,6 +123,8 @@ public class ChoosingSpellsState : FSMState
                     {
                         player.spellHand.RemoveSpells(spellInfo.whatSpell);
                         //remove cards from card slot script and set object pool back to default 
+                        //Remove past spells
+                        playerState.playerHand.ClearSelected();
                     }
                 }
             }

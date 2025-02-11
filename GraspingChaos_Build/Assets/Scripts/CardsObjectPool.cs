@@ -11,6 +11,8 @@ public class CardsObjectPool : MonoBehaviour
 
     public List<GameObject> objPoolCards = new List<GameObject>();
 
+    public List<GameObject> cardsCurrentlyInHand = new List<GameObject>();
+
     // to return a gameobject that is the proper card that returns from the dealing.
     // based on the chance to be dealt the card
 
@@ -57,6 +59,7 @@ public class CardsObjectPool : MonoBehaviour
                         pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
                         cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
                         cardSlots.emptySlots[i] = false;
+                        cardsCurrentlyInHand.Add(pooledCards);
                         break;
                     }
                 }
