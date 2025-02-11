@@ -323,23 +323,6 @@ public class QTEHandler : MonoBehaviour
             //assign the proper caster to the button input checks
             Buttons[index].GetComponent<QTEButton>().playerQTE = caster;
             Buttons[index].GetComponent<QTEButton>().wasPressed = false;
-            //check to verify whcih caster is the one that needs this QTE Sequence
-            if (caster == p1)
-            {
-                //assign the buttons to the correct layers so that it can be showned properly (this might change later once in the game scene the handler uses different buttons)
-                Buttons[index].layer = LayerMask.NameToLayer("The Skull");
-                Buttons[index].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Skull");
-                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Skull");
-            }
-            else if (caster == p2)
-            {
-                //assign the buttons to the correct layers so that it can be showned properly (this might change later once in the game scene the handler uses different buttons)
-                Buttons[index].layer = LayerMask.NameToLayer("The Stag");
-                Buttons[index].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                Buttons[i].transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("The Stag");
-                Buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("The Stag");
-            }
             //add the sequence to a list for evaluation
             CreatedButtons.Add(Buttons[index]);
             //then set every button to "Inactive" so the sequence can satrt where it supposed to
