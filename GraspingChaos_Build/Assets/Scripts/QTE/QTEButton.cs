@@ -86,7 +86,7 @@ public class QTEButton : MonoBehaviour
     /// </summary>
     private void BTNCheck()
     {
-        if (playerInput.Abtn)
+        if (playerQTE.playerInput.actions["South"].WasPressedThisFrame()) //playerInput.Abtn
         {
             if (!wasPressed)
             {
@@ -119,7 +119,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.Bbtn)
+        else if (playerQTE.playerInput.actions["East"].WasPressedThisFrame()) //playerInput.Bbtn
         {
             if (!wasPressed)
             {
@@ -152,7 +152,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.Xbtn)
+        else if (playerQTE.playerInput.actions["West"].WasPressedThisFrame()) //playerInput.Xbtn
         {
             if (!wasPressed)
             {
@@ -185,7 +185,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.Ybtn)
+        else if (playerQTE.playerInput.actions["North"].WasPressedThisFrame()) //playerInput.Ybtn
         {
             if (!wasPressed)
             {
@@ -218,7 +218,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.DownBtn)
+        else if (playerQTE.playerInput.actions["DPadDown"].WasPressedThisFrame()) //playerInput.DownBtn
         {
             if (!wasPressed)
             {
@@ -253,7 +253,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.UpBtn)
+        else if (playerQTE.playerInput.actions["DPadUp"].WasPressedThisFrame()) //playerInput.UpBtn
         {
             if (!wasPressed)
             {
@@ -288,7 +288,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.LeftBtn)
+        else if (playerQTE.playerInput.actions["DPadLeft"].WasPressedThisFrame()) //playerInput.LeftBtn
         {
             if (!wasPressed)
             {
@@ -323,7 +323,7 @@ public class QTEButton : MonoBehaviour
                 }
             }
         }
-        else if (playerInput.RightBtn)
+        else if (playerQTE.playerInput.actions["DPadRight"].WasPressedThisFrame()) //playerInput.RightBtn
         {
             if (!wasPressed)
             {

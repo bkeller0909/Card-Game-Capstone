@@ -548,15 +548,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Pause"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""96ed138b-15d3-47b7-a236-71cefc7a2ced"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""South"",
                     ""type"": ""PassThrough"",
                     ""id"": ""15509ad1-4c26-4a45-b324-2a3c8cf7a09f"",
@@ -735,6 +726,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""96ed138b-15d3-47b7-a236-71cefc7a2ced"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -850,6 +850,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1db3b615-5e14-4143-9415-30177e4910e7"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DPadUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0b0d41c7-e2cb-4871-b53c-c4d7a0f4e65a"",
                     ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
@@ -866,6 +877,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""DPadDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1243b5fb-87b6-42a0-94cd-b8df361e13e0"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""DPadDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -894,6 +916,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dac8637e-b6f9-4371-b34f-f3e0c3d20490"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DPadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""57ec50e8-d1d7-4f2d-a8cd-491bc7caf9fe"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
@@ -910,6 +943,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""DPadRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26e65ab4-5a51-489a-bdb8-e46c171a1d9d"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""DPadRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1441,7 +1485,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // QTE
         m_QTE = asset.FindActionMap("QTE", throwIfNotFound: true);
         m_QTE_North = m_QTE.FindAction("North", throwIfNotFound: true);
-        m_QTE_Pause = m_QTE.FindAction("Pause", throwIfNotFound: true);
         m_QTE_South = m_QTE.FindAction("South", throwIfNotFound: true);
         m_QTE_East = m_QTE.FindAction("East", throwIfNotFound: true);
         m_QTE_West = m_QTE.FindAction("West", throwIfNotFound: true);
@@ -1462,6 +1505,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_QTE_RT = m_QTE.FindAction("RT", throwIfNotFound: true);
         m_QTE_LT = m_QTE.FindAction("LT", throwIfNotFound: true);
         m_QTE_DebugTriggerQTE = m_QTE.FindAction("DebugTriggerQTE", throwIfNotFound: true);
+        m_QTE_Pause = m_QTE.FindAction("Pause", throwIfNotFound: true);
         // Card
         m_Card = asset.FindActionMap("Card", throwIfNotFound: true);
         m_Card_Deselect = m_Card.FindAction("Deselect", throwIfNotFound: true);
@@ -1698,7 +1742,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_QTE;
     private List<IQTEActions> m_QTEActionsCallbackInterfaces = new List<IQTEActions>();
     private readonly InputAction m_QTE_North;
-    private readonly InputAction m_QTE_Pause;
     private readonly InputAction m_QTE_South;
     private readonly InputAction m_QTE_East;
     private readonly InputAction m_QTE_West;
@@ -1719,12 +1762,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_QTE_RT;
     private readonly InputAction m_QTE_LT;
     private readonly InputAction m_QTE_DebugTriggerQTE;
+    private readonly InputAction m_QTE_Pause;
     public struct QTEActions
     {
         private @PlayerControls m_Wrapper;
         public QTEActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @North => m_Wrapper.m_QTE_North;
-        public InputAction @Pause => m_Wrapper.m_QTE_Pause;
         public InputAction @South => m_Wrapper.m_QTE_South;
         public InputAction @East => m_Wrapper.m_QTE_East;
         public InputAction @West => m_Wrapper.m_QTE_West;
@@ -1745,6 +1788,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @RT => m_Wrapper.m_QTE_RT;
         public InputAction @LT => m_Wrapper.m_QTE_LT;
         public InputAction @DebugTriggerQTE => m_Wrapper.m_QTE_DebugTriggerQTE;
+        public InputAction @Pause => m_Wrapper.m_QTE_Pause;
         public InputActionMap Get() { return m_Wrapper.m_QTE; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1757,9 +1801,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @North.started += instance.OnNorth;
             @North.performed += instance.OnNorth;
             @North.canceled += instance.OnNorth;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
             @South.started += instance.OnSouth;
             @South.performed += instance.OnSouth;
             @South.canceled += instance.OnSouth;
@@ -1820,6 +1861,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DebugTriggerQTE.started += instance.OnDebugTriggerQTE;
             @DebugTriggerQTE.performed += instance.OnDebugTriggerQTE;
             @DebugTriggerQTE.canceled += instance.OnDebugTriggerQTE;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IQTEActions instance)
@@ -1827,9 +1871,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @North.started -= instance.OnNorth;
             @North.performed -= instance.OnNorth;
             @North.canceled -= instance.OnNorth;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
             @South.started -= instance.OnSouth;
             @South.performed -= instance.OnSouth;
             @South.canceled -= instance.OnSouth;
@@ -1890,6 +1931,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DebugTriggerQTE.started -= instance.OnDebugTriggerQTE;
             @DebugTriggerQTE.performed -= instance.OnDebugTriggerQTE;
             @DebugTriggerQTE.canceled -= instance.OnDebugTriggerQTE;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IQTEActions instance)
@@ -2074,7 +2118,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IQTEActions
     {
         void OnNorth(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
         void OnSouth(InputAction.CallbackContext context);
         void OnEast(InputAction.CallbackContext context);
         void OnWest(InputAction.CallbackContext context);
@@ -2095,6 +2138,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRT(InputAction.CallbackContext context);
         void OnLT(InputAction.CallbackContext context);
         void OnDebugTriggerQTE(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface ICardActions
     {

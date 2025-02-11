@@ -526,15 +526,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Pause",
-                    "type": "PassThrough",
-                    "id": "96ed138b-15d3-47b7-a236-71cefc7a2ced",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "South",
                     "type": "PassThrough",
                     "id": "15509ad1-4c26-4a45-b324-2a3c8cf7a09f",
@@ -713,6 +704,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "PassThrough",
+                    "id": "96ed138b-15d3-47b7-a236-71cefc7a2ced",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -828,6 +828,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1db3b615-5e14-4143-9415-30177e4910e7",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DPadUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0b0d41c7-e2cb-4871-b53c-c4d7a0f4e65a",
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
@@ -844,6 +855,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "DPadDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1243b5fb-87b6-42a0-94cd-b8df361e13e0",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "DPadDown",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -872,6 +894,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dac8637e-b6f9-4371-b34f-f3e0c3d20490",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DPadLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "57ec50e8-d1d7-4f2d-a8cd-491bc7caf9fe",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
@@ -888,6 +921,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "DPadRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26e65ab4-5a51-489a-bdb8-e46c171a1d9d",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "DPadRight",
                     "isComposite": false,
                     "isPartOfComposite": false
