@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour
 
     public CardsObjectPool cardPool;
 
+    public bool player1FinishedQTE, player2FinishedQTE = false;
+
     private void Awake()
     {
         if (instance == null)

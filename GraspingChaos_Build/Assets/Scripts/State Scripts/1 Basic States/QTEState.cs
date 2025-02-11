@@ -17,6 +17,8 @@ public class QTEState : FSMState
     {
         makeQTESequence = true;
         changeState = false;
+        GameManager.Instance.player2FinishedQTE = false;
+        GameManager.Instance.player1FinishedQTE = false;
     }
 
     //Reason
@@ -24,7 +26,28 @@ public class QTEState : FSMState
     {
         if (changeState)
         {
-            playerState.PerformTransition(Transition.NeedDecision);
+            if (GameManager.Instance.player1FinishedQTE && GameManager.Instance.player2FinishedQTE)
+            {
+                player.gameObject.GetComponent<QTEHandler>().timeisDone = false;
+                enemy.gameObject.GetComponent<QTEHandler>().timeisDone = false;
+                playerState.PerformTransition(Transition.NeedDecision);
+            }
+            else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.none
+            && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER2].whatSpell.spellName != SpellNames.none)
+            {
+                player.gameObject.GetComponent<QTEHandler>().timeisDone = false;
+                enemy.gameObject.GetComponent<QTEHandler>().timeisDone = false;
+                //GameManager.Instance.currentCaster = GameManager.Instance.player2;
+                playerState.PerformTransition(Transition.NeedDecision);
+            }
+            else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName != SpellNames.none
+            && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER2].whatSpell.spellName == SpellNames.none)
+            {
+                player.gameObject.GetComponent<QTEHandler>().timeisDone = false;
+                enemy.gameObject.GetComponent<QTEHandler>().timeisDone = false;
+                //GameManager.Instance.currentCaster = GameManager.Instance.player1;
+                playerState.PerformTransition(Transition.NeedDecision);
+            }
         }
     }
     //Act
@@ -46,11 +69,15 @@ public class QTEState : FSMState
                 {
                     GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
                     GameManager.Instance.currentCaster = GameManager.Instance.player1;
+                    GameManager.Instance.player1FinishedQTE = true;
+                    changeState = true;
                 }
                 else if (GameManager.Instance.P1QTESpeed < GameManager.Instance.P2QTESpeed)
                 {
                     GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
                     GameManager.Instance.currentCaster = GameManager.Instance.player2;
+                    GameManager.Instance.player2FinishedQTE = true;
+                    changeState = true;
                 }
                 else
                 {
@@ -68,6 +95,30 @@ public class QTEState : FSMState
                 }
 
             }
+            if (player == GameManager.Instance.player1)
+            {
+                GameManager.Instance.player1FinishedQTE = true;
+            }
+            else
+            {
+                GameManager.Instance.player2FinishedQTE = true;
+            }
+            playerState.finishedCurrentQTE = true;
+            changeState = true;
+        }
+        else if (player == GameManager.Instance.player2 && player.gameObject.GetComponent<QTEHandler>().timeisDone == true
+            && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.none
+            && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER2].whatSpell.spellName != SpellNames.none)
+        {
+            GameManager.Instance.player2FinishedQTE = true;
+            playerState.finishedCurrentQTE = true;
+            changeState = true;
+        }
+        else if (player == GameManager.Instance.player1 && player.gameObject.GetComponent<QTEHandler>().timeisDone == true
+            && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName != SpellNames.none
+            && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER2].whatSpell.spellName == SpellNames.none)
+        {
+            GameManager.Instance.player1FinishedQTE = true;
             playerState.finishedCurrentQTE = true;
             changeState = true;
         }

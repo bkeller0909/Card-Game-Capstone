@@ -183,6 +183,17 @@ public class CardHandSlot : MonoBehaviour
         }
     }
 
+
+    //stat of removing card
+    public void ClearSelected()
+    {
+        if (selectedCards.Count != 0)
+        {
+            selectedCards.Clear();
+
+        }
+    }
+
     /// <summary>
     /// Sets the hovered card based on the provided index.
     /// </summary>

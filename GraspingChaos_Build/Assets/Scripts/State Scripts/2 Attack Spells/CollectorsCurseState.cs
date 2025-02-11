@@ -74,6 +74,8 @@ public class CollectorsCurseState : FSMState
                 //steal ring not yet implemented
             }
 
+
+
             GameManager.Instance.ChangeCurrentCaster();
             GameManager.Instance.playedSpells++;
             GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;

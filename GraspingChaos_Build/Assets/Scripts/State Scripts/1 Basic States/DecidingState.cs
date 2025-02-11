@@ -91,6 +91,18 @@ public class DecidingState : FSMState
         {
             castASpell = false;
             performAct = true;
+
+            if (GameManager.Instance.playedSpells == 0)
+            {
+                if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerOneIsFaster)
+                {
+                    GameManager.Instance.currentCaster = GameManager.Instance.player1;
+                }
+                else if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.PlayerTwoIsFaster)
+                {
+                    GameManager.Instance.currentCaster = GameManager.Instance.player2;
+                }
+            }
         }
     }
 
@@ -397,6 +409,29 @@ public class DecidingState : FSMState
             else if (GameManager.Instance.currentCaster == GameManager.Instance.player2 && player == GameManager.Instance.player2)
             {
                 castASpell = true;
+            }
+            else if (GameManager.Instance.playedSpells == 1)
+            {
+                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.none
+                    && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER2].whatSpell.spellName != SpellNames.none)
+                {
+                    castASpell = true;
+                    performAct = false;
+                    GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER2] = false;
+                    GameManager.Instance.playedSpells = 0;
+                    GameManager.Instance.spellIndex++;
+                    playerState.finishedCurrentQTE = false;
+                }
+                else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER1].whatSpell.spellName != SpellNames.none
+                    && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, (int)PlayerType.PLAYER2].whatSpell.spellName == SpellNames.none)
+                {
+                    castASpell = true;
+                    performAct = false;
+                    GameManager.Instance.spellsThatHaveBeenCast[(int)PlayerType.PLAYER1] = false;
+                    GameManager.Instance.playedSpells = 0;
+                    GameManager.Instance.spellIndex++;
+                    playerState.finishedCurrentQTE = false;
+                }
             }
         }
     }

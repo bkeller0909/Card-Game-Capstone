@@ -122,11 +122,14 @@ public class ChoosingSpellsState : FSMState
                     if (spellInfo.whatSpell.spellName != SpellNames.none)
                     {
                         player.spellHand.RemoveSpells(spellInfo.whatSpell);
+                        //remove cards from card slot script and set object pool back to default 
                     }
                 }
             }
 
             playerState.finishedCastingImage.SetActive(false);
+
+            GameManager.Instance.roundCheck = false;
             playerState.PerformTransition(Transition.NeedDecision);
         }
     }
@@ -168,14 +171,17 @@ public class ChoosingSpellsState : FSMState
             if (amtOfSpells == 0)
             {
                 spellsChosen[0] = playerState.currentSpellName;
+                playerState.canChooseFinger = true;
             }
             else if (amtOfSpells == 1)
             {
                 spellsChosen[1] = playerState.currentSpellName;
+                playerState.canChooseFinger = true;
             }
             else if (amtOfSpells == 2)
             {
                 spellsChosen[2] = playerState.currentSpellName;
+                playerState.canChooseFinger = true;
             }
             if (spellsChosen[amtOfSpells] == SpellNames.FireBolt || spellsChosen[amtOfSpells] == SpellNames.Rockthrow || spellsChosen[amtOfSpells] == SpellNames.RighteousEnvy ||
                             spellsChosen[amtOfSpells] == SpellNames.LefteousEnvy || spellsChosen[amtOfSpells] == SpellNames.Icicles || spellsChosen[amtOfSpells] == SpellNames.CollectorsCurse
@@ -229,8 +235,9 @@ public class ChoosingSpellsState : FSMState
             }
             playerState.cardDeselected = false;
         }
-        else if (playerState.fingerSelected)
+        else if (playerState.fingerSelected && playerState.canChooseFinger)
         {
+            playerState.canChooseFinger = false;
             if (amtOfSpells == 0)
             {
                 fingersChosen[0] = playerState.currentFingerName;

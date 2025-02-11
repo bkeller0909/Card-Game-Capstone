@@ -6,7 +6,7 @@ public class PlayerState : AdvancedFSM
 {
 
     public PlayerManager player, enemy;
-    public bool cardSelected, cardDeselected, readyToCast;
+    public bool cardSelected, cardDeselected, readyToCast, canChooseFinger;
     public bool fingerSelected;
     public bool finishedCurrentQTE;
     public int currentQTEAmount;
@@ -19,6 +19,8 @@ public class PlayerState : AdvancedFSM
 
     public SpellNames currentSpellName;
     public PlayerFingers currentFingerName;
+
+    [SerializeField] CardHandSlot playerHand;
 
     private string GetStateString()
     {
@@ -176,6 +178,8 @@ public class PlayerState : AdvancedFSM
         player = this.gameObject.GetComponent<PlayerManager>();
 
         cardSelected = false;
+
+        canChooseFinger = false;
 
         finishedCastingImage.SetActive(false);
 
