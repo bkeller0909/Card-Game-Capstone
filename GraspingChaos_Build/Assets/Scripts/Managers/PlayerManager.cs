@@ -60,6 +60,8 @@ public class PlayerManager : MonoBehaviour
 
     public int cardsAmountSelected = 0;
 
+    public List<Fingers> healthyFingers;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -70,6 +72,7 @@ public class PlayerManager : MonoBehaviour
         {
             GameManager.Instance.player2 = this;
         }
+        healthyFingers = new List<Fingers>();
     }
 
     // Start is called before the first frame update
@@ -158,13 +161,23 @@ public class PlayerManager : MonoBehaviour
     public PlayerFingers GetRandomFinger()
     {
         int rand = 0;
+        //rand = UnityEngine.Random.Range(0, fingers.Count);
 
-        do
+        for (int i = 0; i < fingers.Count; i++)
         {
-            rand = UnityEngine.Random.Range(0, fingers.Count);
-        } while (fingers[rand].fingerHP == 0);
+            if (health.playerHealthStats[i] != 0)
+            {
+                healthyFingers.Add(fingers[i]);
+            }
+        }
 
-        return fingers[rand].finger;
+        if (healthyFingers.Count != 0)
+        {
+            rand = UnityEngine.Random.Range(0, healthyFingers.Count);
+            return healthyFingers[rand].finger;
+        }
+
+        return PlayerFingers.none;
     }
 
     public PlayerFingers GetAdjacentFingerLeft(PlayerFingers selectedFinger)
