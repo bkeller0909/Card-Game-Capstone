@@ -56,15 +56,15 @@ public class QuickHealState : FSMState
         }
         else
         {
-            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //does nothing
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 //does nothing
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
             }

@@ -56,15 +56,15 @@ public class LefteousEnvyState : FSMState
         }
         else
         {
-            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //do nothing
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 //do nothing
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 int totalDamage = player.GetLeftHandFingerDeath();
                 int partDamage = totalDamage / 2;

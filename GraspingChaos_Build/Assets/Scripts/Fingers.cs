@@ -64,15 +64,8 @@ public class Fingers : MonoBehaviour
             fingerSegments.Push(added);
             fingerHP += 1;
 
-            if (player == GameManager.Instance.player1)
-            {
-                added.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
-            }
-            else
-            {
-                added.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
-            }
-            //added.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            //added.GetComponent<SkinnedMeshRenderer>().material = bone_Mat;
+            added.GetComponent<SkinnedMeshRenderer>().enabled = true;
 
         }
 
@@ -94,8 +87,15 @@ public class Fingers : MonoBehaviour
             fingerSegmentsRemoved.Push(removed);
             fingerHP -= 1;
 
-            removed.GetComponent<SkinnedMeshRenderer>().material = bone_Mat;
-            //removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            //if (player == GameManager.Instance.player1)
+            //{
+            //    removed.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
+            //}
+            //else
+            //{
+            //    removed.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
+            //}
+            removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
         }
     }
 

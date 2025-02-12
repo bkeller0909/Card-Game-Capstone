@@ -56,19 +56,19 @@ public class ForTheCauseState : FSMState
         }
         else
         {
-            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 //make function for mana gain and ensure that it cant go beyond 12
                 player.GetMana(3);
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 //make function for mana gain and ensure that it cant go beyond 12
                 player.GetMana(4);
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 //make function for mana gain and ensure that it cant go beyond 12

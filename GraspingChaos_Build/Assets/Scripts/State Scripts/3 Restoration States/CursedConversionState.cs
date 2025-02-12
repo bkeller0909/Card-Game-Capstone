@@ -56,19 +56,19 @@ public class CursedConversionState : FSMState
         }
         else
         {
-            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //track damage taken of each turn
                 //make function for mana gain and ensure that it cant go beyond 12
                 player.SucessfulCursedConversion = false;
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 //track damage taken of each turn
                 //make function for mana gain and ensure that it cant go beyond 12
                 player.SucessfulCursedConversion = false;
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 //track damage taken of each turn
                 //make function for mana gain and ensure that it cant go beyond 12

@@ -56,18 +56,18 @@ public class LifeDrainState : FSMState
         }
         else
         {
-            if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Failure)
+            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //does nothing
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Half)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 PlayerFingers randomFinger = enemy.GetRandomFinger();
                 enemy.health.DamageFinger(randomFinger);
                 randomFinger = player.GetRandomFinger();
                 enemy.health.HealFinger(randomFinger);
             }
-            else if (player.GetComponent<QTEHandler>().EvauateQTEResults() == QTEOUTCOMES.Success)
+            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 PlayerFingers randomFinger = enemy.GetRandomFinger();
                 for (int i = 0; i < 2; i++)

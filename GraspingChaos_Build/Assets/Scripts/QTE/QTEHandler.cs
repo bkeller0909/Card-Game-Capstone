@@ -76,6 +76,9 @@ public class QTEHandler : MonoBehaviour
 
     public float checkSpeed = 0;
 
+    public QTEOUTCOMES outcome;
+
+    //Animator animator;
 
     private void Start()
     {
@@ -88,6 +91,7 @@ public class QTEHandler : MonoBehaviour
         //set the amount of qte pressed correctly to 0 since you havent yet done a qte
         QTECounter = 0;
         playerInput = gameObject.GetComponentInParent<InputHandler>();
+        //animator = gameObject.GetComponent<Animator>();
     }
 
     /// <summary>
@@ -387,6 +391,13 @@ public class QTEHandler : MonoBehaviour
             //remove the buttons since the QTE Sequence has been completed
             //StartCoroutine(DisableQTEButtons());
             SetTimeValue();
+            //animator.ResetTrigger("IDLE");
+            //animator.ResetTrigger("QTE1");
+            //animator.ResetTrigger("QTE2");
+            //animator.ResetTrigger("QTE3");
+            //animator.ResetTrigger("QTE4");
+            //animator.SetTrigger("IDLE");
+
         }
 
     }
@@ -394,24 +405,26 @@ public class QTEHandler : MonoBehaviour
     /// <summary>
     /// This function turns the correct amount of QTE inputs of the entire QTE Sequence into a percentage so that we can use it for card results
     /// </summary>
-    public QTEOUTCOMES EvauateQTEResults()
+    public void EvauateQTEResults()
     {
-        //convert the values of the completed sequence into a percentage of 100%
-        QTEPercent = QTECounter * 100 / CreatedButtons.Count;
-        //debug check to see in what state the result ends with, below 50%, above 50% and 100%
-        if (QTEPercent < 50)
+        if (CreatedButtons.Count != 0)
         {
-            return QTEOUTCOMES.Failure;
+            //convert the values of the completed sequence into a percentage of 100%
+            QTEPercent = QTECounter * 100 / CreatedButtons.Count;
+            //debug check to see in what state the result ends with, below 50%, above 50% and 100%
+            if (QTEPercent < 50)
+            {
+                outcome = QTEOUTCOMES.Failure;
+            }
+            else if (QTEPercent >= 50 && QTEPercent < 99)
+            {
+                outcome = QTEOUTCOMES.Half;
+            }
+            else if (QTEPercent == 100)
+            {
+                outcome = QTEOUTCOMES.Success;
+            }
         }
-        else if (QTEPercent >= 50 && QTEPercent < 99)
-        {
-            return QTEOUTCOMES.Half;
-        }
-        else if (QTEPercent == 100)
-        {
-            return QTEOUTCOMES.Success;
-        }
-        return QTEOUTCOMES.none;
     }
 
     /// <summary>

@@ -464,6 +464,7 @@ MonoBehaviour:
   SucessfulEchoingMana: 0
   PlayedEchoingMana: 0
   playerOneHands: 0
+  cardsAmountSelected: 0
 --- !u!114 &5602276691505007210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,6 +528,7 @@ MonoBehaviour:
   resetLoop: 0
   timeisDone: 0
   checkSpeed: 0
+  outcome: 0
 --- !u!114 &2844247077668704164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4460,9 +4462,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8443931058964212358, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443931058964212358, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 176999730740ea346a15de6950c04dcf, type: 2}
+    - target: {fileID: 8443931058964212358, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab74a9455a48a8444874c400b64f13cb, type: 2}
+    - target: {fileID: 8443931058964212358, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3da1fe98c59683341b1dc02d37a7cff0, type: 2}
     - target: {fileID: 8459862551218885402, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
         type: 3}
       propertyPath: m_Name
