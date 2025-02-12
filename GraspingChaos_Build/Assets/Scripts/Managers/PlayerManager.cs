@@ -58,6 +58,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool playerOneHands = false;
 
+    public int cardsAmountSelected = 0;
 
     private void Awake()
     {
@@ -74,27 +75,13 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (playerNum == PlayerType.PLAYER2)
-        //{
-        //    GameManager.Instance.currentCaster = this;
-        //}
         playerInput = GetComponent<PlayerInput>();
 
         spellHand = new SpellHand();
+        health = new PlayerHealth();
+        health.SetUpHealth(this);
 
         entireHP = 28;
-        //for (int i = 0; i < playerInput.devices.Count; i++)
-        //{
-        //    if (playerInput.devices[i] is Gamepad)
-        //    {
-        //        gamepad = (Gamepad)playerInput.devices[i];
-        //        break;
-        //    }
-        //}
-    }
-
-    public void fillFingers()
-    {
 
     }
 

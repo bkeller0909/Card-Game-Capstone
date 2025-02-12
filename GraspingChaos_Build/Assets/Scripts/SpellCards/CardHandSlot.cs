@@ -42,6 +42,8 @@ public class CardHandSlot : MonoBehaviour
 
     public CardsObjectPool ALLCards;
 
+    public List<CardSelect> RemovingCards = new List<CardSelect>();
+
     private void Awake()
     {
         if (cards.Count <= 0)
@@ -187,10 +189,41 @@ public class CardHandSlot : MonoBehaviour
     //stat of removing card
     public void ClearSelected()
     {
+        //NEED TO make sure we dont deal more than we have the size for in the randomizer dealer
         if (selectedCards.Count != 0)
         {
-            selectedCards.Clear();
+            for (int i = 0; i < cards.Count; i++)
+            {
+                foreach (CardSelect selectedCard in selectedCards)
+                {
+                    if (cards[i] == selectedCard)
+                    {
+                        RemovingCards.Add(cards[i]);
+                        cards.Remove(cards[i]);
+                        emptySlots[i] = true;
+                    }
+                }
+            }
 
+        }
+
+        if (RemovingCards.Count != 0)
+        {
+            foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
+            {
+                foreach (CardSelect cardSelect in selectedCards)
+                {
+                    GameObject justChecking = cardSelect.gameObject;
+                    if (justChecking == card)
+                    {
+                        card.SetActive(false);
+                        ALLCards.cardsCurrentlyInHand.Remove(card);
+                    }
+                }
+            }
+            RemovingCards.Clear();
+            //ALLCards.cardsCurrentlyInHand.Clear();
+            selectedCards.Clear();
         }
     }
 

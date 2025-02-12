@@ -21,11 +21,16 @@ public class Fingers : MonoBehaviour
     [Tooltip("List of finger joints, this will act as rows, the finger segments should be serielized backwards, the last segments should be the first in teh editor")]
     public List<GameObject> fingerJoints;
 
+    [SerializeField]
+    public Material bone_Mat, damP1_Mat, damP2_Mat;
+
     [Tooltip("Type of Finger")]
     public PlayerFingers finger;
     [Tooltip("the finger segments should be serielized backwards, the last segments should be the first in teh editor")]
     Stack fingerSegments = new Stack();
     Stack fingerSegmentsRemoved = new Stack();
+
+    PlayerManager player;
 
     //testing
     public int fingerHP;
@@ -36,6 +41,10 @@ public class Fingers : MonoBehaviour
         Fill();
     }
 
+    private void Start()
+    {
+        player = GetComponentInParent<PlayerManager>();
+    }
 
     //fill stack
     private void Fill()
@@ -53,8 +62,18 @@ public class Fingers : MonoBehaviour
         {
             GameObject added = (GameObject)fingerSegmentsRemoved.Pop();
             fingerSegments.Push(added);
-            added.GetComponent<SkinnedMeshRenderer>().enabled = true;
             fingerHP += 1;
+
+            if (player == GameManager.Instance.player1)
+            {
+                added.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
+            }
+            else
+            {
+                added.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
+            }
+            //added.GetComponent<SkinnedMeshRenderer>().enabled = true;
+
         }
 
     }
@@ -73,8 +92,10 @@ public class Fingers : MonoBehaviour
 
             //removed.SetActive(false);
             fingerSegmentsRemoved.Push(removed);
-            removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
             fingerHP -= 1;
+
+            removed.GetComponent<SkinnedMeshRenderer>().material = bone_Mat;
+            //removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
         }
     }
 

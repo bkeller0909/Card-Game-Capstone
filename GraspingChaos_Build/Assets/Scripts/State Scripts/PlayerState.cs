@@ -20,7 +20,7 @@ public class PlayerState : AdvancedFSM
     public SpellNames currentSpellName;
     public PlayerFingers currentFingerName;
 
-    [SerializeField] CardHandSlot playerHand;
+    [SerializeField] public CardHandSlot playerHand;
 
     private string GetStateString()
     {
