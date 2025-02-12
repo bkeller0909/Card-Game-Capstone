@@ -192,7 +192,7 @@ public class CardHandSlot : MonoBehaviour
         //NEED TO make sure we dont deal more than we have the size for in the randomizer dealer
         if (selectedCards.Count != 0)
         {
-            for (int i = cards.Count - 1; i > 0; i--)
+            for (int i = cards.Count - 1; i >= 0; i--)
             {
                 foreach (CardSelect selectedCard in selectedCards)
                 {
@@ -224,7 +224,7 @@ public class CardHandSlot : MonoBehaviour
     {
         if (selectedCards.Count != 0)
         {
-            for(int i = ALLCards.cardsCurrentlyInHand.Count - 1; i > 0; i--) //foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
+            for (int i = ALLCards.cardsCurrentlyInHand.Count - 1; i >= 0; i--) //foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
             {
                 foreach (CardSelect cardSelect in selectedCards)
                 {

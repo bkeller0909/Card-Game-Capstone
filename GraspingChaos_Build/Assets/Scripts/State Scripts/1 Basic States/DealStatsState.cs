@@ -5,6 +5,7 @@ public class DealStatsState : FSMState
     PlayerState playerState;
     SpellCard card;
     bool gainedMana;
+    bool stateChange = false;
 
     //Constructor
     public DealStatsState(PlayerState pS)
@@ -20,6 +21,7 @@ public class DealStatsState : FSMState
         cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();
         gainedMana = false;
+        stateChange = false;
         if (!GameManager.Instance.firstRoundCheck)
         {
             playerState.playerHand.KeepCardPos();
@@ -30,9 +32,9 @@ public class DealStatsState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
-        if (player.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize &&
-            enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
+        if (stateChange)
         {
+            stateChange = false;
             player.cardsAmountSelected = 0;
             playerState.PerformTransition(Transition.StatsGained);
         }
@@ -84,6 +86,12 @@ public class DealStatsState : FSMState
 
                 }
             }
+        }
+
+        if (player.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize &&
+            enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
+        {
+            stateChange = true;
         }
     }
 

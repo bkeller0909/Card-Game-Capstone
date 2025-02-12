@@ -404,10 +404,11 @@ public class QTEHandler : MonoBehaviour
         {
             QTEPercent = 0;
         }
-        else if(QTECounter != 0)
+        else if (QTECounter != 0)
         {
             //convert the values of the completed sequence into a percentage of 100%
-            QTEPercent = QTECounter * 100 / buttonsUsed;
+            //QTEPercent = QTECounter * 100 / buttonsUsed;
+            QTEPercent = 100;
         }
 
         //debug check to see in what state the result ends with, below 50%, above 50% and 100%
