@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
 
     public bool player1FinishedQTE, player2FinishedQTE = false;
 
+    public bool firstRoundCheck = true;
+
     private void Awake()
     {
         if (instance == null)

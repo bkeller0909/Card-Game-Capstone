@@ -20,6 +20,12 @@ public class DealStatsState : FSMState
         cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();
         gainedMana = false;
+        if (!GameManager.Instance.firstRoundCheck)
+        {
+            GameManager.Instance.player1.spellHand.amtOfSpellsInHand = 5 - GameManager.Instance.player1.cardsAmountSelected;
+            GameManager.Instance.player2.spellHand.amtOfSpellsInHand = 5 - GameManager.Instance.player2.cardsAmountSelected;
+        }
+
     }
 
     //Reason
@@ -44,19 +50,55 @@ public class DealStatsState : FSMState
                 player.TrackDamage();
             }
         }
-        if (player.spellHand.amtOfSpellsInHand < 5)
-        {
-            // add a card to the player spell list
-            card = cardDealing.CardDealtChance(player);
-            if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
-            {
-                player.spellHand.playerSpells.Add(card);
-                cardObjPool.SetCardsFromPool(player, card);
-                // increase the amount of spells the player has in their hand
-                player.spellHand.amtOfSpellsInHand++;
 
+        if (!GameManager.Instance.firstRoundCheck)
+        {
+            //player.spellHand.amtOfSpellsInHand = 5 - player.cardsAmountSelected;
+            if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+            {
+                // add a card to the player spell list
+                card = cardDealing.CardDealtChance(player);
+                if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
+                {
+                    player.spellHand.playerSpells.Add(card);
+                    cardObjPool.SetCardsFromPool(player, card);
+                    // increase the amount of spells the player has in their hand
+                    player.spellHand.amtOfSpellsInHand++;
+
+                }
             }
         }
+
+        if (GameManager.Instance.firstRoundCheck)
+        {
+            if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+            {
+                // add a card to the player spell list
+                card = cardDealing.CardDealtChance(player);
+                if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
+                {
+                    player.spellHand.playerSpells.Add(card);
+                    cardObjPool.SetCardsFromPool(player, card);
+                    // increase the amount of spells the player has in their hand
+                    player.spellHand.amtOfSpellsInHand++;
+
+                }
+            }
+        }
+
+        //if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+        //{
+        //    // add a card to the player spell list
+        //    card = cardDealing.CardDealtChance(player);
+        //    if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
+        //    {
+        //        player.spellHand.playerSpells.Add(card);
+        //        cardObjPool.SetCardsFromPool(player, card);
+        //        // increase the amount of spells the player has in their hand
+        //        player.spellHand.amtOfSpellsInHand++;
+
+        //    }
+        //}
     }
 
 }
