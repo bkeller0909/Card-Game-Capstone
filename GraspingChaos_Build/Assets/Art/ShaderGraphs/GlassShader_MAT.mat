@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ManaShader_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: e7e646e76859c9a478302ebb56ae1890,
+  m_Name: GlassShader_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: d2db5956f38bf3e4182c7bff7fc33e2e,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,10 +24,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SwirlTex:
-        m_Texture: {fileID: 2800000, guid: 1731d3829f886bd4b94410e6034d8016, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -42,15 +38,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 20
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RotSpeed: 10
-    m_Colors:
-    - _ManaColour: {r: 0, g: 0.32538834, b: 0.59607846, a: 1}
-    - _ManaOffsetPosition: {r: 0, g: 0.5, b: 0, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &1504121960471334517
+--- !u!114 &8696368529186966732
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
