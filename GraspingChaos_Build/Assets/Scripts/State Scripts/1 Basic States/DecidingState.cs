@@ -79,6 +79,8 @@ public class DecidingState : FSMState
                     }
                 }
                 GameManager.Instance.roundCheck = true;
+                GameManager.Instance.player1IsHere = false;
+                GameManager.Instance.player2IsHere = false;
             }
             performAct = false;
             castASpell = true;

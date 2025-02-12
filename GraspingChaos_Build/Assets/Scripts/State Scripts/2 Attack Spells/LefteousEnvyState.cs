@@ -67,18 +67,30 @@ public class LefteousEnvyState : FSMState
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 int totalDamage = player.GetLeftHandFingerDeath();
-                int partDamage = totalDamage / 2;
-                PlayerFingers randomFinger = enemy.GetRandomFinger();
-                for (int i = 0; i < partDamage; i++)
+                if (totalDamage == 1)
                 {
+                    PlayerFingers randomFinger = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger);
                 }
-
-                partDamage = totalDamage - partDamage;
-                randomFinger = enemy.GetRandomFinger();
-                for (int i = 0; i < partDamage; i++)
+                else if (totalDamage == 0)
                 {
-                    enemy.health.DamageFinger(randomFinger);
+                    //do nothing
+                }
+                else
+                {
+                    int partDamage = totalDamage / 2;
+                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    for (int i = 0; i < partDamage; i++)
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
+
+                    partDamage = totalDamage - partDamage;
+                    randomFinger = enemy.GetRandomFinger();
+                    for (int i = 0; i < partDamage; i++)
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
                 }
             }
 
