@@ -78,7 +78,9 @@ public class QTEHandler : MonoBehaviour
 
     public QTEOUTCOMES outcome;
 
-    //Animator animator;
+    Animator animator;
+
+    public int buttonsUsed = 0;
 
     private void Start()
     {
@@ -91,7 +93,7 @@ public class QTEHandler : MonoBehaviour
         //set the amount of qte pressed correctly to 0 since you havent yet done a qte
         QTECounter = 0;
         playerInput = gameObject.GetComponentInParent<InputHandler>();
-        //animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     /// <summary>
@@ -123,6 +125,8 @@ public class QTEHandler : MonoBehaviour
                 remainingTime = 0;
                 startTimer = false;
                 DisableQTEButtonsTimer();
+                animator.SetTrigger("IDLE");
+                //EvauateQTEResults();
                 timeisDone = true;
             }
         }
@@ -143,12 +147,6 @@ public class QTEHandler : MonoBehaviour
 
         //function that checks the values of each QTE Button on the sequence to determine which is currently active (more info in the function)
         CheckAvailability();
-
-        //debug string value for cehcking correct amount of QTE
-        //qteCheck.text = QTECounter.ToString();
-
-        //function that checks the percentage of correct QTE for the card evaluation results
-        EvauateQTEResults();
     }
 
     /// <summary>
@@ -314,10 +312,10 @@ public class QTEHandler : MonoBehaviour
         //set the proper action map for QTE Action
         //loop the amount of times equeal to the amount of QTE that need to be in the sequence
 
+        //set the counter to 0 since you havent completed any input
+        QTECounter = 0;
         for (int i = 0; i < qteAmount; i++)
         {
-            //set the counter to 0 since you havent completed any input
-            QTECounter = 0;
             //set the randomized button 
             RandoBTN = RandomizeBTN();
             //assign the button properly
@@ -391,13 +389,6 @@ public class QTEHandler : MonoBehaviour
             //remove the buttons since the QTE Sequence has been completed
             //StartCoroutine(DisableQTEButtons());
             SetTimeValue();
-            //animator.ResetTrigger("IDLE");
-            //animator.ResetTrigger("QTE1");
-            //animator.ResetTrigger("QTE2");
-            //animator.ResetTrigger("QTE3");
-            //animator.ResetTrigger("QTE4");
-            //animator.SetTrigger("IDLE");
-
         }
 
     }
@@ -407,23 +398,30 @@ public class QTEHandler : MonoBehaviour
     /// </summary>
     public void EvauateQTEResults()
     {
-        if (CreatedButtons.Count != 0)
+        QTEPercent = 0;
+
+        if (QTECounter == 0)
+        {
+            QTEPercent = 0;
+        }
+        else if(QTECounter != 0)
         {
             //convert the values of the completed sequence into a percentage of 100%
-            QTEPercent = QTECounter * 100 / CreatedButtons.Count;
-            //debug check to see in what state the result ends with, below 50%, above 50% and 100%
-            if (QTEPercent < 50)
-            {
-                outcome = QTEOUTCOMES.Failure;
-            }
-            else if (QTEPercent >= 50 && QTEPercent < 99)
-            {
-                outcome = QTEOUTCOMES.Half;
-            }
-            else if (QTEPercent == 100)
-            {
-                outcome = QTEOUTCOMES.Success;
-            }
+            QTEPercent = QTECounter * 100 / buttonsUsed;
+        }
+
+        //debug check to see in what state the result ends with, below 50%, above 50% and 100%
+        if (QTEPercent < 50)
+        {
+            outcome = QTEOUTCOMES.Failure;
+        }
+        else if (QTEPercent >= 50 && QTEPercent < 99)
+        {
+            outcome = QTEOUTCOMES.Half;
+        }
+        else if (QTEPercent == 100)
+        {
+            outcome = QTEOUTCOMES.Success;
         }
     }
 
@@ -445,10 +443,17 @@ public class QTEHandler : MonoBehaviour
         remainingTime = 0;
         //stop the timer from going
         startTimer = false;
+        //set the int to the buttons used
+        buttonsUsed = CreatedButtons.Count;
         //clear the buttons from the sequence
         CreatedButtons.Clear();
         //set the index back to default
         createdBTNIndex = -1;
+        animator.ResetTrigger("IDLE");
+        animator.ResetTrigger("QTE1");
+        animator.ResetTrigger("QTE2");
+        animator.ResetTrigger("QTE3");
+        animator.ResetTrigger("QTE4");
     }
 
     public void SetTimeValue()

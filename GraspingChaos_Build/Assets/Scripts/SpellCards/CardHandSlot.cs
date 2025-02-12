@@ -192,66 +192,85 @@ public class CardHandSlot : MonoBehaviour
         //NEED TO make sure we dont deal more than we have the size for in the randomizer dealer
         if (selectedCards.Count != 0)
         {
-            for (int i = 0; i < cards.Count; i++)
+            for (int i = cards.Count - 1; i > 0; i--)
             {
                 foreach (CardSelect selectedCard in selectedCards)
                 {
                     if (cards[i] == selectedCard)
                     {
                         RemovingCards.Add(cards[i]);
-                        selectedCard.isSelected = false;
                         cards.Remove(cards[i]);
                         emptySlots[i] = true;
+                        break;
                     }
                 }
             }
 
-        }
+            //foreach(CardSelect selectedCard in selectedCards)
+            //{
+            //    foreach(CardSelect card in cards)
+            //    {
+            //        if(card == selectedCard)
+            //        {
+            //            cards.Remove(selectedCard);
+            //        }
+            //    }
+            //}
 
+        }
+    }
+
+    public void FullRemove()
+    {
         if (selectedCards.Count != 0)
         {
-            foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
+            for(int i = ALLCards.cardsCurrentlyInHand.Count - 1; i > 0; i--) //foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
             {
                 foreach (CardSelect cardSelect in selectedCards)
                 {
                     GameObject justChecking = cardSelect.gameObject;
-                    if (justChecking == card)
+                    if (justChecking == ALLCards.cardsCurrentlyInHand[i])
                     {
-                        card.SetActive(false);
-                        ALLCards.cardsCurrentlyInHand.Remove(card);
+                        ALLCards.cardsCurrentlyInHand[i].SetActive(false);
+                        ALLCards.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isSelected = false;
+                        ALLCards.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isHovered = false;
+                        ALLCards.cardsCurrentlyInHand.Remove(ALLCards.cardsCurrentlyInHand[i]);
+                        break;
                     }
                 }
             }
-            //RemovingCards.Clear();
-            //ALLCards.cardsCurrentlyInHand.Clear();
             selectedCards.Clear();
         }
     }
 
     public void KeepCardPos()
     {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            cards[i].transform.position = cardSlots[i].transform.position;
+            emptySlots[i] = false;
+            cards[i].isHovered = false;
+        }
+
+        //emptySlots[4] = true;
+
         if (RemovingCards.Count != 0)
         {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                cards[i].transform.position = cardSlots[i].transform.position;
-                emptySlots[i] = false;
 
-                if (RemovingCards.Count == 1)
-                {
-                    emptySlots[4] = true;
-                }
-                else if (RemovingCards.Count == 2)
-                {
-                    emptySlots[3] = true;
-                    emptySlots[4] = true;
-                }
-                else if (RemovingCards.Count == 3)
-                {
-                    emptySlots[2] = true;
-                    emptySlots[3] = true;
-                    emptySlots[4] = true;
-                }
+            if (RemovingCards.Count == 1)
+            {
+                emptySlots[4] = true;
+            }
+            else if (RemovingCards.Count == 2)
+            {
+                emptySlots[3] = true;
+                emptySlots[4] = true;
+            }
+            else if (RemovingCards.Count == 3)
+            {
+                emptySlots[2] = true;
+                emptySlots[3] = true;
+                emptySlots[4] = true;
             }
             RemovingCards.Clear();
         }

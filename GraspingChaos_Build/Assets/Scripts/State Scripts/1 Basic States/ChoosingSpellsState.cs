@@ -125,9 +125,10 @@ public class ChoosingSpellsState : FSMState
                         //remove cards from card slot script and set object pool back to default 
 
                         // keep the position of the cards to their current slot
-                        //playerState.playerHand.KeepCardPos();
+
                         //Remove past spells
                         playerState.playerHand.ClearSelected();
+                        playerState.playerHand.FullRemove();
                     }
                 }
             }

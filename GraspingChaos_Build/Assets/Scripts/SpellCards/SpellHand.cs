@@ -31,9 +31,11 @@ public class SpellHand : MonoBehaviour
             if (playerSpells[w] == cardUsed)
             {
                 playerSpells.Remove(cardUsed);
-                amtOfSpellsInHand--;
+                //amtOfSpellsInHand--;
             }
         }
+        GameManager.Instance.player1.spellHand.amtOfSpellsInHand = 5 - GameManager.Instance.player1.cardsAmountSelected;
+        GameManager.Instance.player2.spellHand.amtOfSpellsInHand = 5 - GameManager.Instance.player2.cardsAmountSelected;
     }
 
     //Filter by mana amount and spell type

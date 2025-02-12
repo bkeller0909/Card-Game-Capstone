@@ -29,12 +29,14 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] Transform adjasentPosition2;
     [SerializeField] Transform adjasentPosition3;
 
+    int spellToCastIndex;
+
     /// <summary>
     /// Call this function with the "Spell Name" and the "Target Finger" to play the desired particle
     /// </summary>
     public void StartParticle(SpellNames spellToCast, PlayerFingers targetFinger)
     {
-        int spellToCastIndex = -1;
+        spellToCastIndex = -1;
 
         switch (spellToCast)
         {

@@ -83,7 +83,7 @@ public class CardSelect : MonoBehaviour
     {
         // card is hovered
         isHovered = true;
-        StartCoroutine(AdjustCard(isHovered));
+        //StartCoroutine(AdjustCard(isHovered));
         CardGlow(isHovered);
     }
 
@@ -91,7 +91,7 @@ public class CardSelect : MonoBehaviour
     {
         // card is no longer hovered
         isHovered = false;
-        StartCoroutine(AdjustCard(isHovered));
+        //StartCoroutine(AdjustCard(isHovered));
         CardGlow(isHovered);
     }
 
@@ -100,7 +100,7 @@ public class CardSelect : MonoBehaviour
         isHovered = false;
         isSelected = true;
         cardGlowRender.material.SetColor("_GlowColour", Color.white);
-        StartCoroutine(AdjustCard(isSelected));
+        //StartCoroutine(AdjustCard(isSelected));
         CardGlow(isSelected);
     }
 
@@ -109,7 +109,7 @@ public class CardSelect : MonoBehaviour
         isHovered = true;
         isSelected = false;
         cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
-        StartCoroutine(AdjustCard(isSelected));
+        //StartCoroutine(AdjustCard(isSelected));
         CardGlow(isSelected);
     }
 
