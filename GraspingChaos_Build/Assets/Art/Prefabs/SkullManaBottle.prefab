@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1de4563ff6499b9488b29aae307ba326, type: 2}
+  - {fileID: 2100000, guid: dd2dbc101ac01a1408a3e11a81c3af53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d190288143b815247af209d1c7220767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaMaterial: {fileID: 2100000, guid: 1de4563ff6499b9488b29aae307ba326, type: 2}
+  manaMaterial: {fileID: 2100000, guid: dd2dbc101ac01a1408a3e11a81c3af53, type: 2}
   desiredManaStep: 5
   fillOrEmptyTime: 2
 --- !u!1001 &1875386227965765168
@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 728ae1db197e1284aa170d2689f4164f,
         type: 3}
       propertyPath: m_Name
-      value: ManaBottle
+      value: SkullManaBottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
