@@ -7,6 +7,7 @@ public class CardsObjectPool : MonoBehaviour
     private CardHandSlot cardSlots;
     float p1rotation = 90;
     float p2rotation = -90;
+    float rightBend = 24.291f;
     public int[] allcardAmounts;
 
     public List<GameObject> objPoolCards = new List<GameObject>();
@@ -45,11 +46,11 @@ public class CardsObjectPool : MonoBehaviour
                 allcardAmounts[(int)card.spellName] += 1;
                 if (player == GameManager.Instance.player1)
                 {
-                    pooledCards.transform.eulerAngles = new Vector3(transform.eulerAngles.x, p1rotation, transform.eulerAngles.z);
+                    pooledCards.transform.eulerAngles = new Vector3(rightBend, p1rotation, transform.eulerAngles.z);
                 }
                 else if (player == GameManager.Instance.player2)
                 {
-                    pooledCards.transform.eulerAngles = new Vector3(transform.eulerAngles.x, p2rotation, transform.eulerAngles.z);
+                    pooledCards.transform.eulerAngles = new Vector3(rightBend, p2rotation, transform.eulerAngles.z);
                 }
                 pooledCards.SetActive(true);
                 for (int i = 0; i < cardSlots.emptySlots.Length; i++)
