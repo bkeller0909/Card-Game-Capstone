@@ -57,6 +57,7 @@ public class CollectorsCurseState : FSMState
         }
         else
         {
+            player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //enemy.fingers[(int)enemy.GetRandomFinger()].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.CollectorsCurse].damageValue;

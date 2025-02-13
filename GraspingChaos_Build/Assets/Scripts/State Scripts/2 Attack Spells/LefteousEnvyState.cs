@@ -56,6 +56,7 @@ public class LefteousEnvyState : FSMState
         }
         else
         {
+            player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //do nothing

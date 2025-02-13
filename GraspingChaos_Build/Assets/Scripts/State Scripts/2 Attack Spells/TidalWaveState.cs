@@ -57,6 +57,7 @@ public class TidalWaveState : FSMState
         }
         else
         {
+            player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);

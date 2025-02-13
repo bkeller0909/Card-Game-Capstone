@@ -57,6 +57,7 @@ public class PointerOfDeathState : FSMState
         }
         else
         {
+            player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath].damageValue;

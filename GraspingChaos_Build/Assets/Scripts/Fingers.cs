@@ -62,7 +62,7 @@ public class Fingers : MonoBehaviour
         {
             GameObject added = (GameObject)fingerSegmentsRemoved.Pop();
             fingerSegments.Push(added);
-            player.health.playerHealthStats[(int)finger]++;
+            //player.health.playerHealthStats[(int)finger]++;
             //fingerHP += 1;
 
             //added.GetComponent<SkinnedMeshRenderer>().material = bone_Mat;
@@ -86,7 +86,8 @@ public class Fingers : MonoBehaviour
 
             //removed.SetActive(false);
             fingerSegmentsRemoved.Push(removed);
-            player.health.playerHealthStats[(int)finger]--;
+            //player.health.playerHealthStats[(int)finger]--;
+            //player.health.DamageFinger(finger);
             //fingerHP -= 1;
 
             //if (player == GameManager.Instance.player1)

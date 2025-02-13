@@ -56,32 +56,33 @@ public class IciclesState : FSMState
         }
         else
         {
+            player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 PlayerFingers randomFinger = player.GetRandomFinger();
-                player.health.DamageFinger(randomFinger);
+                enemy.health.DamageFinger(randomFinger);
                 randomFinger = player.GetRandomFinger();
-                player.health.DamageFinger(randomFinger);
+                enemy.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 PlayerFingers randomFinger = player.GetRandomFinger();
-                player.health.DamageFinger(randomFinger);
+                enemy.health.DamageFinger(randomFinger);
                 randomFinger = player.GetRandomFinger();
-                player.health.DamageFinger(randomFinger);
+                enemy.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 PlayerFingers randomFinger = player.GetRandomFinger();
                 for (int i = 0; i < 2; i++)
                 {
-                    player.health.DamageFinger(randomFinger);
+                    enemy.health.DamageFinger(randomFinger);
                 }
 
                 randomFinger = player.GetRandomFinger();
                 for (int s = 0; s < 2; s++)
                 {
-                    player.health.DamageFinger(randomFinger);
+                    enemy.health.DamageFinger(randomFinger);
                 }
             }
 
