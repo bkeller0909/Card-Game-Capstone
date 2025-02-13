@@ -60,6 +60,10 @@ public class PlayerManager : MonoBehaviour
 
     public int cardsAmountSelected = 0;
 
+    public int attackCardAmount = 0;
+    public int restCardAmount = 0;
+    public int ringCardAmount = 0;
+
     [Tooltip("The mana value that is shown to the players")]
     public ManaVisual manaVisual;
 
