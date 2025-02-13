@@ -60,6 +60,9 @@ public class PlayerManager : MonoBehaviour
 
     public int cardsAmountSelected = 0;
 
+    [Tooltip("The mana value that is shown to the players")]
+    public ManaVisual manaVisual;
+
     public List<Fingers> healthyFingers;
 
     private void Awake()
@@ -91,7 +94,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //healthValue.text = entireHP.ToString();
+        manaVisual.desiredManaStep = Mana;
     }
 
     public void GetMana(int manaAmount)
