@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+
 public class DealStatsState : FSMState
 {
     CardDealing cardDealing;
@@ -19,7 +21,8 @@ public class DealStatsState : FSMState
     public override void EnterStateInit()
     {
         cardObjPool = GameManager.Instance.cardPool;
-        cardDealing.InitializeCardCosts();
+        cardDealing.InitializeCardCosts();  // init the cards into lists by mana cost
+        cardDealing.InitializeCardTypes();  // init the cards into lists by type
         gainedMana = false;
         stateChange = false;
         if (!GameManager.Instance.firstRoundCheck)
@@ -62,28 +65,71 @@ public class DealStatsState : FSMState
                 card = cardDealing.CardDealtChance(player);
                 if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
                 {
-                    player.spellHand.playerSpells.Add(card);
-                    cardObjPool.SetCardsFromPool(player, card);
-                    // increase the amount of spells the player has in their hand
-                    player.spellHand.amtOfSpellsInHand++;
+                    // TODO - change this value to 2 once rings are in the game
+                    if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        cardObjPool.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.attackCardAmount++;
+                    }
+                    else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        cardObjPool.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.restCardAmount++;
+                    }
+                    else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        cardObjPool.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.ringCardAmount++;
+
+                    }
 
                 }
             }
         }
 
+        // for some reason this needs to be here a second time or else game breaks!!! :P
         if (GameManager.Instance.firstRoundCheck)
         {
             if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
             {
                 // add a card to the player spell list
                 card = cardDealing.CardDealtChance(player);
-                if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
+                if (cardObjPool.allcardAmounts[(int)card.spellName] < 3) // convert enum name to int
                 {
-                    player.spellHand.playerSpells.Add(card);
-                    cardObjPool.SetCardsFromPool(player, card);
-                    // increase the amount of spells the player has in their hand
-                    player.spellHand.amtOfSpellsInHand++;
-
+                    // TODO - value 2
+                    if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        cardObjPool.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.attackCardAmount++;
+                    }
+                    else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        cardObjPool.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.restCardAmount++;
+                    }
+                    else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        cardObjPool.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.ringCardAmount++;
+                    }
                 }
             }
         }

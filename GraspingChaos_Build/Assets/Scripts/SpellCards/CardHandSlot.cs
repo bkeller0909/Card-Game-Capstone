@@ -220,6 +220,7 @@ public class CardHandSlot : MonoBehaviour
         }
     }
 
+    // sebastian made this
     public void FullRemove()
     {
         if (selectedCards.Count != 0)
@@ -228,6 +229,19 @@ public class CardHandSlot : MonoBehaviour
             {
                 foreach (CardSelect cardSelect in selectedCards)
                 {
+                    // remove the card from your hand once you have used that card of the certain type
+                    if(cardSelect.GetComponent<SpellCard>().type == SpellType.ATTACK)
+                    {
+                        player.attackCardAmount--;
+                    }
+                    else if (cardSelect.GetComponent<SpellCard>().type == SpellType.RESTORATION)
+                    {
+                        player.restCardAmount--;
+                    }
+                    else if (cardSelect.GetComponent<SpellCard>().type == SpellType.RING)
+                    {
+                        player.ringCardAmount--;
+                    }
                     GameObject justChecking = cardSelect.gameObject;
                     if (justChecking == ALLCards.cardsCurrentlyInHand[i])
                     {

@@ -13,7 +13,7 @@ using UnityEngine;
 /// </summary>
 public class CardDealing : MonoBehaviour
 {
-    #region Card Mana Amount Lists
+    #region CARD MANA COST LISTS
     private List<SpellCard> oneManaCards = new List<SpellCard>();
     private List<SpellCard> twoManaCards = new List<SpellCard>();
     private List<SpellCard> threeManaCards = new List<SpellCard>();
@@ -23,7 +23,16 @@ public class CardDealing : MonoBehaviour
     private List<SpellCard> sevenManaCards = new List<SpellCard>();
     private List<SpellCard> eightManaCards = new List<SpellCard>();
     private List<SpellCard> nineManaCards = new List<SpellCard>();
-    #endregion
+    #endregion // CARD MANA COST LISTS
+
+    // TODO - might not need this
+    #region CARD TYPE LISTS
+    private List<SpellCard> attackCards = new List<SpellCard>();
+    private List<SpellCard> restCards = new List<SpellCard>();
+    private List<SpellCard> ringCards = new List<SpellCard>();
+    #endregion // CARD TYPE LISTS
+
+
 
     /// <summary>
     /// Initializes all cards to be in their respective List based on the mana cost.
@@ -32,6 +41,7 @@ public class CardDealing : MonoBehaviour
     {
         for (int i = 0; i < ActiveSpellCards.Instance.spellCards.Length; i++)
         {
+            // TODO - remove this once ring spells are added to the game
             if (ActiveSpellCards.Instance.spellCards[i].type == SpellType.ATTACK || ActiveSpellCards.Instance.spellCards[i].type == SpellType.RESTORATION)
             {
                 if (ActiveSpellCards.Instance.spellCards[i].manaCost == 1)
@@ -74,8 +84,27 @@ public class CardDealing : MonoBehaviour
         }
     }
 
-
-
+    /// <summary>
+    /// Initializes all of the cards into their own lists based on the type of card
+    /// </summary>
+    public void InitializeCardTypes()
+    {
+        for (int i = 0; i < ActiveSpellCards.Instance.spellCards.Length; i++)
+        {
+            if (ActiveSpellCards.Instance.spellCards[i].type == SpellType.ATTACK)
+            {
+                attackCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+            }
+            else if (ActiveSpellCards.Instance.spellCards[i].type == SpellType.RESTORATION)
+            {
+                restCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+            }
+            else if (ActiveSpellCards.Instance.spellCards[i].type == SpellType.RING)
+            {
+                ringCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+            }
+        }
+    }
 
     /// <summary>
     /// Will take the current mana of the player and the mana cost of a card.
@@ -418,4 +447,16 @@ public class CardDealing : MonoBehaviour
 
         return null; // no card selected
     }
+
+    // TODO - make a constraint so that when the first round
+    // players must have at least 2 attack cards before they reach the max of 5 cards in their hand
+
+    /// <summary>
+    /// Round one constraint
+    /// </summary>
+    /// <param name="player">player to recieve the card</param>
+    //public void CardTypeConstraints(PlayerManager player)
+    //{
+    //    if(player.spellHand.amtOfSpellsInHand < 5 && player.)
+    //}
 }
