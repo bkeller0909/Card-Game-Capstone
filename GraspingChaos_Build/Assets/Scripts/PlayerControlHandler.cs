@@ -86,6 +86,7 @@ public class PlayerControlHandler : MonoBehaviour
                 changeCameras.GetInputForced(1);
                 playerInput.selectFinger = false;
                 playerInput.Abtn = false;
+                pickFinger.DeselectOnPick();
             }
 
             if (player.playerInput.actions["Cancel"].WasPressedThisFrame())

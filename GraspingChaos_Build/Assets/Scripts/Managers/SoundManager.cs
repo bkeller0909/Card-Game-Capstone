@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -16,13 +11,12 @@ using UnityEngine;
 /// <summary>
 /// Handle all sound output for the game. 
 /// </summary>
-[RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
     private static SoundManager Instance;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource soundObject;
 
-    [SerializeField] private SoundList[] soundsList;        // takes in an array of the struct SoundList
+    // [SerializeField] private SoundList[] soundsList;        // takes in an array of the struct SoundList
 
     private void Awake()
     {
@@ -32,12 +26,25 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void PlaySoundFX(AudioClip soundClip, Transform spawnTransform, float volume)
     {
-        audioSource = GetComponent<AudioSource>();
+        // spawn in the gameobject
+        AudioSource audioSource = Instantiate(soundObject, spawnTransform.position, Quaternion.identity);
+
+        // sound clip
+        audioSource.clip = soundClip;
+
+        // sound volume
+        audioSource.volume = volume;
+
+        audioSource.Play();
+
+        float soundClipLength = audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, soundClipLength);
     }
 
-    /// <summary>
+    /*/// <summary>
     /// Plays the sound clip
     /// </summary>
     /// <param name="spellSound">Name of spell that will be associated with the sound.</param>
@@ -55,10 +62,10 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }
 
-/// <summary>
+/*/// <summary>
 /// Struct of audio clips
 /// </summary>
 [Serializable]
@@ -69,4 +76,4 @@ public struct SoundList
 
     public SpellNames SpellName => spellName;
     public AudioClip[] Sounds => sounds;
-}
+}*/

@@ -1,4 +1,3 @@
-/// <summary>
 //----------------------------------------------------------------
 //  OG Author:     Cooper
 //  other Authors: Sebastian
@@ -7,6 +6,7 @@
 //  Purpose:       Spell State for FireBolt
 //  Instance?      no
 //-----------------------------------------------------------------
+/// <summary>
 /// </summary>
 public class FireBoltState : FSMState
 {
@@ -70,6 +70,7 @@ public class FireBoltState : FSMState
             {
                 //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                RumbleManager.instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
             }
 
             //check if i am the second spell but the first cast

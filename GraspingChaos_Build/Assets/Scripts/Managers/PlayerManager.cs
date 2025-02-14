@@ -86,7 +86,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-
+        gamepad = playerInput.GetDevice<Gamepad>();
         spellHand = new SpellHand();
         health = new PlayerHealth();
         health.SetUpHealth(this);

@@ -432,7 +432,7 @@ public class SelectableFinger : MonoBehaviour
         SkinnedMeshRenderer renderer = obj.GetComponent<SkinnedMeshRenderer>();
         if (renderer != null)
         {
-            renderer.material.SetColor("_AuraColour",color);
+            renderer.material.SetColor("_AuraColour", color);
         }
     }
 
@@ -445,6 +445,24 @@ public class SelectableFinger : MonoBehaviour
         else
         {
             playerState.currentFingerName = player.fingers[currentFingerIndexP2].finger;
+        }
+    }
+
+    public void DeselectOnPick()
+    {
+        if (player.playerOneHands)
+        {
+            for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
+            {
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColorP1);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
+            {
+                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColorP2);
+            }
         }
     }
 }
