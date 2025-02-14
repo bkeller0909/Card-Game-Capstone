@@ -384,12 +384,14 @@ public class SelectableFinger : MonoBehaviour
                 // highlight the entire finger
                 for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
                 {
+                    selectedColor = defaultColorP2;
                     SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], selectedColor);
                 }
             }
             else
             {
                 // highlight the selected joint of the finger
+                selectedColor = defaultColorP2;
                 SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[currentFingerJointIndexP1], selectedColor);
             }
         }
@@ -407,12 +409,14 @@ public class SelectableFinger : MonoBehaviour
                 // highlight the entire finger
                 for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
                 {
+                    selectedColor = defaultColorP1;
                     SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], selectedColor);
                 }
             }
             else
             {
                 // highlight the selected joint of the finger
+                selectedColor = defaultColorP1;
                 SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[currentFingerJointIndexP2], selectedColor);
             }
         }
