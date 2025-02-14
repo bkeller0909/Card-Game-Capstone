@@ -20,10 +20,11 @@ public class SelectableFinger : MonoBehaviour
     private PlayerState playerState;
 
     [Tooltip("Color for the selected object.")]
-    public Color selectedColor = Color.green;
+    public Color selectedColor = Color.red;
     public Color deselect = Color.white;
 
-    private Color defaultColor;
+    private Color defaultColorP1;
+    private Color defaultColorP2;
 
     private int currentFingerIndexP1 = 0;         // columns
     private int currentFingerJointIndexP1 = 0;    // rows
@@ -44,11 +45,15 @@ public class SelectableFinger : MonoBehaviour
 
     private bool setState = true;
 
+    private Color basicColour;
+
     void Start()
     {
+        selectedColor = Color.white;
         player = GetComponent<PlayerManager>();
         playerInput = GetComponent<InputHandler>();
-        defaultColor = gameObject.GetComponentInChildren<Fingers>().GetComponentInChildren<SkinnedMeshRenderer>().material.color;
+        defaultColorP1 = GameManager.Instance.player1.fingers[5].GetComponentInChildren<SkinnedMeshRenderer>().material.GetColor("_AuraColour");
+        defaultColorP2 = GameManager.Instance.player2.fingers[5].GetComponentInChildren<SkinnedMeshRenderer>().material.GetColor("_AuraColour");
         playerState = GetComponent<PlayerState>();
         GameManager.Instance.currentCaster = GameManager.Instance.player2;
         UpdateSelection();
@@ -265,7 +270,7 @@ public class SelectableFinger : MonoBehaviour
             // deselect all finger joints for the finger
             for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
             {
-                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColor);
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColorP1);
             }
 
             // update the index
@@ -282,7 +287,7 @@ public class SelectableFinger : MonoBehaviour
             // deselect all finger joints for the finger
             for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
             {
-                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColor);
+                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColorP2);
             }
 
             // update the index
@@ -308,7 +313,7 @@ public class SelectableFinger : MonoBehaviour
                 // deselect all joints in the current finger if switching from full column selection
                 for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
                 {
-                    SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColor);
+                    SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColorP1);
                     //playerState.currentFingerName = player.fingers[currentFingerIndexP1].finger;
                 }
             }
@@ -337,7 +342,7 @@ public class SelectableFinger : MonoBehaviour
                 // deselect all joints in the current finger if switching from full column selection
                 for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
                 {
-                    SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColor);
+                    SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColorP2);
                     //playerState.currentFingerName = player.fingers[currentFingerIndexP2].finger;
                 }
             }
@@ -371,7 +376,7 @@ public class SelectableFinger : MonoBehaviour
             // highlight the entire finger
             for (int i = 0; i < GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints.Count; i++)
             {
-                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColor);
+                SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], defaultColorP2);
             }
 
             if (toggleFullFingerSelect)
@@ -394,7 +399,7 @@ public class SelectableFinger : MonoBehaviour
             // highlight the entire finger
             for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
             {
-                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColor);
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], defaultColorP1);
             }
 
             if (toggleFullFingerSelect)
@@ -420,10 +425,10 @@ public class SelectableFinger : MonoBehaviour
     /// <param name="color">The colour that will be applied.</param>
     private void SetObjectColor(GameObject obj, Color color)
     {
-        Renderer renderer = obj.GetComponent<Renderer>();
+        SkinnedMeshRenderer renderer = obj.GetComponent<SkinnedMeshRenderer>();
         if (renderer != null)
         {
-            renderer.material.color = color;
+            renderer.material.SetColor("_AuraColour",color);
         }
     }
 

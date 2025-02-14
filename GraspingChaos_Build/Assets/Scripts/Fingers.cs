@@ -22,7 +22,7 @@ public class Fingers : MonoBehaviour
     public List<GameObject> fingerJoints;
 
     [SerializeField]
-    public Material bone_Mat, damP1_Mat, damP2_Mat;
+    public Material finger_Mat;
 
     [Tooltip("Type of Finger")]
     public PlayerFingers finger;
@@ -65,8 +65,8 @@ public class Fingers : MonoBehaviour
             //player.health.playerHealthStats[(int)finger]++;
             //fingerHP += 1;
 
-            //added.GetComponent<SkinnedMeshRenderer>().material = bone_Mat;
-            added.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            added.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_HandAmount", 1);
+            //added.GetComponent<SkinnedMeshRenderer>().enabled = true;
 
         }
 
@@ -86,19 +86,10 @@ public class Fingers : MonoBehaviour
 
             //removed.SetActive(false);
             fingerSegmentsRemoved.Push(removed);
-            //player.health.playerHealthStats[(int)finger]--;
-            //player.health.DamageFinger(finger);
-            //fingerHP -= 1;
+            
 
-            //if (player == GameManager.Instance.player1)
-            //{
-            //    removed.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
-            //}
-            //else
-            //{
-            //    removed.GetComponent<SkinnedMeshRenderer>().material = damP2_Mat;
-            //}
-            removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            removed.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_HandAmount", 0);
+            //removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
         }
     }
 

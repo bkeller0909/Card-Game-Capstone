@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ManaStagShader_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: e7e646e76859c9a478302ebb56ae1890,
+  m_Name: 02LHAMiddle2_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: b8dde25f315ebc0458b067d01e8ee733,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,8 +24,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SwirlTex:
-        m_Texture: {fileID: 2800000, guid: 1731d3829f886bd4b94410e6034d8016, type: 3}
+    - _HandBaseTexture:
+        m_Texture: {fileID: 2800000, guid: d2f5e887b2729f148ae60bc2bbb02ee7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HandNormalTexture:
+        m_Texture: {fileID: 2800000, guid: 763dda36884ee2a45ad6b9f5363b4908, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HandsBaseColour:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -42,15 +50,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AuraStrenght: 1.7
     - _Brightness: 20
+    - _HandAmount: 1
+    - _NormalStrenght: 2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RotSpeed: 10
     m_Colors:
-    - _ManaColour: {r: 0, g: 0.32538834, b: 0.59607846, a: 1}
-    - _ManaOffsetPosition: {r: 0, g: 0.58, b: 0, a: 0}
+    - _AuraColour: {r: 1, g: 0.9458512, b: 0, a: 0}
+    - _BaseColour_Tint: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1504121960471334517
+--- !u!114 &8227220335657941667
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
