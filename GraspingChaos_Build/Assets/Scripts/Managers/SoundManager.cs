@@ -13,10 +13,8 @@ using UnityEngine;
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager Instance;
+    public static SoundManager Instance;
     [SerializeField] private AudioSource soundObject;
-
-    // [SerializeField] private SoundList[] soundsList;        // takes in an array of the struct SoundList
 
     private void Awake()
     {
@@ -26,6 +24,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays a sound effect.
+    /// </summary>
+    /// <param name="soundClip">Sound clip that will be played.</param>
+    /// <param name="spawnTransform">Transform position where the sound will be played.</param>
+    /// <param name="volume">Volume of the sound clip</param>
     public void PlaySoundFX(AudioClip soundClip, Transform spawnTransform, float volume)
     {
         // spawn in the gameobject
@@ -44,36 +48,29 @@ public class SoundManager : MonoBehaviour
         Destroy(audioSource.gameObject, soundClipLength);
     }
 
-    /*/// <summary>
-    /// Plays the sound clip
+    /// <summary>
+    /// Plays a random sound effect.
     /// </summary>
-    /// <param name="spellSound">Name of spell that will be associated with the sound.</param>
-    /// <param name="volume">Volume of the sound clip.</param>
-    public void PlaySound(SpellNames spellSound, float volume = 1)
+    /// <param name="soundClip">The sound clip that will be played from an array.</param>
+    /// <param name="spawnTransform">Transform position where the sound will be played.</param>
+    /// <param name="volume">Volume of the sound clip</param>
+    public void PlayRandomSFX(AudioClip[] soundClip, Transform spawnTransform, float volume)
     {
-        for(int i = 0; i < soundsList.Length; i++)
-        {
-            if (soundsList[i].SpellName == spellSound)
-            {
-                if (soundsList[i].Sounds.Length > 0)
-                {
-                    AudioClip clip = soundsList[i].Sounds[UnityEngine.Random.Range(0, soundsList[i].Sounds.Length)];
-                    audioSource.PlayOneShot(clip, volume);
-                }
-            }
-        }
-    }*/
+        int random = Random.Range(0, soundClip.Length);
+
+        // spawn in the gameobject
+        AudioSource audioSource = Instantiate(soundObject, spawnTransform.position, Quaternion.identity);
+
+        // sound clip
+        audioSource.clip = soundClip[random];
+
+        // sound volume
+        audioSource.volume = volume;
+
+        audioSource.Play();
+
+        float soundClipLength = audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, soundClipLength);
+    }
 }
-
-/*/// <summary>
-/// Struct of audio clips
-/// </summary>
-[Serializable]
-public struct SoundList
-{
-    [SerializeField] private SpellNames spellName;      // sets the spell name of the card that will have the sound clip
-    [SerializeField] private AudioClip[] sounds;        // array of sound clips
-
-    public SpellNames SpellName => spellName;
-    public AudioClip[] Sounds => sounds;
-}*/

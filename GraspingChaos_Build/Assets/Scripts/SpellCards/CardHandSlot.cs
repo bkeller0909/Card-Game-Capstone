@@ -175,7 +175,7 @@ public class CardHandSlot : MonoBehaviour
         if (player.playerInput.actions["Select"].triggered)
         {
             ToggleSelectedCard();
-            RumbleManager.instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
+            RumbleManager.Instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
         }
 
         // Handle pause input.

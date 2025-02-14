@@ -14,13 +14,13 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class RumbleManager : MonoBehaviour
 {
-    public static RumbleManager instance;
+    public static RumbleManager Instance;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     }
 
