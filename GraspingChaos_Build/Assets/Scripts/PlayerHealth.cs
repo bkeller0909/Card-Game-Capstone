@@ -64,12 +64,17 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void DamageFinger(PlayerFingers whatFinger)
     {
-        if (playerHealthStats[(int)whatFinger] != 0)
+        if (playerHealthStats[(int)whatFinger] > 0)
         {
             playerHealthStats[(int)whatFinger] -= 1;
             player.fingers[(int)whatFinger].removeCurrentSegment();
             player.entireHP--;
         }
+        else
+        {
+            playerHealthStats[(int)whatFinger] = 0;
+        }
+
     }
 
     /// <summary>

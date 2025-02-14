@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-
 public class DealStatsState : FSMState
 {
     CardDealing cardDealing;
@@ -47,7 +45,8 @@ public class DealStatsState : FSMState
     {
         if (!gainedMana)
         {
-            player.Mana += GameManager.Instance.manaPerTurn;
+            //player.Mana += GameManager.Instance.manaPerTurn;
+            player.GetMana(GameManager.Instance.manaPerTurn);
             gainedMana = true;
             if (player.PlayedCursedConvertion)
             {

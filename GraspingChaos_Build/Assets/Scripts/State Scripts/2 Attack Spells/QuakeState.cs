@@ -60,12 +60,21 @@ public class QuakeState : FSMState
             player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
-                //does nothing
+                //randomize fingers tht are not selected
+                enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                PlayerFingers randomFinger = player.GetRandomFinger();
+                enemy.health.DamageFinger(randomFinger);
+                randomFinger = player.GetRandomFinger();
+                enemy.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
+                //randomize fingers tht are not selected
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                //gotta figure out the multiple selecting of fingers
+                PlayerFingers randomFinger = player.GetRandomFinger();
+                enemy.health.DamageFinger(randomFinger);
+                randomFinger = player.GetRandomFinger();
+                enemy.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {

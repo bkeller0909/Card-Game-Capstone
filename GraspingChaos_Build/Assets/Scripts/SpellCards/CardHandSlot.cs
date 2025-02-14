@@ -230,7 +230,7 @@ public class CardHandSlot : MonoBehaviour
                 foreach (CardSelect cardSelect in selectedCards)
                 {
                     // remove the card from your hand once you have used that card of the certain type
-                    if(cardSelect.GetComponent<SpellCard>().type == SpellType.ATTACK)
+                    if (cardSelect.GetComponent<SpellCard>().type == SpellType.ATTACK)
                     {
                         player.attackCardAmount--;
                     }
