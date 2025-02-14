@@ -1,6 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author:       Sebastian
+//  Co-Auther:    Keller
+//  Title:        CardsObjectPool
+//  Date Created: 02/09/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Initializes the object pool for the cards in the scene.
+/// Rotates the cards to their respective player.
+/// </summary>
 public class CardsObjectPool : MonoBehaviour
 {
     private CardDealing getCard;
@@ -68,18 +80,4 @@ public class CardsObjectPool : MonoBehaviour
             }
         }
     }
-
-
-    /*public void InitializeCards()
-    {
-        for (int i = 0; i < emptySlots.Length; i++)
-        {
-            if (emptySlots[i])
-            {
-                GameObject card = Instantiate(cardPrefab, cardSlots[i].position, Quaternion.identity);
-                cards.Add(card.GetComponent<CardSelect>());
-                emptySlots[i] = false;
-            }
-        }
-    }*/
 }
