@@ -708,6 +708,117 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &158378289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 158378291}
+  - component: {fileID: 158378290}
+  m_Layer: 0
+  m_Name: GameDebuggerTester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &158378290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158378289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0627cd57be477344f93466288fe040b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugPool: {fileID: 855616587}
+  player1: {fileID: 1693830826}
+  player2: {fileID: 1328186025}
+  cardHandP1: {fileID: 1693830828}
+  cardHandP2: {fileID: 1328186027}
+  attackSpellsDebugP1: 000000000b000000070000000500000003000000
+  attackSpellsDebugP2: 01000000020000000a0000000900000006000000
+  restorationSpellsDebugP1: 12000000100000000d0000000f0000000c000000
+  restorationSpellsDebugP2: 0e00000011000000130000000c0000000d000000
+  smallSpellsDebugP1: 0000000000000000000000000100000001000000
+  smallSpellsDebugP2: 0100000004000000050000000d00000002000000
+  mediumSpellsDebugP1: 0700000006000000100000001100000008000000
+  mediumSpellsDebugP2: 090000000f00000013000000070000000f000000
+  highSpellsDebugP1: 120000000a0000000b000000130000000b000000
+  highSpellsDebugP2: 13000000120000000a0000000b00000012000000
+  manaP1: 3
+  newManaAmountP1: 0
+  manaP2: 3
+  newManaAmountP2: 0
+  p1TotalHealth: 28
+  p2TotalHealth: 28
+  player1ActiveforDebugFingerInteraction: 1
+  player1AtiveDamageFinger: 1
+  player1AtiveHealingFinger: 0
+  LeftPinkyP1: 3
+  LeftRingP1: 3
+  LeftMiddleP1: 3
+  LeftIndexP1: 3
+  LeftThumbP1: 2
+  RightPinkyP1: 3
+  RightRingP1: 3
+  RightMiddleP1: 3
+  RightIndexP1: 3
+  RightThumbP1: 2
+  player2ActiveforDebugFingerInteraction: 0
+  player2AtiveDamageFinger: 1
+  player2AtiveHealingFinger: 0
+  LeftPinkyP2: 3
+  LeftRingP2: 3
+  LeftMiddleP2: 3
+  LeftIndexP2: 3
+  LeftThumbP2: 2
+  RightPinkyP2: 3
+  RightRingP2: 3
+  RightMiddleP2: 3
+  RightIndexP2: 3
+  RightThumbP2: 2
+  fireboltAmount: 0
+  rockThrowAmount: 0
+  collectorsCurseAmount: 0
+  iciclesAmount: 0
+  lefteousEnvyAmount: 0
+  righteousEnvyAmount: 0
+  leftningBoltAmount: 0
+  rightningBoltAmount: 0
+  pointerOfDeathAmount: 0
+  quakeAmount: 0
+  staticBlastAmount: 0
+  tidalWaveAmount: 0
+  cursedConvertionAmount: 0
+  echoingManaAmount: 0
+  forTheCauseAmount: 0
+  greenThumbAmount: 0
+  lifeDrainAmount: 0
+  materializeAmount: 0
+  quickHealAmount: 0
+  thumbsUpAmount: 0
+--- !u!4 &158378291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158378289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.471493, y: 33.80559, z: -22.927736}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &226099795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3499,6 +3610,8 @@ MonoBehaviour:
   - {fileID: 2021582387}
   - {fileID: 112850018}
   cardsCurrentlyInHand: []
+  cardsCurrentlyInHandP1: []
+  cardsCurrentlyInHandP2: []
 --- !u!1001 &871949852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7150,6 +7263,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1328186024}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1328186027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2811401304770170630, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328186024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3b6b79ce41124980733162b9ff9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1376999865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61e5e0368b29bb54496f06fd8f912221,
@@ -10803,6 +10928,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1693830825}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1693830828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2811401304770170630, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693830825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3b6b79ce41124980733162b9ff9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1785702493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12411,6 +12548,7 @@ SceneRoots:
   - {fileID: 1328186024}
   - {fileID: 661212295}
   - {fileID: 855616586}
+  - {fileID: 158378291}
   - {fileID: 517209388}
   - {fileID: 77056664}
   - {fileID: 606740543}

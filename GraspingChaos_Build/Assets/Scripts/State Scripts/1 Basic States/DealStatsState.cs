@@ -137,6 +137,7 @@ public class DealStatsState : FSMState
             enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
         {
             stateChange = true;
+            GameManager.Instance.checkAvailableCards = true;
         }
     }
 

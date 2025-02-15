@@ -246,6 +246,7 @@ public class CardHandSlot : MonoBehaviour
                     if (justChecking == ALLCards.cardsCurrentlyInHand[i])
                     {
                         ALLCards.cardsCurrentlyInHand[i].SetActive(false);
+                        ALLCards.allcardAmounts[(int)cardSelect.gameObject.GetComponent<SpellCard>().spellName] -= 1;
                         ALLCards.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isSelected = false;
                         ALLCards.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isHovered = false;
                         ALLCards.cardsCurrentlyInHand.Remove(ALLCards.cardsCurrentlyInHand[i]);

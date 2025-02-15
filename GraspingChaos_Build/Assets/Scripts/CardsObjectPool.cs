@@ -25,6 +25,11 @@ public class CardsObjectPool : MonoBehaviour
     public List<GameObject> objPoolCards = new List<GameObject>();
 
     public List<GameObject> cardsCurrentlyInHand = new List<GameObject>();
+    
+    //needed for the game Debugger script - important for testing complex scenarios
+    public List<GameObject> cardsCurrentlyInHandP1 = new List<GameObject>();
+    //needed for the game Debugger script - important for testing complex scenarios
+    public List<GameObject> cardsCurrentlyInHandP2 = new List<GameObject>();
 
     // to return a gameobject that is the proper card that returns from the dealing.
     // based on the chance to be dealt the card
@@ -73,6 +78,14 @@ public class CardsObjectPool : MonoBehaviour
                         cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
                         cardSlots.emptySlots[i] = false;
                         cardsCurrentlyInHand.Add(pooledCards);
+                        if (player == GameManager.Instance.player1)
+                        {
+                            cardsCurrentlyInHandP1.Add(pooledCards);
+                        }
+                        else if (player == GameManager.Instance.player2)
+                        {
+                            cardsCurrentlyInHandP2.Add(pooledCards);
+                        }
                         break;
                     }
                 }

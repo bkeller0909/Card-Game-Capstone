@@ -125,6 +125,10 @@ public class GameManager : MonoBehaviour
 
     public bool firstRoundCheck = true;
 
+
+    //GameDebugger variable, testing only but important it is not removed yet
+    public bool checkAvailableCards = false;
+
     private void Awake()
     {
         if (instance == null)
