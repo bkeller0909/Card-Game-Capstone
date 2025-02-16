@@ -1,4 +1,3 @@
-/// <summary>
 //----------------------------------------------------------------
 //  OG Author:     Sebastian
 //  Title:         LefteousEnvyState
@@ -6,6 +5,8 @@
 //  Purpose:       Spell State for Left-eous envy spells
 //  Instance?      no
 //-----------------------------------------------------------------
+using System.Diagnostics;
+/// <summary>
 /// </summary>
 public class LefteousEnvyState : FSMState
 {

@@ -60,11 +60,6 @@ public class PointerOfDeathState : FSMState
             player.GetComponent<QTEHandler>().EvauateQTEResults();
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
-                //do
-                //{
-                //    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                //} while (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) != 0);
-
                 for(int i = 0; i < 3; i++)
                 {
                     if(enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) <= 0)
@@ -76,11 +71,14 @@ public class PointerOfDeathState : FSMState
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
-                //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath].damageValue;
-                do
+                for (int i = 0; i < 3; i++)
                 {
+                    if (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) <= 0)
+                    {
+                        break;
+                    }
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                } while (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) != 0);
+                }
 
                 if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                 {
@@ -113,11 +111,14 @@ public class PointerOfDeathState : FSMState
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
-                //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath].damageValue;
-                do
+                for (int i = 0; i < 3; i++)
                 {
+                    if (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) <= 0)
+                    {
+                        break;
+                    }
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                } while (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) != 0);
+                }
 
                 for (int i = 0; i < 2; i++)
                 {

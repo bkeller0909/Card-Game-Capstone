@@ -88,7 +88,6 @@ public class DealStatsState : FSMState
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.ringCardAmount++;
-
                     }
 
                 }

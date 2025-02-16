@@ -190,27 +190,13 @@ public class PlayerManager : MonoBehaviour
     public PlayerFingers GetAdjacentFingerLeft(PlayerFingers selectedFinger)
     {
         int newFingerValue = (int)selectedFinger - 1;
-        if (health.getFingerHealth((PlayerFingers)newFingerValue) != 0)
-        {
-            return (PlayerFingers)newFingerValue;
-        }
-        else
-        {
-            return PlayerFingers.none;
-        }
+        return (PlayerFingers)newFingerValue;
     }
 
     public PlayerFingers GetAdjacentFingerRight(PlayerFingers selectedFinger)
     {
         int newFingerValue = (int)selectedFinger + 1;
-        if (health.getFingerHealth((PlayerFingers)newFingerValue) != 0)
-        {
-            return (PlayerFingers)newFingerValue;
-        }
-        else
-        {
-            return PlayerFingers.none;
-        }
+        return (PlayerFingers)newFingerValue;
     }
 
     public int GetLeftHandFingerDeath()
