@@ -69,6 +69,8 @@ public class PlayerManager : MonoBehaviour
 
     public List<Fingers> healthyFingers;
 
+    public CameraPositionChange playerCameras;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)

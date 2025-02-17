@@ -111,20 +111,34 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (player.playerInput.actions["Select"].WasPressedThisFrame())
             {
-                pickCards.ToggleSelectedCard();
-                stateHandler.CardHasBeenSelected();
-                player.playerInput.SwitchCurrentActionMap("Player");
-                changeCameras.GetInputForced(2);
-                playerInput.selectCard = false;
-                playerInput.Abtn = false;
+                pickCards.SelectedCard();
+                if (pickCards.checkSelectedCardStatus())
+                {
+                    stateHandler.CardHasBeenSelected();
+                    player.playerInput.SwitchCurrentActionMap("Player");
+                    //changeCameras.GetInputForced(2);
+                    playerInput.selectCard = false;
+                    playerInput.Abtn = false;
+                }
+                else
+                {
+                    //do nothing
+                }
             }
 
             if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
-                pickCards.ToggleSelectedCard();
-                stateHandler.CardHasBeenDeselected();
-                playerInput.deselectCard = false;
-                playerInput.Bbtn = false;
+                pickCards.DeselectCard();
+                if (pickCards.checkDeselectedCardStatus())
+                {
+                    stateHandler.CardHasBeenDeselected();
+                    playerInput.deselectCard = false;
+                    playerInput.Bbtn = false;
+                }
+                else
+                {
+                    //do nothing
+                }
             }
 
             //if (playerInput.finishSelection)

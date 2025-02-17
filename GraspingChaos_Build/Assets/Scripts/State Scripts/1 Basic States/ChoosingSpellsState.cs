@@ -198,10 +198,12 @@ public class ChoosingSpellsState : FSMState
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = false;
+                    player.playerCameras.GetInputForced(2);
                 }
                 else
                 {
                     player.playerOneHands = true;
+                    player.playerCameras.GetInputForced(2);
                 }
             }
             else
@@ -209,10 +211,14 @@ public class ChoosingSpellsState : FSMState
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = true;
+                    //healing
+                    player.playerCameras.GetInputForced(0);
                 }
                 else
                 {
                     player.playerOneHands = false;
+                    //healing
+                    player.playerCameras.GetInputForced(0);
                 }
             }
             //player.playerInput.SwitchCurrentActionMap("Player");

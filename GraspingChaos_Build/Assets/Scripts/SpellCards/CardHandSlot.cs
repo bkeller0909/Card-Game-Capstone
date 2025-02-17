@@ -174,7 +174,7 @@ public class CardHandSlot : MonoBehaviour
         //Handle card selection / deselection.
         if (player.playerInput.actions["Select"].triggered)
         {
-            ToggleSelectedCard();
+            SelectedCard();
             RumbleManager.Instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
         }
 
@@ -330,7 +330,7 @@ public class CardHandSlot : MonoBehaviour
     /// <summary>
     /// Toggles the selected state of the currently hovered card.
     /// </summary>
-    public void ToggleSelectedCard()
+    public void SelectedCard()
     {
         if (currentHoverIndex < 0 || currentHoverIndex >= cards.Count)
         {
@@ -343,12 +343,8 @@ public class CardHandSlot : MonoBehaviour
 
         if (selectedCards.Contains(card))
         {
-            playerState.currentSpellName = SpellNames.none;
-
-            // Deselect the card if it's already selected.
-            selectedCards.Remove(card);
-            card.DeselectCard();
-            card.OnHoverCard(); // Reapply hover effect after deselecting.
+            Debug.Log("Already Selected");
+            card.alreadySelected = true;
         }
         else if (selectedCards.Count < maxSelectedCards)
         {
@@ -357,7 +353,59 @@ public class CardHandSlot : MonoBehaviour
             // Select the card if it's not already selected and the max selection limit hasn't been reached.
             selectedCards.Add(card);
             card.SelectCard();
-            playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(2);
+        }
+    }
+
+    public void DeselectCard()
+    {
+        if (currentHoverIndex < 0 || currentHoverIndex >= cards.Count)
+        {
+            return;
+        }
+
+        CardSelect card = cards[currentHoverIndex];
+
+        whatCard = card.gameObject.GetComponent<SpellCard>();
+
+        if (selectedCards.Contains(card))
+        {
+            card.alreadySelected = false;
+            playerState.currentSpellName = SpellNames.none;
+
+            // Deselect the card if it's already selected.
+            selectedCards.Remove(card);
+            card.DeselectCard();
+            card.OnHoverCard(); // Reapply hover effect after deselecting.
+        }
+        else
+        {
+            Debug.Log("not yet Selected");
+        }
+    }
+
+    public bool checkSelectedCardStatus()
+    {
+        CardSelect card = cards[currentHoverIndex];
+        if (card.alreadySelected)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public bool checkDeselectedCardStatus()
+    {
+        CardSelect card = cards[currentHoverIndex];
+        if (selectedCards.Contains(card))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }

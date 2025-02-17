@@ -34,6 +34,9 @@ public class CardSelect : MonoBehaviour
     public bool isHovered = false;
     public bool isSelected = false;
 
+
+    public bool alreadySelected = false;
+
     void Start()
     {
         cardGlowRender.enabled = false;
@@ -115,5 +118,13 @@ public class CardSelect : MonoBehaviour
     public void CardGlow(bool glow)
     {
         cardGlowRender.enabled = glow;
+    }
+
+    public void OnDisable()
+    {
+        isHovered = false;
+        isSelected = false;
+        cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
+        CardGlow(isSelected);
     }
 }
