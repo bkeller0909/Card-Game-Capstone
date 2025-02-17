@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4901664061843061663
+--- !u!1 &1068926040231745474
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6688547930839196682}
-  - component: {fileID: 3278716920458066246}
-  - component: {fileID: 4403751572618399588}
+  - component: {fileID: 8970607315029924321}
+  - component: {fileID: 4441223863076550243}
+  - component: {fileID: 3835525378525605717}
+  - component: {fileID: 910783147553040107}
+  - component: {fileID: 1739574002371938304}
+  - component: {fileID: 3877789349482081393}
   m_Layer: 0
   m_Name: RockThrow
   m_TagString: Untagged
@@ -18,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6688547930839196682
+--- !u!4 &8970607315029924321
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4901664061843061663}
+  m_GameObject: {fileID: 1068926040231745474}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +36,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &3278716920458066246
+--- !u!2083052967 &4441223863076550243
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4901664061843061663}
+  m_GameObject: {fileID: 1068926040231745474}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: c790d1679a7696842baa4c1119e5626e, type: 3}
   m_InitialEventName: 
@@ -50,11 +53,20 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 1.5
+        m_Name: Lifetime
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.365, y: 1.2830372, z: 211.84506}
+        m_Name: End Position
+        m_Overridden: 1
+      - m_Value: {x: -0.009999998, y: 1.044, z: 214.34506}
+        m_Name: Start Position
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -78,14 +90,14 @@ VisualEffect:
         m_Overridden: 1
     m_Bool:
       m_Array: []
---- !u!73398921 &4403751572618399588
+--- !u!73398921 &3835525378525605717
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4901664061843061663}
+  m_GameObject: {fileID: 1068926040231745474}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -118,3 +130,50 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &910783147553040107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068926040231745474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 1739574002371938304}
+  - {fileID: 3877789349482081393}
+  m_VisualEffect: {fileID: 4441223863076550243}
+--- !u!114 &1739574002371938304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068926040231745474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: End Position
+  Target: {fileID: 0}
+--- !u!114 &3877789349482081393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068926040231745474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: Start Position
+  Target: {fileID: 0}

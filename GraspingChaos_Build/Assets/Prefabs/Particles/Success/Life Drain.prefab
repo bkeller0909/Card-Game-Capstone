@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7010824661519003346
+--- !u!1 &6984838578236838398
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 842225814057592374}
-  - component: {fileID: 6449046661893029318}
-  - component: {fileID: 3767483818286705339}
-  - component: {fileID: 8878500369370477798}
-  - component: {fileID: 6660304871162399226}
-  - component: {fileID: 6351140639193276516}
+  - component: {fileID: 3394428324355174137}
+  - component: {fileID: 93825774611409021}
+  - component: {fileID: 749496219260704836}
+  - component: {fileID: 5665158828102469790}
+  - component: {fileID: 7392893435305651078}
+  - component: {fileID: 4210625338943727876}
   m_Layer: 0
   m_Name: Life Drain
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &842225814057592374
+--- !u!4 &3394428324355174137
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010824661519003346}
+  m_GameObject: {fileID: 6984838578236838398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -36,13 +36,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &6449046661893029318
+--- !u!2083052967 &93825774611409021
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010824661519003346}
+  m_GameObject: {fileID: 6984838578236838398}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 537eac0e2daf883498522121d48aca34, type: 3}
   m_InitialEventName: OnPlay
@@ -57,23 +57,23 @@ VisualEffect:
       - m_Value: 1
         m_Name: Duration
         m_Overridden: 1
-      - m_Value: 20
+      - m_Value: 4
         m_Name: Speed
         m_Overridden: 1
-      - m_Value: 2
+      - m_Value: 0.5
         m_Name: Spread
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 4.24, y: 2.44, z: 17.78}
+      - m_Value: {x: 0.365, y: 1.2830372, z: 211.84506}
         m_Name: Start Position
         m_Overridden: 1
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: Starting Position for Particles
         m_Overridden: 1
-      - m_Value: {x: 4.25, y: 1.75, z: 0.25}
+      - m_Value: {x: -0.010000005, y: 1.0330372, z: 213.64}
         m_Name: End Position
         m_Overridden: 1
     m_Vector4f:
@@ -92,14 +92,14 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &3767483818286705339
+--- !u!73398921 &749496219260704836
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010824661519003346}
+  m_GameObject: {fileID: 6984838578236838398}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -132,13 +132,13 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8878500369370477798
+--- !u!114 &5665158828102469790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010824661519003346}
+  m_GameObject: {fileID: 6984838578236838398}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
@@ -146,16 +146,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 6660304871162399226}
-  - {fileID: 6351140639193276516}
-  m_VisualEffect: {fileID: 6449046661893029318}
---- !u!114 &6660304871162399226
+  - {fileID: 7392893435305651078}
+  - {fileID: 4210625338943727876}
+  m_VisualEffect: {fileID: 93825774611409021}
+--- !u!114 &7392893435305651078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010824661519003346}
+  m_GameObject: {fileID: 6984838578236838398}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
@@ -164,13 +164,13 @@ MonoBehaviour:
   m_Property:
     m_Name: Start Position
   Target: {fileID: 0}
---- !u!114 &6351140639193276516
+--- !u!114 &4210625338943727876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010824661519003346}
+  m_GameObject: {fileID: 6984838578236838398}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
