@@ -37,6 +37,11 @@ public class CardSelect : MonoBehaviour
 
     public bool alreadySelected = false;
 
+    private void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
         cardGlowRender.enabled = false;

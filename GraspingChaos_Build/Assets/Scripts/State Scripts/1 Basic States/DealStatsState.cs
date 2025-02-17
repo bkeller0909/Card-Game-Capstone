@@ -62,13 +62,13 @@ public class DealStatsState : FSMState
             {
                 // add a card to the player spell list
                 card = cardDealing.CardDealtChance(player);
-                if (cardObjPool.allcardAmounts[(int)card.spellName] < 3)
+                if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
                 {
                     // TODO - change this value to 2 once rings are in the game
                     if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
                     {
                         player.spellHand.playerSpells.Add(card);
-                        cardObjPool.SetCardsFromPool(player, card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.attackCardAmount++;
@@ -76,7 +76,7 @@ public class DealStatsState : FSMState
                     else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
                     {
                         player.spellHand.playerSpells.Add(card);
-                        cardObjPool.SetCardsFromPool(player, card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.restCardAmount++;
@@ -84,7 +84,7 @@ public class DealStatsState : FSMState
                     else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
                     {
                         player.spellHand.playerSpells.Add(card);
-                        cardObjPool.SetCardsFromPool(player, card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.ringCardAmount++;
@@ -101,13 +101,13 @@ public class DealStatsState : FSMState
             {
                 // add a card to the player spell list
                 card = cardDealing.CardDealtChance(player);
-                if (cardObjPool.allcardAmounts[(int)card.spellName] < 3) // convert enum name to int
+                if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3) // convert enum name to int
                 {
                     // TODO - value 2
                     if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
                     {
                         player.spellHand.playerSpells.Add(card);
-                        cardObjPool.SetCardsFromPool(player, card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.attackCardAmount++;
@@ -115,7 +115,7 @@ public class DealStatsState : FSMState
                     else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
                     {
                         player.spellHand.playerSpells.Add(card);
-                        cardObjPool.SetCardsFromPool(player, card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.restCardAmount++;
@@ -123,7 +123,7 @@ public class DealStatsState : FSMState
                     else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
                     {
                         player.spellHand.playerSpells.Add(card);
-                        cardObjPool.SetCardsFromPool(player, card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
                         player.ringCardAmount++;

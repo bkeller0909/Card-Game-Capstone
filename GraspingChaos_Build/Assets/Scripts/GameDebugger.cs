@@ -18,7 +18,7 @@ public class GameDebugger : MonoBehaviour
 {
     #region References needed for script to work
     [Header("Needed info for script to work")]
-    [SerializeField] private CardsObjectPool debugPool;
+    //[SerializeField] private CardsObjectPool debugPool;
     [SerializeField] private PlayerManager player1;
     [SerializeField] private PlayerManager player2;
     [SerializeField] private CardHandSlot cardHandP1;
@@ -311,87 +311,87 @@ public class GameDebugger : MonoBehaviour
     //track the spells available in the pool
     private void TrackSpellsAvailable()
     {
-        foreach(GameObject cardsInUse in debugPool.objPoolCards)
+        foreach(GameObject cardsInUse in CardsObjectPool.Instance.objPoolCards)
         {
             if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.FireBolt)
             {
-                fireboltAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                fireboltAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
             {
-                rockThrowAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                rockThrowAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.CollectorsCurse)
             {
-                collectorsCurseAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                collectorsCurseAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
             {
-                iciclesAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                iciclesAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.LefteousEnvy)
             {
-                lefteousEnvyAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                lefteousEnvyAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.RighteousEnvy)
             {
-                righteousEnvyAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                righteousEnvyAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.LeftningBolt)
             {
-                leftningBoltAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                leftningBoltAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.RightingBolt)
             {
-                rightningBoltAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                rightningBoltAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
             {
-                pointerOfDeathAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                pointerOfDeathAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.Quake)
             {
-                quakeAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                quakeAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.StaticBlast)
             {
-                staticBlastAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                staticBlastAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
             {
-                tidalWaveAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                tidalWaveAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
             {
-                cursedConvertionAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                cursedConvertionAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.EchoingMana)
             {
-                echoingManaAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                echoingManaAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.ForTheCause)
             {
-                forTheCauseAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                forTheCauseAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
             {
-                greenThumbAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                greenThumbAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.LifeDrain)
             {
-                lifeDrainAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                lifeDrainAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
             {
-                materializeAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                materializeAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.QuickHeal)
             {
-                quickHealAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                quickHealAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
             else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
             {
-                thumbsUpAmount = debugPool.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
+                thumbsUpAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
         }
     }
@@ -406,20 +406,20 @@ public class GameDebugger : MonoBehaviour
         }
 
         //clear object pool of the cards P2 is holding 
-        foreach (GameObject cardInHand in debugPool.cardsCurrentlyInHandP1)
+        foreach (GameObject cardInHand in CardsObjectPool.Instance.cardsCurrentlyInHandP1)
         {
-            for (int i = debugPool.cardsCurrentlyInHand.Count - 1; i >= 0; i--)
+            for (int i = CardsObjectPool.Instance.cardsCurrentlyInHand.Count - 1; i >= 0; i--)
             {
-                if (cardInHand == debugPool.cardsCurrentlyInHand[i])
+                if (cardInHand == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
                 {
-                    debugPool.cardsCurrentlyInHand.Remove(debugPool.cardsCurrentlyInHand[i]);
+                    CardsObjectPool.Instance.cardsCurrentlyInHand.Remove(CardsObjectPool.Instance.cardsCurrentlyInHand[i]);
                     break;
                 }
             }
             cardInHand.SetActive(false);
-            debugPool.allcardAmounts[(int)cardInHand.GetComponent<SpellCard>().spellName] -= 1;
+            CardsObjectPool.Instance.allcardAmounts[(int)cardInHand.GetComponent<SpellCard>().spellName] -= 1;
         }
-        debugPool.cardsCurrentlyInHandP1.Clear();
+        CardsObjectPool.Instance.cardsCurrentlyInHandP1.Clear();
         cardHandP1.cards.Clear();
         cardHandP1.selectedCards.Clear();
 
@@ -435,20 +435,20 @@ public class GameDebugger : MonoBehaviour
         }
 
         //clear object pool of the cards P2 is holding 
-        foreach(GameObject cardInHand in debugPool.cardsCurrentlyInHandP2)
+        foreach(GameObject cardInHand in CardsObjectPool.Instance.cardsCurrentlyInHandP2)
         {
-            for (int i = debugPool.cardsCurrentlyInHand.Count - 1; i >= 0; i--)
+            for (int i = CardsObjectPool.Instance.cardsCurrentlyInHand.Count - 1; i >= 0; i--)
             {
-                if(cardInHand == debugPool.cardsCurrentlyInHand[i])
+                if(cardInHand == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
                 {
-                    debugPool.cardsCurrentlyInHand.Remove(debugPool.cardsCurrentlyInHand[i]);
+                    CardsObjectPool.Instance.cardsCurrentlyInHand.Remove(CardsObjectPool.Instance.cardsCurrentlyInHand[i]);
                     break;
                 }
             }
             cardInHand.SetActive(false);
-            debugPool.allcardAmounts[(int)cardInHand.GetComponent<SpellCard>().spellName] -= 1;
+            CardsObjectPool.Instance.allcardAmounts[(int)cardInHand.GetComponent<SpellCard>().spellName] -= 1;
         }
-        debugPool.cardsCurrentlyInHandP2.Clear();
+        CardsObjectPool.Instance.cardsCurrentlyInHandP2.Clear();
         cardHandP2.cards.Clear();
         cardHandP2.selectedCards.Clear();
     }
@@ -458,11 +458,11 @@ public class GameDebugger : MonoBehaviour
     {
         foreach (SpellNames attackSpell in listOfPreference)
         {
-            foreach (GameObject card in debugPool.objPoolCards)
+            foreach (GameObject card in CardsObjectPool.Instance.objPoolCards)
             {
                 if (card.GetComponent<SpellCard>().spellName == attackSpell && !card.activeSelf)
                 {
-                    debugPool.allcardAmounts[(int)card.GetComponent<SpellCard>().spellName] += 1;
+                    CardsObjectPool.Instance.allcardAmounts[(int)card.GetComponent<SpellCard>().spellName] += 1;
                     card.transform.eulerAngles = new Vector3(24.291f, 90f, transform.eulerAngles.z);
                     for (int i = 0; i < cardHandP1.emptySlots.Length; i++)
                     {
@@ -472,8 +472,8 @@ public class GameDebugger : MonoBehaviour
                             card.transform.position = cardHandP1.cardSlots[i].transform.position;
                             cardHandP1.cards.Add(card.GetComponent<CardSelect>());
                             cardHandP1.emptySlots[i] = false;
-                            debugPool.cardsCurrentlyInHand.Add(card);
-                            debugPool.cardsCurrentlyInHandP1.Add(card);
+                            CardsObjectPool.Instance.cardsCurrentlyInHand.Add(card);
+                            CardsObjectPool.Instance.cardsCurrentlyInHandP1.Add(card);
                             break;
                         }
                     }
@@ -490,11 +490,11 @@ public class GameDebugger : MonoBehaviour
     {
         foreach (SpellNames attackSpell in listOfPreference)
         {
-            foreach (GameObject card in debugPool.objPoolCards)
+            foreach (GameObject card in CardsObjectPool.Instance.objPoolCards)
             {
                 if (card.GetComponent<SpellCard>().spellName == attackSpell && !card.activeSelf)
                 {
-                    debugPool.allcardAmounts[(int)card.GetComponent<SpellCard>().spellName] += 1;
+                    CardsObjectPool.Instance.allcardAmounts[(int)card.GetComponent<SpellCard>().spellName] += 1;
                     card.transform.eulerAngles = new Vector3(24.291f, -90f, transform.eulerAngles.z);
                     for (int i = 0; i < cardHandP2.emptySlots.Length; i++)
                     {
@@ -504,8 +504,8 @@ public class GameDebugger : MonoBehaviour
                             card.transform.position = cardHandP2.cardSlots[i].transform.position;
                             cardHandP2.cards.Add(card.GetComponent<CardSelect>());
                             cardHandP2.emptySlots[i] = false;
-                            debugPool.cardsCurrentlyInHand.Add(card);
-                            debugPool.cardsCurrentlyInHandP2.Add(card);
+                            CardsObjectPool.Instance.cardsCurrentlyInHand.Add(card);
+                            CardsObjectPool.Instance.cardsCurrentlyInHandP2.Add(card);
                             break;
                         }
                     }

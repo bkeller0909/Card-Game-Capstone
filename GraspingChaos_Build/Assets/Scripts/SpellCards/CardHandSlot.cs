@@ -225,7 +225,7 @@ public class CardHandSlot : MonoBehaviour
     {
         if (selectedCards.Count != 0)
         {
-            for (int i = ALLCards.cardsCurrentlyInHand.Count - 1; i >= 0; i--) //foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
+            for (int i = CardsObjectPool.Instance.cardsCurrentlyInHand.Count - 1; i >= 0; i--) //foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
             {
                 foreach (CardSelect cardSelect in selectedCards)
                 {
@@ -243,13 +243,13 @@ public class CardHandSlot : MonoBehaviour
                         player.ringCardAmount--;
                     }
                     GameObject justChecking = cardSelect.gameObject;
-                    if (justChecking == ALLCards.cardsCurrentlyInHand[i])
+                    if (justChecking == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
                     {
-                        ALLCards.cardsCurrentlyInHand[i].SetActive(false);
-                        ALLCards.allcardAmounts[(int)cardSelect.gameObject.GetComponent<SpellCard>().spellName] -= 1;
-                        ALLCards.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isSelected = false;
-                        ALLCards.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isHovered = false;
-                        ALLCards.cardsCurrentlyInHand.Remove(ALLCards.cardsCurrentlyInHand[i]);
+                        CardsObjectPool.Instance.cardsCurrentlyInHand[i].SetActive(false);
+                        CardsObjectPool.Instance.allcardAmounts[(int)cardSelect.gameObject.GetComponent<SpellCard>().spellName] -= 1;
+                        CardsObjectPool.Instance.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isSelected = false;
+                        CardsObjectPool.Instance.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isHovered = false;
+                        CardsObjectPool.Instance.cardsCurrentlyInHand.Remove(CardsObjectPool.Instance.cardsCurrentlyInHand[i]);
                         break;
                     }
                 }

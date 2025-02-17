@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //----------------------------------------------------------------
 //  Author:       Sebastian
 //  Co-Auther:    Keller
 //  Title:        CardsObjectPool
 //  Date Created: 02/09/2025
-//  Instance:     No
+//  Instance:     yes
 //-----------------------------------------------------------------
 
 /// <summary>
@@ -15,6 +16,27 @@ using UnityEngine;
 /// </summary>
 public class CardsObjectPool : MonoBehaviour
 {
+
+    private static CardsObjectPool instance;
+    public static CardsObjectPool Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<CardsObjectPool>();
+            }
+
+            if (!instance)
+            {
+                Debug.LogError("No Game Manager Present !!!");
+            }
+
+            return instance;
+
+        }
+    }
+
     private CardDealing getCard;
     private CardHandSlot cardSlots;
     float p1rotation = 90;
@@ -37,10 +59,18 @@ public class CardsObjectPool : MonoBehaviour
     // move the card to the proper card hand slot position for the specified player
     // fill the card lost of CardHandSlot
     // Turn empty to false
+    Scene currentScene;
+    private string sceneCheckName;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
         getCard = new CardDealing();
+        //DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -49,6 +79,23 @@ public class CardsObjectPool : MonoBehaviour
         for (int i = 0; i < allcardAmounts.Length; i++)
         {
             allcardAmounts[i] = 0;
+        }
+    }
+
+    private void Update()
+    {
+        currentScene = SceneManager.GetActiveScene();
+        sceneCheckName = currentScene.name;
+
+        if(sceneCheckName == GameManager.Instance.ln_MainMenuName)
+        {
+            foreach (GameObject pooledCards in objPoolCards)
+            {
+                if(pooledCards.activeSelf)
+                {
+                    pooledCards.SetActive(false);
+                }
+            }
         }
     }
 
