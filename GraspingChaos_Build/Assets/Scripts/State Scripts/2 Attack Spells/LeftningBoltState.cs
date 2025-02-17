@@ -60,45 +60,58 @@ public class LeftningBoltState : FSMState
             if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
             {
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Pinky || GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Thumb)
+                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Thumb)
                 {
                     PlayerFingers fingerToTheLeft = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     enemy.health.DamageFinger(fingerToTheLeft);
+                }
+                else
+                {
+                    //do nothing
                 }
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 PlayerFingers fingerToTheLeft;
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Pinky || GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Thumb)
+                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Thumb)
                 {
                     fingerToTheLeft = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     enemy.health.DamageFinger(fingerToTheLeft);
-                    if (fingerToTheLeft != PlayerFingers.LH_Pinky || fingerToTheLeft != PlayerFingers.RH_Thumb)
+                    if (fingerToTheLeft != PlayerFingers.LH_Pinky && fingerToTheLeft != PlayerFingers.RH_Thumb)
                     {
                         fingerToTheLeft = enemy.GetAdjacentFingerLeft(fingerToTheLeft);
                         enemy.health.DamageFinger(fingerToTheLeft);
                     }
                 }
+                else
+                {
+                    //do nothing
+                }
+
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
             {
                 PlayerFingers fingerToTheLeft;
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Pinky || GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Thumb)
+                if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Thumb)
                 {
                     fingerToTheLeft = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     enemy.health.DamageFinger(fingerToTheLeft);
-                    if (fingerToTheLeft != PlayerFingers.LH_Pinky || fingerToTheLeft != PlayerFingers.RH_Thumb)
+                    if (fingerToTheLeft != PlayerFingers.LH_Pinky && fingerToTheLeft != PlayerFingers.RH_Thumb)
                     {
                         fingerToTheLeft = enemy.GetAdjacentFingerLeft(fingerToTheLeft);
                         enemy.health.DamageFinger(fingerToTheLeft);
-                        if(fingerToTheLeft != PlayerFingers.LH_Pinky || fingerToTheLeft != PlayerFingers.RH_Thumb)
+                        if (fingerToTheLeft != PlayerFingers.LH_Pinky && fingerToTheLeft != PlayerFingers.RH_Thumb)
                         {
                             fingerToTheLeft = enemy.GetAdjacentFingerLeft(fingerToTheLeft);
                             enemy.health.DamageFinger(fingerToTheLeft);
                         }
                     }
+                }
+                else
+                {
+                    //do nothing
                 }
             }
 

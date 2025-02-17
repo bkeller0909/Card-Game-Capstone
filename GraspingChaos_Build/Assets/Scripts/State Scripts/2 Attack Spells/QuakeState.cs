@@ -62,16 +62,16 @@ public class QuakeState : FSMState
             {
                 //randomize fingers tht are not selected
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                PlayerFingers randomFinger = player.GetRandomFinger();
+                PlayerFingers randomFinger = enemy.GetRandomFinger();
                 enemy.health.DamageFinger(randomFinger);
-                randomFinger = player.GetRandomFinger();
+                randomFinger = enemy.GetRandomFinger();
                 enemy.health.DamageFinger(randomFinger);
             }
             else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
             {
                 //randomize fingers tht are not selected
                 enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                PlayerFingers randomFinger = player.GetRandomFinger();
+                PlayerFingers randomFinger = enemy.GetRandomFinger();
                 enemy.health.DamageFinger(randomFinger);
                 randomFinger = player.GetRandomFinger();
                 enemy.health.DamageFinger(randomFinger);

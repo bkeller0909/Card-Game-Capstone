@@ -85,19 +85,6 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void HealFinger(PlayerFingers whatFinger)
     {
-        //if ((playerHealthStats[(int)whatFinger] >= 3) && (whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
-        //{
-        //    playerHealthStats[(int)whatFinger] += 1;
-        //    player.fingers[(int)whatFinger].addSegment();
-        //    player.entireHP++;
-        //}
-        //else if ((playerHealthStats[(int)whatFinger] >= 2) && (whatFinger == PlayerFingers.LH_Thumb) && (whatFinger == PlayerFingers.RH_Thumb))
-        //{
-        //    playerHealthStats[(int)whatFinger] += 1;
-        //    player.fingers[(int)whatFinger].addSegment();
-        //    player.entireHP++;
-        //}
-
         if((whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
         {
             //asumming here that most healing cant revive a finger unless you are materialize
