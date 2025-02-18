@@ -46,6 +46,8 @@ public class SpellCard : MonoBehaviour
 
     public KeyCode debugTester;
 
+    public int currentOrderValue = 4;
+
 
     //damage dealing function
     public virtual void DamageDealing()

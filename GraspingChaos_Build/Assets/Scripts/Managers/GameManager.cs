@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
 
     public bool firstRoundCheck = true;
 
+    public int currentDeselectedCard;
+
 
     //GameDebugger variable, testing only but important it is not removed yet
     public bool checkAvailableCards = false;
@@ -159,6 +161,7 @@ public class GameManager : MonoBehaviour
 
         player1IsHere = false;
         player2IsHere = false;
+        currentDeselectedCard = 4;
 
         StartLoadingLevel(ln_MainMenuName);
     }

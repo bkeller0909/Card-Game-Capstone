@@ -115,7 +115,7 @@ public class PlayerControlHandler : MonoBehaviour
                 if (pickCards.checkSelectedCardStatus())
                 {
                     stateHandler.CardHasBeenSelected();
-                    player.playerInput.SwitchCurrentActionMap("Player");
+                    //player.playerInput.SwitchCurrentActionMap("Player");
                     //changeCameras.GetInputForced(2);
                     playerInput.selectCard = false;
                     playerInput.Abtn = false;
