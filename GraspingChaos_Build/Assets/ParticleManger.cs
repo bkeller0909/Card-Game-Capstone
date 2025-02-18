@@ -34,7 +34,7 @@ public class ParticleManger : MonoBehaviour
     /// <summary>
     /// Call this function with the "Spell Name" and the "Target Finger" to play the desired particle
     /// </summary>
-    public void StartParticle(SpellNames spellToCast, PlayerFingers targetFinger)
+    public void StartParticle(SpellNames spellToCast, PlayerFingers targetFinger, PlayerType playerCasting)
     {
         spellToCastIndex = -1;
 
@@ -42,66 +42,86 @@ public class ParticleManger : MonoBehaviour
         {
             //Attack Spells |=========================================
             case SpellNames.FireBolt:
-                spellToCast = 0;
+                FullEffects[0].gameObject.SetActive(true);
+                FullEffects[0].Play();
                 break;
 
             case SpellNames.Rockthrow:
+
                 break;
 
             case SpellNames.RighteousEnvy:
+
                 break;
 
             case SpellNames.LefteousEnvy:
+
                 break;
 
             case SpellNames.Icicles:
+
                 break;
 
             case SpellNames.CollectorsCurse:
+
                 break;
 
             case SpellNames.StaticBlast:
+
                 break;
 
             case SpellNames.Quake:
+
                 break;
 
             case SpellNames.RightingBolt:
+
                 break;
 
             case SpellNames.LeftningBolt:
+
                 break;
 
             case SpellNames.TidalWave:
+
                 break;
 
             case SpellNames.PointerOfDeath:
+
                 break;
 
             //Restoration Spells |=========================================
 
             case SpellNames.ForTheCause:
+
                 break;
 
             case SpellNames.QuickHeal:
+
                 break;
 
             case SpellNames.ThumbsUp:
+
                 break;
 
             case SpellNames.LifeDrain:
+
                 break;
 
             case SpellNames.CursedConversion:
+
                 break;
 
             case SpellNames.GreenThumb:
+
                 break;
 
             case SpellNames.Materialise:
+
                 break;
 
             case SpellNames.EchoingMana:
+
                 break;
 
             //Ring Spells |=========================================
