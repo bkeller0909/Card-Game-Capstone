@@ -1,3 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.VFX;
+
 /// <summary>
 //----------------------------------------------------------------
 //  OG Author:    Cooper
@@ -7,10 +12,6 @@
 //  Instance?     no
 //-----------------------------------------------------------------
 /// </summary>
-
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.VFX;
 
 /// <summary>
 /// This is to Initialize and Cast spell particles according to the spell provided
@@ -44,6 +45,8 @@ public class ParticleManger : MonoBehaviour
             case SpellNames.FireBolt:
                 FullEffects[0].gameObject.SetActive(true);
                 FullEffects[0].Play();
+                DisableSpell(0, 4);
+
                 break;
 
             case SpellNames.Rockthrow:
@@ -147,5 +150,12 @@ public class ParticleManger : MonoBehaviour
             case SpellNames.VeilOfFortitude:
                 break;
         }
+    }
+
+    IEnumerator DisableSpell(int secondsToWait, int spellIndex)
+    {
+        yield return new WaitForSeconds(secondsToWait);
+
+        FullEffects[spellIndex].enabled = false;
     }
 }
