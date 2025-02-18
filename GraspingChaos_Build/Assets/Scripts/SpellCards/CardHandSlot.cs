@@ -353,6 +353,7 @@ public class CardHandSlot : MonoBehaviour
             // Select the card if it's not already selected and the max selection limit hasn't been reached.
             selectedCards.Add(card);
             card.SelectCard();
+            player.playerInput.SwitchCurrentActionMap("Player");
         }
     }
 
@@ -369,6 +370,7 @@ public class CardHandSlot : MonoBehaviour
 
         if (selectedCards.Contains(card))
         {
+            SetCurrentDeselectedCard();
             card.alreadySelected = false;
             playerState.currentSpellName = SpellNames.none;
 
@@ -407,5 +409,21 @@ public class CardHandSlot : MonoBehaviour
         {
             return true;
         }
+    }
+
+    public void SetCurrentDeselectedCard()
+    {
+        SpellCard card = cards[currentHoverIndex].gameObject.GetComponent<SpellCard>();
+        foreach (CardSelect cardsSelected in selectedCards)
+        {
+            cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue = 0;
+        }
+
+        foreach (CardSelect cardsSelected in selectedCards)
+        {
+            cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue++;
+        }
+
+        card.currentOrderValue = GameManager.Instance.currentDeselectedCard;
     }
 }

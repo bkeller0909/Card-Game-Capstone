@@ -198,12 +198,18 @@ public class ChoosingSpellsState : FSMState
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = false;
-                    player.playerCameras.GetInputForced(2);
+                    if (amtOfSpells < 2)
+                    {
+                        player.playerCameras.GetInputForced(2);
+                    }
                 }
                 else
                 {
                     player.playerOneHands = true;
-                    player.playerCameras.GetInputForced(2);
+                    if (amtOfSpells < 2)
+                    {
+                        player.playerCameras.GetInputForced(2);
+                    }
                 }
             }
             else
@@ -212,13 +218,19 @@ public class ChoosingSpellsState : FSMState
                 {
                     player.playerOneHands = true;
                     //healing
-                    player.playerCameras.GetInputForced(0);
+                    if (amtOfSpells < 2)
+                    {
+                        player.playerCameras.GetInputForced(0);
+                    }
                 }
                 else
                 {
                     player.playerOneHands = false;
                     //healing
-                    player.playerCameras.GetInputForced(0);
+                    if (amtOfSpells < 2)
+                    {
+                        player.playerCameras.GetInputForced(0);
+                    }
                 }
             }
             //player.playerInput.SwitchCurrentActionMap("Player");
@@ -227,22 +239,22 @@ public class ChoosingSpellsState : FSMState
         }
         else if (playerState.cardDeselected)
         {
-            if (amtOfSpells == 1)
+            if (amtOfSpells == 0)
             {
-                spellsChosen[0] = SpellNames.none;
-                fingersChosen[0] = PlayerFingers.none;
+                spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
+                fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
+                amtOfSpells--;
+            }
+            else if (amtOfSpells == 1)
+            {
+                spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
+                fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
                 amtOfSpells--;
             }
             else if (amtOfSpells == 2)
             {
-                spellsChosen[1] = SpellNames.none;
-                fingersChosen[1] = PlayerFingers.none;
-                amtOfSpells--;
-            }
-            else if (amtOfSpells == 3)
-            {
-                spellsChosen[2] = SpellNames.none;
-                fingersChosen[2] = PlayerFingers.none;
+                spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
+                fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
                 amtOfSpells--;
             }
             playerState.cardDeselected = false;
