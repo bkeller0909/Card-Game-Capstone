@@ -5,7 +5,6 @@
 //  Purpose:       Spell State for Left-eous envy spells
 //  Instance?      no
 //-----------------------------------------------------------------
-using System.Diagnostics;
 /// <summary>
 /// </summary>
 public class LefteousEnvyState : FSMState
@@ -57,49 +56,120 @@ public class LefteousEnvyState : FSMState
         }
         else
         {
-            player.GetComponent<QTEHandler>().EvauateQTEResults();
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
-                //do nothing
-            }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
-            {
-                //do nothing
-            }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
-            {
-                int totalDamage = player.GetLeftHandFingerDeath();
-                if (totalDamage == 1)
-                {
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
-                    enemy.health.DamageFinger(randomFinger);
-                }
-                else if (totalDamage == 0)
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     //do nothing
+                    GameManager.Instance.coroutineWaitP1 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
-                else
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    int partDamage = totalDamage / 2;
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
-                    for (int i = 0; i < partDamage; i++)
+                    //do nothing
+                    GameManager.Instance.coroutineWaitP1 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    int totalDamage = player.GetLeftHandFingerDeath();
+                    if (totalDamage == 1)
                     {
+                        PlayerFingers randomFinger = enemy.GetRandomFinger();
                         enemy.health.DamageFinger(randomFinger);
                     }
-
-                    partDamage = totalDamage - partDamage;
-                    randomFinger = enemy.GetRandomFinger();
-                    for (int i = 0; i < partDamage; i++)
+                    else if (totalDamage == 0)
                     {
-                        enemy.health.DamageFinger(randomFinger);
+                        //do nothing
+                    }
+                    else
+                    {
+                        int partDamage = totalDamage / 2;
+                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
+
+                        partDamage = totalDamage - partDamage;
+                        randomFinger = enemy.GetRandomFinger();
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
                     }
                 }
+                GameManager.Instance.particleP1Done = true;
+            }
+            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
+            {
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+                {
+                    //do nothing
+                    GameManager.Instance.coroutineWaitP2 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    //do nothing
+                    GameManager.Instance.coroutineWaitP2 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    int totalDamage = player.GetLeftHandFingerDeath();
+                    if (totalDamage == 1)
+                    {
+                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        enemy.health.DamageFinger(randomFinger);
+                    }
+                    else if (totalDamage == 0)
+                    {
+                        //do nothing
+                    }
+                    else
+                    {
+                        int partDamage = totalDamage / 2;
+                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
+
+                        partDamage = totalDamage - partDamage;
+                        randomFinger = enemy.GetRandomFinger();
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
+                    }
+                }
+                GameManager.Instance.particleP2Done = true;
             }
 
-            GameManager.Instance.ChangeCurrentCaster();
-            GameManager.Instance.playedSpells++;
-            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
-            nextState = "Deciding";
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP1Done = false;
+                GameManager.Instance.coroutineWaitP1 = false;
+            }
+
+            if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP2Done = false;
+                GameManager.Instance.coroutineWaitP2 = false;
+            }
         }
     }
 

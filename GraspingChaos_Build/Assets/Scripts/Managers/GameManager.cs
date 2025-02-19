@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
 
     public SpellsBeingCastInfo[,] spellsBeingCast;
     public Decider[] whoesOnFirst;
+    public bool[] particleWait;
 
     public bool testingCurrentP1 = true;
 
@@ -130,7 +131,6 @@ public class GameManager : MonoBehaviour
 
     public int currentDeselectedCard;
 
-    public bool particleWait;
 
     public bool particleP1Done;
     public bool particleP2Done;
@@ -176,6 +176,7 @@ public class GameManager : MonoBehaviour
         player1IsHere = false;
         player2IsHere = false;
         currentDeselectedCard = 4;
+        particleWait = new bool[3];
         particleP1Done = false;
         particleP2Done = false;
         coroutineWaitP1 = false;

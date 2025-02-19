@@ -70,7 +70,7 @@ public class QTEState : FSMState
                     GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
                     GameManager.Instance.currentCaster = GameManager.Instance.player1;
                     GameManager.Instance.player1FinishedQTE = true;
-                    GameManager.Instance.particleWait = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                     changeState = true;
                 }
                 else if (GameManager.Instance.P1QTESpeed < GameManager.Instance.P2QTESpeed)
@@ -78,7 +78,7 @@ public class QTEState : FSMState
                     GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
                     GameManager.Instance.currentCaster = GameManager.Instance.player2;
                     GameManager.Instance.player2FinishedQTE = true;
-                    GameManager.Instance.particleWait = false;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                     changeState = true;
                 }
                 else
@@ -88,14 +88,14 @@ public class QTEState : FSMState
                     {
                         GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerOneIsFaster;
                         GameManager.Instance.currentCaster = GameManager.Instance.player1;
-                        GameManager.Instance.particleWait = true;
+                        GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                         changeState = true;
                     }
                     else if (rand == 1)
                     {
                         GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] = Decider.PlayerTwoIsFaster;
                         GameManager.Instance.currentCaster = GameManager.Instance.player2;
-                        GameManager.Instance.particleWait = false;
+                        GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                         changeState = true;
                     }
                 }
@@ -104,12 +104,12 @@ public class QTEState : FSMState
             if (player == GameManager.Instance.player1)
             {
                 GameManager.Instance.player1FinishedQTE = true;
-                GameManager.Instance.particleWait = true;
+                //GameManager.Instance.particleWait = true;
             }
             else
             {
                 GameManager.Instance.player2FinishedQTE = true;
-                GameManager.Instance.particleWait = false;
+                //GameManager.Instance.particleWait = false;
             }
             playerState.finishedCurrentQTE = true;
             changeState = true;
