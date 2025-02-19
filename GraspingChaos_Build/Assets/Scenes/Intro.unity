@@ -973,7 +973,7 @@ PrefabInstance:
     - target: {fileID: -8873054120637158435, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.0177776e-13
+      value: -1.0177793e-13
       objectReference: {fileID: 0}
     - target: {fileID: -8711965379566513594, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
@@ -1078,32 +1078,32 @@ PrefabInstance:
     - target: {fileID: -3801825073303494153, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -3801825073303494153, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -179.99995
       objectReference: {fileID: 0}
     - target: {fileID: -3801825073303494153, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3150295688907158795, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.98021
+      value: 0.00000071525574
       objectReference: {fileID: 0}
     - target: {fileID: -3150295688907158795, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -1.1368684e-13
       objectReference: {fileID: 0}
     - target: {fileID: -3150295688907158795, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -6.3948846e-14
       objectReference: {fileID: 0}
     - target: {fileID: -2277125315143944729, guid: fe57271cea5432c458b6c2c1fd41d3ea,
         type: 3}
@@ -1820,7 +1820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &579130309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3367,6 +3367,7 @@ GameObject:
   - component: {fileID: 1455104116}
   - component: {fileID: 1455104115}
   - component: {fileID: 1455104117}
+  - component: {fileID: 1455104118}
   m_Layer: 0
   m_Name: Intro_anim
   m_TagString: Untagged
@@ -3427,6 +3428,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 402458820}
   openBook: 0
+--- !u!114 &1455104118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455104114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565e4cd221b55414a9123fd94764e6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeScene: 0
 --- !u!1001 &1460580176
 PrefabInstance:
   m_ObjectHideFlags: 0
