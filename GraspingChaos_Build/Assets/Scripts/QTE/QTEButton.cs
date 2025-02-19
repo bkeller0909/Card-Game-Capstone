@@ -93,7 +93,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.A)
                 {
-                    Debug.Log("A");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -103,7 +102,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -126,7 +124,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.B)
                 {
-                    Debug.Log("B");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -136,7 +133,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -159,7 +155,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.X)
                 {
-                    Debug.Log("X");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -169,7 +164,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -192,7 +186,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.Y)
                 {
-                    Debug.Log("Y");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -202,7 +195,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -225,7 +217,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.DownArrow)
                 {
-                    Debug.Log("DOWN");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -237,7 +228,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -260,7 +250,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.UpArrow)
                 {
-                    Debug.Log("UP");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -272,7 +261,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -295,7 +283,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.LeftArrow)
                 {
-                    Debug.Log("LEFT");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -307,7 +294,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -330,7 +316,6 @@ public class QTEButton : MonoBehaviour
                 wasPressed = true;
                 if (AssignedBTN == KeyCode.RightArrow)
                 {
-                    Debug.Log("RIGHT");
                     pressed = true;
                     correctPress = true;
                     gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -342,7 +327,6 @@ public class QTEButton : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nel bro");
                     pressed = true;
                     correctPress = false;
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);

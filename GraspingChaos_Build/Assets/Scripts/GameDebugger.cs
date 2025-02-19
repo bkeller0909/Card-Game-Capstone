@@ -475,7 +475,6 @@ public class GameDebugger : MonoBehaviour
                             break;
                         }
                     }
-                    //Debug.Log(card.GetComponent<SpellCard>().spellName);
                     break;
                 }
 
@@ -507,7 +506,6 @@ public class GameDebugger : MonoBehaviour
                             break;
                         }
                     }
-                    //Debug.Log(card.GetComponent<SpellCard>().spellName);
                     break;
                 }
 

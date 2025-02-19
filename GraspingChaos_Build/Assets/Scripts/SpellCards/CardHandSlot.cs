@@ -343,7 +343,6 @@ public class CardHandSlot : MonoBehaviour
 
         if (selectedCards.Contains(card))
         {
-            Debug.Log("Already Selected");
             card.alreadySelected = true;
         }
         else if (selectedCards.Count < maxSelectedCards)
@@ -378,10 +377,6 @@ public class CardHandSlot : MonoBehaviour
             selectedCards.Remove(card);
             card.DeselectCard();
             card.OnHoverCard(); // Reapply hover effect after deselecting.
-        }
-        else
-        {
-            Debug.Log("not yet Selected");
         }
     }
 

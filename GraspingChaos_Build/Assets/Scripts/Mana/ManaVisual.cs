@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ManaVisual : MonoBehaviour
@@ -48,17 +47,17 @@ public class ManaVisual : MonoBehaviour
 
     private float[] manaStages = new float[MAX_MANA_AMOUNT + 1]; //Account for no mana
 
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         desiredManaStep = manaIndex;
 
         rectOffset = manaMaterial.GetVector("_ManaOffsetPosition"); //name of Vector 2 control in ShaderGraph
-        
+
         SetUpManaStages();
-        
+
     }
 
     // Update is called once per frame
@@ -74,24 +73,24 @@ public class ManaVisual : MonoBehaviour
         manaStages[manaStages.Length - 1] = maxOffsetValue;
 
 
-        float divValue = 1.0f / 12.0f; 
+        float divValue = 1.0f / 12.0f;
 
         for (int i = 1; i < manaStages.Length - 1; i++)
         {
             //Round to two decimal places
             manaStages[i] = (float)Math.Round(1.0f - (divValue * i), 2);
-            
+
         }
 
     }
 
     private void ChangeMana()
     {
-        if(manaIndex > MAX_MANA_AMOUNT) //To prevent strange rect offset and array bounds
+        if (manaIndex > MAX_MANA_AMOUNT) //To prevent strange rect offset and array bounds
         {
             manaIndex = MAX_MANA_AMOUNT;
         }
-        else if(manaIndex < MIN_MANA_AMOUNT) //To prevent strange rect offset and array bounds
+        else if (manaIndex < MIN_MANA_AMOUNT) //To prevent strange rect offset and array bounds
         {
             manaIndex = MIN_MANA_AMOUNT;
         }
@@ -122,8 +121,6 @@ public class ManaVisual : MonoBehaviour
         float currentValue = manaStages[manaIndex];
         float desiredValue = manaStages[desiredManaStep];
 
-        //Debug.Log("C: " + currentValue + " | " + "D:" + desiredValue);
-
         StartCoroutine(FillOrEmpty(currentValue, desiredValue, fillOrEmptyTime));
     }
 
@@ -131,7 +128,7 @@ public class ManaVisual : MonoBehaviour
     {
         float timeElapsed = 0.0f;
 
-        while(timeElapsed < fillOrEmptyTime)
+        while (timeElapsed < fillOrEmptyTime)
         {
             float changingValue = Mathf.Lerp(currentManaValue, desiredManaValue, timeElapsed / fillOrEmptyTime);
 

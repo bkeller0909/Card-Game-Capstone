@@ -37,7 +37,5 @@ public class InputManager : MonoBehaviour
                 players[i].gamepad = (Gamepad)players[i].playerInput.devices[i];
             }
         }
-
-        Debug.Log("We found players");
     }
 }
