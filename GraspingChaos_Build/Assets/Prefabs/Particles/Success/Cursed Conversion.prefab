@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3038418814109617898
+--- !u!1 &7301535839362847224
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 603540339919493179}
-  - component: {fileID: 3449202999420446101}
-  - component: {fileID: 8892061289805412662}
-  - component: {fileID: 6657831257298603540}
-  - component: {fileID: 3853278596906505255}
-  - component: {fileID: 1394851028932762575}
+  - component: {fileID: 2741709234410931217}
+  - component: {fileID: 381299069083740795}
+  - component: {fileID: 8048716940831539394}
+  - component: {fileID: 4278351175451855643}
+  - component: {fileID: 913858359581181137}
+  - component: {fileID: 6074473377504535259}
   m_Layer: 0
   m_Name: Cursed Conversion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &603540339919493179
+  m_IsActive: 0
+--- !u!4 &2741709234410931217
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038418814109617898}
+  m_GameObject: {fileID: 7301535839362847224}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -36,13 +36,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &3449202999420446101
+--- !u!2083052967 &381299069083740795
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038418814109617898}
+  m_GameObject: {fileID: 7301535839362847224}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: b9bf31930e7eb3e428b8a826ae9af245, type: 3}
   m_InitialEventName: OnPlay
@@ -56,9 +56,6 @@ VisualEffect:
       m_Array:
       - m_Value: 5
         m_Name: Speed
-        m_Overridden: 1
-      - m_Value: 2
-        m_Name: Duration
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -86,14 +83,14 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &8892061289805412662
+--- !u!73398921 &8048716940831539394
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038418814109617898}
+  m_GameObject: {fileID: 7301535839362847224}
   m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -126,13 +123,13 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6657831257298603540
+--- !u!114 &4278351175451855643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038418814109617898}
+  m_GameObject: {fileID: 7301535839362847224}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
@@ -140,16 +137,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 3853278596906505255}
-  - {fileID: 1394851028932762575}
-  m_VisualEffect: {fileID: 3449202999420446101}
---- !u!114 &3853278596906505255
+  - {fileID: 913858359581181137}
+  - {fileID: 6074473377504535259}
+  m_VisualEffect: {fileID: 381299069083740795}
+--- !u!114 &913858359581181137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038418814109617898}
+  m_GameObject: {fileID: 7301535839362847224}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
@@ -158,13 +155,13 @@ MonoBehaviour:
   m_Property:
     m_Name: Start Position
   Target: {fileID: 0}
---- !u!114 &1394851028932762575
+--- !u!114 &6074473377504535259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038418814109617898}
+  m_GameObject: {fileID: 7301535839362847224}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
