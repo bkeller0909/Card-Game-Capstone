@@ -79,81 +79,119 @@ public class ParticleManger : MonoBehaviour
                 break;
 
             case SpellNames.Rockthrow:
-
+                FullEffects[1].gameObject.SetActive(true);
+                FullEffects[1].Play();
+                StartCoroutine(DisableSpell(4, 1, playerCasting));
                 break;
 
             case SpellNames.RighteousEnvy:
-
+                FullEffects[2].gameObject.SetActive(true);
+                FullEffects[2].Play();
+                StartCoroutine(DisableSpell(4, 2, playerCasting));
                 break;
 
             case SpellNames.LefteousEnvy:
-
+                FullEffects[2].gameObject.SetActive(true);
+                FullEffects[2].Play();
+                StartCoroutine(DisableSpell(4, 2, playerCasting));
                 break;
 
             case SpellNames.Icicles:
-
+                FullEffects[3].gameObject.SetActive(true);
+                FullEffects[3].Play();
+                StartCoroutine(DisableSpell(4, 3, playerCasting));
                 break;
 
             case SpellNames.CollectorsCurse:
-
+                FullEffects[4].gameObject.SetActive(true);
+                FullEffects[4].Play();
+                StartCoroutine(DisableSpell(4, 4, playerCasting));
                 break;
 
             case SpellNames.StaticBlast:
-
+                FullEffects[5].gameObject.SetActive(true);
+                FullEffects[5].Play();
+                StartCoroutine(DisableSpell(4, 5, playerCasting));
                 break;
 
             case SpellNames.Quake:
-
+                FullEffects[6].gameObject.SetActive(true);
+                FullEffects[6].Play();
+                StartCoroutine(DisableSpell(4, 6, playerCasting));
                 break;
 
             case SpellNames.RightingBolt:
-
+                FullEffects[7].gameObject.SetActive(true);
+                FullEffects[7].Play();
+                StartCoroutine(DisableSpell(4, 7, playerCasting));
                 break;
 
             case SpellNames.LeftningBolt:
-
+                FullEffects[7].gameObject.SetActive(true);
+                FullEffects[7].Play();
+                StartCoroutine(DisableSpell(4, 7, playerCasting));
                 break;
 
             case SpellNames.TidalWave:
-
+                FullEffects[8].gameObject.SetActive(true);
+                FullEffects[8].Play();
+                StartCoroutine(DisableSpell(4, 8, playerCasting));
                 break;
 
             case SpellNames.PointerOfDeath:
-
+                FullEffects[9].gameObject.SetActive(true);
+                FullEffects[9].Play();
+                StartCoroutine(DisableSpell(4, 9, playerCasting));
                 break;
 
             //Restoration Spells |=========================================
 
             case SpellNames.ForTheCause:
-
+                FullEffects[10].gameObject.SetActive(true);
+                FullEffects[10].Play();
+                StartCoroutine(DisableSpell(4, 10, playerCasting));
                 break;
 
             case SpellNames.QuickHeal:
-
+                FullEffects[11].gameObject.SetActive(true);
+                FullEffects[11].Play();
+                StartCoroutine(DisableSpell(4, 11, playerCasting));
                 break;
 
             case SpellNames.ThumbsUp:
-
+                FullEffects[12].gameObject.SetActive(true);
+                FullEffects[12].Play();
+                StartCoroutine(DisableSpell(4, 12, playerCasting));
                 break;
 
             case SpellNames.LifeDrain:
-
+                FullEffects[13].gameObject.SetActive(true);
+                FullEffects[13].Play();
+                StartCoroutine(DisableSpell(4, 13, playerCasting));
                 break;
 
             case SpellNames.CursedConversion:
-
+                FullEffects[14].gameObject.SetActive(true);
+                FullEffects[14].Play();
+                StartCoroutine(DisableSpell(4, 14, playerCasting));
                 break;
 
             case SpellNames.GreenThumb:
-
+                FullEffects[15].gameObject.SetActive(true);
+                FullEffects[15].Play();
+                StartCoroutine(DisableSpell(4, 15, playerCasting));
                 break;
 
             case SpellNames.Materialise:
-
+                FullEffects[16].gameObject.SetActive(true);
+                FullEffects[16].Play();
+                StartCoroutine(DisableSpell(4, 16, playerCasting));
                 break;
 
             case SpellNames.EchoingMana:
-
+                FullEffects[17].gameObject.SetActive(true);
+                FullEffects[17].Play();
+                StartCoroutine(DisableSpell(4, 17, playerCasting));
                 break;
 
             //Ring Spells |=========================================
