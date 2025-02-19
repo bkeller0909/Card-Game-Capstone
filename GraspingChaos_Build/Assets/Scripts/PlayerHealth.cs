@@ -1,7 +1,4 @@
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements.Experimental;
 
 
 
@@ -85,16 +82,16 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void HealFinger(PlayerFingers whatFinger)
     {
-        if((whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
+        if ((whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
         {
             //asumming here that most healing cant revive a finger unless you are materialize
-            if(playerHealthStats[(int)whatFinger] == 1 || playerHealthStats[(int)whatFinger] == 2)
+            if (playerHealthStats[(int)whatFinger] == 1 || playerHealthStats[(int)whatFinger] == 2)
             {
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
                 player.entireHP++;
             }
-            else if((playerHealthStats[(int)whatFinger] == 0))
+            else if ((playerHealthStats[(int)whatFinger] == 0))
             {
                 //specific case with materialise, otherwise do nothing
                 //however for current debuggin I will allow set up healing for this state also
@@ -102,11 +99,11 @@ public class PlayerHealth : MonoBehaviour
                 player.fingers[(int)whatFinger].addSegment();
                 player.entireHP++;
             }
-            else if((playerHealthStats[(int)whatFinger] < 0))
+            else if ((playerHealthStats[(int)whatFinger] < 0))
             {
                 playerHealthStats[(int)whatFinger] = 0;
             }
-            else if((playerHealthStats[(int)whatFinger] >= 3))
+            else if ((playerHealthStats[(int)whatFinger] >= 3))
             {
                 playerHealthStats[(int)whatFinger] = 3;
             }
@@ -137,6 +134,6 @@ public class PlayerHealth : MonoBehaviour
                 playerHealthStats[(int)whatFinger] = 2;
             }
         }
-                
+
     }
 }
