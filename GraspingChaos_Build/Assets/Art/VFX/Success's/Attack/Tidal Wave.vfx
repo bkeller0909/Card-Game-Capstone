@@ -245,7 +245,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614585}
   dataType: 0
-  capacity: 10000
+  capacity: 500
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 1
@@ -734,7 +734,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2000
+      m_SerializableObject: 1000
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -1710,9 +1710,9 @@ MonoBehaviour:
   - {fileID: 8926484042661615063}
   - {fileID: 8926484042661615058}
   dataType: 1
-  capacity: 1000000
-  stripCapacity: 1000
-  particlePerStripCount: 1000
+  capacity: 40000
+  stripCapacity: 200
+  particlePerStripCount: 200
   needsComputeBounds: 1
   boundsMode: 2
   m_Space: 0
@@ -8424,7 +8424,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 200
+      m_SerializableObject: 15
     m_Space: 2147483647
   m_Property:
     name: Rate
