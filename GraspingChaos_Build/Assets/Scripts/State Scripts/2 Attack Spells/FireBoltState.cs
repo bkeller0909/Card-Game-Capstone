@@ -57,16 +57,20 @@ public class FireBoltState : FSMState
         }
         else
         {
-            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait && !GameManager.Instance.particleP1Done)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     //does nothing
+                    GameManager.Instance.coroutineWaitP1 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //does nothing
+                    GameManager.Instance.coroutineWaitP1 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -83,16 +87,20 @@ public class FireBoltState : FSMState
                 GameManager.Instance.particleP1Done = true;
                 //nextState = "Deciding";
             }
-            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait && !GameManager.Instance.particleP2Done)
+            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     //does nothing
+                    GameManager.Instance.coroutineWaitP2 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //does nothing
+                    GameManager.Instance.coroutineWaitP2 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -106,12 +114,11 @@ public class FireBoltState : FSMState
                 }
 
                 //check if i am the second spell but the first cast
-
                 GameManager.Instance.particleP2Done = true;
                 //nextState = "Deciding";
             }
 
-            if (GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
             {
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
@@ -121,7 +128,7 @@ public class FireBoltState : FSMState
                 GameManager.Instance.coroutineWaitP1 = false;
             }
 
-            if (GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
+            if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
             {
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;

@@ -123,7 +123,7 @@ public class ParticleManger : MonoBehaviour
             case SpellNames.RightingBolt:
                 FullEffects[7].gameObject.SetActive(true);
                 FullEffects[7].Play();
-                StartCoroutine(DisableSpell(4, 7, playerCasting));
+                StartCoroutine(DisableSpell(10, 7, playerCasting));
                 break;
 
             case SpellNames.LeftningBolt:
@@ -225,14 +225,14 @@ public class ParticleManger : MonoBehaviour
 
         FullEffects[spellIndex].gameObject.SetActive(false);
 
-        if (currentPlayer == GameManager.Instance.player1 && GameManager.Instance.particleWait)
+        if (currentPlayer == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex])
         {
-            GameManager.Instance.particleWait = false;
+            GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
             GameManager.Instance.coroutineWaitP1 = true;
         }
-        else if (currentPlayer == GameManager.Instance.player2 && !GameManager.Instance.particleWait)
+        else if (currentPlayer == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex])
         {
-            GameManager.Instance.particleWait = true;
+            GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
             GameManager.Instance.coroutineWaitP2 = true;
         }
     }
