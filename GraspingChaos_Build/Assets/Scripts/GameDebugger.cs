@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -138,7 +136,7 @@ public class GameDebugger : MonoBehaviour
             GameManager.Instance.checkAvailableCards = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (player1ActiveforDebugFingerInteraction)
             {
@@ -153,7 +151,7 @@ public class GameDebugger : MonoBehaviour
         }
 
 
-        if(player1ActiveforDebugFingerInteraction)
+        if (player1ActiveforDebugFingerInteraction)
         {
             if (Input.GetKeyDown(KeyCode.KeypadMinus))
             {
@@ -161,7 +159,7 @@ public class GameDebugger : MonoBehaviour
                 player1AtiveHealingFinger = false;
             }
 
-            if(Input.GetKeyDown(KeyCode.KeypadPlus))
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))
             {
                 player1AtiveDamageFinger = false;
                 player1AtiveHealingFinger = true;
@@ -193,7 +191,7 @@ public class GameDebugger : MonoBehaviour
             ClearALLSpellsP2();
         }
 
-        if(Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             ClearALLSpellsP1();
             DealSpellsP1(attackSpellsDebugP1);
@@ -263,7 +261,7 @@ public class GameDebugger : MonoBehaviour
             TrackSpellsAvailable();
         }
 
-        if(Input.GetKeyDown(KeyCode.KeypadDivide))
+        if (Input.GetKeyDown(KeyCode.KeypadDivide))
         {
             GiveManaToPlayer(player1, newManaAmountP1);
         }
@@ -311,17 +309,17 @@ public class GameDebugger : MonoBehaviour
     //track the spells available in the pool
     private void TrackSpellsAvailable()
     {
-        foreach(GameObject cardsInUse in CardsObjectPool.Instance.objPoolCards)
+        foreach (GameObject cardsInUse in CardsObjectPool.Instance.objPoolCards)
         {
-            if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.FireBolt)
+            if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.FireBolt)
             {
                 fireboltAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
-            else if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
+            else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
             {
                 rockThrowAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
-            else if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.CollectorsCurse)
+            else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.CollectorsCurse)
             {
                 collectorsCurseAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
@@ -435,11 +433,11 @@ public class GameDebugger : MonoBehaviour
         }
 
         //clear object pool of the cards P2 is holding 
-        foreach(GameObject cardInHand in CardsObjectPool.Instance.cardsCurrentlyInHandP2)
+        foreach (GameObject cardInHand in CardsObjectPool.Instance.cardsCurrentlyInHandP2)
         {
             for (int i = CardsObjectPool.Instance.cardsCurrentlyInHand.Count - 1; i >= 0; i--)
             {
-                if(cardInHand == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
+                if (cardInHand == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
                 {
                     CardsObjectPool.Instance.cardsCurrentlyInHand.Remove(CardsObjectPool.Instance.cardsCurrentlyInHand[i]);
                     break;
@@ -463,7 +461,7 @@ public class GameDebugger : MonoBehaviour
                 if (card.GetComponent<SpellCard>().spellName == attackSpell && !card.activeSelf)
                 {
                     CardsObjectPool.Instance.allcardAmounts[(int)card.GetComponent<SpellCard>().spellName] += 1;
-                    card.transform.eulerAngles = new Vector3(24.291f, 90f, transform.eulerAngles.z);
+                    card.transform.eulerAngles = new Vector3(24.291f, -180f, transform.eulerAngles.z);
                     for (int i = 0; i < cardHandP1.emptySlots.Length; i++)
                     {
                         if (cardHandP1.emptySlots[i])
@@ -495,7 +493,7 @@ public class GameDebugger : MonoBehaviour
                 if (card.GetComponent<SpellCard>().spellName == attackSpell && !card.activeSelf)
                 {
                     CardsObjectPool.Instance.allcardAmounts[(int)card.GetComponent<SpellCard>().spellName] += 1;
-                    card.transform.eulerAngles = new Vector3(24.291f, -90f, transform.eulerAngles.z);
+                    card.transform.eulerAngles = new Vector3(24.291f, 0f, transform.eulerAngles.z);
                     for (int i = 0; i < cardHandP2.emptySlots.Length; i++)
                     {
                         if (cardHandP2.emptySlots[i])
@@ -527,7 +525,7 @@ public class GameDebugger : MonoBehaviour
     //give any amount of mana you decide for Player 1 and Player 2
     private void GiveManaToPlayer(PlayerManager player, int manaToGive)
     {
-        if(player == player1)
+        if (player == player1)
         {
             if (manaToGive > 12)
             {
@@ -540,7 +538,7 @@ public class GameDebugger : MonoBehaviour
             player1.Mana = manaToGive;
             manaP1 = player1.Mana;
         }
-        else if(player == player2)
+        else if (player == player2)
         {
             if (manaToGive > 12)
             {
@@ -616,7 +614,7 @@ public class GameDebugger : MonoBehaviour
                 }
                 TrackFingerHealth();
             }
-            else if(player1AtiveHealingFinger)
+            else if (player1AtiveHealingFinger)
             {
                 //left side
                 //pinky numpad 0
@@ -674,7 +672,7 @@ public class GameDebugger : MonoBehaviour
             }
         }
 
-        if(player2ActiveforDebugFingerInteraction)
+        if (player2ActiveforDebugFingerInteraction)
         {
             if (player2AtiveDamageFinger)
             {
@@ -732,7 +730,7 @@ public class GameDebugger : MonoBehaviour
                 }
                 TrackFingerHealth();
             }
-            else if(player2AtiveHealingFinger)
+            else if (player2AtiveHealingFinger)
             {
                 //left side
                 //pinky numpad 0

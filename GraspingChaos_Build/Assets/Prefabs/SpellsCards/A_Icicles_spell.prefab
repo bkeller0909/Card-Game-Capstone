@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.5
+      value: 0.17023636
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.5
+      value: 0.17023636
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08505644
+      value: 0.0026326724
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
@@ -123,6 +123,7 @@ MonoBehaviour:
   scaleAmount: 1.09
   isHovered: 0
   isSelected: 0
+  alreadySelected: 0
 --- !u!114 &5232071811497135334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +152,7 @@ MonoBehaviour:
   qteMidCheck: 0
   type: 0
   debugTester: 0
+  currentOrderValue: 0
 --- !u!4 &4270969153687938589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,

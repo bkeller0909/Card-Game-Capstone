@@ -128,6 +128,7 @@ public class QTEHandler : MonoBehaviour
                 animator.SetTrigger("IDLE");
                 //EvauateQTEResults();
                 timeisDone = true;
+                checkTieRace();
             }
         }
 
@@ -391,6 +392,18 @@ public class QTEHandler : MonoBehaviour
             SetTimeValue();
         }
 
+    }
+
+    public void checkTieRace()
+    {
+        if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player1)
+        {
+            GameManager.Instance.raceTieP1 = QTECounter;
+        }
+        else if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player2)
+        {
+            GameManager.Instance.raceTieP2 = QTECounter;
+        }
     }
 
     /// <summary>

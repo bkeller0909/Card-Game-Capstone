@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("This need to be the name of the actual game play scene")]
     public string ln_Duelscene;
 
+    [Tooltip("This need to be the name of the actual game play scene")]
+    public string ln_IntroScene;
+
     private bool isLoading = false;
 
     [Tooltip("This is the visual loading screen")]
@@ -127,6 +130,17 @@ public class GameManager : MonoBehaviour
 
     public int currentDeselectedCard;
 
+    public bool particleWait;
+
+    public bool particleP1Done;
+    public bool particleP2Done;
+
+    public bool coroutineWaitP1;
+    public bool coroutineWaitP2;
+
+    public int raceTieP1;
+    public int raceTieP2;
+
 
     //GameDebugger variable, testing only but important it is not removed yet
     public bool checkAvailableCards = false;
@@ -162,8 +176,11 @@ public class GameManager : MonoBehaviour
         player1IsHere = false;
         player2IsHere = false;
         currentDeselectedCard = 4;
-
-        StartLoadingLevel(ln_MainMenuName);
+        particleP1Done = false;
+        particleP2Done = false;
+        coroutineWaitP1 = false;
+        coroutineWaitP2 = false;
+        StartLoadingLevel(ln_IntroScene);
     }
 
     // Update is called once per frame

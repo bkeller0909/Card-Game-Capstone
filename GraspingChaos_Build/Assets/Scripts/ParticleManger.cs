@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.VFX;
 
 /// <summary>
 //----------------------------------------------------------------
@@ -13,11 +10,35 @@ using UnityEngine.VFX;
 //-----------------------------------------------------------------
 /// </summary>
 
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.VFX;
+
 /// <summary>
 /// This is to Initialize and Cast spell particles according to the spell provided
 /// </summary>
 public class ParticleManger : MonoBehaviour
 {
+    private static ParticleManger instance;
+    public static ParticleManger Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<ParticleManger>();
+            }
+
+            if (!instance)
+            {
+                Debug.LogError("No Game Manager Present !!!");
+            }
+
+            return instance;
+
+        }
+    }
+
     [SerializeField] private List<VisualEffect> FullEffects;
     [SerializeField] private List<VisualEffect> lowEffects;
 
@@ -32,10 +53,19 @@ public class ParticleManger : MonoBehaviour
 
     int spellToCastIndex;
 
+    private void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+
     /// <summary>
     /// Call this function with the "Spell Name" and the "Target Finger" to play the desired particle
     /// </summary>
-    public void StartParticle(SpellNames spellToCast, PlayerFingers targetFinger, PlayerType playerCasting)
+    public void StartParticle(SpellNames spellToCast, PlayerFingers targetFinger, PlayerManager playerCasting)
     {
         spellToCastIndex = -1;
 
@@ -45,8 +75,7 @@ public class ParticleManger : MonoBehaviour
             case SpellNames.FireBolt:
                 FullEffects[0].gameObject.SetActive(true);
                 FullEffects[0].Play();
-                DisableSpell(0, 4);
-
+                StartCoroutine(DisableSpell(4, 0, playerCasting));
                 break;
 
             case SpellNames.Rockthrow:
@@ -152,10 +181,21 @@ public class ParticleManger : MonoBehaviour
         }
     }
 
-    IEnumerator DisableSpell(int secondsToWait, int spellIndex)
+    IEnumerator DisableSpell(int secondsToWait, int spellIndex, PlayerManager currentPlayer)
     {
         yield return new WaitForSeconds(secondsToWait);
 
-        FullEffects[spellIndex].enabled = false;
+        FullEffects[spellIndex].gameObject.SetActive(false);
+
+        if (currentPlayer == GameManager.Instance.player1 && GameManager.Instance.particleWait)
+        {
+            GameManager.Instance.particleWait = false;
+            GameManager.Instance.coroutineWaitP1 = true;
+        }
+        else if (currentPlayer == GameManager.Instance.player2 && !GameManager.Instance.particleWait)
+        {
+            GameManager.Instance.particleWait = true;
+            GameManager.Instance.coroutineWaitP2 = true;
+        }
     }
 }

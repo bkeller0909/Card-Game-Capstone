@@ -596,6 +596,7 @@ MonoBehaviour:
   ln_CurrentLevelName: 
   ln_MainMenuName: GC_MainMenu
   ln_Duelscene: GC_Game
+  ln_IntroScene: Intro
   loadingScreen: {fileID: 679422703}
   ln_ProtoArtShowCase: Proto_ArtShowCase
   ln_StateTesting: Proto_FSM
@@ -624,6 +625,14 @@ MonoBehaviour:
   player1FinishedQTE: 0
   player2FinishedQTE: 0
   firstRoundCheck: 1
+  currentDeselectedCard: 0
+  particleWait: 0
+  particleP1Done: 0
+  particleP2Done: 0
+  coroutineWaitP1: 0
+  coroutineWaitP2: 0
+  raceTieP1: 0
+  raceTieP2: 0
   checkAvailableCards: 0
 --- !u!4 &113710050
 Transform:

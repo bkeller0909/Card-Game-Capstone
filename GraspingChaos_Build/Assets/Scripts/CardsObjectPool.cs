@@ -39,15 +39,15 @@ public class CardsObjectPool : MonoBehaviour
 
     private CardDealing getCard;
     private CardHandSlot cardSlots;
-    float p1rotation = 90;
-    float p2rotation = -90;
+    float p1rotation = -180;
+    float p2rotation = 0;
     float rightBend = 24.291f;
     public int[] allcardAmounts;
 
     public List<GameObject> objPoolCards = new List<GameObject>();
 
     public List<GameObject> cardsCurrentlyInHand = new List<GameObject>();
-    
+
     //needed for the game Debugger script - important for testing complex scenarios
     public List<GameObject> cardsCurrentlyInHandP1 = new List<GameObject>();
     //needed for the game Debugger script - important for testing complex scenarios
@@ -87,11 +87,11 @@ public class CardsObjectPool : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         sceneCheckName = currentScene.name;
 
-        if(sceneCheckName == GameManager.Instance.ln_MainMenuName)
+        if (sceneCheckName == GameManager.Instance.ln_MainMenuName)
         {
             foreach (GameObject pooledCards in objPoolCards)
             {
-                if(pooledCards.activeSelf)
+                if (pooledCards.activeSelf)
                 {
                     pooledCards.SetActive(false);
                 }
