@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour
     public int raceTieP1;
     public int raceTieP2;
 
+    public GameObject tempEndScreenSkullWins1, tempEndScreenSkullWins2, tempEndScreenStagWins1, tempEndScreenStagWins2;
 
     //GameDebugger variable, testing only but important it is not removed yet
     public bool checkAvailableCards = false;
@@ -152,6 +153,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         hasDuelStarted = false;
+
+        tempEndScreenSkullWins1.SetActive(false);
+        tempEndScreenSkullWins2.SetActive(false);
+        tempEndScreenStagWins1.SetActive(false);
+        tempEndScreenStagWins2.SetActive(false);
     }
 
 
