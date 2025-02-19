@@ -149,49 +149,49 @@ public class ParticleManger : MonoBehaviour
             case SpellNames.ForTheCause:
                 FullEffects[10].gameObject.SetActive(true);
                 FullEffects[10].Play();
-                StartCoroutine(DisableSpell(4, 10, playerCasting));
+                StartCoroutine(DisableSpell(8, 10, playerCasting));
                 break;
 
             case SpellNames.QuickHeal:
                 FullEffects[11].gameObject.SetActive(true);
                 FullEffects[11].Play();
-                StartCoroutine(DisableSpell(4, 11, playerCasting));
+                StartCoroutine(DisableSpell(8, 11, playerCasting));
                 break;
 
             case SpellNames.ThumbsUp:
                 FullEffects[12].gameObject.SetActive(true);
                 FullEffects[12].Play();
-                StartCoroutine(DisableSpell(4, 12, playerCasting));
+                StartCoroutine(DisableSpell(8, 12, playerCasting));
                 break;
 
             case SpellNames.LifeDrain:
                 FullEffects[13].gameObject.SetActive(true);
                 FullEffects[13].Play();
-                StartCoroutine(DisableSpell(4, 13, playerCasting));
+                StartCoroutine(DisableSpell(8, 13, playerCasting));
                 break;
 
             case SpellNames.CursedConversion:
                 FullEffects[14].gameObject.SetActive(true);
                 FullEffects[14].Play();
-                StartCoroutine(DisableSpell(4, 14, playerCasting));
+                StartCoroutine(DisableSpell(8, 14, playerCasting));
                 break;
 
             case SpellNames.GreenThumb:
                 FullEffects[15].gameObject.SetActive(true);
                 FullEffects[15].Play();
-                StartCoroutine(DisableSpell(4, 15, playerCasting));
+                StartCoroutine(DisableSpell(8, 15, playerCasting));
                 break;
 
             case SpellNames.Materialise:
                 FullEffects[16].gameObject.SetActive(true);
                 FullEffects[16].Play();
-                StartCoroutine(DisableSpell(4, 16, playerCasting));
+                StartCoroutine(DisableSpell(8, 16, playerCasting));
                 break;
 
             case SpellNames.EchoingMana:
                 FullEffects[17].gameObject.SetActive(true);
                 FullEffects[17].Play();
-                StartCoroutine(DisableSpell(4, 17, playerCasting));
+                StartCoroutine(DisableSpell(8, 17, playerCasting));
                 break;
 
             //Ring Spells |=========================================

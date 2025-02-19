@@ -56,43 +56,102 @@ public class LifeDrainState : FSMState
         }
         else
         {
-            player.GetComponent<QTEHandler>().EvauateQTEResults();
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
-                //does nothing
-            }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
-            {
-                PlayerFingers randomFinger = enemy.GetRandomFinger();
-                enemy.health.DamageFinger(randomFinger);
-                randomFinger = player.GetRandomFinger();
-                player.health.HealFinger(randomFinger);
-            }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
-            {
-                PlayerFingers randomFinger = enemy.GetRandomFinger();
-                PlayerFingers randomFinger2 = enemy.GetRandomFinger();
-                for (int i = 0; i < 2; i++)
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
+                    //does nothing
+                    GameManager.Instance.coroutineWaitP1 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    PlayerFingers randomFinger = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger);
-                    enemy.health.DamageFinger(randomFinger2);
-                }
-
-                randomFinger = player.GetRandomFinger();
-                randomFinger2 = player.GetRandomFinger();
-                for (int s = 0; s < 2; s++)
-                {
+                    randomFinger = player.GetRandomFinger();
                     player.health.HealFinger(randomFinger);
-                    player.health.HealFinger(randomFinger2);
                 }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger2 = enemy.GetRandomFinger();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                        enemy.health.DamageFinger(randomFinger2);
+                    }
+
+                    randomFinger = player.GetRandomFinger();
+                    randomFinger2 = player.GetRandomFinger();
+                    for (int s = 0; s < 2; s++)
+                    {
+                        player.health.HealFinger(randomFinger);
+                        player.health.HealFinger(randomFinger2);
+                    }
+                }
+                GameManager.Instance.particleP1Done = true;
+            }
+            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
+            {
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+                {
+                    //does nothing
+                    GameManager.Instance.coroutineWaitP1 = true;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    enemy.health.DamageFinger(randomFinger);
+                    randomFinger = player.GetRandomFinger();
+                    player.health.HealFinger(randomFinger);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger2 = enemy.GetRandomFinger();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                        enemy.health.DamageFinger(randomFinger2);
+                    }
+
+                    randomFinger = player.GetRandomFinger();
+                    randomFinger2 = player.GetRandomFinger();
+                    for (int s = 0; s < 2; s++)
+                    {
+                        player.health.HealFinger(randomFinger);
+                        player.health.HealFinger(randomFinger2);
+                    }
+                }
+                GameManager.Instance.particleP2Done = true;
             }
 
-            //check if i am the second spell but the first cast
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP1Done = false;
+                GameManager.Instance.coroutineWaitP1 = false;
+            }
 
-            GameManager.Instance.ChangeCurrentCaster();
-            GameManager.Instance.playedSpells++;
-            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
-            nextState = "Deciding";
+            if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP2Done = false;
+                GameManager.Instance.coroutineWaitP2 = false;
+            }
         }
     }
 
