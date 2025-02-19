@@ -56,32 +56,79 @@ public class ForTheCauseState : FSMState
         }
         else
         {
-            player.GetComponent<QTEHandler>().EvauateQTEResults();
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
-                player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                //make function for mana gain and ensure that it cant go beyond 12
-                player.GetMana(3);
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.GetMana(3);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.GetMana(4);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.GetMana(5);
+                }
+                GameManager.Instance.particleP1Done = true;
             }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
-                player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                //make function for mana gain and ensure that it cant go beyond 12
-                player.GetMana(4);
-            }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
-            {
-                player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                //make function for mana gain and ensure that it cant go beyond 12
-                player.GetMana(5);
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.GetMana(3);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.GetMana(4);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.GetMana(5);
+                }
+                GameManager.Instance.particleP2Done = true;
             }
 
-            //check if i am the second spell but the first cast
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP1Done = false;
+                GameManager.Instance.coroutineWaitP1 = false;
+            }
 
-            GameManager.Instance.ChangeCurrentCaster();
-            GameManager.Instance.playedSpells++;
-            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
-            nextState = "Deciding";
+            if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP2Done = false;
+                GameManager.Instance.coroutineWaitP2 = false;
+            }
+
         }
     }
 

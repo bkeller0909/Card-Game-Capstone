@@ -56,32 +56,79 @@ public class CursedConversionState : FSMState
         }
         else
         {
-            player.GetComponent<QTEHandler>().EvauateQTEResults();
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
-                //track damage taken of each turn
-                //make function for mana gain and ensure that it cant go beyond 12
-                player.SucessfulCursedConversion = false;
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    //track damage taken of each turn
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.SucessfulCursedConversion = false;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    //track damage taken of each turn
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.SucessfulCursedConversion = false;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    //track damage taken of each turn
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.SucessfulCursedConversion = true;
+                }
+                GameManager.Instance.particleP1Done = true;
             }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
-                //track damage taken of each turn
-                //make function for mana gain and ensure that it cant go beyond 12
-                player.SucessfulCursedConversion = false;
-            }
-            else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
-            {
-                //track damage taken of each turn
-                //make function for mana gain and ensure that it cant go beyond 12
-                player.SucessfulCursedConversion = true;
+                player.GetComponent<QTEHandler>().EvauateQTEResults();
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    //track damage taken of each turn
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.SucessfulCursedConversion = false;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    //track damage taken of each turn
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.SucessfulCursedConversion = false;
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    //track damage taken of each turn
+                    //make function for mana gain and ensure that it cant go beyond 12
+                    player.SucessfulCursedConversion = true;
+                }
+                GameManager.Instance.particleP2Done = true;
             }
 
-            //check if i am the second spell but the first cast
-            player.PlayedCursedConvertion = true;
-            GameManager.Instance.ChangeCurrentCaster();
-            GameManager.Instance.playedSpells++;
-            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
-            nextState = "Deciding";
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP1Done = false;
+                GameManager.Instance.coroutineWaitP1 = false;
+            }
+
+            if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                nextState = "Deciding";
+                GameManager.Instance.particleP2Done = false;
+                GameManager.Instance.coroutineWaitP2 = false;
+            }
+
         }
     }
 
