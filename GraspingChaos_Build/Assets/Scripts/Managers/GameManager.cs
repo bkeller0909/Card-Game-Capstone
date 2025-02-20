@@ -114,6 +114,12 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is checking if player two has entered the state")]
     public bool[] spellsThatHaveBeenCast;
 
+    [Tooltip("This is to show case the game")]
+    public bool manualCards = false;
+
+    [Tooltip("This is what round the game is on")]
+    public int whatRound = 0;
+
     public SpellsBeingCastInfo[,] spellsBeingCast;
     public Decider[] whoesOnFirst;
     public bool[] particleWait;
@@ -239,6 +245,13 @@ public class GameManager : MonoBehaviour
             GameObject tempObj = GameObject.FindGameObjectWithTag("CardObjectPool");
             cardPool = tempObj.GetComponent<CardsObjectPool>();
             hasDuelStarted = true;
+        }
+        else if (levelName == ln_MainMenuName)
+        {
+            tempEndScreenSkullWins1.SetActive(false);
+            tempEndScreenSkullWins2.SetActive(false);
+            tempEndScreenStagWins1.SetActive(false);
+            tempEndScreenStagWins2.SetActive(false);
         }
 
         cameraAssigner.playerOneCamera.targetDisplay = 0;
