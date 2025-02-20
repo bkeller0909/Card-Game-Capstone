@@ -353,8 +353,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3023844191068878133}
-  - {fileID: 5686260682958659029}
   - {fileID: 2542054251609426815}
+  - {fileID: 5686260682958659029}
   - {fileID: 2667873410925994136}
   - {fileID: 2420311415349768492}
   - {fileID: 8767145617301093667}
@@ -469,6 +469,7 @@ MonoBehaviour:
   restCardAmount: 0
   ringCardAmount: 0
   manaVisual: {fileID: 0}
+  manaText: {fileID: 0}
   healthyFingers: []
   playerCameras: {fileID: 0}
 --- !u!114 &5602276691505007210
@@ -550,6 +551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemy: {fileID: 0}
+  playerCam: {fileID: 0}
+  camAnim: {fileID: 0}
   cardSelected: 0
   cardDeselected: 0
   readyToCast: 0
@@ -985,6 +988,7 @@ MonoBehaviour:
   - {fileID: 2098917934947289821}
   - {fileID: 1328617379501540714}
   lerpTime: 1
+  weHaveArrived: 0
 --- !u!1 &1940599744865381956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,6 +2185,8 @@ MonoBehaviour:
   - {fileID: 2099292077657385601}
   - {fileID: 1107258687530595816}
   emptySlots: 0000000000
+  whatCard: {fileID: 0}
+  currentHoverIndex: 0
   ALLCards: {fileID: 0}
   RemovingCards: []
 --- !u!1 &5248467575911585309
