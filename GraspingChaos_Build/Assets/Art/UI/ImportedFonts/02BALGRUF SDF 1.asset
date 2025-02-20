@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: BALGRUF SDF
+  m_Name: 02BALGRUF SDF 1
   m_EditorClassIdentifier: 
-  hashCode: -1623703912
+  hashCode: 1783733579
   material: {fileID: 4255527290343033116}
-  materialHashCode: -1356749000
+  materialHashCode: 153529739
   m_Version: 1.1.0
   m_SourceFontFileGUID: 779d6452010ac1a4ba8a5b472c5bc7ca
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 779d6452010ac1a4ba8a5b472c5bc7ca,
@@ -122,6 +122,21 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
+  - m_Index: 17
+    m_Metrics:
+      m_Width: 37.703125
+      m_Height: 42
+      m_HorizontalBearingX: 3.90625
+      m_HorizontalBearingY: 41.390625
+      m_HorizontalAdvance: 44.6875
+    m_GlyphRect:
+      m_X: 854
+      m_Y: 10
+      m_Width: 39
+      m_Height: 43
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
   - m_Index: 18
     m_Metrics:
       m_Width: 17.84375
@@ -149,6 +164,21 @@ MonoBehaviour:
       m_Y: 10
       m_Width: 35
       m_Height: 42
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 22
+    m_Metrics:
+      m_Width: 38.671875
+      m_Height: 55.625
+      m_HorizontalBearingX: 3.125
+      m_HorizontalBearingY: 40.859375
+      m_HorizontalAdvance: 43.46875
+    m_GlyphRect:
+      m_X: 912
+      m_Y: 10
+      m_Width: 39
+      m_Height: 56
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -737,36 +767,6 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-  - m_Index: 17
-    m_Metrics:
-      m_Width: 37.703125
-      m_Height: 42
-      m_HorizontalBearingX: 3.90625
-      m_HorizontalBearingY: 41.390625
-      m_HorizontalAdvance: 44.6875
-    m_GlyphRect:
-      m_X: 854
-      m_Y: 10
-      m_Width: 39
-      m_Height: 43
-    m_Scale: 1
-    m_AtlasIndex: 0
-    m_ClassDefinitionType: 0
-  - m_Index: 22
-    m_Metrics:
-      m_Width: 38.671875
-      m_Height: 55.625
-      m_HorizontalBearingX: 3.125
-      m_HorizontalBearingY: 40.859375
-      m_HorizontalAdvance: 43.46875
-    m_GlyphRect:
-      m_X: 912
-      m_Y: 10
-      m_Width: 39
-      m_Height: 56
-    m_Scale: 1
-    m_AtlasIndex: 0
-    m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 32
@@ -777,12 +777,20 @@ MonoBehaviour:
     m_GlyphIndex: 14
     m_Scale: 1
   - m_ElementType: 1
+    m_Unicode: 48
+    m_GlyphIndex: 17
+    m_Scale: 1
+  - m_ElementType: 1
     m_Unicode: 49
     m_GlyphIndex: 18
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 50
     m_GlyphIndex: 19
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 53
+    m_GlyphIndex: 22
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 58
@@ -939,14 +947,6 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 8230
     m_GlyphIndex: 432
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 48
-    m_GlyphIndex: 17
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 53
-    m_GlyphIndex: 22
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: -6117533684464942832}
@@ -1488,9 +1488,9 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 7.999999, g: 1.3808023, b: 0, a: 0.5}
+    - _GlowColor: {r: 0, g: 0.55800146, b: 8.866936, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 1, g: 0.29354298, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0.81047535, b: 1, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
