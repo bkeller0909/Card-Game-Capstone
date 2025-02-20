@@ -24,6 +24,7 @@ public class CameraPositionChange : MonoBehaviour
     [Tooltip("List of transforms that the camera can change to")]
     [SerializeField] private List<Transform> CamPos;
     [SerializeField] private float lerpTime;
+    [SerializeField] public bool weHaveArrived = false;
 
     private int cameraIndex = 0;
     private float elapsedTime;

@@ -6,6 +6,8 @@ public class PlayerState : AdvancedFSM
 {
 
     public PlayerManager player, enemy;
+    public Camera playerCam;
+    public Animator camAnim;
     public bool cardSelected, cardDeselected, readyToCast, canChooseFinger;
     public bool fingerSelected;
     public bool finishedCurrentQTE;
@@ -182,6 +184,9 @@ public class PlayerState : AdvancedFSM
         canChooseFinger = false;
 
         finishedCastingImage.SetActive(false);
+
+        playerCam = player.gameObject.GetComponentInChildren<Camera>();
+        camAnim = playerCam.GetComponent<Animator>();
 
         if (player.playerNum == PlayerType.PLAYER1)
         {
