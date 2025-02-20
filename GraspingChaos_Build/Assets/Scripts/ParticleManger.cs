@@ -93,9 +93,6 @@ public class ParticleManger : MonoBehaviour
     {
         FullEffects[5].SetBool("Extra 1", spawnExtra1);
         FullEffects[5].SetBool("Extra 2", spawnExtra2);
-        FullEffects[7].SetBool("Extra 1", spawnExtra1);
-        FullEffects[7].SetBool("Extra 2", spawnExtra2);
-        FullEffects[7].SetBool("Extra 1", spawnExtra3);
     }
 
 
@@ -253,9 +250,6 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P1ForcedPosition.position;
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player2FingerPositions[(int)particleAdjacent3].position;
                     halfWay1.position = halfway1Cache.position;
                     halfWay2.position = halfway2Cache.position;
                 }
@@ -263,9 +257,6 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player1FingerPositions[(int)particleAdjacent3].position;
                     halfWay1.position = halfway2Cache.position;
                     halfWay2.position = halfway1Cache.position;
                 }
@@ -279,9 +270,6 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P1ForcedPosition.position;
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player2FingerPositions[(int)particleAdjacent3].position;
                     halfWay1.position = halfway1Cache.position;
                     halfWay2.position = halfway2Cache.position;
                 }
@@ -289,9 +277,6 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player1FingerPositions[(int)particleAdjacent3].position;
                     halfWay1.position = halfway2Cache.position;
                     halfWay2.position = halfway1Cache.position;
                 }
