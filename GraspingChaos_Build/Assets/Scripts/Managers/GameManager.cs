@@ -135,6 +135,8 @@ public class GameManager : MonoBehaviour
 
     public bool firstRoundCheck = true;
 
+    public bool moveOn = false;
+
     public int currentDeselectedCard;
 
 
@@ -184,7 +186,7 @@ public class GameManager : MonoBehaviour
         whoesOnFirst = new Decider[3];
         roundCheck = false;
         currentCaster = null;
-
+        moveOn = false;
         player1IsHere = false;
         player2IsHere = false;
         currentDeselectedCard = 4;

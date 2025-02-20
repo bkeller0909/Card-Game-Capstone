@@ -11,13 +11,15 @@ public class DefualtState : FSMState
         stateID = FSMStateID.Defualt;
         posChange = playerState.playerCam.gameObject.GetComponent<CameraPositionChange>();
         animPlayed = false;
+        GameManager.Instance.moveOn = false;
     }
 
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
-        if (posChange.weHaveArrived)
+        if (GameManager.Instance.moveOn)
         {
+            playerState.camAnim.enabled = false;
             playerState.PerformTransition(Transition.Start);
         }
     }
@@ -36,6 +38,14 @@ public class DefualtState : FSMState
             }
             animPlayed = true;
         }
+        else
+        {
+            if (posChange.weHaveArrived)
+            {
+                GameManager.Instance.moveOn = true;
+            }
+        }
+
 
     }
 
