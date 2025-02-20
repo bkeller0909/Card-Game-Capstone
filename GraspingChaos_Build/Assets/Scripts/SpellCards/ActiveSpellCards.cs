@@ -317,7 +317,7 @@ public class ActiveSpellCards : MonoBehaviour
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
-                    spell.manaCost = 1;
+                    spell.manaCost = 4;
                     spell.manaGain = -100;
                     spell.damageValue = 1;
                     spell.healValue = 1;
