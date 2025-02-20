@@ -108,22 +108,15 @@ public class ParticleManger : MonoBehaviour
             //Attack Spells |=========================================
             case SpellNames.FireBolt:
                 FullEffects[0].gameObject.SetActive(true);
-                if ((int)targetFinger < 0 && (int)targetFinger > 9)
+                if (playerCasting == GameManager.Instance.player1)
                 {
-
+                    PlayerPosition.position = P1ForcedPosition.position;
+                    EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                 }
                 else
                 {
-                    if (playerCasting == GameManager.Instance.player1)
-                    {
-                        PlayerPosition.position = P1ForcedPosition.position;
-                        EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
-                    }
-                    else
-                    {
-                        PlayerPosition.position = P2ForcedPosition.position;
-                        EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
-                    }
+                    PlayerPosition.position = P2ForcedPosition.position;
+                    EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[0].Play();
                 StartCoroutine(DisableSpell(8, 0, playerCasting));
@@ -150,11 +143,13 @@ public class ParticleManger : MonoBehaviour
                 if (playerCasting == GameManager.Instance.player1)
                 {
                     PlayerPosition.position = P1ForcedPosition.position;
+                    Extra.position = player1FingerPositions[Random.Range(5, 9)].position;
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                 }
                 else
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
+                    Extra.position = player1FingerPositions[Random.Range(0, 4)].position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
