@@ -12,6 +12,8 @@ public class LifeDrainState : FSMState
     PlayerState playerState;
     private int playerIndex;
     private string nextState;
+    PlayerFingers randomFinger1;
+    PlayerFingers randomFinger2;
     //Constructor
     public LifeDrainState(PlayerState pS)
     {
@@ -63,36 +65,18 @@ public class LifeDrainState : FSMState
                 {
                     //does nothing
                     GameManager.Instance.coroutineWaitP1 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     PlayerFingers randomFinger = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger, player);
-                    enemy.health.DamageFinger(randomFinger);
-                    randomFinger = player.GetRandomFinger();
-                    player.health.HealFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    //ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     PlayerFingers randomFinger = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger, player);
-                    PlayerFingers randomFinger2 = enemy.GetRandomFinger();
-                    for (int i = 0; i < 2; i++)
-                    {
-                        enemy.health.DamageFinger(randomFinger);
-                        enemy.health.DamageFinger(randomFinger2);
-                    }
-
-                    randomFinger = player.GetRandomFinger();
-                    randomFinger2 = player.GetRandomFinger();
-                    for (int s = 0; s < 2; s++)
-                    {
-                        player.health.HealFinger(randomFinger);
-                        player.health.HealFinger(randomFinger2);
-                    }
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -110,29 +94,11 @@ public class LifeDrainState : FSMState
                     //ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     PlayerFingers randomFinger = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger, player);
-                    enemy.health.DamageFinger(randomFinger);
-                    randomFinger = player.GetRandomFinger();
-                    player.health.HealFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    //ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     PlayerFingers randomFinger = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger, player);
-                    PlayerFingers randomFinger2 = enemy.GetRandomFinger();
-                    for (int i = 0; i < 2; i++)
-                    {
-                        enemy.health.DamageFinger(randomFinger);
-                        enemy.health.DamageFinger(randomFinger2);
-                    }
-
-                    randomFinger = player.GetRandomFinger();
-                    randomFinger2 = player.GetRandomFinger();
-                    for (int s = 0; s < 2; s++)
-                    {
-                        player.health.HealFinger(randomFinger);
-                        player.health.HealFinger(randomFinger2);
-                    }
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -145,6 +111,29 @@ public class LifeDrainState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    enemy.health.DamageFinger(randomFinger1);
+                    randomFinger2 = player.GetRandomFinger();
+                    player.health.HealFinger(randomFinger2);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    randomFinger2 = enemy.GetRandomFinger();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        enemy.health.DamageFinger(randomFinger1);
+                        enemy.health.DamageFinger(randomFinger2);
+                    }
+
+                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger2 = player.GetRandomFinger();
+                    for (int s = 0; s < 2; s++)
+                    {
+                        player.health.HealFinger(randomFinger1);
+                        player.health.HealFinger(randomFinger2);
+                    }
+                }
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
@@ -155,6 +144,29 @@ public class LifeDrainState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
+                {
+                    enemy.health.DamageFinger(randomFinger1);
+                    randomFinger2 = player.GetRandomFinger();
+                    player.health.HealFinger(randomFinger2);
+                }
+                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    randomFinger2 = enemy.GetRandomFinger();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        enemy.health.DamageFinger(randomFinger1);
+                        enemy.health.DamageFinger(randomFinger2);
+                    }
+
+                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger2 = player.GetRandomFinger();
+                    for (int s = 0; s < 2; s++)
+                    {
+                        player.health.HealFinger(randomFinger1);
+                        player.health.HealFinger(randomFinger2);
+                    }
+                }
             }
         }
     }

@@ -74,9 +74,6 @@ public class ThumbsUpState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.ThumbsUp, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
-                    //we dont select fingers here, problem....maybe?
-                    player.health.HealFinger(PlayerFingers.LH_Thumb);
-                    player.health.HealFinger(PlayerFingers.RH_Thumb);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -98,9 +95,6 @@ public class ThumbsUpState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.ThumbsUp, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
-                    //we dont select fingers here, problem....maybe?
-                    player.health.HealFinger(PlayerFingers.LH_Thumb);
-                    player.health.HealFinger(PlayerFingers.RH_Thumb);
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -113,6 +107,11 @@ public class ThumbsUpState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    player.health.HealFinger(PlayerFingers.LH_Thumb);
+                    player.health.HealFinger(PlayerFingers.RH_Thumb);
+                }
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
@@ -123,6 +122,11 @@ public class ThumbsUpState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    player.health.HealFinger(PlayerFingers.LH_Thumb);
+                    player.health.HealFinger(PlayerFingers.RH_Thumb);
+                }
             }
 
         }
