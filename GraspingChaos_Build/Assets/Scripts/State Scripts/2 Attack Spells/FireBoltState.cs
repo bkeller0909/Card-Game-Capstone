@@ -106,9 +106,6 @@ public class FireBoltState : FSMState
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 1f, enemy.gamepad);
-
                     // TODO - figure out a way to get the audio to play from the correct spell
                     // SoundManager.Instance.PlaySoundFX(/*audioclip*/, player.transform, 1);
                 }
@@ -126,6 +123,11 @@ public class FireBoltState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 1f, enemy.gamepad);
+                }
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
@@ -136,6 +138,11 @@ public class FireBoltState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 1f, enemy.gamepad);
+                }
             }
         }
     }
