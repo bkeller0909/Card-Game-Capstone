@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.VFX;
 using UnityEngine.VFX.Utility;
 
@@ -14,7 +11,9 @@ public class ParticleAudioPlayer : VFXOutputEventAbstractHandler
 
     public override void OnVFXOutputEvent(VFXEventAttribute eventAttribute)
     {
-        if (audioSource!=null)
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource != null)
         {
             audioSource.Play();
         }

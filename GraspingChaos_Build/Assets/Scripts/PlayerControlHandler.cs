@@ -112,17 +112,20 @@ public class PlayerControlHandler : MonoBehaviour
             if (player.playerInput.actions["Select"].WasPressedThisFrame())
             {
                 pickCards.SelectedCard();
-                if (pickCards.checkSelectedCardStatus())
+                if (ActiveSpellCards.Instance.spellCards[(int)pickCards.whatCard.spellName].manaCost <= player.Mana)
                 {
-                    stateHandler.CardHasBeenSelected();
-                    //player.playerInput.SwitchCurrentActionMap("Player");
-                    //changeCameras.GetInputForced(2);
-                    playerInput.selectCard = false;
-                    playerInput.Abtn = false;
-                }
-                else
-                {
-                    //do nothing
+                    if (pickCards.checkSelectedCardStatus())
+                    {
+                        stateHandler.CardHasBeenSelected();
+                        //player.playerInput.SwitchCurrentActionMap("Player");
+                        //changeCameras.GetInputForced(2);
+                        playerInput.selectCard = false;
+                        playerInput.Abtn = false;
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
                 }
             }
 

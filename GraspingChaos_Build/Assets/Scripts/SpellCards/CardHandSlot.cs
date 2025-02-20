@@ -29,9 +29,9 @@ public class CardHandSlot : MonoBehaviour
     [Tooltip("Determines if a slot is empty. TRUE in editor.")]
     public bool[] emptySlots;                                       // Bool for the slot position being empty.
 
-    SpellCard whatCard;
+    public SpellCard whatCard;
 
-    private int currentHoverIndex = 0;                              // Index of the currently hovered card.
+    public int currentHoverIndex = 0;                              // Index of the currently hovered card.
     private readonly int maxSelectedCards = 3;                      // Maximum number of cards that can be selected.
 
     private InputHandler playerInput;
@@ -204,9 +204,12 @@ public class CardHandSlot : MonoBehaviour
             playerState.currentSpellName = whatCard.spellName;
 
             // Select the card if it's not already selected and the max selection limit hasn't been reached.
-            selectedCards.Add(card);
-            card.SelectCard();
-            player.playerInput.SwitchCurrentActionMap("Player");
+            if (ActiveSpellCards.Instance.spellCards[(int)whatCard.spellName].manaCost <= player.Mana)
+            {
+                selectedCards.Add(card);
+                card.SelectCard();
+                player.playerInput.SwitchCurrentActionMap("Player");
+            }
         }
     }
 
