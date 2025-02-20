@@ -64,8 +64,10 @@ public class PlayerManager : MonoBehaviour
     public int restCardAmount = 0;
     public int ringCardAmount = 0;
 
+    [Header("Mana")]
     [Tooltip("The mana value that is shown to the players")]
     public ManaVisual manaVisual;
+    public TMP_Text manaText;
 
     public List<Fingers> healthyFingers;
 
@@ -101,6 +103,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         manaVisual.desiredManaStep = Mana;
+        manaText.text = Mana.ToString();
     }
 
     public void GetMana(int manaAmount)
