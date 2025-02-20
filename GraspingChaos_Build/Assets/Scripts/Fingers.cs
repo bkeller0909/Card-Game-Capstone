@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //----------------------------------------------------------------
 //  Author:       Sebastian
-//  Contributors: Keller
+//  Contributors: Keller, Wyatt
 //  Title:        Fingers
 //  Date Created: 01/07/2025
 //  Instance?     No
@@ -65,7 +65,7 @@ public class Fingers : MonoBehaviour
             //player.health.playerHealthStats[(int)finger]++;
             //fingerHP += 1;
 
-            added.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_HandAmount", 1);
+            added.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_HandAmount", 5);
             //added.GetComponent<SkinnedMeshRenderer>().enabled = true;
 
         }
@@ -86,7 +86,7 @@ public class Fingers : MonoBehaviour
 
             //removed.SetActive(false);
             fingerSegmentsRemoved.Push(removed);
-            
+
 
             removed.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_HandAmount", 0);
             //removed.GetComponent<SkinnedMeshRenderer>().enabled = false;
