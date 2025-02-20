@@ -44,147 +44,13 @@ public class CardHandSlot : MonoBehaviour
 
     public List<CardSelect> RemovingCards = new List<CardSelect>();
 
-    private void Awake()
-    {
-        if (cards.Count <= 0)
-        {
-            //InitializeCards();
-        }
-    }
-
     private void Start()
     {
         player = gameObject.GetComponentInParent<PlayerManager>();
         playerInput = gameObject.GetComponentInParent<InputHandler>();
         camPosScript = player.gameObject.GetComponentInChildren<CameraPositionChange>();
         playerState = player.gameObject.GetComponent<PlayerState>();
-
-        if (cards.Count > 0)
-        {
-            //SetHoveredCard(currentHoverIndex); // Initialize hover on the first card.
-
-        }
     }
-
-    private void Update()
-    {
-        //CardControls();
-    }
-
-    /*IEnumerator QTECountOne()
-    {
-        player.playerInput.SwitchCurrentActionMap("QTE");
-        playerInput.Xbtn = false;
-        yield return new WaitForSeconds(1f);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
-        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
-        playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
-    }
-
-    IEnumerator QTECountTwo()
-    {
-        player.playerInput.SwitchCurrentActionMap("QTE");
-        playerInput.Xbtn = false;
-        yield return new WaitForSeconds(1f);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(12, player);
-        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(5, player);
-        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
-        playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
-    }
-
-    IEnumerator QTECountThree()
-    {
-        player.playerInput.SwitchCurrentActionMap("QTE");
-        playerInput.Xbtn = false;
-        yield return new WaitForSeconds(1f);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(4, player);
-        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(8, player);
-        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 1);
-        playerInput.gameObject.GetComponent<QTEHandler>().Create(12, player);
-        yield return new WaitForSeconds(GameManager.Instance.timerQTE + 0.5f);
-        playerInput.gameObject.GetComponent<QTEHandler>().resetLoop = true;
-    }*/
-
-
-
-
-    public void InitializeCards()
-    {
-        for (int i = 0; i < emptySlots.Length; i++)
-        {
-            if (emptySlots[i])
-            {
-                GameObject card = Instantiate(cardPrefab, cardSlots[i].position, Quaternion.identity);
-                cards.Add(card.GetComponent<CardSelect>());
-                emptySlots[i] = false;
-            }
-        }
-    }
-
-    private void CardControls()
-    {
-        //Handle card navigation(left / right).
-        if (playerInput.cardMoveRight && !cardNavPressed)
-        {
-            cardNavPressed = true;
-            MoveSelection(1);
-        }
-        else if (playerInput.cardMoveLeft && !cardNavPressed)
-        {
-            cardNavPressed = true;
-            MoveSelection(-1);
-        }
-        else if (!playerInput.cardMoveRight && !playerInput.cardMoveLeft)
-        {
-            cardNavPressed = false;
-        }
-
-        //Handle final selection(e.g., confirm selected cards).
-        if (playerInput.finishSelection && !finalPressed)
-        {
-            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
-            //finalPressed = true;
-            //if (selectedCards.Count == 1)
-            //{
-            //    playerInput.finishSelection = false;
-            //    playerInput.selectCard = false;
-            //    //StartCoroutine(QTECountOne());
-            //}
-            //else if (selectedCards.Count == 2)
-            //{
-            //    playerInput.finishSelection = false;
-            //    playerInput.selectCard = false;
-            //    //StartCoroutine(QTECountTwo());
-            //}
-            //else if (selectedCards.Count == 3)
-            //{
-            //    playerInput.finishSelection = false;
-            //    playerInput.selectCard = false;
-            //    //StartCoroutine(QTECountThree());
-            //}
-            finalPressed = true;
-        }
-        else if (!playerInput.finishSelection)
-        {
-            finalPressed = false;
-        }
-
-        //Handle card selection / deselection.
-        if (player.playerInput.actions["Select"].triggered)
-        {
-            SelectedCard();
-            RumbleManager.Instance.ControllerRumble(0.25f, 0.5f, 0.25f, player.gamepad);
-        }
-
-        // Handle pause input.
-        if (player.playerInput.actions["Pause"].triggered)
-        {
-            GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
-        }
-    }
-
 
     //stat of removing card
     public void ClearSelected()
@@ -205,18 +71,6 @@ public class CardHandSlot : MonoBehaviour
                     }
                 }
             }
-
-            //foreach(CardSelect selectedCard in selectedCards)
-            //{
-            //    foreach(CardSelect card in cards)
-            //    {
-            //        if(card == selectedCard)
-            //        {
-            //            cards.Remove(selectedCard);
-            //        }
-            //    }
-            //}
-
         }
     }
 

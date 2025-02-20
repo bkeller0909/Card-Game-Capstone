@@ -77,7 +77,7 @@ public class FireBoltState : FSMState
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 1f, enemy.gamepad);
 
                     // TODO - figure out a way to get the audio to play from the correct spell
                     // SoundManager.Instance.PlaySoundFX(/*audioclip*/, player.transform, 1);
@@ -107,7 +107,7 @@ public class FireBoltState : FSMState
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     //enemy.fingers[(int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].damageValue;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 1f, enemy.gamepad);
 
                     // TODO - figure out a way to get the audio to play from the correct spell
                     // SoundManager.Instance.PlaySoundFX(/*audioclip*/, player.transform, 1);
