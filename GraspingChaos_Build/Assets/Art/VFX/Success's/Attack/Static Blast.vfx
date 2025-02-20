@@ -524,6 +524,9 @@ MonoBehaviour:
     - model: {fileID: 8926484042661617926}
       id: 12
       isStickyNote: 0
+    - model: {fileID: 8926484042661618073}
+      id: 1
+      isStickyNote: 0
   - title: Sparks 1
     position:
       serializedVersion: 2
@@ -624,6 +627,9 @@ MonoBehaviour:
       isStickyNote: 0
     - model: {fileID: 8926484042661617926}
       id: 9
+      isStickyNote: 0
+    - model: {fileID: 8926484042661618075}
+      id: 1
       isStickyNote: 0
   stickyNoteInfos: []
   categories: []
@@ -25534,7 +25540,8 @@ MonoBehaviour:
       m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
-  m_LinkedSlots: []
+  m_LinkedSlots:
+  - {fileID: 8926484042661618074}
 --- !u!114 &8926484042661617044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29533,7 +29540,8 @@ MonoBehaviour:
       m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
-  m_LinkedSlots: []
+  m_LinkedSlots:
+  - {fileID: 8926484042661618076}
 --- !u!114 &8926484042661617656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36358,6 +36366,13 @@ MonoBehaviour:
     position: {x: 571, y: 1955}
     expandedSlots: []
     expanded: 0
+  - m_Id: 1
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661618074}
+      inputSlot: {fileID: 8926484042661616955}
+    position: {x: 6268.261, y: -73.04349}
+    expandedSlots: []
+    expanded: 0
 --- !u!114 &8926484042661618074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36393,6 +36408,7 @@ MonoBehaviour:
   m_Direction: 1
   m_LinkedSlots:
   - {fileID: 8926484042661615377}
+  - {fileID: 8926484042661616955}
 --- !u!114 &8926484042661618075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36438,6 +36454,13 @@ MonoBehaviour:
     position: {x: -1781, y: 1927}
     expandedSlots: []
     expanded: 0
+  - m_Id: 1
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661618076}
+      inputSlot: {fileID: 8926484042661617567}
+    position: {x: 8678, y: -56}
+    expandedSlots: []
+    expanded: 0
 --- !u!114 &8926484042661618076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36473,3 +36496,4 @@ MonoBehaviour:
   m_Direction: 1
   m_LinkedSlots:
   - {fileID: 8926484042661616388}
+  - {fileID: 8926484042661617567}
