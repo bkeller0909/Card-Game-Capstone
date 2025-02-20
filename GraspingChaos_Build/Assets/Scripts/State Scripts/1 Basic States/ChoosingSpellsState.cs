@@ -19,6 +19,12 @@ public class ChoosingSpellsState : FSMState
 
     public override void EnterStateInit()
     {
+        if (playerState.player == GameManager.Instance.player1)
+        {
+            GameManager.Instance.whatRound++;
+            GameManager.Instance.manaPerTurn++;
+        }
+
 
         firstEnter = false;
 
@@ -177,16 +183,19 @@ public class ChoosingSpellsState : FSMState
             if (amtOfSpells == 0)
             {
                 spellsChosen[0] = playerState.currentSpellName;
+                player.LoseMana(ActiveSpellCards.Instance.spellCards[(int)playerState.currentSpellName].manaCost);
                 playerState.canChooseFinger = true;
             }
             else if (amtOfSpells == 1)
             {
                 spellsChosen[1] = playerState.currentSpellName;
+                player.LoseMana(ActiveSpellCards.Instance.spellCards[(int)playerState.currentSpellName].manaCost);
                 playerState.canChooseFinger = true;
             }
             else if (amtOfSpells == 2)
             {
                 spellsChosen[2] = playerState.currentSpellName;
+                player.LoseMana(ActiveSpellCards.Instance.spellCards[(int)playerState.currentSpellName].manaCost);
                 playerState.canChooseFinger = true;
             }
             if (spellsChosen[amtOfSpells] == SpellNames.FireBolt || spellsChosen[amtOfSpells] == SpellNames.Rockthrow || spellsChosen[amtOfSpells] == SpellNames.RighteousEnvy ||
@@ -241,18 +250,21 @@ public class ChoosingSpellsState : FSMState
         {
             if (amtOfSpells == 0)
             {
+                player.GetMana(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[GameManager.Instance.currentDeselectedCard - 1]].manaCost);
                 spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
                 fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
                 amtOfSpells--;
             }
             else if (amtOfSpells == 1)
             {
+                player.GetMana(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[GameManager.Instance.currentDeselectedCard - 1]].manaCost);
                 spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
                 fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
                 amtOfSpells--;
             }
             else if (amtOfSpells == 2)
             {
+                player.GetMana(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[GameManager.Instance.currentDeselectedCard - 1]].manaCost);
                 spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
                 fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
                 amtOfSpells--;

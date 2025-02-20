@@ -55,80 +55,418 @@ public class DealStatsState : FSMState
             }
         }
 
-        if (!GameManager.Instance.firstRoundCheck)
+        if (!GameManager.Instance.manualCards)
         {
-            //player.spellHand.amtOfSpellsInHand = 5 - player.cardsAmountSelected;
-            if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+            if (!GameManager.Instance.firstRoundCheck)
             {
-                // add a card to the player spell list
-                card = cardDealing.CardDealtChance(player);
-                if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
+                //player.spellHand.amtOfSpellsInHand = 5 - player.cardsAmountSelected;
+                if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
                 {
-                    // TODO - change this value to 2 once rings are in the game
-                    if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                    // add a card to the player spell list
+                    card = cardDealing.CardDealtChance(player);
+                    if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
                     {
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
-                        player.attackCardAmount++;
-                    }
-                    else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
-                    {
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
-                        player.restCardAmount++;
-                    }
-                    else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
-                    {
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
-                        player.ringCardAmount++;
-                    }
+                        // TODO - change this value to 2 once rings are in the game
+                        if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.attackCardAmount++;
+                        }
+                        else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.restCardAmount++;
+                        }
+                        else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.ringCardAmount++;
+                        }
 
+                    }
+                }
+            }
+
+            // for some reason this needs to be here a second time or else game breaks!!! :P
+            if (GameManager.Instance.firstRoundCheck)
+            {
+                if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                {
+                    // add a card to the player spell list
+                    card = cardDealing.CardDealtChance(player);
+                    if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3) // convert enum name to int
+                    {
+                        // TODO - value 2
+                        if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.attackCardAmount++;
+                        }
+                        else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.restCardAmount++;
+                        }
+                        else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.ringCardAmount++;
+                        }
+                    }
                 }
             }
         }
-
-        // for some reason this needs to be here a second time or else game breaks!!! :P
-        if (GameManager.Instance.firstRoundCheck)
+        else
         {
-            if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+            //This is the first round of the game
+            if (GameManager.Instance.whatRound == 0)
             {
-                // add a card to the player spell list
-                card = cardDealing.CardDealtChance(player);
-                if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3) // convert enum name to int
+                if (player == GameManager.Instance.player1)
                 {
-                    // TODO - value 2
-                    if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
                     {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt];
                         player.spellHand.playerSpells.Add(card);
                         CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
                         player.attackCardAmount++;
-                    }
-                    else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
-                    {
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt];
                         player.spellHand.playerSpells.Add(card);
                         CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
+                        player.attackCardAmount++;
                         player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Icicles];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Icicles];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.ForTheCause];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         player.restCardAmount++;
-                    }
-                    else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
-                    {
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
                         player.spellHand.amtOfSpellsInHand++;
-                        player.ringCardAmount++;
                     }
                 }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.QuickHeal];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.ThumbsUp];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 1)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.TidalWave];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.LifeDrain];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Quake];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 2)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.QuickHeal];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.TidalWave];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.LefteousEnvy];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 3)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.QuickHeal];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.CollectorsCurse];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Icicles];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 4)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Materialise];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Materialise];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 5)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.CursedConversion];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.EchoingMana];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.restCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 6)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.RightingBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.LeftningBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 7)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.RighteousEnvy];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+            }
+            else if (GameManager.Instance.whatRound == 9)
+            {
+                if (player == GameManager.Instance.player1)
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.RighteousEnvy];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                else
+                {
+                    if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+                    {
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.LeftningBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                        card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.RightingBolt];
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        player.attackCardAmount++;
+                        player.spellHand.amtOfSpellsInHand++;
+                    }
+                }
+                GameManager.Instance.manualCards = false;
             }
         }
 
