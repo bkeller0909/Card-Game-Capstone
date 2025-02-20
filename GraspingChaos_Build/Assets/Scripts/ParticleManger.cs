@@ -57,7 +57,6 @@ public class ParticleManger : MonoBehaviour
     [Header("Extra Positions for particles")]
     [SerializeField] Transform adjasentPosition1;
     [SerializeField] Transform adjasentPosition2;
-    [SerializeField] Transform adjasentPosition3;
     [SerializeField] Transform halfWay1;
     [SerializeField] Transform halfWay2;
     [SerializeField] Transform Extra;
@@ -73,11 +72,9 @@ public class ParticleManger : MonoBehaviour
 
     public bool spawnExtra1;
     public bool spawnExtra2;
-    public bool spawnExtra3;
 
     public PlayerFingers particleAdjacent1;
     public PlayerFingers particleAdjacent2;
-    public PlayerFingers particleAdjacent3;
 
     int spellToCastIndex;
 
@@ -87,15 +84,6 @@ public class ParticleManger : MonoBehaviour
         {
             instance = this;
         }
-    }
-
-    private void Update()
-    {
-        FullEffects[5].SetBool("Extra 1", spawnExtra1);
-        FullEffects[5].SetBool("Extra 2", spawnExtra2);
-        FullEffects[7].SetBool("Extra 1", spawnExtra1);
-        FullEffects[7].SetBool("Extra 2", spawnExtra2);
-        FullEffects[7].SetBool("Extra 1", spawnExtra3);
     }
 
 
@@ -195,15 +183,11 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P1ForcedPosition.position;
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
-                    halfWay1.position = halfway1Cache.position;
-                    halfWay2.position = halfway2Cache.position;
                 }
                 else
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
-                    halfWay1.position = halfway2Cache.position;
-                    halfWay2.position = halfway1Cache.position;
                 }
                 FullEffects[4].Play();
                 StartCoroutine(DisableSpell(8, 4, playerCasting));
@@ -213,21 +197,19 @@ public class ParticleManger : MonoBehaviour
                 FullEffects[5].gameObject.SetActive(true);
                 if (playerCasting == GameManager.Instance.player1)
                 {
-                    PlayerPosition.position = P1ForcedPosition.position;
+                    FullEffects[5].SetBool("Extra 1", spawnExtra1);
+                    FullEffects[5].SetBool("Extra 2", spawnExtra2);
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                     adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
-                    halfWay1.position = halfway1Cache.position;
-                    halfWay2.position = halfway2Cache.position;
+                    adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent2].position;
                 }
                 else
                 {
-                    PlayerPosition.position = P2ForcedPosition.position;
+                    FullEffects[5].SetBool("Extra 1", spawnExtra1);
+                    FullEffects[5].SetBool("Extra 2", spawnExtra2);
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                     adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
-                    halfWay1.position = halfway2Cache.position;
-                    halfWay2.position = halfway1Cache.position;
+                    adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent2].position;
                 }
                 FullEffects[5].Play();
                 StartCoroutine(DisableSpell(8, 5, playerCasting));
@@ -253,21 +235,15 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P1ForcedPosition.position;
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player2FingerPositions[(int)particleAdjacent3].position;
-                    halfWay1.position = halfway1Cache.position;
-                    halfWay2.position = halfway2Cache.position;
+                    halfWay1.position = halfway2Cache.position;
+                    halfWay2.position = halfway1Cache.position;
                 }
                 else
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player1FingerPositions[(int)particleAdjacent3].position;
-                    halfWay1.position = halfway2Cache.position;
-                    halfWay2.position = halfway1Cache.position;
+                    halfWay1.position = halfway1Cache.position;
+                    halfWay2.position = halfway2Cache.position;
                 }
                 FullEffects[7].Play();
                 StartCoroutine(DisableSpell(8, 7, playerCasting));
@@ -279,21 +255,15 @@ public class ParticleManger : MonoBehaviour
                 {
                     PlayerPosition.position = P1ForcedPosition.position;
                     EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player2FingerPositions[(int)particleAdjacent3].position;
-                    halfWay1.position = halfway1Cache.position;
-                    halfWay2.position = halfway2Cache.position;
+                    halfWay1.position = halfway2Cache.position;
+                    halfWay2.position = halfway1Cache.position;
                 }
                 else
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
-                    adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
-                    adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
-                    adjasentPosition3.position = player1FingerPositions[(int)particleAdjacent3].position;
-                    halfWay1.position = halfway2Cache.position;
-                    halfWay2.position = halfway1Cache.position;
+                    halfWay1.position = halfway1Cache.position;
+                    halfWay2.position = halfway2Cache.position;
                 }
                 FullEffects[7].Play();
                 StartCoroutine(DisableSpell(8, 7, playerCasting));

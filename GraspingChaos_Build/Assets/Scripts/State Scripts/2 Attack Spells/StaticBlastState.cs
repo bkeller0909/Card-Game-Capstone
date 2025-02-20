@@ -62,15 +62,12 @@ public class StaticBlastState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.spawnExtra1 = false;
-                    ParticleManger.Instance.spawnExtra2 = false;
                     ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.spawnExtra1 = true;
-                    ParticleManger.Instance.spawnExtra2 = false;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers adjacentFinger;
                     int randomSide = UnityEngine.Random.Range(0, 2);
@@ -124,14 +121,13 @@ public class StaticBlastState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ;
+                    ParticleManger.Instance.spawnExtra1 = true;
+                    ParticleManger.Instance.spawnExtra2 = true;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers adjacentFinger;
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -139,8 +135,6 @@ public class StaticBlastState : FSMState
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -148,8 +142,6 @@ public class StaticBlastState : FSMState
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -157,8 +149,6 @@ public class StaticBlastState : FSMState
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -166,12 +156,10 @@ public class StaticBlastState : FSMState
                     }
                     else
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = true;
                         adjacentFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         enemy.health.DamageFinger(adjacentFinger);
                         PlayerFingers adjacentFinger2 = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(adjacentFinger2);
+                        enemy.health.DamageFinger(adjacentFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.particleAdjacent2 = adjacentFinger2;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -184,15 +172,12 @@ public class StaticBlastState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.spawnExtra1 = false;
-                    ParticleManger.Instance.spawnExtra2 = false;
                     ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.spawnExtra1 = true;
-                    ParticleManger.Instance.spawnExtra2 = false;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers adjacentFinger;
                     int randomSide = UnityEngine.Random.Range(0, 2);
@@ -246,13 +231,13 @@ public class StaticBlastState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    ParticleManger.Instance.spawnExtra1 = true;
+                    ParticleManger.Instance.spawnExtra2 = true;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers adjacentFinger;
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -260,8 +245,6 @@ public class StaticBlastState : FSMState
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -269,8 +252,6 @@ public class StaticBlastState : FSMState
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -278,8 +259,6 @@ public class StaticBlastState : FSMState
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = false;
                         adjacentFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
@@ -287,12 +266,10 @@ public class StaticBlastState : FSMState
                     }
                     else
                     {
-                        ParticleManger.Instance.spawnExtra1 = true;
-                        ParticleManger.Instance.spawnExtra2 = true;
                         adjacentFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         enemy.health.DamageFinger(adjacentFinger);
                         PlayerFingers adjacentFinger2 = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(adjacentFinger2);
+                        enemy.health.DamageFinger(adjacentFinger);
                         ParticleManger.Instance.particleAdjacent1 = adjacentFinger;
                         ParticleManger.Instance.particleAdjacent2 = adjacentFinger2;
                         ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
