@@ -6,6 +6,7 @@ public class PlayerState : AdvancedFSM
 {
 
     public PlayerManager player, enemy;
+    public CardPlay cardPlay;
     public Camera playerCam;
     public Animator camAnim;
     public bool cardSelected, cardDeselected, readyToCast, canChooseFinger;
@@ -178,6 +179,8 @@ public class PlayerState : AdvancedFSM
         finishedCurrentQTE = false;
 
         player = this.gameObject.GetComponent<PlayerManager>();
+
+        cardPlay = GetComponentInChildren<CardPlay>();
 
         cardSelected = false;
 
@@ -485,4 +488,8 @@ public class PlayerState : AdvancedFSM
         player.gameObject.GetComponent<QTEHandler>().Create(currentQTEAmount, player);
     }
 
+    public void MoveCard(GameObject go, Vector3 startPos)
+    {
+        StartCoroutine(cardPlay.MoveCard(go, startPos));
+    }
 }

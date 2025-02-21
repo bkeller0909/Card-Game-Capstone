@@ -356,6 +356,7 @@ Transform:
   - {fileID: 2542054251609426815}
   - {fileID: 5686260682958659029}
   - {fileID: 2667873410925994136}
+  - {fileID: 1530853964636945523}
   - {fileID: 2420311415349768492}
   - {fileID: 8767145617301093667}
   - {fileID: 3477098941337252946}
@@ -551,6 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemy: {fileID: 0}
+  cardPlay: {fileID: 0}
   playerCam: {fileID: 0}
   camAnim: {fileID: 0}
   cardSelected: 0
@@ -2136,6 +2138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2667873410925994136}
   - component: {fileID: 2811401304770170630}
+  - component: {fileID: 3404151903912744260}
   m_Layer: 0
   m_Name: CardSlots
   m_TagString: Untagged
@@ -2189,6 +2192,20 @@ MonoBehaviour:
   currentHoverIndex: 0
   ALLCards: {fileID: 0}
   RemovingCards: []
+--- !u!114 &3404151903912744260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216180888743191741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8875082fcb9fdf498dbd7cae99f18c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardHandSlot: {fileID: 0}
+  cardsOutOfPlayPos: {fileID: 1530853964636945523}
 --- !u!1 &5248467575911585309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,6 +3016,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7214330871028401920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1530853964636945523}
+  m_Layer: 0
+  m_Name: CardsOutOfPlay
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1530853964636945523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214330871028401920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.455, y: -0.1183, z: -0.1425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3758168651206314053}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7306846791181490203
 GameObject:
   m_ObjectHideFlags: 0

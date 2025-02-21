@@ -142,6 +142,15 @@ public class ChoosingSpellsState : FSMState
 
             playerState.finishedCastingImage.SetActive(false);
 
+            // move cards to out of play position
+            for (int i = 0; i < playerState.playerHand.cards.Count; i++)
+            {
+                if (playerState.playerHand.cards[i].isSelected == false)
+                {
+                    playerState.playerHand.cards[i].gameObject.transform.position = playerState.cardPlay.cardsOutOfPlayPos.position;
+                }
+            }
+
             GameManager.Instance.roundCheck = false;
             playerState.PerformTransition(Transition.NeedDecision);
         }
