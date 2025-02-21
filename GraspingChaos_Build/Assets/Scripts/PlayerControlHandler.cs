@@ -175,5 +175,9 @@ public class PlayerControlHandler : MonoBehaviour
         {
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            GameManager.Instance.player2.entireHP = 0;
+        }
     }
 }
