@@ -6,7 +6,7 @@ public class PlayerControlHandler : MonoBehaviour
     SelectableFinger pickFinger;
     PlayerState stateHandler;
     private InputHandler playerInput;
-    [SerializeField] CardHandSlot pickCards;
+    [SerializeField] public CardHandSlot pickCards;
     [SerializeField] CameraPositionChange changeCameras;
     public int index = 0;
 

@@ -113,7 +113,7 @@ public class CardSelect : MonoBehaviour
 
     public void DeselectCard()
     {
-        isHovered = true;
+        isHovered = false;
         isSelected = false;
         cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
         //StartCoroutine(AdjustCard(isSelected));
