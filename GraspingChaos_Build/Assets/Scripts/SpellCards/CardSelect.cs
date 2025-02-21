@@ -106,7 +106,8 @@ public class CardSelect : MonoBehaviour
     {
         isHovered = false;
         isSelected = true;
-        cardGlowRender.material.SetColor("_GlowColour", Color.white);
+        cardGlowRender.material.SetColor("_GlowColour", Color.grey);
+        cardGlowRender.material.SetFloat("_GlowMultiplier", 50f);
         //StartCoroutine(AdjustCard(isSelected));
         CardGlow(isSelected);
     }
