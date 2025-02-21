@@ -154,6 +154,7 @@ public class PlayerControlHandler : MonoBehaviour
             if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
             {
                 stateHandler.ReadyToCast();
+                changeCameras.GetInputForced(0);
                 playerInput.finishSelection = false;
                 playerInput.Xbtn = false;
                 foreach (CardSelect card in pickCards.selectedCards)

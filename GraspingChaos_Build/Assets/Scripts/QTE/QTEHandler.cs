@@ -84,6 +84,8 @@ public class QTEHandler : MonoBehaviour
 
     public bool QTEHasStarted = false;
 
+    [SerializeField] private GameObject counterObject;
+
     private void Start()
     {
         //start the timer at false
@@ -96,6 +98,7 @@ public class QTEHandler : MonoBehaviour
         QTECounter = 0;
         playerInput = gameObject.GetComponentInParent<InputHandler>();
         animator = gameObject.GetComponentInChildren<Animator>();
+        counterObject.SetActive(false);
     }
 
     /// <summary>
@@ -151,6 +154,15 @@ public class QTEHandler : MonoBehaviour
 
         //function that checks the values of each QTE Button on the sequence to determine which is currently active (more info in the function)
         CheckAvailability();
+
+        if (QTEHasStarted)
+        {
+            counterObject.SetActive(true);
+        }
+        else
+        {
+            counterObject.SetActive(false);
+        }
     }
 
     /// <summary>

@@ -65,6 +65,11 @@ public class QTECounter : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        desiredCounterStep = 0;
+    }
+
     void SetUpCounterStages()
     {
         counterStages[0] = minOffsetValue;
