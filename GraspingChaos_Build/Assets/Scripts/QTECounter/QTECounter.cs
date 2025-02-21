@@ -30,6 +30,8 @@ public class QTECounter : MonoBehaviour
 
     private float[] counterStages = new float[MAX_COUNTER_AMOUNT];
 
+    [SerializeField] private QTEHandler playerQTEHandler;
+
 
     // Start is called before the first frame update
     void Start()
