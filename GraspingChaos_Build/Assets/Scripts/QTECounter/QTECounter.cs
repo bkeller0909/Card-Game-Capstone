@@ -46,7 +46,23 @@ public class QTECounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeCounter();
+        if (playerQTEHandler.QTEHasStarted)
+        {
+            playerQTEHandler.EvaluateQTEResultsInRealTime();
+            if (playerQTEHandler.outcome == QTEOUTCOMES.Failure)
+            {
+                desiredCounterStep = 0;
+            }
+            else if (playerQTEHandler.outcome == QTEOUTCOMES.Half)
+            {
+                desiredCounterStep = 1;
+            }
+            else if (playerQTEHandler.outcome == QTEOUTCOMES.Success)
+            {
+                desiredCounterStep = 2;
+            }
+            ChangeCounter();
+        }
     }
 
     void SetUpCounterStages()

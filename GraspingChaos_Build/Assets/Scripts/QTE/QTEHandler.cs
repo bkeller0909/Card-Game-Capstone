@@ -82,6 +82,8 @@ public class QTEHandler : MonoBehaviour
 
     public int buttonsUsed = 0;
 
+    public bool QTEHasStarted = false;
+
     private void Start()
     {
         //start the timer at false
@@ -125,6 +127,7 @@ public class QTEHandler : MonoBehaviour
                 remainingTime = 0;
                 startTimer = false;
                 DisableQTEButtonsTimer();
+                QTEHasStarted = false;
                 animator.SetTrigger("IDLE");
                 //EvauateQTEResults();
                 timeisDone = true;
@@ -267,36 +270,47 @@ public class QTEHandler : MonoBehaviour
         {
             case 3:
                 CreationLoop(6, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 4:
                 CreationLoop(5, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 5:
                 CreationLoop(5, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 6:
                 CreationLoop(4, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 7:
                 CreationLoop(4, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 8:
                 CreationLoop(3, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 9:
                 CreationLoop(3, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 10:
                 CreationLoop(2, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 11:
                 CreationLoop(2, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 12:
                 CreationLoop(1, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
             case 14:
                 CreationLoop(0, qteAmount, caster);
+                QTEHasStarted = true;
                 break;
 
         }
@@ -403,6 +417,36 @@ public class QTEHandler : MonoBehaviour
         else if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player2)
         {
             GameManager.Instance.raceTieP2 = QTECounter;
+        }
+    }
+
+    public void EvaluateQTEResultsInRealTime()
+    {
+        QTEPercent = 0;
+
+        if (QTECounter == 0)
+        {
+            QTEPercent = 0;
+        }
+        else if (QTECounter != 0)
+        {
+            //convert the values of the completed sequence into a percentage of 100%
+            QTEPercent = QTECounter * 100 / CreatedButtons.Count;
+            //QTEPercent = 100;
+        }
+
+        //debug check to see in what state the result ends with, below 50%, above 50% and 100%
+        if (QTEPercent < 50)
+        {
+            outcome = QTEOUTCOMES.Failure;
+        }
+        else if (QTEPercent >= 50 && QTEPercent < 99)
+        {
+            outcome = QTEOUTCOMES.Half;
+        }
+        else if (QTEPercent == 100)
+        {
+            outcome = QTEOUTCOMES.Success;
         }
     }
 
