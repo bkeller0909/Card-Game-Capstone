@@ -224,7 +224,7 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE4");
+                    animator.SetTrigger("QTE5");
                 }
                 else
                 {
@@ -257,7 +257,7 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE3");
+                    animator.SetTrigger("QTE6");
                 }
                 else
                 {
@@ -356,5 +356,7 @@ public class QTEButton : MonoBehaviour
         animator.ResetTrigger("QTE2");
         animator.ResetTrigger("QTE3");
         animator.ResetTrigger("QTE4");
+        animator.ResetTrigger("QTE5");
+        animator.ResetTrigger("QTE6");
     }
 }
