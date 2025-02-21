@@ -524,6 +524,8 @@ public class QTEHandler : MonoBehaviour
         animator.ResetTrigger("QTE2");
         animator.ResetTrigger("QTE3");
         animator.ResetTrigger("QTE4");
+        animator.ResetTrigger("QTE5");
+        animator.ResetTrigger("QTE6");
     }
 
     public void SetTimeValue()
