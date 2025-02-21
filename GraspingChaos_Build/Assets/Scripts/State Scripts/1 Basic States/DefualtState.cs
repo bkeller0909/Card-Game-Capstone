@@ -12,6 +12,8 @@ public class DefualtState : FSMState
         posChange = playerState.playerCam.gameObject.GetComponent<CameraPositionChange>();
         animPlayed = false;
         GameManager.Instance.moveOn = false;
+        GameManager.Instance.whatRound = 0;
+        GameManager.Instance.manaPerTurn = 3;
     }
 
     //Reason

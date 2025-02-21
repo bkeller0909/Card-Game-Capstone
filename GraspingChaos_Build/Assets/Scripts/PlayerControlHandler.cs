@@ -91,10 +91,10 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (player.playerInput.actions["Cancel"].WasPressedThisFrame())
             {
-                //deselect card
-                player.playerInput.SwitchCurrentActionMap("Card");
-                playerInput.cancelFingerSelect = false;
-                playerInput.Bbtn = false;
+                ////deselect card
+                //player.playerInput.SwitchCurrentActionMap("Card");
+                //playerInput.cancelFingerSelect = false;
+                //playerInput.Bbtn = false;
             }
 
             //Selecting Card (Card action Map)
