@@ -37,6 +37,11 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(FadeInTitle(duration));
     }
 
+    public void KillSwitch()
+    {
+        Application.Quit();
+    }
+
     IEnumerator FadeInTitle(float duration)
     {
         while (titles.alpha < 1)
