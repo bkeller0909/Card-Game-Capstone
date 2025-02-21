@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public bool moveOn = false;
 
-    public int currentDeselectedCard;
+    // public int currentDeselectedCard;
 
 
     public bool particleP1Done;
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
         moveOn = false;
         player1IsHere = false;
         player2IsHere = false;
-        currentDeselectedCard = 4;
+        // currentDeselectedCard = 4;
         particleWait = new bool[3];
         particleP1Done = false;
         particleP2Done = false;

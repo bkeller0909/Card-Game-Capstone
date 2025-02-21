@@ -177,8 +177,27 @@ public class CardHandSlot : MonoBehaviour
 
         if (newCardIndex != currentHoverIndex)
         {
+            while (newCardIndex >= 0 && newCardIndex <= 4 && cards[newCardIndex].isSelected == true)
+            {
+                if (selectDirection == 1) // right direction
+                {
+                    newCardIndex++;
+                }
+                else // left direction
+                {
+                    newCardIndex--;
+                }
+            }
+            if (newCardIndex < 0 || newCardIndex > 4)
+            {
+                newCardIndex = currentHoverIndex;
+            }
             SetHoveredCard(newCardIndex);
         }
+        /*if (newCardIndex != currentHoverIndex)
+        {
+            SetHoveredCard(newCardIndex);
+        }*/
     }
 
     /// <summary>
@@ -220,20 +239,17 @@ public class CardHandSlot : MonoBehaviour
             return;
         }
 
-        CardSelect card = cards[currentHoverIndex];
+        CardSelect card = selectedCards[selectedCards.Count - 1];
 
         whatCard = card.gameObject.GetComponent<SpellCard>();
 
         if (selectedCards.Contains(card))
         {
-            SetCurrentDeselectedCard();
-            card.alreadySelected = false;
             playerState.currentSpellName = SpellNames.none;
-
             // Deselect the card if it's already selected.
-            selectedCards.Remove(card);
+            //selectedCards.Remove(card);
             card.DeselectCard();
-            card.OnHoverCard(); // Reapply hover effect after deselecting.
+            //card.OnHoverCard(); // Reapply hover effect after deselecting.
         }
     }
 
@@ -263,19 +279,19 @@ public class CardHandSlot : MonoBehaviour
         }
     }
 
-    public void SetCurrentDeselectedCard()
-    {
-        SpellCard card = cards[currentHoverIndex].gameObject.GetComponent<SpellCard>();
-        foreach (CardSelect cardsSelected in selectedCards)
-        {
-            cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue = 0;
-        }
+    //public void SetCurrentDeselectedCard()
+    //{
+    //    SpellCard card = cards[currentHoverIndex].gameObject.GetComponent<SpellCard>();
+    //    foreach (CardSelect cardsSelected in selectedCards)
+    //    {
+    //        cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue = 0;
+    //    }
 
-        foreach (CardSelect cardsSelected in selectedCards)
-        {
-            cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue++;
-        }
+    //    foreach (CardSelect cardsSelected in selectedCards)
+    //    {
+    //        cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue++;
+    //    }
 
-        card.currentOrderValue = GameManager.Instance.currentDeselectedCard;
-    }
+    //    card.currentOrderValue = GameManager.Instance.currentDeselectedCard;
+    //}
 }
