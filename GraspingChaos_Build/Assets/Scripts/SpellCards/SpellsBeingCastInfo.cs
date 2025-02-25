@@ -1,5 +1,16 @@
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author: Wyatt
+//  Co-Author:
+//  Title: SpellBeingCastInfo
+//  Date Created: 01/30/2025
+//  Instance: No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Attributes for the state machine
+/// </summary>
 public class SpellsBeingCastInfo : MonoBehaviour
 {
     [Tooltip("Who is currently casting the spell")]

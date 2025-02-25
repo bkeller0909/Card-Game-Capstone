@@ -15,7 +15,7 @@ using UnityEngine;
 public class CardHistory : MonoBehaviour
 {
     private List<GameObject> cardHistoryList = new List<GameObject>();       // list of card gameobjects 
-    public Transform[] historySlots;                                                          // transform slot positions for the card in the history
+    public Transform[] historySlots;                                         // transform slot positions for the card in the history
     public List<GameObject> cardHistoryObjPool = new List<GameObject>();
 
     /// <summary>
