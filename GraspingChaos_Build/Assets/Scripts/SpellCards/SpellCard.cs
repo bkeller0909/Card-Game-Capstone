@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -47,57 +46,4 @@ public class SpellCard : MonoBehaviour
     public KeyCode debugTester;
 
     public int currentOrderValue = 4;
-
-
-    //damage dealing function
-    public virtual void DamageDealing()
-    {
-        for (int i = 0; i < damageValue; i++)
-        {
-            //function needed to know what hands and fingers are needed in the selecting of damage script
-            // GameManager.Instance.currentCaster.health.DamageFinger(PlayerHands.LeftHand, PlayerFingers.Middle);
-            GameManager.Instance.currentCaster.entireHP -= 1;
-        }
-    }
-
-    //health dealing function
-    public virtual void Healing()
-    {
-        for (int i = 0; i < healValue; i++)
-        {
-            //function needed to know what hands and fingers are needed in the selecting of damage script
-            // GameManager.Instance.currentCaster.health.HealFinger(PlayerHands.LeftHand, PlayerFingers.Middle);
-            GameManager.Instance.currentCaster.entireHP += 1;
-        }
-    }
-
-    //QTE evaluation function
-
-    public void TestSpellReleaseQTE()
-    {
-        if (Input.GetKeyDown(debugTester))
-        {
-            StartCoroutine(testing());
-        }
-    }
-
-    private void Update()
-    {
-        //TestSpellReleaseQTE();
-    }
-
-    IEnumerator testing()
-    {
-        yield return new WaitForSeconds(0);
-        //QTEManager.Instance.CreateV2(qteAmount, GameManager.Instance.currentCaster);
-        if (GameManager.Instance.testingCurrentP1)
-        {
-            p1.GetComponent<QTEHandler>().Create(qteAmount, p1.GetComponent<PlayerManager>());
-        }
-        else
-        {
-            p2.GetComponent<QTEHandler>().Create(qteAmount, p2.GetComponent<PlayerManager>());
-        }
-    }
-
 }

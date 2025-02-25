@@ -9,22 +9,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject topArrow, botArrow;
     [SerializeField] float duration;
 
-
-    public void ObjectArtShowCase()
-    {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_ProtoArtShowCase);
-        InputManager.Instance.FindPlayers();
-    }
-
+    /// <summary>
+    /// Loads the game into the duel Scene
+    /// </summary>
     public void LoadDuelScene()
     {
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_Duelscene);
-        InputManager.Instance.FindPlayers();
-    }
-    public void FSMTesting()
-    {
-        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_StateTesting);
-        GameManager.Instance.hasDuelStarted = true;
         InputManager.Instance.FindPlayers();
     }
 
@@ -42,14 +32,15 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+
     IEnumerator FadeInTitle(float duration)
     {
         while (titles.alpha < 1)
         {
             yield return new WaitForSeconds(duration);
-            titles.alpha += 0.1f;
-            btns.alpha += 0.1f;
-            arrows.alpha += 0.1f;
+            titles.alpha += 0.05f;
+            btns.alpha += 0.05f;
+            arrows.alpha += 0.05f;
         }
         titles.alpha = 1;
         btns.alpha = 1;

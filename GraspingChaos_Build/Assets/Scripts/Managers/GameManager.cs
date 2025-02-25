@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     #region // Level loading: This region is all the reguired variables for loading a level
     [Tooltip("This need to be the name of the main menu scene")]
     public string ln_CurrentLevelName;
@@ -50,6 +49,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("This need to be the name of the actual game play scene")]
     public string ln_IntroScene;
 
+    //Tracks wheather the game is in the loading procces
     private bool isLoading = false;
 
     [Tooltip("This is the visual loading screen")]
@@ -57,14 +57,7 @@ public class GameManager : MonoBehaviour
 
     //how the cameras get assigned to there displayes
     private CameraAssigner cameraAssigner;
-
-    //Everything below here are names for the scenes to showoff at milestones
-    [Tooltip("This needs to be the name of the prototype Art Showcase")]
-    public string ln_ProtoArtShowCase;
-
-    [Tooltip("This is the testing scene for the FSM")]
-    public string ln_StateTesting;
-    #endregion
+    #endregion // This ends the level loading setup
 
     [Tooltip("Are the QTE's race based")]
     public bool racedBasedQTE = false;
@@ -123,35 +116,46 @@ public class GameManager : MonoBehaviour
     [Tooltip("This is what round the game is on")]
     public int whatRound = 0;
 
+    [HideInInspector, Tooltip("These are the current spells chosen to cast each round")]
     public SpellsBeingCastInfo[,] spellsBeingCast;
+    [HideInInspector, Tooltip("Tracks whose spell is being played first")]
     public Decider[] whoesOnFirst;
+    [HideInInspector, Tooltip("Timer for the particle")]
     public bool[] particleWait;
 
-    public bool testingCurrentP1 = true;
-
+    [Tooltip("The speed that player 1 finished there QTE")]
     public float P1QTESpeed;
+    [Tooltip("The speed that player 2 finished there QTE")]
     public float P2QTESpeed;
 
+    [HideInInspector, Tooltip("The Object pool for each of the cards")]
     public CardsObjectPool cardPool;
 
+    [HideInInspector, Tooltip("Checks if player 1 or 2 has finished the QTE")]
     public bool player1FinishedQTE, player2FinishedQTE = false;
 
+    [HideInInspector, Tooltip("Checks if it is the time both players have entered the deciding state")]
     public bool firstRoundCheck = true;
 
+    [HideInInspector, Tooltip("Makes sure both players are ready to move on from the loading into duel animation")]
     public bool moveOn = false;
 
-    // public int currentDeselectedCard;
-
-
+    [HideInInspector, Tooltip("Check for if player 1's particle has finished casting")]
     public bool particleP1Done;
+    [HideInInspector, Tooltip("Check for if player 2's particle has finished casting")]
     public bool particleP2Done;
 
+    [HideInInspector, Tooltip("Check for stopping the player 1 long enough to play there particle")]
     public bool coroutineWaitP1;
+    [HideInInspector, Tooltip("Check for stopping the player 2 long enough to play there particle")]
     public bool coroutineWaitP2;
 
+    [HideInInspector, Tooltip("How many QTES did player 1 get correct")]
     public int raceTieP1;
+    [HideInInspector, Tooltip("How many QTES did player 2 get correct")]
     public int raceTieP2;
 
+    [HideInInspector, Tooltip("Temp Canvases for telling who one")]
     public GameObject tempEndScreenSkullWins1, tempEndScreenSkullWins2, tempEndScreenStagWins1, tempEndScreenStagWins2;
 
     //GameDebugger variable, testing only but important it is not removed yet
@@ -271,6 +275,9 @@ public class GameManager : MonoBehaviour
         isLoading = false;
     }
 
+    /// <summary>
+    /// Changes current caster to the opposite one that it is set to at the momment the function is called
+    /// </summary>
     public void ChangeCurrentCaster()
     {
         if (currentCaster == player1)
