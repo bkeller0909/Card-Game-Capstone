@@ -194,10 +194,6 @@ public class CardHandSlot : MonoBehaviour
             }
             SetHoveredCard(newCardIndex);
         }
-        /*if (newCardIndex != currentHoverIndex)
-        {
-            SetHoveredCard(newCardIndex);
-        }*/
     }
 
     /// <summary>
@@ -227,7 +223,12 @@ public class CardHandSlot : MonoBehaviour
             {
                 selectedCards.Add(card);
                 card.SelectCard();
-                player.playerInput.SwitchCurrentActionMap("Player");
+                if (whatCard.spellName != SpellNames.Icicles && whatCard.spellName != SpellNames.LefteousEnvy && whatCard.spellName != SpellNames.RighteousEnvy &&
+               whatCard.spellName != SpellNames.LifeDrain && whatCard.spellName != SpellNames.ThumbsUp && whatCard.spellName != SpellNames.EchoingMana &&
+               whatCard.spellName != SpellNames.CursedConversion)
+                {
+                    player.playerInput.SwitchCurrentActionMap("Player");
+                }
             }
         }
     }
@@ -249,7 +250,6 @@ public class CardHandSlot : MonoBehaviour
             // Deselect the card if it's already selected.
             //selectedCards.Remove(card);
             card.DeselectCard();
-            //card.OnHoverCard(); // Reapply hover effect after deselecting.
         }
     }
 
@@ -278,20 +278,4 @@ public class CardHandSlot : MonoBehaviour
             return true;
         }
     }
-
-    //public void SetCurrentDeselectedCard()
-    //{
-    //    SpellCard card = cards[currentHoverIndex].gameObject.GetComponent<SpellCard>();
-    //    foreach (CardSelect cardsSelected in selectedCards)
-    //    {
-    //        cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue = 0;
-    //    }
-
-    //    foreach (CardSelect cardsSelected in selectedCards)
-    //    {
-    //        cardsSelected.gameObject.GetComponent<SpellCard>().currentOrderValue++;
-    //    }
-
-    //    card.currentOrderValue = GameManager.Instance.currentDeselectedCard;
-    //}
 }
