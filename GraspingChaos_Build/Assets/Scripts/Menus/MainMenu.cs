@@ -2,12 +2,30 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//----------------------------------------------------------------
+//  Author:       Wyatt
+//  Title:        MainMenu
+//  Date Created: 01/09/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Holds the functions that operate the main menu
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Button[] buttons;
-    [SerializeField] CanvasGroup titles, btns, arrows;
-    [SerializeField] GameObject topArrow, botArrow;
-    [SerializeField] float duration;
+    [SerializeField, Tooltip("")]
+    Button[] buttons;
+
+    [SerializeField]
+    CanvasGroup titles, btns, arrows;
+
+    [SerializeField]
+    GameObject topArrow, botArrow;
+
+    [SerializeField]
+    float duration;
 
     /// <summary>
     /// Loads the game into the duel Scene
@@ -27,12 +45,19 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(FadeInTitle(duration));
     }
 
+    /// <summary>
+    /// Closes the game
+    /// </summary>
     public void KillSwitch()
     {
         Application.Quit();
     }
 
-
+    /// <summary>
+    /// Fades in the Main Menu Ui
+    /// </summary>
+    /// <param name="duration"></param>
+    /// <returns></returns>
     IEnumerator FadeInTitle(float duration)
     {
         while (titles.alpha < 1)
@@ -49,6 +74,13 @@ public class MainMenu : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// Moves the arrows from location to location
+    /// </summary>
+    /// <param name="btn"></param>
+    /// <param name="topPos"></param>
+    /// <param name="botPos"></param>
+    /// <returns></returns>
     public IEnumerator MoveArrows(Button btn, Transform topPos, Transform botPos)
     {
         float moveTimer = 0.3f;

@@ -1,10 +1,43 @@
+//----------------------------------------------------------------
+//  Author:       Wyatt
+//  Title:        DealStats
+//  Date Created: 01/30/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// The State in which all the stats are assigned to the player at the start of each round
+/// </summary>
 public class DealStatsState : FSMState
 {
+    /// <summary>
+    /// The Randomizer card dealing script
+    /// </summary>
     CardDealing cardDealing;
+
+    /// <summary>
+    /// The card object pool script
+    /// </summary>
     CardsObjectPool cardObjPool;
+
+    /// <summary>
+    /// The state handler script
+    /// </summary>
     PlayerState playerState;
+
+    /// <summary>
+    /// The base spell card script
+    /// </summary>
     SpellCard card;
+
+    /// <summary>
+    /// A Bool to make sure they only gain mana once per a round
+    /// </summary>
     bool gainedMana;
+
+    /// <summary>
+    /// A check for if each player can change there states
+    /// </summary>
     bool stateChange = false;
 
     //Constructor
@@ -43,6 +76,7 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        // If the player has gained mana skip this bit if not go in
         if (!gainedMana)
         {
             //player.Mana += GameManager.Instance.manaPerTurn;
@@ -55,7 +89,8 @@ public class DealStatsState : FSMState
             }
         }
 
-        if (!GameManager.Instance.manualCards)
+        // If the game is scripted skip this if it isint go in
+        if (!GameManager.Instance.manualCards) // the not scripted game
         {
             if (!GameManager.Instance.firstRoundCheck)
             {
@@ -134,7 +169,7 @@ public class DealStatsState : FSMState
                 }
             }
         }
-        else
+        else // the scripted game
         {
             //This is the first round of the game
             if (GameManager.Instance.whatRound == 0)
@@ -405,6 +440,7 @@ public class DealStatsState : FSMState
             }
         }
 
+        //Once both players have been delt enough cards so they each have 5, the game moves on
         if (player.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize &&
             enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
         {
