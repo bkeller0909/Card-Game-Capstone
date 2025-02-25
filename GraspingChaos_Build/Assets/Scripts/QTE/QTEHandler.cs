@@ -15,9 +15,11 @@ public class QTEHandler : MonoBehaviour
 {
     //Index that keeps track of the created buttons of the current QTE System
     private int createdBTNIndex;
+
     //enum variable that can store the current randomized qte button on the sequence
     private QTEButtonType RandoBTN;
 
+    #region QTE sprite Assigner variables
     [Header("QTE Sprites")]
     [Tooltip("Variable for every sprite of each buttons")]
     [SerializeField] private Sprite QTESpriteA;
@@ -35,15 +37,19 @@ public class QTEHandler : MonoBehaviour
     [SerializeField] private Sprite QTESpriteRightInput;
     [Tooltip("Variable for every sprite of each buttons")]
     [SerializeField] private Sprite QTESpriteUpInput;
+    #endregion // QTE Sprites
 
+    #region Player references and Button List
     [Header("Object References Needed")]
     [Tooltip("Reference of player 1 for comparison")]
     [SerializeField] private PlayerManager p1;
     [Tooltip("Reference of player 2 for comparison")]
     [SerializeField] private PlayerManager p2;
-    [Tooltip("List of all buttons on scene for Player 1")]
+    [Tooltip("List of all buttons on scene for the Player")]
     [SerializeField] private List<GameObject> Buttons = new List<GameObject>();
+    #endregion //Player refernces and Button list
 
+    #region QTE Created Sequence and QTE Evaluation values
     [Header("Used Buttons and Values")]
     [Tooltip("List of all buttons used for QTE for Player 1")]
     public List<GameObject> CreatedButtons = new List<GameObject>();
@@ -51,11 +57,21 @@ public class QTEHandler : MonoBehaviour
     [SerializeField] private int QTECounter;
     [Tooltip("Value that tracks the percentage of the Succesful QTE pressed")]
     [SerializeField] private int QTEPercent;
+    public int buttonsUsed = 0;
+    public float checkSpeed = 0;
+    public QTEOUTCOMES outcome;
+    #endregion //QTE Created Sequence and QTE Evaluation values
 
+    #region Timer Values
     [Header("Timer Values")]
     public float remainingTime;
     public bool startTimer;
+    public bool QTEHasStarted = false;
+    [SerializeField] private GameObject counterObject;
+    public bool timeisDone = false;
+    #endregion //Timer Values
 
+    #region Debug Values
     [Header("Debug Values")]
     [SerializeField] private TMP_Text qteCheck;
     [SerializeField] private TMP_Text qteCheckPercent;
@@ -63,28 +79,11 @@ public class QTEHandler : MonoBehaviour
     private Vector3 dirScale = new Vector3(0.02f, 0.02f, 0.02f);
     //debug value for making the button sprites be the same size
     private Vector3 btnScale = new Vector3(0.03f, 0.03f, 0.03f);
+    #endregion // debug Values
 
-    //everything bellow 50% is low, everything below 100% is mid, everyting 100% is full
-    //everything bellow 50% is low, above 50% is mid (completed if there is only 2 options)
-
-    private InputHandler playerInput;
-    private bool qteInput = false;
-
-    public bool resetLoop = false;
-
-    public bool timeisDone = false;
-
-    public float checkSpeed = 0;
-
-    public QTEOUTCOMES outcome;
-
+    //animator reference
     Animator animator;
 
-    public int buttonsUsed = 0;
-
-    public bool QTEHasStarted = false;
-
-    [SerializeField] private GameObject counterObject;
 
     private void Start()
     {
@@ -96,7 +95,6 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = -1;
         //set the amount of qte pressed correctly to 0 since you havent yet done a qte
         QTECounter = 0;
-        playerInput = gameObject.GetComponentInParent<InputHandler>();
         animator = gameObject.GetComponentInChildren<Animator>();
         counterObject.SetActive(false);
     }
@@ -106,16 +104,6 @@ public class QTEHandler : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (resetLoop)
-        {
-            resetLoop = false;
-            //playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
-            //playerInput.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(1);
-        }
-
-
-        //main loop of the QTE Handler
-
         //check if the timer has started
         if (startTimer)
         {
@@ -138,23 +126,10 @@ public class QTEHandler : MonoBehaviour
             }
         }
 
-        if (playerInput.debugQTE)
-        {
-            if (!qteInput)
-            {
-                qteInput = true;
-                //Create(14, gameObject.GetComponent<PlayerManager>());
-                //playerInput.gameObject.GetComponent<PlayerManager>().playerInput.SwitchCurrentActionMap("Card");
-            }
-        }
-        else
-        {
-            qteInput = false;
-        }
-
         //function that checks the values of each QTE Button on the sequence to determine which is currently active (more info in the function)
         CheckAvailability();
 
+        //check to see if the counter needs to be on screen
         if (QTEHasStarted)
         {
             counterObject.SetActive(true);
@@ -275,8 +250,10 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
-
-    public void Create(int qteAmount, PlayerManager caster)
+    /// <summary>
+    /// This function is responsible for Assigning the order of the buttons on screen to better fit depending on the amount of buttons that need to be created
+    /// </summary>
+    public void CreateSequence(int qteAmount, PlayerManager caster)
     {
         switch (qteAmount)
         {
@@ -366,6 +343,7 @@ public class QTEHandler : MonoBehaviour
         startTimer = true;
         //set the index to the proper value to start
         createdBTNIndex = 0;
+        //set the timer edning check to false
         timeisDone = false;
     }
 
@@ -420,6 +398,9 @@ public class QTEHandler : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// in the event of a tie in a race check the QTE correct presses to determine most succesful player
+    /// </summary>
     public void checkTieRace()
     {
         if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player1)
@@ -432,6 +413,9 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// this checks the current state of your evalutation of qte in real time so that the UI counter can keep changing in real time
+    /// </summary>
     public void EvaluateQTEResultsInRealTime()
     {
         QTEPercent = 0;
@@ -528,6 +512,9 @@ public class QTEHandler : MonoBehaviour
         animator.ResetTrigger("QTE6");
     }
 
+    /// <summary>
+    /// set the time for each players finished QTE
+    /// </summary>
     public void SetTimeValue()
     {
         if (gameObject.GetComponent<PlayerManager>() == GameManager.Instance.player1)

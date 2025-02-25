@@ -485,7 +485,7 @@ public class PlayerState : AdvancedFSM
     {
         player.playerInput.SwitchCurrentActionMap("QTE");
         yield return new WaitForSeconds(1f);
-        player.gameObject.GetComponent<QTEHandler>().Create(currentQTEAmount, player);
+        player.gameObject.GetComponent<QTEHandler>().CreateSequence(currentQTEAmount, player);
     }
 
     public void MoveCard(GameObject go, Vector3 startPos)
