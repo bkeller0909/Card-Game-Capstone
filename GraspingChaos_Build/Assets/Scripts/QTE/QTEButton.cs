@@ -11,35 +11,47 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class QTEButton : MonoBehaviour
 {
-    // If you wish to test the new input actions I made for you. Un-comment everything and try it out.
-    // ABXY are WASD on the keyboard and the DPad is the arrow keys. 
-
+    //player manager reference
     [Tooltip("player using the QTE")]
     public PlayerManager playerQTE;
+
     //needed for actionMap
     private InputActionMap actionQTE;
+
+    //reference for action map indentification
     [Tooltip("needed to set/find action map")]
     [SerializeField] private InputActionAsset inputActionAsset;
-    //colors for visual representation only
+
+    //colors for visual representation only (Temporary)
     private Color correct = Color.green;
     private Color incorrect = Color.red;
+
+    //check if a button was pressed
     [Tooltip("check to verify if the button was pressed")]
     public bool pressed = false;
+
+    //check if the pressed button was correct
     [Tooltip("Check to verify if the input was correct")]
     public bool correctPress = false;
+
+    //assigned keycode for button correction
     [Tooltip("Assigned value for identifiyng the button")]
     public KeyCode AssignedBTN;
 
-
+    //reference for controller input
     [SerializeField] private InputHandler playerInput;
+
+    //controller input check to avoid multiple input
     public bool wasPressed = false;
 
+    //animator reference for Hand animations
     Animator animator;
 
     private void Awake()
     {
         //set the proper action map on awake as a precuasing, might not be working 100% of time, requires further testing with action maps
         actionQTE = inputActionAsset.FindActionMap("QTE", true);
+        //find the animator for the hands in the player object
         animator = playerQTE.GetComponentInChildren<Animator>();
     }
 
@@ -52,13 +64,11 @@ public class QTEButton : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //check function for possible input
-        //BTNCheck();
-
+        //check if a valid input is being pressed
         if (IsActionPressed())
         {
+            //run the check to see what input was the one checked and ensure that it was a correct input or incorrect
             BTNCheck();
-
         }
     }
 
@@ -88,25 +98,25 @@ public class QTEButton : MonoBehaviour
     {
         if (playerQTE.playerInput.actions["South"].WasPressedThisFrame()) //playerInput.Abtn
         {
-            if (!wasPressed)
+            if (!wasPressed) // check to ensure double input wont happen
             {
-                wasPressed = true;
-                if (AssignedBTN == KeyCode.A)
+                wasPressed = true; //set back to firt input
+                if (AssignedBTN == KeyCode.A)  //if checks to see what input on keycode is correct
                 {
-                    pressed = true;
-                    correctPress = true;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                    ResetTriggers();
-                    animator.SetTrigger("QTE1");
+                    pressed = true; //set the button to pressed
+                    correctPress = true; //set it to correct input
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true); //activate the backdrop 
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct; //set the back drop to the corect color
+                    ResetTriggers(); //reset animation triggers
+                    animator.SetTrigger("QTE1"); //play animation for that input
                 }
                 else
                 {
-                    pressed = true;
-                    correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
+                    pressed = true; //set the button to pressed
+                    correctPress = false; //set the button to incorrect input
+                    gameObject.transform.GetChild(0).gameObject.SetActive(true); //activate the backdrop 
+                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect; //set the back drop to the incorrect color
+                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow) //temporary check for arrow image backdrop
                     {
                         gameObject.transform.GetChild(0).gameObject.SetActive(false);
                         gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -351,6 +361,7 @@ public class QTEButton : MonoBehaviour
     }
     void ResetTriggers()
     {
+        //reset animation triggers
         animator.ResetTrigger("IDLE");
         animator.ResetTrigger("QTE1");
         animator.ResetTrigger("QTE2");

@@ -1,5 +1,16 @@
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author:       Keller
+//  Co-Auther:   
+//  Title:        AnimationHandler
+//  Date Created: 02/20/2025
+//  Instance:     No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Plays an animation for scenes
+/// </summary>
 public class AnimationHandler : MonoBehaviour
 {
     [SerializeField] Animator animator;
@@ -8,6 +19,6 @@ public class AnimationHandler : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool("openBook", openBook);
+        animator.SetBool("openBook", openBook); // activates the book open animation
     }
 }
