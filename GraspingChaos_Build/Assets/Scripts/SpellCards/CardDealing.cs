@@ -448,16 +448,4 @@ public class CardDealing : MonoBehaviour
 
         return null; // no card selected
     }
-
-    // TODO - make a constraint so that when the first round
-    // players must have at least 2 attack cards before they reach the max of 5 cards in their hand
-
-    /// <summary>
-    /// Round one constraint
-    /// </summary>
-    /// <param name="player">player to recieve the card</param>
-    //public void CardTypeConstraints(PlayerManager player)
-    //{
-    //    if(player.spellHand.amtOfSpellsInHand < 5 && player.)
-    //}
 }
