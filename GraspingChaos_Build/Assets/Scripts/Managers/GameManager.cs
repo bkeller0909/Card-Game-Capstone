@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour
     public string ln_StateTesting;
     #endregion
 
+    [Tooltip("Are the QTE's race based")]
+    public bool racedBasedQTE = false;
+
     [Tooltip("This is whether the actual duel has started")]
     public bool hasDuelStarted;
 

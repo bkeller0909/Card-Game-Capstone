@@ -63,7 +63,8 @@ public class QTEState : FSMState
 
         if (player.gameObject.GetComponent<QTEHandler>().timeisDone == true && enemy.gameObject.GetComponent<QTEHandler>().timeisDone == true)
         {
-            if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.Tie)
+
+            if (GameManager.Instance.whoesOnFirst[GameManager.Instance.spellIndex] == Decider.Tie || GameManager.Instance.racedBasedQTE)
             {
                 if (GameManager.Instance.P1QTESpeed > GameManager.Instance.P2QTESpeed)
                 {
