@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -73,7 +72,7 @@ public class SpellCard : MonoBehaviour
 
     //QTE evaluation function
 
-    public void TestSpellReleaseQTE()
+    /*public void TestSpellReleaseQTE()
     {
         if (Input.GetKeyDown(debugTester))
         {
@@ -86,7 +85,7 @@ public class SpellCard : MonoBehaviour
         //TestSpellReleaseQTE();
     }
 
-    IEnumerator testing()
+    *//*IEnumerator testing()
     {
         yield return new WaitForSeconds(0);
         //QTEManager.Instance.CreateV2(qteAmount, GameManager.Instance.currentCaster);
@@ -98,6 +97,6 @@ public class SpellCard : MonoBehaviour
         {
             p2.GetComponent<QTEHandler>().Create(qteAmount, p2.GetComponent<PlayerManager>());
         }
-    }
+    }*/
 
 }

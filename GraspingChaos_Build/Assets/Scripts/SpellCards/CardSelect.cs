@@ -34,13 +34,7 @@ public class CardSelect : MonoBehaviour
     public bool isHovered = false;
     public bool isSelected = false;
 
-
     public bool alreadySelected = false;
-
-    private void Awake()
-    {
-        //DontDestroyOnLoad(gameObject);
-    }
 
     void Start()
     {
@@ -86,6 +80,10 @@ public class CardSelect : MonoBehaviour
             yield return null;
         }
     }
+
+    /// <summary>
+    /// When a card is hovered.
+    /// </summary>
     public void OnHoverCard()
     {
         // card is hovered
@@ -94,6 +92,9 @@ public class CardSelect : MonoBehaviour
         CardGlow(isHovered);
     }
 
+    /// <summary>
+    /// When a card is no longer hovered.
+    /// </summary>
     public void OffHoverCard()
     {
         // card is no longer hovered
@@ -102,6 +103,9 @@ public class CardSelect : MonoBehaviour
         CardGlow(isHovered);
     }
 
+    /// <summary>
+    /// When a card is selected.
+    /// </summary>
     public void SelectCard()
     {
         isHovered = false;
@@ -112,6 +116,9 @@ public class CardSelect : MonoBehaviour
         CardGlow(isSelected);
     }
 
+    /// <summary>
+    /// When a card is no longer selected.
+    /// </summary>
     public void DeselectCard()
     {
         isHovered = false;
@@ -121,16 +128,12 @@ public class CardSelect : MonoBehaviour
         CardGlow(isSelected);
     }
 
+    /// <summary>
+    /// Sets the rendered border of a card.
+    /// </summary>
+    /// <param name="glow">Turns the renderer on or off based on the passed in bool.</param>
     public void CardGlow(bool glow)
     {
         cardGlowRender.enabled = glow;
-    }
-
-    public void OnDisable()
-    {
-        isHovered = false;
-        isSelected = false;
-        cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
-        CardGlow(isSelected);
     }
 }
