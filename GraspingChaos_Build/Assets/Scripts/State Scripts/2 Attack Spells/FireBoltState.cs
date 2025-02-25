@@ -10,8 +10,11 @@
 /// </summary>
 public class FireBoltState : FSMState
 {
+    //refernece for player state
     PlayerState playerState;
+    //reference for what player it is based in int values
     private int playerIndex;
+    //string for next state
     private string nextState;
     //Constructor
     public FireBoltState(PlayerState pS)
@@ -23,8 +26,10 @@ public class FireBoltState : FSMState
 
     public override void EnterStateInit()
     {
+        //get qte amount of the speel
         playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].qteAmount;
         nextState = "";
+        //find the player and assign it to our index
         if (playerState.player == GameManager.Instance.player1)
         {
             playerIndex = (int)PlayerType.PLAYER1;
@@ -38,6 +43,7 @@ public class FireBoltState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
+        //switch states if set to
         if (nextState == "Deciding")
         {
             playerState.PerformTransition(Transition.NeedDecision);
@@ -52,11 +58,13 @@ public class FireBoltState : FSMState
     {
         if (!playerState.finishedCurrentQTE)
         {
+            //create the qte sequence
             playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.FireBolt].qteAmount;
             nextState = "QTE";
         }
         else
         {
+            //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
@@ -80,7 +88,7 @@ public class FireBoltState : FSMState
                 //check if i am the second spell but the first cast
                 GameManager.Instance.particleP1Done = true;
                 //nextState = "Deciding";
-            }
+            }//check if the player is player 2, if the particle has not been played and if the particle for player 2 is done
             else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();

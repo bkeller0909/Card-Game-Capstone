@@ -13,7 +13,6 @@ using UnityEngine;
 /// <summary>
 /// This script can only be put on a camera and will move the camera to set points in the "CamPos" list through functions called on player inputs
 /// </summary>
-
 [RequireComponent(typeof(Camera))]
 public class CameraPositionChange : MonoBehaviour
 {
@@ -40,13 +39,9 @@ public class CameraPositionChange : MonoBehaviour
         playerInput = GetComponentInParent<InputHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Gets the player input
-        //GetInput();
-    }
-
+    /// <summary>
+    /// Gets the player controls to change the camera position through the array
+    /// </summary>
     public void GetInput()
     {
         //Checks if the player can input
@@ -78,6 +73,10 @@ public class CameraPositionChange : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Forces the camera position to be changed
+    /// </summary>
+    /// <param name="currentCamera">Index of the array for the current camera position</param>
     public void GetInputForced(int currentCamera)
     {
         if (canInput)

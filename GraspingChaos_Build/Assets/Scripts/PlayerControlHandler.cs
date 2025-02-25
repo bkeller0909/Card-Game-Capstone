@@ -1,5 +1,16 @@
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author: Sebastian
+//  Co-Author: Keller (comments)
+//  Title: PlayerControlHandler
+//  Date Created: 02/11/2025
+//  Instance: No
+//-----------------------------------------------------------------
+
+/// <summary>
+/// Attached to the Player prefab. This reads all of the control inputs and sets all of the actions they perform.
+/// </summary>
 public class PlayerControlHandler : MonoBehaviour
 {
     PlayerManager player;
@@ -21,9 +32,12 @@ public class PlayerControlHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check that we are in the choosing spell state.
+        // This is the state of the game where we are using all 
+        // of the PLAYER and CARD controls
         if (stateHandler.CurrentState.ID == FSMStateID.ChoosingSpells)
         {
-            //Selecting Finger (Player action Map)
+            #region Selecing Finger Controls
             if (player.playerOneHands && player == GameManager.Instance.player1)
             {
                 if (player.playerInput.actions["FingerLeft"].WasPressedThisFrame())
@@ -79,46 +93,45 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (player.playerInput.actions["SelectFinger"].WasPressedThisFrame())
             {
-                //need function for setting or storing finger selected
-                pickFinger.SelectFinger();
-                stateHandler.FingerHasBeenSelected();
-                player.playerInput.SwitchCurrentActionMap("Card");
-                changeCameras.GetInputForced(1);
-                playerInput.selectFinger = false;
-                playerInput.Abtn = false;
-                pickFinger.DeselectOnPick();
+                // CONTROLS
+                pickFinger.SelectFinger();                          // selects the finger
+                stateHandler.FingerHasBeenSelected();               // changes state to the finger is selected
+                player.playerInput.SwitchCurrentActionMap("Card");  // switches controls to card controls
+                changeCameras.GetInputForced(0);                    // changes camera back to default
+                playerInput.selectFinger = false;                   // no longer selecting a finger
+                playerInput.Abtn = false;                           // idk
+                pickFinger.DeselectOnPick();                        // highlight of the finger is removed once selected
             }
 
             if (player.playerInput.actions["Cancel"].WasPressedThisFrame())
             {
-                ////deselect card
-                //player.playerInput.SwitchCurrentActionMap("Card");
-                //playerInput.cancelFingerSelect = false;
-                //playerInput.Bbtn = false;
-            }
 
-            //Selecting Card (Card action Map)
+            }
+            #endregion // Selecting Finger Controls
+
+            #region Navigating Cards Controls
+            // Navigate through your hand of cards to the left
             if (player.playerInput.actions["NavCardLeft"].WasPressedThisFrame())
             {
                 pickCards.MoveSelection(-1);
                 playerInput.cardMoveLeft = false;
             }
+            // navigate to the right
             else if (player.playerInput.actions["NavCardRight"].WasPressedThisFrame())
             {
                 pickCards.MoveSelection(1);
                 playerInput.cardMoveRight = false;
             }
 
+            // Selecting a card
             if (player.playerInput.actions["Select"].WasPressedThisFrame())
             {
-                pickCards.SelectedCard();
+                pickCards.SelectedCard();   // the card that is hovered is now selected
                 if (ActiveSpellCards.Instance.spellCards[(int)pickCards.whatCard.spellName].manaCost <= player.Mana)
                 {
                     if (pickCards.checkSelectedCardStatus())
                     {
                         stateHandler.CardHasBeenSelected();
-                        //player.playerInput.SwitchCurrentActionMap("Player");
-                        //changeCameras.GetInputForced(2);
                         playerInput.selectCard = false;
                         playerInput.Abtn = false;
                     }
@@ -129,14 +142,15 @@ public class PlayerControlHandler : MonoBehaviour
                 }
             }
 
+            // Deselect the selected card
             if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
-                pickCards.DeselectCard();
+                pickCards.DeselectCard();                   // sets the card from selected to hovered
                 if (pickCards.checkDeselectedCardStatus())
                 {
-                    stateHandler.CardHasBeenDeselected();
-                    playerInput.deselectCard = false;
-                    playerInput.Bbtn = false;
+                    stateHandler.CardHasBeenDeselected();   // changes the state of the card to deselected
+                    playerInput.deselectCard = false;       // deselect card button is now false after being pressed
+                    playerInput.Bbtn = false;               // the button used is now false after being pressed
                 }
                 else
                 {
@@ -144,18 +158,12 @@ public class PlayerControlHandler : MonoBehaviour
                 }
             }
 
-            //if (playerInput.finishSelection)
-            //{
-            //    stateHandler.ReadyToCast();
-            //    playerInput.finishSelection = false;
-            //    index++;
-            //}
-
+            // set your selection of cards
             if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
             {
-                stateHandler.ReadyToCast();
-                changeCameras.GetInputForced(0);
-                playerInput.finishSelection = false;
+                stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
+                changeCameras.GetInputForced(0);        // sets the camera position back to default
+                playerInput.finishSelection = false;    // finish selection input is now false after being pressed
                 playerInput.Xbtn = false;
                 foreach (CardSelect card in pickCards.selectedCards)
                 {
@@ -164,17 +172,19 @@ public class PlayerControlHandler : MonoBehaviour
                 index++;
                 GameManager.Instance.firstRoundCheck = false;
             }
-
+            #endregion // Card Select Controls
 
             //Camera Movement
             changeCameras.GetInput();
-
         }
 
+        // Once the pause button is pressed just load us back to the main menu
         if (player.playerInput.actions["Pause"].triggered)
         {
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
+
+        // Kill Switch for killing player 2
         if (Input.GetKeyDown(KeyCode.Z))
         {
             GameManager.Instance.player2.entireHP = 0;

@@ -1,4 +1,3 @@
-/// <summary>
 //----------------------------------------------------------------
 //  OG Author:     Cooper
 //  other Authors: Sebastian
@@ -7,14 +6,22 @@
 //  Purpose:       Spell State for Static Blast spell
 //  Instance?      no
 //-----------------------------------------------------------------
+/// <summary>
 /// </summary>
 public class StaticBlastState : FSMState
 {
+    //reference for player state
     PlayerState playerState;
+    //reference in int value of the players
     private int playerIndex;
+    //string check for the next state
     private string nextState;
+
+    //variables to store adjacent fingers
     PlayerFingers adjacentFinger1;
     PlayerFingers adjacentFinger2;
+
+    //damage side randomizer
     int randomSide;
     //Constructor
     public StaticBlastState(PlayerState pS)
@@ -27,8 +34,11 @@ public class StaticBlastState : FSMState
 
     public override void EnterStateInit()
     {
+        //get the QTE Amount of the spell
         playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast].qteAmount;
+        //reest the string of next state
         nextState = "";
+        //find player and assign values
         if (playerState.player == GameManager.Instance.player1)
         {
             playerIndex = (int)PlayerType.PLAYER1;
@@ -42,6 +52,7 @@ public class StaticBlastState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
+        //check the string for next state and change states if needed
         if (nextState == "Deciding")
         {
             playerState.PerformTransition(Transition.NeedDecision);
@@ -54,15 +65,20 @@ public class StaticBlastState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        //if you still havent done your qte then go in here
         if (!playerState.finishedCurrentQTE)
         {
+            //create the QTE Sequence 
             playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast].qteAmount;
+            //Send to QTE state
             nextState = "QTE";
         }
         else
         {
+            //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
+                //runs the QTE evaluation to see if a state needs to play a particle effect
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
