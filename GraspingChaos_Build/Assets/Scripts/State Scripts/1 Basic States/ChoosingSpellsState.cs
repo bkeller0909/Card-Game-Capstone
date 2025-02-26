@@ -49,6 +49,8 @@ public class ChoosingSpellsState : FSMState
         //If player one has entered this state then increase the amount of mana gained per a turn and what round it is
         if (playerState.player == GameManager.Instance.player1)
         {
+            // TODO - change this later when audio stuff is fixed
+            // MusicManager.Instance.MusicLowHealth();     // if any player's health is 10 or lower play intense music
             GameManager.Instance.whatRound++;
             GameManager.Instance.manaPerTurn++;
         }

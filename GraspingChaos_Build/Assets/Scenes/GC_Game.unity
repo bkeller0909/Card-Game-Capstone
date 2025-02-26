@@ -5099,6 +5099,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!114 &1240506355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6826,7 +6827,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 425495292363631152, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3758168651206314053, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
@@ -10298,7 +10300,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 425495292363631152, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3758168651206314053, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,

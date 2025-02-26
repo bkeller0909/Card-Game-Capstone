@@ -674,8 +674,6 @@ MonoBehaviour:
   ln_Duelscene: GC_Game
   ln_IntroScene: Intro
   loadingScreen: {fileID: 679422703}
-  ln_ProtoArtShowCase: Proto_ArtShowCase
-  ln_StateTesting: Proto_FSM
   racedBasedQTE: 1
   hasDuelStarted: 0
   startingMana: 0
@@ -698,7 +696,6 @@ MonoBehaviour:
   whatRound: 0
   whoesOnFirst: 
   particleWait: 
-  testingCurrentP1: 1
   P1QTESpeed: 0
   P2QTESpeed: 0
   cardPool: {fileID: 0}
@@ -10030,7 +10027,7 @@ GameObject:
   - component: {fileID: 1481140980}
   - component: {fileID: 1481140983}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: MusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10048,8 +10045,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22b82a34a4b88f46ad024e6cf927962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundObject: {fileID: 2180297512485002473, guid: 9fb65dba8afc93949a4567e8d4cce90f,
-    type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 4494b96b3ce661a49aa9f93244b6e2f9, type: 3}
+  gameMusic: {fileID: 8300000, guid: 689b306b6e2175e46b6cbf9a1bb43659, type: 3}
+  tutorialMusic: {fileID: 0}
+  lowHealthMusic: {fileID: 8300000, guid: b4f2d8f79d9385a4dba44a0a2bc48e58, type: 3}
+  currentTrack: {fileID: 1481140981}
+  newTrack: {fileID: 1481140981}
 --- !u!82 &1481140981
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10059,12 +10060,13 @@ AudioSource:
   m_GameObject: {fileID: 1481140979}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7713890347372574069, guid: 7b0d03b39e9b68f4cbfb465449d80127,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
