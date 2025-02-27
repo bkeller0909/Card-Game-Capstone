@@ -64,17 +64,17 @@ public class IciclesState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger1 = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger1 = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger1 = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
                 }
                 GameManager.Instance.particleP1Done = true;
@@ -84,17 +84,17 @@ public class IciclesState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger1 = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger1 = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    randomFinger1 = player.GetRandomFinger();
+                    randomFinger1 = enemy.GetRandomFinger();
                     ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
                 }
                 GameManager.Instance.particleP2Done = true;
@@ -111,13 +111,13 @@ public class IciclesState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     enemy.health.DamageFinger(randomFinger1);
-                    randomFinger2 = player.GetRandomFinger();
+                    randomFinger2 = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger2);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     enemy.health.DamageFinger(randomFinger1);
-                    randomFinger2 = player.GetRandomFinger();
+                    randomFinger2 = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger2);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
@@ -146,13 +146,13 @@ public class IciclesState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     enemy.health.DamageFinger(randomFinger1);
-                    randomFinger2 = player.GetRandomFinger();
+                    randomFinger2 = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger2);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     enemy.health.DamageFinger(randomFinger1);
-                    randomFinger2 = player.GetRandomFinger();
+                    randomFinger2 = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger2);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)

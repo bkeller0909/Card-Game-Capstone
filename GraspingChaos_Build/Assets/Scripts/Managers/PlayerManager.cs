@@ -173,7 +173,10 @@ public class PlayerManager : MonoBehaviour
     public PlayerFingers GetRandomFinger()
     {
         int rand = 0;
-        //rand = UnityEngine.Random.Range(0, fingers.Count);
+        if(healthyFingers.Count != 0)
+        {
+            healthyFingers.Clear();
+        }
 
         for (int i = 0; i < fingers.Count; i++)
         {

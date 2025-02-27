@@ -73,7 +73,7 @@ public class LefteousEnvyState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -94,7 +94,7 @@ public class LefteousEnvyState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player);
                 }
                 GameManager.Instance.particleP2Done = true;
             }

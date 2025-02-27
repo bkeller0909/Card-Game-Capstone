@@ -64,7 +64,6 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
-                    //player.fingers[(int)player.GetRandomFinger()].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow].damageValue;
                     PlayerFingers randomFinger = player.GetRandomFinger();
                     player.health.DamageFinger(randomFinger);
                 }
@@ -72,7 +71,6 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
-                    //player.fingers[(int)player.GetRandomFinger()].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow].damageValue;
                     PlayerFingers randomFinger = player.GetRandomFinger();
                     player.health.DamageFinger(randomFinger);
                 }
@@ -93,11 +91,15 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+                    PlayerFingers randomFinger = player.GetRandomFinger();
+                    player.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+                    PlayerFingers randomFinger = player.GetRandomFinger();
+                    player.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -115,17 +117,7 @@ public class RockThrowState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
-                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
-                {
-                    PlayerFingers randomFinger = player.GetRandomFinger();
-                    player.health.DamageFinger(randomFinger);
-                }
-                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
-                {
-                    PlayerFingers randomFinger = player.GetRandomFinger();
-                    player.health.DamageFinger(randomFinger);
-                }
-                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
@@ -139,17 +131,7 @@ public class RockThrowState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
-                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
-                {
-                    PlayerFingers randomFinger = player.GetRandomFinger();
-                    player.health.DamageFinger(randomFinger);
-                }
-                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
-                {
-                    PlayerFingers randomFinger = player.GetRandomFinger();
-                    player.health.DamageFinger(randomFinger);
-                }
-                else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }

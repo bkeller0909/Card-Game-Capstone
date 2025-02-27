@@ -73,21 +73,7 @@ public class RighteousEnvyState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
-                    int totalDamage = player.GetRightHandFingerDeath();
-                    int partDamage = totalDamage / 2;
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
-                    for (int i = 0; i < partDamage; i++)
-                    {
-                        enemy.health.DamageFinger(randomFinger);
-                    }
-
-                    partDamage = totalDamage - partDamage;
-                    randomFinger = enemy.GetRandomFinger();
-                    for (int i = 0; i < partDamage; i++)
-                    {
-                        enemy.health.DamageFinger(randomFinger);
-                    }
+                    ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, PlayerFingers.RH_Middle, player);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -108,7 +94,7 @@ public class RighteousEnvyState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, PlayerFingers.RH_Middle, player);
                 }
                 GameManager.Instance.particleP2Done = true;
             }

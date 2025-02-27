@@ -115,7 +115,7 @@ public class QuakeState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers randomFinger = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger);
-                    randomFinger = player.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
@@ -150,7 +150,7 @@ public class QuakeState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers randomFinger = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger);
-                    randomFinger = player.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFinger();
                     enemy.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
