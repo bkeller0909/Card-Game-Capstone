@@ -136,4 +136,13 @@ public class CardSelect : MonoBehaviour
     {
         cardGlowRender.enabled = glow;
     }
+
+    //DONT DELEATE THIS KELLER THIS HELPS RESET THE VALUES OF THE CARDS WHEN THEY GO BACK INTO THE OBJECT POOL
+    public void OnDisable()
+    {
+        isHovered = false;
+        isSelected = false;
+        cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
+        CardGlow(false);
+    }
 }
