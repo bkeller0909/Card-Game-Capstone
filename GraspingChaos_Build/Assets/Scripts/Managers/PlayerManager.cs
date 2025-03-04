@@ -34,6 +34,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public PlayerType playerNum;
     [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
     public List<Fingers> fingers;
+    [Tooltip("This is the fingers the other player sees")]
+    public List<Fingers> visualFingers;
 
     [Tooltip("What number of player they are")]
     public List<VisualEffect> spellEffects;
@@ -69,6 +71,8 @@ public class PlayerManager : MonoBehaviour
     public ManaVisual manaVisual;
     public TMP_Text manaText;
 
+    public HandsHandler skullHands, stagHands;
+
     public List<Fingers> healthyFingers;
 
     public CameraPositionChange playerCameras;
@@ -83,6 +87,8 @@ public class PlayerManager : MonoBehaviour
         {
             GameManager.Instance.player2 = this;
         }
+        fingers = new List<Fingers>();
+        visualFingers = new List<Fingers>();
         healthyFingers = new List<Fingers>();
     }
 
@@ -91,6 +97,30 @@ public class PlayerManager : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         gamepad = playerInput.GetDevice<Gamepad>();
+
+        if (playerNum == PlayerType.PLAYER1)
+        {
+            foreach(Fingers finger in skullHands.fingers)
+            {
+                fingers.Add(finger);
+            }
+            foreach (Fingers finger in stagHands.fingers)
+            {
+                visualFingers.Add(finger);
+            }
+        }
+        else if (playerNum == PlayerType.PLAYER2)
+        {
+            foreach (Fingers finger in stagHands.fingers)
+            {
+                fingers.Add(finger);
+            }
+            foreach (Fingers finger in skullHands.fingers)
+            {
+                visualFingers.Add(finger);
+            }
+        }
+
         spellHand = new SpellHand();
         health = new PlayerHealth();
         health.SetUpHealth(this);

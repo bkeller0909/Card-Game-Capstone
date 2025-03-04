@@ -25,8 +25,8 @@ public enum PlayerFingers
 
 public enum PlayerHands
 {
-    LeftHand = 0,
-    RightHand = 1
+    SkullHands = 0,
+    StagHands
 }
 
 public enum SpellType
