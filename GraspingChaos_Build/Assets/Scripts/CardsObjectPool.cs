@@ -111,10 +111,14 @@ public class CardsObjectPool : MonoBehaviour
                 if (player == GameManager.Instance.player1)
                 {
                     pooledCards.transform.eulerAngles = new Vector3(rightBend, p1rotation, transform.eulerAngles.z);
+                    //7 is layer skull
+                    pooledCards.transform.GetChild(0).gameObject.layer = 7;
                 }
                 else if (player == GameManager.Instance.player2)
                 {
                     pooledCards.transform.eulerAngles = new Vector3(rightBend, p2rotation, transform.eulerAngles.z);
+                    //6 is layer stag
+                    pooledCards.transform.GetChild(0).gameObject.layer = 6;
                 }
                 pooledCards.SetActive(true);
                 for (int i = 0; i < cardSlots.emptySlots.Length; i++)
