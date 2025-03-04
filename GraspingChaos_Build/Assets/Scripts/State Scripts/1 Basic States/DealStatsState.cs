@@ -106,6 +106,15 @@ public class DealStatsState : FSMState
                 player.TrackDamage();
             }
             player.DamageTrackedPerTurn = 0;
+            if(player.PlayedEchoingMana)
+            {
+                player.PlayedEchoingMana = false;
+                player.Mana += enemy.TrackMana();
+                if(player.Mana >= 12)
+                {
+                    player.Mana = 12;
+                }
+            }
         }
 
         // If the game is scripted skip this if it isint go in
