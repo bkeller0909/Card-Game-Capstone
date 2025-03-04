@@ -41,6 +41,7 @@ public class LifeDrainState : FSMState
     {
         if (nextState == "Deciding")
         {
+            GameManager.Instance.spellInProgress = false;
             playerState.PerformTransition(Transition.NeedDecision);
         }
         else if (nextState == "QTE")
@@ -58,6 +59,7 @@ public class LifeDrainState : FSMState
         }
         else
         {
+            GameManager.Instance.spellInProgress = true;
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
