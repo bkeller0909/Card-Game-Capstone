@@ -68,6 +68,7 @@ public class PlayerHealth : MonoBehaviour
         {
             playerHealthStats[(int)whatFinger] -= 1;
             player.fingers[(int)whatFinger].removeCurrentSegment();
+            player.visualFingers[(int)whatFinger].removeCurrentSegment();
             player.entireHP--;
             player.DamageTrackedPerTurn++;
         }
@@ -90,6 +91,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
+                player.visualFingers[(int)whatFinger].addSegment();
                 player.entireHP++;
             }
             else if ((playerHealthStats[(int)whatFinger] == 0))
@@ -98,6 +100,7 @@ public class PlayerHealth : MonoBehaviour
                 //however for current debuggin I will allow set up healing for this state also
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
+                player.visualFingers[(int)whatFinger].addSegment();
                 player.entireHP++;
             }
             else if ((playerHealthStats[(int)whatFinger] < 0))
@@ -116,6 +119,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
+                player.visualFingers[(int)whatFinger].addSegment();
                 player.entireHP++;
             }
             else if ((playerHealthStats[(int)whatFinger] == 0))
@@ -124,6 +128,7 @@ public class PlayerHealth : MonoBehaviour
                 //however for current debuggin I will allow set up healing for this state also
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
+                player.visualFingers[(int)whatFinger].addSegment();
                 player.entireHP++;
             }
             else if ((playerHealthStats[(int)whatFinger] < 0))

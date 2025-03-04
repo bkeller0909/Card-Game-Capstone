@@ -90,7 +90,10 @@ public class QTEHandler : MonoBehaviour
     #endregion // debug Values
 
     //animator reference
-    Animator animator;
+    Animator Player2Anim;
+    Animator Player1Anim;
+    Animator Player1Fake;
+    Animator Player2Fake;
 
     public bool mashing;
 
@@ -105,7 +108,11 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = -1;
         //set the amount of qte pressed correctly to 0 since you havent yet done a qte
         QTECounter = 0;
-        animator = gameObject.GetComponentInChildren<Animator>();
+        //animator = gameObject.GetComponentInChildren<Animator>();
+        Player1Anim = p1.stagHands.GetComponent<Animator>();
+        Player1Fake = p1.skullHands.GetComponent<Animator>();
+        Player2Anim = p2.stagHands.GetComponent<Animator>();
+        Player2Fake = p2.skullHands.GetComponent<Animator>();
         counterObject.SetActive(false);
     }
 
@@ -129,7 +136,10 @@ public class QTEHandler : MonoBehaviour
                 startTimer = false;
                 DisableQTEButtonsTimer();
                 QTEHasStarted = false;
-                animator.SetTrigger("IDLE");
+                Player1Anim.SetTrigger("IDLE");
+                Player2Anim.SetTrigger("IDLE");
+                Player1Fake.SetTrigger("IDLE");
+                Player2Fake.SetTrigger("IDLE");
                 //EvauateQTEResults();
                 timeisDone = true;
                 //checkTieRace();
@@ -585,13 +595,10 @@ public class QTEHandler : MonoBehaviour
         CreatedButtons.Clear();
         //set the index back to default
         createdBTNIndex = -1;
-        animator.ResetTrigger("IDLE");
-        animator.ResetTrigger("QTE1");
-        animator.ResetTrigger("QTE2");
-        animator.ResetTrigger("QTE3");
-        animator.ResetTrigger("QTE4");
-        animator.ResetTrigger("QTE5");
-        animator.ResetTrigger("QTE6");
+        ResetTriggers(Player1Anim);
+        ResetTriggers(Player2Anim);
+        ResetTriggers(Player1Fake);
+        ResetTriggers(Player2Fake);
     }
 
     /// <summary>
@@ -636,5 +643,16 @@ public class QTEHandler : MonoBehaviour
         CreatedButtons.Clear();
         //set the index back to default
         createdBTNIndex = -1;
+    }
+
+    private void ResetTriggers(Animator whatYouNeed)
+    {
+        whatYouNeed.ResetTrigger("IDLE");
+        whatYouNeed.ResetTrigger("QTE1");
+        whatYouNeed.ResetTrigger("QTE2");
+        whatYouNeed.ResetTrigger("QTE3");
+        whatYouNeed.ResetTrigger("QTE4");
+        whatYouNeed.ResetTrigger("QTE5");
+        whatYouNeed.ResetTrigger("QTE6");
     }
 }

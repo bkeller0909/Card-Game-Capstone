@@ -121,6 +121,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        gameObject.GetComponent<SelectableFinger>().SetUpAuras();
+
         spellHand = new SpellHand();
         health = new PlayerHealth();
         health.SetUpHealth(this);

@@ -158,6 +158,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector, Tooltip("Temp Canvases for telling who one")]
     public GameObject tempEndScreenSkullWins1, tempEndScreenSkullWins2, tempEndScreenStagWins1, tempEndScreenStagWins2;
 
+    [HideInInspector, Tooltip("Player 1's aura color")]
+    public Color defaultColorP1;
+    [HideInInspector, Tooltip("Player 1's aura color")]
+    public Color defaultColorP2;
+
     //GameDebugger variable, testing only but important it is not removed yet
     public bool checkAvailableCards = false;
 

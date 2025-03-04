@@ -45,14 +45,27 @@ public class QTEButton : MonoBehaviour
     public bool wasPressed = false;
 
     //animator reference for Hand animations
-    Animator animator;
+    Animator playerAnimator, enemyAnimator;
 
     private void Awake()
     {
         //set the proper action map on awake as a precuasing, might not be working 100% of time, requires further testing with action maps
         actionQTE = inputActionAsset.FindActionMap("QTE", true);
+    }
+
+    private void Start()
+    {
         //find the animator for the hands in the player object
-        animator = playerQTE.GetComponentInChildren<Animator>();
+        if (playerQTE.playerNum == PlayerType.PLAYER1)
+        {
+            playerAnimator = playerQTE.skullHands.GetComponent<Animator>();
+            enemyAnimator = playerQTE.stagHands.GetComponent<Animator>();
+        }
+        else if (playerQTE.playerNum == PlayerType.PLAYER2)
+        {
+            playerAnimator = playerQTE.stagHands.GetComponent<Animator>();
+            enemyAnimator = playerQTE.skullHands.GetComponent<Animator>();
+        }
     }
 
     /// <summary>
@@ -108,7 +121,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(0).gameObject.SetActive(true); //activate the backdrop 
                     gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct; //set the back drop to the corect color
                     ResetTriggers(); //reset animation triggers
-                    animator.SetTrigger("QTE1"); //play animation for that input
+                    playerAnimator.SetTrigger("QTE1"); //play animation for that input
+                    enemyAnimator.SetTrigger("QTE1"); //play animation for that input
                 }
                 else
                 {
@@ -139,7 +153,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE2");
+                    playerAnimator.SetTrigger("QTE2");
+                    enemyAnimator.SetTrigger("QTE2");
                 }
                 else
                 {
@@ -170,7 +185,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE3");
+                    playerAnimator.SetTrigger("QTE3");
+                    enemyAnimator.SetTrigger("QTE3");
                 }
                 else
                 {
@@ -201,7 +217,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE4");
+                    playerAnimator.SetTrigger("QTE4");
+                    enemyAnimator.SetTrigger("QTE4");
                 }
                 else
                 {
@@ -234,7 +251,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE5");
+                    playerAnimator.SetTrigger("QTE5");
+                    enemyAnimator.SetTrigger("QTE5");
                 }
                 else
                 {
@@ -267,7 +285,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE6");
+                    playerAnimator.SetTrigger("QTE6");
+                    enemyAnimator.SetTrigger("QTE6");
                 }
                 else
                 {
@@ -300,7 +319,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE2");
+                    playerAnimator.SetTrigger("QTE2");
+                    enemyAnimator.SetTrigger("QTE2");
                 }
                 else
                 {
@@ -333,7 +353,8 @@ public class QTEButton : MonoBehaviour
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
                     ResetTriggers();
-                    animator.SetTrigger("QTE1");
+                    playerAnimator.SetTrigger("QTE1");
+                    enemyAnimator.SetTrigger("QTE1");
                 }
                 else
                 {
@@ -362,12 +383,20 @@ public class QTEButton : MonoBehaviour
     void ResetTriggers()
     {
         //reset animation triggers
-        animator.ResetTrigger("IDLE");
-        animator.ResetTrigger("QTE1");
-        animator.ResetTrigger("QTE2");
-        animator.ResetTrigger("QTE3");
-        animator.ResetTrigger("QTE4");
-        animator.ResetTrigger("QTE5");
-        animator.ResetTrigger("QTE6");
+        playerAnimator.ResetTrigger("IDLE");
+        playerAnimator.ResetTrigger("QTE1");
+        playerAnimator.ResetTrigger("QTE2");
+        playerAnimator.ResetTrigger("QTE3");
+        playerAnimator.ResetTrigger("QTE4");
+        playerAnimator.ResetTrigger("QTE5");
+        playerAnimator.ResetTrigger("QTE6");
+
+        enemyAnimator.ResetTrigger("IDLE");
+        enemyAnimator.ResetTrigger("QTE1");
+        enemyAnimator.ResetTrigger("QTE2");
+        enemyAnimator.ResetTrigger("QTE3");
+        enemyAnimator.ResetTrigger("QTE4");
+        enemyAnimator.ResetTrigger("QTE5");
+        enemyAnimator.ResetTrigger("QTE6");
     }
 }
