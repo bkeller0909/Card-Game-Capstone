@@ -79,7 +79,8 @@ public class DealStatsState : FSMState
     {
         if(GameManager.Instance.pickQTEType)
         {
-            int rand = UnityEngine.Random.Range(0, 2);
+            //int rand = UnityEngine.Random.Range(0, 2);
+            int rand = 0;
             if(rand == 0)
             {
                 player.gameObject.GetComponent<QTEHandler>().mashing = false;
