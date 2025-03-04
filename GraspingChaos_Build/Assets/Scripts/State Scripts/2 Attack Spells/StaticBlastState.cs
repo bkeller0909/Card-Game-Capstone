@@ -55,6 +55,7 @@ public class StaticBlastState : FSMState
         //check the string for next state and change states if needed
         if (nextState == "Deciding")
         {
+            GameManager.Instance.spellInProgress = false;
             playerState.PerformTransition(Transition.NeedDecision);
         }
         else if (nextState == "QTE")
@@ -75,6 +76,7 @@ public class StaticBlastState : FSMState
         }
         else
         {
+            GameManager.Instance.spellInProgress = true;
             //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {

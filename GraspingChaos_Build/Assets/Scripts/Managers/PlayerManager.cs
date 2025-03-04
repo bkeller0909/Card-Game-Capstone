@@ -156,26 +156,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void TrackMana()
+    public int TrackMana()
     {
         if (!PlayedEchoingMana)
         {
             //anything but sucess
             ManaTrackedPerTurn = ManaTrackedPerTurn / 2;
-            Mana += ManaTrackedPerTurn;
-            if (Mana > 12)
-            {
-                Mana = 12;
-            }
+            return ManaTrackedPerTurn;
         }
         else
         {
             //on success
-            Mana += ManaTrackedPerTurn;
-            if (Mana > 12)
-            {
-                Mana = 12;
-            }
+            return ManaTrackedPerTurn;
         }
     }
 

@@ -46,6 +46,7 @@ public class FireBoltState : FSMState
         //switch states if set to
         if (nextState == "Deciding")
         {
+            GameManager.Instance.spellInProgress = false;
             playerState.PerformTransition(Transition.NeedDecision);
         }
         else if (nextState == "QTE")
@@ -64,6 +65,7 @@ public class FireBoltState : FSMState
         }
         else
         {
+            GameManager.Instance.spellInProgress = true;
             //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
@@ -127,6 +129,7 @@ public class FireBoltState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 0f, enemy.gamepad);
                 }
+                //
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
