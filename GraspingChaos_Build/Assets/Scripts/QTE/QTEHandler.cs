@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -60,6 +61,13 @@ public class QTEHandler : MonoBehaviour
     public int buttonsUsed = 0;
     public float checkSpeed = 0;
     public QTEOUTCOMES outcome;
+
+
+    //new Mashing system
+    public int inputTracker;
+
+
+
     #endregion //QTE Created Sequence and QTE Evaluation values
 
     #region Timer Values
@@ -83,6 +91,8 @@ public class QTEHandler : MonoBehaviour
 
     //animator reference
     Animator animator;
+
+    public bool mashing;
 
 
     private void Start()
@@ -122,12 +132,20 @@ public class QTEHandler : MonoBehaviour
                 animator.SetTrigger("IDLE");
                 //EvauateQTEResults();
                 timeisDone = true;
-                checkTieRace();
+                //checkTieRace();
             }
         }
 
         //function that checks the values of each QTE Button on the sequence to determine which is currently active (more info in the function)
-        CheckAvailability();
+        if(mashing)
+        {
+            CheckAvailabilityMashing();
+        }
+        else
+        {
+            CheckAvailability();
+        }
+        
 
         //check to see if the counter needs to be on screen
         if (QTEHasStarted)
@@ -204,48 +222,56 @@ public class QTEHandler : MonoBehaviour
             //if check is succesful then assign proper sprite, keycode and scale (scale is debug only due to the current sprites)
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteY;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.Y;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.Y;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.X)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteX;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.X;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.X;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.B)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteB;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.B;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.B;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.A)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteA;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.A;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.A;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.UP)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteUpInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.UpArrow;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.UpArrow;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
         }
         else if (RandomizeBTN == QTEButtonType.LEFT)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteLeftInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.LeftArrow;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.LeftArrow;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
         }
         else if (RandomizeBTN == QTEButtonType.RIGHT)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteRightInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.RightArrow;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.RightArrow;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
         }
         else if (RandomizeBTN == QTEButtonType.DOWN)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteDownInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.DownArrow;
+            Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.DownArrow;
             Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
         }
     }
@@ -347,7 +373,6 @@ public class QTEHandler : MonoBehaviour
         timeisDone = false;
     }
 
-
     /// <summary>
     /// This Function is responsible for checking the status of each button on the QTE sequence, this function knows whcih button is the current "Active" button and which
     /// button follows on the sequence, it is responsible for actiating the next button on the sequence when the current one has been pressed, first it checks that the list
@@ -397,6 +422,42 @@ public class QTEHandler : MonoBehaviour
         }
 
     }
+
+    public void MashingTest(int index, PlayerManager caster)
+    {
+        //for now spawn the button we will match and track the amount of mashing
+        //randomize the button
+        //set the randomized button 
+        RandoBTN = RandomizeBTN();
+        //assign the button properly
+        AssignSprite(index, RandoBTN);
+        //activete the proper button on the sequence
+        Buttons[index].SetActive(true);
+        Buttons[index].GetComponent<QTEMashing>().playerQTE = caster;
+        Buttons[index].GetComponent<QTEMashing>().wasPressed = false;
+        CreatedButtons.Add(Buttons[7]);
+        CreatedButtons[0].GetComponent<QTEMashing>().enabled = true;
+        //set the timer
+        remainingTime = GameManager.Instance.timerQTE;
+        //start the timer
+        startTimer = true;
+        //set the index to the proper value to start
+        createdBTNIndex = 0;
+        //reset mashing value
+        inputTracker = 0;
+        //set the timer edning check to false
+        timeisDone = false;
+    }
+
+
+    public void CheckAvailabilityMashing()
+    {
+        if(inputTracker == 24)
+        {
+            SetTimeValue();
+        }
+    }
+
 
     /// <summary>
     /// in the event of a tie in a race check the QTE correct presses to determine most succesful player
@@ -453,29 +514,49 @@ public class QTEHandler : MonoBehaviour
     {
         QTEPercent = 0;
 
-        if (QTECounter == 0)
+        if (!mashing)
         {
-            QTEPercent = 0;
-        }
-        else if (QTECounter != 0)
-        {
-            //convert the values of the completed sequence into a percentage of 100%
-            QTEPercent = QTECounter * 100 / buttonsUsed;
-            //QTEPercent = 100;
-        }
 
-        //debug check to see in what state the result ends with, below 50%, above 50% and 100%
-        if (QTEPercent < 50)
-        {
-            outcome = QTEOUTCOMES.Failure;
+            if (QTECounter == 0)
+            {
+                QTEPercent = 0;
+            }
+            else if (QTECounter != 0)
+            {
+                //convert the values of the completed sequence into a percentage of 100%
+                QTEPercent = QTECounter * 100 / buttonsUsed;
+                //QTEPercent = 100;
+            }
+
+            //debug check to see in what state the result ends with, below 50%, above 50% and 100%
+            if (QTEPercent < 50)
+            {
+                outcome = QTEOUTCOMES.Failure;
+            }
+            else if (QTEPercent >= 50 && QTEPercent < 99)
+            {
+                outcome = QTEOUTCOMES.Half;
+            }
+            else if (QTEPercent == 100)
+            {
+                outcome = QTEOUTCOMES.Success;
+            }
         }
-        else if (QTEPercent >= 50 && QTEPercent < 99)
+        else
         {
-            outcome = QTEOUTCOMES.Half;
-        }
-        else if (QTEPercent == 100)
-        {
-            outcome = QTEOUTCOMES.Success;
+            //check for mashing with bool to activate it
+            if (inputTracker <= 8)
+            {
+                outcome = QTEOUTCOMES.Failure;
+            }
+            else if (inputTracker >= 9 && inputTracker <= 23)
+            {
+                outcome = QTEOUTCOMES.Half;
+            }
+            else if (QTEPercent <= 24)
+            {
+                outcome = QTEOUTCOMES.Success;
+            }
         }
     }
 
@@ -497,6 +578,7 @@ public class QTEHandler : MonoBehaviour
         remainingTime = 0;
         //stop the timer from going
         startTimer = false;
+        CreatedButtons[0].GetComponent<QTEMashing>().enabled = false;
         //set the int to the buttons used
         buttonsUsed = CreatedButtons.Count;
         //clear the buttons from the sequence

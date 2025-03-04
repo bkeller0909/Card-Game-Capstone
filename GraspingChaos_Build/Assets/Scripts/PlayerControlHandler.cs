@@ -157,6 +157,7 @@ public class PlayerControlHandler : MonoBehaviour
                     //do nothing
                 }
             }
+            #endregion // Card Select Controls
 
             // set your selection of cards
             if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
@@ -172,7 +173,6 @@ public class PlayerControlHandler : MonoBehaviour
                 index++;
                 GameManager.Instance.firstRoundCheck = false;
             }
-            #endregion // Card Select Controls
 
             //Camera Movement
             changeCameras.GetInput();

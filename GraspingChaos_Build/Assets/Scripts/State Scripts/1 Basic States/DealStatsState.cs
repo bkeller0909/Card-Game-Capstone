@@ -5,6 +5,7 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
+using System;
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -76,6 +77,22 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        if(GameManager.Instance.pickQTEType)
+        {
+            int rand = UnityEngine.Random.Range(0, 2);
+            if(rand == 0)
+            {
+                player.gameObject.GetComponent<QTEHandler>().mashing = false;
+                enemy.gameObject.GetComponent<QTEHandler>().mashing = false;
+            }
+            else if(rand == 1)
+            {
+                player.gameObject.GetComponent<QTEHandler>().mashing = true;
+                enemy.gameObject.GetComponent<QTEHandler>().mashing = true;
+            }
+            GameManager.Instance.pickQTEType = false;
+        }
+
         // If the player has gained mana skip this bit if not go in
         if (!gainedMana)
         {

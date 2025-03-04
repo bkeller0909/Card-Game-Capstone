@@ -89,6 +89,7 @@ public class ChoosingSpellsState : FSMState
         GameManager.Instance.amtOfSpellsBeingCast = 0;
 
         playerState.player.playerInput.SwitchCurrentActionMap("Card");
+        GameManager.Instance.pickQTEType = true;
     }
 
     //Reason

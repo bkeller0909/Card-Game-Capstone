@@ -161,6 +161,9 @@ public class GameManager : MonoBehaviour
     //GameDebugger variable, testing only but important it is not removed yet
     public bool checkAvailableCards = false;
 
+
+    public bool pickQTEType;
+
     private void Awake()
     {
         if (instance == null)
@@ -203,6 +206,7 @@ public class GameManager : MonoBehaviour
         coroutineWaitP1 = false;
         coroutineWaitP2 = false;
         StartLoadingLevel(ln_IntroScene);
+        pickQTEType = true;
     }
 
     // Update is called once per frame
