@@ -165,7 +165,8 @@ public class GameManager : MonoBehaviour
 
     //GameDebugger variable, testing only but important it is not removed yet
     public bool checkAvailableCards = false;
-
+    [Tooltip("Safeguard for index timing")]
+    public bool spellInProgress;
 
     public bool pickQTEType;
 
@@ -212,6 +213,7 @@ public class GameManager : MonoBehaviour
         coroutineWaitP2 = false;
         StartLoadingLevel(ln_IntroScene);
         pickQTEType = true;
+        spellInProgress = false;
     }
 
     // Update is called once per frame
