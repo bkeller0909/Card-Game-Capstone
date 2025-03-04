@@ -105,6 +105,7 @@ public class DealStatsState : FSMState
                 player.PlayedCursedConvertion = false;
                 player.TrackDamage();
             }
+            player.DamageTrackedPerTurn = 0;
         }
 
         // If the game is scripted skip this if it isint go in

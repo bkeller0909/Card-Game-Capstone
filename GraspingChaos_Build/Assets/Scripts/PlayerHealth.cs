@@ -69,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
             playerHealthStats[(int)whatFinger] -= 1;
             player.fingers[(int)whatFinger].removeCurrentSegment();
             player.entireHP--;
+            player.DamageTrackedPerTurn++;
         }
         else
         {
