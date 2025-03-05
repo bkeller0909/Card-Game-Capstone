@@ -130,56 +130,56 @@ public class GameDebugger : MonoBehaviour
     {
         if (GameManager.Instance.checkAvailableCards)
         {
-            TrackFingerHealth();
+            //TrackFingerHealth();
             TrackSpellsAvailable();
             TrackManaOfPlayers();
             GameManager.Instance.checkAvailableCards = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (player1ActiveforDebugFingerInteraction)
-            {
-                player1ActiveforDebugFingerInteraction = false;
-                player2ActiveforDebugFingerInteraction = true;
-            }
-            else
-            {
-                player2ActiveforDebugFingerInteraction = false;
-                player1ActiveforDebugFingerInteraction = true;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (player1ActiveforDebugFingerInteraction)
+        //    {
+        //        player1ActiveforDebugFingerInteraction = false;
+        //        player2ActiveforDebugFingerInteraction = true;
+        //    }
+        //    else
+        //    {
+        //        player2ActiveforDebugFingerInteraction = false;
+        //        player1ActiveforDebugFingerInteraction = true;
+        //    }
+        //}
 
 
-        if (player1ActiveforDebugFingerInteraction)
-        {
-            if (Input.GetKeyDown(KeyCode.KeypadMinus))
-            {
-                player1AtiveDamageFinger = true;
-                player1AtiveHealingFinger = false;
-            }
+        //if (player1ActiveforDebugFingerInteraction)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        //    {
+        //        player1AtiveDamageFinger = true;
+        //        player1AtiveHealingFinger = false;
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.KeypadPlus))
-            {
-                player1AtiveDamageFinger = false;
-                player1AtiveHealingFinger = true;
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        //    {
+        //        player1AtiveDamageFinger = false;
+        //        player1AtiveHealingFinger = true;
+        //    }
+        //}
 
-        if (player2ActiveforDebugFingerInteraction)
-        {
-            if (Input.GetKeyDown(KeyCode.KeypadMinus))
-            {
-                player2AtiveDamageFinger = true;
-                player2AtiveHealingFinger = false;
-            }
+        //if (player2ActiveforDebugFingerInteraction)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        //    {
+        //        player2AtiveDamageFinger = true;
+        //        player2AtiveHealingFinger = false;
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.KeypadPlus))
-            {
-                player2AtiveDamageFinger = false;
-                player2AtiveHealingFinger = true;
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        //    {
+        //        player2AtiveDamageFinger = false;
+        //        player2AtiveHealingFinger = true;
+        //    }
+        //}
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
@@ -271,40 +271,40 @@ public class GameDebugger : MonoBehaviour
             GiveManaToPlayer(player2, newManaAmountP2);
         }
 
-        DebugDamageAndHealingFingers();
+        //DebugDamageAndHealingFingers();
     }
 
 
     //track the health of each player
-    private void TrackFingerHealth()
-    {
-        //track total health of P1
-        p1TotalHealth = player1.entireHP;
-        //player 1
-        LeftPinkyP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Pinky];
-        LeftRingP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Ring];
-        LeftMiddleP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Middle];
-        LeftIndexP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Index];
-        LeftThumbP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Thumb];
-        RightPinkyP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Pinky];
-        RightRingP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Ring];
-        RightMiddleP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Middle];
-        RightIndexP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Index];
-        RightThumbP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Thumb];
-        //track total health of P1
-        p2TotalHealth = player2.entireHP;
-        //player 2
-        LeftPinkyP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Pinky];
-        LeftRingP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Ring];
-        LeftMiddleP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Middle];
-        LeftIndexP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Index];
-        LeftThumbP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Thumb];
-        RightPinkyP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Pinky];
-        RightRingP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Ring];
-        RightMiddleP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Middle];
-        RightIndexP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Index];
-        RightThumbP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Thumb];
-    }
+    //private void TrackFingerHealth()
+    //{
+    //    //track total health of P1
+    //    p1TotalHealth = player1.entireHP;
+    //    //player 1
+    //    LeftPinkyP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Pinky];
+    //    LeftRingP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Ring];
+    //    LeftMiddleP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Middle];
+    //    LeftIndexP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Index];
+    //    LeftThumbP1 = player1.health.playerHealthStats[(int)PlayerFingers.LH_Thumb];
+    //    RightPinkyP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Pinky];
+    //    RightRingP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Ring];
+    //    RightMiddleP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Middle];
+    //    RightIndexP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Index];
+    //    RightThumbP1 = player1.health.playerHealthStats[(int)PlayerFingers.RH_Thumb];
+    //    //track total health of P1
+    //    p2TotalHealth = player2.entireHP;
+    //    //player 2
+    //    LeftPinkyP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Pinky];
+    //    LeftRingP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Ring];
+    //    LeftMiddleP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Middle];
+    //    LeftIndexP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Index];
+    //    LeftThumbP2 = player2.health.playerHealthStats[(int)PlayerFingers.LH_Thumb];
+    //    RightPinkyP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Pinky];
+    //    RightRingP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Ring];
+    //    RightMiddleP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Middle];
+    //    RightIndexP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Index];
+    //    RightThumbP2 = player2.health.playerHealthStats[(int)PlayerFingers.RH_Thumb];
+    //}
 
     //track the spells available in the pool
     private void TrackSpellsAvailable()
@@ -552,239 +552,239 @@ public class GameDebugger : MonoBehaviour
     }
 
     //remove the health of any fingers for Player 1 and Player 2
-    private void DebugDamageAndHealingFingers()
-    {
-        if (player1ActiveforDebugFingerInteraction)
-        {
-            if (player1AtiveDamageFinger)
-            {
-                //left side
-                //pinky numpad 0
-                if (Input.GetKeyDown(KeyCode.Keypad0))
-                {
-                    player1.health.DamageFinger(PlayerFingers.LH_Pinky);
-                }
-                //ring numpad 1
-                if (Input.GetKeyDown(KeyCode.Keypad1))
-                {
-                    player1.health.DamageFinger(PlayerFingers.LH_Ring);
-                }
-                //middle numpad 2
-                if (Input.GetKeyDown(KeyCode.Keypad2))
-                {
-                    player1.health.DamageFinger(PlayerFingers.LH_Middle);
-                }
-                //index numpad 3
-                if (Input.GetKeyDown(KeyCode.Keypad3))
-                {
-                    player1.health.DamageFinger(PlayerFingers.LH_Index);
-                }
-                //thumb numpad 4
-                if (Input.GetKeyDown(KeyCode.Keypad4))
-                {
-                    player1.health.DamageFinger(PlayerFingers.LH_Thumb);
-                }
-                //right side
-                //pinky numpad 5
-                if (Input.GetKeyDown(KeyCode.Keypad5))
-                {
-                    player1.health.DamageFinger(PlayerFingers.RH_Pinky);
-                }
-                //ring numpad 6
-                if (Input.GetKeyDown(KeyCode.Keypad6))
-                {
-                    player1.health.DamageFinger(PlayerFingers.RH_Ring);
-                }
-                //middle numpad 7
-                if (Input.GetKeyDown(KeyCode.Keypad7))
-                {
-                    player1.health.DamageFinger(PlayerFingers.RH_Middle);
-                }
-                //index numpad 8
-                if (Input.GetKeyDown(KeyCode.Keypad8))
-                {
-                    player1.health.DamageFinger(PlayerFingers.RH_Index);
-                }
-                //thumb numpad 9
-                if (Input.GetKeyDown(KeyCode.Keypad9))
-                {
-                    player1.health.DamageFinger(PlayerFingers.RH_Thumb);
-                }
-                TrackFingerHealth();
-            }
-            else if (player1AtiveHealingFinger)
-            {
-                //left side
-                //pinky numpad 0
-                if (Input.GetKeyDown(KeyCode.Keypad0))
-                {
-                    player1.health.HealFinger(PlayerFingers.LH_Pinky);
-                }
-                //ring numpad 1
-                if (Input.GetKeyDown(KeyCode.Keypad1))
-                {
-                    player1.health.HealFinger(PlayerFingers.LH_Ring);
-                }
-                //middle numpad 2
-                if (Input.GetKeyDown(KeyCode.Keypad2))
-                {
-                    player1.health.HealFinger(PlayerFingers.LH_Middle);
-                }
-                //index numpad 3
-                if (Input.GetKeyDown(KeyCode.Keypad3))
-                {
-                    player1.health.HealFinger(PlayerFingers.LH_Index);
-                }
-                //thumb numpad 4
-                if (Input.GetKeyDown(KeyCode.Keypad4))
-                {
-                    player1.health.HealFinger(PlayerFingers.LH_Thumb);
-                }
-                //right side
-                //pinky numpad 5
-                if (Input.GetKeyDown(KeyCode.Keypad5))
-                {
-                    player1.health.HealFinger(PlayerFingers.RH_Pinky);
-                }
-                //ring numpad 6
-                if (Input.GetKeyDown(KeyCode.Keypad6))
-                {
-                    player1.health.HealFinger(PlayerFingers.RH_Ring);
-                }
-                //middle numpad 7
-                if (Input.GetKeyDown(KeyCode.Keypad7))
-                {
-                    player1.health.HealFinger(PlayerFingers.RH_Middle);
-                }
-                //index numpad 8
-                if (Input.GetKeyDown(KeyCode.Keypad8))
-                {
-                    player1.health.HealFinger(PlayerFingers.RH_Index);
-                }
-                //thumb numpad 9
-                if (Input.GetKeyDown(KeyCode.Keypad9))
-                {
-                    player1.health.HealFinger(PlayerFingers.RH_Thumb);
-                }
-                TrackFingerHealth();
-            }
-        }
+    //private void DebugDamageAndHealingFingers()
+    //{
+    //    if (player1ActiveforDebugFingerInteraction)
+    //    {
+    //        if (player1AtiveDamageFinger)
+    //        {
+    //            //left side
+    //            //pinky numpad 0
+    //            if (Input.GetKeyDown(KeyCode.Keypad0))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.LH_Pinky);
+    //            }
+    //            //ring numpad 1
+    //            if (Input.GetKeyDown(KeyCode.Keypad1))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.LH_Ring);
+    //            }
+    //            //middle numpad 2
+    //            if (Input.GetKeyDown(KeyCode.Keypad2))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.LH_Middle);
+    //            }
+    //            //index numpad 3
+    //            if (Input.GetKeyDown(KeyCode.Keypad3))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.LH_Index);
+    //            }
+    //            //thumb numpad 4
+    //            if (Input.GetKeyDown(KeyCode.Keypad4))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.LH_Thumb);
+    //            }
+    //            //right side
+    //            //pinky numpad 5
+    //            if (Input.GetKeyDown(KeyCode.Keypad5))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.RH_Pinky);
+    //            }
+    //            //ring numpad 6
+    //            if (Input.GetKeyDown(KeyCode.Keypad6))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.RH_Ring);
+    //            }
+    //            //middle numpad 7
+    //            if (Input.GetKeyDown(KeyCode.Keypad7))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.RH_Middle);
+    //            }
+    //            //index numpad 8
+    //            if (Input.GetKeyDown(KeyCode.Keypad8))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.RH_Index);
+    //            }
+    //            //thumb numpad 9
+    //            if (Input.GetKeyDown(KeyCode.Keypad9))
+    //            {
+    //                player1.health.DamageFinger(PlayerFingers.RH_Thumb);
+    //            }
+    //            TrackFingerHealth();
+    //        }
+    //        else if (player1AtiveHealingFinger)
+    //        {
+    //            //left side
+    //            //pinky numpad 0
+    //            if (Input.GetKeyDown(KeyCode.Keypad0))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.LH_Pinky);
+    //            }
+    //            //ring numpad 1
+    //            if (Input.GetKeyDown(KeyCode.Keypad1))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.LH_Ring);
+    //            }
+    //            //middle numpad 2
+    //            if (Input.GetKeyDown(KeyCode.Keypad2))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.LH_Middle);
+    //            }
+    //            //index numpad 3
+    //            if (Input.GetKeyDown(KeyCode.Keypad3))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.LH_Index);
+    //            }
+    //            //thumb numpad 4
+    //            if (Input.GetKeyDown(KeyCode.Keypad4))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.LH_Thumb);
+    //            }
+    //            //right side
+    //            //pinky numpad 5
+    //            if (Input.GetKeyDown(KeyCode.Keypad5))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.RH_Pinky);
+    //            }
+    //            //ring numpad 6
+    //            if (Input.GetKeyDown(KeyCode.Keypad6))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.RH_Ring);
+    //            }
+    //            //middle numpad 7
+    //            if (Input.GetKeyDown(KeyCode.Keypad7))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.RH_Middle);
+    //            }
+    //            //index numpad 8
+    //            if (Input.GetKeyDown(KeyCode.Keypad8))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.RH_Index);
+    //            }
+    //            //thumb numpad 9
+    //            if (Input.GetKeyDown(KeyCode.Keypad9))
+    //            {
+    //                player1.health.HealFinger(PlayerFingers.RH_Thumb);
+    //            }
+    //            TrackFingerHealth();
+    //        }
+    //    }
 
-        if (player2ActiveforDebugFingerInteraction)
-        {
-            if (player2AtiveDamageFinger)
-            {
-                //left side
-                //pinky numpad 0
-                if (Input.GetKeyDown(KeyCode.Keypad0))
-                {
-                    player2.health.DamageFinger(PlayerFingers.LH_Pinky);
-                }
-                //ring numpad 1
-                if (Input.GetKeyDown(KeyCode.Keypad1))
-                {
-                    player2.health.DamageFinger(PlayerFingers.LH_Ring);
-                }
-                //middle numpad 2
-                if (Input.GetKeyDown(KeyCode.Keypad2))
-                {
-                    player2.health.DamageFinger(PlayerFingers.LH_Middle);
-                }
-                //index numpad 3
-                if (Input.GetKeyDown(KeyCode.Keypad3))
-                {
-                    player2.health.DamageFinger(PlayerFingers.LH_Index);
-                }
-                //thumb numpad 4
-                if (Input.GetKeyDown(KeyCode.Keypad4))
-                {
-                    player2.health.DamageFinger(PlayerFingers.LH_Thumb);
-                }
-                //right side
-                //pinky numpad 5
-                if (Input.GetKeyDown(KeyCode.Keypad5))
-                {
-                    player2.health.DamageFinger(PlayerFingers.RH_Pinky);
-                }
-                //ring numpad 6
-                if (Input.GetKeyDown(KeyCode.Keypad6))
-                {
-                    player2.health.DamageFinger(PlayerFingers.RH_Ring);
-                }
-                //middle numpad 7
-                if (Input.GetKeyDown(KeyCode.Keypad7))
-                {
-                    player2.health.DamageFinger(PlayerFingers.RH_Middle);
-                }
-                //index numpad 8
-                if (Input.GetKeyDown(KeyCode.Keypad8))
-                {
-                    player2.health.DamageFinger(PlayerFingers.RH_Index);
-                }
-                //thumb numpad 9
-                if (Input.GetKeyDown(KeyCode.Keypad9))
-                {
-                    player2.health.DamageFinger(PlayerFingers.RH_Thumb);
-                }
-                TrackFingerHealth();
-            }
-            else if (player2AtiveHealingFinger)
-            {
-                //left side
-                //pinky numpad 0
-                if (Input.GetKeyDown(KeyCode.Keypad0))
-                {
-                    player2.health.HealFinger(PlayerFingers.LH_Pinky);
-                }
-                //ring numpad 1
-                if (Input.GetKeyDown(KeyCode.Keypad1))
-                {
-                    player2.health.HealFinger(PlayerFingers.LH_Ring);
-                }
-                //middle numpad 2
-                if (Input.GetKeyDown(KeyCode.Keypad2))
-                {
-                    player2.health.HealFinger(PlayerFingers.LH_Middle);
-                }
-                //index numpad 3
-                if (Input.GetKeyDown(KeyCode.Keypad3))
-                {
-                    player2.health.HealFinger(PlayerFingers.LH_Index);
-                }
-                //thumb numpad 4
-                if (Input.GetKeyDown(KeyCode.Keypad4))
-                {
-                    player2.health.HealFinger(PlayerFingers.LH_Thumb);
-                }
-                //right side
-                //pinky numpad 5
-                if (Input.GetKeyDown(KeyCode.Keypad5))
-                {
-                    player2.health.HealFinger(PlayerFingers.RH_Pinky);
-                }
-                //ring numpad 6
-                if (Input.GetKeyDown(KeyCode.Keypad6))
-                {
-                    player2.health.HealFinger(PlayerFingers.RH_Ring);
-                }
-                //middle numpad 7
-                if (Input.GetKeyDown(KeyCode.Keypad7))
-                {
-                    player2.health.HealFinger(PlayerFingers.RH_Middle);
-                }
-                //index numpad 8
-                if (Input.GetKeyDown(KeyCode.Keypad8))
-                {
-                    player2.health.HealFinger(PlayerFingers.RH_Index);
-                }
-                //thumb numpad 9
-                if (Input.GetKeyDown(KeyCode.Keypad9))
-                {
-                    player2.health.HealFinger(PlayerFingers.RH_Thumb);
-                }
-                TrackFingerHealth();
-            }
-        }
-    }
+    //    if (player2ActiveforDebugFingerInteraction)
+    //    {
+    //        if (player2AtiveDamageFinger)
+    //        {
+    //            //left side
+    //            //pinky numpad 0
+    //            if (Input.GetKeyDown(KeyCode.Keypad0))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.LH_Pinky);
+    //            }
+    //            //ring numpad 1
+    //            if (Input.GetKeyDown(KeyCode.Keypad1))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.LH_Ring);
+    //            }
+    //            //middle numpad 2
+    //            if (Input.GetKeyDown(KeyCode.Keypad2))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.LH_Middle);
+    //            }
+    //            //index numpad 3
+    //            if (Input.GetKeyDown(KeyCode.Keypad3))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.LH_Index);
+    //            }
+    //            //thumb numpad 4
+    //            if (Input.GetKeyDown(KeyCode.Keypad4))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.LH_Thumb);
+    //            }
+    //            //right side
+    //            //pinky numpad 5
+    //            if (Input.GetKeyDown(KeyCode.Keypad5))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.RH_Pinky);
+    //            }
+    //            //ring numpad 6
+    //            if (Input.GetKeyDown(KeyCode.Keypad6))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.RH_Ring);
+    //            }
+    //            //middle numpad 7
+    //            if (Input.GetKeyDown(KeyCode.Keypad7))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.RH_Middle);
+    //            }
+    //            //index numpad 8
+    //            if (Input.GetKeyDown(KeyCode.Keypad8))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.RH_Index);
+    //            }
+    //            //thumb numpad 9
+    //            if (Input.GetKeyDown(KeyCode.Keypad9))
+    //            {
+    //                player2.health.DamageFinger(PlayerFingers.RH_Thumb);
+    //            }
+    //            TrackFingerHealth();
+    //        }
+    //        else if (player2AtiveHealingFinger)
+    //        {
+    //            //left side
+    //            //pinky numpad 0
+    //            if (Input.GetKeyDown(KeyCode.Keypad0))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.LH_Pinky);
+    //            }
+    //            //ring numpad 1
+    //            if (Input.GetKeyDown(KeyCode.Keypad1))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.LH_Ring);
+    //            }
+    //            //middle numpad 2
+    //            if (Input.GetKeyDown(KeyCode.Keypad2))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.LH_Middle);
+    //            }
+    //            //index numpad 3
+    //            if (Input.GetKeyDown(KeyCode.Keypad3))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.LH_Index);
+    //            }
+    //            //thumb numpad 4
+    //            if (Input.GetKeyDown(KeyCode.Keypad4))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.LH_Thumb);
+    //            }
+    //            //right side
+    //            //pinky numpad 5
+    //            if (Input.GetKeyDown(KeyCode.Keypad5))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.RH_Pinky);
+    //            }
+    //            //ring numpad 6
+    //            if (Input.GetKeyDown(KeyCode.Keypad6))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.RH_Ring);
+    //            }
+    //            //middle numpad 7
+    //            if (Input.GetKeyDown(KeyCode.Keypad7))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.RH_Middle);
+    //            }
+    //            //index numpad 8
+    //            if (Input.GetKeyDown(KeyCode.Keypad8))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.RH_Index);
+    //            }
+    //            //thumb numpad 9
+    //            if (Input.GetKeyDown(KeyCode.Keypad9))
+    //            {
+    //                player2.health.HealFinger(PlayerFingers.RH_Thumb);
+    //            }
+    //            TrackFingerHealth();
+    //        }
+    //    }
+    //}
 
 }

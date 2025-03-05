@@ -86,7 +86,7 @@ public class QTEHandler : MonoBehaviour
     //debug value for making the direction sprites be the same size
     private Vector3 dirScale = new Vector3(0.02f, 0.02f, 0.02f);
     //debug value for making the button sprites be the same size
-    private Vector3 btnScale = new Vector3(0.03f, 0.03f, 0.03f);
+    private Vector3 btnScale = new Vector3(0.04f, 0.04f, 0.04f);
     #endregion // debug Values
 
     //animator reference
@@ -261,28 +261,28 @@ public class QTEHandler : MonoBehaviour
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteUpInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.UpArrow;
             Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.UpArrow;
-            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
+            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.LEFT)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteLeftInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.LeftArrow;
             Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.LeftArrow;
-            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
+            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.RIGHT)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteRightInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.RightArrow;
             Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.RightArrow;
-            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
+            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
         else if (RandomizeBTN == QTEButtonType.DOWN)
         {
             Buttons[indexBTN].GetComponent<SpriteRenderer>().sprite = QTESpriteDownInput;
             Buttons[indexBTN].GetComponent<QTEButton>().AssignedBTN = KeyCode.DownArrow;
             Buttons[indexBTN].GetComponent<QTEMashing>().AssignedBTN = KeyCode.DownArrow;
-            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = dirScale;
+            Buttons[indexBTN].GetComponent<QTEButton>().transform.localScale = btnScale;
         }
     }
 
@@ -578,9 +578,6 @@ public class QTEHandler : MonoBehaviour
         //go through each button of the QTE Sequence and turn it back to the defualt state for future use
         foreach (GameObject button in CreatedButtons)
         {
-            button.transform.GetChild(0).gameObject.SetActive(false);
-            button.transform.GetChild(1).gameObject.SetActive(false);
-            button.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
             button.GetComponent<QTEButton>().pressed = false;
             button.SetActive(false);
         }

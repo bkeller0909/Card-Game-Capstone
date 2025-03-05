@@ -47,6 +47,24 @@ public class QTEButton : MonoBehaviour
     //animator reference for Hand animations
     Animator playerAnimator, enemyAnimator;
 
+    [SerializeField] private Sprite failA;
+    [SerializeField] private Sprite failB;
+    [SerializeField] private Sprite failX;
+    [SerializeField] private Sprite failY;
+    [SerializeField] private Sprite failDown;
+    [SerializeField] private Sprite failUp;
+    [SerializeField] private Sprite failRight;
+    [SerializeField] private Sprite failLeft;
+
+    [SerializeField] private Sprite winA;
+    [SerializeField] private Sprite winB;
+    [SerializeField] private Sprite winX;
+    [SerializeField] private Sprite winY;
+    [SerializeField] private Sprite winDown;
+    [SerializeField] private Sprite winUp;
+    [SerializeField] private Sprite winRight;
+    [SerializeField] private Sprite winLeft;
+
     private void Awake()
     {
         //set the proper action map on awake as a precuasing, might not be working 100% of time, requires further testing with action maps
@@ -118,8 +136,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true; //set the button to pressed
                     correctPress = true; //set it to correct input
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true); //activate the backdrop 
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct; //set the back drop to the corect color
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winA; // set the new sprite
                     ResetTriggers(); //reset animation triggers
                     playerAnimator.SetTrigger("QTE1"); //play animation for that input
                     enemyAnimator.SetTrigger("QTE1"); //play animation for that input
@@ -128,16 +145,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true; //set the button to pressed
                     correctPress = false; //set the button to incorrect input
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true); //activate the backdrop 
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect; //set the back drop to the incorrect color
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow) //temporary check for arrow image backdrop
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -150,8 +158,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winB; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE2");
                     enemyAnimator.SetTrigger("QTE2");
@@ -160,16 +167,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -182,8 +180,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winX; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE3");
                     enemyAnimator.SetTrigger("QTE3");
@@ -192,16 +189,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -214,8 +202,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winY; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE4");
                     enemyAnimator.SetTrigger("QTE4");
@@ -224,16 +211,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -246,10 +224,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winDown; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE5");
                     enemyAnimator.SetTrigger("QTE5");
@@ -258,16 +233,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -280,10 +246,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winUp; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE6");
                     enemyAnimator.SetTrigger("QTE6");
@@ -292,16 +255,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -314,10 +268,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winLeft; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE2");
                     enemyAnimator.SetTrigger("QTE2");
@@ -326,16 +277,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -348,10 +290,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = true;
-                    gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = correct;
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = correct;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = winRight; // set the new sprite
                     ResetTriggers();
                     playerAnimator.SetTrigger("QTE1");
                     enemyAnimator.SetTrigger("QTE1");
@@ -360,16 +299,7 @@ public class QTEButton : MonoBehaviour
                 {
                     pressed = true;
                     correctPress = false;
-                    gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    if (AssignedBTN == KeyCode.RightArrow || AssignedBTN == KeyCode.LeftArrow || AssignedBTN == KeyCode.UpArrow || AssignedBTN == KeyCode.DownArrow)
-                    {
-                        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                        gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = incorrect;
-                    }
+                    gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
                 }
             }
         }
@@ -380,6 +310,33 @@ public class QTEButton : MonoBehaviour
         //if nothing was pressed then the input returns as null
 
     }
+
+    private Sprite FindIncorrectSprite(KeyCode currentInput)
+    {
+        switch(currentInput)
+        {
+            case KeyCode.A:
+                return failA;
+           case KeyCode.B:
+                return failB;
+            case KeyCode.X:
+                return failX;
+            case KeyCode.Y:
+                return failY;
+            case KeyCode.DownArrow:
+                return failDown;
+            case KeyCode.UpArrow:
+                return failUp;
+            case KeyCode.LeftArrow:
+                return failLeft;
+            case KeyCode.RightArrow:
+                return failRight;
+        }
+        return null;
+    }
+
+
+
     void ResetTriggers()
     {
         //reset animation triggers

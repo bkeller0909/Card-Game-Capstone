@@ -761,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &158378290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7188,9 +7188,57 @@ PrefabInstance:
       objectReference: {fileID: 1328186025}
     - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
+      propertyPath: QTESpriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c5cfa27935231c4387fba95295da490,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: dee241d2f0f5cfe46b6e5c51bc9ec235,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteX
+      value: 
+      objectReference: {fileID: 21300000, guid: aa1c011080a90554d9a7475fb976eecb,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteY
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b3b6797938aa7b41bca8e665d8ea9ba,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
       propertyPath: counterObject
       value: 
       objectReference: {fileID: 1290195004}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteUpInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 775055a6678f7534ea8a771789aa5166,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteDownInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 22b7987527a29b241886817083a7b960,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteLeftInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 65e630c885c21f9469eda312a554ad47,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteRightInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b4ca07a3b93df44ea0c3f351c361e47,
+        type: 3}
     - target: {fileID: 6090322353951179789, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_Layer
@@ -11483,6 +11531,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c34c72da55f5a2e49967306070a44a32, type: 2}
+    - target: {fileID: 4167705460451096331, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c5cfa27935231c4387fba95295da490,
+        type: 3}
     - target: {fileID: 4233019630737437506, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11850,9 +11904,57 @@ PrefabInstance:
       objectReference: {fileID: 1328186025}
     - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
+      propertyPath: QTESpriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c5cfa27935231c4387fba95295da490,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: dee241d2f0f5cfe46b6e5c51bc9ec235,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteX
+      value: 
+      objectReference: {fileID: 21300000, guid: aa1c011080a90554d9a7475fb976eecb,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteY
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b3b6797938aa7b41bca8e665d8ea9ba,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
       propertyPath: counterObject
       value: 
       objectReference: {fileID: 621779391}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteUpInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 775055a6678f7534ea8a771789aa5166,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteDownInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 22b7987527a29b241886817083a7b960,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteLeftInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 65e630c885c21f9469eda312a554ad47,
+        type: 3}
+    - target: {fileID: 6021311753385111915, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: QTESpriteRightInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b4ca07a3b93df44ea0c3f351c361e47,
+        type: 3}
     - target: {fileID: 6090322353951179789, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_Layer
@@ -12018,6 +12120,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7358907767317147395, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c5cfa27935231c4387fba95295da490,
+        type: 3}
     - target: {fileID: 7390400177342068488, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_Layer
