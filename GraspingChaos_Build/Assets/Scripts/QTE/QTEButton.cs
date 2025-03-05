@@ -138,8 +138,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true; //set it to correct input
                     gameObject.GetComponent<SpriteRenderer>().sprite = winA; // set the new sprite
                     ResetTriggers(); //reset animation triggers
-                    playerAnimator.SetTrigger("QTE1"); //play animation for that input
-                    enemyAnimator.SetTrigger("QTE1"); //play animation for that input
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -160,8 +161,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winB; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE2");
-                    enemyAnimator.SetTrigger("QTE2");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -182,8 +184,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winX; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE3");
-                    enemyAnimator.SetTrigger("QTE3");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -204,8 +207,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winY; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE4");
-                    enemyAnimator.SetTrigger("QTE4");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -226,8 +230,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winDown; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE5");
-                    enemyAnimator.SetTrigger("QTE5");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -248,8 +253,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winUp; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE6");
-                    enemyAnimator.SetTrigger("QTE6");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -270,8 +276,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winLeft; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE2");
-                    enemyAnimator.SetTrigger("QTE2");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -292,8 +299,9 @@ public class QTEButton : MonoBehaviour
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winRight; // set the new sprite
                     ResetTriggers();
-                    playerAnimator.SetTrigger("QTE1");
-                    enemyAnimator.SetTrigger("QTE1");
+                    string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
+                    playerAnimator.SetTrigger(temp); //play animation for that input
+                    enemyAnimator.SetTrigger(temp); //play animation for that input
                 }
                 else
                 {
@@ -347,6 +355,10 @@ public class QTEButton : MonoBehaviour
         playerAnimator.ResetTrigger("QTE4");
         playerAnimator.ResetTrigger("QTE5");
         playerAnimator.ResetTrigger("QTE6");
+        playerAnimator.ResetTrigger("QTE7");
+        playerAnimator.ResetTrigger("QTE8");
+        playerAnimator.ResetTrigger("QTE9");
+        playerAnimator.ResetTrigger("QTE10");
 
         enemyAnimator.ResetTrigger("IDLE");
         enemyAnimator.ResetTrigger("QTE1");
@@ -355,5 +367,9 @@ public class QTEButton : MonoBehaviour
         enemyAnimator.ResetTrigger("QTE4");
         enemyAnimator.ResetTrigger("QTE5");
         enemyAnimator.ResetTrigger("QTE6");
+        enemyAnimator.ResetTrigger("QTE7");
+        enemyAnimator.ResetTrigger("QTE8");
+        enemyAnimator.ResetTrigger("QTE9");
+        enemyAnimator.ResetTrigger("QTE10");
     }
 }
