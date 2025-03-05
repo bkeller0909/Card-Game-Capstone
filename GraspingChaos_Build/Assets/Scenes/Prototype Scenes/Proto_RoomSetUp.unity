@@ -5778,6 +5778,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 298178892345687059, guid: 972134e1f684c9b498d65b281d6f15ec,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1953333253808396014, guid: 972134e1f684c9b498d65b281d6f15ec,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5882,6 +5887,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: QTECounter_Skull_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311726874208280699, guid: 972134e1f684c9b498d65b281d6f15ec,
+        type: 3}
+      propertyPath: desiredCounterStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449199231347896809, guid: 972134e1f684c9b498d65b281d6f15ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
