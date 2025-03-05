@@ -281,20 +281,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchMount 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.80978274
+      objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.387
+      value: 0.546
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.205
+      value: 4.607
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 225.014
+      value: 222.738
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
@@ -5500,9 +5520,9 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.07058821, g: 0.6322417, b: 0.8, a: 1}
-  m_Intensity: 1002.05
-  m_Range: 30
+  m_Color: {r: 0.18640976, g: 0.42120486, b: 0.6698113, a: 1}
+  m_Intensity: 962.63
+  m_Range: 32
   m_SpotAngle: 179
   m_InnerSpotAngle: 170.80203
   m_CookieSize: 10
@@ -5560,7 +5580,7 @@ Transform:
   m_GameObject: {fileID: 1206626425}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5000008, y: 0.49999928, z: -0.49999928, w: 0.5000008}
-  m_LocalPosition: {x: 0.06001745, y: 8.33, z: 207.044}
+  m_LocalPosition: {x: -0.111, y: 8.11, z: 208.524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8285,25 +8305,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.64848757
+      objectReference: {fileID: 0}
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.09518514
+      objectReference: {fileID: 0}
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 14.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3228987424450525125, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_Name
       value: TorchMountStag
       objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.736328
+      objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.388
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.067
+      value: 4.475
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 200.59
+      value: 203.16
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
@@ -8338,6 +8398,16 @@ PrefabInstance:
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155691802259457594, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5788393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155691802259457594, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8416,25 +8486,60 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 507628279255220013, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.09411765
+      objectReference: {fileID: 0}
     - target: {fileID: 3228987424450525125, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_Name
       value: TorchMountStag (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.736328
+      objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.39070725
+      value: 0.275
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.067
+      value: 4.475
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 213.04561
+      value: 215.61562
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
         type: 3}
@@ -8470,6 +8575,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155691802259457594, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155691802259457594, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155691802259457594, guid: 7e0dcec37bccd0f4cb40112c4f5be2b0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5803922
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13010,20 +13130,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchMount 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4038850081543971441, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.80978274
+      objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.201
+      value: -0.359
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.205
+      value: 4.607
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 212.45482
+      value: 210.17882
       objectReference: {fileID: 0}
     - target: {fileID: 4450452395776402238, guid: a52b38357934e964d967e6a873cd0e90,
         type: 3}
