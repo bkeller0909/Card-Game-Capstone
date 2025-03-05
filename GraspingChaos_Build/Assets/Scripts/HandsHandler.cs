@@ -2,6 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  OG Author:    Wyatt
+//  Title:        Hands Handler
+//  Date Created: 01/07/2025
+//  Purpose:      This hold each fingers of a set of hands
+//  Instance?     Yes
+//-----------------------------------------------------------------
+
+/// <summary>
+/// This hold each fingers of a set of hands
+/// </summary>
 public class HandsHandler : MonoBehaviour
 {
     [Tooltip("This is who will be seeing this set of hands"), SerializeField]
