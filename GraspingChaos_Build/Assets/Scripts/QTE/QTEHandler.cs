@@ -97,6 +97,10 @@ public class QTEHandler : MonoBehaviour
 
     public bool mashing;
 
+    public List<String> HandAnimations = new List<String>();
+
+    private string storedHandAnim;
+
 
     private void Start()
     {
@@ -114,6 +118,7 @@ public class QTEHandler : MonoBehaviour
         Player2Anim = p2.stagHands.GetComponent<Animator>();
         Player2Fake = p2.skullHands.GetComponent<Animator>();
         counterObject.SetActive(false);
+        storedHandAnim = "";
     }
 
     /// <summary>
@@ -381,6 +386,8 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = 0;
         //set the timer edning check to false
         timeisDone = false;
+        //fill the hand animations
+        FillHandAnim();
     }
 
     /// <summary>
@@ -642,6 +649,42 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = -1;
     }
 
+    private void FillHandAnim()
+    {
+        HandAnimations.Clear();
+        HandAnimations.Add("QTE1");
+        HandAnimations.Add("QTE2");
+        HandAnimations.Add("QTE3");
+        HandAnimations.Add("QTE4");
+        HandAnimations.Add("QTE5");
+        HandAnimations.Add("QTE6");
+        HandAnimations.Add("QTE7");
+        HandAnimations.Add("QTE8");
+        HandAnimations.Add("QTE9");
+        HandAnimations.Add("QTE10");
+    }
+
+
+    public string GetUniqueHandAnimation()
+    {
+        if(HandAnimations.Count == 10)
+        {
+            int rand = UnityEngine.Random.Range(0, HandAnimations.Count);
+            storedHandAnim = HandAnimations[rand];
+            HandAnimations.Remove(storedHandAnim);
+            return storedHandAnim;
+        }
+        else
+        {
+            int rand = UnityEngine.Random.Range(0, HandAnimations.Count);
+            string temp = HandAnimations[rand];
+            HandAnimations.Add(storedHandAnim);
+            storedHandAnim = temp;
+            HandAnimations.Remove(storedHandAnim);
+            return storedHandAnim;
+        }
+    }
+
     private void ResetTriggers(Animator whatYouNeed)
     {
         whatYouNeed.ResetTrigger("IDLE");
@@ -651,5 +694,9 @@ public class QTEHandler : MonoBehaviour
         whatYouNeed.ResetTrigger("QTE4");
         whatYouNeed.ResetTrigger("QTE5");
         whatYouNeed.ResetTrigger("QTE6");
+        whatYouNeed.ResetTrigger("QTE7");
+        whatYouNeed.ResetTrigger("QTE8");
+        whatYouNeed.ResetTrigger("QTE9");
+        whatYouNeed.ResetTrigger("QTE10");
     }
 }
