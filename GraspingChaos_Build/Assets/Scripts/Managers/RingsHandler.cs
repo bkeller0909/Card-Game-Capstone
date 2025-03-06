@@ -19,6 +19,8 @@ public class RingsHandler : MonoBehaviour
 
     [SerializeField, Tooltip("These are the prefabs for each ring")]
     public GameObject[] rings;
+    [SerializeField]
+    public Transform[] ringPos;
 
     private void Start()
     {
@@ -32,18 +34,25 @@ public class RingsHandler : MonoBehaviour
     public void EffectGuardiansTouch()
     {
         //block damage on target finger
-        //fail 
+        //fail blocks 1 damage
+        //success blocks 2 damage
     }
     public void EffectSpectralChain()
     {
-
+        //
     }
     public void EffectManaMerchant()
     {
-
+        //gain extra mana per turn
+        //lasts 8 turns
+        //fail gains 1 mana per turn
+        //success gains 2 mana per turn
     }
     public void EffectVengefulMirror()
     {
+        //reflecs first damage the hand gets per round
+        //fail reflects damage 
+        //success does double damage
 
     }
     public void EffectVampiricSurge()
