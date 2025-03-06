@@ -113,3 +113,14 @@ public enum QTEOUTCOMES
     Half = 2,
     Success = 3,
 }
+
+public enum Rings
+{
+    ThornsOfAgony = 0,
+    GuardiansTouch,
+    SpectralChain,
+    ManaMerchant,
+    VengefulMirror,
+    VampiricSurge,
+    VeilOfFortitude
+}
