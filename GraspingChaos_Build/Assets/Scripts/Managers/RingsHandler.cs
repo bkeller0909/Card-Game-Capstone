@@ -22,7 +22,7 @@ public class RingsHandler : MonoBehaviour
 
     private void Start()
     {
-        ringsActive = new bool[7, 10];
+        ringsActive = new bool[14, 10];
     }
 
     public void EffectThornsOfAgony()
@@ -31,7 +31,8 @@ public class RingsHandler : MonoBehaviour
     }
     public void EffectGuardiansTouch()
     {
-
+        //block damage on target finger
+        //fail 
     }
     public void EffectSpectralChain()
     {
