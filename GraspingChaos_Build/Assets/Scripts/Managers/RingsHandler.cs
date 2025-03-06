@@ -17,6 +17,9 @@ public class RingsHandler : MonoBehaviour
 {
     public bool[,] ringsActive;
 
+    [SerializeField, Tooltip("These are the prefabs for each ring")]
+    public GameObject[] rings;
+
     private void Start()
     {
         ringsActive = new bool[7, 10];
