@@ -116,11 +116,24 @@ public enum QTEOUTCOMES
 
 public enum Rings
 {
-    ThornsOfAgony = 0,
-    GuardiansTouch,
-    SpectralChain,
-    ManaMerchant,
-    VengefulMirror,
-    VampiricSurge,
-    VeilOfFortitude
+    ThornsOfAgonyFull = 0,
+    ThornsOfAgonyFail,
+
+    GuardiansTouchFull,
+    GuardiansTouchFail,
+
+    SpectralChainFull,
+    SpectralChainFail,
+
+    ManaMerchantFull,
+    ManaMerchantFail,
+
+    VengefulMirrorFull,
+    VengefulMirrorFail,
+
+    VampiricSurgeFull,
+    VampiricSurgeFail,
+
+    VeilOfFortitudeFull,
+    VeilOfFortitudeFail
 }
