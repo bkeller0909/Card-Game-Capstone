@@ -35,6 +35,8 @@ public class Fingers : MonoBehaviour
     //testing
     public int fingerHP;
 
+    public int fingerShield;
+
 
     private void Awake()
     {

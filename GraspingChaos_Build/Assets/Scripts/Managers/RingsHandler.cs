@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 
 //----------------------------------------------------------------
 //  OG Author:    Wyatt
@@ -29,19 +30,44 @@ public class RingsHandler : MonoBehaviour
         ringsActive = new bool[14, 10];
     }
 
-    public void EffectThornsOfAgony()
+    public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
-
+        PlayerFingers randoFinger;
+        if (ringsActive[(int)Rings.ThornsOfAgonyFull, (int)targetFinger])
+        {
+            //success does 2 damage
+            randoFinger = playerTarget.GetRandomFinger();
+            playerTarget.health.DamageFinger(randoFinger);
+            playerTarget.health.DamageFinger(randoFinger);
+        }
+        else if (ringsActive[(int)Rings.ThornsOfAgonyFail, (int)targetFinger])
+        {
+            //fail only does 1 damage
+            randoFinger = playerTarget.GetRandomFinger();
+            playerTarget.health.DamageFinger(randoFinger);
+        }
     }
-    public void EffectGuardiansTouch()
+    public void EffectGuardiansTouch(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
         //block damage on target finger
-        //fail blocks 1 damage
-        //success blocks 2 damage
+        if (ringsActive[(int)Rings.GuardiansTouchFull, (int)targetFinger])
+        {
+            //fail blocks 1 damage
+            //playerTarget.health.GuardiansTouchShield = 1;
+            //playerTarget.fingers[(int)]
+
+        }
+        else if(ringsActive[(int)Rings.GuardiansTouchFail, (int)targetFinger])
+        {
+            //success blocks 2 damage
+            //playerTarget.health.GuardiansTouchShield = 2;
+        }
     }
-    public void EffectSpectralChain()
+    public void EffectSpectralChain(bool success, PlayerManager playerTarget)
     {
-        //
+        //removes finger bonus
+        //fail lasts 1 turn
+        //success lasts 3 turns
     }
     public void EffectManaMerchant()
     {
@@ -64,6 +90,8 @@ public class RingsHandler : MonoBehaviour
     }
     public void EffectVeilOfFortitude()
     {
-
+        //reduce damage taken on hand summoned
+        //fail damage taken is cut in half
+        //success take no damage
     }
 }
