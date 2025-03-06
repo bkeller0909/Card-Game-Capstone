@@ -21,6 +21,8 @@ public class RingsHandler : MonoBehaviour
     public GameObject[] rings;
     [SerializeField]
     public Transform[] ringPos;
+    [SerializeField]
+    public Transform[] ringPosVisual;
 
     private void Start()
     {
@@ -53,11 +55,12 @@ public class RingsHandler : MonoBehaviour
         //reflecs first damage the hand gets per round
         //fail reflects damage 
         //success does double damage
-
     }
     public void EffectVampiricSurge()
     {
-
+        //put on opponent and if that finger is damaged then heal 
+        //fail you heal 1
+        //success you heal 2
     }
     public void EffectVeilOfFortitude()
     {
