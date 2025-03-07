@@ -37,6 +37,8 @@ public class Fingers : MonoBehaviour
 
     public int fingerShield;
 
+    [SerializeField, Tooltip("The Actual Rings For this finger")]
+    public GameObject[] rings;
 
     private void Awake()
     {
