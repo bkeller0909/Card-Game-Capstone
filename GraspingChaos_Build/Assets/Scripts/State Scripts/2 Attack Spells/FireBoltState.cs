@@ -128,6 +128,7 @@ public class FireBoltState : FSMState
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 0f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 //
             }
@@ -144,6 +145,7 @@ public class FireBoltState : FSMState
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 0f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
             }
         }

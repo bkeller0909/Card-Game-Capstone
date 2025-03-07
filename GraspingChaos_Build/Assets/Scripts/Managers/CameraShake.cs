@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public Camera camera;
+    Camera camera;
+    
+    [HideInInspector] 
+    public Vector3 initialPos;
     public float intensity;
-    Vector3 initialPos;
 
     private void Awake()
     {

@@ -16,9 +16,13 @@ using UnityEngine.VFX;
 public class PlayerManager : MonoBehaviour
 {
     // The players input system
-    [HideInInspector] public PlayerInput playerInput;
+    [HideInInspector] 
+    public PlayerInput playerInput;
     public Gamepad gamepad;
     public PlayerHealth health;
+
+    [HideInInspector]
+    public PlayerCameraHandler cameraHandler;
 
     //debug utilty value, just to reflect current health
     public TMP_Text healthValue;
@@ -101,6 +105,7 @@ public class PlayerManager : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         gamepad = playerInput.GetDevice<Gamepad>();
         ringHandler = gameObject.GetComponent<RingsHandler>();
+        cameraHandler = GetComponent<PlayerCameraHandler>();
 
         if (playerNum == PlayerType.PLAYER1)
         {

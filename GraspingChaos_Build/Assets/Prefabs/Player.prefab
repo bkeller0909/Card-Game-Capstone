@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 2844247077668704164}
   - component: {fileID: 5770387762574175508}
   - component: {fileID: 2402160167513775579}
+  - component: {fileID: 8743075715482117109}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -443,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
   health: {fileID: 0}
+  cameraHandler: {fileID: 0}
   healthValue: {fileID: 0}
   entireHP: 0
   Mana: 0
@@ -600,6 +602,20 @@ MonoBehaviour:
   veilOfFortitudeRight: 0
   vengfulMirrorLeft: 0
   vengfulMirrorRight: 0
+  defualtRingLength: 
+--- !u!114 &8743075715482117109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710627885018120521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca77199cb50a41447994c14f5da974cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCameraShake: {fileID: 0}
 --- !u!1 &780213710919803595
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +881,7 @@ GameObject:
   - component: {fileID: 2968720209944119371}
   - component: {fileID: 44541796345946291}
   - component: {fileID: 3297726804860651693}
+  - component: {fileID: 6205898302437011868}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -1008,6 +1025,20 @@ MonoBehaviour:
   - {fileID: 1328617379501540714}
   lerpTime: 1
   weHaveArrived: 0
+--- !u!114 &6205898302437011868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259392215101570507}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389d77a1f4be9494fa92863db3c2fad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
+  intensity: 0
 --- !u!1 &1940599744865381956
 GameObject:
   m_ObjectHideFlags: 0
