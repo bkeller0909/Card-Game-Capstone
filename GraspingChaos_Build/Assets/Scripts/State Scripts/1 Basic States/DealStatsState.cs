@@ -130,7 +130,7 @@ public class DealStatsState : FSMState
                     if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
                     {
                         // TODO - change this value to 2 once rings are in the game
-                        if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                        if (player.attackCardAmount < 4 && card.type == SpellType.ATTACK)
                         {
                             player.spellHand.playerSpells.Add(card);
                             CardsObjectPool.Instance.SetCardsFromPool(player, card);
@@ -138,7 +138,7 @@ public class DealStatsState : FSMState
                             player.spellHand.amtOfSpellsInHand++;
                             player.attackCardAmount++;
                         }
-                        else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
+                        else if (player.restCardAmount < 2 && card.type == SpellType.RESTORATION)
                         {
                             player.spellHand.playerSpells.Add(card);
                             CardsObjectPool.Instance.SetCardsFromPool(player, card);
@@ -169,7 +169,7 @@ public class DealStatsState : FSMState
                     if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3) // convert enum name to int
                     {
                         // TODO - value 2
-                        if (player.attackCardAmount < 3 && card.type == SpellType.ATTACK)
+                        if (player.attackCardAmount < 4 && card.type == SpellType.ATTACK)
                         {
                             player.spellHand.playerSpells.Add(card);
                             CardsObjectPool.Instance.SetCardsFromPool(player, card);
@@ -177,7 +177,7 @@ public class DealStatsState : FSMState
                             player.spellHand.amtOfSpellsInHand++;
                             player.attackCardAmount++;
                         }
-                        else if (player.restCardAmount < 3 && card.type == SpellType.RESTORATION)
+                        else if (player.restCardAmount < 2 && card.type == SpellType.RESTORATION)
                         {
                             player.spellHand.playerSpells.Add(card);
                             CardsObjectPool.Instance.SetCardsFromPool(player, card);

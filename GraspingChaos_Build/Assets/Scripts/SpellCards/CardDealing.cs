@@ -42,9 +42,6 @@ public class CardDealing : MonoBehaviour
     {
         for (int i = 0; i < ActiveSpellCards.Instance.spellCards.Length; i++)
         {
-            // TODO - remove this once ring spells are added to the game
-            if (ActiveSpellCards.Instance.spellCards[i].type == SpellType.ATTACK || ActiveSpellCards.Instance.spellCards[i].type == SpellType.RESTORATION)
-            {
                 if (ActiveSpellCards.Instance.spellCards[i].manaCost == 1)
                 {
                     oneManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
@@ -81,7 +78,6 @@ public class CardDealing : MonoBehaviour
                 {
                     nineManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
                 }
-            }
         }
     }
 

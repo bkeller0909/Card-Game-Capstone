@@ -46,21 +46,21 @@ public class RingsHandler : MonoBehaviour
         }
     }
 
-    public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager playerTarget)
+    public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager targetPlayer)
     {
         PlayerFingers randoFinger;
         if (ringsActive[(int)Rings.ThornsOfAgonyFull, (int)targetFinger])
         {
             //success does 2 damage
-            randoFinger = playerTarget.GetRandomFinger();
-            playerTarget.health.DamageFinger(randoFinger);
-            playerTarget.health.DamageFinger(randoFinger);
+            randoFinger = targetPlayer.GetRandomFinger();
+            targetPlayer.health.DamageFinger(randoFinger);
+            targetPlayer.health.DamageFinger(randoFinger);
         }
         else if (ringsActive[(int)Rings.ThornsOfAgonyFail, (int)targetFinger])
         {
             //fail only does 1 damage
-            randoFinger = playerTarget.GetRandomFinger();
-            playerTarget.health.DamageFinger(randoFinger);
+            randoFinger = targetPlayer.GetRandomFinger();
+            targetPlayer.health.DamageFinger(randoFinger);
         }
     }
     public void EffectGuardiansTouch(PlayerFingers targetFinger, PlayerManager playerTarget)

@@ -69,6 +69,14 @@ public class PlayerHealth : MonoBehaviour
         {
             if (player.fingers[(int)whatFinger].fingerShield <= 0)
             {
+                if(player == GameManager.Instance.player1)
+                {
+                    player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player2);
+                }
+                else if(player == GameManager.Instance.player2)
+                {
+                    player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player1);
+                }
                 playerHealthStats[(int)whatFinger] -= 1;
                 player.fingers[(int)whatFinger].removeCurrentSegment();
                 player.visualFingers[(int)whatFinger].removeCurrentSegment();

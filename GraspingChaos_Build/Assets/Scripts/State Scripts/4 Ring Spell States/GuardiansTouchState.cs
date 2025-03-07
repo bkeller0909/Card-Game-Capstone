@@ -70,6 +70,16 @@ public class GuardiansTouchState : FSMState
                 player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFail] = GameManager.Instance.whatRound;
             }
 
+            //temp just for it working
+            if (player == GameManager.Instance.player1)
+            {
+                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+            }
+            else if (player == GameManager.Instance.player2)
+            {
+                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+            }
+
             GameManager.Instance.ChangeCurrentCaster();
             GameManager.Instance.playedSpells++;
             GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
