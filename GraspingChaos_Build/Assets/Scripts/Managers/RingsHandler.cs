@@ -18,12 +18,12 @@ public class RingsHandler : MonoBehaviour
 {
     public bool[,] ringsActive;
 
-    [SerializeField, Tooltip("These are the prefabs for each ring")]
-    public GameObject[] rings;
-    [SerializeField]
-    public Transform[] ringPos;
-    [SerializeField]
-    public Transform[] ringPosVisual;
+    public bool veilOfFortitudeLeft;
+    public bool veilOfFortitudeRight;
+
+    public bool vengfulMirrorLeft;
+    public bool vengfulMirrorRight;
+
 
     private void Start()
     {
@@ -53,45 +53,108 @@ public class RingsHandler : MonoBehaviour
         if (ringsActive[(int)Rings.GuardiansTouchFull, (int)targetFinger])
         {
             //fail blocks 1 damage
-            //playerTarget.health.GuardiansTouchShield = 1;
-            //playerTarget.fingers[(int)]
+            playerTarget.fingers[(int)targetFinger].fingerShield = 1;
 
         }
         else if(ringsActive[(int)Rings.GuardiansTouchFail, (int)targetFinger])
         {
             //success blocks 2 damage
-            //playerTarget.health.GuardiansTouchShield = 2;
+            playerTarget.fingers[(int)targetFinger].fingerShield = 2;
         }
     }
-    public void EffectSpectralChain(bool success, PlayerManager playerTarget)
+    public void EffectSpectralChain(PlayerManager playerTarget)
     {
         //removes finger bonus
         //fail lasts 1 turn
         //success lasts 3 turns
     }
-    public void EffectManaMerchant()
+    //call this on deal stats, if the ring is active the function will know, and deal mana acordingly
+    public void EffectManaMerchant(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
         //gain extra mana per turn
         //lasts 8 turns
-        //fail gains 1 mana per turn
-        //success gains 2 mana per turn
+        if (ringsActive[(int)Rings.ManaMerchantFull, (int)targetFinger])
+        {
+            //success gains 2 mana per turn
+            playerTarget.GetMana(2);
+        }
+        else if(ringsActive[(int)Rings.ManaMerchantFail, (int)targetFinger])
+        {
+            //fail gains 1 mana per turn
+            playerTarget.GetMana(1);
+        }
     }
-    public void EffectVengefulMirror()
+    public void EffectVengefulMirror(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
-        //reflecs first damage the hand gets per round
-        //fail reflects damage 
-        //success does double damage
+        // Game manager or instance variable that tracks first damage 
+        // on the attack spells track the total damage based on the card value (will have to implement)
+        //on the ring state dupicate the value if its a success
+        //this function is over all not really needed
+        if ((int)targetFinger >= 0 && (int)targetFinger < 4)
+        {
+            //left hand placement
+            vengfulMirrorLeft = true;
+        }
+        else if ((int)targetFinger >= 5 && (int)targetFinger < 9)
+        {
+            //left hand placement
+            vengfulMirrorRight = true;
+        }
+
+
+        if (ringsActive[(int)Rings.VengefulMirrorFull, (int)targetFinger])
+        {
+            //easy - just revert the player that takes the damage and insted of target based make it random based
+        }
+        else if (ringsActive[(int)Rings.VengefulMirrorFail, (int)targetFinger])
+        {
+            //kinda easy kinda hard - just revert the player that takes the damage, make it duplicate and insted of target based make it random based
+        }
+
+
     }
-    public void EffectVampiricSurge()
+    public void EffectVampiricSurge(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
-        //put on opponent and if that finger is damaged then heal 
-        //fail you heal 1
-        //success you heal 2
+        PlayerFingers randoFinger;
+        if (ringsActive[(int)Rings.VampiricSurgeFull, (int)targetFinger])
+        {
+            //success gains 2 hp
+            randoFinger = playerTarget.GetRandomFinger();
+            playerTarget.health.HealFinger(randoFinger);
+            playerTarget.health.HealFinger(randoFinger);
+        }
+        else if (ringsActive[(int)Rings.VampiricSurgeFail, (int)targetFinger])
+        {
+            //fail only gains 1 HP
+            randoFinger = playerTarget.GetRandomFinger();
+            playerTarget.health.HealFinger(randoFinger);
+        }
     }
-    public void EffectVeilOfFortitude()
+    public void EffectVeilOfFortitude(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
         //reduce damage taken on hand summoned
         //fail damage taken is cut in half
         //success take no damage
+
+        if ((int)targetFinger >= 0 && (int)targetFinger < 4)
+        {
+            //left hand placement
+            veilOfFortitudeLeft = true;
+        }
+        else if ((int)targetFinger >= 5 && (int)targetFinger < 9)
+        {
+            //right hand placement
+            veilOfFortitudeRight = true;
+        }
+
+
+        if (ringsActive[(int)Rings.VeilOfFortitudeFull, (int)targetFinger])
+        {
+            //easy - simply block damage with previous bool
+        }
+        else if (ringsActive[(int)Rings.VeilOfFortitudeFail, (int)targetFinger])
+        {
+            //hard - figure out a way to half the damage (with some spells and the way the damage function is set I might have to re-write some functionality)
+        }
     }
 }
