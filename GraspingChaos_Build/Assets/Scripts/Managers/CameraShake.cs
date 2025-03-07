@@ -7,9 +7,8 @@ public class CameraShake : MonoBehaviour
 {
     Camera camera;
     
-    [HideInInspector] 
-    public Vector3 initialPos;
-    public float intensity;
+    [HideInInspector] public Vector3 initialPos;
+    [HideInInspector] public float intensity;
 
     private void Awake()
     {
