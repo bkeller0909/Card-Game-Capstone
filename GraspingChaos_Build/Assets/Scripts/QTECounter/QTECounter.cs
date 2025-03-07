@@ -32,6 +32,8 @@ public class QTECounter : MonoBehaviour
 
     [SerializeField] private QTEHandler playerQTEHandler;
 
+    [SerializeField] private GameObject tick1, tick2, tick3, tick4, tick5;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,13 @@ public class QTECounter : MonoBehaviour
         rectOffset = qteCounterMaterial.GetVector("_OffsetValue");
 
         SetUpCounterStages();
+
+        tick5.SetActive(true);
+        tick4.SetActive(true);
+        tick3.SetActive(true);
+        tick2.SetActive(true);
+        tick1.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -62,6 +71,29 @@ public class QTECounter : MonoBehaviour
                 desiredCounterStep = 2;
             }
             ChangeCounter();
+        }
+
+
+
+        if(playerQTEHandler.remainingTime < 5 && playerQTEHandler.remainingTime > 4)
+        {
+            tick1.SetActive(false);
+        }
+        else if(playerQTEHandler.remainingTime < 4 && playerQTEHandler.remainingTime > 3)
+        {
+            tick2.SetActive(false);
+        }
+        else if(playerQTEHandler.remainingTime < 3 && playerQTEHandler.remainingTime > 2)
+        {
+            tick3.SetActive(false);
+        }
+        else if(playerQTEHandler.remainingTime < 2 && playerQTEHandler.remainingTime > 1)
+        {
+            tick4.SetActive(false);
+        }
+        else if(playerQTEHandler.remainingTime <= 0)
+        {
+            tick5.SetActive(false);
         }
     }
 
