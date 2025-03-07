@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc3b6b79ce41124980733162b9ff9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
   cards:
   - {fileID: 6548769864369024796}
   - {fileID: 5653136391581942575}
@@ -87,6 +88,12 @@ MonoBehaviour:
   - {fileID: 4199217552810954559}
   - {fileID: 901259754620626811}
   selectedCards: []
+  cardSlots: []
+  emptySlots: 
+  whatCard: {fileID: 0}
+  currentHoverIndex: 0
+  ALLCards: {fileID: 0}
+  RemovingCards: []
 --- !u!1 &3724733430464731982
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +249,7 @@ MonoBehaviour:
   - {fileID: 133519042667777908}
   - {fileID: 1180784065810765441}
   lerpTime: 0
+  weHaveArrived: 0
 --- !u!1 &4101514646496388115
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,9 +449,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
   health: {fileID: 0}
+  cameraHandler: {fileID: 0}
   healthValue: {fileID: 0}
   entireHP: 0
   Mana: 0
+  spellHand: {fileID: 0}
+  ringHandler: {fileID: 0}
   playerNum: 1
   fingers:
   - {fileID: 785245147678746991}
@@ -456,6 +467,25 @@ MonoBehaviour:
   - {fileID: 8270471870233741844}
   - {fileID: 881417510896926344}
   - {fileID: 49977377588949800}
+  visualFingers: []
+  spellEffects: []
+  DamageTrackedPerTurn: 0
+  SucessfulCursedConversion: 0
+  PlayedCursedConvertion: 0
+  ManaTrackedPerTurn: 0
+  SucessfulEchoingMana: 0
+  PlayedEchoingMana: 0
+  playerOneHands: 0
+  cardsAmountSelected: 0
+  attackCardAmount: 0
+  restCardAmount: 0
+  ringCardAmount: 0
+  manaVisual: {fileID: 0}
+  manaText: {fileID: 0}
+  skullHands: {fileID: 0}
+  stagHands: {fileID: 0}
+  healthyFingers: []
+  playerCameras: {fileID: 0}
 --- !u!114 &8075661477695772343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselect: {r: 1, g: 1, b: 1, a: 1}
+  playerOneHands: 1
 --- !u!1 &6726173488235076315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1156,11 @@ MonoBehaviour:
   - {fileID: 198912638278587433}
   - {fileID: 3138832715316790674}
   - {fileID: 2176241143750803034}
+  finger_Mat: {fileID: 0}
   finger: 2
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &1933943354774529892 stripped
@@ -1157,8 +1191,11 @@ MonoBehaviour:
   - {fileID: 4532097326821154749}
   - {fileID: 585250223933435150}
   - {fileID: 4097528626306944918}
+  finger_Mat: {fileID: 0}
   finger: 3
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!4 &2157296226571241419 stripped
@@ -1195,8 +1232,11 @@ MonoBehaviour:
   - {fileID: 6358096410384350104}
   - {fileID: 8941289374812869293}
   - {fileID: 6484849839026115465}
+  finger_Mat: {fileID: 0}
   finger: 5
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &2721263748892985001 stripped
@@ -1221,8 +1261,11 @@ MonoBehaviour:
   - {fileID: 6432854911178709344}
   - {fileID: 5341664015315953220}
   - {fileID: 8159742991347059576}
+  finger_Mat: {fileID: 0}
   finger: 8
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &3138832715316790674 stripped
@@ -1258,8 +1301,11 @@ MonoBehaviour:
   fingerJoints:
   - {fileID: 3807949026283216129}
   - {fileID: 5900166510355626918}
+  finger_Mat: {fileID: 0}
   finger: 9
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &3807949026283216129 stripped
@@ -1344,8 +1390,11 @@ MonoBehaviour:
   - {fileID: 5090385004728531787}
   - {fileID: 3958704420951295475}
   - {fileID: 5939354453616877600}
+  finger_Mat: {fileID: 0}
   finger: 1
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &5387370196266459835 stripped
@@ -1382,8 +1431,11 @@ MonoBehaviour:
   - {fileID: 4796498046727041918}
   - {fileID: 6455984932227297712}
   - {fileID: 8409768881157760745}
+  finger_Mat: {fileID: 0}
   finger: 0
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &5939354453616877600 stripped
@@ -1444,8 +1496,11 @@ MonoBehaviour:
   - {fileID: 5341688572401998726}
   - {fileID: 5185165880547264410}
   - {fileID: 3273536269697796709}
+  finger_Mat: {fileID: 0}
   finger: 7
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &7540149224409954131 stripped
@@ -1469,8 +1524,11 @@ MonoBehaviour:
   fingerJoints:
   - {fileID: 5387370196266459835}
   - {fileID: 6895875452837980812}
+  finger_Mat: {fileID: 0}
   finger: 4
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &7783771458243972198 stripped
@@ -1495,8 +1553,11 @@ MonoBehaviour:
   - {fileID: 8520997588965082371}
   - {fileID: 1933943354774529892}
   - {fileID: 5021444195774682820}
+  finger_Mat: {fileID: 0}
   finger: 6
   fingerHP: 0
+  fingerShield: 0
+  rings: []
   remove: 0
   add: 0
 --- !u!1 &8159742991347059576 stripped
