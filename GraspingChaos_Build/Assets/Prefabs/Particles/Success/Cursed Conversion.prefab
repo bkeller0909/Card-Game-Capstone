@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2741709234410931217
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7301535839362847224}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,8 +47,8 @@ VisualEffect:
   m_GameObject: {fileID: 7301535839362847224}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: b9bf31930e7eb3e428b8a826ae9af245, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -59,6 +59,9 @@ VisualEffect:
       - m_Value: 5
         m_Name: Speed
         m_Overridden: 1
+      - m_Value: 2
+        m_Name: Duration
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -66,7 +69,7 @@ VisualEffect:
       - m_Value: {x: 0, y: 1.045, z: 212.981}
         m_Name: Start Position
         m_Overridden: 1
-      - m_Value: {x: -0.77, y: 1.0330372, z: 213.03}
+      - m_Value: {x: -0.198, y: 1.0330372, z: 212.999}
         m_Name: End Position
         m_Overridden: 1
     m_Vector4f:
@@ -93,7 +96,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7301535839362847224}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

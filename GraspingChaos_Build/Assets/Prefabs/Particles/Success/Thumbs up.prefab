@@ -16,13 +16,14 @@ GameObject:
   - component: {fileID: 725519852185152806}
   - component: {fileID: -1725166356031617842}
   - component: {fileID: -8039125191997800301}
+  - component: {fileID: 6587627435175653469}
   m_Layer: 0
   m_Name: Thumbs up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4905974779518975281
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634664020170888169}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -66,8 +67,11 @@ VisualEffect:
       - m_Value: {x: 0, y: 1.045, z: 212.981}
         m_Name: Start Position
         m_Overridden: 1
-      - m_Value: {x: -0.009999998, y: 1.044, z: 214.34506}
+      - m_Value: {x: 0.013, y: 1.137, z: 214.34506}
         m_Name: End Position
+        m_Overridden: 1
+      - m_Value: {x: 0.81850326, y: 1.0055985, z: 214.34612}
+        m_Name: End Position 2
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -93,7 +97,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634664020170888169}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -141,6 +145,7 @@ MonoBehaviour:
   m_Bindings:
   - {fileID: 1529957770136932873}
   - {fileID: 725519852185152806}
+  - {fileID: 6587627435175653469}
   m_VisualEffect: {fileID: 5147846766449502912}
 --- !u!114 &1529957770136932873
 MonoBehaviour:
@@ -284,3 +289,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6587627435175653469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634664020170888169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: End Position 2
+  Target: {fileID: 0}
