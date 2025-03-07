@@ -23,8 +23,6 @@ public class PlayerHealth : MonoBehaviour
     // The max amount of fingers a player can have
     public static int MAX_AMT_FINGERS = 10;
 
-    //shield value of ring protection
-    public int GuardiansTouchShield;
 
 
     // Start is called before the first frame update
@@ -69,11 +67,18 @@ public class PlayerHealth : MonoBehaviour
     {
         if (playerHealthStats[(int)whatFinger] > 0)
         {
-            playerHealthStats[(int)whatFinger] -= 1;
-            player.fingers[(int)whatFinger].removeCurrentSegment();
-            player.visualFingers[(int)whatFinger].removeCurrentSegment();
-            player.entireHP--;
-            player.DamageTrackedPerTurn++;
+            if (player.fingers[(int)whatFinger].fingerShield <= 0)
+            {
+                playerHealthStats[(int)whatFinger] -= 1;
+                player.fingers[(int)whatFinger].removeCurrentSegment();
+                player.visualFingers[(int)whatFinger].removeCurrentSegment();
+                player.entireHP--;
+                player.DamageTrackedPerTurn++;
+            }
+            else
+            {
+                player.fingers[(int)whatFinger].fingerShield--;
+            }
         }
         else
         {
