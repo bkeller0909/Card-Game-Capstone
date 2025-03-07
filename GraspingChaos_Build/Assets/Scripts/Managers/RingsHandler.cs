@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.XR;
 
 //----------------------------------------------------------------
 //  OG Author:    Wyatt
@@ -18,16 +17,33 @@ public class RingsHandler : MonoBehaviour
 {
     public bool[,] ringsActive;
 
+    public int[] ringStartRound;
+
     public bool veilOfFortitudeLeft;
     public bool veilOfFortitudeRight;
 
     public bool vengfulMirrorLeft;
     public bool vengfulMirrorRight;
 
+    [SerializeField, Tooltip("This is the amount of rounds the rings lasts")]
+    public int[] defualtRingLength;
 
     private void Start()
     {
         ringsActive = new bool[14, 10];
+        for (int i = 0; i < 14; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                ringsActive[i, j] = false;
+            }
+        }
+
+        ringStartRound = new int[14];
+        for (int i = 0; i < 14; i++)
+        {
+            ringStartRound[i] = -1;
+        }
     }
 
     public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager playerTarget)
@@ -56,7 +72,7 @@ public class RingsHandler : MonoBehaviour
             playerTarget.fingers[(int)targetFinger].fingerShield = 1;
 
         }
-        else if(ringsActive[(int)Rings.GuardiansTouchFail, (int)targetFinger])
+        else if (ringsActive[(int)Rings.GuardiansTouchFail, (int)targetFinger])
         {
             //success blocks 2 damage
             playerTarget.fingers[(int)targetFinger].fingerShield = 2;
@@ -78,7 +94,7 @@ public class RingsHandler : MonoBehaviour
             //success gains 2 mana per turn
             playerTarget.GetMana(2);
         }
-        else if(ringsActive[(int)Rings.ManaMerchantFail, (int)targetFinger])
+        else if (ringsActive[(int)Rings.ManaMerchantFail, (int)targetFinger])
         {
             //fail gains 1 mana per turn
             playerTarget.GetMana(1);

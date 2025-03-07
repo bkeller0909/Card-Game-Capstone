@@ -55,6 +55,21 @@ public class ChoosingSpellsState : FSMState
             GameManager.Instance.manaPerTurn++;
         }
 
+        for (int i = 0; i < 14; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (playerState.player.ringHandler.ringsActive[i, j] == true)
+                {
+                    if (playerState.player.ringHandler.ringStartRound[i] + playerState.player.ringHandler.defualtRingLength[i] == GameManager.Instance.whatRound)
+                    {
+                        playerState.player.ringHandler.ringsActive[i, j] = false;
+                        playerState.player.ToggleRing(false, (Rings)i, (PlayerFingers)j);
+                    }
+                }
+            }
+        }
+
         //resets the last selected card and sets the currently sellected card to the first one in the players hand
         playerState.player.gameObject.GetComponent<PlayerControlHandler>().pickCards.SetHoveredCard(0);
 

@@ -30,6 +30,9 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("The players Spell Hand")]
     public SpellHand spellHand;
 
+    [Tooltip("The players Ring handler, deals with everything ring related to this player")]
+    public RingsHandler ringHandler;
+
     [Tooltip("What number of player they are")]
     [SerializeField] public PlayerType playerNum;
     [Tooltip("List of fingers which act as columns, each containing the finger joint game objects.")]
@@ -97,10 +100,11 @@ public class PlayerManager : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         gamepad = playerInput.GetDevice<Gamepad>();
+        ringHandler = gameObject.GetComponent<RingsHandler>();
 
         if (playerNum == PlayerType.PLAYER1)
         {
-            foreach(Fingers finger in skullHands.fingers)
+            foreach (Fingers finger in skullHands.fingers)
             {
                 fingers.Add(finger);
             }
@@ -197,7 +201,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerFingers GetRandomFinger()
     {
         int rand = 0;
-        if(healthyFingers.Count != 0)
+        if (healthyFingers.Count != 0)
         {
             healthyFingers.Clear();
         }
@@ -327,5 +331,11 @@ public class PlayerManager : MonoBehaviour
             }
         }
         return damageDealt;
+    }
+
+    public void ToggleRing(bool turnOn, Rings whatRing, PlayerFingers whatFinger)
+    {
+        fingers[(int)whatFinger].rings[(int)whatRing].gameObject.SetActive(turnOn);
+        visualFingers[(int)whatFinger].rings[(int)whatRing].gameObject.SetActive(turnOn);
     }
 }

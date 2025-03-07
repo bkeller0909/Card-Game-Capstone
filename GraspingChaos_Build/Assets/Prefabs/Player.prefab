@@ -447,6 +447,7 @@ MonoBehaviour:
   entireHP: 0
   Mana: 0
   spellHand: {fileID: 0}
+  ringHandler: {fileID: 0}
   playerNum: 0
   fingers: []
   visualFingers: []
@@ -594,43 +595,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab8d39fb80683945a3ced33740b7ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rings:
-  - {fileID: 919132149155446097, guid: b57a826ffa498a0499cc318aecb77ccb, type: 3}
-  - {fileID: 919132149155446097, guid: b57a826ffa498a0499cc318aecb77ccb, type: 3}
-  - {fileID: 919132149155446097, guid: 80b122876244c4b4f89aba22b800f564, type: 3}
-  - {fileID: 919132149155446097, guid: 80b122876244c4b4f89aba22b800f564, type: 3}
-  - {fileID: 919132149155446097, guid: 9367ba965abfc614c93afa05d3344c8f, type: 3}
-  - {fileID: 919132149155446097, guid: 9367ba965abfc614c93afa05d3344c8f, type: 3}
-  - {fileID: 919132149155446097, guid: 6e8c034c5bf98c2419b758bf861262db, type: 3}
-  - {fileID: 919132149155446097, guid: 6e8c034c5bf98c2419b758bf861262db, type: 3}
-  - {fileID: 919132149155446097, guid: e4c7298a87dfd7040a5f088758268114, type: 3}
-  - {fileID: 919132149155446097, guid: e4c7298a87dfd7040a5f088758268114, type: 3}
-  - {fileID: 919132149155446097, guid: 1547206512a8d7c44a476ed99bbbe3b3, type: 3}
-  - {fileID: 919132149155446097, guid: 1547206512a8d7c44a476ed99bbbe3b3, type: 3}
-  - {fileID: 919132149155446097, guid: 5f9f5727c1bef81489ae3d5d7f8d8e05, type: 3}
-  - {fileID: 919132149155446097, guid: 5f9f5727c1bef81489ae3d5d7f8d8e05, type: 3}
-  ringPos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ringPosVisual:
-  - {fileID: 0}
-  - {fileID: 3677455386538624050}
-  - {fileID: 0}
-  - {fileID: 4495886903181207604}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 2382925669952366259}
+  ringStartRound: 0500000005000000030000000300000003000000010000000800000008000000030000000300000003000000030000000300000003000000
+  veilOfFortitudeLeft: 0
+  veilOfFortitudeRight: 0
+  vengfulMirrorLeft: 0
+  vengfulMirrorRight: 0
 --- !u!1 &780213710919803595
 GameObject:
   m_ObjectHideFlags: 0
