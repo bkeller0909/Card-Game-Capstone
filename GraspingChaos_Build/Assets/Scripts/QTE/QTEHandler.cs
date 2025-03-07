@@ -107,7 +107,8 @@ public class QTEHandler : MonoBehaviour
         //start the timer at false
         startTimer = false;
         //get the timer amount from the Game Manager
-        remainingTime = GameManager.Instance.timerQTE;
+        //remainingTime = GameManager.Instance.timerQTE;
+        remainingTime = 15;
         //set the qte button index to -1 as to not offset the out of bounce counter
         createdBTNIndex = -1;
         //set the amount of qte pressed correctly to 0 since you havent yet done a qte
