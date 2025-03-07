@@ -100,6 +100,11 @@ public class QTECounter : MonoBehaviour
     private void OnEnable()
     {
         desiredCounterStep = 0;
+        tick5.SetActive(true);
+        tick4.SetActive(true);
+        tick3.SetActive(true);
+        tick2.SetActive(true);
+        tick1.SetActive(true);
     }
 
     void SetUpCounterStages()

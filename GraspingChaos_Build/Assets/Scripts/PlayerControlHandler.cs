@@ -172,6 +172,8 @@ public class PlayerControlHandler : MonoBehaviour
                 }
                 index++;
                 GameManager.Instance.firstRoundCheck = false;
+                //make a new acion map that only takes x to return if you want to select more cards
+                //player.playerInput.SwitchCurrentActionMap("QTE");
             }
 
             //Camera Movement
