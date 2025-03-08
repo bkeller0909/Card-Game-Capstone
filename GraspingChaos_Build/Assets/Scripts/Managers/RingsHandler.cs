@@ -53,14 +53,24 @@ public class RingsHandler : MonoBehaviour
         {
             //success does 2 damage
             randoFinger = targetPlayer.GetRandomFinger();
-            targetPlayer.health.DamageFinger(randoFinger);
-            targetPlayer.health.DamageFinger(randoFinger);
+            //targetPlayer.health.DamageFinger(randoFinger);
+            //targetPlayer.health.DamageFinger(randoFinger);
+            for(int i = 0; i < 2; i++)
+            {
+                targetPlayer.health.playerHealthStats[(int)randoFinger] -= 1;
+                targetPlayer.fingers[(int)randoFinger].removeCurrentSegment();
+                targetPlayer.visualFingers[(int)randoFinger].removeCurrentSegment();
+                targetPlayer.entireHP--;
+            }
         }
         else if (ringsActive[(int)Rings.ThornsOfAgonyFail, (int)targetFinger])
         {
             //fail only does 1 damage
             randoFinger = targetPlayer.GetRandomFinger();
-            targetPlayer.health.DamageFinger(randoFinger);
+            targetPlayer.health.playerHealthStats[(int)randoFinger] -= 1;
+            targetPlayer.fingers[(int)randoFinger].removeCurrentSegment();
+            targetPlayer.visualFingers[(int)randoFinger].removeCurrentSegment();
+            targetPlayer.entireHP--;
         }
     }
     public void EffectGuardiansTouch(PlayerFingers targetFinger, PlayerManager playerTarget)
