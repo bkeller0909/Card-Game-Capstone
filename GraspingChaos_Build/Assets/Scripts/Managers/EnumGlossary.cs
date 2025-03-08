@@ -135,5 +135,7 @@ public enum Rings
     VampiricSurgeFail,
 
     VeilOfFortitudeFull,
-    VeilOfFortitudeFail
+    VeilOfFortitudeFail,
+
+    None = 20
 }

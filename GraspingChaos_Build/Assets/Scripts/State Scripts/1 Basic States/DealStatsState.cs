@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------
 
 using System;
+using UnityEditor;
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -144,6 +145,7 @@ public class DealStatsState : FSMState
                     }
                     else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
                     {
+                        if(CheckRinginHand(player, card))
                         player.spellHand.playerSpells.Add(card);
                         CardsObjectPool.Instance.SetCardsFromPool(player, card);
                         // increase the amount of spells the player has in their hand
@@ -167,6 +169,33 @@ public class DealStatsState : FSMState
             GameManager.Instance.checkAvailableCards = true;
         }
     }
+
+    private bool CheckRinginHand(PlayerManager currentPlayer, SpellCard card)
+    {
+        for (int i = 0; i < currentPlayer.gameObject.GetComponentInChildren<CardHandSlot>().cards.Count; i++)
+        {
+            if (currentPlayer.gameObject.GetComponentInChildren<CardHandSlot>().cards[i].gameObject.GetComponent<SpellCard>().spellName == card.spellName)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //private bool CheckRinginFingers(PlayerManager currentPlayer)
+    //{
+    //    for (int i = 0; i < 14; i++)
+    //    {
+    //        for (int j = 0; j < 10; j++)
+    //        {
+    //            //if this ring is active on a finger and it is the ring that matches with the card
+    //            if (currentPlayer.ringHandler.ringsActive[i, j] == true)
+    //            {
+
+    //            }
+    //        }
+    //    }
+    //}
 
     private void ScriptedGame(PlayerManager player)
     {
