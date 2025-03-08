@@ -73,6 +73,10 @@ public class ChoosingSpellsState : FSMState
                         {
                             playerState.player.GetComponent<RingsHandler>().manaMerchantSuccess = false;
                         }
+                        else if(i == (int)Rings.GuardiansTouchFail || i == (int)Rings.GuardiansTouchFull)
+                        {
+                            playerState.player.GetComponent<RingsHandler>().GuardiansTouchStolenOrOver((PlayerFingers)j);
+                        }
                         break;
                     }
                 }

@@ -46,6 +46,4 @@ public class SpellCard : MonoBehaviour
     public KeyCode debugTester;
 
     public int currentOrderValue = 4;
-
-    public Rings playerRings;
 }

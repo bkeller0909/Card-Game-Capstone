@@ -93,6 +93,12 @@ public class RingsHandler : MonoBehaviour
             gameObject.GetComponent<PlayerManager>().fingers[(int)targetFinger].fingerShield = 1;
         }
     }
+
+    public void GuardiansTouchStolenOrOver(PlayerFingers targetFinger)
+    {
+        gameObject.GetComponent<PlayerManager>().fingers[(int)targetFinger].fingerShield = 0;
+    }
+
     public void EffectSpectralChain(PlayerManager playerTarget)
     {
         //removes finger bonus

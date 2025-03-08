@@ -145,12 +145,18 @@ public class DealStatsState : FSMState
                     }
                     else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
                     {
-                        if(CheckRinginHand(player, card))
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
-                        player.ringCardAmount++;
+                        if(CheckRingInHand(player, card) && CheckRingInFingers(player))
+                        {
+                            player.spellHand.playerSpells.Add(card);
+                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                            // increase the amount of spells the player has in their hand
+                            player.spellHand.amtOfSpellsInHand++;
+                            player.ringCardAmount++;
+                        }
+                        else
+                        {
+                            //loop again
+                        }
                     }
 
                 }
@@ -170,7 +176,7 @@ public class DealStatsState : FSMState
         }
     }
 
-    private bool CheckRinginHand(PlayerManager currentPlayer, SpellCard card)
+    private bool CheckRingInHand(PlayerManager currentPlayer, SpellCard card)
     {
         for (int i = 0; i < currentPlayer.gameObject.GetComponentInChildren<CardHandSlot>().cards.Count; i++)
         {
@@ -182,20 +188,48 @@ public class DealStatsState : FSMState
         return true;
     }
 
-    //private bool CheckRinginFingers(PlayerManager currentPlayer)
-    //{
-    //    for (int i = 0; i < 14; i++)
-    //    {
-    //        for (int j = 0; j < 10; j++)
-    //        {
-    //            //if this ring is active on a finger and it is the ring that matches with the card
-    //            if (currentPlayer.ringHandler.ringsActive[i, j] == true)
-    //            {
-
-    //            }
-    //        }
-    //    }
-    //}
+    private bool CheckRingInFingers(PlayerManager currentPlayer)
+    {
+        for (int i = 0; i < 14; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                //if this ring is active on a finger and it is the ring that matches with the card
+                if (currentPlayer.ringHandler.ringsActive[i, j] == true)
+                {
+                    if(i == (int)Rings.ThornsOfAgonyFail || i == (int)Rings.ThornsOfAgonyFull)
+                    {
+                        return false;
+                    }
+                    else if(i == (int)Rings.GuardiansTouchFail || i == (int)Rings.GuardiansTouchFull)
+                    {
+                        return false;
+                    }
+                    else if(i == (int)Rings.ManaMerchantFail || i == (int)Rings.ManaMerchantFull)
+                    {
+                        return false;
+                    }
+                    else if(i == (int)Rings.VengefulMirrorFail || i == (int)Rings.VengefulMirrorFull)
+                    {
+                        return false;
+                    }
+                    else if(i == (int)Rings.SpectralChainFail || i == (int)Rings.SpectralChainFull)
+                    {
+                        return false;
+                    }
+                    else if(i == (int)Rings.VampiricSurgeFail || i == (int)Rings.VampiricSurgeFull)
+                    {
+                        return false;
+                    }
+                    else if(i == (int)Rings.VeilOfFortitudeFail || i == (int)Rings.VeilOfFortitudeFull)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     private void ScriptedGame(PlayerManager player)
     {
