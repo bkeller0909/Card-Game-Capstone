@@ -171,7 +171,6 @@ public class PlayerControlHandler : MonoBehaviour
                     player.cardsAmountSelected++;
                 }
                 index++;
-                GameManager.Instance.firstRoundCheck = false;
                 //make a new acion map that only takes x to return if you want to select more cards
                 //player.playerInput.SwitchCurrentActionMap("QTE");
             }
@@ -183,6 +182,7 @@ public class PlayerControlHandler : MonoBehaviour
         // Once the pause button is pressed just load us back to the main menu
         if (player.playerInput.actions["Pause"].triggered)
         {
+            CardsObjectPool.Instance.ResetPoolDistributionValues();
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
 

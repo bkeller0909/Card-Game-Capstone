@@ -76,10 +76,7 @@ public class CardsObjectPool : MonoBehaviour
     private void Start()
     {
         allcardAmounts = new int[ActiveSpellCards.Instance.AmtOfCards];
-        for (int i = 0; i < allcardAmounts.Length; i++)
-        {
-            allcardAmounts[i] = 0;
-        }
+        ResetPoolDistributionValues();
     }
 
     private void Update()
@@ -96,6 +93,14 @@ public class CardsObjectPool : MonoBehaviour
                     pooledCards.SetActive(false);
                 }
             }
+        }
+    }
+
+    public void ResetPoolDistributionValues()
+    {
+        for (int i = 0; i < allcardAmounts.Length; i++)
+        {
+            allcardAmounts[i] = 0;
         }
     }
 
