@@ -73,19 +73,19 @@ public class RingsHandler : MonoBehaviour
             targetPlayer.entireHP--;
         }
     }
-    public void EffectGuardiansTouch(PlayerFingers targetFinger, PlayerManager playerTarget)
+    public void EffectGuardiansTouch(PlayerFingers targetFinger)
     {
         //block damage on target finger
         if (ringsActive[(int)Rings.GuardiansTouchFull, (int)targetFinger])
         {
             //fail blocks 1 damage
-            playerTarget.fingers[(int)targetFinger].fingerShield = 1;
+            gameObject.GetComponent<PlayerManager>().fingers[(int)targetFinger].fingerShield = 2;
 
         }
         else if (ringsActive[(int)Rings.GuardiansTouchFail, (int)targetFinger])
         {
             //success blocks 2 damage
-            playerTarget.fingers[(int)targetFinger].fingerShield = 2;
+            gameObject.GetComponent<PlayerManager>().fingers[(int)targetFinger].fingerShield = 1;
         }
     }
     public void EffectSpectralChain(PlayerManager playerTarget)
