@@ -25,6 +25,9 @@ public class RingsHandler : MonoBehaviour
     public bool vengfulMirrorLeft;
     public bool vengfulMirrorRight;
 
+    public bool manaMerchantSuccess;
+    public bool manaMerchantFailure;
+
     [SerializeField, Tooltip("This is the amount of rounds the rings lasts")]
     public int[] defualtRingLength;
 
@@ -44,6 +47,8 @@ public class RingsHandler : MonoBehaviour
         {
             ringStartRound[i] = -1;
         }
+        manaMerchantFailure = false;
+        manaMerchantSuccess = false;
     }
 
     public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager targetPlayer)
@@ -95,19 +100,15 @@ public class RingsHandler : MonoBehaviour
         //success lasts 3 turns
     }
     //call this on deal stats, if the ring is active the function will know, and deal mana acordingly
-    public void EffectManaMerchant(PlayerFingers targetFinger, PlayerManager playerTarget)
+    public void EffectManaMerchant()
     {
-        //gain extra mana per turn
-        //lasts 8 turns
-        if (ringsActive[(int)Rings.ManaMerchantFull, (int)targetFinger])
+        if(manaMerchantSuccess)
         {
-            //success gains 2 mana per turn
-            playerTarget.GetMana(2);
+            gameObject.GetComponent<PlayerManager>().GetMana(2);
         }
-        else if (ringsActive[(int)Rings.ManaMerchantFail, (int)targetFinger])
+        else if(manaMerchantFailure)
         {
-            //fail gains 1 mana per turn
-            playerTarget.GetMana(1);
+            gameObject.GetComponent<PlayerManager>().GetMana(1);
         }
     }
     public void EffectVengefulMirror(PlayerFingers targetFinger, PlayerManager playerTarget)

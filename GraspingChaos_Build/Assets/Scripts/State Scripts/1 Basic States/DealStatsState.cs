@@ -97,6 +97,7 @@ public class DealStatsState : FSMState
             //player.Mana += GameManager.Instance.manaPerTurn;
             player.GetMana(GameManager.Instance.manaPerTurn);
             gainedMana = true;
+            player.GetComponent<RingsHandler>().EffectManaMerchant();
             if (player.PlayedCursedConvertion)
             {
                 player.PlayedCursedConvertion = false;
@@ -111,7 +112,7 @@ public class DealStatsState : FSMState
                 {
                     player.Mana = 12;
                 }
-            }
+            }       
         }
 
         // If the game is scripted skip this if it isint go in
