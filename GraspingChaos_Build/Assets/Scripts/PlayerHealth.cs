@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 
 
@@ -93,6 +94,25 @@ public class PlayerHealth : MonoBehaviour
             playerHealthStats[(int)whatFinger] = 0;
         }
 
+        if (playerHealthStats[(int)whatFinger] == 0)
+        {
+            for (int i = 0; i < 14; i++)
+            {
+                if (player.ringHandler.ringsActive[i, (int)whatFinger] == true)
+                {
+                    player.ringHandler.ringsActive[i, (int)whatFinger] = false;
+                    player.ToggleRing(false, (Rings)i, whatFinger);
+                    if (i == (int)Rings.ManaMerchantFail)
+                    {
+                        player.GetComponent<RingsHandler>().manaMerchantFailure = false;
+                    }
+                    else if (i == (int)Rings.ManaMerchantFull)
+                    {
+                        player.GetComponent<RingsHandler>().manaMerchantSuccess = false;
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
