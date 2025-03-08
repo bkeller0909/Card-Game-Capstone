@@ -55,19 +55,36 @@ public class VampiricSurgeState : FSMState
         else
         {
             GameManager.Instance.spellInProgress = true;
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+            bool spotTaken = false;
+
+            for (int i = 0; i < 14; i++)
             {
-                //Turns The Ring on
-                player.ringHandler.ringsActive[(int)Rings.VampiricSurgeFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                player.ToggleRing(true, Rings.VampiricSurgeFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                player.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFull] = GameManager.Instance.whatRound;
+                if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                {
+                    spotTaken = true;
+                }
             }
-            else
+
+            if (!spotTaken)
             {
-                //Turns The Ring on
-                player.ringHandler.ringsActive[(int)Rings.VampiricSurgeFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                player.ToggleRing(true, Rings.VampiricSurgeFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                player.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFail] = GameManager.Instance.whatRound;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    //Turns The Ring on
+                    player.ringHandler.ringsActive[(int)Rings.VampiricSurgeFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    player.ToggleRing(true, Rings.VampiricSurgeFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFull] = GameManager.Instance.whatRound;
+                }
+                else
+                {
+                    //Turns The Ring on
+                    player.ringHandler.ringsActive[(int)Rings.VampiricSurgeFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    player.ToggleRing(true, Rings.VampiricSurgeFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFail] = GameManager.Instance.whatRound;
+                }
+            }
+            else // ring dosent get put on the finger
+            {
+
             }
 
             //temp just for it working

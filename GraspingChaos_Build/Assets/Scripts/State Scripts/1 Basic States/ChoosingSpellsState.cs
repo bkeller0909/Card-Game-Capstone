@@ -73,6 +73,7 @@ public class ChoosingSpellsState : FSMState
                         {
                             playerState.player.GetComponent<RingsHandler>().manaMerchantSuccess = false;
                         }
+                        break;
                     }
                 }
             }

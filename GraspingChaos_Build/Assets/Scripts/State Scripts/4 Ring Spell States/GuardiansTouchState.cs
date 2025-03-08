@@ -55,21 +55,39 @@ public class GuardiansTouchState : FSMState
         else
         {
             GameManager.Instance.spellInProgress = true;
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+            bool spotTaken = false;
+
+            for (int i = 0; i < 14; i++)
             {
-                //Turns The Ring on
-                player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                player.ToggleRing(true, Rings.GuardiansTouchFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFull] = GameManager.Instance.whatRound;
-                player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                {
+                    spotTaken = true;
+                    break;
+                }
             }
-            else
+
+            if (!spotTaken)
             {
-                //Turns The Ring on
-                player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                player.ToggleRing(true, Rings.GuardiansTouchFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFail] = GameManager.Instance.whatRound;
-                player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    //Turns The Ring on
+                    player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    player.ToggleRing(true, Rings.GuardiansTouchFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFull] = GameManager.Instance.whatRound;
+                    player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                }
+                else
+                {
+                    //Turns The Ring on
+                    player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    player.ToggleRing(true, Rings.GuardiansTouchFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFail] = GameManager.Instance.whatRound;
+                    player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                }
+            }
+            else // ring dosent get put on the finger
+            {
+
             }
 
             //temp just for it working

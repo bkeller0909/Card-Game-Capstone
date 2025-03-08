@@ -55,21 +55,38 @@ public class ManaMerchantState : FSMState
         else
         {
             GameManager.Instance.spellInProgress = true;
-            if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+            bool spotTaken = false;
+
+            for (int i = 0; i < 14; i++)
             {
-                //Turns The Ring on
-                player.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                player.ToggleRing(true, Rings.ManaMerchantFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                player.ringHandler.ringStartRound[(int)Rings.ManaMerchantFull] = GameManager.Instance.whatRound;
-                player.GetComponent<RingsHandler>().manaMerchantSuccess = true;
+                if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                {
+                    spotTaken = true;
+                }
             }
-            else
+
+            if (!spotTaken)
             {
-                //Turns The Ring on
-                player.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                player.ToggleRing(true, Rings.ManaMerchantFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                player.ringHandler.ringStartRound[(int)Rings.ManaMerchantFail] = GameManager.Instance.whatRound;
-                player.GetComponent<RingsHandler>().manaMerchantFailure = true;
+                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                {
+                    //Turns The Ring on
+                    player.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    player.ToggleRing(true, Rings.ManaMerchantFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ringStartRound[(int)Rings.ManaMerchantFull] = GameManager.Instance.whatRound;
+                    player.GetComponent<RingsHandler>().manaMerchantSuccess = true;
+                }
+                else
+                {
+                    //Turns The Ring on
+                    player.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    player.ToggleRing(true, Rings.ManaMerchantFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ringStartRound[(int)Rings.ManaMerchantFail] = GameManager.Instance.whatRound;
+                    player.GetComponent<RingsHandler>().manaMerchantFailure = true;
+                }
+            }
+            else // ring dosent get put on the finger
+            {
+
             }
 
             //temp just for it working
