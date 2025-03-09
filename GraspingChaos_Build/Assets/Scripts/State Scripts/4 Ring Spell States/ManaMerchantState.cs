@@ -73,7 +73,7 @@ public class ManaMerchantState : FSMState
                     player.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.ManaMerchantFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.ManaMerchantFull] = GameManager.Instance.whatRound;
-                    player.GetComponent<RingsHandler>().manaMerchantSuccess = true;
+                    //player.GetComponent<RingsHandler>().manaMerchantSuccess = true;
                 }
                 else
                 {
@@ -81,7 +81,7 @@ public class ManaMerchantState : FSMState
                     player.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.ManaMerchantFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.ManaMerchantFail] = GameManager.Instance.whatRound;
-                    player.GetComponent<RingsHandler>().manaMerchantFailure = true;
+                    //player.GetComponent<RingsHandler>().manaMerchantFailure = true;
                 }
             }
             else // ring dosent get put on the finger

@@ -342,5 +342,36 @@ public class PlayerManager : MonoBehaviour
     {
         fingers[(int)whatFinger].rings[(int)whatRing].gameObject.SetActive(turnOn);
         visualFingers[(int)whatFinger].rings[(int)whatRing].gameObject.SetActive(turnOn);
+
+        if (turnOn)
+        {
+            if ((Rings)whatRing == Rings.GuardiansTouchFull || (Rings)whatRing == Rings.GuardiansTouchFail)
+            {
+                ringHandler.EffectGuardiansTouch(whatFinger);
+            }
+            else if ((Rings)whatRing == Rings.ManaMerchantFull)
+            {
+                ringHandler.manaMerchantSuccess = true;
+            }
+            else if ((Rings)whatRing == Rings.ManaMerchantFail)
+            {
+                ringHandler.manaMerchantFailure = true;
+            }
+        }
+        else if (!turnOn)
+        {
+            if ((Rings)whatRing == Rings.GuardiansTouchFull || (Rings)whatRing == Rings.GuardiansTouchFail)
+            {
+                ringHandler.GuardiansTouchStolenOrOver(whatFinger);
+            }
+            else if ((Rings)whatRing == Rings.ManaMerchantFull)
+            {
+                ringHandler.manaMerchantSuccess = false;
+            }
+            else if ((Rings)whatRing == Rings.ManaMerchantFail)
+            {
+                ringHandler.manaMerchantFailure = false;
+            }
+        }
     }
 }

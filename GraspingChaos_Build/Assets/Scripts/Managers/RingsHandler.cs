@@ -83,13 +83,13 @@ public class RingsHandler : MonoBehaviour
         //block damage on target finger
         if (ringsActive[(int)Rings.GuardiansTouchFull, (int)targetFinger])
         {
-            //fail blocks 1 damage
+            //blocks 2 damage
             gameObject.GetComponent<PlayerManager>().fingers[(int)targetFinger].fingerShield = 2;
 
         }
         else if (ringsActive[(int)Rings.GuardiansTouchFail, (int)targetFinger])
         {
-            //success blocks 2 damage
+            //blocks 1 damage
             gameObject.GetComponent<PlayerManager>().fingers[(int)targetFinger].fingerShield = 1;
         }
     }

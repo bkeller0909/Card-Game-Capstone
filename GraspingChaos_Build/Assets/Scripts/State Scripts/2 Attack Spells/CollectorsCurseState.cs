@@ -115,8 +115,58 @@ public class CollectorsCurseState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    //steal ring
+                    bool ringPlaced = false;
+
+                    int whatRing = -6;
+                    bool found = false;
+                    for (int i = 0; i < 14; i++)
+                    {
+                        if (enemy.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                        {
+                            found = true;
+                            whatRing = i;
+
+                            enemy.ToggleRing(false, (Rings)i, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                            break;
+                        }
+                    }
+                    if (found)
+                    {
+                        while (!ringPlaced)
+                        {
+                            PlayerFingers theFing = player.GetRandomFinger();
+
+                            if (theFing != PlayerFingers.none)
+                            {
+                                bool spotTaken = false;
+
+                                for (int i = 0; i < 14; i++)
+                                {
+                                    if (player.ringHandler.ringsActive[i, (int)theFing] == true)
+                                    {
+                                        spotTaken = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!spotTaken)
+                                {
+                                    //Turns The Ring on
+                                    player.ringHandler.ringsActive[whatRing, (int)theFing] = true;
+                                    player.ToggleRing(true, (Rings)whatRing, theFing);
+                                    player.ringHandler.ringStartRound[whatRing] = GameManager.Instance.whatRound;
+                                    ringPlaced = true;
+                                }
+                            }
+                            else
+                            {
+                                ringPlaced = true;
+                            }
+                        }
+                    }
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    //steal ring not yet implemented
                 }
             }
 
@@ -138,8 +188,58 @@ public class CollectorsCurseState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    //steal ring
+                    bool ringPlaced = false;
+
+                    int whatRing = -6;
+                    bool found = false;
+                    for (int i = 0; i < 14; i++)
+                    {
+                        if (enemy.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                        {
+                            found = true;
+                            whatRing = i;
+
+                            enemy.ToggleRing(false, (Rings)i, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                            break;
+                        }
+                    }
+                    if (found) 
+                    {
+                        while (!ringPlaced)
+                        {
+                            PlayerFingers theFing = player.GetRandomFinger();
+
+                            if (theFing != PlayerFingers.none)
+                            {
+                                bool spotTaken = false;
+
+                                for (int i = 0; i < 14; i++)
+                                {
+                                    if (player.ringHandler.ringsActive[i, (int)theFing] == true)
+                                    {
+                                        spotTaken = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!spotTaken)
+                                {
+                                    //Turns The Ring on
+                                    player.ringHandler.ringsActive[whatRing, (int)theFing] = true;
+                                    player.ToggleRing(true, (Rings)whatRing, theFing);
+                                    player.ringHandler.ringStartRound[whatRing] = GameManager.Instance.whatRound;
+                                    ringPlaced = true;
+                                }
+                            }
+                            else
+                            {
+                                ringPlaced = true;
+                            }
+                        }
+                    }
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    //steal ring not yet implemented
                 }
             }
         }

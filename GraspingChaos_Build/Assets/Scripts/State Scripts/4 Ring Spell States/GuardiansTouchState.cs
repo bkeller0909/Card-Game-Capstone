@@ -74,7 +74,7 @@ public class GuardiansTouchState : FSMState
                     player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.GuardiansTouchFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFull] = GameManager.Instance.whatRound;
-                    player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
                 else
                 {
@@ -82,7 +82,7 @@ public class GuardiansTouchState : FSMState
                     player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.GuardiansTouchFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFail] = GameManager.Instance.whatRound;
-                    player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    //player.GetComponent<RingsHandler>().EffectGuardiansTouch(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
             }
             else // ring dosent get put on the finger
