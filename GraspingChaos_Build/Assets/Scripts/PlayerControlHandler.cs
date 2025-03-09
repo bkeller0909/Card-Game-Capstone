@@ -171,8 +171,8 @@ public class PlayerControlHandler : MonoBehaviour
                     player.cardsAmountSelected++;
                 }
                 index++;
-                //make a new acion map that only takes x to return if you want to select more cards
-                //player.playerInput.SwitchCurrentActionMap("QTE");
+                //QTEWait will make sure you wont move any cards or cameras after pressing confirm
+                player.playerInput.SwitchCurrentActionMap("QTEWait");
             }
 
             //Camera Movement

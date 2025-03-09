@@ -1402,6 +1402,45 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""QTEWait"",
+            ""id"": ""440db8c3-821a-4318-bfd1-b5c7b0828132"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""62dd92e4-24bf-42d8-aa4b-83422cda8451"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f08eaeb7-66e2-4489-8ec1-aa4f992b8059"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c67661b4-8280-4ce9-a373-09888ee59f5a"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1516,6 +1555,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Card_CameraDown = m_Card.FindAction("CameraDown", throwIfNotFound: true);
         m_Card_SetFinal = m_Card.FindAction("SetFinal", throwIfNotFound: true);
         m_Card_Pause = m_Card.FindAction("Pause", throwIfNotFound: true);
+        // QTEWait
+        m_QTEWait = asset.FindActionMap("QTEWait", throwIfNotFound: true);
+        m_QTEWait_Pause = m_QTEWait.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -1524,6 +1566,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerControls.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_QTE.enabled, "This will cause a leak and performance issues, PlayerControls.QTE.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Card.enabled, "This will cause a leak and performance issues, PlayerControls.Card.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_QTEWait.enabled, "This will cause a leak and performance issues, PlayerControls.QTEWait.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -2061,6 +2104,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public CardActions @Card => new CardActions(this);
+
+    // QTEWait
+    private readonly InputActionMap m_QTEWait;
+    private List<IQTEWaitActions> m_QTEWaitActionsCallbackInterfaces = new List<IQTEWaitActions>();
+    private readonly InputAction m_QTEWait_Pause;
+    public struct QTEWaitActions
+    {
+        private @PlayerControls m_Wrapper;
+        public QTEWaitActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_QTEWait_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_QTEWait; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(QTEWaitActions set) { return set.Get(); }
+        public void AddCallbacks(IQTEWaitActions instance)
+        {
+            if (instance == null || m_Wrapper.m_QTEWaitActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_QTEWaitActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IQTEWaitActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IQTEWaitActions instance)
+        {
+            if (m_Wrapper.m_QTEWaitActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IQTEWaitActions instance)
+        {
+            foreach (var item in m_Wrapper.m_QTEWaitActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_QTEWaitActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public QTEWaitActions @QTEWait => new QTEWaitActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -2157,6 +2246,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnCameraUp(InputAction.CallbackContext context);
         void OnCameraDown(InputAction.CallbackContext context);
         void OnSetFinal(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IQTEWaitActions
+    {
         void OnPause(InputAction.CallbackContext context);
     }
 }

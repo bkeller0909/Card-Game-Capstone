@@ -1380,6 +1380,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "QTEWait",
+            "id": "440db8c3-821a-4318-bfd1-b5c7b0828132",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "PassThrough",
+                    "id": "62dd92e4-24bf-42d8-aa4b-83422cda8451",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f08eaeb7-66e2-4489-8ec1-aa4f992b8059",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c67661b4-8280-4ce9-a373-09888ee59f5a",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
