@@ -136,6 +136,51 @@ public class GameDebugger : MonoBehaviour
     public int VengfulMirror = 0;
     #endregion
 
+    #region All uitlity for Ring Placement on the debugger
+    [Header("Ring Placement and Removal Player 1")]
+    public PlayerFingers pickTheFingerP1 = PlayerFingers.LH_Pinky;
+    public bool SuccessfullRingP1 = true;
+    public bool ThornsOfAgonyP1;
+    public bool GuardiansTouchP1;
+    public bool ManaMerchantP1;
+    public bool SpectralChainP1;
+    public bool VampiricSurgeP1;
+    public bool VeilOfFortitudeP1;
+    public bool VengfulMirrorP1;
+    private bool LH_PINKY_RING_P1 = false;
+    private bool LH_RING_RING_P1 = false;
+    private bool LH_MIDDLE_RING_P1 = false;
+    private bool LH_INDEX_RING_P1 = false;
+    private bool LH_THUMB_RING_P1 = false;
+    private bool RH_PINKY_RING_P1 = false;
+    private bool RH_RING_RING_P1 = false;
+    private bool RH_MIDDLE_RING_P1 = false;
+    private bool RH_INDEX_RING_P1 = false;
+    private bool rH_THUMB_RING_P1 = false;
+
+    [Header("Ring Placement and Removal Player 2")]
+    public PlayerFingers pickTheFingerP2 = PlayerFingers.LH_Pinky;
+    public bool SuccessfullRingP2 = true;
+    public bool ThornsOfAgonyP2;
+    public bool GuardiansTouchP2;
+    public bool ManaMerchantP2;
+    public bool SpectralChainP2;
+    public bool VampiricSurgeP2;
+    public bool VeilOfFortitudeP2;
+    public bool VengfulMirrorP2;
+    private bool LH_PINKY_RING_P2 = false;
+    private bool LH_RING_RING_P2 = false;
+    private bool LH_MIDDLE_RING_P2 = false;
+    private bool LH_INDEX_RING_P2 = false;
+    private bool LH_THUMB_RING_P2 = false;
+    private bool RH_PINKY_RING_P2 = false;
+    private bool RH_RING_RING_P2 = false;
+    private bool RH_MIDDLE_RING_P2 = false;
+    private bool RH_INDEX_RING_P2 = false;
+    private bool rH_THUMB_RING_P2 = false;
+    #endregion
+
+
     void Update()
     {
         if (GameManager.Instance.checkAvailableCards)
@@ -308,6 +353,9 @@ public class GameDebugger : MonoBehaviour
         {
             CameraDebugger(2, player2);
         }
+
+        PlaceAndRemoveRingDebuggerP1();
+        PlaceAndRemoveRingDebuggerP2();
     }
 
 
@@ -866,6 +914,294 @@ public class GameDebugger : MonoBehaviour
         else if (cameraPos == 2)
         {
             targetPlayer.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(cameraPos);
+        }
+    }
+
+    private void PlaceAndRemoveRingDebuggerP1()
+    {
+        if(ThornsOfAgonyP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.ThornsOfAgonyFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFull] = GameManager.Instance.whatRound;
+        }
+        else if(ThornsOfAgonyP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.ThornsOfAgonyFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFail] = GameManager.Instance.whatRound;
+        }
+        else if(!ThornsOfAgonyP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.ThornsOfAgonyFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.ThornsOfAgonyFull, pickTheFingerP1);
+        }
+
+        if(GuardiansTouchP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.GuardiansTouchFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFull] = GameManager.Instance.whatRound;
+        }
+        else if(GuardiansTouchP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.GuardiansTouchFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFail] = GameManager.Instance.whatRound;
+        }
+        else if (!GuardiansTouchP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.GuardiansTouchFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.GuardiansTouchFull, pickTheFingerP1);
+        }
+
+        if (ManaMerchantP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.ManaMerchantFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.ManaMerchantFull] = GameManager.Instance.whatRound;
+        }
+        else if(ManaMerchantP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.ManaMerchantFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.ManaMerchantFail] = GameManager.Instance.whatRound;
+        }
+        else if (!ManaMerchantP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.ManaMerchantFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.ManaMerchantFull, pickTheFingerP1);
+        }
+
+
+        if (SpectralChainP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.SpectralChainFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.SpectralChainFull] = GameManager.Instance.whatRound;
+        }
+        else if(SpectralChainP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.SpectralChainFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.SpectralChainFail] = GameManager.Instance.whatRound;
+        }
+        else if (!SpectralChainP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.SpectralChainFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.SpectralChainFull, pickTheFingerP1);
+        }
+
+        if (VampiricSurgeP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VampiricSurgeFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.VampiricSurgeFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFull] = GameManager.Instance.whatRound;
+        }
+        else if (VampiricSurgeP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VampiricSurgeFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.VampiricSurgeFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFail] = GameManager.Instance.whatRound;
+        }
+        else if (!VampiricSurgeP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VampiricSurgeFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.VampiricSurgeFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.VampiricSurgeFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.VampiricSurgeFull, pickTheFingerP1);
+        }
+
+        if (VeilOfFortitudeP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.VeilOfFortitudeFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.VeilOfFortitudeFull] = GameManager.Instance.whatRound;
+        }
+        else if (VeilOfFortitudeP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.VeilOfFortitudeFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.VeilOfFortitudeFail] = GameManager.Instance.whatRound;
+        }
+        else if (!VeilOfFortitudeP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.VeilOfFortitudeFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.VeilOfFortitudeFull, pickTheFingerP1);
+        }
+
+        if (VengfulMirrorP1 && SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.VengefulMirrorFull, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFull] = GameManager.Instance.whatRound;
+        }
+        else if (VengfulMirrorP1 && !SuccessfullRingP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)pickTheFingerP1] = true;
+            player1.ToggleRing(true, Rings.VengefulMirrorFail, pickTheFingerP1);
+            player1.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFail] = GameManager.Instance.whatRound;
+        }
+        else if (!VengfulMirrorP1)
+        {
+            player1.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)pickTheFingerP1] = false;
+            player1.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)pickTheFingerP1] = false;
+            player1.ToggleRing(false, Rings.VengefulMirrorFail, pickTheFingerP1);
+            player1.ToggleRing(false, Rings.VengefulMirrorFull, pickTheFingerP1);
+        }
+    }
+
+    private void PlaceAndRemoveRingDebuggerP2()
+    {
+        if (ThornsOfAgonyP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.ThornsOfAgonyFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFull] = GameManager.Instance.whatRound;
+        }
+        else if (ThornsOfAgonyP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.ThornsOfAgonyFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFail] = GameManager.Instance.whatRound;
+        }
+        else if (!ThornsOfAgonyP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.ThornsOfAgonyFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.ThornsOfAgonyFull, pickTheFingerP2);
+        }
+
+        if (GuardiansTouchP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.GuardiansTouchFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFull] = GameManager.Instance.whatRound;
+        }
+        else if (GuardiansTouchP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.GuardiansTouchFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFail] = GameManager.Instance.whatRound;
+        }
+        else if (!GuardiansTouchP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.GuardiansTouchFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.GuardiansTouchFull, pickTheFingerP2);
+        }
+
+        if (ManaMerchantP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.ManaMerchantFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.ManaMerchantFull] = GameManager.Instance.whatRound;
+        }
+        else if (ManaMerchantP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.ManaMerchantFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.ManaMerchantFail] = GameManager.Instance.whatRound;
+        }
+        else if (!ManaMerchantP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.ManaMerchantFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.ManaMerchantFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.ManaMerchantFull, pickTheFingerP2);
+        }
+
+
+        if (SpectralChainP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.SpectralChainFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.SpectralChainFull] = GameManager.Instance.whatRound;
+        }
+        else if (SpectralChainP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.SpectralChainFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.SpectralChainFail] = GameManager.Instance.whatRound;
+        }
+        else if (!SpectralChainP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.SpectralChainFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.SpectralChainFull, pickTheFingerP2);
+        }
+
+        if (VampiricSurgeP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VampiricSurgeFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.VampiricSurgeFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFull] = GameManager.Instance.whatRound;
+        }
+        else if (VampiricSurgeP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VampiricSurgeFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.VampiricSurgeFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.VampiricSurgeFail] = GameManager.Instance.whatRound;
+        }
+        else if (!VampiricSurgeP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VampiricSurgeFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.VampiricSurgeFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.VampiricSurgeFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.VampiricSurgeFull, pickTheFingerP2);
+        }
+
+        if (VeilOfFortitudeP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.VeilOfFortitudeFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.VeilOfFortitudeFull] = GameManager.Instance.whatRound;
+        }
+        else if (VeilOfFortitudeP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.VeilOfFortitudeFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.VeilOfFortitudeFail] = GameManager.Instance.whatRound;
+        }
+        else if (!VeilOfFortitudeP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.VeilOfFortitudeFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.VeilOfFortitudeFull, pickTheFingerP2);
+        }
+
+        if (VengfulMirrorP2 && SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.VengefulMirrorFull, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFull] = GameManager.Instance.whatRound;
+        }
+        else if (VengfulMirrorP2 && !SuccessfullRingP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)pickTheFingerP2] = true;
+            player2.ToggleRing(true, Rings.VengefulMirrorFail, pickTheFingerP2);
+            player2.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFail] = GameManager.Instance.whatRound;
+        }
+        else if (!VengfulMirrorP2)
+        {
+            player2.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)pickTheFingerP2] = false;
+            player2.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)pickTheFingerP2] = false;
+            player2.ToggleRing(false, Rings.VengefulMirrorFail, pickTheFingerP2);
+            player2.ToggleRing(false, Rings.VengefulMirrorFull, pickTheFingerP2);
         }
     }
 
