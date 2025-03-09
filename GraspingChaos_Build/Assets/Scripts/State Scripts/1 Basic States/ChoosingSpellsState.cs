@@ -160,7 +160,7 @@ public class ChoosingSpellsState : FSMState
                             spellsChosen[i] == SpellNames.LefteousEnvy || spellsChosen[i] == SpellNames.Icicles || spellsChosen[i] == SpellNames.CollectorsCurse
                             || spellsChosen[i] == SpellNames.StaticBlast || spellsChosen[i] == SpellNames.Quake || spellsChosen[i] == SpellNames.RightingBolt ||
                                spellsChosen[i] == SpellNames.LeftningBolt || spellsChosen[i] == SpellNames.TidalWave || spellsChosen[i] == SpellNames.PointerOfDeath
-                               || spellsChosen[i] == SpellNames.SpectralChain)
+                               || spellsChosen[i] == SpellNames.SpectralChain || spellsChosen[i] == SpellNames.VampiricSurge)
                         {
                             spellInfo.whoIsBeingCastedOn = playerState.enemy;
                         }
@@ -280,7 +280,7 @@ public class ChoosingSpellsState : FSMState
             else if (spellsChosen[amtOfSpells] == SpellNames.FireBolt || spellsChosen[amtOfSpells] == SpellNames.Rockthrow || spellsChosen[amtOfSpells] == SpellNames.CollectorsCurse
                             || spellsChosen[amtOfSpells] == SpellNames.StaticBlast || spellsChosen[amtOfSpells] == SpellNames.Quake || spellsChosen[amtOfSpells] == SpellNames.RightingBolt ||
                                spellsChosen[amtOfSpells] == SpellNames.LeftningBolt || spellsChosen[amtOfSpells] == SpellNames.TidalWave || spellsChosen[amtOfSpells] == SpellNames.PointerOfDeath
-                               || spellsChosen[amtOfSpells] == SpellNames.SpectralChain)
+                               || spellsChosen[amtOfSpells] == SpellNames.SpectralChain || spellsChosen[amtOfSpells] == SpellNames.VampiricSurge)
             {
                 if (player == GameManager.Instance.player1)
                 {

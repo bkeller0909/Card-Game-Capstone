@@ -73,10 +73,12 @@ public class PlayerHealth : MonoBehaviour
                 if(player == GameManager.Instance.player1)
                 {
                     player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player2);
+                    player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
                 }
                 else if(player == GameManager.Instance.player2)
                 {
                     player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player1);
+                    player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
                 }
                 playerHealthStats[(int)whatFinger] -= 1;
                 player.fingers[(int)whatFinger].removeCurrentSegment();

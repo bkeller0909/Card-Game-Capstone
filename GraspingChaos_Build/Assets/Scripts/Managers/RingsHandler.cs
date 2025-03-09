@@ -149,6 +149,7 @@ public class RingsHandler : MonoBehaviour
     public void EffectVampiricSurge(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
         PlayerFingers randoFinger;
+        //I need to make a function that finds only fingers that are not full HP
         if (ringsActive[(int)Rings.VampiricSurgeFull, (int)targetFinger])
         {
             //success gains 2 hp

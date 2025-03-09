@@ -59,7 +59,7 @@ public class SpectralChainState : FSMState
 
             for (int i = 0; i < 14; i++)
             {
-                if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                if (enemy.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
                 {
                     spotTaken = true;
                 }
@@ -70,16 +70,16 @@ public class SpectralChainState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     //Turns The Ring on
-                    player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                    player.ToggleRing(true, Rings.SpectralChainFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ringStartRound[(int)Rings.SpectralChainFull] = GameManager.Instance.whatRound;
+                    enemy.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    enemy.ToggleRing(true, Rings.SpectralChainFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ringHandler.ringStartRound[(int)Rings.SpectralChainFull] = GameManager.Instance.whatRound;
                 }
                 else
                 {
                     //Turns The Ring on
-                    player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                    player.ToggleRing(true, Rings.SpectralChainFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ringStartRound[(int)Rings.SpectralChainFail] = GameManager.Instance.whatRound;
+                    enemy.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                    enemy.ToggleRing(true, Rings.SpectralChainFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ringHandler.ringStartRound[(int)Rings.SpectralChainFail] = GameManager.Instance.whatRound;
                 }
             }
             else // ring dosent get put on the finger
