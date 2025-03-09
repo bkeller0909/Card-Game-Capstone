@@ -282,6 +282,32 @@ public class GameDebugger : MonoBehaviour
         }
 
         DebugDamageAndHealingFingers();
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CameraDebugger(0, player1);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CameraDebugger(1, player1);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CameraDebugger(2, player1);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            CameraDebugger(0, player2);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            CameraDebugger(1, player2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            CameraDebugger(2, player2);
+        }
     }
 
 
@@ -824,6 +850,22 @@ public class GameDebugger : MonoBehaviour
                 }
                 TrackFingerHealth();
             }
+        }
+    }
+
+    private void CameraDebugger(int cameraPos, PlayerManager targetPlayer)
+    {
+        if (cameraPos == 0)
+        {
+            targetPlayer.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(cameraPos);
+        }
+        else if (cameraPos == 1)
+        {
+            targetPlayer.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(cameraPos);
+        }
+        else if (cameraPos == 2)
+        {
+            targetPlayer.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(cameraPos);
         }
     }
 
