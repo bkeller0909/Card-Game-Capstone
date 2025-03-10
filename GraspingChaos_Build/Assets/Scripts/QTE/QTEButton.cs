@@ -137,6 +137,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true; //set the button to pressed
                     correctPress = true; //set it to correct input
                     gameObject.GetComponent<SpriteRenderer>().sprite = winA; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers(); //reset animation triggers
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -160,6 +161,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winB; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -183,6 +185,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winX; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -206,6 +209,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winY; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -229,6 +233,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winDown; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -252,6 +257,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winUp; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -275,6 +281,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winLeft; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input
@@ -298,6 +305,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true;
                     correctPress = true;
                     gameObject.GetComponent<SpriteRenderer>().sprite = winRight; // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(0, 0.5f, 0.1f, playerQTE.gamepad);
                     ResetTriggers();
                     string temp = playerQTE.GetComponent<QTEHandler>().GetUniqueHandAnimation();
                     playerAnimator.SetTrigger(temp); //play animation for that input

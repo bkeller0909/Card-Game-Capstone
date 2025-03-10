@@ -85,6 +85,7 @@ public class FireBoltState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
 
                 //check if i am the second spell but the first cast
@@ -109,6 +110,7 @@ public class FireBoltState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
 
                 //check if i am the second spell but the first cast
@@ -127,7 +129,7 @@ public class FireBoltState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 0f, enemy.gamepad);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 //
@@ -144,7 +146,7 @@ public class FireBoltState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, 0f, enemy.gamepad);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
             }

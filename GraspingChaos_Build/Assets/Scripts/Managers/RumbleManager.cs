@@ -34,11 +34,11 @@ public class RumbleManager : MonoBehaviour
     /// <param name="highFreq">Intensity for the high frequencey motors are within the controller.</param>
     /// <param name="duration">How long, in seconds, the controller will rumble.</param>
     /// <param name="gamepad">The gamepad that will be affected by rumble.</param>
-    public void ControllerRumble(float lowFreq, float highFreq, float duration, float startDelay, Gamepad gamepad)
+    public void ControllerRumble(float lowFreq, float highFreq, float duration, Gamepad gamepad)
     {
         if (gamepad != null)
         {
-            StartCoroutine(DoRumble(lowFreq, highFreq, duration, startDelay, gamepad));
+            StartCoroutine(DoRumble(lowFreq, highFreq, duration, gamepad));
         }
     }
 
@@ -48,12 +48,10 @@ public class RumbleManager : MonoBehaviour
     /// <param name="duration">The applied duration from the ControllerRumble function.</param>
     /// <param name="gamepad">The affected gamepad.</param>
     /// <returns></returns>
-    private IEnumerator DoRumble(float lowFreq, float highFreq, float duration, float startDelay, Gamepad gamepad)
+    private IEnumerator DoRumble(float lowFreq, float highFreq, float duration, Gamepad gamepad)
     {
         float time = 0f;
         gamepad.SetMotorSpeeds(lowFreq, highFreq);
-
-        yield return new WaitForSeconds(startDelay);
 
         // stops the rumble once the timer reaches the set duration amount.
         while (time < duration)
@@ -73,11 +71,11 @@ public class RumbleManager : MonoBehaviour
     /// <param name="pulseInterval">Time in seconds for each pulse cycle.</param>
     /// <param name="duration">Total duration of the pulsing effect.</param>
     /// <param name="gamepad">The gamepad that will be affected by the pulse rumble.</param>
-    public void PulseRumble(float lowFreq, float highFreq, float pulseInterval, float duration, float startDelay, Gamepad gamepad)
+    public void PulseRumble(float lowFreq, float highFreq, float pulseInterval, float duration, Gamepad gamepad)
     {
         if (gamepad != null)
         {
-            StartCoroutine(PulseRumbleCycle(lowFreq, highFreq, pulseInterval, duration, startDelay, gamepad));
+            StartCoroutine(PulseRumbleCycle(lowFreq, highFreq, pulseInterval, duration, gamepad));
         }
     }
 
@@ -89,11 +87,9 @@ public class RumbleManager : MonoBehaviour
     /// <param name="pulseInterval">Time in seconds for each pulse cycle (on + off).</param>
     /// <param name="duration">Total duration of the pulsing effect.</param>
     /// <param name="gamepad">The affected gamepad.</param>
-    private IEnumerator PulseRumbleCycle(float lowFreq, float highFreq, float pulseInterval, float duration, float startDelay, Gamepad gamepad)
+    private IEnumerator PulseRumbleCycle(float lowFreq, float highFreq, float pulseInterval, float duration, Gamepad gamepad)
     {
         float elapsedTime = 0f;
-
-        yield return new WaitForSeconds(startDelay);
 
         while (elapsedTime < duration)
         {

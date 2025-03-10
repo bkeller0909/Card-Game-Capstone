@@ -87,12 +87,18 @@ public class StaticBlastState : FSMState
                     ParticleManger.Instance.spawnExtra1 = false;
                     ParticleManger.Instance.spawnExtra2 = false;
                     ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.03f, 1f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.spawnExtra1 = true;
                     ParticleManger.Instance.spawnExtra2 = false;
                     randomSide = UnityEngine.Random.Range(0, 2);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.03f, 1f);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
@@ -137,8 +143,10 @@ public class StaticBlastState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.03f, 1f);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
@@ -193,12 +201,18 @@ public class StaticBlastState : FSMState
                     ParticleManger.Instance.spawnExtra1 = false;
                     ParticleManger.Instance.spawnExtra2 = false;
                     ParticleManger.Instance.StartParticle(SpellNames.StaticBlast, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.03f, 1f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.spawnExtra1 = true;
                     ParticleManger.Instance.spawnExtra2 = false;
                     randomSide = UnityEngine.Random.Range(0, 2);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.03f, 1f);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
@@ -243,8 +257,10 @@ public class StaticBlastState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.03f, 1f);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {

@@ -65,14 +65,26 @@ public class QuakeState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 1.5f);
+                    enemy.cameraHandler.CameraShake(0.05f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 1.5f);
+                    enemy.cameraHandler.CameraShake(0.05f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 1.5f);
+                    enemy.cameraHandler.CameraShake(0.05f, 1.5f);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -82,14 +94,26 @@ public class QuakeState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 1.5f);
+                    enemy.cameraHandler.CameraShake(0.05f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 1.5f);
+                    enemy.cameraHandler.CameraShake(0.05f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
+                    RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 1.5f);
+                    enemy.cameraHandler.CameraShake(0.05f, 1.5f);
                 }
                 GameManager.Instance.particleP2Done = true;
             }

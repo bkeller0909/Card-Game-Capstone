@@ -104,18 +104,24 @@ public class ForTheCauseState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 0.25f, 0.25f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.25f);
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.GetMana(3);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 0.25f, 0.25f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.25f);
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.GetMana(4);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 0.25f, 0.25f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.25f);
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.GetMana(5);
                 }
@@ -132,18 +138,24 @@ public class ForTheCauseState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 0.25f, 0.25f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.25f);
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.GetMana(3);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 0.25f, 0.25f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.25f);
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.GetMana(4);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     player.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 0.25f, 0.25f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.25f);
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.GetMana(5);
                 }
