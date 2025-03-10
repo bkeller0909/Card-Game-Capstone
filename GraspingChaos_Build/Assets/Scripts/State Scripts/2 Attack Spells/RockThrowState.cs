@@ -68,6 +68,9 @@ public class RockThrowState : FSMState
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                     PlayerFingers randomFinger = player.GetRandomFinger();
                     player.health.DamageFinger(randomFinger);
+
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
@@ -75,12 +78,14 @@ public class RockThrowState : FSMState
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                     PlayerFingers randomFinger = player.GetRandomFinger();
                     player.health.DamageFinger(randomFinger);
+
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Rockthrow, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
-                    //player.fingers[(int)player.GetRandomFinger()].fingerHP -= ActiveSpellCards.Instance.spellCards[(int)SpellNames.Rockthrow].damageValue;
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.5f, player.gamepad);
                 }
 
                 GameManager.Instance.particleP1Done = true;
@@ -95,6 +100,9 @@ public class RockThrowState : FSMState
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                     PlayerFingers randomFinger = player.GetRandomFinger();
                     player.health.DamageFinger(randomFinger);
+
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
@@ -102,11 +110,14 @@ public class RockThrowState : FSMState
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                     PlayerFingers randomFinger = player.GetRandomFinger();
                     player.health.DamageFinger(randomFinger);
+
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Rockthrow, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
-
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.5f, player.gamepad);
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -122,6 +133,8 @@ public class RockThrowState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
             }
 
@@ -136,6 +149,8 @@ public class RockThrowState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
             }
         }

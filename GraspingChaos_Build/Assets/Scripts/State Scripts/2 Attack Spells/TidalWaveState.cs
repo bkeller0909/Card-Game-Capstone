@@ -65,14 +65,23 @@ public class TidalWaveState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.TidalWave, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.3f, 0.3f, 0.7f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.7f);
+                    enemy.cameraHandler.CameraShake(0.01f, 0.7f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.TidalWave, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.3f, 0.3f, 0.7f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.7f);
+                    enemy.cameraHandler.CameraShake(0.01f, 0.7f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.TidalWave, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.3f, 0.3f, 0.7f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.7f);
+                    enemy.cameraHandler.CameraShake(0.01f, 0.7f);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -82,14 +91,23 @@ public class TidalWaveState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.TidalWave, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.3f, 0.3f, 0.7f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.7f);
+                    enemy.cameraHandler.CameraShake(0.01f, 0.7f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.TidalWave, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.3f, 0.3f, 0.7f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.7f);
+                    enemy.cameraHandler.CameraShake(0.01f, 0.7f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.TidalWave, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.3f, 0.3f, 0.7f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.01f, 0.7f);
+                    enemy.cameraHandler.CameraShake(0.01f, 0.7f);
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -105,6 +123,9 @@ public class TidalWaveState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -136,6 +157,9 @@ public class TidalWaveState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -166,6 +190,9 @@ public class TidalWaveState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
                     for (int i = 0; i < 2; i++)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -232,6 +259,9 @@ public class TidalWaveState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -263,6 +293,9 @@ public class TidalWaveState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -293,6 +326,9 @@ public class TidalWaveState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
+                    enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
                     for (int i = 0; i < 2; i++)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);

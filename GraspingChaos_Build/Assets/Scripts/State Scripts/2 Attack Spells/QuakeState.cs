@@ -1,4 +1,3 @@
-/// <summary>
 //----------------------------------------------------------------
 //  OG Author:     Cooper
 //  other Authors: Sebastian
@@ -7,6 +6,9 @@
 //  Purpose:       Spell State for Quake Spell
 //  Instance?      no
 //-----------------------------------------------------------------
+using UnityEngine;
+
+/// <summary>
 /// </summary>
 public class QuakeState : FSMState
 {

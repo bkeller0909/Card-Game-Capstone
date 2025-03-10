@@ -76,6 +76,7 @@ public class QuickHealState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 1f, player.gamepad);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -97,6 +98,7 @@ public class QuickHealState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 1f, player.gamepad);
                 }
                 GameManager.Instance.particleP2Done = true;
             }
