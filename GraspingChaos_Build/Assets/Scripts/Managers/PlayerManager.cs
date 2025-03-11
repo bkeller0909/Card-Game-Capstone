@@ -16,7 +16,7 @@ using UnityEngine.VFX;
 public class PlayerManager : MonoBehaviour
 {
     // The players input system
-    [HideInInspector] 
+    [HideInInspector]
     public PlayerInput playerInput;
     public Gamepad gamepad;
     public PlayerHealth health;
@@ -271,9 +271,9 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        if(exception != PlayerFingers.none)
+        if (exception != PlayerFingers.none)
         {
-            for(int i = 0; i < healthyFingers.Count; i++)
+            for (int i = 0; i < healthyFingers.Count; i++)
             {
                 //only if you found the finger eception or if the amount of fingers possible to hit is higher than 1 (otherwise it might break)
                 if (healthyFingers[i].finger == exception && healthyFingers.Count > 1)
@@ -291,7 +291,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         return PlayerFingers.none;
-        
+
     }
 
     public PlayerFingers GetAdjacentFingerLeft(PlayerFingers selectedFinger)
@@ -437,6 +437,11 @@ public class PlayerManager : MonoBehaviour
             else if ((Rings)whatRing == Rings.ManaMerchantFail)
             {
                 ringHandler.manaMerchantFailure = false;
+            }
+            else if ((Rings)whatRing == Rings.VeilOfFortitudeFull || (Rings)whatRing == Rings.VeilOfFortitudeFail)
+            {
+                ringHandler.veilOfFortitudeLeft = false;
+                ringHandler.veilOfFortitudeRight = false;
             }
         }
     }
