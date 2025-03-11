@@ -6,6 +6,7 @@
 //  Purpose:       Spell State for Quake Spell
 //  Instance?      no
 //-----------------------------------------------------------------
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -132,18 +133,18 @@ public class QuakeState : FSMState
                 {
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
                     enemy.health.DamageFinger(randomFinger);
-                    randomFinger = enemy.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
                     enemy.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
                     enemy.health.DamageFinger(randomFinger);
-                    randomFinger = enemy.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
                     enemy.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
@@ -167,18 +168,18 @@ public class QuakeState : FSMState
                 {
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
                     enemy.health.DamageFinger(randomFinger);
-                    randomFinger = enemy.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
                     enemy.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
                     enemy.health.DamageFinger(randomFinger);
-                    randomFinger = enemy.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
                     enemy.health.DamageFinger(randomFinger);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)

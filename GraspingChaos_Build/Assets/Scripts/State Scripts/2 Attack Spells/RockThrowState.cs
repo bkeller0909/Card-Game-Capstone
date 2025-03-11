@@ -66,7 +66,7 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
-                    PlayerFingers randomFinger = player.GetRandomFinger();
+                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
                     player.health.DamageFinger(randomFinger);
 
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
@@ -76,7 +76,7 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
-                    PlayerFingers randomFinger = player.GetRandomFinger();
+                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
                     player.health.DamageFinger(randomFinger);
 
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
@@ -98,7 +98,7 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
-                    PlayerFingers randomFinger = player.GetRandomFinger();
+                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
                     player.health.DamageFinger(randomFinger);
 
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
@@ -108,7 +108,7 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
-                    PlayerFingers randomFinger = player.GetRandomFinger();
+                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
                     player.health.DamageFinger(randomFinger);
 
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);

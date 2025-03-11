@@ -113,14 +113,14 @@ public class RighteousEnvyState : FSMState
                 {
                     int totalDamage = player.GetRightHandFingerDeath();
                     int partDamage = totalDamage / 2;
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                     for (int i = 0; i < partDamage; i++)
                     {
                         enemy.health.DamageFinger(randomFinger);
                     }
 
                     partDamage = totalDamage - partDamage;
-                    randomFinger = enemy.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFinger(randomFinger);
                     for (int i = 0; i < partDamage; i++)
                     {
                         enemy.health.DamageFinger(randomFinger);
@@ -140,14 +140,14 @@ public class RighteousEnvyState : FSMState
                 {
                     int totalDamage = player.GetRightHandFingerDeath();
                     int partDamage = totalDamage / 2;
-                    PlayerFingers randomFinger = enemy.GetRandomFinger();
+                    PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                     for (int i = 0; i < partDamage; i++)
                     {
                         enemy.health.DamageFinger(randomFinger);
                     }
 
                     partDamage = totalDamage - partDamage;
-                    randomFinger = enemy.GetRandomFinger();
+                    randomFinger = enemy.GetRandomFinger(randomFinger);
                     for (int i = 0; i < partDamage; i++)
                     {
                         enemy.health.DamageFinger(randomFinger);

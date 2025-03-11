@@ -57,7 +57,7 @@ public class RingsHandler : MonoBehaviour
         if (ringsActive[(int)Rings.ThornsOfAgonyFull, (int)targetFinger])
         {
             //success does 2 damage
-            randoFinger = targetPlayer.GetRandomFinger();
+            randoFinger = targetPlayer.GetRandomFinger(PlayerFingers.none);
             //targetPlayer.health.DamageFinger(randoFinger);
             //targetPlayer.health.DamageFinger(randoFinger);
             for(int i = 0; i < 2; i++)
@@ -71,7 +71,7 @@ public class RingsHandler : MonoBehaviour
         else if (ringsActive[(int)Rings.ThornsOfAgonyFail, (int)targetFinger])
         {
             //fail only does 1 damage
-            randoFinger = targetPlayer.GetRandomFinger();
+            randoFinger = targetPlayer.GetRandomFinger(PlayerFingers.none);
             targetPlayer.health.playerHealthStats[(int)randoFinger] -= 1;
             targetPlayer.fingers[(int)randoFinger].removeCurrentSegment();
             targetPlayer.visualFingers[(int)randoFinger].removeCurrentSegment();
@@ -153,14 +153,14 @@ public class RingsHandler : MonoBehaviour
         if (ringsActive[(int)Rings.VampiricSurgeFull, (int)targetFinger])
         {
             //success gains 2 hp
-            randoFinger = playerTarget.GetRandomFinger();
+            randoFinger = playerTarget.GetRandomFinger(PlayerFingers.none);
             playerTarget.health.HealFinger(randoFinger);
             playerTarget.health.HealFinger(randoFinger);
         }
         else if (ringsActive[(int)Rings.VampiricSurgeFail, (int)targetFinger])
         {
             //fail only gains 1 HP
-            randoFinger = playerTarget.GetRandomFinger();
+            randoFinger = playerTarget.GetRandomFinger(PlayerFingers.none);
             playerTarget.health.HealFinger(randoFinger);
         }
     }

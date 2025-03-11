@@ -148,7 +148,7 @@ public class CollectorsCurseState : FSMState
                     {
                         while (!ringPlaced)
                         {
-                            PlayerFingers theFing = player.GetRandomFinger();
+                            PlayerFingers theFing = player.GetRandomFinger(PlayerFingers.none);
 
                             if (theFing != PlayerFingers.none)
                             {
@@ -221,7 +221,7 @@ public class CollectorsCurseState : FSMState
                     {
                         while (!ringPlaced)
                         {
-                            PlayerFingers theFing = player.GetRandomFinger();
+                            PlayerFingers theFing = player.GetRandomFinger(PlayerFingers.none);
 
                             if (theFing != PlayerFingers.none)
                             {

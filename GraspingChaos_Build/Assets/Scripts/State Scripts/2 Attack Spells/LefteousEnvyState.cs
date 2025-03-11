@@ -114,7 +114,7 @@ public class LefteousEnvyState : FSMState
                     int totalDamage = player.GetLeftHandFingerDeath();
                     if (totalDamage == 1)
                     {
-                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                         enemy.health.DamageFinger(randomFinger);
                     }
                     else if (totalDamage == 0)
@@ -124,14 +124,14 @@ public class LefteousEnvyState : FSMState
                     else
                     {
                         int partDamage = totalDamage / 2;
-                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                         for (int i = 0; i < partDamage; i++)
                         {
                             enemy.health.DamageFinger(randomFinger);
                         }
 
                         partDamage = totalDamage - partDamage;
-                        randomFinger = enemy.GetRandomFinger();
+                        randomFinger = enemy.GetRandomFinger(randomFinger);
                         for (int i = 0; i < partDamage; i++)
                         {
                             enemy.health.DamageFinger(randomFinger);
@@ -153,7 +153,7 @@ public class LefteousEnvyState : FSMState
                     int totalDamage = player.GetLeftHandFingerDeath();
                     if (totalDamage == 1)
                     {
-                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                         enemy.health.DamageFinger(randomFinger);
                     }
                     else if (totalDamage == 0)
@@ -163,14 +163,14 @@ public class LefteousEnvyState : FSMState
                     else
                     {
                         int partDamage = totalDamage / 2;
-                        PlayerFingers randomFinger = enemy.GetRandomFinger();
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                         for (int i = 0; i < partDamage; i++)
                         {
                             enemy.health.DamageFinger(randomFinger);
                         }
 
                         partDamage = totalDamage - partDamage;
-                        randomFinger = enemy.GetRandomFinger();
+                        randomFinger = enemy.GetRandomFinger(randomFinger);
                         for (int i = 0; i < partDamage; i++)
                         {
                             enemy.health.DamageFinger(randomFinger);

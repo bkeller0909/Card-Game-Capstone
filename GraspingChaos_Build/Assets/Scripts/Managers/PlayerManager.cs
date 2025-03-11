@@ -203,7 +203,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public PlayerFingers GetRandomFinger()
+    public PlayerFingers GetRandomFingersForQuake(PlayerFingers exception, PlayerFingers exception2)
     {
         int rand = 0;
         if (healthyFingers.Count != 0)
@@ -219,6 +219,32 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        if (exception != PlayerFingers.none)
+        {
+            for (int i = 0; i < healthyFingers.Count; i++)
+            {
+                //only if you found the finger eception or if the amount of fingers possible to hit is higher than 1 (otherwise it might break)
+                if (healthyFingers[i].finger == exception && healthyFingers.Count > 1)
+                {
+                    healthyFingers.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        if (exception2 != PlayerFingers.none)
+        {
+            for (int i = 0; i < healthyFingers.Count; i++)
+            {
+                //only if you found the finger eception or if the amount of fingers possible to hit is higher than 1 (otherwise it might break)
+                if (healthyFingers[i].finger == exception && healthyFingers.Count > 1)
+                {
+                    healthyFingers.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
         if (healthyFingers.Count != 0)
         {
             rand = UnityEngine.Random.Range(0, healthyFingers.Count);
@@ -226,6 +252,46 @@ public class PlayerManager : MonoBehaviour
         }
 
         return PlayerFingers.none;
+    }
+
+
+    public PlayerFingers GetRandomFinger(PlayerFingers exception)
+    {
+        int rand = 0;
+        if (healthyFingers.Count != 0)
+        {
+            healthyFingers.Clear();
+        }
+
+        for (int i = 0; i < fingers.Count; i++)
+        {
+            if (health.playerHealthStats[i] != 0)
+            {
+                healthyFingers.Add(fingers[i]);
+            }
+        }
+
+        if(exception != PlayerFingers.none)
+        {
+            for(int i = 0; i < healthyFingers.Count; i++)
+            {
+                //only if you found the finger eception or if the amount of fingers possible to hit is higher than 1 (otherwise it might break)
+                if (healthyFingers[i].finger == exception && healthyFingers.Count > 1)
+                {
+                    healthyFingers.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        if (healthyFingers.Count != 0)
+        {
+            rand = UnityEngine.Random.Range(0, healthyFingers.Count);
+            return healthyFingers[rand].finger;
+        }
+
+        return PlayerFingers.none;
+        
     }
 
     public PlayerFingers GetAdjacentFingerLeft(PlayerFingers selectedFinger)
