@@ -5,6 +5,8 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
+using UnityEngine;
+
 /// <summary>
 /// The State is where the player chooses what type spells they have chosen
 /// </summary>
@@ -35,6 +37,8 @@ public class ChoosingSpellsState : FSMState
     /// </summary>
     int amtOfSpells;
 
+    Animator playerHands, enemyHands;
+
     //Constructor
     public ChoosingSpellsState(PlayerState pS)
     {
@@ -42,10 +46,23 @@ public class ChoosingSpellsState : FSMState
         stateID = FSMStateID.ChoosingSpells;
         spellsChosen = new SpellNames[3];
         fingersChosen = new PlayerFingers[3];
+
+        if (playerState.player.playerNum == PlayerType.PLAYER1)
+        {
+            playerHands = playerState.player.skullHands.gameObject.GetComponent<Animator>();
+            enemyHands = playerState.enemy.skullHands.gameObject.GetComponent<Animator>();
+        }
+        else if (playerState.player.playerNum == PlayerType.PLAYER2)
+        {
+            playerHands = playerState.player.stagHands.gameObject.GetComponent<Animator>();
+            enemyHands = playerState.enemy.stagHands.gameObject.GetComponent<Animator>();
+        }
     }
 
     public override void EnterStateInit()
     {
+        resetAnims();
+
         //If player one has entered this state then increase the amount of mana gained per a turn and what round it is
         if (playerState.player == GameManager.Instance.player1)
         {
@@ -291,6 +308,8 @@ public class ChoosingSpellsState : FSMState
                     if (amtOfSpells < 2)
                     {
                         player.playerCameras.GetInputForced(2);
+                        resetAnims();
+                        enemyHands.SetTrigger("HandsDown");
                     }
                 }
                 else
@@ -299,6 +318,8 @@ public class ChoosingSpellsState : FSMState
                     if (amtOfSpells < 2)
                     {
                         player.playerCameras.GetInputForced(2);
+                        resetAnims();
+                        enemyHands.SetTrigger("HandsDown");
                     }
                 }
             }
@@ -312,6 +333,8 @@ public class ChoosingSpellsState : FSMState
                     if (amtOfSpells < 2)
                     {
                         player.playerCameras.GetInputForced(0);
+                        resetAnims();
+                        playerHands.SetTrigger("HandsUp");
                     }
                 }
                 else
@@ -321,6 +344,8 @@ public class ChoosingSpellsState : FSMState
                     if (amtOfSpells < 2)
                     {
                         player.playerCameras.GetInputForced(0);
+                        resetAnims();
+                        playerHands.SetTrigger("HandsUp");
                     }
                 }
             }
@@ -360,6 +385,21 @@ public class ChoosingSpellsState : FSMState
                 amtOfSpells++;
             }
             playerState.fingerSelected = false;
+            resetAnims();
+            enemyHands.SetTrigger("IDLE");
+            playerHands.SetTrigger("IDLE");
         }
+    }
+
+    public void resetAnims()
+    {
+        //reset animation triggers
+        playerHands.ResetTrigger("IDLE");
+        playerHands.ResetTrigger("HandsUp");
+        playerHands.ResetTrigger("HandsDown");
+
+        enemyHands.ResetTrigger("IDLE");
+        enemyHands.ResetTrigger("HandsUp");
+        enemyHands.ResetTrigger("HandsDown");
     }
 }
