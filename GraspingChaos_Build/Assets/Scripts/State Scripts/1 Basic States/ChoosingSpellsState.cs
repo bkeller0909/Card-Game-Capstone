@@ -277,6 +277,7 @@ public class ChoosingSpellsState : FSMState
                 spellsChosen[amtOfSpells] == SpellNames.CursedConversion)
             {
                 playerState.currentFingerName = PlayerFingers.none;
+                amtOfSpells++;
             }
             // if the spells require the player to chose the opposing players finger
             else if (spellsChosen[amtOfSpells] == SpellNames.FireBolt || spellsChosen[amtOfSpells] == SpellNames.Rockthrow || spellsChosen[amtOfSpells] == SpellNames.CollectorsCurse
@@ -333,8 +334,6 @@ public class ChoosingSpellsState : FSMState
             if (amtOfSpells == 1 || amtOfSpells == 2 || amtOfSpells == 3)
             {
                 player.GetMana(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[playerState.playerHand.selectedCards.Count - 1]].manaCost);
-                //spellsChosen[GameManager.Instance.currentDeselectedCard - 1] = SpellNames.none;
-                //fingersChosen[GameManager.Instance.currentDeselectedCard - 1] = PlayerFingers.none;
                 CardSelect card = playerState.playerHand.selectedCards[playerState.playerHand.selectedCards.Count - 1];
                 playerState.playerHand.selectedCards.Remove(card);
                 amtOfSpells--;

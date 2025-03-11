@@ -137,26 +137,20 @@ public class PlayerControlHandler : MonoBehaviour
                         playerInput.selectCard = false;
                         playerInput.Abtn = false;
                     }
-                    else
-                    {
-                        //do nothing
-                    }
                 }
             }
 
             // Deselect the selected card
             if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
-                pickCards.DeselectCard();                   // sets the card from selected to hovered
-                if (pickCards.checkDeselectedCardStatus())
+                if (pickCards.selectedCards.Count > 0)
                 {
+                    pickCards.DeselectCard();                   // sets the card from selected to hovered
+                                                                //if (pickCards.checkDeselectedCardStatus())
+                                                                //{
                     stateHandler.CardHasBeenDeselected();   // changes the state of the card to deselected
                     playerInput.deselectCard = false;       // deselect card button is now false after being pressed
                     playerInput.Bbtn = false;               // the button used is now false after being pressed
-                }
-                else
-                {
-                    //do nothing
                 }
             }
             #endregion // Card Select Controls
