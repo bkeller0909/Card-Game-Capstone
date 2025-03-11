@@ -54,7 +54,7 @@ public class CardHandSlot : MonoBehaviour
     }
 
     //stat of removing card
-    public void ClearSelected()
+    public void ClearSelected(PlayerManager player)
     {
         //NEED TO make sure we dont deal more than we have the size for in the randomizer dealer
         if (selectedCards.Count != 0)
@@ -66,6 +66,14 @@ public class CardHandSlot : MonoBehaviour
                     if (cards[i] == selectedCard)
                     {
                         RemovingCards.Add(cards[i]);
+                        if (player == GameManager.Instance.player1)
+                        {
+                            CardsObjectPool.Instance.cardsCurrentlyInHandP1.Remove(cards[i].gameObject);
+                        }
+                        else if(player == GameManager.Instance.player2)
+                        {
+                            CardsObjectPool.Instance.cardsCurrentlyInHandP2.Remove(cards[i].gameObject);
+                        }
                         cards.Remove(cards[i]);
                         emptySlots[i] = true;
                         break;
@@ -78,25 +86,28 @@ public class CardHandSlot : MonoBehaviour
     // sebastian made this
     public void FullRemove()
     {
+        foreach (CardSelect cardSelect in selectedCards)
+        {
+            if (cardSelect.GetComponent<SpellCard>().type == SpellType.ATTACK)
+            {
+                player.attackCardAmount--;
+            }
+            else if (cardSelect.GetComponent<SpellCard>().type == SpellType.RESTORATION)
+            {
+                player.restCardAmount--;
+            }
+            else if (cardSelect.GetComponent<SpellCard>().type == SpellType.RING)
+            {
+                player.ringCardAmount--;
+            }
+        }
+
         if (selectedCards.Count != 0)
         {
             for (int i = CardsObjectPool.Instance.cardsCurrentlyInHand.Count - 1; i >= 0; i--) //foreach (GameObject card in ALLCards.cardsCurrentlyInHand)
             {
                 foreach (CardSelect cardSelect in selectedCards)
                 {
-                    // remove the card from your hand once you have used that card of the certain type
-                    if (cardSelect.GetComponent<SpellCard>().type == SpellType.ATTACK)
-                    {
-                        player.attackCardAmount--;
-                    }
-                    else if (cardSelect.GetComponent<SpellCard>().type == SpellType.RESTORATION)
-                    {
-                        player.restCardAmount--;
-                    }
-                    else if (cardSelect.GetComponent<SpellCard>().type == SpellType.RING)
-                    {
-                        player.ringCardAmount--;
-                    }
                     GameObject justChecking = cardSelect.gameObject;
                     if (justChecking == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
                     {

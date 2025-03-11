@@ -190,7 +190,7 @@ public class ChoosingSpellsState : FSMState
                         // keep the position of the cards to their current slot
 
                         //Remove past spells
-                        playerState.playerHand.ClearSelected();
+                        playerState.playerHand.ClearSelected(player);
                         playerState.playerHand.FullRemove();
                     }
                 }

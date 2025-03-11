@@ -104,6 +104,44 @@ public class CardsObjectPool : MonoBehaviour
         }
     }
 
+    public void FireBoltRound1(PlayerManager player)
+    {
+        cardSlots = player.GetComponentInChildren<CardHandSlot>();
+        foreach (GameObject pooledCards in objPoolCards)
+        {
+            if (pooledCards.GetComponent<SpellCard>().spellName == SpellNames.FireBolt && !pooledCards.activeSelf)
+            {
+                allcardAmounts[(int)SpellNames.FireBolt] += 1;
+                if (player == GameManager.Instance.player1)
+                {
+                    pooledCards.transform.eulerAngles = new Vector3(rightBend, p1rotation, transform.eulerAngles.z);
+                    //7 is layer skull
+                    pooledCards.transform.GetChild(0).gameObject.layer = 7;
+                }
+                else if (player == GameManager.Instance.player2)
+                {
+                    pooledCards.transform.eulerAngles = new Vector3(rightBend, p2rotation, transform.eulerAngles.z);
+                    //6 is layer stag
+                    pooledCards.transform.GetChild(0).gameObject.layer = 6;
+                }
+                pooledCards.SetActive(true);
+                pooledCards.transform.position = cardSlots.cardSlots[0].transform.position;
+                cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
+                cardSlots.emptySlots[0] = false;
+                cardsCurrentlyInHand.Add(pooledCards);
+                if (player == GameManager.Instance.player1)
+                {
+                    cardsCurrentlyInHandP1.Add(pooledCards);
+                }
+                else if (player == GameManager.Instance.player2)
+                {
+                    cardsCurrentlyInHandP2.Add(pooledCards);
+                }
+                break;
+            }
+        }
+    }
+
     public void SetCardsFromPool(PlayerManager player, SpellCard card)
     {
         cardSlots = player.GetComponentInChildren<CardHandSlot>();

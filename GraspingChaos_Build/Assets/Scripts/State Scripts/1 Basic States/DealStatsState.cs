@@ -7,6 +7,7 @@
 
 using System;
 using UnityEditor;
+using static UnityEngine.EventSystems.EventTrigger;
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -42,6 +43,9 @@ public class DealStatsState : FSMState
     /// </summary>
     bool stateChange = false;
 
+    bool firstDealingP1 = true;
+    bool firstDealingP2 = true;
+
     //Constructor
     public DealStatsState(PlayerState pS)
     {
@@ -75,23 +79,99 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
-        if(GameManager.Instance.pickQTEType)
+        QTETSelection(player, enemy);
+
+        ManaDealing(player, enemy);
+
+        FireBoltFirstRound(player);
+
+        // If the game is scripted skip this if it isint go in
+        if (!GameManager.Instance.manualCards) // the not scripted game
         {
-            //int rand = UnityEngine.Random.Range(0, 2);
-            int rand = 0;
-            if(rand == 0)
-            {
-                player.gameObject.GetComponent<QTEHandler>().mashing = false;
-                enemy.gameObject.GetComponent<QTEHandler>().mashing = false;
-            }
-            else if(rand == 1)
-            {
-                player.gameObject.GetComponent<QTEHandler>().mashing = true;
-                enemy.gameObject.GetComponent<QTEHandler>().mashing = true;
-            }
-            GameManager.Instance.pickQTEType = false;
+            CardDealingperTurn(player);
+        }
+        else // the scripted game
+        {
+            ScriptedGame(player);
         }
 
+        //Once both players have been delt enough cards so they each have 5, the game moves on
+        if (player.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize &&
+            enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
+        {
+            stateChange = true;
+            GameManager.Instance.checkAvailableCards = true;
+        }
+    }
+
+    private void FireBoltFirstRound(PlayerManager player)
+    {
+        if (GameManager.Instance.whatRound == 0)
+        {
+            if (firstDealingP1 && player == GameManager.Instance.player1)
+            {
+                CardsObjectPool.Instance.FireBoltRound1(player);
+                firstDealingP1 = false;
+                player.attackCardAmount++;
+            }
+
+            if (firstDealingP2 && player == GameManager.Instance.player2)
+            {
+                CardsObjectPool.Instance.FireBoltRound1(player);
+                firstDealingP2 = false;
+                player.attackCardAmount++;
+            }
+        }
+    }
+
+    private void CardDealingperTurn(PlayerManager player)
+    {
+        //player.spellHand.amtOfSpellsInHand = 5 - player.cardsAmountSelected;
+        if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
+        {
+            // add a card to the player spell list
+            card = cardDealing.CardDealtChance(player);
+            if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
+            {
+                // TODO - change this value to 2 once rings are in the game
+                if (player.attackCardAmount < 6 && card.type == SpellType.ATTACK)
+                {
+                    player.spellHand.playerSpells.Add(card);
+                    CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                    // increase the amount of spells the player has in their hand
+                    player.spellHand.amtOfSpellsInHand++;
+                    player.attackCardAmount++;
+                }
+                else if (player.restCardAmount < 2 && card.type == SpellType.RESTORATION)
+                {
+                    player.spellHand.playerSpells.Add(card);
+                    CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                    // increase the amount of spells the player has in their hand
+                    player.spellHand.amtOfSpellsInHand++;
+                    player.restCardAmount++;
+                }
+                else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
+                {
+                    if (CheckRingInHand(player, card) && CheckRingInFingers(player))
+                    {
+                        player.spellHand.playerSpells.Add(card);
+                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
+                        // increase the amount of spells the player has in their hand
+                        player.spellHand.amtOfSpellsInHand++;
+                        player.ringCardAmount++;
+                    }
+                    else
+                    {
+                        //loop again
+                    }
+                }
+
+            }
+        }
+    }
+
+    private void ManaDealing(PlayerManager player, PlayerManager enemy)
+    {
         // If the player has gained mana skip this bit if not go in
         if (!gainedMana)
         {
@@ -105,74 +185,35 @@ public class DealStatsState : FSMState
                 player.TrackDamage();
             }
             player.DamageTrackedPerTurn = 0;
-            if(player.PlayedEchoingMana)
+            if (player.PlayedEchoingMana)
             {
                 player.PlayedEchoingMana = false;
                 player.Mana += enemy.TrackMana();
-                if(player.Mana >= 12)
+                if (player.Mana >= 12)
                 {
                     player.Mana = 12;
                 }
-            }       
-        }
-
-        // If the game is scripted skip this if it isint go in
-        if (!GameManager.Instance.manualCards) // the not scripted game
-        {
-            //player.spellHand.amtOfSpellsInHand = 5 - player.cardsAmountSelected;
-            if (player.spellHand.amtOfSpellsInHand < 5)  //player.cardsAmountSelected
-            {
-                // add a card to the player spell list
-                card = cardDealing.CardDealtChance(player);
-                if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
-                {
-                    // TODO - change this value to 2 once rings are in the game
-                    if (player.attackCardAmount < 4 && card.type == SpellType.ATTACK)
-                    {
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
-                        player.attackCardAmount++;
-                    }
-                    else if (player.restCardAmount < 2 && card.type == SpellType.RESTORATION)
-                    {
-                        player.spellHand.playerSpells.Add(card);
-                        CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                        // increase the amount of spells the player has in their hand
-                        player.spellHand.amtOfSpellsInHand++;
-                        player.restCardAmount++;
-                    }
-                    else if (player.ringCardAmount < 2 && card.type == SpellType.RING)
-                    {
-                        if(CheckRingInHand(player, card) && CheckRingInFingers(player))
-                        {
-                            player.spellHand.playerSpells.Add(card);
-                            CardsObjectPool.Instance.SetCardsFromPool(player, card);
-                            // increase the amount of spells the player has in their hand
-                            player.spellHand.amtOfSpellsInHand++;
-                            player.ringCardAmount++;
-                        }
-                        else
-                        {
-                            //loop again
-                        }
-                    }
-
-                }
             }
         }
-        else // the scripted game
-        {
-            ScriptedGame(player);
-        }
+    }
 
-        //Once both players have been delt enough cards so they each have 5, the game moves on
-        if (player.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize &&
-            enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
+    private void QTETSelection(PlayerManager player, PlayerManager enemy)
+    {
+        if (GameManager.Instance.pickQTEType)
         {
-            stateChange = true;
-            GameManager.Instance.checkAvailableCards = true;
+            //int rand = UnityEngine.Random.Range(0, 2);
+            int rand = 0;
+            if (rand == 0)
+            {
+                player.gameObject.GetComponent<QTEHandler>().mashing = false;
+                enemy.gameObject.GetComponent<QTEHandler>().mashing = false;
+            }
+            else if (rand == 1)
+            {
+                player.gameObject.GetComponent<QTEHandler>().mashing = true;
+                enemy.gameObject.GetComponent<QTEHandler>().mashing = true;
+            }
+            GameManager.Instance.pickQTEType = false;
         }
     }
 
