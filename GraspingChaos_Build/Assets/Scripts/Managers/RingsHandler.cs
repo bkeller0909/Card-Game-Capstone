@@ -60,7 +60,7 @@ public class RingsHandler : MonoBehaviour
             randoFinger = targetPlayer.GetRandomFinger(PlayerFingers.none);
             //targetPlayer.health.DamageFinger(randoFinger);
             //targetPlayer.health.DamageFinger(randoFinger);
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 targetPlayer.health.playerHealthStats[(int)randoFinger] -= 1;
                 targetPlayer.fingers[(int)randoFinger].removeCurrentSegment();
@@ -108,11 +108,11 @@ public class RingsHandler : MonoBehaviour
     //call this on deal stats, if the ring is active the function will know, and deal mana acordingly
     public void EffectManaMerchant()
     {
-        if(manaMerchantSuccess)
+        if (manaMerchantSuccess)
         {
             gameObject.GetComponent<PlayerManager>().GetMana(2);
         }
-        else if(manaMerchantFailure)
+        else if (manaMerchantFailure)
         {
             gameObject.GetComponent<PlayerManager>().GetMana(1);
         }
@@ -164,7 +164,7 @@ public class RingsHandler : MonoBehaviour
             playerTarget.health.HealFinger(randoFinger);
         }
     }
-    public void EffectVeilOfFortitude(PlayerFingers targetFinger, PlayerManager playerTarget)
+    public void EffectVeilOfFortitude(PlayerFingers targetFinger)
     {
         //reduce damage taken on hand summoned
         //fail damage taken is cut in half
@@ -182,11 +182,12 @@ public class RingsHandler : MonoBehaviour
         }
 
 
-        if (ringsActive[(int)Rings.VeilOfFortitudeFull, (int)targetFinger])
-        {
-            //easy - simply block damage with previous bool
-        }
-        else if (ringsActive[(int)Rings.VeilOfFortitudeFail, (int)targetFinger])
+        //if (ringsActive[(int)Rings.VeilOfFortitudeFull, (int)targetFinger])
+        //{
+        //    //easy - simply block damage with previous bool
+        //    // done
+        //}
+        if (ringsActive[(int)Rings.VeilOfFortitudeFail, (int)targetFinger])
         {
             //hard - figure out a way to half the damage (with some spells and the way the damage function is set I might have to re-write some functionality)
         }

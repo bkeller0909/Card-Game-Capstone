@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Playables;
 
 
 
@@ -66,51 +65,61 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void DamageFinger(PlayerFingers whatFinger)
     {
-        if (playerHealthStats[(int)whatFinger] > 0)
+        bool veilOfFortitudeActive = false;
+        if ((((int)whatFinger >= 0 && (int)whatFinger < 4) && player.ringHandler.veilOfFortitudeLeft == true) ||
+            ((int)whatFinger >= 5 && (int)whatFinger < 9) && player.ringHandler.veilOfFortitudeRight == true)
         {
-            if (player.fingers[(int)whatFinger].fingerShield <= 0)
+            veilOfFortitudeActive = true;
+        }
+
+        if (!veilOfFortitudeActive)
+        {
+            if (playerHealthStats[(int)whatFinger] > 0)
             {
-                if(player == GameManager.Instance.player1)
+                if (player.fingers[(int)whatFinger].fingerShield <= 0)
                 {
-                    player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player2);
-                    player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
+                    if (player == GameManager.Instance.player1)
+                    {
+                        player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player2);
+                        player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
+                    }
+                    else if (player == GameManager.Instance.player2)
+                    {
+                        player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player1);
+                        player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
+                    }
+                    playerHealthStats[(int)whatFinger] -= 1;
+                    player.fingers[(int)whatFinger].removeCurrentSegment();
+                    player.visualFingers[(int)whatFinger].removeCurrentSegment();
+                    player.entireHP--;
+                    player.DamageTrackedPerTurn++;
                 }
-                else if(player == GameManager.Instance.player2)
+                else
                 {
-                    player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player1);
-                    player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
+                    player.fingers[(int)whatFinger].fingerShield--;
                 }
-                playerHealthStats[(int)whatFinger] -= 1;
-                player.fingers[(int)whatFinger].removeCurrentSegment();
-                player.visualFingers[(int)whatFinger].removeCurrentSegment();
-                player.entireHP--;
-                player.DamageTrackedPerTurn++;
             }
             else
             {
-                player.fingers[(int)whatFinger].fingerShield--;
+                playerHealthStats[(int)whatFinger] = 0;
             }
-        }
-        else
-        {
-            playerHealthStats[(int)whatFinger] = 0;
-        }
 
-        if (playerHealthStats[(int)whatFinger] == 0)
-        {
-            for (int i = 0; i < 14; i++)
+            if (playerHealthStats[(int)whatFinger] == 0)
             {
-                if (player.ringHandler.ringsActive[i, (int)whatFinger] == true)
+                for (int i = 0; i < 14; i++)
                 {
-                    player.ringHandler.ringsActive[i, (int)whatFinger] = false;
-                    player.ToggleRing(false, (Rings)i, whatFinger);
-                    if (i == (int)Rings.ManaMerchantFail)
+                    if (player.ringHandler.ringsActive[i, (int)whatFinger] == true)
                     {
-                        player.GetComponent<RingsHandler>().manaMerchantFailure = false;
-                    }
-                    else if (i == (int)Rings.ManaMerchantFull)
-                    {
-                        player.GetComponent<RingsHandler>().manaMerchantSuccess = false;
+                        player.ringHandler.ringsActive[i, (int)whatFinger] = false;
+                        player.ToggleRing(false, (Rings)i, whatFinger);
+                        if (i == (int)Rings.ManaMerchantFail)
+                        {
+                            player.GetComponent<RingsHandler>().manaMerchantFailure = false;
+                        }
+                        else if (i == (int)Rings.ManaMerchantFull)
+                        {
+                            player.GetComponent<RingsHandler>().manaMerchantSuccess = false;
+                        }
                     }
                 }
             }

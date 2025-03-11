@@ -328,24 +328,24 @@ public class GameDebugger : MonoBehaviour
 
         DebugDamageAndHealingFingers();
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CameraDebugger(0, player1);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CameraDebugger(1, player1);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CameraDebugger(2, player1);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             CameraDebugger(0, player2);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha9))
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             CameraDebugger(1, player2);
         }
@@ -354,8 +354,8 @@ public class GameDebugger : MonoBehaviour
             CameraDebugger(2, player2);
         }
 
-        PlaceAndRemoveRingDebuggerP1();
-        PlaceAndRemoveRingDebuggerP2();
+        //PlaceAndRemoveRingDebuggerP1();
+        //PlaceAndRemoveRingDebuggerP2();
     }
 
 
@@ -475,7 +475,7 @@ public class GameDebugger : MonoBehaviour
             {
                 thumbsUpAmount = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
-            else if(cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.ThornsOfAgony)
+            else if (cardsInUse.GetComponent<SpellCard>().spellName == SpellNames.ThornsOfAgony)
             {
                 ThornsOfAgony = CardsObjectPool.Instance.allcardAmounts[(int)cardsInUse.GetComponent<SpellCard>().spellName];
             }
@@ -919,19 +919,19 @@ public class GameDebugger : MonoBehaviour
 
     private void PlaceAndRemoveRingDebuggerP1()
     {
-        if(ThornsOfAgonyP1 && SuccessfullRingP1)
+        if (ThornsOfAgonyP1 && SuccessfullRingP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)pickTheFingerP1] = true;
             player1.ToggleRing(true, Rings.ThornsOfAgonyFull, pickTheFingerP1);
             player1.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFull] = GameManager.Instance.whatRound;
         }
-        else if(ThornsOfAgonyP1 && !SuccessfullRingP1)
+        else if (ThornsOfAgonyP1 && !SuccessfullRingP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)pickTheFingerP1] = true;
             player1.ToggleRing(true, Rings.ThornsOfAgonyFail, pickTheFingerP1);
             player1.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFail] = GameManager.Instance.whatRound;
         }
-        else if(!ThornsOfAgonyP1)
+        else if (!ThornsOfAgonyP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)pickTheFingerP1] = false;
             player1.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)pickTheFingerP1] = false;
@@ -939,13 +939,13 @@ public class GameDebugger : MonoBehaviour
             player1.ToggleRing(false, Rings.ThornsOfAgonyFull, pickTheFingerP1);
         }
 
-        if(GuardiansTouchP1 && SuccessfullRingP1)
+        if (GuardiansTouchP1 && SuccessfullRingP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)pickTheFingerP1] = true;
             player1.ToggleRing(true, Rings.GuardiansTouchFull, pickTheFingerP1);
             player1.ringHandler.ringStartRound[(int)Rings.GuardiansTouchFull] = GameManager.Instance.whatRound;
         }
-        else if(GuardiansTouchP1 && !SuccessfullRingP1)
+        else if (GuardiansTouchP1 && !SuccessfullRingP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)pickTheFingerP1] = true;
             player1.ToggleRing(true, Rings.GuardiansTouchFail, pickTheFingerP1);
@@ -965,7 +965,7 @@ public class GameDebugger : MonoBehaviour
             player1.ToggleRing(true, Rings.ManaMerchantFull, pickTheFingerP1);
             player1.ringHandler.ringStartRound[(int)Rings.ManaMerchantFull] = GameManager.Instance.whatRound;
         }
-        else if(ManaMerchantP1 && !SuccessfullRingP1)
+        else if (ManaMerchantP1 && !SuccessfullRingP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.ManaMerchantFail, (int)pickTheFingerP1] = true;
             player1.ToggleRing(true, Rings.ManaMerchantFail, pickTheFingerP1);
@@ -986,7 +986,7 @@ public class GameDebugger : MonoBehaviour
             player1.ToggleRing(true, Rings.SpectralChainFull, pickTheFingerP1);
             player1.ringHandler.ringStartRound[(int)Rings.SpectralChainFull] = GameManager.Instance.whatRound;
         }
-        else if(SpectralChainP1 && !SuccessfullRingP1)
+        else if (SpectralChainP1 && !SuccessfullRingP1)
         {
             player1.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)pickTheFingerP1] = true;
             player1.ToggleRing(true, Rings.SpectralChainFail, pickTheFingerP1);

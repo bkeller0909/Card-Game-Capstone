@@ -74,6 +74,7 @@ public class VeilOfFortitudeState : FSMState
                     player.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.VeilOfFortitudeFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.VeilOfFortitudeFull] = GameManager.Instance.whatRound;
+                    player.ringHandler.EffectVeilOfFortitude(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
                 else
                 {
@@ -81,6 +82,7 @@ public class VeilOfFortitudeState : FSMState
                     player.ringHandler.ringsActive[(int)Rings.VeilOfFortitudeFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.VeilOfFortitudeFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.VeilOfFortitudeFail] = GameManager.Instance.whatRound;
+                    player.ringHandler.EffectVeilOfFortitude(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                 }
             }
             else // ring dosent get put on the finger
