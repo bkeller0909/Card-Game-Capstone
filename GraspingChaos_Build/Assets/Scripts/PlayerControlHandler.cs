@@ -204,6 +204,21 @@ public class PlayerControlHandler : MonoBehaviour
             player.cardsAmountSelected = 0;
             player.playerInput.SwitchCurrentActionMap("Card");
             Debug.Log(player.playerInput.currentActionMap.ToString());
+            if (player == GameManager.Instance.player1)
+            {
+                {
+                    GameManager.Instance.nextStateP1 = false;
+                    player.GetComponent<PlayerState>().finishedCastingImage.SetActive(false);
+                }
+            }
+            else if (player == GameManager.Instance.player2)
+            {
+                {
+                    GameManager.Instance.nextStateP2 = false;
+                    player.GetComponent<PlayerState>().finishedCastingImage.SetActive(false);
+                }
+            }
+
             StartCoroutine(ButtonCheckUnConfirm());
         }
 

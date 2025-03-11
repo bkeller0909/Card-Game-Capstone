@@ -247,8 +247,9 @@ public class ChoosingSpellsState : FSMState
             // this is the the end of the debug portion the next line is important don't remove
             playerState.readyToCast = false;
         }
+
         //if the player has selected a card
-        else if (playerState.cardSelected)
+        if (playerState.cardSelected)
         {
             //what order the spells are chosen
             if (amtOfSpells == 0)
