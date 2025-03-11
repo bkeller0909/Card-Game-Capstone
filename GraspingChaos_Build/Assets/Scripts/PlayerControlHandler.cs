@@ -159,20 +159,25 @@ public class PlayerControlHandler : MonoBehaviour
             }
             #endregion // Card Select Controls
 
-            // set your selection of cards
-            if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
+
+            //this if check makes sure that we can only "confirm" our cards if we have at least 1 card selected
+            if (player.gameObject.GetComponentInChildren<CardHandSlot>().selectedCards.Count > 0)
             {
-                stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
-                changeCameras.GetInputForced(0);        // sets the camera position back to default
-                playerInput.finishSelection = false;    // finish selection input is now false after being pressed
-                playerInput.Xbtn = false;
-                foreach (CardSelect card in pickCards.selectedCards)
+                // set your selection of cards
+                if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
                 {
-                    player.cardsAmountSelected++;
+                    stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
+                    changeCameras.GetInputForced(0);        // sets the camera position back to default
+                    playerInput.finishSelection = false;    // finish selection input is now false after being pressed
+                    playerInput.Xbtn = false;
+                    foreach (CardSelect card in pickCards.selectedCards)
+                    {
+                        player.cardsAmountSelected++;
+                    }
+                    index++;
+                    //QTEWait will make sure you wont move any cards or cameras after pressing confirm
+                    player.playerInput.SwitchCurrentActionMap("QTEWait");
                 }
-                index++;
-                //QTEWait will make sure you wont move any cards or cameras after pressing confirm
-                player.playerInput.SwitchCurrentActionMap("QTEWait");
             }
 
             //Camera Movement
