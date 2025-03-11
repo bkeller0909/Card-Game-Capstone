@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -19,6 +20,7 @@ public class PlayerControlHandler : MonoBehaviour
     private InputHandler playerInput;
     [SerializeField] public CardHandSlot pickCards;
     [SerializeField] CameraPositionChange changeCameras;
+    private bool deconfirm = false;
     public int index = 0;
 
     private void Start()
@@ -164,7 +166,7 @@ public class PlayerControlHandler : MonoBehaviour
             if (player.gameObject.GetComponentInChildren<CardHandSlot>().selectedCards.Count > 0)
             {
                 // set your selection of cards
-                if (player.playerInput.actions["SetFinal"].WasPressedThisFrame())
+                if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
                 {
                     stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
                     changeCameras.GetInputForced(0);        // sets the camera position back to default
@@ -176,6 +178,7 @@ public class PlayerControlHandler : MonoBehaviour
                     }
                     index++;
                     //QTEWait will make sure you wont move any cards or cameras after pressing confirm
+                    deconfirm = true;
                     player.playerInput.SwitchCurrentActionMap("QTEWait");
                 }
             }
@@ -191,10 +194,30 @@ public class PlayerControlHandler : MonoBehaviour
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
 
+
+        //lock Controls
+        if (player.playerInput.actions["UnConfirm"].WasPressedThisFrame())
+        {
+            player.GetComponent<PlayerState>().readyToCast = false;
+            playerInput.finishSelection = false;
+            changeCameras.GetInputForced(1);
+            player.cardsAmountSelected = 0;
+            player.playerInput.SwitchCurrentActionMap("Card");
+            Debug.Log(player.playerInput.currentActionMap.ToString());
+            StartCoroutine(ButtonCheckUnConfirm());
+        }
+
         // Kill Switch for killing player 2
         if (Input.GetKeyDown(KeyCode.Z))
         {
             GameManager.Instance.player2.entireHP = 0;
         }
+    }
+
+
+    IEnumerator ButtonCheckUnConfirm()
+    {
+        yield return new WaitForSeconds(1);
+        deconfirm = false;
     }
 }

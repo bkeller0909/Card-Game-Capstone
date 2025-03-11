@@ -37,6 +37,7 @@ public class InputHandler : MonoBehaviour
     public bool cameraUp = false;
     public bool cameraDown = false;
     public bool deselectCard = false;
+    public bool unConfirm = false;
 
     #region Player Controls
     //player
@@ -157,6 +158,13 @@ public class InputHandler : MonoBehaviour
     public void OnDebugTriggerQTE(InputValue value)
     {
         debugQTE = value.isPressed;
+    }
+    #endregion
+
+    #region lock controls
+    public void UnConfirm(InputValue value)
+    {
+        unConfirm = value.isPressed;
     }
     #endregion
 }

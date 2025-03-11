@@ -1133,7 +1133,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Deselect"",
                     ""type"": ""Button"",
                     ""id"": ""b6ce535f-4e61-4efe-8601-07b3beb25429"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1415,6 +1415,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UnConfirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""1fd75cb9-d73a-40d9-8db7-1291825a5ab0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1437,6 +1446,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""210fbfb1-0860-4a11-8dc3-3e40bdc52884"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""UnConfirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1558,6 +1578,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // QTEWait
         m_QTEWait = asset.FindActionMap("QTEWait", throwIfNotFound: true);
         m_QTEWait_Pause = m_QTEWait.FindAction("Pause", throwIfNotFound: true);
+        m_QTEWait_UnConfirm = m_QTEWait.FindAction("UnConfirm", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -2109,11 +2130,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_QTEWait;
     private List<IQTEWaitActions> m_QTEWaitActionsCallbackInterfaces = new List<IQTEWaitActions>();
     private readonly InputAction m_QTEWait_Pause;
+    private readonly InputAction m_QTEWait_UnConfirm;
     public struct QTEWaitActions
     {
         private @PlayerControls m_Wrapper;
         public QTEWaitActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_QTEWait_Pause;
+        public InputAction @UnConfirm => m_Wrapper.m_QTEWait_UnConfirm;
         public InputActionMap Get() { return m_Wrapper.m_QTEWait; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2126,6 +2149,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @UnConfirm.started += instance.OnUnConfirm;
+            @UnConfirm.performed += instance.OnUnConfirm;
+            @UnConfirm.canceled += instance.OnUnConfirm;
         }
 
         private void UnregisterCallbacks(IQTEWaitActions instance)
@@ -2133,6 +2159,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @UnConfirm.started -= instance.OnUnConfirm;
+            @UnConfirm.performed -= instance.OnUnConfirm;
+            @UnConfirm.canceled -= instance.OnUnConfirm;
         }
 
         public void RemoveCallbacks(IQTEWaitActions instance)
@@ -2251,5 +2280,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IQTEWaitActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnUnConfirm(InputAction.CallbackContext context);
     }
 }
