@@ -445,4 +445,13 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+
+    public bool AreTheseFingersAlive(PlayerFingers f1, PlayerFingers f2)
+    {
+        if (health.getFingerHealth(f1) >= 1 && health.getFingerHealth(f2) >= 1)
+        {
+            return true;
+        }
+        return false;
+    }
 }
