@@ -20,7 +20,7 @@ public class PlayerControlHandler : MonoBehaviour
     private InputHandler playerInput;
     [SerializeField] public CardHandSlot pickCards;
     [SerializeField] CameraPositionChange changeCameras;
-    private bool deconfirm = false;
+    public bool deconfirm = false;
     public int index = 0;
 
     private void Start()

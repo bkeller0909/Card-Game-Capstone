@@ -208,6 +208,7 @@ public class ChoosingSpellsState : FSMState
             }
 
             GameManager.Instance.roundCheck = false;
+            player.gameObject.GetComponent<PlayerControlHandler>().deconfirm = false;
             playerState.PerformTransition(Transition.NeedDecision);
         }
     }
