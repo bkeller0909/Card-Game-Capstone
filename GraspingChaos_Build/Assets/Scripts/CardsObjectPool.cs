@@ -104,7 +104,7 @@ public class CardsObjectPool : MonoBehaviour
         }
     }
 
-    public void FireBoltRound1(PlayerManager player)
+    public SpellCard FireBoltRound1(PlayerManager player)
     {
         cardSlots = player.GetComponentInChildren<CardHandSlot>();
         foreach (GameObject pooledCards in objPoolCards)
@@ -125,21 +125,29 @@ public class CardsObjectPool : MonoBehaviour
                     pooledCards.transform.GetChild(0).gameObject.layer = 6;
                 }
                 pooledCards.SetActive(true);
-                pooledCards.transform.position = cardSlots.cardSlots[0].transform.position;
-                cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
-                cardSlots.emptySlots[0] = false;
-                cardsCurrentlyInHand.Add(pooledCards);
-                if (player == GameManager.Instance.player1)
+                for (int i = 0; i < cardSlots.emptySlots.Length; i++)
                 {
-                    cardsCurrentlyInHandP1.Add(pooledCards);
-                }
-                else if (player == GameManager.Instance.player2)
-                {
-                    cardsCurrentlyInHandP2.Add(pooledCards);
+                    if (cardSlots.emptySlots[i])
+                    {
+                        pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
+                        cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
+                        cardSlots.emptySlots[i] = false;
+                        cardsCurrentlyInHand.Add(pooledCards);
+                        if (player == GameManager.Instance.player1)
+                        {
+                            cardsCurrentlyInHandP1.Add(pooledCards);
+                        }
+                        else if (player == GameManager.Instance.player2)
+                        {
+                            cardsCurrentlyInHandP2.Add(pooledCards);
+                        }
+                        return pooledCards.GetComponent<SpellCard>();
+                    }
                 }
                 break;
             }
         }
+        return null;
     }
 
     public void SetCardsFromPool(PlayerManager player, SpellCard card)

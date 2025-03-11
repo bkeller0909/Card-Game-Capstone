@@ -5,9 +5,6 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
-using System;
-using UnityEditor;
-using static UnityEngine.EventSystems.EventTrigger;
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -106,20 +103,27 @@ public class DealStatsState : FSMState
 
     private void FireBoltFirstRound(PlayerManager player)
     {
-        if (GameManager.Instance.whatRound == 0)
+        if (player.spellHand.amtOfSpellsInHand < 5)
         {
-            if (firstDealingP1 && player == GameManager.Instance.player1)
+            if (GameManager.Instance.whatRound == 0)
             {
-                CardsObjectPool.Instance.FireBoltRound1(player);
-                firstDealingP1 = false;
-                player.attackCardAmount++;
-            }
+                if (firstDealingP1 && player == GameManager.Instance.player1)
+                {
+                    card = CardsObjectPool.Instance.FireBoltRound1(player);
+                    player.spellHand.playerSpells.Add(card);
+                    firstDealingP1 = false;
+                    player.attackCardAmount++;
+                    player.spellHand.amtOfSpellsInHand++;
+                }
 
-            if (firstDealingP2 && player == GameManager.Instance.player2)
-            {
-                CardsObjectPool.Instance.FireBoltRound1(player);
-                firstDealingP2 = false;
-                player.attackCardAmount++;
+                if (firstDealingP2 && player == GameManager.Instance.player2)
+                {
+                    card = CardsObjectPool.Instance.FireBoltRound1(player);
+                    player.spellHand.playerSpells.Add(card);
+                    firstDealingP2 = false;
+                    player.attackCardAmount++;
+                    player.spellHand.amtOfSpellsInHand++;
+                }
             }
         }
     }
@@ -238,31 +242,31 @@ public class DealStatsState : FSMState
                 //if this ring is active on a finger and it is the ring that matches with the card
                 if (currentPlayer.ringHandler.ringsActive[i, j] == true)
                 {
-                    if(i == (int)Rings.ThornsOfAgonyFail || i == (int)Rings.ThornsOfAgonyFull)
+                    if (i == (int)Rings.ThornsOfAgonyFail || i == (int)Rings.ThornsOfAgonyFull)
                     {
                         return false;
                     }
-                    else if(i == (int)Rings.GuardiansTouchFail || i == (int)Rings.GuardiansTouchFull)
+                    else if (i == (int)Rings.GuardiansTouchFail || i == (int)Rings.GuardiansTouchFull)
                     {
                         return false;
                     }
-                    else if(i == (int)Rings.ManaMerchantFail || i == (int)Rings.ManaMerchantFull)
+                    else if (i == (int)Rings.ManaMerchantFail || i == (int)Rings.ManaMerchantFull)
                     {
                         return false;
                     }
-                    else if(i == (int)Rings.VengefulMirrorFail || i == (int)Rings.VengefulMirrorFull)
+                    else if (i == (int)Rings.VengefulMirrorFail || i == (int)Rings.VengefulMirrorFull)
                     {
                         return false;
                     }
-                    else if(i == (int)Rings.SpectralChainFail || i == (int)Rings.SpectralChainFull)
+                    else if (i == (int)Rings.SpectralChainFail || i == (int)Rings.SpectralChainFull)
                     {
                         return false;
                     }
-                    else if(i == (int)Rings.VampiricSurgeFail || i == (int)Rings.VampiricSurgeFull)
+                    else if (i == (int)Rings.VampiricSurgeFail || i == (int)Rings.VampiricSurgeFull)
                     {
                         return false;
                     }
-                    else if(i == (int)Rings.VeilOfFortitudeFail || i == (int)Rings.VeilOfFortitudeFull)
+                    else if (i == (int)Rings.VeilOfFortitudeFail || i == (int)Rings.VeilOfFortitudeFull)
                     {
                         return false;
                     }

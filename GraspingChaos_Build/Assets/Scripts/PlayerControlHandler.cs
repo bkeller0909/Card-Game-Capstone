@@ -184,6 +184,11 @@ public class PlayerControlHandler : MonoBehaviour
         // Once the pause button is pressed just load us back to the main menu
         if (player.playerInput.actions["Pause"].triggered)
         {
+            pickCards.cards.Clear();
+            pickCards.selectedCards.Clear();
+            CardsObjectPool.Instance.cardsCurrentlyInHandP1.Clear();
+            CardsObjectPool.Instance.cardsCurrentlyInHandP2.Clear();
+            CardsObjectPool.Instance.cardsCurrentlyInHand.Clear();
             CardsObjectPool.Instance.ResetPoolDistributionValues();
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
