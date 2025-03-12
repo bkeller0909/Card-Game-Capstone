@@ -149,12 +149,11 @@ public class QTEHandler : MonoBehaviour
                 //EvauateQTEResults();
                 timeisDone = true;
                 //checkTieRace();
-                gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
             }
         }
 
         //function that checks the values of each QTE Button on the sequence to determine which is currently active (more info in the function)
-        if(mashing)
+        if (mashing)
         {
             CheckAvailabilityMashing();
         }
@@ -162,7 +161,7 @@ public class QTEHandler : MonoBehaviour
         {
             CheckAvailability();
         }
-        
+
 
         //check to see if the counter needs to be on screen
         if (QTEHasStarted)
@@ -471,7 +470,7 @@ public class QTEHandler : MonoBehaviour
 
     public void CheckAvailabilityMashing()
     {
-        if(inputTracker == 24)
+        if (inputTracker == 24)
         {
             SetTimeValue();
         }
@@ -669,7 +668,7 @@ public class QTEHandler : MonoBehaviour
 
     public string GetUniqueHandAnimation()
     {
-        if(HandAnimations.Count == 10)
+        if (HandAnimations.Count == 10)
         {
             int rand = UnityEngine.Random.Range(0, HandAnimations.Count);
             storedHandAnim = HandAnimations[rand];

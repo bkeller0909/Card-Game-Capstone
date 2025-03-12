@@ -83,17 +83,17 @@ public class CameraPositionChange : MonoBehaviour
     {
         if (canInput)
         {
-            if(cameraIndex == 0)
+            if (cameraIndex == 0)
             {
                 cameraIndex++;
                 canInput = false;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
             }
-            else if(cameraIndex == 1)
+            else if (cameraIndex == 1)
             {
                 cameraIndex--;
                 canInput = false;
-                StartCoroutine(MoveCameratoNewPosition(cameraIndex));   
+                StartCoroutine(MoveCameratoNewPosition(cameraIndex));
             }
         }
     }
@@ -125,7 +125,7 @@ public class CameraPositionChange : MonoBehaviour
                 cameraIndex = 2;
                 canInput = false;
             }
-            else if(currentCamera == 3)
+            else if (currentCamera == 3)
             {
                 StartCoroutine(MoveCameratoNewPosition(3));
                 cameraIndex = 3;
@@ -146,7 +146,6 @@ public class CameraPositionChange : MonoBehaviour
     {
         //Sets the cameras move timer to 0 (starting the move)
         elapsedTime = 0.0f;
-
         //Loop and move the camera until the elapsed time reaches the desired time
         while (elapsedTime < lerpTime)
         {
@@ -173,7 +172,7 @@ public class CameraPositionChange : MonoBehaviour
         //Unlock player input allowing the next move
         canInput = true;
     }
-    
+
     /// <summary>
     /// Takes the current transform of the camera position and moves it to a new transform position.
     /// </summary>

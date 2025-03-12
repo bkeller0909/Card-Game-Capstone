@@ -150,6 +150,70 @@ public class CardsObjectPool : MonoBehaviour
         return null;
     }
 
+
+    public SpellCard ScriptedDealing(PlayerManager player, SpellNames spell1, SpellNames spell2, SpellNames spell3, SpellNames spell4, SpellNames spell5)
+    {
+        cardSlots = player.GetComponentInChildren<CardHandSlot>();
+        foreach (GameObject pooledCards in objPoolCards)
+        {
+            if (pooledCards.GetComponent<SpellCard>().spellName == spell1 || pooledCards.GetComponent<SpellCard>().spellName == spell2 ||
+                pooledCards.GetComponent<SpellCard>().spellName == spell3 || pooledCards.GetComponent<SpellCard>().spellName == spell4 ||
+                pooledCards.GetComponent<SpellCard>().spellName == spell5 && !pooledCards.activeSelf)
+            {
+                SpellCard card = pooledCards.GetComponent<SpellCard>();
+                allcardAmounts[(int)card.spellName] += 1;
+                if (card.type == SpellType.ATTACK)
+                {
+                    player.attackCardAmount++;
+                }
+                else if (card.type == SpellType.RESTORATION)
+                {
+                    player.restCardAmount++;
+                }
+                else if (card.type == SpellType.RING)
+                {
+                    player.ringCardAmount++;
+                }
+
+                if (player == GameManager.Instance.player1)
+                {
+                    pooledCards.transform.eulerAngles = new Vector3(rightBend, p1rotation, transform.eulerAngles.z);
+                    //7 is layer skull
+                    pooledCards.transform.GetChild(0).gameObject.layer = 7;
+                }
+                else if (player == GameManager.Instance.player2)
+                {
+                    pooledCards.transform.eulerAngles = new Vector3(rightBend, p2rotation, transform.eulerAngles.z);
+                    //6 is layer stag
+                    pooledCards.transform.GetChild(0).gameObject.layer = 6;
+                }
+                pooledCards.SetActive(true);
+                for (int i = 0; i < cardSlots.emptySlots.Length; i++)
+                {
+                    if (cardSlots.emptySlots[i])
+                    {
+                        pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
+                        cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
+                        cardSlots.emptySlots[i] = false;
+                        cardsCurrentlyInHand.Add(pooledCards);
+                        if (player == GameManager.Instance.player1)
+                        {
+                            cardsCurrentlyInHandP1.Add(pooledCards);
+                        }
+                        else if (player == GameManager.Instance.player2)
+                        {
+                            cardsCurrentlyInHandP2.Add(pooledCards);
+                        }
+                        return pooledCards.GetComponent<SpellCard>();
+                    }
+                }
+                break;
+            }
+        }
+        return null;
+    }
+
+
     public void SetCardsFromPool(PlayerManager player, SpellCard card)
     {
         cardSlots = player.GetComponentInChildren<CardHandSlot>();

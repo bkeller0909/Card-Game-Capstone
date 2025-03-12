@@ -486,14 +486,14 @@ public class PlayerState : AdvancedFSM
         player.playerInput.SwitchCurrentActionMap("QTE");
         player.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
         yield return new WaitForSeconds(1f);
-        if(player.gameObject.GetComponent<QTEHandler>().mashing)
+        if (player.gameObject.GetComponent<QTEHandler>().mashing)
         {
             player.gameObject.GetComponent<QTEHandler>().MashingTest(7, player);
         }
         else
         {
             player.gameObject.GetComponent<QTEHandler>().CreateSequence(currentQTEAmount, player);
-        }  
+        }
     }
 
     public void MoveCard(GameObject go, Vector3 startPos)
