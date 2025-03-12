@@ -15,6 +15,8 @@ using UnityEngine;
 /// </summary>
 public class CardSelect : MonoBehaviour
 {
+    public ControlDissolve cardDissolve;
+
     [Tooltip("Child object of the Card prefab.")]
     [SerializeField] private MeshRenderer cardGlowRender;
     private MeshRenderer cardGlowRenderDefault;
@@ -38,6 +40,7 @@ public class CardSelect : MonoBehaviour
 
     void Start()
     {
+        cardDissolve = GetComponent<ControlDissolve>();
         cardGlowRender.enabled = false;
         cardGlowRenderDefault = cardGlowRender.GetComponent<MeshRenderer>();
         cardGlowRenderDefault.material.color = cardGlowRenderDefault.material.GetColor("_GlowColour");
@@ -144,5 +147,9 @@ public class CardSelect : MonoBehaviour
         isSelected = false;
         cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
         CardGlow(false);
+        cardDissolve.dissolveCard = false;
+        cardDissolve.RestoreCard = true;
+        cardDissolve.RestoreSpellCard();
+        cardDissolve.RestoreCard = false;
     }
 }

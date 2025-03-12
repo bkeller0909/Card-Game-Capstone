@@ -121,6 +121,7 @@ public class ControlDissolve : MonoBehaviour
     IEnumerator DissolveCardOverTime(float time)
     {
         float timeElapsed = 0.0f;
+        gameObject.GetComponent<CardSelect>().CardGlow(false);
 
         while (timeElapsed < time)
         {
@@ -132,9 +133,10 @@ public class ControlDissolve : MonoBehaviour
 
             timeElapsed += Time.deltaTime;
 
+
             yield return null;
         }
-
+        GameManager.Instance.isDissolveDone = true;
         cardMaterial.SetFloat("_DissolveAmount", FULL_BLACK_VALUE);
         cardDissolveAmount = cardMaterial.GetFloat("_DissolveAmount");
 
@@ -142,6 +144,7 @@ public class ControlDissolve : MonoBehaviour
         //flameEffectObject.SetActive(false);
 
         dissolveCard = false;
+        gameObject.SetActive(false);
     }
 
     IEnumerator FlameEffect(float time)

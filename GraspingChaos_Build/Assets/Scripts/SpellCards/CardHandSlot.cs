@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 
 //----------------------------------------------------------------
@@ -70,10 +69,12 @@ public class CardHandSlot : MonoBehaviour
                         {
                             CardsObjectPool.Instance.cardsCurrentlyInHandP1.Remove(cards[i].gameObject);
                         }
-                        else if(player == GameManager.Instance.player2)
+                        else if (player == GameManager.Instance.player2)
                         {
                             CardsObjectPool.Instance.cardsCurrentlyInHandP2.Remove(cards[i].gameObject);
                         }
+                        selectedCard.cardDissolve.dissolveCard = true;
+                        selectedCard.cardDissolve.DissolveSpellCard();
                         cards.Remove(cards[i]);
                         emptySlots[i] = true;
                         break;
@@ -111,10 +112,7 @@ public class CardHandSlot : MonoBehaviour
                     GameObject justChecking = cardSelect.gameObject;
                     if (justChecking == CardsObjectPool.Instance.cardsCurrentlyInHand[i])
                     {
-                        CardsObjectPool.Instance.cardsCurrentlyInHand[i].SetActive(false);
                         CardsObjectPool.Instance.allcardAmounts[(int)cardSelect.gameObject.GetComponent<SpellCard>().spellName] -= 1;
-                        CardsObjectPool.Instance.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isSelected = false;
-                        CardsObjectPool.Instance.cardsCurrentlyInHand[i].GetComponent<CardSelect>().isHovered = false;
                         CardsObjectPool.Instance.cardsCurrentlyInHand.Remove(CardsObjectPool.Instance.cardsCurrentlyInHand[i]);
                         break;
                     }

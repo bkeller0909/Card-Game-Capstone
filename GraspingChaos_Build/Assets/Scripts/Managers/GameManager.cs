@@ -170,6 +170,8 @@ public class GameManager : MonoBehaviour
 
     public bool pickQTEType;
 
+    public bool isDissolveDone;
+
     private void Awake()
     {
         if (instance == null)
@@ -196,6 +198,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        isDissolveDone = false;
         cardPool = new CardsObjectPool();
         spellsBeingCast = new SpellsBeingCastInfo[3, 2];
         spellsThatHaveBeenCast = new bool[2];
