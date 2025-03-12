@@ -54,6 +54,15 @@ public class TidalWaveState : FSMState
         if (!playerState.finishedCurrentQTE)
         {
             playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.TidalWave].qteAmount;
+
+            //This checks if the player has the finger bonus for Tidalwave
+            if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+            {
+                playerState.currentQTEAmount = playerState.currentQTEAmount - 2;
+            }
+
             nextState = "QTE";
         }
         else

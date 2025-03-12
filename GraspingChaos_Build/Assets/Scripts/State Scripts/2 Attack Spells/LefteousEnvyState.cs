@@ -111,7 +111,7 @@ public class LefteousEnvyState : FSMState
                 GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    int totalDamage = player.GetLeftHandFingerDeath();
+                    int totalDamage = player.health.GetHowManyBonesMissing(false) / 2;
                     if (totalDamage == 1)
                     {
                         PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
@@ -150,7 +150,7 @@ public class LefteousEnvyState : FSMState
                 GameManager.Instance.coroutineWaitP2 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    int totalDamage = player.GetLeftHandFingerDeath();
+                    int totalDamage = player.health.GetHowManyBonesMissing(false) / 2;
                     if (totalDamage == 1)
                     {
                         PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);

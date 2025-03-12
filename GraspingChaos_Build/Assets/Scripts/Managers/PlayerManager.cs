@@ -84,6 +84,9 @@ public class PlayerManager : MonoBehaviour
 
     public CameraPositionChange playerCameras;
 
+    [SerializeField]
+    public VisualEffect eyes;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -97,6 +100,7 @@ public class PlayerManager : MonoBehaviour
         fingers = new List<Fingers>();
         visualFingers = new List<Fingers>();
         healthyFingers = new List<Fingers>();
+        eyes.Stop();
     }
 
     // Start is called before the first frame update

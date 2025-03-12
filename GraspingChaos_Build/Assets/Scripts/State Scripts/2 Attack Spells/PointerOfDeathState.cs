@@ -54,6 +54,15 @@ public class PointerOfDeathState : FSMState
         if (!playerState.finishedCurrentQTE)
         {
             playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.PointerOfDeath].qteAmount;
+
+            //This checks if the player has the finger bonus for Pointer Of Death
+            if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
+            {
+                playerState.currentQTEAmount = playerState.currentQTEAmount - 3;
+            }
+
             nextState = "QTE";
         }
         else

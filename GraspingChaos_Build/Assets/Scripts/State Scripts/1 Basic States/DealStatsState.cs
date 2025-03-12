@@ -5,8 +5,6 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
-using UnityEngine;
-
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -182,6 +180,7 @@ public class DealStatsState : FSMState
         // If the player has gained mana skip this bit if not go in
         if (!gainedMana)
         {
+            player.eyes.Stop();
             //player.Mana += GameManager.Instance.manaPerTurn;
             player.GetMana(GameManager.Instance.manaPerTurn);
             gainedMana = true;

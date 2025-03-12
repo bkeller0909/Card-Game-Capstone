@@ -53,6 +53,15 @@ public class MaterialiseState : FSMState
         if (!playerState.finishedCurrentQTE)
         {
             playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.Materialise].qteAmount;
+
+            //This checks if the player has the finger bonus for Pointer Of Death
+            if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
+            {
+                playerState.currentQTEAmount = playerState.currentQTEAmount - 2;
+            }
+
             nextState = "QTE";
         }
         else

@@ -111,7 +111,7 @@ public class RighteousEnvyState : FSMState
                 GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    int totalDamage = player.GetRightHandFingerDeath();
+                    int totalDamage = player.health.GetHowManyBonesMissing(false) / 2;
                     int partDamage = totalDamage / 2;
                     PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                     for (int i = 0; i < partDamage; i++)
@@ -138,7 +138,7 @@ public class RighteousEnvyState : FSMState
                 GameManager.Instance.coroutineWaitP2 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    int totalDamage = player.GetRightHandFingerDeath();
+                    int totalDamage = player.health.GetHowManyBonesMissing(false) / 2;
                     int partDamage = totalDamage / 2;
                     PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                     for (int i = 0; i < partDamage; i++)

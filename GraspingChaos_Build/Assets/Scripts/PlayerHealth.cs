@@ -189,4 +189,43 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// This gets howmany segments from a hand, TRUE is left hand, FALSE is Right hand
+    /// </summary>
+    /// <returns></returns>
+    public int GetHowManyBonesMissing(bool isRight)
+    {
+        int amtOfBones = 0;
+
+        if (isRight)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if ((PlayerFingers)i == PlayerFingers.LH_Thumb)
+                {
+                    amtOfBones = amtOfBones + (2 - playerHealthStats[i]);
+                }
+                else
+                {
+                    amtOfBones = amtOfBones + (3 - playerHealthStats[i]);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 5; i < 10; i++)
+            {
+                if ((PlayerFingers)i == PlayerFingers.RH_Thumb)
+                {
+                    amtOfBones = amtOfBones + (2 - playerHealthStats[i]);
+                }
+                else
+                {
+                    amtOfBones = amtOfBones + (3 - playerHealthStats[i]);
+                }
+            }
+        }
+        return amtOfBones;
+    }
 }

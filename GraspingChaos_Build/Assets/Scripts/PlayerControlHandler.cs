@@ -213,14 +213,14 @@ public class PlayerControlHandler : MonoBehaviour
             {
                 {
                     GameManager.Instance.nextStateP1 = false;
-                    player.GetComponent<PlayerState>().finishedCastingImage.SetActive(false);
+                    player.eyes.Stop();
                 }
             }
             else if (player == GameManager.Instance.player2)
             {
                 {
                     GameManager.Instance.nextStateP2 = false;
-                    player.GetComponent<PlayerState>().finishedCastingImage.SetActive(false);
+                    player.eyes.Stop();
                 }
             }
 

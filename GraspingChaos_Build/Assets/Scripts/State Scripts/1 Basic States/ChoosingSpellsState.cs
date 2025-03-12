@@ -241,12 +241,12 @@ public class ChoosingSpellsState : FSMState
                 if (!GameManager.Instance.nextStateP1)
                 {
                     GameManager.Instance.nextStateP1 = true;
-                    playerState.finishedCastingImage.SetActive(true);
+                    player.eyes.Play();
                 }
                 else
                 {
                     GameManager.Instance.nextStateP1 = false;
-                    playerState.finishedCastingImage.SetActive(false);
+                    player.eyes.Stop();
                 }
             }
             else
@@ -254,12 +254,12 @@ public class ChoosingSpellsState : FSMState
                 if (!GameManager.Instance.nextStateP2)
                 {
                     GameManager.Instance.nextStateP2 = true;
-                    playerState.finishedCastingImage.SetActive(true);
+                    player.eyes.Play();
                 }
                 else
                 {
                     GameManager.Instance.nextStateP2 = false;
-                    playerState.finishedCastingImage.SetActive(false);
+                    player.eyes.Stop();
                 }
             }
             // this is the the end of the debug portion the next line is important don't remove

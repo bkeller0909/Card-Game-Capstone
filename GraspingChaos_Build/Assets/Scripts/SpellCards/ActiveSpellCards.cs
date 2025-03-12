@@ -96,13 +96,13 @@ public class ActiveSpellCards : MonoBehaviour
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 0;
-                    spell.manaCost = 2;
+                    spell.manaCost = 5;
                     spell.manaGain = -100;
                     spell.damageValue = 0;
                     spell.healValue = -100;
                     spell.lengthAmount = -100;
                     spell.amtQTEOutcomes = 2;
-                    spell.qteAmount = 6;
+                    spell.qteAmount = 8;
                     spell.qteMidCheck = spell.qteAmount / 2;
 
                     spellCards[i] = spell;
@@ -113,13 +113,13 @@ public class ActiveSpellCards : MonoBehaviour
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 0;
-                    spell.manaCost = 2;
+                    spell.manaCost = 5;
                     spell.manaGain = -100;
                     spell.damageValue = 0;
                     spell.healValue = -100;
                     spell.lengthAmount = -100;
                     spell.amtQTEOutcomes = 2;
-                    spell.qteAmount = 6;
+                    spell.qteAmount = 8;
                     spell.qteMidCheck = spell.qteAmount / 2;
 
                     spellCards[i] = spell;
@@ -136,7 +136,7 @@ public class ActiveSpellCards : MonoBehaviour
                     spell.healValue = -100;
                     spell.lengthAmount = -100;
                     spell.amtQTEOutcomes = 3;
-                    spell.qteAmount = 7;
+                    spell.qteAmount = 8;
                     spell.qteMidCheck = spell.qteAmount / 2;
 
                     spellCards[i] = spell;
