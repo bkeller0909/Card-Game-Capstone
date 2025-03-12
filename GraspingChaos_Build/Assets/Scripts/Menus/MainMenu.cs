@@ -27,6 +27,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     float duration;
 
+    [SerializeField]
+    bool setFirstButton;
+
+    bool aButtonIsActive;
+
     /// <summary>
     /// Loads the game into the duel Scene
     /// </summary>
@@ -38,11 +43,39 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        setFirstButton = false;
+        aButtonIsActive = false;
         arrows.alpha = 0;
         titles.alpha = 0;
         btns.alpha = 0;
         btns.interactable = false;
         StartCoroutine(FadeInTitle(duration));
+    }
+
+    private void Update()
+    {
+        if (setFirstButton)
+        {
+            bool buttonFound = false;
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i].GetComponent<BtnIsSelected>().isSelected)
+                {
+                    aButtonIsActive = true;
+                    buttonFound = true;
+                }
+
+                if (i == buttons.Length - 1 && buttonFound == false)
+                {
+                    aButtonIsActive = false;
+                }
+            }
+
+            if (!aButtonIsActive)
+            {
+                buttons[0].Select();
+            }
+        }
     }
 
     /// <summary>

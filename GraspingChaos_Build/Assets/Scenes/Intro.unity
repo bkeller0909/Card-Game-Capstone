@@ -5870,13 +5870,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c3063d8ea333843b324630d585b355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
+  buttons:
+  - {fileID: 1641892278}
+  - {fileID: 1929901514}
+  - {fileID: 1061955992}
+  - {fileID: 1402769965}
   titles: {fileID: 1641373972}
   btns: {fileID: 910203177}
   arrows: {fileID: 1575073517}
   topArrow: {fileID: 917506635}
   botArrow: {fileID: 944660649}
   duration: 0.05
+  setFirstButton: 0
 --- !u!1001 &1460580176
 PrefabInstance:
   m_ObjectHideFlags: 0
