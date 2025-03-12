@@ -188,6 +188,17 @@ public class DealStatsState : FSMState
             {
                 player.PlayedCursedConvertion = false;
                 player.TrackDamage();
+
+                //This checks if the player has the finger bonus for rockthrow
+                if (player.AreTheseFingersAlive(PlayerFingers.LH_Ring, PlayerFingers.RH_Ring) &&
+                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Ring] != true) &&
+                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Ring] != true))
+                {
+                    if (player.Mana < 11)
+                    {
+                        player.Mana += 2;
+                    }
+                }
             }
             player.DamageTrackedPerTurn = 0;
             if (player.PlayedEchoingMana)
