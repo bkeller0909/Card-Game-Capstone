@@ -1103,6 +1103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CameraViewButton",
+                    "type": "Button",
+                    "id": "8d0c833a-6a0f-4717-91aa-d9796fca5170",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1312,6 +1321,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ManaView",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0369ecb3-187f-4997-ba37-f0ccaee2c2f8",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CameraViewButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

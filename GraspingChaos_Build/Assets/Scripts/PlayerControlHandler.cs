@@ -157,14 +157,21 @@ public class PlayerControlHandler : MonoBehaviour
                 }
             }
 
-            if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                changeCameras.NewCamPos(changeCameras.bottleCamPos);
+
+                if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
+                {
+                    changeCameras.NewCamPos(changeCameras.bottleCamPos);
+                }
             }
 
-            if (player.playerInput.actions["ManaView"].WasReleasedThisFrame())
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                changeCameras.GetInputForced(0);
+                if (player.playerInput.actions["ManaView"].WasReleasedThisFrame())
+                {
+                    changeCameras.GetInputForced(0);
+                }
             }
             #endregion // Card Select Controls
 
@@ -178,7 +185,7 @@ public class PlayerControlHandler : MonoBehaviour
                     if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
                     {
                         stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
-                        changeCameras.GetInputForced(3);        // sets the camera position back to default
+                        //changeCameras.GetInputForced(3);        // sets the camera position back to default
                         playerInput.finishSelection = false;    // finish selection input is now false after being pressed
                         playerInput.Xbtn = false;
                         foreach (CardSelect card in pickCards.selectedCards)
@@ -193,8 +200,42 @@ public class PlayerControlHandler : MonoBehaviour
                 }
             }
 
+            //lock Controls
+            if (player.playerInput.actions["UnConfirm"].WasPressedThisFrame())
+            {
+                player.GetComponent<PlayerState>().readyToCast = false;
+                playerInput.finishSelection = false;
+                //changeCameras.GetInputForced(0);
+                player.cardsAmountSelected = 0;
+                player.playerInput.SwitchCurrentActionMap("Card");
+                Debug.Log(player.playerInput.currentActionMap.ToString());
+                if (player == GameManager.Instance.player1)
+                {
+                    {
+                        GameManager.Instance.nextStateP1 = false;
+                        player.eyes.Stop();
+                    }
+                }
+                else if (player == GameManager.Instance.player2)
+                {
+                    {
+                        GameManager.Instance.nextStateP2 = false;
+                        player.eyes.Stop();
+                    }
+                }
+
+                StartCoroutine(ButtonCheckUnConfirm());
+            }
+
             //Camera Movement
-            changeCameras.GetInput();
+            //changeCameras.GetInput();
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
+            {
+                if (player.playerInput.actions["CameraViewButton"].WasPressedThisFrame())
+                {
+                    changeCameras.ChangeCameraCards();
+                }
+            }
         }
 
         // Once the pause button is pressed just load us back to the main menu
@@ -207,34 +248,6 @@ public class PlayerControlHandler : MonoBehaviour
             CardsObjectPool.Instance.cardsCurrentlyInHand.Clear();
             CardsObjectPool.Instance.ResetPoolDistributionValues();
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
-        }
-
-
-        //lock Controls
-        if (player.playerInput.actions["UnConfirm"].WasPressedThisFrame())
-        {
-            player.GetComponent<PlayerState>().readyToCast = false;
-            playerInput.finishSelection = false;
-            changeCameras.GetInputForced(0);
-            player.cardsAmountSelected = 0;
-            player.playerInput.SwitchCurrentActionMap("Card");
-            Debug.Log(player.playerInput.currentActionMap.ToString());
-            if (player == GameManager.Instance.player1)
-            {
-                {
-                    GameManager.Instance.nextStateP1 = false;
-                    player.eyes.Stop();
-                }
-            }
-            else if (player == GameManager.Instance.player2)
-            {
-                {
-                    GameManager.Instance.nextStateP2 = false;
-                    player.eyes.Stop();
-                }
-            }
-
-            StartCoroutine(ButtonCheckUnConfirm());
         }
 
         // Kill Switch for killing player 2

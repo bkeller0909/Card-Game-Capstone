@@ -38,6 +38,7 @@ public class InputHandler : MonoBehaviour
     public bool cameraDown = false;
     public bool deselectCard = false;
     public bool unConfirm = false;
+    public bool cameraMove = false;
 
     #region Player Controls
     //player
@@ -109,6 +110,11 @@ public class InputHandler : MonoBehaviour
     public void OnDeselect(InputValue value)
     {
         deselectCard = value.isPressed;
+    }
+
+    public void OnCameraViewButton(InputValue value)
+    {
+        cameraMove = value.isPressed;
     }
 
     #endregion

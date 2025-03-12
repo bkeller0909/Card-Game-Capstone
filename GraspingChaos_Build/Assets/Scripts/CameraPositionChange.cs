@@ -78,6 +78,27 @@ public class CameraPositionChange : MonoBehaviour
         }
     }
 
+
+    public void ChangeCameraCards()
+    {
+        if (canInput)
+        {
+            if(cameraIndex == 0)
+            {
+                cameraIndex++;
+                canInput = false;
+                StartCoroutine(MoveCameratoNewPosition(cameraIndex));
+            }
+            else if(cameraIndex == 1)
+            {
+                cameraIndex--;
+                canInput = false;
+                StartCoroutine(MoveCameratoNewPosition(cameraIndex));   
+            }
+        }
+    }
+
+
     /// <summary>
     /// Forces the camera position to be changed
     /// </summary>
@@ -168,6 +189,7 @@ public class CameraPositionChange : MonoBehaviour
         //Loop and move the camera until the elapsed time reaches the desired time
         while (elapsedTime < lerpTime)
         {
+            noButtonUsage = true;
             elapsedTime += Time.deltaTime;
 
             //Set 2 different progressions for the position and rotation
@@ -186,6 +208,7 @@ public class CameraPositionChange : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        noButtonUsage = false;
         //Unlock player input allowing the next move
         canInput = true;
     }
