@@ -68,6 +68,7 @@ public class DealStatsState : FSMState
     {
         if (stateChange)
         {
+            player.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
             stateChange = false;
             player.cardsAmountSelected = 0;
             playerState.PerformTransition(Transition.StatsGained);
@@ -76,7 +77,6 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
-        player.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
         QTETSelection(player, enemy);
 
         ManaDealing(player, enemy);

@@ -153,14 +153,14 @@ public class RingsHandler : MonoBehaviour
         if (ringsActive[(int)Rings.VampiricSurgeFull, (int)targetFinger])
         {
             //success gains 2 hp
-            randoFinger = playerTarget.GetRandomFinger(PlayerFingers.none);
+            randoFinger = playerTarget.GetRandomHurtFingers(PlayerFingers.none);
             playerTarget.health.HealFinger(randoFinger);
             playerTarget.health.HealFinger(randoFinger);
         }
         else if (ringsActive[(int)Rings.VampiricSurgeFail, (int)targetFinger])
         {
             //fail only gains 1 HP
-            randoFinger = playerTarget.GetRandomFinger(PlayerFingers.none);
+            randoFinger = playerTarget.GetRandomHurtFingers(PlayerFingers.none);
             playerTarget.health.HealFinger(randoFinger);
         }
     }

@@ -82,6 +82,8 @@ public class PlayerManager : MonoBehaviour
 
     public List<Fingers> healthyFingers;
 
+    public List<Fingers> hurtFingers;
+
     public CameraPositionChange playerCameras;
 
     [SerializeField]
@@ -205,6 +207,45 @@ public class PlayerManager : MonoBehaviour
                 Mana = 12;
             }
         }
+    }
+
+    public PlayerFingers GetRandomHurtFingers(PlayerFingers exception)
+    {
+        int rand = 0;
+        if (healthyFingers.Count != 0)
+        {
+            healthyFingers.Clear();
+        }
+
+        for (int i = 0; i < fingers.Count; i++)
+        {
+            if (health.playerHealthStats[i] != 3)
+            {
+                hurtFingers.Add(fingers[i]);
+            }
+        }
+
+        if (exception != PlayerFingers.none)
+        {
+            for (int i = 0; i < hurtFingers.Count; i++)
+            {
+                //only if you found the finger eception or if the amount of fingers possible to hit is higher than 1 (otherwise it might break)
+                if (hurtFingers[i].finger == exception && hurtFingers.Count > 1)
+                {
+                    hurtFingers.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        if (hurtFingers.Count != 0)
+        {
+            rand = UnityEngine.Random.Range(0, hurtFingers.Count);
+            return hurtFingers[rand].finger;
+        }
+
+        return PlayerFingers.none;
+
     }
 
     public PlayerFingers GetRandomFingersForQuake(PlayerFingers exception, PlayerFingers exception2)
