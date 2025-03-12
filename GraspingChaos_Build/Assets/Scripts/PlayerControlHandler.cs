@@ -159,12 +159,12 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
             {
-                player.gameObject.GetComponentInChildren<CameraPositionChange>().NewCamPos(player.gameObject.GetComponentInChildren<CameraPositionChange>().bottleCamPos);
+                changeCameras.NewCamPos(changeCameras.bottleCamPos);
             }
 
             if (player.playerInput.actions["ManaView"].WasReleasedThisFrame())
             {
-                player.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+                changeCameras.GetInputForced(0);
             }
             #endregion // Card Select Controls
 
