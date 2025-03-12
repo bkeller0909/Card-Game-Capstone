@@ -156,6 +156,16 @@ public class PlayerControlHandler : MonoBehaviour
                     playerInput.Bbtn = false;               // the button used is now false after being pressed
                 }
             }
+
+            if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
+            {
+                StartCoroutine(player.gameObject.GetComponentInChildren<CameraPositionChange>().ForceCameraNewPos(player.gameObject.GetComponentInChildren<CameraPositionChange>().bottleCamPos));
+            }
+
+            if (player.playerInput.actions["ManaView"].WasReleasedThisFrame())
+            {
+                player.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+            }
             #endregion // Card Select Controls
 
 

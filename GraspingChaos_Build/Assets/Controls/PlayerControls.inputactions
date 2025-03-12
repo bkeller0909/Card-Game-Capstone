@@ -1094,6 +1094,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ManaView",
+                    "type": "Button",
+                    "id": "ff56b4d9-a07b-4978-92dc-61e0ebf36589",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1292,6 +1301,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "552b0150-c6d3-43bc-a382-88ab1836acf9",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ManaView",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1116,6 +1116,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ManaView"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff56b4d9-a07b-4978-92dc-61e0ebf36589"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1316,6 +1325,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""552b0150-c6d3-43bc-a382-88ab1836acf9"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ManaView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1489,6 +1509,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Card_CameraDown = m_Card.FindAction("CameraDown", throwIfNotFound: true);
         m_Card_SetFinal = m_Card.FindAction("SetFinal", throwIfNotFound: true);
         m_Card_Pause = m_Card.FindAction("Pause", throwIfNotFound: true);
+        m_Card_ManaView = m_Card.FindAction("ManaView", throwIfNotFound: true);
         // QTEWait
         m_QTEWait = asset.FindActionMap("QTEWait", throwIfNotFound: true);
         m_QTEWait_Pause = m_QTEWait.FindAction("Pause", throwIfNotFound: true);
@@ -1933,6 +1954,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Card_CameraDown;
     private readonly InputAction m_Card_SetFinal;
     private readonly InputAction m_Card_Pause;
+    private readonly InputAction m_Card_ManaView;
     public struct CardActions
     {
         private @PlayerControls m_Wrapper;
@@ -1945,6 +1967,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @CameraDown => m_Wrapper.m_Card_CameraDown;
         public InputAction @SetFinal => m_Wrapper.m_Card_SetFinal;
         public InputAction @Pause => m_Wrapper.m_Card_Pause;
+        public InputAction @ManaView => m_Wrapper.m_Card_ManaView;
         public InputActionMap Get() { return m_Wrapper.m_Card; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1978,6 +2001,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @ManaView.started += instance.OnManaView;
+            @ManaView.performed += instance.OnManaView;
+            @ManaView.canceled += instance.OnManaView;
         }
 
         private void UnregisterCallbacks(ICardActions instance)
@@ -2006,6 +2032,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @ManaView.started -= instance.OnManaView;
+            @ManaView.performed -= instance.OnManaView;
+            @ManaView.canceled -= instance.OnManaView;
         }
 
         public void RemoveCallbacks(ICardActions instance)
@@ -2172,6 +2201,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnCameraDown(InputAction.CallbackContext context);
         void OnSetFinal(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnManaView(InputAction.CallbackContext context);
     }
     public interface IQTEWaitActions
     {
