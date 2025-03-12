@@ -57,6 +57,16 @@ public class ThumbsUpState : FSMState
         }
         else
         {
+            bool hasBonus = false;
+
+            //This checks if the player has the finger bonus for Green Thumb
+            if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+            {
+                hasBonus = true;
+            }
+
             GameManager.Instance.spellInProgress = true;
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
@@ -113,6 +123,19 @@ public class ThumbsUpState : FSMState
                 {
                     player.health.HealFinger(PlayerFingers.LH_Thumb);
                     player.health.HealFinger(PlayerFingers.RH_Thumb);
+
+                    if (hasBonus)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            PlayerFingers randomHeal = player.GetRandomHurtFingers(PlayerFingers.none);
+
+                            if (randomHeal != PlayerFingers.none)
+                            {
+                                player.health.HealFinger(randomHeal);
+                            }
+                        }
+                    }
                 }
             }
 

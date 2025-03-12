@@ -57,6 +57,17 @@ public class GreenThumbState : FSMState
         }
         else
         {
+            bool hasBonus = false;
+
+            //This checks if the player has the finger bonus for Green Thumb
+            if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+            {
+               hasBonus = true;
+            }
+
+
             GameManager.Instance.spellInProgress = true;
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
@@ -111,41 +122,88 @@ public class GreenThumbState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                    if (hasBonus)
+                    {
+                        player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                    if (hasBonus)
+                    {
+                        player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                    if (hasBonus)
+                    {
+                        player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+
                     PlayerFingers adjacentFinger;
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
                         adjacentFinger = player.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                     {
                         adjacentFinger = player.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
                         adjacentFinger = player.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
                         adjacentFinger = player.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else
                     {
                         adjacentFinger = player.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
+
                         adjacentFinger = player.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                 }
             }
@@ -161,41 +219,88 @@ public class GreenThumbState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                    if (hasBonus)
+                    {
+                        player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                    if (hasBonus)
+                    {
+                        player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+
+                    if (hasBonus)
+                    {
+                        player.health.HealFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+
                     PlayerFingers adjacentFinger;
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
                         adjacentFinger = player.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                     {
                         adjacentFinger = player.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
                         adjacentFinger = player.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
                         adjacentFinger = player.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                     else
                     {
                         adjacentFinger = player.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
+
                         adjacentFinger = player.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         player.health.HealFinger(adjacentFinger);
+
+                        if (hasBonus)
+                        {
+                            player.health.HealFinger(adjacentFinger);
+                        }
                     }
                 }
             }

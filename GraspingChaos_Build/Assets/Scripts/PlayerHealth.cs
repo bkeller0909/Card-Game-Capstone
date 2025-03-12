@@ -126,6 +126,78 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void DamageFingerTwice(PlayerFingers whatFinger)
+    {
+        bool veilOfFortitudeActive = false;
+        if ((((int)whatFinger >= 0 && (int)whatFinger < 4) && player.ringHandler.veilOfFortitudeLeft == true) ||
+            ((int)whatFinger >= 5 && (int)whatFinger < 9) && player.ringHandler.veilOfFortitudeRight == true)
+        {
+            veilOfFortitudeActive = true;
+        }
+
+        if (!veilOfFortitudeActive)
+        {
+            if (playerHealthStats[(int)whatFinger] > 0)
+            {
+                if (player.fingers[(int)whatFinger].fingerShield <= 0)
+                {
+                    if (player == GameManager.Instance.player1)
+                    {
+                        player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player2);
+                        player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player2);
+                    }
+                    else if (player == GameManager.Instance.player2)
+                    {
+                        player.GetComponent<RingsHandler>().EffectThornsOfAgony(whatFinger, GameManager.Instance.player1);
+                        player.GetComponent<RingsHandler>().EffectVampiricSurge(whatFinger, GameManager.Instance.player1);
+                    }
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (playerHealthStats[(int)whatFinger] > 0)
+                        {
+                            playerHealthStats[(int)whatFinger] -= 1;
+                            player.fingers[(int)whatFinger].removeCurrentSegment();
+                            player.visualFingers[(int)whatFinger].removeCurrentSegment();
+                            player.entireHP--;
+                            player.DamageTrackedPerTurn++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        player.fingers[(int)whatFinger].fingerShield--;
+                    }
+                }
+            }
+            else
+            {
+                playerHealthStats[(int)whatFinger] = 0;
+            }
+
+            if (playerHealthStats[(int)whatFinger] == 0)
+            {
+                for (int i = 0; i < 14; i++)
+                {
+                    if (player.ringHandler.ringsActive[i, (int)whatFinger] == true)
+                    {
+                        player.ringHandler.ringsActive[i, (int)whatFinger] = false;
+                        player.ToggleRing(false, (Rings)i, whatFinger);
+                        if (i == (int)Rings.ManaMerchantFail)
+                        {
+                            player.GetComponent<RingsHandler>().manaMerchantFailure = false;
+                        }
+                        else if (i == (int)Rings.ManaMerchantFull)
+                        {
+                            player.GetComponent<RingsHandler>().manaMerchantSuccess = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>
     ///  Heals 1 health to a finger
     /// </summary>

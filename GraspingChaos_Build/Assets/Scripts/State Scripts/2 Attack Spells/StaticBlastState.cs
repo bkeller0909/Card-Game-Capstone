@@ -71,11 +71,21 @@ public class StaticBlastState : FSMState
         {
             //create the QTE Sequence 
             playerState.currentQTEAmount = ActiveSpellCards.Instance.spellCards[(int)SpellNames.StaticBlast].qteAmount;
+
             //Send to QTE state
             nextState = "QTE";
         }
         else
         {
+            bool hasBonus = false;
+            //This checks if the player has the finger bonus for StaticBlast
+            if (player.AreTheseFingersAlive(PlayerFingers.LH_Middle, PlayerFingers.RH_Middle) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Middle] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Middle] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Middle] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Middle] != true))
+            {
+                hasBonus = true;
+            }
+
             GameManager.Instance.spellInProgress = true;
             //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
@@ -143,7 +153,6 @@ public class StaticBlastState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1f);
@@ -257,7 +266,6 @@ public class StaticBlastState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1f);
@@ -320,66 +328,164 @@ public class StaticBlastState : FSMState
                 GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    if (!hasBonus)
+                    {
+                        enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+                    else
+                    {
+                        enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    if (!hasBonus)
+                    {
+                        enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+                    else
+                    {
+                        enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else
                     {
                         //need to check if both adjacent fingers are alive to use the rando, if only one is then use the one that can take damage (STILL NEED TO DO)
                         if (randomSide == 0)
                         {
-                            enemy.health.DamageFinger(adjacentFinger1);
+                            if (!hasBonus)
+                            {
+                                enemy.health.DamageFinger(adjacentFinger1);
+                            }
+                            else
+                            {
+                                enemy.health.DamageFingerTwice(adjacentFinger1);
+                            }
                         }
                         else
                         {
-                            enemy.health.DamageFinger(adjacentFinger1);
+                            if (!hasBonus)
+                            {
+                                enemy.health.DamageFinger(adjacentFinger1);
+                            }
+                            else
+                            {
+                                enemy.health.DamageFingerTwice(adjacentFinger1);
+                            }
                         }
                     }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-
-                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    if (!hasBonus)
                     {
-
-                        enemy.health.DamageFinger(adjacentFinger1);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
-                    {
-                        enemy.health.DamageFinger(adjacentFinger1);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        enemy.health.DamageFinger(adjacentFinger1);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
                     else
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
-                        enemy.health.DamageFinger(adjacentFinger2);
+                        enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+
+                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                            enemy.health.DamageFinger(adjacentFinger2);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                            enemy.health.DamageFingerTwice(adjacentFinger2);
+                        }
                     }
                 }
             }
@@ -392,68 +498,167 @@ public class StaticBlastState : FSMState
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
+                
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    if (!hasBonus)
+                    {
+                        enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+                    else
+                    {
+                        enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    if (!hasBonus)
+                    {
+                        enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+                    else
+                    {
+                        enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
                     }
                     else
                     {
                         //need to check if both adjacent fingers are alive to use the rando, if only one is then use the one that can take damage (STILL NEED TO DO)
                         if (randomSide == 0)
                         {
-                            enemy.health.DamageFinger(adjacentFinger1);
+                            if (!hasBonus)
+                            {
+                                enemy.health.DamageFinger(adjacentFinger1);
+                            }
+                            else
+                            {
+                                enemy.health.DamageFingerTwice(adjacentFinger1);
+                            }
                         }
                         else
                         {
-                            enemy.health.DamageFinger(adjacentFinger1);
+                            if (!hasBonus)
+                            {
+                                enemy.health.DamageFinger(adjacentFinger1);
+                            }
+                            else
+                            {
+                                enemy.health.DamageFingerTwice(adjacentFinger1);
+                            }
                         }
                     }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-
-                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    if (!hasBonus)
                     {
-
-                        enemy.health.DamageFinger(adjacentFinger1);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
-                    {
-                        enemy.health.DamageFinger(adjacentFinger1);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        enemy.health.DamageFinger(adjacentFinger1);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        enemy.health.DamageFinger(adjacentFinger1);
+                        enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
                     else
                     {
-                        enemy.health.DamageFinger(adjacentFinger1);
-                        enemy.health.DamageFinger(adjacentFinger2);
+                        enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+
+                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                        }
+                    }
+                    else
+                    {
+                        if (!hasBonus)
+                        {
+                            enemy.health.DamageFinger(adjacentFinger1);
+                            enemy.health.DamageFinger(adjacentFinger2);
+                        }
+                        else
+                        {
+                            enemy.health.DamageFingerTwice(adjacentFinger1);
+                            enemy.health.DamageFingerTwice(adjacentFinger2);
+                        } 
                     }
                 }
             }
