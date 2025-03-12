@@ -5,6 +5,8 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
+using UnityEngine;
+
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -76,6 +78,7 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        player.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
         QTETSelection(player, enemy);
 
         ManaDealing(player, enemy);

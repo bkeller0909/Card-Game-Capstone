@@ -28,28 +28,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""ff5a7c2d-1673-4ce8-b028-73cd17c4c1f7"",
             ""actions"": [
                 {
-                    ""name"": ""CameraUp"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""6f7d127b-4cc3-4874-8694-f43676a77080"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""CameraDown"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""d51820a4-bcf2-4aa8-aeb2-6c4b2e770ae2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""FingerLeft"",
                     ""type"": ""Button"",
                     ""id"": ""23ca8a23-c3f2-4108-b862-ab74ec3a7b26"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -85,7 +67,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""SelectFinger"",
                     ""type"": ""Button"",
                     ""id"": ""a19647d5-ad39-46ae-8644-3c2b6f22e7f5"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -162,72 +144,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SelectFinger"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da12a368-c48f-4f1c-b4d5-d470bd67708e"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""CameraUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3dfd3ae1-29d2-41f6-8fc5-124d91627fa8"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""CameraUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""27a4859d-3614-45b4-9b2b-003cb026de34"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""CameraUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""71409c87-e6fc-4575-bcb9-fc5b662280f9"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""CameraDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a689474b-c02a-4986-b2b0-46835fd24e12"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""CameraDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4f34560b-b0a3-42d4-86d9-4b255ea3cb0f"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""CameraDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1528,8 +1444,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_CameraUp = m_Player.FindAction("CameraUp", throwIfNotFound: true);
-        m_Player_CameraDown = m_Player.FindAction("CameraDown", throwIfNotFound: true);
         m_Player_FingerLeft = m_Player.FindAction("FingerLeft", throwIfNotFound: true);
         m_Player_FingerRight = m_Player.FindAction("FingerRight", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
@@ -1649,8 +1563,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_CameraUp;
-    private readonly InputAction m_Player_CameraDown;
     private readonly InputAction m_Player_FingerLeft;
     private readonly InputAction m_Player_FingerRight;
     private readonly InputAction m_Player_Pause;
@@ -1662,8 +1574,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CameraUp => m_Wrapper.m_Player_CameraUp;
-        public InputAction @CameraDown => m_Wrapper.m_Player_CameraDown;
         public InputAction @FingerLeft => m_Wrapper.m_Player_FingerLeft;
         public InputAction @FingerRight => m_Wrapper.m_Player_FingerRight;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
@@ -1680,12 +1590,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @CameraUp.started += instance.OnCameraUp;
-            @CameraUp.performed += instance.OnCameraUp;
-            @CameraUp.canceled += instance.OnCameraUp;
-            @CameraDown.started += instance.OnCameraDown;
-            @CameraDown.performed += instance.OnCameraDown;
-            @CameraDown.canceled += instance.OnCameraDown;
             @FingerLeft.started += instance.OnFingerLeft;
             @FingerLeft.performed += instance.OnFingerLeft;
             @FingerLeft.canceled += instance.OnFingerLeft;
@@ -1711,12 +1615,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @CameraUp.started -= instance.OnCameraUp;
-            @CameraUp.performed -= instance.OnCameraUp;
-            @CameraUp.canceled -= instance.OnCameraUp;
-            @CameraDown.started -= instance.OnCameraDown;
-            @CameraDown.performed -= instance.OnCameraDown;
-            @CameraDown.canceled -= instance.OnCameraDown;
             @FingerLeft.started -= instance.OnFingerLeft;
             @FingerLeft.performed -= instance.OnFingerLeft;
             @FingerLeft.canceled -= instance.OnFingerLeft;
@@ -2226,8 +2124,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnCameraUp(InputAction.CallbackContext context);
-        void OnCameraDown(InputAction.CallbackContext context);
         void OnFingerLeft(InputAction.CallbackContext context);
         void OnFingerRight(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);

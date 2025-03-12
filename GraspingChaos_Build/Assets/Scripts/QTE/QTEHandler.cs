@@ -149,6 +149,7 @@ public class QTEHandler : MonoBehaviour
                 //EvauateQTEResults();
                 timeisDone = true;
                 //checkTieRace();
+                gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
             }
         }
 

@@ -125,17 +125,20 @@ public class PlayerControlHandler : MonoBehaviour
                 playerInput.cardMoveRight = false;
             }
 
-            // Selecting a card
-            if (player.playerInput.actions["Select"].WasPressedThisFrame())
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                pickCards.SelectedCard();   // the card that is hovered is now selected
-                if (ActiveSpellCards.Instance.spellCards[(int)pickCards.whatCard.spellName].manaCost <= player.Mana)
+                // Selecting a card
+                if (player.playerInput.actions["Select"].WasPressedThisFrame())
                 {
-                    if (pickCards.checkSelectedCardStatus())
+                    pickCards.SelectedCard();   // the card that is hovered is now selected
+                    if (ActiveSpellCards.Instance.spellCards[(int)pickCards.whatCard.spellName].manaCost <= player.Mana)
                     {
-                        stateHandler.CardHasBeenSelected();
-                        playerInput.selectCard = false;
-                        playerInput.Abtn = false;
+                        if (pickCards.checkSelectedCardStatus())
+                        {
+                            stateHandler.CardHasBeenSelected();
+                            playerInput.selectCard = false;
+                            playerInput.Abtn = false;
+                        }
                     }
                 }
             }
@@ -156,24 +159,27 @@ public class PlayerControlHandler : MonoBehaviour
             #endregion // Card Select Controls
 
 
-            //this if check makes sure that we can only "confirm" our cards if we have at least 1 card selected
-            if (player.gameObject.GetComponentInChildren<CardHandSlot>().selectedCards.Count > 0)
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                // set your selection of cards
-                if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
+                //this if check makes sure that we can only "confirm" our cards if we have at least 1 card selected
+                if (player.gameObject.GetComponentInChildren<CardHandSlot>().selectedCards.Count > 0)
                 {
-                    stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
-                    changeCameras.GetInputForced(0);        // sets the camera position back to default
-                    playerInput.finishSelection = false;    // finish selection input is now false after being pressed
-                    playerInput.Xbtn = false;
-                    foreach (CardSelect card in pickCards.selectedCards)
+                    // set your selection of cards
+                    if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
                     {
-                        player.cardsAmountSelected++;
+                        stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
+                        changeCameras.GetInputForced(3);        // sets the camera position back to default
+                        playerInput.finishSelection = false;    // finish selection input is now false after being pressed
+                        playerInput.Xbtn = false;
+                        foreach (CardSelect card in pickCards.selectedCards)
+                        {
+                            player.cardsAmountSelected++;
+                        }
+                        index++;
+                        //QTEWait will make sure you wont move any cards or cameras after pressing confirm
+                        deconfirm = true;
+                        player.playerInput.SwitchCurrentActionMap("QTEWait");
                     }
-                    index++;
-                    //QTEWait will make sure you wont move any cards or cameras after pressing confirm
-                    deconfirm = true;
-                    player.playerInput.SwitchCurrentActionMap("QTEWait");
                 }
             }
 
@@ -199,7 +205,7 @@ public class PlayerControlHandler : MonoBehaviour
         {
             player.GetComponent<PlayerState>().readyToCast = false;
             playerInput.finishSelection = false;
-            changeCameras.GetInputForced(1);
+            changeCameras.GetInputForced(0);
             player.cardsAmountSelected = 0;
             player.playerInput.SwitchCurrentActionMap("Card");
             Debug.Log(player.playerInput.currentActionMap.ToString());

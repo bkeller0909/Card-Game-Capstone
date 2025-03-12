@@ -28,5 +28,6 @@ public class PlayerCameraHandler : MonoBehaviour
         yield return new WaitForSeconds(shakeTimer);
         playerCameraShake.transform.position = playerCameraShake.initialPos;
         playerCameraShake.enabled = false;
+        gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
     }
 }
