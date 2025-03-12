@@ -133,10 +133,8 @@ public class ControlDissolve : MonoBehaviour
 
             timeElapsed += Time.deltaTime;
 
-
             yield return null;
         }
-        GameManager.Instance.isDissolveDone = true;
         cardMaterial.SetFloat("_DissolveAmount", FULL_BLACK_VALUE);
         cardDissolveAmount = cardMaterial.GetFloat("_DissolveAmount");
 
@@ -145,6 +143,7 @@ public class ControlDissolve : MonoBehaviour
 
         dissolveCard = false;
         gameObject.SetActive(false);
+        GameManager.Instance.isDissolveDone = true;
     }
 
     IEnumerator FlameEffect(float time)
