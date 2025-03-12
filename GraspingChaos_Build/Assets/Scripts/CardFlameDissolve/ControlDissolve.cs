@@ -97,7 +97,6 @@ public class ControlDissolve : MonoBehaviour
             //flameEffectObject.SetActive(true);
             StartCoroutine(DissolveCardOverTime(dissolveTime));
             StartCoroutine(FlameEffect(flameTime));
-            GameManager.Instance.isDissolveDone = true;
         }
     }
 
