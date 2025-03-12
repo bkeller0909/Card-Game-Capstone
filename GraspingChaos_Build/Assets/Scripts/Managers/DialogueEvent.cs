@@ -19,18 +19,18 @@ using UnityEngine;
 /// </summary>
 public class DialogueEvent : MonoBehaviour
 {
-    private PlayerManager playerManager;
+    private PlayerManager playerManager;                            // the player
 
     [Header("Dialogue")]
-    [SerializeField, TextArea] private string[] dialogueText;
-    [SerializeField] private int numOfMessages = 1;
+    [SerializeField, TextArea] private string[] dialogueText;       // dialogue text that will be displayed
+    [SerializeField] private int numOfMessages = 1;                 // how much dialogue messages are there to read
 
     [Header("UI GameObjects")]
-    [SerializeField] private GameObject dialogueBox;
-    [SerializeField] private GameObject controlsBox;
+    [SerializeField] private GameObject dialogueBox;                // the text box that will display the dialogue text
+    [SerializeField] private GameObject controlsBox;                // for the input controls icons
 
-    private int currentMessage;
-    private bool isTalking;
+    private int currentMessage;                                     // the index of the current message
+    private bool isTalking;                                         // is dialogue current happening
 
     private void Awake()
     {
@@ -46,6 +46,10 @@ public class DialogueEvent : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Activates the dialogue and enables all the message boxes.
+    /// </summary>
+    /// <param name="dialogueIndex">Index of the dialogue to use</param>
     public void StartDialogue(int dialogueIndex)
     {
         playerManager.playerInput.SwitchCurrentActionMap("Dialogue");
@@ -68,6 +72,9 @@ public class DialogueEvent : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Increments the dialogue index and changes the text to the next message.
+    /// </summary>
     public void NextDialogue()
     {
         currentMessage++;
@@ -75,6 +82,9 @@ public class DialogueEvent : MonoBehaviour
         dialogueBox.GetComponent<TextMeshProUGUI>().text = dialogueText[currentMessage];
     }
 
+    /// <summary>
+    /// Deactivates the message boxes and ends dialogue.
+    /// </summary>
     public void EndDialogue()
     {
         playerManager.playerInput.SwitchCurrentActionMap("Card");
