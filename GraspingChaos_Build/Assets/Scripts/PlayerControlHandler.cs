@@ -159,7 +159,7 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
             {
-                StartCoroutine(player.gameObject.GetComponentInChildren<CameraPositionChange>().ForceCameraNewPos(player.gameObject.GetComponentInChildren<CameraPositionChange>().bottleCamPos));
+                player.gameObject.GetComponentInChildren<CameraPositionChange>().NewCamPos(player.gameObject.GetComponentInChildren<CameraPositionChange>().bottleCamPos);
             }
 
             if (player.playerInput.actions["ManaView"].WasReleasedThisFrame())

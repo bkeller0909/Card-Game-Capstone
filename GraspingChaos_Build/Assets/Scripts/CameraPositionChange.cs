@@ -152,8 +152,13 @@ public class CameraPositionChange : MonoBehaviour
         //Unlock player input allowing the next move
         canInput = true;
     }
-
-    public IEnumerator ForceCameraNewPos(Transform newCamPos)
+    
+    /// <summary>
+    /// Takes the current transform of the camera position and moves it to a new transform position.
+    /// </summary>
+    /// <param name="newCamPos">New position the camera will be moved to.</param>
+    /// <returns></returns>
+    private IEnumerator ForceCameraNewPos(Transform newCamPos)
     {
         Transform currentCamPos = transform;
 
@@ -183,5 +188,14 @@ public class CameraPositionChange : MonoBehaviour
 
         //Unlock player input allowing the next move
         canInput = true;
+    }
+
+    /// <summary>
+    /// Takes the current transform of the camera position and moves it to a new transform position.
+    /// </summary>
+    /// <param name="newCamPos">New position the camera will be moved to.</param>
+    public void NewCamPos(Transform newCamPos)
+    {
+        StartCoroutine(ForceCameraNewPos(newCamPos));
     }
 }
