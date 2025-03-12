@@ -2891,10 +2891,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3676839423022472080, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676839423022472080, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676839423022472080, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.data[1].time
+      value: 0.52082825
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676839423022472080, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676839423022472080, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.data[1].value
+      value: 0.105293274
+      objectReference: {fileID: 0}
     - target: {fileID: 7009613222326268145, guid: 8407a91a4773711428621b9ef06c02c9,
         type: 3}
       propertyPath: m_Name
       value: StagEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009613222326268145, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11104,6 +11134,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkullEyes
       objectReference: {fileID: 0}
+    - target: {fileID: 2216994457603480577, guid: 032ad5f876fd5d245983087f17d6020f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378728621671910735, guid: 032ad5f876fd5d245983087f17d6020f,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.data[1].time
+      value: 0.4625
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378728621671910735, guid: 032ad5f876fd5d245983087f17d6020f,
+        type: 3}
+      propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.data[1].value
+      value: 0.06733899
+      objectReference: {fileID: 0}
     - target: {fileID: 8909875080442114195, guid: 032ad5f876fd5d245983087f17d6020f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17446,6 +17491,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a44cbda6cf50c8b49903b61130e22ee6, type: 2}
+    - target: {fileID: 1163832724853026197, guid: efce97f1eda590646ae8c4b7f5dab389,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2023067785366323246, guid: efce97f1eda590646ae8c4b7f5dab389,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -17516,15 +17566,35 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 96ab06cc7f426b7429d53ecc158590a9, type: 2}
+    - target: {fileID: 4418841224713882308, guid: efce97f1eda590646ae8c4b7f5dab389,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5306382410587465833, guid: efce97f1eda590646ae8c4b7f5dab389,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f1fa62bc20e532c4d97f5896a9e7285b, type: 2}
+    - target: {fileID: 5955151514138692028, guid: efce97f1eda590646ae8c4b7f5dab389,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6131985484665466498, guid: efce97f1eda590646ae8c4b7f5dab389,
         type: 3}
       propertyPath: m_Name
       value: TheStag_Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131985484665466498, guid: efce97f1eda590646ae8c4b7f5dab389,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006615439714967780, guid: efce97f1eda590646ae8c4b7f5dab389,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8808060032128500017, guid: efce97f1eda590646ae8c4b7f5dab389,
         type: 3}
@@ -18538,6 +18608,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1693830830}
     m_Modifications:
+    - target: {fileID: 2612705106749351175, guid: fc4660fbbde460249860d33820b211f1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3389488543340740541, guid: fc4660fbbde460249860d33820b211f1,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -18567,6 +18642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TheSkull_Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252610304073983001, guid: fc4660fbbde460249860d33820b211f1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6645309473370138882, guid: fc4660fbbde460249860d33820b211f1,
         type: 3}
@@ -18632,6 +18712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611663355341050418, guid: fc4660fbbde460249860d33820b211f1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
