@@ -88,7 +88,7 @@ public class ControlDissolve : MonoBehaviour
 
     }
 
-    void DissolveSpellCard()
+    public void DissolveSpellCard()
     {
         if (dissolveCard)
         {
@@ -100,7 +100,7 @@ public class ControlDissolve : MonoBehaviour
         }
     }
 
-    void RestoreSpellCard()
+    public void RestoreSpellCard()
     {
         if (RestoreCard)
         {
