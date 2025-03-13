@@ -94,6 +94,7 @@ public class PlayerHealth : MonoBehaviour
                     player.entireHP--;
                     player.stagHands.boneVisualEffects[(int)whatFinger].Play();
                     player.skullHands.boneVisualEffects[(int)whatFinger].Play();
+                    SoundFXManager.Instance.PlayRandomSFX(SoundFXManager.Instance.boneDamage, 1);
                     player.DamageTrackedPerTurn++;
                 }
                 else
@@ -163,6 +164,7 @@ public class PlayerHealth : MonoBehaviour
                             player.entireHP--;
                             player.stagHands.boneVisualEffects[(int)whatFinger].Play();
                             player.skullHands.boneVisualEffects[(int)whatFinger].Play();
+                            SoundFXManager.Instance.PlayRandomSFX(SoundFXManager.Instance.boneDamage, 1);
                             player.DamageTrackedPerTurn++;
                         }
                     }
