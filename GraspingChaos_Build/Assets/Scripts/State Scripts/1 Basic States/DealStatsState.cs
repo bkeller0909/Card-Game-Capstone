@@ -69,6 +69,7 @@ public class DealStatsState : FSMState
         if (stateChange)
         {
             player.playerCameras.GetInputForced(0);
+            GameManager.Instance.isDissolveDone = false;
             stateChange = false;
             player.cardsAmountSelected = 0;
             playerState.PerformTransition(Transition.StatsGained);

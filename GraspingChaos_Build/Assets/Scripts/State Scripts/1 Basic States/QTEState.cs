@@ -77,7 +77,6 @@ public class QTEState : FSMState
             //create the QTE SEquence if it still has not been created
             makeQTESequence = false;
             playerState.StartQTECreation(playerState.currentQTEAmount, player);
-            GameManager.Instance.isDissolveDone = false;
         }
 
         if (player.gameObject.GetComponent<QTEHandler>().timeisDone == true && enemy.gameObject.GetComponent<QTEHandler>().timeisDone == true)
