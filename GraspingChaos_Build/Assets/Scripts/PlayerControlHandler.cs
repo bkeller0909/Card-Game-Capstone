@@ -176,27 +176,23 @@ public class PlayerControlHandler : MonoBehaviour
             #endregion // Card Select Controls
 
 
-            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
+            //this if check makes sure that we can only "confirm" our cards if we have at least 1 card selected
+            if (player.gameObject.GetComponentInChildren<CardHandSlot>().selectedCards.Count > 0)
             {
-                //this if check makes sure that we can only "confirm" our cards if we have at least 1 card selected
-                if (player.gameObject.GetComponentInChildren<CardHandSlot>().selectedCards.Count > 0)
+                // set your selection of cards
+                if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
                 {
-                    // set your selection of cards
-                    if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
+                    stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
+                    playerInput.finishSelection = false;    // finish selection input is now false after being pressed
+                    playerInput.Xbtn = false;
+                    foreach (CardSelect card in pickCards.selectedCards)
                     {
-                        stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
-                        //changeCameras.GetInputForced(3);        // sets the camera position back to default
-                        playerInput.finishSelection = false;    // finish selection input is now false after being pressed
-                        playerInput.Xbtn = false;
-                        foreach (CardSelect card in pickCards.selectedCards)
-                        {
-                            player.cardsAmountSelected++;
-                        }
-                        index++;
-                        //QTEWait will make sure you wont move any cards or cameras after pressing confirm
-                        deconfirm = true;
-                        player.playerInput.SwitchCurrentActionMap("QTEWait");
+                        player.cardsAmountSelected++;
                     }
+                    index++;
+                    //QTEWait will make sure you wont move any cards or cameras after pressing confirm
+                    deconfirm = true;
+                    player.playerInput.SwitchCurrentActionMap("QTEWait");
                 }
             }
 
@@ -205,7 +201,6 @@ public class PlayerControlHandler : MonoBehaviour
             {
                 player.GetComponent<PlayerState>().readyToCast = false;
                 playerInput.finishSelection = false;
-                //changeCameras.GetInputForced(0);
                 player.cardsAmountSelected = 0;
                 player.playerInput.SwitchCurrentActionMap("Card");
                 Debug.Log(player.playerInput.currentActionMap.ToString());
