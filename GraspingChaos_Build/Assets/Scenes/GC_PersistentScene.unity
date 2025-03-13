@@ -803,6 +803,9 @@ MonoBehaviour:
   checkAvailableCards: 0
   spellInProgress: 0
   pickQTEType: 0
+  isDissolveDone: 0
+  totalSpellsPickedP1: 0
+  totalSpellsPickedP2: 0
 --- !u!4 &113710050
 Transform:
   m_ObjectHideFlags: 0
@@ -5930,6 +5933,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810652414}
   m_CullTransparentMesh: 1
+--- !u!1 &814528064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814528066}
+  - component: {fileID: 814528065}
+  m_Layer: 0
+  m_Name: SoundFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &814528065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814528064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3994377d044a1748a996c4977906322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundObject: {fileID: 2180297512485002473, guid: 9fb65dba8afc93949a4567e8d4cce90f,
+    type: 3}
+  manaRefill: {fileID: 8300000, guid: 06f4bf74eb4a62d458d91e10c5c44540, type: 3}
+  boneDamage:
+  - {fileID: 8300000, guid: c2b0671512d7e5c4cb4de165263b8976, type: 3}
+  - {fileID: 8300000, guid: 7ca125a6c3b8f494db20f282306aa077, type: 3}
+  - {fileID: 8300000, guid: 2ee882179298b5741b7abc7d154916f9, type: 3}
+--- !u!4 &814528066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814528064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &821963046
 GameObject:
   m_ObjectHideFlags: 0
@@ -9724,7 +9778,7 @@ GameObject:
   - component: {fileID: 1299180591}
   - component: {fileID: 1299180590}
   m_Layer: 0
-  m_Name: RubmleManager
+  m_Name: RumbleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16240,6 +16294,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 113710050}
   - {fileID: 1481140982}
+  - {fileID: 814528066}
   - {fileID: 1299180591}
   - {fileID: 1508439645}
   - {fileID: 855616586}

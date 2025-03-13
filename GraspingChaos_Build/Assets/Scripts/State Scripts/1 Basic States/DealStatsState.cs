@@ -182,6 +182,7 @@ public class DealStatsState : FSMState
             player.eyes.Stop();
             //player.Mana += GameManager.Instance.manaPerTurn;
             player.GetMana(GameManager.Instance.manaPerTurn);
+            SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.manaRefill, 1);
             gainedMana = true;
             player.GetComponent<RingsHandler>().EffectManaMerchant();
             if (player.PlayedCursedConvertion)

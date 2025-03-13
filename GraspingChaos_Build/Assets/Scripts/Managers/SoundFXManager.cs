@@ -18,6 +18,9 @@ public class SoundFXManager : MonoBehaviour
     public static SoundFXManager Instance;
     [SerializeField] private AudioSource soundObject;
 
+    public AudioClip manaRefill;
+    public AudioClip[] boneDamage;
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,12 +33,11 @@ public class SoundFXManager : MonoBehaviour
     /// Plays a sound effect.
     /// </summary>
     /// <param name="soundClip">Sound clip that will be played.</param>
-    /// <param name="spawnTransform">Transform position where the sound will be played.</param>
     /// <param name="volume">Volume of the sound clip</param>
-    public void PlaySoundFX(AudioClip soundClip, Transform spawnTransform, float volume)
+    public void PlaySoundFX(AudioClip soundClip, float volume)
     {
         // spawn in the gameobject
-        AudioSource audioSource = Instantiate(soundObject, spawnTransform.position, Quaternion.identity);
+        AudioSource audioSource = Instantiate(soundObject, gameObject.transform.position, Quaternion.identity);
 
         // sound clip
         audioSource.clip = soundClip;
@@ -54,14 +56,13 @@ public class SoundFXManager : MonoBehaviour
     /// Plays a random sound effect.
     /// </summary>
     /// <param name="soundClip">The sound clip that will be played from an array.</param>
-    /// <param name="spawnTransform">Transform position where the sound will be played.</param>
     /// <param name="volume">Volume of the sound clip</param>
-    public void PlayRandomSFX(AudioClip[] soundClip, Transform spawnTransform, float volume)
+    public void PlayRandomSFX(AudioClip[] soundClip, float volume)
     {
         int random = Random.Range(0, soundClip.Length);
 
         // spawn in the gameobject
-        AudioSource audioSource = Instantiate(soundObject, spawnTransform.position, Quaternion.identity);
+        AudioSource audioSource = Instantiate(soundObject, gameObject.transform.position, Quaternion.identity);
 
         // sound clip
         audioSource.clip = soundClip[random];
