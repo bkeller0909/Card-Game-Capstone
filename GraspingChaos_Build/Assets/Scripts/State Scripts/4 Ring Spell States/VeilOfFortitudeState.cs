@@ -94,10 +94,12 @@ public class VeilOfFortitudeState : FSMState
             if (player == GameManager.Instance.player1)
             {
                 GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                GameManager.Instance.totalSpellsPickedP1--;
             }
             else if (player == GameManager.Instance.player2)
             {
                 GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
+                GameManager.Instance.totalSpellsPickedP2--;
             }
 
             GameManager.Instance.ChangeCurrentCaster();

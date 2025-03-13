@@ -485,8 +485,10 @@ public class PlayerManager : MonoBehaviour
             }
             else if ((Rings)whatRing == Rings.VeilOfFortitudeFull || (Rings)whatRing == Rings.VeilOfFortitudeFail)
             {
+                //need to add a check to make sure if I try and steal a veil of fortitude while I own one either by hand or in a finger it wont actually steal it just remove it 
                 ringHandler.veilOfFortitudeLeft = false;
                 ringHandler.veilOfFortitudeRight = false;
+                ringHandler.veilOfFortitudeFailCheck = false;
             }
         }
     }

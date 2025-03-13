@@ -17,16 +17,26 @@ public class PlayerCameraHandler : MonoBehaviour
     /// <param name="shakeTimer">Duration of the camera shake.</param>
     public void CameraShake(float shakeIntensity, float shakeTimer)
     {
-        StartCoroutine(DoCameraShake(shakeIntensity, shakeTimer));
+        StartCoroutine(DoCameraShake(shakeIntensity, shakeTimer, GameManager.Instance.player1, GameManager.Instance.player2));
     }
 
-    private IEnumerator DoCameraShake(float shakeIntensity, float shakeTimer)
+    private IEnumerator DoCameraShake(float shakeIntensity, float shakeTimer, PlayerManager player, PlayerManager enemy)
     {
         playerCameraShake.enabled = true;
         playerCameraShake.intensity = shakeIntensity;
         yield return new WaitForSeconds(shakeTimer);
         playerCameraShake.transform.position = playerCameraShake.initialPos;
         playerCameraShake.enabled = false;
-        gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
+        
+        //if the total amout of spells for both players is over then send both to the default camera view after shake, otherwise keep reseting the correct player to the qte camera
+        if (GameManager.Instance.totalSpellsPickedP1 == 0 && GameManager.Instance.totalSpellsPickedP2 == 0)
+        {
+            player.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+            enemy.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
+        }
     }
 }

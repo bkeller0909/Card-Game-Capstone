@@ -114,6 +114,7 @@ public class CollectorsCurseState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.totalSpellsPickedP1--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
@@ -187,6 +188,7 @@ public class CollectorsCurseState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.totalSpellsPickedP2--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;

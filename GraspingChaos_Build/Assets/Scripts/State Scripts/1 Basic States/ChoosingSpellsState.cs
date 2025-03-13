@@ -228,6 +228,14 @@ public class ChoosingSpellsState : FSMState
 
                 GameManager.Instance.roundCheck = false;
                 player.gameObject.GetComponent<PlayerControlHandler>().deconfirm = false;
+                if (player == GameManager.Instance.player1)
+                {
+                    GameManager.Instance.totalSpellsPickedP1 = amtOfSpells;
+                }
+                else if(player == GameManager.Instance.player2)
+                {
+                    GameManager.Instance.totalSpellsPickedP2 = amtOfSpells;
+                }
                 playerState.PerformTransition(Transition.NeedDecision);
             }
         }

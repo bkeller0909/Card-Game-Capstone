@@ -172,6 +172,10 @@ public class GameManager : MonoBehaviour
 
     public bool isDissolveDone;
 
+    public int totalSpellsPickedP1;
+
+    public int totalSpellsPickedP2;
+
     private void Awake()
     {
         if (instance == null)

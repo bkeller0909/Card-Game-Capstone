@@ -19,6 +19,7 @@ public class RingsHandler : MonoBehaviour
 
     public int[] ringStartRound;
 
+    public bool veilOfFortitudeFailCheck;
     public bool veilOfFortitudeLeft;
     public bool veilOfFortitudeRight;
 
@@ -49,6 +50,7 @@ public class RingsHandler : MonoBehaviour
         }
         manaMerchantFailure = false;
         manaMerchantSuccess = false;
+        veilOfFortitudeFailCheck = false;
     }
 
     public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager targetPlayer)
@@ -117,6 +119,8 @@ public class RingsHandler : MonoBehaviour
             gameObject.GetComponent<PlayerManager>().GetMana(1);
         }
     }
+    
+    //TODO
     public void EffectVengefulMirror(PlayerFingers targetFinger, PlayerManager playerTarget)
     {
         // Game manager or instance variable that tracks first damage 
@@ -170,12 +174,12 @@ public class RingsHandler : MonoBehaviour
         //fail damage taken is cut in half
         //success take no damage
 
-        if ((int)targetFinger >= 0 && (int)targetFinger < 4)
+        if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
         {
             //left hand placement
             veilOfFortitudeLeft = true;
         }
-        else if ((int)targetFinger >= 5 && (int)targetFinger < 9)
+        else if ((int)targetFinger >= 5 && (int)targetFinger <= 9)
         {
             //right hand placement
             veilOfFortitudeRight = true;
@@ -190,6 +194,7 @@ public class RingsHandler : MonoBehaviour
         if (ringsActive[(int)Rings.VeilOfFortitudeFail, (int)targetFinger])
         {
             //hard - figure out a way to half the damage (with some spells and the way the damage function is set I might have to re-write some functionality)
+            veilOfFortitudeFailCheck = true;
         }
     }
 }

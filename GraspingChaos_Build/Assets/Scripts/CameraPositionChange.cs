@@ -89,9 +89,9 @@ public class CameraPositionChange : MonoBehaviour
                 canInput = false;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
             }
-            else if (cameraIndex == 1)
+            else if (cameraIndex == 1 || cameraIndex != 0)
             {
-                cameraIndex--;
+                cameraIndex = 0;
                 canInput = false;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
             }

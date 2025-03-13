@@ -65,14 +65,17 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void DamageFinger(PlayerFingers whatFinger)
     {
-        bool veilOfFortitudeActive = false;
-        if ((((int)whatFinger >= 0 && (int)whatFinger < 4) && player.ringHandler.veilOfFortitudeLeft == true) ||
-            ((int)whatFinger >= 5 && (int)whatFinger < 9) && player.ringHandler.veilOfFortitudeRight == true)
+        bool veilOfFortitudeFullActive = false;
+        if ((((int)whatFinger >= 0 && (int)whatFinger <= 4) && player.ringHandler.veilOfFortitudeLeft == true) ||
+            ((int)whatFinger >= 5 && (int)whatFinger <= 9) && player.ringHandler.veilOfFortitudeRight == true)
         {
-            veilOfFortitudeActive = true;
+            if (!player.gameObject.GetComponent<RingsHandler>().veilOfFortitudeFailCheck)
+            {
+                veilOfFortitudeFullActive = true;
+            }
         }
 
-        if (!veilOfFortitudeActive)
+        if (!veilOfFortitudeFullActive)
         {
             if (playerHealthStats[(int)whatFinger] > 0)
             {
@@ -266,11 +269,11 @@ public class PlayerHealth : MonoBehaviour
     /// This gets howmany segments from a hand, TRUE is left hand, FALSE is Right hand
     /// </summary>
     /// <returns></returns>
-    public int GetHowManyBonesMissing(bool isRight)
+    public int GetHowManyBonesMissing(bool isLeft)
     {
         int amtOfBones = 0;
 
-        if (isRight)
+        if (isLeft)
         {
             for (int i = 0; i < 5; i++)
             {

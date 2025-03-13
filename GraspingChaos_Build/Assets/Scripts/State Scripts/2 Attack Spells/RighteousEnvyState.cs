@@ -106,24 +106,64 @@ public class RighteousEnvyState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.totalSpellsPickedP1--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     int totalDamage = player.health.GetHowManyBonesMissing(false) / 2;
-                    int partDamage = totalDamage / 2;
-                    PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
-                    for (int i = 0; i < partDamage; i++)
+                    if (totalDamage == 1)
                     {
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                         enemy.health.DamageFinger(randomFinger);
                     }
-
-                    partDamage = totalDamage - partDamage;
-                    randomFinger = enemy.GetRandomFinger(randomFinger);
-                    for (int i = 0; i < partDamage; i++)
+                    else if (totalDamage == 0)
                     {
-                        enemy.health.DamageFinger(randomFinger);
+                        //do nothing
+                    }
+                    else
+                    {
+                        int partDamage = totalDamage / 2;
+                        int savedPartDamage = partDamage;
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                if (savedPartDamage > 1)
+                                {
+                                    partDamage = savedPartDamage / 2;
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
+
+                        partDamage = totalDamage - savedPartDamage;
+                        savedPartDamage = partDamage;
+                        randomFinger = enemy.GetRandomFinger(randomFinger);
+
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                if (savedPartDamage > 1)
+                                {
+                                    partDamage = savedPartDamage / 2;
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
                     }
                 }
             }
@@ -133,24 +173,64 @@ public class RighteousEnvyState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.totalSpellsPickedP2--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     int totalDamage = player.health.GetHowManyBonesMissing(false) / 2;
-                    int partDamage = totalDamage / 2;
-                    PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
-                    for (int i = 0; i < partDamage; i++)
+                    if (totalDamage == 1)
                     {
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
                         enemy.health.DamageFinger(randomFinger);
                     }
-
-                    partDamage = totalDamage - partDamage;
-                    randomFinger = enemy.GetRandomFinger(randomFinger);
-                    for (int i = 0; i < partDamage; i++)
+                    else if (totalDamage == 0)
                     {
-                        enemy.health.DamageFinger(randomFinger);
+                        //do nothing
+                    }
+                    else
+                    {
+                        int partDamage = totalDamage / 2;
+                        int savedPartDamage = partDamage;
+                        PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                if (savedPartDamage > 1)
+                                {
+                                    partDamage = savedPartDamage / 2;
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
+
+                        partDamage = totalDamage - savedPartDamage;
+                        savedPartDamage = partDamage;
+                        randomFinger = enemy.GetRandomFinger(randomFinger);
+
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                if (savedPartDamage > 1)
+                                {
+                                    partDamage = savedPartDamage / 2;
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
                     }
                 }
             }

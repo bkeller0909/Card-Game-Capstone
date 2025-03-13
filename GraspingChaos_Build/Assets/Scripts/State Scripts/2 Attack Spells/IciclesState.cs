@@ -122,6 +122,7 @@ public class IciclesState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.totalSpellsPickedP1--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
                 GameManager.Instance.coroutineWaitP1 = false;
@@ -147,15 +148,48 @@ public class IciclesState : FSMState
                 {
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
+
                     for (int i = 0; i < 2; i++)
                     {
-                        enemy.health.DamageFinger(randomFinger1);
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                enemy.health.DamageFinger(randomFinger1);
+                                break;
+                            }
+                            else
+                            {
+                                enemy.health.DamageFinger(randomFinger1);
+                            }
+                        }
+                        else
+                        {
+                            enemy.health.DamageFinger(randomFinger1);
+                        }
                     }
 
                     randomFinger2 = player.GetRandomFinger(randomFinger1);
                     for (int s = 0; s < 2; s++)
                     {
-                        enemy.health.DamageFinger(randomFinger2);
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                enemy.health.DamageFinger(randomFinger2);
+                                break;
+                            }
+                            else
+                            {
+                                enemy.health.DamageFinger(randomFinger2);
+                            }
+                        }
+                        else
+                        {
+                            enemy.health.DamageFinger(randomFinger2);
+                        }
                     }
                 }
             }
@@ -165,6 +199,7 @@ public class IciclesState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.totalSpellsPickedP2--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
                 GameManager.Instance.coroutineWaitP2 = false;
@@ -193,13 +228,45 @@ public class IciclesState : FSMState
 
                     for (int i = 0; i < 2; i++)
                     {
-                        enemy.health.DamageFinger(randomFinger1);
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                enemy.health.DamageFinger(randomFinger1);
+                                break;
+                            }
+                            else
+                            {
+                                enemy.health.DamageFinger(randomFinger1);
+                            }
+                        }
+                        else
+                        {
+                            enemy.health.DamageFinger(randomFinger1);
+                        }
                     }
 
                     randomFinger2 = player.GetRandomFinger(randomFinger1);
                     for (int s = 0; s < 2; s++)
                     {
-                        enemy.health.DamageFinger(randomFinger2);
+                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        {
+                            if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            {
+                                enemy.health.DamageFinger(randomFinger2);
+                                break;
+                            }
+                            else
+                            {
+                                enemy.health.DamageFinger(randomFinger2);
+                            }
+                        }
+                        else
+                        {
+                            enemy.health.DamageFinger(randomFinger2);
+                        }
                     }
                 }
             }
