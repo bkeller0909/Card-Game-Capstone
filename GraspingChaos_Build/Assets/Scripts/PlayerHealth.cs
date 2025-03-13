@@ -92,6 +92,8 @@ public class PlayerHealth : MonoBehaviour
                     player.fingers[(int)whatFinger].removeCurrentSegment();
                     player.visualFingers[(int)whatFinger].removeCurrentSegment();
                     player.entireHP--;
+                    player.stagHands.boneVisualEffects[(int)whatFinger].Play();
+                    player.skullHands.boneVisualEffects[(int)whatFinger].Play();
                     player.DamageTrackedPerTurn++;
                 }
                 else
@@ -159,6 +161,8 @@ public class PlayerHealth : MonoBehaviour
                             player.fingers[(int)whatFinger].removeCurrentSegment();
                             player.visualFingers[(int)whatFinger].removeCurrentSegment();
                             player.entireHP--;
+                            player.stagHands.boneVisualEffects[(int)whatFinger].Play();
+                            player.skullHands.boneVisualEffects[(int)whatFinger].Play();
                             player.DamageTrackedPerTurn++;
                         }
                     }
