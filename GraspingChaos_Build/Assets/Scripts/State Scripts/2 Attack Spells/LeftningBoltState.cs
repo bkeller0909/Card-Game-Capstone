@@ -127,18 +127,10 @@ public class LeftningBoltState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                //cant do damage becuase of Veil
-                            }
-                            else
-                            {
-                                PlayerFingers fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                                enemy.health.DamageFinger(fingerToTheRight);
-                            }
+                            //cant do damage becuase of Veil
                         }
                         else
                         {
@@ -157,23 +149,10 @@ public class LeftningBoltState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                //cant do damage becuase of Veil
-                            }
-                            else
-                            {
-                                fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                                enemy.health.DamageFinger(fingerToTheRight);
-                                if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
-                                {
-                                    fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                    enemy.health.DamageFinger(fingerToTheRight);
-                                }
-                            }
+                            //cant do damage becuase of Veil
                         }
                         else
                         {
@@ -202,23 +181,10 @@ public class LeftningBoltState : FSMState
                         enemy.health.DamageFinger(fingerToTheRight);
                         if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                         {
-                            if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
-                                if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                                {
-                                    //cant do damage becuase of Veil
-                                }
-                                else
-                                {
-                                    fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                    enemy.health.DamageFinger(fingerToTheRight);
-                                    if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
-                                    {
-                                        fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                        enemy.health.DamageFinger(fingerToTheRight);
-                                    }
-                                }
+                                //cant do damage becuase of Veil
                             }
                             else
                             {
@@ -253,18 +219,10 @@ public class LeftningBoltState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                //cant do damage becuase of Veil
-                            }
-                            else
-                            {
-                                PlayerFingers fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                                enemy.health.DamageFinger(fingerToTheRight);
-                            }
+                            //cant do damage becuase of Veil
                         }
                         else
                         {
@@ -283,23 +241,10 @@ public class LeftningBoltState : FSMState
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                //cant do damage becuase of Veil
-                            }
-                            else
-                            {
-                                fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                                enemy.health.DamageFinger(fingerToTheRight);
-                                if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
-                                {
-                                    fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                    enemy.health.DamageFinger(fingerToTheRight);
-                                }
-                            }
+                            //cant do damage becuase of Veil
                         }
                         else
                         {
@@ -328,23 +273,10 @@ public class LeftningBoltState : FSMState
                         enemy.health.DamageFinger(fingerToTheRight);
                         if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                         {
-                            if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
-                                if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                                {
-                                    //cant do damage becuase of Veil
-                                }
-                                else
-                                {
-                                    fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                    enemy.health.DamageFinger(fingerToTheRight);
-                                    if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
-                                    {
-                                        fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                        enemy.health.DamageFinger(fingerToTheRight);
-                                    }
-                                }
+                                //cant do damage becuase of Veil
                             }
                             else
                             {

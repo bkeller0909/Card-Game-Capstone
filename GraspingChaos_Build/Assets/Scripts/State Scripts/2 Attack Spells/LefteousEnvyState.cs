@@ -127,15 +127,12 @@ public class LefteousEnvyState : FSMState
                         int partDamage = totalDamage / 2;
                         int savedPartDamage = partDamage;
                         PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            if (savedPartDamage > 1)
                             {
-                                if (savedPartDamage > 1)
-                                {
-                                    partDamage = savedPartDamage / 2;
-                                }
+                                partDamage = savedPartDamage / 2;
                             }
                         }
 
@@ -148,15 +145,12 @@ public class LefteousEnvyState : FSMState
                         savedPartDamage = partDamage;
                         randomFinger = enemy.GetRandomFinger(randomFinger);
 
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            if (savedPartDamage > 1)
                             {
-                                if (savedPartDamage > 1)
-                                {
-                                    partDamage = savedPartDamage / 2;
-                                }
+                                partDamage = savedPartDamage / 2;
                             }
                         }
 
@@ -194,15 +188,12 @@ public class LefteousEnvyState : FSMState
                         int partDamage = totalDamage / 2;
                         int savedPartDamage = partDamage;
                         PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            if (savedPartDamage > 1)
                             {
-                                if (savedPartDamage > 1)
-                                {
-                                    partDamage = savedPartDamage / 2;
-                                }
+                                partDamage = savedPartDamage / 2;
                             }
                         }
 
@@ -215,15 +206,12 @@ public class LefteousEnvyState : FSMState
                         savedPartDamage = partDamage;
                         randomFinger = enemy.GetRandomFinger(randomFinger);
 
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
+                            if (savedPartDamage > 1)
                             {
-                                if (savedPartDamage > 1)
-                                {
-                                    partDamage = savedPartDamage / 2;
-                                }
+                                partDamage = savedPartDamage / 2;
                             }
                         }
 

@@ -19,9 +19,10 @@ public class RingsHandler : MonoBehaviour
 
     public int[] ringStartRound;
 
-    public bool veilOfFortitudeFailCheck;
     public bool veilOfFortitudeLeft;
     public bool veilOfFortitudeRight;
+    public bool veilOfFortitudeLeftFail;
+    public bool veilOfFortitudeRightFail;
 
     public bool vengfulMirrorLeft;
     public bool vengfulMirrorRight;
@@ -50,7 +51,6 @@ public class RingsHandler : MonoBehaviour
         }
         manaMerchantFailure = false;
         manaMerchantSuccess = false;
-        veilOfFortitudeFailCheck = false;
     }
 
     public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager targetPlayer)
@@ -170,31 +170,34 @@ public class RingsHandler : MonoBehaviour
     }
     public void EffectVeilOfFortitude(PlayerFingers targetFinger)
     {
-        //reduce damage taken on hand summoned
-        //fail damage taken is cut in half
-        //success take no damage
 
-        if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
+        if (ringsActive[(int)Rings.VeilOfFortitudeFull, (int)targetFinger])
         {
-            //left hand placement
-            veilOfFortitudeLeft = true;
+            if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
+            {
+                //left hand placement
+                veilOfFortitudeLeft = true;
+            }
+            else if ((int)targetFinger >= 5 && (int)targetFinger <= 9)
+            {
+                //right hand placement
+                veilOfFortitudeRight = true;
+            }
         }
-        else if ((int)targetFinger >= 5 && (int)targetFinger <= 9)
-        {
-            //right hand placement
-            veilOfFortitudeRight = true;
-        }
-
-
-        //if (ringsActive[(int)Rings.VeilOfFortitudeFull, (int)targetFinger])
-        //{
-        //    //easy - simply block damage with previous bool
-        //    // done
-        //}
         if (ringsActive[(int)Rings.VeilOfFortitudeFail, (int)targetFinger])
         {
             //hard - figure out a way to half the damage (with some spells and the way the damage function is set I might have to re-write some functionality)
-            veilOfFortitudeFailCheck = true;
+            if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
+            {
+                //left hand placement
+                veilOfFortitudeLeftFail = true;
+            }
+            else if ((int)targetFinger >= 5 && (int)targetFinger <= 9)
+            {
+                //right hand placement
+                veilOfFortitudeRightFail = true;
+            }
+
         }
     }
 }

@@ -69,10 +69,7 @@ public class PlayerHealth : MonoBehaviour
         if ((((int)whatFinger >= 0 && (int)whatFinger <= 4) && player.ringHandler.veilOfFortitudeLeft == true) ||
             ((int)whatFinger >= 5 && (int)whatFinger <= 9) && player.ringHandler.veilOfFortitudeRight == true)
         {
-            if (!player.gameObject.GetComponent<RingsHandler>().veilOfFortitudeFailCheck)
-            {
-                veilOfFortitudeFullActive = true;
-            }
+            veilOfFortitudeFullActive = true;
         }
 
         if (!veilOfFortitudeFullActive)

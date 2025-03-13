@@ -151,18 +151,11 @@ public class IciclesState : FSMState
 
                     for (int i = 0; i < 2; i++)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                enemy.health.DamageFinger(randomFinger1);
-                                break;
-                            }
-                            else
-                            {
-                                enemy.health.DamageFinger(randomFinger1);
-                            }
+                            enemy.health.DamageFinger(randomFinger1);
+                            break;
                         }
                         else
                         {
@@ -173,18 +166,11 @@ public class IciclesState : FSMState
                     randomFinger2 = player.GetRandomFinger(randomFinger1);
                     for (int s = 0; s < 2; s++)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                enemy.health.DamageFinger(randomFinger2);
-                                break;
-                            }
-                            else
-                            {
-                                enemy.health.DamageFinger(randomFinger2);
-                            }
+                            enemy.health.DamageFinger(randomFinger2);
+                            break;
                         }
                         else
                         {
@@ -228,18 +214,11 @@ public class IciclesState : FSMState
 
                     for (int i = 0; i < 2; i++)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                enemy.health.DamageFinger(randomFinger1);
-                                break;
-                            }
-                            else
-                            {
-                                enemy.health.DamageFinger(randomFinger1);
-                            }
+                            enemy.health.DamageFinger(randomFinger1);
+                            break;
                         }
                         else
                         {
@@ -250,18 +229,11 @@ public class IciclesState : FSMState
                     randomFinger2 = player.GetRandomFinger(randomFinger1);
                     for (int s = 0; s < 2; s++)
                     {
-                        if (enemy.ringHandler.veilOfFortitudeFailCheck)
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
-                            if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
-                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
-                            {
-                                enemy.health.DamageFinger(randomFinger2);
-                                break;
-                            }
-                            else
-                            {
-                                enemy.health.DamageFinger(randomFinger2);
-                            }
+                            enemy.health.DamageFinger(randomFinger2);
+                            break;
                         }
                         else
                         {
