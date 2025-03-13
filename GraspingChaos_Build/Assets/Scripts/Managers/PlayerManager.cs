@@ -155,6 +155,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GetMana(int manaAmount)
     {
+        ManaTrackedPerTurn -= manaAmount;
         Mana += manaAmount;
         if (Mana > 12)
         {
@@ -164,6 +165,7 @@ public class PlayerManager : MonoBehaviour
 
     public void LoseMana(int manaAmount)
     {
+        ManaTrackedPerTurn += manaAmount;
         Mana -= manaAmount;
         if (Mana < 0)
         {
