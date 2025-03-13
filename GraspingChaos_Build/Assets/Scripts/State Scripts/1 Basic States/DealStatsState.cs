@@ -316,4 +316,35 @@ public class DealStatsState : FSMState
         }
     }
 
+    public void ScriptedTutorial(PlayerManager player)
+    {
+        // TODO - tutorial section
+
+        // make unique action map for tutorial
+
+        // players load in from book
+        // they have no cards
+
+        // dialogue will appear
+        // force hands into up position while dialogue explains health
+
+        // debugger shows the bones disappearing to show loss of health
+        // force player to mana bottle view
+
+        // they are instructed that they will be dealt 5 cards
+        // performs the card dealing
+
+        // force player to card camera view
+        // dialogue explains cards
+
+        // action map changed to card
+        // card selecting and finger selected with dialogue explaining how to navigate
+
+        // narrator says good luck when you ready up
+
+        // QTE starts
+
+        // goes to normal game
+    }
+
 }
