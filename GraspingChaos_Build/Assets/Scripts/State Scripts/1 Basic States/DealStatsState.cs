@@ -212,6 +212,7 @@ public class DealStatsState : FSMState
                     player.Mana = 12;
                 }
             }
+            player.ManaTrackedPerTurn = 0;
         }
     }
 

@@ -127,12 +127,12 @@ public class RingsHandler : MonoBehaviour
         // on the attack spells track the total damage based on the card value (will have to implement)
         //on the ring state dupicate the value if its a success
         //this function is over all not really needed
-        if ((int)targetFinger >= 0 && (int)targetFinger < 4)
+        if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
         {
             //left hand placement
             vengfulMirrorLeft = true;
         }
-        else if ((int)targetFinger >= 5 && (int)targetFinger < 9)
+        else if ((int)targetFinger >= 5 && (int)targetFinger <= 9)
         {
             //left hand placement
             vengfulMirrorRight = true;

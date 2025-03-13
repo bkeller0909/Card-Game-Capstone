@@ -65,16 +65,19 @@ public class EchoingManaState : FSMState
                 {
                     //no mana function yet, need to do
                     ParticleManger.Instance.StartParticle(SpellNames.EchoingMana, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.SucessfulEchoingMana = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //no mana function yet, need to do
                     ParticleManger.Instance.StartParticle(SpellNames.EchoingMana, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.SucessfulEchoingMana = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     //no mana function yet, need to do
                     ParticleManger.Instance.StartParticle(SpellNames.EchoingMana, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.SucessfulEchoingMana = true;
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -85,16 +88,19 @@ public class EchoingManaState : FSMState
                 {
                     //no mana function yet, need to do
                     ParticleManger.Instance.StartParticle(SpellNames.EchoingMana, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.SucessfulEchoingMana = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //no mana function yet, need to do
                     ParticleManger.Instance.StartParticle(SpellNames.EchoingMana, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.SucessfulEchoingMana = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     //no mana function yet, need to do
                     ParticleManger.Instance.StartParticle(SpellNames.EchoingMana, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    player.SucessfulEchoingMana = true;
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -106,6 +112,7 @@ public class EchoingManaState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                player.PlayedEchoingMana = true;
                 GameManager.Instance.totalSpellsPickedP1--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP1Done = false;
@@ -117,6 +124,7 @@ public class EchoingManaState : FSMState
                 GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                player.PlayedEchoingMana = true;
                 GameManager.Instance.totalSpellsPickedP2--;
                 nextState = "Deciding";
                 GameManager.Instance.particleP2Done = false;
