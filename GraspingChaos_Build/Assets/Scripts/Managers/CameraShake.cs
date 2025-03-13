@@ -1,12 +1,23 @@
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author:         Keller
+//  Co-Author:
+//  Title:          CameraShake
+//  Date Created:   March 11, 2025
+//  Instance:       No
+//-----------------------------------------------------------------
+
+
+/// <summary>
+/// Shake the to random points based on a current position.
+/// 
+/// Attached to the player's camera.
+/// </summary>
 public class CameraShake : MonoBehaviour
 {
     Camera camera;
-    
+
     [HideInInspector] public Vector3 initialPos;
     [HideInInspector] public float intensity;
 

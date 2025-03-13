@@ -131,17 +131,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
@@ -216,6 +216,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4265472458510905785}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5229315329408631040}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 577483761655904933}
   m_SourcePrefab: {fileID: 100100000, guid: 94b0e116ee1813845b7bc5bf71134b8a, type: 3}
 --- !u!4 &1503389889025606833 stripped
 Transform:
@@ -241,9 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29312978e19d84c9511fa1a48ad0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardDissolve: {fileID: 0}
   cardGlowRender: {fileID: 54503680157137209}
   verticalAdjustAmount: 0.15
   scaleAmount: 1.09
+  hasAFingerBonus: 0
+  fingerBonus: {fileID: 0}
   isHovered: 0
   isSelected: 0
   alreadySelected: 0
@@ -294,6 +305,36 @@ MonoBehaviour:
   flameTime: 1
   dissolveCard: 0
   RestoreCard: 0
+--- !u!114 &5229315329408631040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276232676232486411}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8094bad22d3ebc4486498f016228388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelStartPos: {fileID: 0}
+  travelEndPos: {fileID: 0}
+  travelTime: 0
+  travelHeight: 0
+  travelSpeed: 5
+--- !u!114 &577483761655904933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276232676232486411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0afcc5b6277ca4a97fea4f84c5e730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelCard: {fileID: 0}
 --- !u!1001 &1657385613761258941
 PrefabInstance:
   m_ObjectHideFlags: 0

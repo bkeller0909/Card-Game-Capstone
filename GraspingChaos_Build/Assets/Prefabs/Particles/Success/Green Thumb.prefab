@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1661320355961500170}
   - component: {fileID: -3344032910753314784}
   - component: {fileID: 3013493903814519294}
+  - component: {fileID: 6967736549060643312}
   m_Layer: 0
   m_Name: Green Thumb
   m_TagString: Untagged
@@ -72,6 +73,12 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 0, y: 1.045, z: 212.981}
         m_Name: Center Position
+        m_Overridden: 1
+      - m_Value: {x: 0.013, y: 1.2, z: 214.34506}
+        m_Name: Right Thumb Pos
+        m_Overridden: 1
+      - m_Value: {x: 0.013, y: 1.2, z: 214.34506}
+        m_Name: Left Thumb Pos
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -146,6 +153,7 @@ MonoBehaviour:
   - {fileID: 389407973909019985}
   - {fileID: 7878909804884029376}
   - {fileID: 1661320355961500170}
+  - {fileID: 6967736549060643312}
   m_VisualEffect: {fileID: 5042508343836278443}
 --- !u!114 &389407973909019985
 MonoBehaviour:
@@ -160,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Property:
-    m_Name: Start Position
+    m_Name: Left Thumb Pos
   Target: {fileID: 0}
 --- !u!114 &7878909804884029376
 MonoBehaviour:
@@ -304,3 +312,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6967736549060643312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444701772785091034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: Right Thumb Pos
+  Target: {fileID: 0}

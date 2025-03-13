@@ -19,6 +19,7 @@ public class CardHandSlot : MonoBehaviour
     private PlayerState playerState;
 
     [SerializeField] private GameObject cardPrefab;
+    public Transform cardSpawnTransform;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
     public List<CardSelect> cards = new List<CardSelect>();         // List to keep track of cards in the hand.
@@ -164,7 +165,7 @@ public class CardHandSlot : MonoBehaviour
         // Remove hover effect from the previously hovered card if it's not selected.
         if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
-            cards[currentHoverIndex].OffHoverCard();
+            cards[currentHoverIndex].OffHoverCard(player);
         }
 
         // Update the current hover index.
@@ -173,7 +174,7 @@ public class CardHandSlot : MonoBehaviour
         // Apply hover effect to the new card if it's not selected.
         if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
-            cards[currentHoverIndex].OnHoverCard();
+            cards[currentHoverIndex].OnHoverCard(player);
         }
     }
 

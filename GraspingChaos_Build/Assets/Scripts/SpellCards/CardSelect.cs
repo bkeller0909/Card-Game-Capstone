@@ -27,6 +27,13 @@ public class CardSelect : MonoBehaviour
     [Tooltip("Scale size of the card once it is selected.")]
     [SerializeField, Range(1, 2)] private float scaleAmount = 1.2f;
 
+
+    [SerializeField, Tooltip("This is the finger bonus for the cards that have it")]
+    public bool hasAFingerBonus;
+
+    [SerializeField, Tooltip("This is the finger bonus for the cards that have it")]
+    public GameObject fingerBonus;
+
     private readonly float adjustTime = 0.2f;
 
     private Vector3 startPosition;
@@ -87,23 +94,197 @@ public class CardSelect : MonoBehaviour
     /// <summary>
     /// When a card is hovered.
     /// </summary>
-    public void OnHoverCard()
+    public void OnHoverCard(PlayerManager player)
     {
         // card is hovered
         isHovered = true;
         //StartCoroutine(AdjustCard(isHovered));
         CardGlow(isHovered);
+
+        if (hasAFingerBonus)
+        {
+            if (hasAFingerBonus)
+            {
+                if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
+                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
+                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Ring, PlayerFingers.RH_Ring) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Ring] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Ring] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
+                    {
+                        //fadeInOutBonus(true);
+                        fingerBonus.gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
     /// When a card is no longer hovered.
     /// </summary>
-    public void OffHoverCard()
+    public void OffHoverCard(PlayerManager player)
     {
         // card is no longer hovered
         isHovered = false;
         //StartCoroutine(AdjustCard(isHovered));
         CardGlow(isHovered);
+
+        if (hasAFingerBonus)
+        {
+            if (hasAFingerBonus)
+            {
+                if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
+                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
+                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
+                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Ring, PlayerFingers.RH_Ring) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Ring] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Ring] != true))
+                    {
+                        // fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
+                {
+                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
+                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
+                    {
+                        //fadeInOutBonus(false);
+                        fingerBonus.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -138,6 +319,46 @@ public class CardSelect : MonoBehaviour
     public void CardGlow(bool glow)
     {
         cardGlowRender.enabled = glow;
+    }
+
+    public void fadeInOutBonus(bool areWeFadingIn)
+    {
+        Color bonCol = fingerBonus.gameObject.GetComponent<MeshRenderer>().material.color;
+
+        if (areWeFadingIn)
+        {
+            StartCoroutine(fadeInBonus(bonCol));
+        }
+        else
+        {
+            StartCoroutine(fadeOutBonus(bonCol));
+        }
+    }
+
+    private IEnumerator fadeInBonus(Color baseCol)
+    {
+        while (baseCol.a < 1)
+        {
+            baseCol.a += 5 * Time.deltaTime;
+            fingerBonus.gameObject.GetComponent<MeshRenderer>().material.color = baseCol;
+            yield return new WaitForSeconds(1);
+        }
+        baseCol.a = 1;
+        fingerBonus.gameObject.GetComponent<MeshRenderer>().material.color = baseCol;
+        yield return null;
+    }
+
+    private IEnumerator fadeOutBonus(Color baseCol)
+    {
+        while (baseCol.a > 0)
+        {
+            baseCol.a -= 5 * Time.deltaTime;
+            fingerBonus.gameObject.GetComponent<MeshRenderer>().material.color = baseCol;
+            yield return new WaitForSeconds(1);
+        }
+        baseCol.a = 0;
+        fingerBonus.gameObject.GetComponent<MeshRenderer>().material.color = baseCol;
+        yield return null;
     }
 
     //DONT DELEATE THIS KELLER THIS HELPS RESET THE VALUES OF THE CARDS WHEN THEY GO BACK INTO THE OBJECT POOL
