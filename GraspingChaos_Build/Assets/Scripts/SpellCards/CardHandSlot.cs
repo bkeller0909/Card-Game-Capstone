@@ -19,6 +19,7 @@ public class CardHandSlot : MonoBehaviour
     private PlayerState playerState;
 
     [SerializeField] private GameObject cardPrefab;
+    public Transform cardSpawnTransform;
 
     [Tooltip("List of all the card objects for the player's Spell Hand.")]
     public List<CardSelect> cards = new List<CardSelect>();         // List to keep track of cards in the hand.
