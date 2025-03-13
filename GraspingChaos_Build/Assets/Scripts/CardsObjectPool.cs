@@ -153,28 +153,29 @@ public class CardsObjectPool : MonoBehaviour
     }
 
 
-    public SpellCard ScriptedDealing(PlayerManager player, SpellNames spell1, SpellNames spell2, SpellNames spell3, SpellNames spell4, SpellNames spell5)
+    public SpellCard ScriptedDealing(PlayerManager player, SpellNames spell)
     {
         cardSlots = player.GetComponentInChildren<CardHandSlot>();
         foreach (GameObject pooledCards in objPoolCards)
         {
-            if (pooledCards.GetComponent<SpellCard>().spellName == spell1 || pooledCards.GetComponent<SpellCard>().spellName == spell2 ||
-                pooledCards.GetComponent<SpellCard>().spellName == spell3 || pooledCards.GetComponent<SpellCard>().spellName == spell4 ||
-                pooledCards.GetComponent<SpellCard>().spellName == spell5 && !pooledCards.activeSelf)
+            if (pooledCards.GetComponent<SpellCard>().spellName == spell && !pooledCards.activeSelf)
             {
                 SpellCard card = pooledCards.GetComponent<SpellCard>();
                 allcardAmounts[(int)card.spellName] += 1;
                 if (card.type == SpellType.ATTACK)
                 {
                     player.attackCardAmount++;
+                    player.spellHand.amtOfSpellsInHand++;
                 }
                 else if (card.type == SpellType.RESTORATION)
                 {
                     player.restCardAmount++;
+                    player.spellHand.amtOfSpellsInHand++;
                 }
                 else if (card.type == SpellType.RING)
                 {
                     player.ringCardAmount++;
+                    player.spellHand.amtOfSpellsInHand++;
                 }
 
                 if (player == GameManager.Instance.player1)
@@ -194,10 +195,12 @@ public class CardsObjectPool : MonoBehaviour
                 {
                     if (cardSlots.emptySlots[i])
                     {
-                        pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
+                        // pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
                         cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
                         cardSlots.emptySlots[i] = false;
                         cardsCurrentlyInHand.Add(pooledCards);
+                        pooledCards.GetComponent<CardTravelHandler>().CardTravel(0.08f, 0.7f, 0.7f, pooledCards.transform, cardSlots.cardSlots[i].transform);
+
                         if (player == GameManager.Instance.player1)
                         {
                             cardsCurrentlyInHandP1.Add(pooledCards);
