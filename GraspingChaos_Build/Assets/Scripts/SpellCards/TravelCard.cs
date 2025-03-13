@@ -22,7 +22,7 @@ public class TravelCard : MonoBehaviour
     [HideInInspector] public Transform travelEndPos;
     [HideInInspector] public float travelTime;
     [HideInInspector] public float travelHeight;
-    public float travelSpeed = 5f;
+    [HideInInspector] public float travelSpeed;
 
     // Update is called once per frame
     void Update()
@@ -39,7 +39,7 @@ public class TravelCard : MonoBehaviour
     {
         travelTime += Time.deltaTime;
 
-        travelTime = travelTime % 5f;
+        travelTime = travelTime % travelSpeed;
 
         transform.position = MathParabola.Parabola(travelStartPos.position, travelEndPos.position, travelHeight, travelTime / travelSpeed);
 

@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 //----------------------------------------------------------------
 //  OG Author:    Wyatt
@@ -20,4 +20,6 @@ public class HandsHandler : MonoBehaviour
 
     [Tooltip("The fingers of these hands"), SerializeField]
     public List<Fingers> fingers;
+
+    public VisualEffect[] boneVisualEffects;
 }
