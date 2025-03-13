@@ -23,9 +23,10 @@ public class CardTravelHandler : MonoBehaviour
         travelCard = GetComponent<TravelCard>();
     }
 
-    private IEnumerator DoCardTravel(float travelHeight, float travelTimer, Transform startPos, Transform endPos)
+    private IEnumerator DoCardTravel(float travelHeight, float travelTimer, float travelSpeed, Transform startPos, Transform endPos)
     {
         travelCard.travelHeight = travelHeight;
+        travelCard.travelSpeed = travelSpeed;
         travelCard.travelTime = travelTimer;
         travelCard.travelStartPos = startPos;
         travelCard.travelEndPos = endPos;
@@ -34,8 +35,8 @@ public class CardTravelHandler : MonoBehaviour
         travelCard.enabled = false;
     }
 
-    public void CardTravel(float travelHeight, float travelTimer, Transform startPos, Transform endPos)
+    public void CardTravel(float travelHeight, float travelTimer, float travelSpeed, Transform startPos, Transform endPos)
     {
-        StartCoroutine(DoCardTravel(travelHeight, travelTimer, startPos, endPos));
+        StartCoroutine(DoCardTravel(travelHeight, travelTimer, travelSpeed, startPos, endPos));
     }
 }
