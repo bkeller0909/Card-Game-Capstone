@@ -370,6 +370,7 @@ public class ChoosingSpellsState : FSMState
             if (amtOfSpells == 1 || amtOfSpells == 2 || amtOfSpells == 3)
             {
                 player.GetMana(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[playerState.playerHand.selectedCards.Count - 1]].manaCost);
+                SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.manaRefill, 1);
                 CardSelect card = playerState.playerHand.selectedCards[playerState.playerHand.selectedCards.Count - 1];
                 playerState.playerHand.selectedCards.Remove(card);
                 amtOfSpells--;
