@@ -72,6 +72,7 @@ public class VengefulMirrorState : FSMState
                     //Turns The Ring on
                     player.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.VengefulMirrorFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ApplyVengFulMirror(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFull] = GameManager.Instance.whatRound;
                 }
                 else
@@ -79,6 +80,7 @@ public class VengefulMirrorState : FSMState
                     //Turns The Ring on
                     player.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
                     player.ToggleRing(true, Rings.VengefulMirrorFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    player.ringHandler.ApplyVengFulMirror(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     player.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFail] = GameManager.Instance.whatRound;
                 }
             }
