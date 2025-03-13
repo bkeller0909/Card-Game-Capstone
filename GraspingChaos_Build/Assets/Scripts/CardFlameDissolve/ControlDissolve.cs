@@ -133,21 +133,25 @@ public class ControlDissolve : MonoBehaviour
 
             timeElapsed += Time.deltaTime;
 
-            if(timeElapsed > 1.7)
+            if (timeElapsed > 1.7)
             {
                 GameManager.Instance.isDissolveDone = true;
                 cardMaterial.SetFloat("_DissolveAmount", FULL_BLACK_VALUE);
                 cardDissolveAmount = cardMaterial.GetFloat("_DissolveAmount");
                 dissolveCard = false;
+                gameObject.transform.position = GameManager.Instance.player1.cardSpawnTransform.transform.position;
                 gameObject.SetActive(false);
             }
 
             yield return null;
         }
+
+
         cardMaterial.SetFloat("_DissolveAmount", FULL_BLACK_VALUE);
         cardDissolveAmount = cardMaterial.GetFloat("_DissolveAmount");
 
-
+        gameObject.transform.position = GameManager.Instance.player1.cardSpawnTransform.transform.position;
+        gameObject.SetActive(false);
         //flameEffectObject.SetActive(false);
 
         dissolveCard = false;

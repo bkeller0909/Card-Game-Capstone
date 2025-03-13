@@ -240,10 +240,12 @@ public class CardsObjectPool : MonoBehaviour
                 {
                     if (cardSlots.emptySlots[i])
                     {
-                        pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
+                        // pooledCards.transform.position = cardSlots.cardSlots[i].transform.position;
                         cardSlots.cards.Add(pooledCards.GetComponent<CardSelect>());
                         cardSlots.emptySlots[i] = false;
                         cardsCurrentlyInHand.Add(pooledCards);
+                        pooledCards.GetComponent<CardTravelHandler>().CardTravel(0.2f, 5f, pooledCards.transform, cardSlots.cardSlots[i].transform);
+
                         if (player == GameManager.Instance.player1)
                         {
                             cardsCurrentlyInHandP1.Add(pooledCards);
