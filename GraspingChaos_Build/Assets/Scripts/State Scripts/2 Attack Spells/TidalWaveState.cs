@@ -136,32 +136,40 @@ public class TidalWaveState : FSMState
                     RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
 
-                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        //do no damage becuase of veil
                     }
                     else
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                        currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                            currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
                     }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
@@ -170,32 +178,40 @@ public class TidalWaveState : FSMState
                     RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
 
-                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        //do no damage becuase of veil
                     }
                     else
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                        currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                            currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
                     }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
@@ -205,6 +221,14 @@ public class TidalWaveState : FSMState
 
                     for (int i = 0; i < 2; i++)
                     {
+
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                        {
+                            enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            break;
+                        }
+
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
@@ -213,6 +237,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int s = 0; s < 2; s++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -221,6 +252,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int s = 0; s < 2; s++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -229,6 +267,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int a = 0; a < 2; a++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -237,6 +282,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int a = 0; a < 2; a++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -245,12 +297,26 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int a = 0; a < 2; a++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
 
                         currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int s = 0; s < 2; s++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
 
@@ -273,32 +339,40 @@ public class TidalWaveState : FSMState
                     RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
 
-                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        //do no damage becuase of veil
                     }
                     else
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                        currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                            currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
                     }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
@@ -307,32 +381,40 @@ public class TidalWaveState : FSMState
                     RumbleManager.Instance.ControllerRumble(0.5f, 1f, 0.7f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
 
-                    if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                    }
-                    else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
-                    {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        //do no damage becuase of veil
                     }
                     else
                     {
-                        PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
-                        currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(currentAdjacent);
+                        if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
+                        else
+                        {
+                            PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                            currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            enemy.health.DamageFinger(currentAdjacent);
+                        }
                     }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
@@ -342,6 +424,14 @@ public class TidalWaveState : FSMState
 
                     for (int i = 0; i < 2; i++)
                     {
+
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                        {
+                            enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            break;
+                        }
+
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
@@ -350,6 +440,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int s = 0; s < 2; s++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -358,6 +455,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int s = 0; s < 2; s++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -366,6 +470,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int a = 0; a < 2; a++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -374,6 +485,13 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int a = 0; a < 2; a++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
                     }
@@ -382,12 +500,26 @@ public class TidalWaveState : FSMState
                         PlayerFingers currentAdjacent = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int a = 0; a < 2; a++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
 
                         currentAdjacent = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                         for (int s = 0; s < 2; s++)
                         {
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                            {
+                                enemy.health.DamageFinger(currentAdjacent);
+                                break;
+                            }
+
                             enemy.health.DamageFinger(currentAdjacent);
                         }
 

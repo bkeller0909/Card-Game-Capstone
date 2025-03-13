@@ -299,6 +299,10 @@ public class QTEHandler : MonoBehaviour
     {
         switch (qteAmount)
         {
+            case 2:
+                CreationLoop(7, qteAmount, caster);
+                QTEHasStarted = true;
+                break;
             case 3:
                 CreationLoop(6, qteAmount, caster);
                 QTEHasStarted = true;
@@ -337,6 +341,10 @@ public class QTEHandler : MonoBehaviour
                 break;
             case 12:
                 CreationLoop(1, qteAmount, caster);
+                QTEHasStarted = true;
+                break;
+            case 13:
+                CreationLoop(0, qteAmount, caster);
                 QTEHasStarted = true;
                 break;
             case 14:

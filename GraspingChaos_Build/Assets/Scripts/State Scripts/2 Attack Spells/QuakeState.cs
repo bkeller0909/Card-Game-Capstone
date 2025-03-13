@@ -7,6 +7,7 @@
 //  Instance?      no
 //-----------------------------------------------------------------
 using System;
+using Unity.Properties;
 using UnityEngine;
 
 /// <summary>
@@ -135,23 +136,72 @@ public class QuakeState : FSMState
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
+
                     randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
+
                     randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    int indexVeil = 0;
                     for (int i = 0; i < 3; i++)
                     {
+
+                        if (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) <= 0)
+                        {
+                            break;
+                        }
+
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                        {
+                            if (indexVeil == 2)
+                                break;
+                            indexVeil++;
+                        }
+
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
                 }
@@ -171,23 +221,72 @@ public class QuakeState : FSMState
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
+
                     randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //randomize fingers tht are not selected
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     PlayerFingers randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, PlayerFingers.none);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
+
                     randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    enemy.health.DamageFinger(randomFinger);
+                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    {
+                        //no damage becuase of veil
+                    }
+                    else
+                    {
+                        enemy.health.DamageFinger(randomFinger);
+                    }
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+                    int indexVeil = 0;
                     for (int i = 0; i < 3; i++)
                     {
+
+                        if (enemy.health.getFingerHealth(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger) <= 0)
+                        {
+                            break;
+                        }
+
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                        {
+                            if (indexVeil == 2)
+                                break;
+                            indexVeil++;
+                        }
+
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
                 }
