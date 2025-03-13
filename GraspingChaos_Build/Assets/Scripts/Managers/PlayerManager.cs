@@ -472,6 +472,10 @@ public class PlayerManager : MonoBehaviour
             {
                 ringHandler.manaMerchantFailure = true;
             }
+            else if ((Rings)whatRing == Rings.VeilOfFortitudeFull || (Rings)whatRing == Rings.VeilOfFortitudeFail)
+            {
+                ringHandler.EffectVeilOfFortitude(whatFinger);
+            }
         }
         else if (!turnOn)
         {
