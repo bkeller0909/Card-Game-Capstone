@@ -89,6 +89,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     public VisualEffect eyes;
 
+    public Transform cardSpawnTransform;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -491,7 +493,7 @@ public class PlayerManager : MonoBehaviour
                 ringHandler.veilOfFortitudeLeft = false;
                 ringHandler.veilOfFortitudeRight = false;
             }
-            else if((Rings)whatRing == Rings.VeilOfFortitudeFail)
+            else if ((Rings)whatRing == Rings.VeilOfFortitudeFail)
             {
                 //need to add a check to make sure if I try and steal a veil of fortitude while I own one either by hand or in a finger it wont actually steal it just remove it 
                 ringHandler.veilOfFortitudeLeftFail = false;

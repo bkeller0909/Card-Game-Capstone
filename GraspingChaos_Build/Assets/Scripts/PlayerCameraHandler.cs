@@ -1,6 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
+//----------------------------------------------------------------
+//  Author:         Keller
+//  Co-Author:
+//  Title:          PlayerCameraHandler
+//  Date Created:   March 11, 2025
+//  Instance:       No
+//-----------------------------------------------------------------
+
+
+/// <summary>
+/// Handles the camera shake.
+/// 
+/// Attached to the player game object.
+/// </summary>
 public class PlayerCameraHandler : MonoBehaviour
 {
     [HideInInspector] public CameraShake playerCameraShake;
@@ -27,7 +41,7 @@ public class PlayerCameraHandler : MonoBehaviour
         yield return new WaitForSeconds(shakeTimer);
         playerCameraShake.transform.position = playerCameraShake.initialPos;
         playerCameraShake.enabled = false;
-        
+
         //if the total amout of spells for both players is over then send both to the default camera view after shake, otherwise keep reseting the correct player to the qte camera
         if (GameManager.Instance.totalSpellsPickedP1 == 0 && GameManager.Instance.totalSpellsPickedP2 == 0)
         {
