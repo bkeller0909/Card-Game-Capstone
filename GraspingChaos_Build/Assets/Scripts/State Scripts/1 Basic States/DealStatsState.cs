@@ -138,7 +138,7 @@ public class DealStatsState : FSMState
             card = cardDealing.CardDealtChance(player);
             if (CardsObjectPool.Instance.allcardAmounts[(int)card.spellName] < 3)
             {
-                // TODO - change this value to 2 once rings are in the game
+                // done - TODO - change this value to 2 once rings are in the game
                 if (player.attackCardAmount < 6 && card.type == SpellType.ATTACK)
                 {
                     player.spellHand.playerSpells.Add(card);
@@ -300,16 +300,39 @@ public class DealStatsState : FSMState
             {
                 if (player == GameManager.Instance.player1)
                 {
-                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt, SpellNames.FireBolt, SpellNames.ForTheCause, SpellNames.Icicles, SpellNames.Rockthrow);
+                    // card hand
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
                     player.spellHand.playerSpells.Add(card);
-                    player.spellHand.amtOfSpellsInHand++;
 
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+                    player.spellHand.playerSpells.Add(card);
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.ForTheCause);
+                    player.spellHand.playerSpells.Add(card);
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
+                    player.spellHand.playerSpells.Add(card);
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
+                    player.spellHand.playerSpells.Add(card);
                 }
                 else if (player == GameManager.Instance.player2)
                 {
-                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles, SpellNames.FireBolt, SpellNames.ForTheCause, SpellNames.Icicles, SpellNames.Rockthrow);
+                    // card hand
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
                     player.spellHand.playerSpells.Add(card);
-                    player.spellHand.amtOfSpellsInHand++;
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+                    player.spellHand.playerSpells.Add(card);
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.ForTheCause);
+                    player.spellHand.playerSpells.Add(card);
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
+                    player.spellHand.playerSpells.Add(card);
+
+                    card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
+                    player.spellHand.playerSpells.Add(card);
                 }
             }
         }

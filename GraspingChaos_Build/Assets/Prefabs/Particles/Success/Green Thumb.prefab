@@ -13,11 +13,9 @@ GameObject:
   - component: {fileID: 1095752219288279939}
   - component: {fileID: 1286106871406339924}
   - component: {fileID: 389407973909019985}
-  - component: {fileID: 7878909804884029376}
-  - component: {fileID: 1661320355961500170}
   - component: {fileID: -3344032910753314784}
   - component: {fileID: 3013493903814519294}
-  - component: {fileID: 6967736549060643312}
+  - component: {fileID: 3339050198596235125}
   m_Layer: 0
   m_Name: Green Thumb
   m_TagString: Untagged
@@ -58,8 +56,11 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 7
+      - m_Value: 5
         m_Name: Speed
+        m_Overridden: 1
+      - m_Value: 2
+        m_Name: Spread
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -79,6 +80,12 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 0.013, y: 1.2, z: 214.34506}
         m_Name: Left Thumb Pos
+        m_Overridden: 1
+      - m_Value: {x: -0.010000005, y: 1.0330372, z: 213.64}
+        m_Name: Start Pos
+        m_Overridden: 1
+      - m_Value: {x: 0.013, y: 1.2, z: 214.34506}
+        m_Name: End Pos
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -151,9 +158,7 @@ MonoBehaviour:
   m_ExecuteInEditor: 1
   m_Bindings:
   - {fileID: 389407973909019985}
-  - {fileID: 7878909804884029376}
-  - {fileID: 1661320355961500170}
-  - {fileID: 6967736549060643312}
+  - {fileID: 3339050198596235125}
   m_VisualEffect: {fileID: 5042508343836278443}
 --- !u!114 &389407973909019985
 MonoBehaviour:
@@ -168,37 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Property:
-    m_Name: Left Thumb Pos
-  Target: {fileID: 0}
---- !u!114 &7878909804884029376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6444701772785091034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Property:
-    m_Name: End Position
-  Target: {fileID: 0}
---- !u!114 &1661320355961500170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6444701772785091034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Property:
-    m_Name: Center Position
+    m_Name: Start Pos
   Target: {fileID: 0}
 --- !u!114 &-3344032910753314784
 MonoBehaviour:
@@ -312,7 +287,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6967736549060643312
+--- !u!114 &3339050198596235125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,5 +300,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Property:
-    m_Name: Right Thumb Pos
+    m_Name: End Pos
   Target: {fileID: 0}
