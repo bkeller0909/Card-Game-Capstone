@@ -78,6 +78,7 @@ public class DealStatsState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
+        player.ringHandler.vengfulFirst = true;
         QTETSelection(player, enemy);
 
         ManaDealing(player, enemy);

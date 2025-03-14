@@ -332,6 +332,11 @@ public class StaticBlastState : FSMState
                     if (!hasBonus)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                     }
                     else
                     {
@@ -339,10 +344,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 2);
+                            }
                         }
                     }
                 }
@@ -351,6 +366,11 @@ public class StaticBlastState : FSMState
                     if (!hasBonus)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                     }
                     else
                     {
@@ -358,10 +378,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 2);
+                            }
                         }
                     }
 
@@ -377,6 +407,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -389,6 +424,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -404,6 +444,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -416,6 +461,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -431,6 +481,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -443,6 +498,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -458,6 +518,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -470,6 +535,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -488,6 +558,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFinger(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 1);
+                                    }
                                 }
                             }
                             else
@@ -500,6 +575,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFingerTwice(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 2);
+                                    }
                                 }
                             }
                         }
@@ -515,6 +595,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFinger(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 1);
+                                    }
                                 }
                             }
                             else
@@ -527,6 +612,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFingerTwice(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 2);
+                                    }
                                 }
                             }
                         }
@@ -537,6 +627,11 @@ public class StaticBlastState : FSMState
                     if (!hasBonus)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                     }
                     else
                     {
@@ -544,10 +639,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 2);
+                            }
                         }
                     }
 
@@ -556,6 +661,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -563,10 +673,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -575,6 +695,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -582,10 +707,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -594,6 +729,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -601,10 +741,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -613,6 +763,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -620,10 +775,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -632,6 +797,12 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                             if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
@@ -640,6 +811,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger2);
+                                if ((((int)adjacentFinger2 >= 0 && (int)adjacentFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger2 >= 5 && (int)adjacentFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -648,11 +824,26 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                                 enemy.health.DamageFingerTwice(adjacentFinger2);
+                                if ((((int)adjacentFinger2 >= 0 && (int)adjacentFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger2 >= 5 && (int)adjacentFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -673,6 +864,11 @@ public class StaticBlastState : FSMState
                     if (!hasBonus)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                     }
                     else
                     {
@@ -680,10 +876,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 2);
+                            }
                         }
                     }
                 }
@@ -692,6 +898,11 @@ public class StaticBlastState : FSMState
                     if (!hasBonus)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                     }
                     else
                     {
@@ -699,10 +910,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 2);
+                            }
                         }
                     }
 
@@ -718,6 +939,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -730,6 +956,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -745,6 +976,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -757,6 +993,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -772,6 +1013,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -784,6 +1030,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -799,6 +1050,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -811,6 +1067,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -829,6 +1090,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFinger(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 1);
+                                    }
                                 }
                             }
                             else
@@ -841,6 +1107,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFingerTwice(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 2);
+                                    }
                                 }
                             }
                         }
@@ -856,6 +1127,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFinger(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 1);
+                                    }
                                 }
                             }
                             else
@@ -868,6 +1144,11 @@ public class StaticBlastState : FSMState
                                 else
                                 {
                                     enemy.health.DamageFingerTwice(adjacentFinger1);
+                                    if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                    {
+                                        player.ringHandler.EffectVengFulMirror(player, 2);
+                                    }
                                 }
                             }
                         }
@@ -878,6 +1159,11 @@ public class StaticBlastState : FSMState
                     if (!hasBonus)
                     {
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                     }
                     else
                     {
@@ -885,10 +1171,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             enemy.health.DamageFingerTwice(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                            ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 2);
+                            }
                         }
                     }
 
@@ -897,6 +1193,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -904,10 +1205,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -916,6 +1227,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -923,10 +1239,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -935,6 +1261,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -942,10 +1273,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -954,6 +1295,11 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
@@ -961,10 +1307,20 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }
@@ -973,6 +1329,12 @@ public class StaticBlastState : FSMState
                         if (!hasBonus)
                         {
                             enemy.health.DamageFinger(adjacentFinger1);
+                            if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                             if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
@@ -981,6 +1343,11 @@ public class StaticBlastState : FSMState
                             else
                             {
                                 enemy.health.DamageFinger(adjacentFinger2);
+                                if ((((int)adjacentFinger2 >= 0 && (int)adjacentFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger2 >= 5 && (int)adjacentFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                         }
                         else
@@ -989,11 +1356,26 @@ public class StaticBlastState : FSMState
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                             {
                                 enemy.health.DamageFinger(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
                             }
                             else
                             {
                                 enemy.health.DamageFingerTwice(adjacentFinger1);
+                                if ((((int)adjacentFinger1 >= 0 && (int)adjacentFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger1 >= 5 && (int)adjacentFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                                 enemy.health.DamageFingerTwice(adjacentFinger2);
+                                if ((((int)adjacentFinger2 >= 0 && (int)adjacentFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                     ((int)adjacentFinger2 >= 5 && (int)adjacentFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                             }
                         }
                     }

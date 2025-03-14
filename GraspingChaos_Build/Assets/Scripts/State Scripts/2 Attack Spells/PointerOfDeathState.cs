@@ -126,11 +126,26 @@ public class PointerOfDeathState : FSMState
                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             if (indexVeil == 2)
+                            {
+                                if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                                 break;
-                            indexVeil++;
+                            }
                         }
-
+                        indexVeil++;
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+
+                    if(indexVeil >= 3)
+                    {
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 3);
+                        }
                     }
 
                 }
@@ -145,6 +160,12 @@ public class PointerOfDeathState : FSMState
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 3);
+                    }
+
 
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
@@ -157,28 +178,63 @@ public class PointerOfDeathState : FSMState
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.LH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.LH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.RH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.RH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else
                         {
                             PlayerFingers rightFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(rightFinger);
+                            if ((((int)rightFinger >= 0 && (int)rightFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)rightFinger >= 5 && (int)rightFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                             PlayerFingers leftFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(leftFinger);
+                            if ((((int)leftFinger >= 0 && (int)leftFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)leftFinger >= 5 && (int)leftFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
 
                         }
                     }
@@ -194,6 +250,13 @@ public class PointerOfDeathState : FSMState
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 3);
+                    }
+
+
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
                     {
@@ -201,28 +264,60 @@ public class PointerOfDeathState : FSMState
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.LH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.LH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.RH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.RH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             PlayerFingers rightFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(rightFinger);
+                            if ((((int)rightFinger >= 0 && (int)rightFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)rightFinger >= 5 && (int)rightFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                             PlayerFingers leftFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(leftFinger);
+                            if ((((int)leftFinger >= 0 && (int)leftFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)leftFinger >= 5 && (int)leftFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
 
                         }
                     }
@@ -235,28 +330,63 @@ public class PointerOfDeathState : FSMState
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.LH_Pinky);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.LH_Thumb);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.RH_Pinky);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.RH_Thumb);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else
                             {
                                 PlayerFingers rightFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                                 enemy.health.DamageFinger(rightFinger);
+                                if ((((int)rightFinger >= 0 && (int)rightFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)rightFinger >= 5 && (int)rightFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                                 PlayerFingers leftFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                                 enemy.health.DamageFinger(leftFinger);
+                                if ((((int)leftFinger >= 0 && (int)leftFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)leftFinger >= 5 && (int)leftFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
 
                             }
                         }
@@ -287,11 +417,26 @@ public class PointerOfDeathState : FSMState
                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                         {
                             if (indexVeil == 2)
+                            {
+                                if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 2);
+                                }
                                 break;
-                            indexVeil++;
+                            }
                         }
-
+                        indexVeil++;
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    }
+
+                    if (indexVeil >= 3)
+                    {
+                        if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 3);
+                        }
                     }
 
                 }
@@ -306,6 +451,12 @@ public class PointerOfDeathState : FSMState
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 3);
+                    }
+
 
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
@@ -318,28 +469,63 @@ public class PointerOfDeathState : FSMState
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.LH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.LH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.RH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.RH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else
                         {
                             PlayerFingers rightFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(rightFinger);
+                            if ((((int)rightFinger >= 0 && (int)rightFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)rightFinger >= 5 && (int)rightFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                             PlayerFingers leftFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(leftFinger);
+                            if ((((int)leftFinger >= 0 && (int)leftFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)leftFinger >= 5 && (int)leftFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
 
                         }
                     }
@@ -355,6 +541,13 @@ public class PointerOfDeathState : FSMState
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 3);
+                    }
+
+
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeft == true) ||
                                ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.veilOfFortitudeRight == true)
                     {
@@ -362,28 +555,60 @@ public class PointerOfDeathState : FSMState
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.LH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.LH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.RH_Pinky);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
                         {
                             PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.RH_Thumb);
                             enemy.health.DamageFinger(newFinger);
+                            if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
                         }
                         else
                         {
                             PlayerFingers rightFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(rightFinger);
+                            if ((((int)rightFinger >= 0 && (int)rightFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)rightFinger >= 5 && (int)rightFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
+
                             PlayerFingers leftFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             enemy.health.DamageFinger(leftFinger);
+                            if ((((int)leftFinger >= 0 && (int)leftFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)leftFinger >= 5 && (int)leftFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                            {
+                                player.ringHandler.EffectVengFulMirror(player, 1);
+                            }
 
                         }
                     }
@@ -396,28 +621,63 @@ public class PointerOfDeathState : FSMState
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.LH_Pinky);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.LH_Thumb)
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.LH_Thumb);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Pinky)
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerLeft(PlayerFingers.RH_Pinky);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger == PlayerFingers.RH_Thumb)
                             {
                                 PlayerFingers newFinger = enemy.GetAdjacentFingerRight(PlayerFingers.RH_Thumb);
                                 enemy.health.DamageFinger(newFinger);
+                                if ((((int)newFinger >= 0 && (int)newFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)newFinger >= 5 && (int)newFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                             }
                             else
                             {
                                 PlayerFingers rightFinger = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                                 enemy.health.DamageFinger(rightFinger);
+                                if ((((int)rightFinger >= 0 && (int)rightFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)rightFinger >= 5 && (int)rightFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
+
                                 PlayerFingers leftFinger = enemy.GetAdjacentFingerLeft(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                                 enemy.health.DamageFinger(leftFinger);
+                                if ((((int)leftFinger >= 0 && (int)leftFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                                    ((int)leftFinger >= 5 && (int)leftFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                                {
+                                    player.ringHandler.EffectVengFulMirror(player, 1);
+                                }
 
                             }
                         }

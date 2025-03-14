@@ -26,6 +26,7 @@ public class RingsHandler : MonoBehaviour
 
     public bool vengfulMirrorLeft;
     public bool vengfulMirrorRight;
+    public bool vengfulFirst;
 
     public bool manaMerchantSuccess;
     public bool manaMerchantFailure;
@@ -51,6 +52,7 @@ public class RingsHandler : MonoBehaviour
         }
         manaMerchantFailure = false;
         manaMerchantSuccess = false;
+        vengfulFirst = false;
     }
 
     public void EffectThornsOfAgony(PlayerFingers targetFinger, PlayerManager targetPlayer)
@@ -123,6 +125,7 @@ public class RingsHandler : MonoBehaviour
     //TODO
     public void ApplyVengFulMirror(PlayerFingers targetFinger)
     {
+        vengfulFirst = true;
         if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
         {
             //left hand placement
@@ -137,12 +140,16 @@ public class RingsHandler : MonoBehaviour
 
     public void EffectVengFulMirror(PlayerManager targetPlayer, int DamageAmount)
     {
-        PlayerFingers targetFinger = PlayerFingers.none;
-        for (int i = 0; i < DamageAmount; i++)
+        if (vengfulFirst)
         {
-            targetFinger = targetPlayer.GetRandomFinger(PlayerFingers.none);
-            targetPlayer.health.DamageFinger(targetFinger);
+            PlayerFingers targetFinger = PlayerFingers.none;
+            for (int i = 0; i < DamageAmount; i++)
+            {
+                targetFinger = targetPlayer.GetRandomFinger(PlayerFingers.none);
+                targetPlayer.health.DamageFinger(targetFinger);
+            }
         }
+        vengfulFirst = false;
     }
 
     public void EffectVampiricSurge(PlayerFingers targetFinger, PlayerManager playerTarget)

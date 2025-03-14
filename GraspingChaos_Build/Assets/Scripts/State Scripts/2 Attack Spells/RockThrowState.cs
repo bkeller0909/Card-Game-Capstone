@@ -143,6 +143,12 @@ public class RockThrowState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 1);
+                    }
+
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
@@ -160,6 +166,12 @@ public class RockThrowState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 1);
+                    }
+
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
