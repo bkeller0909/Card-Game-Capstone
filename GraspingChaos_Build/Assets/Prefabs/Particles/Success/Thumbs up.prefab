@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: -1725166356031617842}
   - component: {fileID: -8039125191997800301}
   - component: {fileID: 6587627435175653469}
-  - component: {fileID: 5629781749212906938}
   m_Layer: 0
   m_Name: Thumbs up
   m_TagString: Untagged
@@ -65,14 +64,17 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0, y: 1.045, z: 212.981}
+      - m_Value: {x: 0.531, y: 1.433, z: 214.29}
         m_Name: Start Position
         m_Overridden: 1
-      - m_Value: {x: 0.013, y: 1.2, z: 214.34506}
+      - m_Value: {x: 0, y: 1.045, z: 212.981}
         m_Name: End Position
         m_Overridden: 1
       - m_Value: {x: 0.81850326, y: 1.0055985, z: 214.34612}
         m_Name: End Position 2
+        m_Overridden: 1
+      - m_Value: {x: 0.81850326, y: 1.0055985, z: 214.34612}
+        m_Name: Start Position 2
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -147,7 +149,6 @@ MonoBehaviour:
   - {fileID: 1529957770136932873}
   - {fileID: 725519852185152806}
   - {fileID: 6587627435175653469}
-  - {fileID: 5629781749212906938}
   m_VisualEffect: {fileID: 5147846766449502912}
 --- !u!114 &1529957770136932873
 MonoBehaviour:
@@ -304,20 +305,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Property:
-    m_Name: End Position 2
-  Target: {fileID: 0}
---- !u!114 &5629781749212906938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634664020170888169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Property:
-    m_Name: End Position 2
+    m_Name: Start Position 2
   Target: {fileID: 0}
