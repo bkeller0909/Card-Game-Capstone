@@ -3403,6 +3403,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3314650485602060447, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3676839423022472080, guid: 8407a91a4773711428621b9ef06c02c9,
         type: 3}
       propertyPath: m_PropertySheet.m_AnimationCurve.m_Array.Array.data[0].m_Value.m_Curve.Array.size
@@ -3437,6 +3442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009613222326268145, guid: 8407a91a4773711428621b9ef06c02c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13520,6 +13530,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 479487192}
     m_Modifications:
+    - target: {fileID: 3788286114855559350, guid: 0a5c4bc646afed44ea4b6dcd94e57f4f,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3788286114855559350, guid: 0a5c4bc646afed44ea4b6dcd94e57f4f,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4330417090702358563, guid: 0a5c4bc646afed44ea4b6dcd94e57f4f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21806,6 +21826,26 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1891023210}
+    - target: {fileID: 8013577369783489915, guid: cb3c7b1ee96ac834d9fa6ae216ff8a17,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013577369783489915, guid: cb3c7b1ee96ac834d9fa6ae216ff8a17,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013577369783489915, guid: cb3c7b1ee96ac834d9fa6ae216ff8a17,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013577369783489915, guid: cb3c7b1ee96ac834d9fa6ae216ff8a17,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8013577369783489915, guid: cb3c7b1ee96ac834d9fa6ae216ff8a17,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
