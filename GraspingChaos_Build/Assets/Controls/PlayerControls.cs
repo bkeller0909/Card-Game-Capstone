@@ -1417,6 +1417,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Tutorial"",
+            ""id"": ""154f95cb-d19b-4ba0-9bd3-9711c6d12b6a"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""204b06cb-47a4-4771-96e0-c523dfc4861d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b2c91c20-6b9c-4b0a-8e43-f856fe40c28a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1535,6 +1563,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_QTEWait = asset.FindActionMap("QTEWait", throwIfNotFound: true);
         m_QTEWait_Pause = m_QTEWait.FindAction("Pause", throwIfNotFound: true);
         m_QTEWait_UnConfirm = m_QTEWait.FindAction("UnConfirm", throwIfNotFound: true);
+        // Tutorial
+        m_Tutorial = asset.FindActionMap("Tutorial", throwIfNotFound: true);
+        m_Tutorial_Next = m_Tutorial.FindAction("Next", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -1544,6 +1575,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_QTE.enabled, "This will cause a leak and performance issues, PlayerControls.QTE.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Card.enabled, "This will cause a leak and performance issues, PlayerControls.Card.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_QTEWait.enabled, "This will cause a leak and performance issues, PlayerControls.QTEWait.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Tutorial.enabled, "This will cause a leak and performance issues, PlayerControls.Tutorial.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -2135,6 +2167,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public QTEWaitActions @QTEWait => new QTEWaitActions(this);
+
+    // Tutorial
+    private readonly InputActionMap m_Tutorial;
+    private List<ITutorialActions> m_TutorialActionsCallbackInterfaces = new List<ITutorialActions>();
+    private readonly InputAction m_Tutorial_Next;
+    public struct TutorialActions
+    {
+        private @PlayerControls m_Wrapper;
+        public TutorialActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Next => m_Wrapper.m_Tutorial_Next;
+        public InputActionMap Get() { return m_Wrapper.m_Tutorial; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TutorialActions set) { return set.Get(); }
+        public void AddCallbacks(ITutorialActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TutorialActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TutorialActionsCallbackInterfaces.Add(instance);
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+        }
+
+        private void UnregisterCallbacks(ITutorialActions instance)
+        {
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+        }
+
+        public void RemoveCallbacks(ITutorialActions instance)
+        {
+            if (m_Wrapper.m_TutorialActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITutorialActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TutorialActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TutorialActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TutorialActions @Tutorial => new TutorialActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -2237,5 +2315,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnPause(InputAction.CallbackContext context);
         void OnUnConfirm(InputAction.CallbackContext context);
+    }
+    public interface ITutorialActions
+    {
+        void OnNext(InputAction.CallbackContext context);
     }
 }
