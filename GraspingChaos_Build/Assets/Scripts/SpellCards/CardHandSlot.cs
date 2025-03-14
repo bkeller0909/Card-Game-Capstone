@@ -130,6 +130,10 @@ public class CardHandSlot : MonoBehaviour
             cards[i].transform.position = cardSlots[i].transform.position;
             emptySlots[i] = false;
             cards[i].isHovered = false;
+
+            // move the cards back to the card slots
+            cards[i].gameObject.transform.Rotate(115f, 0f, 0f);
+            cards[i].GetComponent<CardTravelHandler>().CardTravel(0.05f, 0.7f, 0.7f, cards[i].transform, cardSlots[i].transform);
         }
 
         //emptySlots[4] = true;
