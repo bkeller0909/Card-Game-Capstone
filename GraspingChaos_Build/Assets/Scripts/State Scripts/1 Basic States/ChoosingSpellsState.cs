@@ -215,32 +215,10 @@ public class ChoosingSpellsState : FSMState
             }
 
             playerState.finishedCastingImage.SetActive(false);
-
-            // move cards to out of play position
-            if (GameManager.Instance.isDissolveDone)
-            {
-                for (int i = 0; i < playerState.playerHand.cards.Count; i++)
-                {
-                    if (playerState.playerHand.cards[i].isSelected == false)
-                    {
-                        playerState.playerHand.cards[i].gameObject.transform.position = playerState.cardPlay.cardsOutOfPlayPos.position;
-                    }
-                }
-
-                GameManager.Instance.roundCheck = false;
-                player.gameObject.GetComponent<PlayerControlHandler>().deconfirm = false;
-                if (player == GameManager.Instance.player1)
-                {
-                    GameManager.Instance.totalSpellsPickedP1 = amtOfSpells;
-                }
-                else if(player == GameManager.Instance.player2)
-                {
-                    GameManager.Instance.totalSpellsPickedP2 = amtOfSpells;
-                }
-                playerState.PerformTransition(Transition.NeedDecision);
-            }
+            MoveCardsOutOfPlay(player);
         }
     }
+
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
@@ -414,5 +392,34 @@ public class ChoosingSpellsState : FSMState
         enemyHands.ResetTrigger("IDLE");
         enemyHands.ResetTrigger("HandsUp");
         enemyHands.ResetTrigger("HandsDown");
+    }
+
+    private void MoveCardsOutOfPlay(PlayerManager player)
+    {
+        // move cards to out of play position
+        if (GameManager.Instance.isDissolveDone)
+        {
+            for (int i = 0; i < playerState.playerHand.cards.Count; i++)
+            {
+                if (playerState.playerHand.cards[i].isSelected == false)
+                {
+                    // playerState.playerHand.cards[i].gameObject.transform.position = playerState.cardPlay.cardsOutOfPlayPos.position;
+                    playerState.playerHand.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.05f, 0.7f, 0.7f, playerState.playerHand.cards[i].gameObject.transform, playerState.cardPlay.cardsOutOfPlayPos.transform);
+                    playerState.playerHand.cards[i].gameObject.transform.Rotate(-115f, 0f, 0f);
+                }
+            }
+
+            GameManager.Instance.roundCheck = false;
+            player.gameObject.GetComponent<PlayerControlHandler>().deconfirm = false;
+            if (player == GameManager.Instance.player1)
+            {
+                GameManager.Instance.totalSpellsPickedP1 = amtOfSpells;
+            }
+            else if (player == GameManager.Instance.player2)
+            {
+                GameManager.Instance.totalSpellsPickedP2 = amtOfSpells;
+            }
+            playerState.PerformTransition(Transition.NeedDecision);
+        }
     }
 }
