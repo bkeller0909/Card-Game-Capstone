@@ -298,6 +298,7 @@ public class CardSelect : MonoBehaviour
         cardGlowRender.material.SetFloat("_GlowMultiplier", 50f);
         //StartCoroutine(AdjustCard(isSelected));
         CardGlow(isSelected);
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelect, 0.25f);
     }
 
     /// <summary>
@@ -310,6 +311,7 @@ public class CardSelect : MonoBehaviour
         cardGlowRender.material.SetColor("_GlowColour", cardGlowRenderDefault.material.color);
         //StartCoroutine(AdjustCard(isSelected));
         CardGlow(isSelected);
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelect, 0.25f);
     }
 
     /// <summary>

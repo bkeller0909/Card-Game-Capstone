@@ -18,8 +18,11 @@ public class SoundFXManager : MonoBehaviour
     public static SoundFXManager Instance;
     [SerializeField] private AudioSource soundObject;
 
-    public AudioClip manaRefill;
     public AudioClip[] boneDamage;
+    public AudioClip manaRefill;
+    public AudioClip roundFinished;
+    public AudioClip cardSelect;
+    public AudioClip cardSelectComplete;
 
     private void Awake()
     {

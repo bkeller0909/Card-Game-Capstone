@@ -193,6 +193,7 @@ public class PlayerControlHandler : MonoBehaviour
                     //QTEWait will make sure you wont move any cards or cameras after pressing confirm
                     deconfirm = true;
                     player.playerInput.SwitchCurrentActionMap("QTEWait");
+                    SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelectComplete, 1);
                 }
             }
 
