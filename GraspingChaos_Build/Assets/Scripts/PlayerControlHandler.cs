@@ -22,6 +22,7 @@ public class PlayerControlHandler : MonoBehaviour
     [SerializeField] CameraPositionChange changeCameras;
     public bool deconfirm = false;
     public int index = 0;
+    //public Animator playerHands, playerFakeHands;
 
     private void Start()
     {
@@ -194,6 +195,9 @@ public class PlayerControlHandler : MonoBehaviour
                     deconfirm = true;
                     player.playerInput.SwitchCurrentActionMap("QTEWait");
                     SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelectComplete, 1);
+                    resetAnims();
+                    //playerHands.SetTrigger("HandsGrasp");
+                    //playerFakeHands.SetTrigger("HandsGrap");
                 }
             }
 
@@ -221,6 +225,9 @@ public class PlayerControlHandler : MonoBehaviour
                 }
 
                 StartCoroutine(ButtonCheckUnConfirm());
+                resetAnims();
+                //playerHands.SetTrigger("IDLE");
+                //playerFakeHands.SetTrigger("IDLE");
             }
 
             //Camera Movement
@@ -258,5 +265,16 @@ public class PlayerControlHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         deconfirm = false;
+    }
+
+    public void resetAnims()
+    {
+        //reset animation triggers
+        //playerHands.ResetTrigger("IDLE");
+        //playerFakeHands.ResetTrigger("IDLE");
+        //playerFakeHands.ResetTrigger("HandsGrasp");
+        //playerFakeHands.ResetTrigger("HandsGrasp");
+        //playerHands.ResetTrigger("HandsGraspLoop");
+        //playerFakeHands.ResetTrigger("HandsGraspLoop");
     }
 }
