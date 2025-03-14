@@ -34,7 +34,6 @@ public class Tutorial : MonoBehaviour
         // TODO - tutorial section
 
         // make unique action map for tutorial
-        StartTutorial();
 
 
         // players load in from book    
