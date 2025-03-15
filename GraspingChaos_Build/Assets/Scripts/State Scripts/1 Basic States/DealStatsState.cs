@@ -365,7 +365,10 @@ public class DealStatsState : FSMState
                     // players load in from book
                     // they have no cards
                     // dialogue will appear
-                    // tutorial.TutorialStep1(player);
+                    if(playerState.tutorialEvent.isStep1 == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep1(player);
+                    }
 
                     // STEP 2
                     // force hands into up position while dialogue explains health

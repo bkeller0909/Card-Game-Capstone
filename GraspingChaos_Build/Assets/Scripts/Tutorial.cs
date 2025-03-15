@@ -19,7 +19,7 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     // bools for every step of the tutorial
-    [HideInInspector] public bool isStep1 = false;
+    [HideInInspector] public bool isStep1 = true;
     [HideInInspector] public bool isStep2 = false;
     [HideInInspector] public bool isStep3 = false;
     [HideInInspector] public bool isStep4 = false;
@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
     [HideInInspector] public bool isStep10 = false;
     [HideInInspector] public bool isStep11 = false;
 
-    [HideInInspector] public bool isStep1Complete = true;
+    [HideInInspector] public bool isStep1Complete = false;
     [HideInInspector] public bool isStep2Complete = false;
     [HideInInspector] public bool isStep3Complete = false;
     [HideInInspector] public bool isStep4Complete = false;
