@@ -22,7 +22,7 @@ public class PlayerControlHandler : MonoBehaviour
     [SerializeField] CameraPositionChange changeCameras;
     public bool deconfirm = false;
     public int index = 0;
-    //public Animator playerHands, playerFakeHands;
+    public Animator playerHands, playerFakeHands;
 
     private void Start()
     {
@@ -184,6 +184,7 @@ public class PlayerControlHandler : MonoBehaviour
                 if (player.playerInput.actions["SetFinal"].WasPressedThisFrame() && !deconfirm)
                 {
                     stateHandler.ReadyToCast();             // changes the player state to Ready To Cast
+                    player.READYTOGO = true;
                     playerInput.finishSelection = false;    // finish selection input is now false after being pressed
                     playerInput.Xbtn = false;
                     foreach (CardSelect card in pickCards.selectedCards)
@@ -196,8 +197,8 @@ public class PlayerControlHandler : MonoBehaviour
                     player.playerInput.SwitchCurrentActionMap("QTEWait");
                     SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelectComplete, 1);
                     resetAnims();
-                    //playerHands.SetTrigger("HandsGrasp");
-                    //playerFakeHands.SetTrigger("HandsGrap");
+                    playerHands.SetTrigger("HandsGrasp");
+                    playerFakeHands.SetTrigger("HandsGrasp");
                 }
             }
 
@@ -205,6 +206,7 @@ public class PlayerControlHandler : MonoBehaviour
             if (player.playerInput.actions["UnConfirm"].WasPressedThisFrame())
             {
                 player.GetComponent<PlayerState>().readyToCast = false;
+                player.READYTOGO = false;
                 playerInput.finishSelection = false;
                 player.cardsAmountSelected = 0;
                 player.playerInput.SwitchCurrentActionMap("Card");
@@ -214,6 +216,8 @@ public class PlayerControlHandler : MonoBehaviour
                     {
                         GameManager.Instance.nextStateP1 = false;
                         player.eyes.Stop();
+                        player.FlameHandLeft.Stop();
+                        player.FlameHandRight.Stop();
                     }
                 }
                 else if (player == GameManager.Instance.player2)
@@ -221,13 +225,15 @@ public class PlayerControlHandler : MonoBehaviour
                     {
                         GameManager.Instance.nextStateP2 = false;
                         player.eyes.Stop();
+                        player.FlameHandLeft.Stop();
+                        player.FlameHandRight.Stop();
                     }
                 }
 
                 StartCoroutine(ButtonCheckUnConfirm());
                 resetAnims();
-                //playerHands.SetTrigger("IDLE");
-                //playerFakeHands.SetTrigger("IDLE");
+                playerHands.SetTrigger("IDLE");
+                playerFakeHands.SetTrigger("IDLE");
             }
 
             //Camera Movement
@@ -270,11 +276,13 @@ public class PlayerControlHandler : MonoBehaviour
     public void resetAnims()
     {
         //reset animation triggers
-        //playerHands.ResetTrigger("IDLE");
-        //playerFakeHands.ResetTrigger("IDLE");
-        //playerFakeHands.ResetTrigger("HandsGrasp");
-        //playerFakeHands.ResetTrigger("HandsGrasp");
-        //playerHands.ResetTrigger("HandsGraspLoop");
-        //playerFakeHands.ResetTrigger("HandsGraspLoop");
+        playerHands.ResetTrigger("IDLE");
+        playerFakeHands.ResetTrigger("IDLE");
+        playerFakeHands.ResetTrigger("HandsGrasp");
+        playerFakeHands.ResetTrigger("HandsGrasp");
+        playerHands.ResetTrigger("HandsGraspLoop");
+        playerFakeHands.ResetTrigger("HandsGraspLoop");
+        playerHands.ResetTrigger("QTE1");
+        playerFakeHands.ResetTrigger("QTE1");
     }
 }

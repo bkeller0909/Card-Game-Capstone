@@ -232,11 +232,15 @@ public class ChoosingSpellsState : FSMState
                 {
                     GameManager.Instance.nextStateP1 = true;
                     player.eyes.Play();
+                    player.FlameHandLeft.Play();
+                    player.FlameHandRight.Play();
                 }
                 else
                 {
                     GameManager.Instance.nextStateP1 = false;
                     player.eyes.Stop();
+                    player.FlameHandLeft.Stop();
+                    player.FlameHandRight.Stop();
                 }
             }
             else
@@ -245,11 +249,15 @@ public class ChoosingSpellsState : FSMState
                 {
                     GameManager.Instance.nextStateP2 = true;
                     player.eyes.Play();
+                    player.FlameHandLeft.Play();
+                    player.FlameHandRight.Play();
                 }
                 else
                 {
                     GameManager.Instance.nextStateP2 = false;
                     player.eyes.Stop();
+                    player.FlameHandLeft.Stop();
+                    player.FlameHandRight.Stop();
                 }
             }
             // this is the the end of the debug portion the next line is important don't remove
@@ -295,21 +303,25 @@ public class ChoosingSpellsState : FSMState
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = false;
-                    if (amtOfSpells < 2)
+                    if (amtOfSpells < 3)
                     {
                         player.playerCameras.GetInputForced(2);
                         resetAnims();
                         enemyHands.SetTrigger("HandsDown");
+                        enemy.FlameHandLeft.Stop();
+                        enemy.FlameHandRight.Stop();
                     }
                 }
                 else
                 {
                     player.playerOneHands = true;
-                    if (amtOfSpells < 2)
+                    if (amtOfSpells < 3)
                     {
                         player.playerCameras.GetInputForced(2);
                         resetAnims();
                         enemyHands.SetTrigger("HandsDown");
+                        enemy.FlameHandLeft.Stop();
+                        enemy.FlameHandRight.Stop();
                     }
                 }
             }
@@ -320,22 +332,26 @@ public class ChoosingSpellsState : FSMState
                 {
                     player.playerOneHands = true;
                     //healing
-                    if (amtOfSpells < 2)
+                    if (amtOfSpells < 3)
                     {
                         player.playerCameras.GetInputForced(0);
                         resetAnims();
                         playerHands.SetTrigger("HandsUp");
+                        player.FlameHandLeft.Stop();
+                        player.FlameHandRight.Stop();
                     }
                 }
                 else
                 {
                     player.playerOneHands = false;
                     //healing
-                    if (amtOfSpells < 2)
+                    if (amtOfSpells < 3)
                     {
                         player.playerCameras.GetInputForced(0);
                         resetAnims();
                         playerHands.SetTrigger("HandsUp");
+                        player.FlameHandLeft.Stop();
+                        player.FlameHandRight.Stop();
                     }
                 }
             }
@@ -377,8 +393,28 @@ public class ChoosingSpellsState : FSMState
             }
             playerState.fingerSelected = false;
             resetAnims();
-            enemyHands.SetTrigger("IDLE");
-            playerHands.SetTrigger("IDLE");
+            if(enemy.READYTOGO)
+            {
+                enemyHands.SetTrigger("HandsGrasp");
+                enemy.FlameHandLeft.Play();
+                enemy.FlameHandRight.Play();
+            }
+            else
+            {
+                enemyHands.SetTrigger("IDLE");
+            }
+
+            if (player.READYTOGO)
+            {
+                playerHands.SetTrigger("HandsGrasp");
+                player.FlameHandLeft.Play();
+                player.FlameHandRight.Play();
+            }
+            else
+            {
+                playerHands.SetTrigger("IDLE");
+            }
+            //playerHands.SetTrigger("IDLE");
         }
     }
 
@@ -388,10 +424,14 @@ public class ChoosingSpellsState : FSMState
         playerHands.ResetTrigger("IDLE");
         playerHands.ResetTrigger("HandsUp");
         playerHands.ResetTrigger("HandsDown");
+        playerHands.ResetTrigger("HandsGrasp");
+        playerHands.ResetTrigger("HandsGraspLoop");
 
         enemyHands.ResetTrigger("IDLE");
         enemyHands.ResetTrigger("HandsUp");
         enemyHands.ResetTrigger("HandsDown");
+        enemyHands.ResetTrigger("HandsGrasp");
+        enemyHands.ResetTrigger("HandsGraspLoop");
     }
 
     private void MoveCardsOutOfPlay(PlayerManager player)
@@ -419,6 +459,12 @@ public class ChoosingSpellsState : FSMState
             {
                 GameManager.Instance.totalSpellsPickedP2 = amtOfSpells;
             }
+            player.READYTOGO = false;
+            player.FlameHandLeft.Stop();
+            player.FlameHandRight.Stop();
+            resetAnims();
+            playerHands.SetTrigger("IDLE");
+            enemyHands.SetTrigger("IDLE");
             playerState.PerformTransition(Transition.NeedDecision);
         }
     }

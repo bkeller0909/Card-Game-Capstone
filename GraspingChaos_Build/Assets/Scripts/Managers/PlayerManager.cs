@@ -89,7 +89,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     public VisualEffect eyes;
 
+    [SerializeField]
+    public VisualEffect FlameHandLeft;
+    public VisualEffect FlameHandRight;
+
     public Transform cardSpawnTransform;
+
+    public bool READYTOGO;
 
     private void Awake()
     {
@@ -104,7 +110,10 @@ public class PlayerManager : MonoBehaviour
         fingers = new List<Fingers>();
         visualFingers = new List<Fingers>();
         healthyFingers = new List<Fingers>();
+        READYTOGO = false;
         eyes.Stop();
+        FlameHandLeft.Stop();
+        FlameHandRight.Stop();
     }
 
     // Start is called before the first frame update
