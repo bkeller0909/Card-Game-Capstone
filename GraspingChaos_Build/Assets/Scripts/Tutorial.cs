@@ -100,19 +100,32 @@ public class Tutorial : MonoBehaviour
     #region TUTORIAL STEP COROUTINES
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
+        player.playerInput.currentActionMap.Disable();
+
         player.GetComponent<DialogueEvent>().StartDialogue(player, 0);
         // player.GetComponent<DialogueEvent>().PlayDialogueAudio()
 
-        player.GetComponent<DialogueEvent>().NextDialogueButton(player);
+        yield return new WaitForSeconds(10f);
+        //player.GetComponent<DialogueEvent>().NextDialogueButton(player);
         yield return null;
     }
 
     private IEnumerator DoTutorialStep2(PlayerManager player)
     {
-        player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
-        player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+        player.playerInput.currentActionMap.Disable();
 
-        player.GetComponent<DialogueEvent>().NextDialogueButton(player);
+        if(player.playerNum == PlayerType.PLAYER1)
+        {
+            player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+        }
+        else if(player.playerNum == PlayerType.PLAYER2)
+        {
+            player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+        }
+        yield return new WaitForSeconds(10f);
+
+        player.playerInput.currentActionMap.Enable();
+        //player.GetComponent<DialogueEvent>().NextDialogueButton(player);
         yield return null;
     }
 
