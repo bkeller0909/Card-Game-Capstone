@@ -347,84 +347,81 @@ public class DealStatsState : FSMState
         }
     }
 
-    private void ScriptCards(PlayerManager player)
-    {
-        if (player == GameManager.Instance.player1)
-        {
-            // card hand
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.ForTheCause);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
-            player.spellHand.playerSpells.Add(card);
-        }
-        else if (player == GameManager.Instance.player2)
-        {
-            // card hand
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.ForTheCause);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
-            player.spellHand.playerSpells.Add(card);
-
-            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
-            player.spellHand.playerSpells.Add(card);
-        }
-    }
-
     public void ScriptedTutorial(PlayerManager player)
     {
         if (GameManager.Instance.whatRound == 0)
         {
             if(player.spellHand.amtOfSpellsInHand < 5)
             {
-                // TODO - tutorial section
+                if(player == GameManager.Instance.player1)
+                {
+                    // TODO - tutorial section
 
-                // make unique action map for tutorial
+                    // SETUP
+                    // make unique action map for tutorial
+                    //playerState.tutorialEvent.SetupTutorial(player);
 
-                // tutorial.SetupTutorial(player);
+                    // STEP 1
+                    // players load in from book
+                    // they have no cards
+                    // dialogue will appear
+                    // tutorial.TutorialStep1(player);
 
-                // players load in from book
-                // they have no cards
+                    // STEP 2
+                    // force hands into up position while dialogue explains health
+                    if(playerState.tutorialEvent.isStep1Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep2(player);
+                        playerState.tutorialEvent.isStep1Complete = false;
+                    }
+                    // move the player hands back down
+                    if (playerState.tutorialEvent.isStep2Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep3(player);
+                        playerState.tutorialEvent.isStep2Complete = false;
+                    }
 
-                // dialogue will appear
-                // force hands into up position while dialogue explains health
+                    // force player to mana bottle view
+                    if(playerState.tutorialEvent.isStep3Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep4(player);
+                        playerState.tutorialEvent.isStep3Complete = false;
+                    }
+                    // they are instructed that they will be dealt 5 cards
+                
+                    // performs the card dealing
+                    if(playerState.tutorialEvent.isStep4Complete == true)
+                    {
+                        if(player.spellHand.amtOfSpellsInHand < 3)
+                        {
+                            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+                            player.spellHand.playerSpells.Add(card);
 
-                // tutorial.TutorialStep1(player);
-                playerState.TutorialStep2(player);
+                            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.QuickHeal);
+                            player.spellHand.playerSpells.Add(card);
 
-                // debugger shows the bones disappearing to show loss of health
-                // force player to mana bottle view
+                            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.GuardiansTouch);
+                            player.spellHand.playerSpells.Add(card);
+                        }
+                    }
 
-                // they are instructed that they will be dealt 5 cards
-                // performs the card dealing
+                    // force player to card camera view
+                    // dialogue explains cards
+                    if(playerState.tutorialEvent.isStep4Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep5(player);
+                        playerState.tutorialEvent.isStep4Complete = false;
+                    }
 
-                // force player to card camera view
-                // dialogue explains cards
+                    // action map changed to card
+                    // card selecting and finger selected with dialogue explaining how to navigate
 
-                // action map changed to card
-                // card selecting and finger selected with dialogue explaining how to navigate
+                    // narrator says good luck when you ready up
 
-                // narrator says good luck when you ready up
+                    // QTE starts
 
-                // QTE starts
-
-                // goes to normal game
+                    // goes to normal game
+                }
             }
         }
         else

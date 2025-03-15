@@ -497,9 +497,4 @@ public class PlayerState : AdvancedFSM
             player.gameObject.GetComponent<QTEHandler>().CreateSequence(currentQTEAmount, player);
         }
     }
-
-    public void TutorialStep2(PlayerManager player)
-    {
-        tutorialEvent.TutorialStep2(player);
-    }
 }

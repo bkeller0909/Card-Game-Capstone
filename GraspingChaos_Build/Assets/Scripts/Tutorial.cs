@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -18,17 +19,31 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     // bools for every step of the tutorial
-    [HideInInspector] public bool isP1TutorialComplete;
-    [HideInInspector] public bool isP2TutorialComplete;
+    [HideInInspector] public bool isStep1 = false;
+    [HideInInspector] public bool isStep2 = false;
+    [HideInInspector] public bool isStep3 = false;
+    [HideInInspector] public bool isStep4 = false;
+    [HideInInspector] public bool isStep5 = false;
+    [HideInInspector] public bool isStep6 = false;
+    [HideInInspector] public bool isStep7 = false;
+    [HideInInspector] public bool isStep8 = false;
+    [HideInInspector] public bool isStep9 = false;
+    [HideInInspector] public bool isStep10 = false;
+    [HideInInspector] public bool isStep11 = false;
 
-    [HideInInspector] public bool isP1OnCards;
-    [HideInInspector] public bool isP2OnCards;
+    [HideInInspector] public bool isStep1Complete = true;
+    [HideInInspector] public bool isStep2Complete = false;
+    [HideInInspector] public bool isStep3Complete = false;
+    [HideInInspector] public bool isStep4Complete = false;
+    [HideInInspector] public bool isStep5Complete = false;
+    [HideInInspector] public bool isStep6Complete = false;
+    [HideInInspector] public bool isStep7Complete = false;
+    [HideInInspector] public bool isStep8Complete = false;
+    [HideInInspector] public bool isStep9Complete = false;
+    [HideInInspector] public bool isStep10Complete = false;
+    [HideInInspector] public bool isStep11Complete = false;
 
-    [HideInInspector] public bool isP1OnMana;
-    [HideInInspector] public bool isP2OnMana;
-
-    [HideInInspector] public bool isP1CompleteStep1;
-    [HideInInspector] public bool isP2CompleteStep1;
+    [HideInInspector] public bool isTutorialComplete = false;
 
     /// <summary>
     /// Setup everything for the start of the tutorial.
@@ -36,8 +51,14 @@ public class Tutorial : MonoBehaviour
     public void SetupTutorial(PlayerManager player)
     {
         player.playerInput.SwitchCurrentActionMap("Tutorial");
-        isP1CompleteStep1 = false;
-        isP2CompleteStep1 = false;
+    }
+
+    public void ResetAnims(PlayerManager player)
+    {
+        //reset animation triggers
+        player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("IDLE");
+        player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsUp");
+        player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsDown");
     }
 
     #region TUTORIAL STEP FUNCTIONS
@@ -98,49 +119,111 @@ public class Tutorial : MonoBehaviour
     #endregion // TUTORIAL STEP FUNCTIONS
 
     #region TUTORIAL STEP COROUTINES
+    /// <summary>
+    /// Starts the dialogue for the tutorial
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns></returns>
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
-        player.playerInput.currentActionMap.Disable();
+        isStep1 = true;
+        if (isStep1)
+        {
+            player.playerInput.currentActionMap.Disable();
 
-        player.GetComponent<DialogueEvent>().StartDialogue(player, 0);
-        // player.GetComponent<DialogueEvent>().PlayDialogueAudio()
-
-        yield return new WaitForSeconds(10f);
-        //player.GetComponent<DialogueEvent>().NextDialogueButton(player);
-        yield return null;
+            yield return new WaitForSeconds(1f);
+            isStep1Complete = true;
+            isStep1 = false;
+        }
     }
 
+    /// <summary>
+    /// Moves the players hands up
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns></returns>
     private IEnumerator DoTutorialStep2(PlayerManager player)
     {
-        //player.playerInput.currentActionMap.Disable();
-
-        if(player.playerNum == PlayerType.PLAYER1)
+        isStep2 = true;
+        if(isStep2)
         {
-            player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+            ResetAnims(player);
+            if(player.playerNum == PlayerType.PLAYER1)
+            {
+                player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+            }
+            else if(player.playerNum == PlayerType.PLAYER2)
+            {
+                player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+            }
+            yield return new WaitForSeconds(10f);
+            isStep2Complete = true;
+            isStep2 = false;
         }
-        else if(player.playerNum == PlayerType.PLAYER2)
-        {
-            player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
-        }
-        yield return new WaitForSeconds(10f);
-
-        //player.playerInput.currentActionMap.Enable();
-        //player.GetComponent<DialogueEvent>().NextDialogueButton(player);
     }
 
+    /// <summary>
+    /// Moves the player's hands back down to idle
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns></returns>
     private IEnumerator DoTutorialStep3(PlayerManager player)
     {
-        yield return null;
+        isStep3 = true;
+        if (isStep3)
+        {
+            ResetAnims(player);
+            if (player.playerNum == PlayerType.PLAYER1)
+            {
+                player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
+            }
+            else if (player.playerNum == PlayerType.PLAYER2)
+            {
+                player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
+            }
+            yield return new WaitForSeconds(5f);
+            isStep3Complete = true;
+            isStep3 = false;
+        }
     }
 
+    /// <summary>
+    /// Move the player camera to the mana bottle and back
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns></returns>
     private IEnumerator DoTutorialStep4(PlayerManager player)
     {
-        yield return null;
+        isStep4 = true;
+        if (isStep4)
+        {
+            player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
+            yield return new WaitForSeconds(10f);
+            isStep4Complete = true;
+            isStep4 = false;
+        }
+        player.playerCameras.GetInputForced(0);
+        yield return new WaitForSeconds(5f);
     }
 
+    /// <summary>
+    /// Send the player camera view towards the cards and back.
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns></returns>
     private IEnumerator DoTutorialStep5(PlayerManager player)
     {
-        yield return null;
+        isStep5 = true;
+        if (isStep5)
+        {
+            yield return new WaitForSeconds(5f);
+            player.playerCameras.GetInputForced(1);
+            yield return new WaitForSeconds(5f);
+            isStep5Complete = true;
+            isStep5 = false;
+        }
+        player.playerCameras.GetInputForced(0);
+        yield return new WaitForSeconds(5f);
     }
 
     private IEnumerator DoTutorialStep6(PlayerManager player)
