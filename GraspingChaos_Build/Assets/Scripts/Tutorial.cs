@@ -56,9 +56,18 @@ public class Tutorial : MonoBehaviour
     public void ResetAnims(PlayerManager player)
     {
         //reset animation triggers
-        player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("IDLE");
-        player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsUp");
-        player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsDown");
+        if(player.playerNum == PlayerType.PLAYER1)
+        {
+            player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("IDLE");
+            player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsUp");
+            player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsDown");
+        }
+        else if(player.playerNum == PlayerType.PLAYER2)
+        {
+            player.stagHands.gameObject.GetComponent<Animator>().ResetTrigger("IDLE");
+            player.stagHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsUp");
+            player.stagHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsDown");
+        }
     }
 
     #region TUTORIAL STEP FUNCTIONS
