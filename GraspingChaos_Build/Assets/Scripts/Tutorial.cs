@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -26,47 +27,138 @@ public class Tutorial : MonoBehaviour
     [HideInInspector] public bool isP1OnMana;
     [HideInInspector] public bool isP2OnMana;
 
-    [HideInInspector] public bool isP1;
-    [HideInInspector] public bool isP2;
-
-    public void TutorialSequence()
-    {
-        // TODO - tutorial section
-
-        // make unique action map for tutorial
-
-
-        // players load in from book    
-        // they have no cards
-
-        // dialogue will appear
-        // force hands into up position while dialogue explains health
-
-        // debugger shows the bones disappearing to show loss of health
-        // force player to mana bottle view
-
-        // they are instructed that they will be dealt 5 cards
-        // performs the card dealing
-
-        // force player to card camera view
-        // dialogue explains cards
-
-        // action map changed to card
-        // card selecting and finger selected with dialogue explaining how to navigate
-
-        // narrator says good luck when you ready up
-
-        // QTE starts
-
-        // goes to normal game
-    }
+    [HideInInspector] public bool isP1CompleteStep1;
+    [HideInInspector] public bool isP2CompleteStep1;
 
     /// <summary>
     /// Setup everything for the start of the tutorial.
     /// </summary>
-    private void StartTutorial(PlayerManager player)
+    public void SetupTutorial(PlayerManager player)
     {
         player.playerInput.SwitchCurrentActionMap("Tutorial");
-
+        isP1CompleteStep1 = false;
+        isP2CompleteStep1 = false;
     }
+
+    #region TUTORIAL STEP FUNCTIONS
+    public void TutorialStep1(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep1(player));
+    }
+
+    public void TutorialStep2(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep2(player));
+    }
+
+    public void TutorialStep3(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep3(player));
+    }
+
+    public void TutorialStep4(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep4(player));
+    }
+
+    public void TutorialStep5(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep5(player));
+    }
+
+    public void TutorialStep6(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep6(player));
+    }
+
+    public void TutorialStep7(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep7(player));
+    }
+
+    public void TutorialStep8(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep8(player));
+    }
+
+    public void TutorialStep9(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep9(player));
+    }
+
+    public void TutorialStep10(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep10(player));
+    }
+
+    public void TutorialStep11(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep11(player));
+    }
+    #endregion // TUTORIAL STEP FUNCTIONS
+
+    #region TUTORIAL STEP COROUTINES
+    private IEnumerator DoTutorialStep1(PlayerManager player)
+    {
+        player.GetComponent<DialogueEvent>().StartDialogue(player, 0);
+        // player.GetComponent<DialogueEvent>().PlayDialogueAudio()
+
+        player.GetComponent<DialogueEvent>().NextDialogueButton(player);
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep2(PlayerManager player)
+    {
+        player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+        player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+
+        player.GetComponent<DialogueEvent>().NextDialogueButton(player);
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep3(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep4(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep5(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep6(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep7(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep8(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep9(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep10(PlayerManager player)
+    {
+        yield return null;
+    }
+
+    private IEnumerator DoTutorialStep11(PlayerManager player)
+    {
+        yield return null;
+    }
+    #endregion // TUTORIAL STEP COROUTINES
 }

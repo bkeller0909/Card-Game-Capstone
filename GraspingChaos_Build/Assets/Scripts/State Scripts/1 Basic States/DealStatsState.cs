@@ -30,6 +30,8 @@ public class DealStatsState : FSMState
     /// </summary>
     SpellCard card;
 
+    Tutorial tutorial;
+
     /// <summary>
     /// A Bool to make sure they only gain mana once per a round
     /// </summary>
@@ -49,6 +51,7 @@ public class DealStatsState : FSMState
         playerState = pS;
         stateID = FSMStateID.DealStats;
         cardDealing = new CardDealing();
+        tutorial = new Tutorial();
         cardObjPool = GameManager.Instance.cardPool;
     }
 
@@ -348,12 +351,13 @@ public class DealStatsState : FSMState
         // TODO - tutorial section
 
         // make unique action map for tutorial
-
+        tutorial.SetupTutorial(player);
         // players load in from book
         // they have no cards
 
         // dialogue will appear
         // force hands into up position while dialogue explains health
+        tutorial.TutorialStep1(player);
 
         // debugger shows the bones disappearing to show loss of health
         // force player to mana bottle view
