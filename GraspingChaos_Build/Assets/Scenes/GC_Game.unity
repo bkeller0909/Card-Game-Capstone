@@ -11286,6 +11286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
+      propertyPath: tutorial
+      value: 
+      objectReference: {fileID: 1721875425}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -11294,6 +11299,16 @@ PrefabInstance:
       propertyPath: debugActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: dialogueEvent
+      value: 
+      objectReference: {fileID: 1609956186}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: tutorialEvent
+      value: 
+      objectReference: {fileID: 1721875425}
     - target: {fileID: 2859050840491159665, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_Layer
@@ -18095,6 +18110,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
+      propertyPath: tutorial
+      value: 
+      objectReference: {fileID: 1721875425}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -18103,6 +18123,16 @@ PrefabInstance:
       propertyPath: debugActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: dialogueEvent
+      value: 
+      objectReference: {fileID: 1609956186}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: tutorialEvent
+      value: 
+      objectReference: {fileID: 1721875425}
     - target: {fileID: 2859050840491159665, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_Layer
@@ -20221,6 +20251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1721875424}
+  - component: {fileID: 1721875425}
   m_Layer: 0
   m_Name: TutorialEvent
   m_TagString: Untagged
@@ -20243,6 +20274,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721875425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721875423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3491f72c317c04aaeb8f7333b51668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isP1TutorialComplete: 0
+  isP2TutorialComplete: 0
+  isP1OnCards: 0
+  isP2OnCards: 0
+  isP1OnMana: 0
+  isP2OnMana: 0
+  isP1CompleteStep1: 0
+  isP2CompleteStep1: 0
 --- !u!114 &1729977130
 MonoBehaviour:
   m_ObjectHideFlags: 0

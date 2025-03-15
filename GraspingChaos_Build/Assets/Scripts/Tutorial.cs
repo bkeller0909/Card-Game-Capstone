@@ -112,7 +112,7 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator DoTutorialStep2(PlayerManager player)
     {
-        player.playerInput.currentActionMap.Disable();
+        //player.playerInput.currentActionMap.Disable();
 
         if(player.playerNum == PlayerType.PLAYER1)
         {
@@ -124,9 +124,8 @@ public class Tutorial : MonoBehaviour
         }
         yield return new WaitForSeconds(10f);
 
-        player.playerInput.currentActionMap.Enable();
+        //player.playerInput.currentActionMap.Enable();
         //player.GetComponent<DialogueEvent>().NextDialogueButton(player);
-        yield return null;
     }
 
     private IEnumerator DoTutorialStep3(PlayerManager player)

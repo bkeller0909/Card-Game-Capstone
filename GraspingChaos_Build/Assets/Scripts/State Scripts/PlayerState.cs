@@ -9,6 +9,8 @@ public class PlayerState : AdvancedFSM
     public CardPlay cardPlay;
     public Camera playerCam;
     public Animator camAnim;
+    public Tutorial tutorialEvent;
+    public DialogueEvent dialogueEvent;
     public bool cardSelected, cardDeselected, readyToCast, canChooseFinger;
     public bool fingerSelected;
     public bool finishedCurrentQTE;
@@ -496,8 +498,8 @@ public class PlayerState : AdvancedFSM
         }
     }
 
-    public void MoveCard(GameObject go, Vector3 startPos)
+    public void TutorialStep2(PlayerManager player)
     {
-        StartCoroutine(cardPlay.MoveCard(go, startPos));
+        tutorialEvent.TutorialStep2(player);
     }
 }

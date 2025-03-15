@@ -94,7 +94,8 @@ public class DealStatsState : FSMState
         }
         else // the scripted game
         {
-            ScriptedGame(player);
+            // ScriptedGame(player);
+            ScriptedTutorial(player);
         }
 
         //Once both players have been delt enough cards so they each have 5, the game moves on
@@ -346,36 +347,90 @@ public class DealStatsState : FSMState
         }
     }
 
+    private void ScriptCards(PlayerManager player)
+    {
+        if (player == GameManager.Instance.player1)
+        {
+            // card hand
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.ForTheCause);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
+            player.spellHand.playerSpells.Add(card);
+        }
+        else if (player == GameManager.Instance.player2)
+        {
+            // card hand
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.ForTheCause);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
+            player.spellHand.playerSpells.Add(card);
+
+            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
+            player.spellHand.playerSpells.Add(card);
+        }
+    }
+
     public void ScriptedTutorial(PlayerManager player)
     {
-        // TODO - tutorial section
+        if (GameManager.Instance.whatRound == 0)
+        {
+            if(player.spellHand.amtOfSpellsInHand < 5)
+            {
+                // TODO - tutorial section
 
-        // make unique action map for tutorial
-        tutorial.SetupTutorial(player);
-        // players load in from book
-        // they have no cards
+                // make unique action map for tutorial
 
-        // dialogue will appear
-        // force hands into up position while dialogue explains health
-        tutorial.TutorialStep1(player);
+                // tutorial.SetupTutorial(player);
 
-        // debugger shows the bones disappearing to show loss of health
-        // force player to mana bottle view
+                // players load in from book
+                // they have no cards
 
-        // they are instructed that they will be dealt 5 cards
-        // performs the card dealing
+                // dialogue will appear
+                // force hands into up position while dialogue explains health
 
-        // force player to card camera view
-        // dialogue explains cards
+                // tutorial.TutorialStep1(player);
+                playerState.TutorialStep2(player);
 
-        // action map changed to card
-        // card selecting and finger selected with dialogue explaining how to navigate
+                // debugger shows the bones disappearing to show loss of health
+                // force player to mana bottle view
 
-        // narrator says good luck when you ready up
+                // they are instructed that they will be dealt 5 cards
+                // performs the card dealing
 
-        // QTE starts
+                // force player to card camera view
+                // dialogue explains cards
 
-        // goes to normal game
+                // action map changed to card
+                // card selecting and finger selected with dialogue explaining how to navigate
+
+                // narrator says good luck when you ready up
+
+                // QTE starts
+
+                // goes to normal game
+            }
+        }
+        else
+        {
+            GameManager.Instance.manualCards = false;
+        }
     }
 
 }
