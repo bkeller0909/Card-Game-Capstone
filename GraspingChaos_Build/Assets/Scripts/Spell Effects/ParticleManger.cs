@@ -135,7 +135,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[1].Play();
-                StartCoroutine(DisableSpell(4, 1, playerCasting));
+                StartCoroutine(DisableSpell(2, 1, playerCasting));
                 break;
 
             case SpellNames.RighteousEnvy:
@@ -153,7 +153,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
-                StartCoroutine(DisableSpell(4, 2, playerCasting));
+                StartCoroutine(DisableSpell(2.5f, 2, playerCasting));
                 break;
 
             case SpellNames.LefteousEnvy:
@@ -171,7 +171,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
-                StartCoroutine(DisableSpell(4, 2, playerCasting));
+                StartCoroutine(DisableSpell(2.5f, 2, playerCasting));
                 break;
 
             case SpellNames.Icicles:
@@ -187,7 +187,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[3].Play();
-                StartCoroutine(DisableSpell(4, 3, playerCasting));
+                StartCoroutine(DisableSpell(2.2f, 3, playerCasting));
                 break;
 
             case SpellNames.CollectorsCurse:
@@ -207,7 +207,7 @@ public class ParticleManger : MonoBehaviour
                     halfWay2.position = halfway1Cache.position;
                 }
                 FullEffects[4].Play();
-                StartCoroutine(DisableSpell(4, 4, playerCasting));
+                StartCoroutine(DisableSpell(3, 4, playerCasting));
                 break;
 
             case SpellNames.StaticBlast:
@@ -231,7 +231,7 @@ public class ParticleManger : MonoBehaviour
                     halfWay2.position = halfway1Cache.position;
                 }
                 FullEffects[5].Play();
-                StartCoroutine(DisableSpell(3, 5, playerCasting));
+                StartCoroutine(DisableSpell(1.5f, 5, playerCasting));
                 break;
 
             case SpellNames.Quake:
@@ -245,7 +245,7 @@ public class ParticleManger : MonoBehaviour
                     FullEffects[6].gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 }
                 FullEffects[6].Play();
-                StartCoroutine(DisableSpell(3, 6, playerCasting));
+                StartCoroutine(DisableSpell(1.6f, 6, playerCasting));
                 break;
 
             case SpellNames.RightingBolt:
@@ -265,7 +265,7 @@ public class ParticleManger : MonoBehaviour
                     halfWay2.position = halfway1Cache.position;
                 }
                 FullEffects[7].Play();
-                StartCoroutine(DisableSpell(2, 7, playerCasting));
+                StartCoroutine(DisableSpell(1.6f, 7, playerCasting));
                 break;
 
             case SpellNames.LeftningBolt:
@@ -285,7 +285,7 @@ public class ParticleManger : MonoBehaviour
                     halfWay2.position = halfway1Cache.position;
                 }
                 FullEffects[7].Play();
-                StartCoroutine(DisableSpell(2, 7, playerCasting));
+                StartCoroutine(DisableSpell(1.6f, 7, playerCasting));
                 break;
 
             case SpellNames.TidalWave:
@@ -301,7 +301,7 @@ public class ParticleManger : MonoBehaviour
                     FullEffects[8].gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 }
                 FullEffects[8].Play();
-                StartCoroutine(DisableSpell(2, 8, playerCasting));
+                StartCoroutine(DisableSpell(1.6f, 8, playerCasting));
                 break;
 
             case SpellNames.PointerOfDeath:
@@ -317,7 +317,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[9].Play();
-                StartCoroutine(DisableSpell(5, 9, playerCasting));
+                StartCoroutine(DisableSpell(4.5f, 9, playerCasting));
                 break;
 
             //Restoration Spells |=========================================
@@ -335,7 +335,7 @@ public class ParticleManger : MonoBehaviour
                     ManaBottle.position = p2ManaBottleCache.position;
                 }
                 FullEffects[10].Play();
-                StartCoroutine(DisableSpell(2, 10, playerCasting));
+                StartCoroutine(DisableSpell(1.8f, 10, playerCasting));
                 break;
 
             case SpellNames.QuickHeal:
@@ -349,7 +349,7 @@ public class ParticleManger : MonoBehaviour
                     PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[11].Play();
-                StartCoroutine(DisableSpell(4, 11, playerCasting));
+                StartCoroutine(DisableSpell(3.5f, 11, playerCasting));
                 break;
 
             case SpellNames.ThumbsUp:
@@ -395,7 +395,7 @@ public class ParticleManger : MonoBehaviour
                     ManaBottle.position = p2ManaBottleCache.position;
                 }
                 FullEffects[14].Play();
-                StartCoroutine(DisableSpell(10, 14, playerCasting));
+                StartCoroutine(DisableSpell(6.5f, 14, playerCasting));
                 break;
 
             case SpellNames.GreenThumb:
@@ -411,7 +411,7 @@ public class ParticleManger : MonoBehaviour
                     Extra.position = player2FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[15].Play();
-                StartCoroutine(DisableSpell(4, 15, playerCasting));
+                StartCoroutine(DisableSpell(5.5f, 15, playerCasting));
                 break;
 
             case SpellNames.Materialise:
@@ -425,7 +425,7 @@ public class ParticleManger : MonoBehaviour
                     PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[16].Play();
-                StartCoroutine(DisableSpell(4, 16, playerCasting));
+                StartCoroutine(DisableSpell(4.5f, 16, playerCasting));
                 break;
 
             case SpellNames.EchoingMana:
@@ -441,7 +441,7 @@ public class ParticleManger : MonoBehaviour
                     ManaBottle.position = p2ManaBottleCache.position;
                 }
                 FullEffects[17].Play();
-                StartCoroutine(DisableSpell(6, 17, playerCasting));
+                StartCoroutine(DisableSpell(4f, 17, playerCasting));
                 break;
 
             //Ring Spells |=========================================
@@ -469,11 +469,11 @@ public class ParticleManger : MonoBehaviour
         }
     }
 
-    IEnumerator DisableSpell(int secondsToWait, int spellIndex, PlayerManager currentPlayer)
+    IEnumerator DisableSpell(float secondsToWait, int spellIndex, PlayerManager currentPlayer)
     {
         yield return new WaitForSeconds(secondsToWait);
 
-        FullEffects[spellIndex].gameObject.SetActive(false);
+        //FullEffects[spellIndex].gameObject.SetActive(false);
 
         if (currentPlayer == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex])
         {

@@ -77,6 +77,7 @@ public class DealStatsState : FSMState
             GameManager.Instance.isDissolveDone = false;
             stateChange = false;
             player.cardsAmountSelected = 0;
+            player.GetComponent<PlayerControlHandler>().EmergencyCameraPush = true;
             playerState.PerformTransition(Transition.StatsGained);
         }
     }
