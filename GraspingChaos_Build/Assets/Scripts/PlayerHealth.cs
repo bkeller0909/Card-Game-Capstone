@@ -212,25 +212,12 @@ public class PlayerHealth : MonoBehaviour
         if ((whatFinger != PlayerFingers.LH_Thumb) && (whatFinger != PlayerFingers.RH_Thumb))
         {
             //asumming here that most healing cant revive a finger unless you are materialize
-            if (playerHealthStats[(int)whatFinger] == 1 || playerHealthStats[(int)whatFinger] == 2)
+            if (playerHealthStats[(int)whatFinger] == 1 || playerHealthStats[(int)whatFinger] == 2 || (playerHealthStats[(int)whatFinger] == 0))
             {
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
                 player.visualFingers[(int)whatFinger].addSegment();
                 player.entireHP++;
-            }
-            else if ((playerHealthStats[(int)whatFinger] == 0))
-            {
-                //specific case with materialise, otherwise do nothing
-                //however for current debuggin I will allow set up healing for this state also
-                playerHealthStats[(int)whatFinger] += 1;
-                player.fingers[(int)whatFinger].addSegment();
-                player.visualFingers[(int)whatFinger].addSegment();
-                player.entireHP++;
-            }
-            else if ((playerHealthStats[(int)whatFinger] < 0))
-            {
-                playerHealthStats[(int)whatFinger] = 0;
             }
             else if ((playerHealthStats[(int)whatFinger] >= 3))
             {
@@ -240,25 +227,12 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             //asumming here that most healing cant revive a finger unless you are materialize
-            if (playerHealthStats[(int)whatFinger] == 1)
+            if (playerHealthStats[(int)whatFinger] == 1 || (playerHealthStats[(int)whatFinger] == 0))
             {
                 playerHealthStats[(int)whatFinger] += 1;
                 player.fingers[(int)whatFinger].addSegment();
                 player.visualFingers[(int)whatFinger].addSegment();
                 player.entireHP++;
-            }
-            else if ((playerHealthStats[(int)whatFinger] == 0))
-            {
-                //specific case with materialise, otherwise do nothing
-                //however for current debuggin I will allow set up healing for this state also
-                playerHealthStats[(int)whatFinger] += 1;
-                player.fingers[(int)whatFinger].addSegment();
-                player.visualFingers[(int)whatFinger].addSegment();
-                player.entireHP++;
-            }
-            else if ((playerHealthStats[(int)whatFinger] < 0))
-            {
-                playerHealthStats[(int)whatFinger] = 0;
             }
             else if ((playerHealthStats[(int)whatFinger] >= 2))
             {
