@@ -23,6 +23,7 @@ public class PlayerControlHandler : MonoBehaviour
     public bool deconfirm = false;
     public int index = 0;
     public Animator playerHands, playerFakeHands;
+    public bool EmergencyCameraPush;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerControlHandler : MonoBehaviour
         playerInput = GetComponent<InputHandler>();
         pickFinger = GetComponent<SelectableFinger>();
         stateHandler = GetComponent<PlayerState>();
+        EmergencyCameraPush = false;
     }
 
     // Update is called once per frame
@@ -40,6 +42,13 @@ public class PlayerControlHandler : MonoBehaviour
         // of the PLAYER and CARD controls
         if (stateHandler.CurrentState.ID == FSMStateID.ChoosingSpells)
         {
+
+            if(EmergencyCameraPush)
+            {
+                StartCoroutine(ReturnToSenderCamera());
+                EmergencyCameraPush = false;
+            }
+
             #region Selecing Finger Controls
             if (player.playerOneHands && player == GameManager.Instance.player1)
             {
@@ -284,5 +293,12 @@ public class PlayerControlHandler : MonoBehaviour
         playerFakeHands.ResetTrigger("HandsGraspLoop");
         playerHands.ResetTrigger("QTE1");
         playerFakeHands.ResetTrigger("QTE1");
+    }
+
+    IEnumerator ReturnToSenderCamera()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameManager.Instance.player1.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+        GameManager.Instance.player2.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
     }
 }
