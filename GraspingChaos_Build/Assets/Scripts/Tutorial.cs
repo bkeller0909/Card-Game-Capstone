@@ -159,20 +159,25 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep2(PlayerManager player)
     {
+        dialogueEvent.NextDialogue(1);
         isStep2 = true;
         if(isStep2)
         {
-            //dialogueEvent.NextDialogue();
             ResetAnims(player);
             if(player.playerNum == PlayerType.PLAYER1)
             {
                 player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
 
                 yield return new WaitForSeconds(5f);
+                dialogueEvent.NextDialogue(2);
+                yield return new WaitForSeconds(5f);
                 player.health.DamageFinger(PlayerFingers.RH_Index);
                 yield return new WaitForSeconds(5f);
                 player.health.DamageFinger(PlayerFingers.LH_Index);
                 yield return new WaitForSeconds(5f);
+                dialogueEvent.NextDialogue(3);
+                yield return new WaitForSeconds(5f);
+
                 player.health.HealFinger(PlayerFingers.RH_Index);
                 player.health.HealFinger(PlayerFingers.LH_Index);
             }
@@ -181,10 +186,15 @@ public class Tutorial : MonoBehaviour
                 player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
 
                 yield return new WaitForSeconds(5f);
+                //dialogueEvent.NextDialogue(2);
+                yield return new WaitForSeconds(5f);
                 player.health.DamageFinger(PlayerFingers.RH_Index);
                 yield return new WaitForSeconds(5f);
                 player.health.DamageFinger(PlayerFingers.LH_Index);
                 yield return new WaitForSeconds(5f);
+                //dialogueEvent.NextDialogue(3);
+                yield return new WaitForSeconds(5f);
+
                 player.health.HealFinger(PlayerFingers.RH_Index);
                 player.health.HealFinger(PlayerFingers.LH_Index);
             }
@@ -201,6 +211,7 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep3(PlayerManager player)
     {
+        dialogueEvent.EndDialogue();
         isStep3 = true;
         if (isStep3)
         {
@@ -226,6 +237,7 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep4(PlayerManager player)
     {
+        dialogueEvent.StartDialogue(4);
         isStep4 = true;
         if (isStep4)
         {

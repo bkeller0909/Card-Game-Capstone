@@ -79,44 +79,41 @@ public class DialogueEvent : MonoBehaviour
         dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[currentMessage];
     }
 
-    public void NextDialogueButton(PlayerManager player)
-    {
-        if (player.playerInput.actions["Next"].WasPressedThisFrame())
-        {
-            if (numOfMessages > 1)
-            {
-                NextDialogue();
-            }
-            else
-            {
-                EndDialogue(player);
-            }
-        }
-    }
+    //public void NextDialogueButton(PlayerManager player)
+    //{
+    //    if (player.playerInput.actions["Next"].WasPressedThisFrame())
+    //    {
+    //        if (numOfMessages > 1)
+    //        {
+    //            NextDialogue();
+    //        }
+    //        else
+    //        {
+    //            EndDialogue(player);
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// Increments the dialogue index and changes the text to the next message.
     /// </summary>
-    public void NextDialogue()
+    public void NextDialogue(int dialogueIndex)
     {
-        currentMessage++;
-
-        dialogueBoxP1.GetComponent<TextMeshProUGUI>().text = dialogueText[currentMessage];
-        dialogueBoxP2.GetComponent<TextMeshProUGUI>().text = dialogueText[currentMessage];
+        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
+        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
     }
 
     /// <summary>
     /// Deactivates the message boxes and ends dialogue.
     /// </summary>
-    public void EndDialogue(PlayerManager player)
+    public void EndDialogue()
     {
-        player.playerInput.SwitchCurrentActionMap("Card");
         isTalking = false;
 
-        dialogueBoxP1.GetComponent<TextMeshProUGUI>().enabled = isTalking;
-        dialogueBoxP1.GetComponent<TextMeshProUGUI>().text = "";
+        dialogueBoxP1.SetActive(isTalking);
+        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = "";
 
-        dialogueBoxP2.GetComponent<TextMeshProUGUI>().enabled = isTalking;
-        dialogueBoxP2.GetComponent<TextMeshProUGUI>().text = "";
+        dialogueBoxP2.SetActive(isTalking);
+        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = "";
     }
 }
