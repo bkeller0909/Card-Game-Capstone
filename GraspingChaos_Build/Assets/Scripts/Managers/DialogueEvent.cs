@@ -25,11 +25,11 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField, TextArea] private string[] dialogueText;       // dialogue text that will be displayed
 
     [Header("UI GameObjects")]
-    [SerializeField] private GameObject dialogueBoxP1;                // the text box that will display the dialogue text for player 1
-    [SerializeField] private GameObject dialogueBoxP2;                // the text box that will display the dialogue text for player 2
-    [SerializeField] private GameObject controlsBox;                  // for the input controls icons
+    public GameObject dialogueBoxP1;                                // the text box that will display the dialogue text for player 1
+    public GameObject dialogueBoxP2;                                // the text box that will display the dialogue text for player 2
+    public GameObject controlsBox;                                  // for the input controls icons
 
-    private int numOfMessages;                 // how much dialogue messages are there to read
+    private int numOfMessages;                                      // how much dialogue messages are there to read
     private int currentMessage;                                     // the index of the current message
     private bool isTalking;                                         // is dialogue current happening
 
