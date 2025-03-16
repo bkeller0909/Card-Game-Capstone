@@ -207,7 +207,7 @@ public class PlayerControlHandler : MonoBehaviour
                     SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelectComplete, 1);
                     resetAnims();
                     playerHands.SetTrigger("HandsGrasp");
-                    playerFakeHands.SetTrigger("HandsGrasp");
+                    //playerFakeHands.SetTrigger("HandsGrasp");
                 }
             }
 
@@ -242,11 +242,12 @@ public class PlayerControlHandler : MonoBehaviour
                 StartCoroutine(ButtonCheckUnConfirm());
                 resetAnims();
                 playerHands.SetTrigger("IDLE");
-                playerFakeHands.SetTrigger("IDLE");
+                //playerFakeHands.SetTrigger("IDLE");
             }
 
             //Camera Movement
-            //changeCameras.GetInput();
+            changeCameras.GetInput();
+
             if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
                 if (player.playerInput.actions["CameraViewButton"].WasPressedThisFrame())

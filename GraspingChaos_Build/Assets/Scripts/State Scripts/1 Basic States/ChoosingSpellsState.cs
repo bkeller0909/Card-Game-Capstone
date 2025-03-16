@@ -208,6 +208,7 @@ public class ChoosingSpellsState : FSMState
                         // keep the position of the cards to their current slot
 
                         //Remove past spells
+                        player.playerInput.SwitchCurrentActionMap("QTE");
                         playerState.playerHand.ClearSelected(player);
                         playerState.playerHand.FullRemove();
                     }
@@ -308,8 +309,8 @@ public class ChoosingSpellsState : FSMState
                         player.playerCameras.GetInputForced(2);
                         resetAnims();
                         enemyHands.SetTrigger("HandsDown");
-                        enemy.FlameHandLeft.Stop();
-                        enemy.FlameHandRight.Stop();
+                        //enemy.FlameHandLeft.Stop();
+                        //enemy.FlameHandRight.Stop();
                     }
                 }
                 else
@@ -320,8 +321,8 @@ public class ChoosingSpellsState : FSMState
                         player.playerCameras.GetInputForced(2);
                         resetAnims();
                         enemyHands.SetTrigger("HandsDown");
-                        enemy.FlameHandLeft.Stop();
-                        enemy.FlameHandRight.Stop();
+                        //enemy.FlameHandLeft.Stop();
+                        //enemy.FlameHandRight.Stop();
                     }
                 }
             }
@@ -395,9 +396,10 @@ public class ChoosingSpellsState : FSMState
             resetAnims();
             if(enemy.READYTOGO)
             {
-                enemyHands.SetTrigger("HandsGrasp");
-                enemy.FlameHandLeft.Play();
-                enemy.FlameHandRight.Play();
+                //enemyHands.SetTrigger("HandsGrasp");
+                //enemy.FlameHandLeft.Play();
+                //enemy.FlameHandRight.Play();
+                enemyHands.SetTrigger("IDLE");
             }
             else
             {
@@ -406,9 +408,10 @@ public class ChoosingSpellsState : FSMState
 
             if (player.READYTOGO)
             {
-                playerHands.SetTrigger("HandsGrasp");
-                player.FlameHandLeft.Play();
-                player.FlameHandRight.Play();
+                //playerHands.SetTrigger("HandsGrasp");
+                //player.FlameHandLeft.Play();
+                //player.FlameHandRight.Play();
+                playerHands.SetTrigger("IDLE");
             }
             else
             {

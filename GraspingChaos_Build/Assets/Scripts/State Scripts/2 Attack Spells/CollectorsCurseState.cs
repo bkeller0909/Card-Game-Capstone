@@ -157,35 +157,38 @@ public class CollectorsCurseState : FSMState
                     }
                     if (found)
                     {
-                        while (!ringPlaced)
+                        if (!DoesPlayerHaveRing(player, (Rings)whatRing))
                         {
-                            PlayerFingers theFing = player.GetRandomFinger(PlayerFingers.none);
-
-                            if (theFing != PlayerFingers.none)
+                            while (!ringPlaced)
                             {
-                                bool spotTaken = false;
+                                PlayerFingers theFing = player.GetRandomFinger(PlayerFingers.none);
 
-                                for (int i = 0; i < 14; i++)
+                                if (theFing != PlayerFingers.none)
                                 {
-                                    if (player.ringHandler.ringsActive[i, (int)theFing] == true)
+                                    bool spotTaken = false;
+
+                                    for (int i = 0; i < 14; i++)
                                     {
-                                        spotTaken = true;
-                                        break;
+                                        if (player.ringHandler.ringsActive[i, (int)theFing] == true)
+                                        {
+                                            spotTaken = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (!spotTaken)
+                                    {
+                                        //Turns The Ring on
+                                        player.ringHandler.ringsActive[whatRing, (int)theFing] = true;
+                                        player.ToggleRing(true, (Rings)whatRing, theFing);
+                                        player.ringHandler.ringStartRound[whatRing] = GameManager.Instance.whatRound;
+                                        ringPlaced = true;
                                     }
                                 }
-
-                                if (!spotTaken)
+                                else
                                 {
-                                    //Turns The Ring on
-                                    player.ringHandler.ringsActive[whatRing, (int)theFing] = true;
-                                    player.ToggleRing(true, (Rings)whatRing, theFing);
-                                    player.ringHandler.ringStartRound[whatRing] = GameManager.Instance.whatRound;
                                     ringPlaced = true;
                                 }
-                            }
-                            else
-                            {
-                                ringPlaced = true;
                             }
                         }
                     }
@@ -321,7 +324,7 @@ public class CollectorsCurseState : FSMState
                 }
             }
 
-            if (hasRing)
+            if (!hasRing)
             {
                 for (int i = 0; i < 14; i++)
                 {

@@ -1058,7 +1058,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""e9f11fe7-7bb9-4885-b8e2-1c896be1f815"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1067,7 +1067,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""NavCardLeft"",
                     ""type"": ""Button"",
                     ""id"": ""ee8fbd1e-e676-4acc-8fbc-f357059195de"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -1121,10 +1121,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""ManaView"",
                     ""type"": ""Button"",
                     ""id"": ""ff56b4d9-a07b-4978-92dc-61e0ebf36589"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""CameraViewButton"",
