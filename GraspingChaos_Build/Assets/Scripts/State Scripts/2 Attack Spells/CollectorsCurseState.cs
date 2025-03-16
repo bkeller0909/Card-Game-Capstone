@@ -246,35 +246,38 @@ public class CollectorsCurseState : FSMState
                     }
                     if (found)
                     {
-                        while (!ringPlaced)
+                        if (!DoesPlayerHaveRing(player, (Rings)whatRing))
                         {
-                            PlayerFingers theFing = player.GetRandomFinger(PlayerFingers.none);
-
-                            if (theFing != PlayerFingers.none)
+                            while (!ringPlaced)
                             {
-                                bool spotTaken = false;
+                                PlayerFingers theFing = player.GetRandomFinger(PlayerFingers.none);
 
-                                for (int i = 0; i < 14; i++)
+                                if (theFing != PlayerFingers.none)
                                 {
-                                    if (player.ringHandler.ringsActive[i, (int)theFing] == true)
+                                    bool spotTaken = false;
+
+                                    for (int i = 0; i < 14; i++)
                                     {
-                                        spotTaken = true;
-                                        break;
+                                        if (player.ringHandler.ringsActive[i, (int)theFing] == true)
+                                        {
+                                            spotTaken = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (!spotTaken)
+                                    {
+                                        //Turns The Ring on
+                                        player.ringHandler.ringsActive[whatRing, (int)theFing] = true;
+                                        player.ToggleRing(true, (Rings)whatRing, theFing);
+                                        player.ringHandler.ringStartRound[whatRing] = GameManager.Instance.whatRound;
+                                        ringPlaced = true;
                                     }
                                 }
-
-                                if (!spotTaken)
+                                else
                                 {
-                                    //Turns The Ring on
-                                    player.ringHandler.ringsActive[whatRing, (int)theFing] = true;
-                                    player.ToggleRing(true, (Rings)whatRing, theFing);
-                                    player.ringHandler.ringStartRound[whatRing] = GameManager.Instance.whatRound;
                                     ringPlaced = true;
                                 }
-                            }
-                            else
-                            {
-                                ringPlaced = true;
                             }
                         }
                     }
@@ -288,6 +291,66 @@ public class CollectorsCurseState : FSMState
             }
         }
 
+    }
+
+    public bool DoesPlayerHaveRing(PlayerManager currentPlayer, Rings whatRing)
+    {
+        SpellCard card = new SpellCard();
+        bool oneOfTheTwo = false;
+        bool hasRing = false;
+
+        if (whatRing == Rings.VengefulMirrorFail || whatRing == Rings.VengefulMirrorFull)
+        {
+            card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.VengefulMirror];
+            oneOfTheTwo = true;
+        }
+        else if (whatRing == Rings.VeilOfFortitudeFail || whatRing == Rings.VeilOfFortitudeFull)
+        {
+            card = ActiveSpellCards.Instance.spellCards[(int)SpellNames.VeilOfFortitude];
+            oneOfTheTwo = true;
+        }
+
+        if (oneOfTheTwo)
+        {
+            for (int i = 0; i < currentPlayer.gameObject.GetComponentInChildren<CardHandSlot>().cards.Count; i++)
+            {
+                if (currentPlayer.gameObject.GetComponentInChildren<CardHandSlot>().cards[i].gameObject.GetComponent<SpellCard>().spellName == card.spellName)
+                {
+                    hasRing = true;
+                    break;
+                }
+            }
+
+            if (hasRing)
+            {
+                for (int i = 0; i < 14; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        //if this ring is active on a finger and it is the ring that matches with the card
+                        if (currentPlayer.ringHandler.ringsActive[i, j] == true)
+                        {
+                            if (i == (int)Rings.VengefulMirrorFail || i == (int)Rings.VengefulMirrorFull)
+                            {
+                                hasRing = true;
+                                break;
+                            }
+                            else if (i == (int)Rings.VeilOfFortitudeFail || i == (int)Rings.VeilOfFortitudeFull)
+                            {
+                                hasRing = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (hasRing)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        return hasRing;
     }
 
 }
