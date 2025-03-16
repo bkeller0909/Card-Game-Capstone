@@ -143,7 +143,7 @@ public class Tutorial : MonoBehaviour
         if (isStep1)
         {
             player.playerInput.currentActionMap.Disable();
-            //dialogueEvent.StartDialogue(0);
+            dialogueEvent.StartDialogue(0);
             //dialogueEvent.PlayDialogueAudio();
 
             yield return new WaitForSeconds(7f);

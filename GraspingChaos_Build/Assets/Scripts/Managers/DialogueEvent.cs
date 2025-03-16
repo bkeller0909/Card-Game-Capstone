@@ -72,11 +72,11 @@ public class DialogueEvent : MonoBehaviour
         isTalking = true;
         currentMessage = dialogueIndex;
 
-        dialogueBoxP1.GetComponent<TextMeshProUGUI>().enabled = isTalking;
-        dialogueBoxP1.GetComponent<TextMeshProUGUI>().text = dialogueText[currentMessage];
+        dialogueBoxP1.SetActive(isTalking);
+        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = dialogueText[currentMessage];
 
-        dialogueBoxP2.GetComponent<TextMeshProUGUI>().enabled = isTalking;
-        dialogueBoxP2.GetComponent<TextMeshProUGUI>().text = dialogueText[currentMessage];
+        dialogueBoxP2.SetActive(isTalking);
+        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[currentMessage];
     }
 
     public void NextDialogueButton(PlayerManager player)
