@@ -5,6 +5,8 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
+using UnityEngine.Playables;
+
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -416,8 +418,46 @@ public class DealStatsState : FSMState
                         playerState.tutorialEvent.isStep4Complete = false;
                     }
 
+                    if (playerState.tutorialEvent.isStep5Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep6(player);
+                        playerState.tutorialEvent.isStep5Complete = false;
+                    }
+
+                    if (playerState.tutorialEvent.isStep6Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep7(player);
+                        playerState.tutorialEvent.isStep6Complete = false;
+                    }
+
+                    if (playerState.tutorialEvent.isStep7Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep8(player);
+                        playerState.tutorialEvent.isStep7Complete = false;
+                    }
+
+                    if (playerState.tutorialEvent.isStep8Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep9(player);
+                        playerState.tutorialEvent.isStep8Complete = false;
+                    }
+
+                    if (playerState.tutorialEvent.isStep9Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep10(player);
+                        playerState.tutorialEvent.isStep9Complete = false;
+                    }
+
                     // action map changed to card
                     // card selecting and finger selected with dialogue explaining how to navigate
+                    if (playerState.tutorialEvent.isStep10Complete == true)
+                    {
+                        card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Icicles);
+                        player.spellHand.playerSpells.Add(card);
+
+                        card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+                        player.spellHand.playerSpells.Add(card);
+                    }
 
                     // narrator says good luck when you ready up
 
@@ -432,5 +472,4 @@ public class DealStatsState : FSMState
             GameManager.Instance.manualCards = false;
         }
     }
-
 }
