@@ -20631,6 +20631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1721875424}
   - component: {fileID: 1721875425}
+  - component: {fileID: 1721875426}
   m_Layer: 0
   m_Name: TutorialEvent
   m_TagString: Untagged
@@ -20665,14 +20666,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3491f72c317c04aaeb8f7333b51668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isP1TutorialComplete: 0
-  isP2TutorialComplete: 0
-  isP1OnCards: 0
-  isP2OnCards: 0
-  isP1OnMana: 0
-  isP2OnMana: 0
-  isP1CompleteStep1: 0
-  isP2CompleteStep1: 0
+  dialogueEvent: {fileID: 1721875426}
+  isStep1: 1
+  isStep2: 0
+  isStep3: 0
+  isStep4: 0
+  isStep5: 0
+  isStep6: 0
+  isStep7: 0
+  isStep8: 0
+  isStep9: 0
+  isStep10: 0
+  isStep11: 0
+  isStep1Complete: 0
+  isStep2Complete: 0
+  isStep3Complete: 0
+  isStep4Complete: 0
+  isStep5Complete: 0
+  isStep6Complete: 0
+  isStep7Complete: 0
+  isStep8Complete: 0
+  isStep9Complete: 0
+  isStep10Complete: 0
+  isStep11Complete: 0
+  isTutorialComplete: 0
+--- !u!114 &1721875426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721875423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cce4c0ca5e1c54097e54d89a3d5695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundObject: {fileID: 2180297512485002473, guid: 9fb65dba8afc93949a4567e8d4cce90f,
+    type: 3}
+  dialogueText:
+  - Here is your opponent, you must defeat him with the book's spells.
+  - See these fingers of yours? These represent your health.
+  - Each finger is separated into three bones, with your thumbs only containing two.
+  - Your duel is considered a loss when every bone in your fingers is gone.
+  - This is your mana, manage it well, for spells are cast with it.
+  - These are spells. There are three types. Attack, Restoration, and Ring.
+  - This icon represents the amount of mana needed for casting.
+  - For a spell to be cast, each requires you to complete a challenge. The difficulty
+    is represented by this icon.
+  - The outcome of the challenge determines the spell's strength.
+  - The more filled the icon, the stronger the spell.
+  - Try giving this spell a cast.
+  dialogueBoxP1: {fileID: 0}
+  dialogueBoxP2: {fileID: 0}
+  controlsBox: {fileID: 0}
 --- !u!114 &1729977130
 MonoBehaviour:
   m_ObjectHideFlags: 0

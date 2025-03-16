@@ -67,9 +67,8 @@ public class DialogueEvent : MonoBehaviour
     /// Activates the dialogue and enables all the message boxes.
     /// </summary>
     /// <param name="dialogueIndex">Index of the dialogue to use</param>
-    public void StartDialogue(PlayerManager player, int dialogueIndex)
+    public void StartDialogue(int dialogueIndex)
     {
-        player.playerInput.SwitchCurrentActionMap("Dialogue");
         isTalking = true;
         currentMessage = dialogueIndex;
 

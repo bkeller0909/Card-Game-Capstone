@@ -18,6 +18,8 @@ using UnityEngine;
 /// </summary>
 public class Tutorial : MonoBehaviour
 {
+    [SerializeField] private DialogueEvent dialogueEvent;
+
     // bools for every step of the tutorial
     [HideInInspector] public bool isStep1 = true;
     [HideInInspector] public bool isStep2 = false;
@@ -135,12 +137,16 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
+        MusicManager.Instance.GetComponent<AudioSource>().volume = 0.25f;
+
         isStep1 = true;
         if (isStep1)
         {
             player.playerInput.currentActionMap.Disable();
+            //dialogueEvent.StartDialogue(0);
+            //dialogueEvent.PlayDialogueAudio();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(7f);
             isStep1Complete = true;
             isStep1 = false;
         }
@@ -156,16 +162,33 @@ public class Tutorial : MonoBehaviour
         isStep2 = true;
         if(isStep2)
         {
+            //dialogueEvent.NextDialogue();
             ResetAnims(player);
             if(player.playerNum == PlayerType.PLAYER1)
             {
                 player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+
+                yield return new WaitForSeconds(5f);
+                player.health.DamageFinger(PlayerFingers.RH_Index);
+                yield return new WaitForSeconds(5f);
+                player.health.DamageFinger(PlayerFingers.LH_Index);
+                yield return new WaitForSeconds(5f);
+                player.health.HealFinger(PlayerFingers.RH_Index);
+                player.health.HealFinger(PlayerFingers.LH_Index);
             }
             else if(player.playerNum == PlayerType.PLAYER2)
             {
                 player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+
+                yield return new WaitForSeconds(5f);
+                player.health.DamageFinger(PlayerFingers.RH_Index);
+                yield return new WaitForSeconds(5f);
+                player.health.DamageFinger(PlayerFingers.LH_Index);
+                yield return new WaitForSeconds(5f);
+                player.health.HealFinger(PlayerFingers.RH_Index);
+                player.health.HealFinger(PlayerFingers.LH_Index);
             }
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(2f);
             isStep2Complete = true;
             isStep2 = false;
         }
@@ -208,11 +231,11 @@ public class Tutorial : MonoBehaviour
         {
             player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
             yield return new WaitForSeconds(10f);
+            player.playerCameras.GetInputForced(0);
+            yield return new WaitForSeconds(10f);
             isStep4Complete = true;
             isStep4 = false;
         }
-        player.playerCameras.GetInputForced(0);
-        yield return new WaitForSeconds(5f);
     }
 
     /// <summary>
@@ -228,11 +251,11 @@ public class Tutorial : MonoBehaviour
             yield return new WaitForSeconds(5f);
             player.playerCameras.GetInputForced(1);
             yield return new WaitForSeconds(5f);
+            player.playerCameras.GetInputForced(0);
+            yield return new WaitForSeconds(5f);
             isStep5Complete = true;
             isStep5 = false;
         }
-        player.playerCameras.GetInputForced(0);
-        yield return new WaitForSeconds(5f);
     }
 
     private IEnumerator DoTutorialStep6(PlayerManager player)
