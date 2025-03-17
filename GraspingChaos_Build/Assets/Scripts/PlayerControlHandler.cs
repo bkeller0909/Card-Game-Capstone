@@ -24,6 +24,7 @@ public class PlayerControlHandler : MonoBehaviour
     public int index = 0;
     public Animator playerHands, playerFakeHands;
     public bool EmergencyCameraPush;
+    public bool atBottle;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class PlayerControlHandler : MonoBehaviour
         pickFinger = GetComponent<SelectableFinger>();
         stateHandler = GetComponent<PlayerState>();
         EmergencyCameraPush = false;
+        atBottle = false;
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class PlayerControlHandler : MonoBehaviour
         if (stateHandler.CurrentState.ID == FSMStateID.ChoosingSpells)
         {
 
-            if(EmergencyCameraPush)
+            if (EmergencyCameraPush)
             {
                 StartCoroutine(ReturnToSenderCamera());
                 EmergencyCameraPush = false;
@@ -169,18 +171,25 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-
-                if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
+                if (!atBottle)
                 {
-                    changeCameras.NewCamPos(changeCameras.bottleCamPos);
+                    if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
+                    {
+                        changeCameras.NewCamPos(changeCameras.bottleCamPos);
+                        atBottle = true;
+                    }
                 }
             }
 
             if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                if (player.playerInput.actions["ManaView"].WasReleasedThisFrame())
+                if (atBottle)
                 {
-                    changeCameras.GetInputForced(0);
+                    if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
+                    {
+                        changeCameras.GetInputForced(0);
+                        atBottle = false;
+                    }
                 }
             }
             #endregion // Card Select Controls

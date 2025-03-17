@@ -23,8 +23,6 @@ public class PlayerHealth : MonoBehaviour
     // The max amount of fingers a player can have
     public static int MAX_AMT_FINGERS = 10;
 
-
-
     // Start is called before the first frame update
     void Awake()
     {
