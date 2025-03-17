@@ -14,6 +14,8 @@ public class DecidingState : FSMState
 
     public override void EnterStateInit()
     {
+        GameManager.Instance.player1.HealthReset();
+        GameManager.Instance.player2.HealthReset();
         GameManager.Instance.spellInProgress = false;
         roundEnd = false;
 

@@ -164,6 +164,32 @@ public class PlayerManager : MonoBehaviour
         manaText.text = Mana.ToString();
     }
 
+    public void HealthReset()
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (health.playerHealthStats[j] < 0)
+            {
+                //health.playerHealthStats[j] = 0;
+                while (health.playerHealthStats[j] < 0)
+                {
+                    health.playerHealthStats[j]++;
+                    entireHP++;
+                }
+            }
+        }
+    }
+
+    public void ReEvaluateHealth()
+    {
+        entireHP = 1;
+        for (int j = 0; j < 10; j++)
+        {
+            entireHP += health.playerHealthStats[j];
+        }
+        //entireHP -= 1;
+    }
+
     public void GetMana(int manaAmount)
     {
         ManaTrackedPerTurn -= manaAmount;
@@ -485,7 +511,7 @@ public class PlayerManager : MonoBehaviour
             {
                 ringHandler.EffectVeilOfFortitude(whatFinger);
             }
-            else if((Rings)whatRing == Rings.VengefulMirrorFail || (Rings)whatRing == Rings.VengefulMirrorFull)
+            else if ((Rings)whatRing == Rings.VengefulMirrorFail || (Rings)whatRing == Rings.VengefulMirrorFull)
             {
                 ringHandler.ApplyVengFulMirror(whatFinger);
             }
@@ -516,7 +542,7 @@ public class PlayerManager : MonoBehaviour
                 ringHandler.veilOfFortitudeLeftFail = false;
                 ringHandler.veilOfFortitudeRightFail = false;
             }
-            else if((Rings)whatRing == Rings.VengefulMirrorFail || (Rings)whatRing == Rings.VengefulMirrorFull)
+            else if ((Rings)whatRing == Rings.VengefulMirrorFail || (Rings)whatRing == Rings.VengefulMirrorFull)
             {
                 ringHandler.vengfulMirrorLeft = false;
                 ringHandler.vengfulMirrorRight = false;
