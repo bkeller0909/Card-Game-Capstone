@@ -114,6 +114,18 @@ public class DealStatsState : FSMState
         {
             if (GameManager.Instance.whatRound == 0)
             {
+                player.ResetHandAnimations();
+                player.PlayerHands.SetTrigger("IDLE");
+                player.health.HealFinger(PlayerFingers.RH_Index);
+                player.health.HealFinger(PlayerFingers.RH_Middle);
+                player.health.HealFinger(PlayerFingers.RH_Ring);
+                player.health.HealFinger(PlayerFingers.RH_Pinky);
+                player.health.HealFinger(PlayerFingers.LH_Index);
+                player.health.HealFinger(PlayerFingers.LH_Middle);
+                player.health.HealFinger(PlayerFingers.LH_Ring);
+                player.health.HealFinger(PlayerFingers.LH_Pinky);
+                playerState.tutorialEvent.dialogueEvent.EndDialogue();
+
                 if (firstDealingP1 && player == GameManager.Instance.player1)
                 {
                     card = CardsObjectPool.Instance.FireBoltRound1(player);

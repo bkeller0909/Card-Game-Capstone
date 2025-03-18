@@ -226,7 +226,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (manualCards)
+            {
+                manualCards = false;
+            }
+            else
+            {
+                manualCards = true;
+            }
+        }
     }
 
     public void StartLoadingLevel(string levelName)

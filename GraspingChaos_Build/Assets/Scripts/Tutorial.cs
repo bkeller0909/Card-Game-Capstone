@@ -1,7 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 //----------------------------------------------------------------
 //  Author:         Keller
@@ -19,7 +17,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] private DialogueEvent dialogueEvent;
+    [SerializeField] public DialogueEvent dialogueEvent;
 
     // bools for every step of the tutorial
     [HideInInspector] public bool isStep1 = true;

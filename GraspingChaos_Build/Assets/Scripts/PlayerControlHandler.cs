@@ -283,6 +283,14 @@ public class PlayerControlHandler : MonoBehaviour
         {
             GameManager.Instance.player2.entireHP = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            GameManager.Instance.manualCards = false;
+            StopAllCoroutines();
+        }
+
+
     }
 
 
