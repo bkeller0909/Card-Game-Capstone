@@ -264,8 +264,11 @@ public class CardHandSlot : MonoBehaviour
             playerState.currentSpellName = SpellNames.none;
             // Deselect the card if it's already selected.
             //selectedCards.Remove(card);
+            if (card.hasAFingerBonus)
+            {
+                card.fingerBonus.SetActive(false);
+            }
             card.DeselectCard();
-            card.fingerBonus.SetActive(false);
         }
     }
 

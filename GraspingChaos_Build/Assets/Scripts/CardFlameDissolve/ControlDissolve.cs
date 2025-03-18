@@ -140,7 +140,10 @@ public class ControlDissolve : MonoBehaviour
                 cardDissolveAmount = cardMaterial.GetFloat("_DissolveAmount");
                 dissolveCard = false;
                 gameObject.transform.position = GameManager.Instance.player1.cardSpawnTransform.transform.position;
-                gameObject.GetComponent<CardSelect>().fingerBonus.SetActive(false);
+                if (gameObject.GetComponent<CardSelect>().hasAFingerBonus)
+                {
+                    gameObject.GetComponent<CardSelect>().fingerBonus.SetActive(false);
+                }
                 gameObject.SetActive(false);
             }
 
