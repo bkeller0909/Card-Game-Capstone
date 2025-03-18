@@ -10242,6 +10242,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1259555017}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259555020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 874708549442593691, guid: 3a2caa9e30f3869469259dad73da221b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1259555017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1259555021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2883296934610514879, guid: 3a2caa9e30f3869469259dad73da221b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1259555017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1259942455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12193,7 +12217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueEvent
       value: 
-      objectReference: {fileID: 1609956186}
+      objectReference: {fileID: 0}
     - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: tutorialEvent
@@ -17393,68 +17417,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 862509096}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1609956185
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1609956187}
-  - component: {fileID: 1609956186}
-  m_Layer: 0
-  m_Name: DialogueEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1609956186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609956185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57cce4c0ca5e1c54097e54d89a3d5695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundObject: {fileID: 2180297512485002473, guid: 9fb65dba8afc93949a4567e8d4cce90f,
-    type: 3}
-  dialogueText:
-  - Here is your opponent, you must defeat him with the book's spells.
-  - See these fingers of yours? These represent your health.
-  - Each finger is separated into three bones, with your thumbs only containing two.
-  - Your duel is considered a loss when every bone in your fingers is gone.
-  - This is your mana, manage it well, for spells are cast with it.
-  - These are spells. There are three types. Attack, Restoration, and Ring.
-  - This icon represents the amount of mana needed for casting.
-  - For a spell to be cast, each requires you to complete a challenge. The difficulty
-    is represented by this icon.
-  - The outcome of the challenge determines the spell's strength.
-  - The more filled the icon, the stronger the spell.
-  - Try giving this spell a cast.
-  dialogueBoxP1: {fileID: 0}
-  dialogueBoxP2: {fileID: 0}
-  controlsBox: {fileID: 0}
---- !u!4 &1609956187
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609956185}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.254458, y: -12.799797, z: -30.175385}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1613345222
 GameObject:
   m_ObjectHideFlags: 0
@@ -19299,7 +19261,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueEvent
       value: 
-      objectReference: {fileID: 1609956186}
+      objectReference: {fileID: 0}
     - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: tutorialEvent
@@ -21595,6 +21557,8 @@ MonoBehaviour:
   isStep11: 0
   isStep1Complete: 0
   isStep2Complete: 0
+  isStep21Complete: 0
+  isStep22Complete: 0
   isStep3Complete: 0
   isStep4Complete: 0
   isStep5Complete: 0
@@ -21624,17 +21588,22 @@ MonoBehaviour:
   - See these fingers of yours? These represent your health.
   - Each finger is separated into three bones, with your thumbs only containing two.
   - Your duel is considered a loss when every bone in your fingers is gone.
-  - This is your mana, manage it well, for spells are cast with it.
-  - These are spells. There are three types. Attack, Restoration, and Ring.
+  - This is your mana, manage it well, your spells are cast with it.
+  - 'These are spells. There are three types.
+
+    Attack, Restoration, and Ring.'
   - This icon represents the amount of mana needed for casting.
   - For a spell to be cast, each requires you to complete a challenge. The difficulty
     is represented by this icon.
   - The outcome of the challenge determines the spell's strength.
   - The more filled the icon, the stronger the spell.
   - Try giving this spell a cast.
-  dialogueBoxP1: {fileID: 1819949403}
-  dialogueBoxP2: {fileID: 1259555019}
-  controlsBox: {fileID: 0}
+  dialoguePrefabP1: {fileID: 1819949403}
+  qteIconP1: {fileID: 1819949406}
+  manaIconP1: {fileID: 1819949405}
+  dialoguePrefabP2: {fileID: 1259555019}
+  qteIconP2: {fileID: 1259555021}
+  manaIconP2: {fileID: 1259555020}
 --- !u!114 &1729977130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22517,6 +22486,30 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1819949402}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819949405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 874708549442593691, guid: 3a2caa9e30f3869469259dad73da221b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1819949402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1819949406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2883296934610514879, guid: 3a2caa9e30f3869469259dad73da221b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1819949402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1820180109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24958,7 +24951,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1039682129}
   - {fileID: 1721875424}
-  - {fileID: 1609956187}
   - {fileID: 1111533824}
   - {fileID: 1524670662}
   - {fileID: 1281455437}

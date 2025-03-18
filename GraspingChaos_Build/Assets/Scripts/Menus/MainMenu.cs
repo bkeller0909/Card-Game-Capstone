@@ -54,6 +54,19 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.BackQuote) && (GameManager.Instance.ln_CurrentLevelName == GameManager.Instance.ln_MainMenuName))
+        {
+            if (GameManager.Instance.manualCards == false)
+            {
+                GameManager.Instance.manualCards = true;
+            }
+            else
+            {
+                GameManager.Instance.manualCards = false;
+            }
+            Debug.Log(GameManager.Instance.manualCards);
+        }
+
         if (setFirstButton)
         {
             bool buttonFound = false;

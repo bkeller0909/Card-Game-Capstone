@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 //----------------------------------------------------------------
 //  Author:         Keller
@@ -23,18 +24,17 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField, TextArea] private string[] dialogueText;       // dialogue text that will be displayed
 
     [Header("UI GameObjects")]
-    public GameObject dialogueBoxP1;                                // the text box that will display the dialogue text for player 1
-    public GameObject dialogueBoxP2;                                // the text box that will display the dialogue text for player 2
-    public GameObject controlsBox;                                  // for the input controls icons
+    public GameObject dialoguePrefabP1;                                // the text box that will display the dialogue text for player 1
+    public Image qteIconP1;
+    public Image manaIconP1;
+    public GameObject dialoguePrefabP2;                                // the text box that will display the dialogue text for player 2
+    public Image qteIconP2;
+    public Image manaIconP2;
 
-    private int numOfMessages;                                      // how much dialogue messages are there to read
-    private int currentMessage;                                     // the index of the current message
     private bool isTalking;                                         // is dialogue current happening
 
     private void Awake()
     {
-        numOfMessages = dialogueText.Length;
-        currentMessage = 0;
         isTalking = false;
     }
 
@@ -69,11 +69,11 @@ public class DialogueEvent : MonoBehaviour
     {
         isTalking = true;
 
-        dialogueBoxP1.SetActive(isTalking);
-        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
+        dialoguePrefabP1.SetActive(isTalking);
+        dialoguePrefabP1.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
 
-        dialogueBoxP2.SetActive(isTalking);
-        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
+        dialoguePrefabP2.SetActive(isTalking);
+        dialoguePrefabP2.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
     }
 
     /// <summary>
@@ -81,8 +81,8 @@ public class DialogueEvent : MonoBehaviour
     /// </summary>
     public void NextDialogue(int dialogueIndex)
     {
-        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
-        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
+        dialoguePrefabP1.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
+        dialoguePrefabP2.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
     }
 
     /// <summary>
@@ -92,10 +92,10 @@ public class DialogueEvent : MonoBehaviour
     {
         isTalking = false;
 
-        dialogueBoxP1.SetActive(isTalking);
-        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = "";
+        dialoguePrefabP1.SetActive(isTalking);
+        dialoguePrefabP1.GetComponentInChildren<TMP_Text>().text = "";
 
-        dialogueBoxP2.SetActive(isTalking);
-        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = "";
+        dialoguePrefabP2.SetActive(isTalking);
+        dialoguePrefabP2.GetComponentInChildren<TMP_Text>().text = "";
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 //----------------------------------------------------------------
 //  Author:         Keller
@@ -150,15 +152,15 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
-        MusicManager.Instance.GetComponent<AudioSource>().volume = 0.25f;
+        SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", -20f);
 
+        //dialogueEvent.PlayDialogueAudio();
         isStep1 = true;
         if (isStep1)
         {
             player.playerInput.currentActionMap.Disable();
             player.playerCameras.GetInputForced(0);
             dialogueEvent.StartDialogue(0);
-            //dialogueEvent.PlayDialogueAudio();
 
             yield return new WaitForSeconds(7f);
             isStep1Complete = true;
@@ -183,21 +185,6 @@ public class Tutorial : MonoBehaviour
         {
             player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
         }
-
-        //yield return new WaitForSeconds(5f);
-        //dialogueEvent.EndDialogue();
-        //dialogueEvent.StartDialogue(2);
-        //yield return new WaitForSeconds(5f);
-        //player.health.DamageFinger(PlayerFingers.RH_Index);
-        //yield return new WaitForSeconds(5f);
-        //player.health.DamageFinger(PlayerFingers.LH_Index);
-        //yield return new WaitForSeconds(5f);
-        //dialogueEvent.NextDialogue(3);
-        //yield return new WaitForSeconds(5f);
-
-        //player.health.HealFinger(PlayerFingers.RH_Index);
-        //player.health.HealFinger(PlayerFingers.LH_Index);
-        //yield return new WaitForSeconds(2f);
         yield return new WaitForSeconds(7f);
         isStep2Complete = true;
 
@@ -214,22 +201,26 @@ public class Tutorial : MonoBehaviour
     // step 2.2
     private IEnumerator DoTutorialStep22(PlayerManager player)
     {
-        //dialogueEvent.NextDialogue(1);
-        //ResetAnims(player);
-        //player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
-        //player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
-
-        //yield return new WaitForSeconds(5f);
-        //dialogueEvent.NextDialogue(2);
         dialogueEvent.NextDialogue(3);
+        yield return new WaitForSeconds(7f);
         player.health.DamageFinger(PlayerFingers.RH_Index);
-        yield return new WaitForSeconds(7f);
+        player.health.DamageFinger(PlayerFingers.RH_Middle);
+        player.health.DamageFinger(PlayerFingers.RH_Ring);
+        player.health.DamageFinger(PlayerFingers.RH_Pinky);
         player.health.DamageFinger(PlayerFingers.LH_Index);
-        yield return new WaitForSeconds(7f);
+        player.health.DamageFinger(PlayerFingers.LH_Middle);
+        player.health.DamageFinger(PlayerFingers.LH_Ring);
+        player.health.DamageFinger(PlayerFingers.LH_Pinky);
         yield return new WaitForSeconds(7f);
 
         player.health.HealFinger(PlayerFingers.RH_Index);
+        player.health.HealFinger(PlayerFingers.RH_Middle);
+        player.health.HealFinger(PlayerFingers.RH_Ring);
+        player.health.HealFinger(PlayerFingers.RH_Pinky);
         player.health.HealFinger(PlayerFingers.LH_Index);
+        player.health.HealFinger(PlayerFingers.LH_Middle);
+        player.health.HealFinger(PlayerFingers.LH_Ring);
+        player.health.HealFinger(PlayerFingers.LH_Pinky);
         yield return new WaitForSeconds(2f);
         isStep22Complete = true;
     }
@@ -241,7 +232,6 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep3(PlayerManager player)
     {
-        dialogueEvent.EndDialogue();
         ResetAnims(player);
         if (player == GameManager.Instance.player1)
         {
@@ -251,7 +241,8 @@ public class Tutorial : MonoBehaviour
         {
             player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
         }
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
+        dialogueEvent.EndDialogue();
         isStep3Complete = true;
     }
 
@@ -262,15 +253,16 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep4(PlayerManager player)
     {
+        player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
+        yield return new WaitForSeconds(3f);
         dialogueEvent.StartDialogue(4);
         isStep4 = true;
         if (isStep4)
         {
-            player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(7f);
             dialogueEvent.EndDialogue();
             player.playerCameras.GetInputForced(0);
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(3f);
             isStep4Complete = true;
             isStep4 = false;
         }
@@ -286,6 +278,7 @@ public class Tutorial : MonoBehaviour
         isStep5 = true;
         if (isStep5)
         {
+            yield return new WaitForSeconds(2f);
             player.playerCameras.GetInputForced(1);
             dialogueEvent.StartDialogue(5);
             yield return new WaitForSeconds(7f);
@@ -296,6 +289,8 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator DoTutorialStep6(PlayerManager player)
     {
+        dialogueEvent.manaIconP1.enabled = true;
+        dialogueEvent.manaIconP2.enabled = true;
         isStep6 = true;
         if (isStep6)
         {
@@ -308,6 +303,11 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator DoTutorialStep7(PlayerManager player)
     {
+        dialogueEvent.manaIconP1.enabled = false;
+        dialogueEvent.manaIconP2.enabled = false;
+
+        dialogueEvent.qteIconP1.enabled = true;
+        dialogueEvent.qteIconP2.enabled = true;
         isStep7 = true;
         if (isStep7)
         {
@@ -332,6 +332,9 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator DoTutorialStep9(PlayerManager player)
     {
+        dialogueEvent.qteIconP1.enabled = false;
+        dialogueEvent.qteIconP2.enabled = false;
+
         isStep9 = true;
         if (isStep9)
         {
