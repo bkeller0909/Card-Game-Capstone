@@ -28,7 +28,7 @@ public class CameraPositionChange : MonoBehaviour
     public Transform QTECamPos;
     public Transform bottleCamPos;
 
-    private int cameraIndex = 0;
+    public int cameraIndex = 0;
     private float elapsedTime;
 
     private bool canInput = true;

@@ -45,6 +45,8 @@ public class CardHandSlot : MonoBehaviour
 
     public List<CardSelect> RemovingCards = new List<CardSelect>();
 
+    public Transform cardInspectPos;
+
     private void Start()
     {
         player = gameObject.GetComponentInParent<PlayerManager>();
@@ -120,6 +122,45 @@ public class CardHandSlot : MonoBehaviour
                 }
             }
             selectedCards.Clear();
+        }
+    }
+
+    public void InspectCard()
+    {
+        bool inspecting = false;
+
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if ((player.playerInput.actions["CameraUp"].WasPressedThisFrame() || player.playerInput.actions["CameraViewButton"].WasPressedThisFrame()) 
+                && cards[i].isHovered == true && !inspecting && camPosScript.cameraIndex == 1)
+            {
+                inspecting = true;
+
+                cards[i].gameObject.GetComponent<CardTravelHandler>().CardTravel(0.05f, 0.7f, 0.7f, cards[i].gameObject.transform, cardInspectPos);
+                player.playerInput.actions["NavCardRight"].Disable();
+                player.playerInput.actions["NavCardLeft"].Disable();   
+                player.playerInput.actions["Select"].Disable();
+                player.playerInput.actions["Deselect"].Disable();
+                player.playerInput.actions["ManaView"].Disable();
+                player.playerInput.actions["CameraUp"].Disable();
+                player.playerInput.actions["CameraDown"].Disable();
+                player.playerInput.actions["SetFinal"].Disable();
+            }
+            else if ((player.playerInput.actions["CameraUp"].WasPressedThisFrame() || player.playerInput.actions["CameraViewButton"].WasPressedThisFrame())
+                && cards[i].isHovered == true && inspecting && camPosScript.cameraIndex == 1)
+            {
+                inspecting = false;
+
+                cards[i].gameObject.GetComponent<CardTravelHandler>().CardTravel(0.05f, 0.7f, 0.7f, cards[i].gameObject.transform, cardSlots[i].transform);
+                player.playerInput.actions["NavCardRight"].Enable();
+                player.playerInput.actions["NavCardLeft"].Enable();
+                player.playerInput.actions["Select"].Enable();
+                player.playerInput.actions["Deselect"].Enable();
+                player.playerInput.actions["ManaView"].Enable();
+                player.playerInput.actions["CameraUp"].Enable();
+                player.playerInput.actions["CameraDown"].Enable();
+                player.playerInput.actions["SetFinal"].Enable();
+            }
         }
     }
 
