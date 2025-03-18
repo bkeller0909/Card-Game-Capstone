@@ -265,6 +265,7 @@ public class CardHandSlot : MonoBehaviour
             // Deselect the card if it's already selected.
             //selectedCards.Remove(card);
             card.DeselectCard();
+            card.fingerBonus.SetActive(false);
         }
     }
 
