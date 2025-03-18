@@ -57,6 +57,7 @@ public class DealStatsState : FSMState
 
     public override void EnterStateInit()
     {
+        playerState.spellBook.startFlipping(true);
         cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();  // init the cards into lists by mana cost
         cardDealing.InitializeCardTypes();  // init the cards into lists by type
@@ -76,6 +77,7 @@ public class DealStatsState : FSMState
             stateChange = false;
             player.cardsAmountSelected = 0;
             player.GetComponent<PlayerControlHandler>().EmergencyCameraPush = true;
+            //playerState.spellBook.startFlipping(false);
             playerState.PerformTransition(Transition.StatsGained);
         }
     }

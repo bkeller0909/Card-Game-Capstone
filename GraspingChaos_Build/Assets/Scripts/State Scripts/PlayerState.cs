@@ -29,6 +29,8 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public Canvas howToPlay;
 
+    [SerializeField] public ControlSpellBook spellBook;
+
     private string GetStateString()
     {
         string state = "NONE";

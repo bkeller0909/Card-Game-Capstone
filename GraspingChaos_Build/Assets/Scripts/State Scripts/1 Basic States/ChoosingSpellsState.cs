@@ -135,6 +135,7 @@ public class ChoosingSpellsState : FSMState
         if (GameManager.Instance.nextStateP1 && GameManager.Instance.nextStateP2)
         {
             playerState.howToPlay.gameObject.SetActive(false);
+            playerState.spellBook.startFlipping(false);
 
             //If spells haven't been added yet go into this
             if (!hasAddedSpells)

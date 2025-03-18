@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlSpellBook : MonoBehaviour
@@ -26,8 +25,7 @@ public class ControlSpellBook : MonoBehaviour
 
     public Animator[] animators;
 
-    [HideInInspector]
-    public float delayTime = 1.0f;
+    public float delayTime = 30.0f;
 
     [HideInInspector]
     public bool isFlipping = false;
@@ -49,10 +47,45 @@ public class ControlSpellBook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
 
-            //Play all pages
+        //    //Play all pages
+        //    for (int i = 0; i < pagesToFlip.Length; i++)
+        //    {
+        //        animators[i].SetBool("StartFlipping", true);
+
+
+        //    }
+        //    isFlipping = true;
+
+
+        //    StartCoroutine(DelayPageFlips());
+
+        //};
+
+
+
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+
+        //    for (int i = 0; i < pagesToFlip.Length; i++)
+        //    {
+        //        animators[i].SetBool("StartFlipping", false);
+
+
+        //    }
+        //    isFlipping = false;
+
+        //    beginFadeOut = true;
+        //}
+
+    }
+
+    public void startFlipping(bool isFlipping)
+    {
+        if (isFlipping)
+        {
             for (int i = 0; i < pagesToFlip.Length; i++)
             {
                 animators[i].SetBool("StartFlipping", true);
@@ -63,14 +96,9 @@ public class ControlSpellBook : MonoBehaviour
 
 
             StartCoroutine(DelayPageFlips());
-
-        };
-
-
-
-        if (Input.GetKeyDown(KeyCode.S))
+        }
+        else
         {
-
             for (int i = 0; i < pagesToFlip.Length; i++)
             {
                 animators[i].SetBool("StartFlipping", false);
@@ -81,7 +109,6 @@ public class ControlSpellBook : MonoBehaviour
 
             beginFadeOut = true;
         }
-
     }
 
     void SetUpAnimators()
