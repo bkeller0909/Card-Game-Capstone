@@ -120,6 +120,7 @@ public class CardsObjectPool : MonoBehaviour
                     if (pooledCards.GetComponent<CardSelect>().hasAFingerBonus)
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 7;
+                        pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 7;
                     }
                 }
                 else if (player == GameManager.Instance.player2)
@@ -130,6 +131,7 @@ public class CardsObjectPool : MonoBehaviour
                     if (pooledCards.GetComponent<CardSelect>().hasAFingerBonus)
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 6;
+                        pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 6;
                     }
                 }
                 pooledCards.SetActive(true);
@@ -194,6 +196,7 @@ public class CardsObjectPool : MonoBehaviour
                     if (pooledCards.GetComponent<CardSelect>().hasAFingerBonus)
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 7;
+                        pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 7;
                     }
                 }
                 else if (player == GameManager.Instance.player2)
@@ -204,6 +207,7 @@ public class CardsObjectPool : MonoBehaviour
                     if (pooledCards.GetComponent<CardSelect>().hasAFingerBonus)
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 6;
+                        pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 6;
                     }
                 }
                 pooledCards.SetActive(true);
@@ -252,8 +256,9 @@ public class CardsObjectPool : MonoBehaviour
                     if (pooledCards.GetComponent<CardSelect>().hasAFingerBonus)
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 7;
+                        pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 7;
                     }
-                    
+
                 }
                 else if (player == GameManager.Instance.player2)
                 {
@@ -263,6 +268,7 @@ public class CardsObjectPool : MonoBehaviour
                     if (pooledCards.GetComponent<CardSelect>().hasAFingerBonus)
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 6;
+                        pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 6;
                     }
                 }
                 pooledCards.SetActive(true);
