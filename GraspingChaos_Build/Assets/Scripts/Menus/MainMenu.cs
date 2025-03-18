@@ -64,7 +64,7 @@ public class MainMenu : MonoBehaviour
             {
                 GameManager.Instance.manualCards = false;
             }
-            Debug.Log(GameManager.Instance.manualCards);
+            Debug.Log("Tutorial Section: " + GameManager.Instance.manualCards);
         }
 
         if (setFirstButton)
