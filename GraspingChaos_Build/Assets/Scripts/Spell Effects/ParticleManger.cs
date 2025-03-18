@@ -149,7 +149,7 @@ public class ParticleManger : MonoBehaviour
                 else
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
-                    Extra.position = player1FingerPositions[Random.Range(5, 9)].position;
+                    Extra.position = player2FingerPositions[Random.Range(5, 9)].position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
@@ -167,7 +167,7 @@ public class ParticleManger : MonoBehaviour
                 else
                 {
                     PlayerPosition.position = P2ForcedPosition.position;
-                    Extra.position = player1FingerPositions[Random.Range(0, 4)].position;
+                    Extra.position = player2FingerPositions[Random.Range(0, 4)].position;
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
@@ -402,13 +402,15 @@ public class ParticleManger : MonoBehaviour
                 FullEffects[15].gameObject.SetActive(true);
                 if (playerCasting == GameManager.Instance.player1)
                 {
-                    PlayerPosition.position = P1ForcedPosition.position;
-                    Extra.position = player1FingerPositions[(int)targetFinger].position;
+                    halfWay1.position = halfway1Cache.position;
+                    halfWay2.position = halfway2Cache.position;
+                    PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 else
                 {
-                    PlayerPosition.position = P2ForcedPosition.position;
-                    Extra.position = player2FingerPositions[(int)targetFinger].position;
+                    halfWay1.position = halfway2Cache.position;
+                    halfWay2.position = halfway1Cache.position;
+                    PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[15].Play();
                 StartCoroutine(DisableSpell(5.5f, 15, playerCasting));
