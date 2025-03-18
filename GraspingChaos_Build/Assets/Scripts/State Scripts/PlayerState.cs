@@ -27,6 +27,8 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public CardHandSlot playerHand;
 
+    [SerializeField] public Canvas howToPlay;
+
     private string GetStateString()
     {
         string state = "NONE";

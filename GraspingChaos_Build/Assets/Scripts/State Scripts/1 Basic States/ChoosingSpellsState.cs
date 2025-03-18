@@ -63,6 +63,8 @@ public class ChoosingSpellsState : FSMState
     {
         resetAnims();
 
+        playerState.howToPlay.gameObject.SetActive(true);
+
         //If player one has entered this state then increase the amount of mana gained per a turn and what round it is
         if (playerState.player == GameManager.Instance.player1)
         {
@@ -132,6 +134,8 @@ public class ChoosingSpellsState : FSMState
         //Once both players are ready to move to the next state this if is entered
         if (GameManager.Instance.nextStateP1 && GameManager.Instance.nextStateP2)
         {
+            playerState.howToPlay.gameObject.SetActive(false);
+
             //If spells haven't been added yet go into this
             if (!hasAddedSpells)
             {
@@ -394,7 +398,7 @@ public class ChoosingSpellsState : FSMState
             }
             playerState.fingerSelected = false;
             resetAnims();
-            if(enemy.READYTOGO)
+            if (enemy.READYTOGO)
             {
                 //enemyHands.SetTrigger("HandsGrasp");
                 //enemy.FlameHandLeft.Play();
