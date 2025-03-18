@@ -152,6 +152,19 @@ public class RightningBoltState : FSMState
                     {
                         //do nothing
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
@@ -196,6 +209,19 @@ public class RightningBoltState : FSMState
                     {
                         //do nothing
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
@@ -252,6 +278,20 @@ public class RightningBoltState : FSMState
                     {
                         //do nothing
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                 }
             }
 
@@ -296,6 +336,20 @@ public class RightningBoltState : FSMState
                     {
                         //do nothing
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
@@ -341,9 +395,23 @@ public class RightningBoltState : FSMState
                         //do nothing
                     }
 
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
+
                     PlayerFingers fingerToTheLeft;
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
@@ -396,6 +464,19 @@ public class RightningBoltState : FSMState
                     {
                         //do nothing
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                 }
             }
         }

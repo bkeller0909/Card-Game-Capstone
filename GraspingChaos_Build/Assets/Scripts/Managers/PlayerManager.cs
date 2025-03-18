@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -96,6 +97,9 @@ public class PlayerManager : MonoBehaviour
     public Transform cardSpawnTransform;
 
     public bool READYTOGO;
+
+    public Animator PlayerHands;
+    public Animator PlayerFakeHands;
 
     private void Awake()
     {
@@ -321,7 +325,7 @@ public class PlayerManager : MonoBehaviour
             for (int i = 0; i < healthyFingers.Count; i++)
             {
                 //only if you found the finger eception or if the amount of fingers possible to hit is higher than 1 (otherwise it might break)
-                if (healthyFingers[i].finger == exception && healthyFingers.Count > 1)
+                if (healthyFingers[i].finger == exception2 && healthyFingers.Count > 1)
                 {
                     healthyFingers.RemoveAt(i);
                     break;
@@ -557,5 +561,30 @@ public class PlayerManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ResetHandAnimations()
+    {
+        PlayerHands.ResetTrigger("IDLE");
+        PlayerFakeHands.ResetTrigger("IDLE");
+        PlayerHands.ResetTrigger("BothHandsDamaged");
+        PlayerFakeHands.ResetTrigger("BothHandsDamaged");
+        PlayerHands.ResetTrigger("LeftHandDamaged");
+        PlayerFakeHands.ResetTrigger("LeftHandDamaged");
+        PlayerHands.ResetTrigger("RightHandDamaged");
+        PlayerFakeHands.ResetTrigger("RightHandDamaged");
+    }
+
+    public void BackToIDLE()
+    {
+        StartCoroutine(ResetAfterHit());
+    }
+
+    public IEnumerator ResetAfterHit()
+    {
+        yield return new WaitForSeconds(1);
+        ResetHandAnimations();
+        PlayerHands.SetTrigger("IDLE");
+        PlayerFakeHands.SetTrigger("IDLE");
     }
 }

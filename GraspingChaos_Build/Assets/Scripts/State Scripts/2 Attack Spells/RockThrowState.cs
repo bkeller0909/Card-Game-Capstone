@@ -75,21 +75,11 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
-                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
-                    player.health.DamageFinger(randomFinger);
-
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
-                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
-                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
-                    player.health.DamageFinger(randomFinger);
-
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
-                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -107,21 +97,11 @@ public class RockThrowState : FSMState
                 {
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
-                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
-                    player.health.DamageFinger(randomFinger);
-
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
-                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
-                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
-                    player.health.DamageFinger(randomFinger);
-
-                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
-                    player.cameraHandler.CameraShake(0.05f, 0.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -151,6 +131,41 @@ public class RockThrowState : FSMState
 
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
+
+                }
+                else
+                {
+                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
+                    player.health.DamageFinger(randomFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.05f, 0.5f);
+
+                    player.ResetHandAnimations();
+                    if ((int)randomFinger >= 0 && (int)randomFinger <= 4)
+                    {
+                        player.PlayerHands.SetTrigger("LeftHandDamaged");
+                        player.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        player.PlayerHands.SetTrigger("RightHandDamaged");
+                        player.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    player.BackToIDLE();
+
                 }
             }
 
@@ -174,6 +189,41 @@ public class RockThrowState : FSMState
 
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
+
+                }
+                else
+                {
+                    PlayerFingers randomFinger = player.GetRandomFinger(PlayerFingers.none);
+                    player.health.DamageFinger(randomFinger);
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, player.gamepad);
+                    player.cameraHandler.CameraShake(0.05f, 0.5f);
+
+                    player.ResetHandAnimations();
+                    if ((int)randomFinger >= 0 && (int)randomFinger <= 4)
+                    {
+                        player.PlayerHands.SetTrigger("LeftHandDamaged");
+                        player.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        player.PlayerHands.SetTrigger("RightHandDamaged");
+                        player.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    player.BackToIDLE();
+
                 }
             }
         }

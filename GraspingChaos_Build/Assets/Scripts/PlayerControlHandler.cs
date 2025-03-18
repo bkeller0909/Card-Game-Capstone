@@ -299,8 +299,6 @@ public class PlayerControlHandler : MonoBehaviour
         playerFakeHands.ResetTrigger("IDLE");
         playerFakeHands.ResetTrigger("HandsGrasp");
         playerFakeHands.ResetTrigger("HandsGrasp");
-        playerHands.ResetTrigger("HandsGraspLoop");
-        playerFakeHands.ResetTrigger("HandsGraspLoop");
         playerHands.ResetTrigger("QTE1");
         playerFakeHands.ResetTrigger("QTE1");
     }

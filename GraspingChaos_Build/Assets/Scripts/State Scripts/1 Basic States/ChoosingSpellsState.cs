@@ -428,13 +428,11 @@ public class ChoosingSpellsState : FSMState
         playerHands.ResetTrigger("HandsUp");
         playerHands.ResetTrigger("HandsDown");
         playerHands.ResetTrigger("HandsGrasp");
-        playerHands.ResetTrigger("HandsGraspLoop");
 
         enemyHands.ResetTrigger("IDLE");
         enemyHands.ResetTrigger("HandsUp");
         enemyHands.ResetTrigger("HandsDown");
         enemyHands.ResetTrigger("HandsGrasp");
-        enemyHands.ResetTrigger("HandsGraspLoop");
     }
 
     private void MoveCardsOutOfPlay(PlayerManager player)

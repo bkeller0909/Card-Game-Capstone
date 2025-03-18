@@ -147,6 +147,18 @@ public class RingsHandler : MonoBehaviour
             {
                 targetFinger = targetPlayer.GetRandomFinger(PlayerFingers.none);
                 targetPlayer.health.DamageFinger(targetFinger);
+                targetPlayer.ResetHandAnimations();
+                if ((int)targetFinger >= 0 && (int)targetFinger <= 4)
+                {
+                    targetPlayer.PlayerHands.SetTrigger("LeftHandDamaged");
+                    targetPlayer.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                }
+                else
+                {
+                    targetPlayer.PlayerHands.SetTrigger("RightHandDamaged");
+                    targetPlayer.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                }
+                targetPlayer.BackToIDLE();
             }
         }
         vengfulFirst = false;

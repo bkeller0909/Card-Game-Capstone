@@ -158,21 +158,42 @@ public class QuakeState : FSMState
 
                     }
 
-                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    PlayerFingers randomFinger2 = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
+                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
                         //no damage becuase of veil
                     }
                     else
                     {
-                        enemy.health.DamageFinger(randomFinger);
-                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        enemy.health.DamageFinger(randomFinger2);
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, 1);
                         }
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4 && (int)randomFinger >= 0 && (int)randomFinger <= 4
+                        && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9 && (int)randomFinger >= 5 && (int)randomFinger <= 9
+                        && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
@@ -201,21 +222,43 @@ public class QuakeState : FSMState
 
                     }
 
-                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    PlayerFingers randomFinger2 = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
+                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
                         //no damage becuase of veil
                     }
                     else
                     {
-                        enemy.health.DamageFinger(randomFinger);
-                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        enemy.health.DamageFinger(randomFinger2);
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, 1);
                         }
                     }
+
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4 && (int)randomFinger >= 0 && (int)randomFinger <= 4
+                        && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9 && (int)randomFinger >= 5 && (int)randomFinger <= 9
+                        && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -253,6 +296,19 @@ public class QuakeState : FSMState
                             player.ringHandler.EffectVengFulMirror(player, 3);
                         }
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                 }
             }
@@ -293,21 +349,43 @@ public class QuakeState : FSMState
 
                     }
 
-                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    PlayerFingers randomFinger2 = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
+                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
                         //no damage becuase of veil
                     }
                     else
                     {
-                        enemy.health.DamageFinger(randomFinger);
-                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        enemy.health.DamageFinger(randomFinger2);
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, 1);
                         }
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4 && (int)randomFinger >= 0 && (int)randomFinger <= 4
+                        && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9 && (int)randomFinger >= 5 && (int)randomFinger <= 9
+                        && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
+
+
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
@@ -336,21 +414,43 @@ public class QuakeState : FSMState
 
                     }
 
-                    randomFinger = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
-                    if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
-                                ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
+                    PlayerFingers randomFinger2 = enemy.GetRandomFingersForQuake(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, randomFinger);
+                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
+                                ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.veilOfFortitudeRightFail == true)
                     {
                         //no damage becuase of veil
                     }
                     else
                     {
-                        enemy.health.DamageFinger(randomFinger);
-                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        enemy.health.DamageFinger(randomFinger2);
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, 1);
                         }
                     }
+
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4 && (int)randomFinger >= 0 && (int)randomFinger <= 4
+                        && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9 && (int)randomFinger >= 5 && (int)randomFinger <= 9
+                        && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -388,6 +488,19 @@ public class QuakeState : FSMState
                             player.ringHandler.EffectVengFulMirror(player, 3);
                         }
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                 }
             }

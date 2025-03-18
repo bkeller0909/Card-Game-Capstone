@@ -121,6 +121,18 @@ public class CollectorsCurseState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -130,6 +142,18 @@ public class CollectorsCurseState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -193,6 +217,18 @@ public class CollectorsCurseState : FSMState
                         }
                     }
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -213,6 +249,18 @@ public class CollectorsCurseState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -222,6 +270,18 @@ public class CollectorsCurseState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -285,6 +345,18 @@ public class CollectorsCurseState : FSMState
                         }
                     }
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {

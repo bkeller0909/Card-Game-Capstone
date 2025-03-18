@@ -130,6 +130,18 @@ public class FireBoltState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -137,8 +149,8 @@ public class FireBoltState : FSMState
                     }
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+                    //enemy.BackToIDLE();
                 }
-                //
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
@@ -153,6 +165,18 @@ public class FireBoltState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                    enemy.ResetHandAnimations();
+                    if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    enemy.BackToIDLE();
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
@@ -160,6 +184,7 @@ public class FireBoltState : FSMState
                     }
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
+                    //enemy.BackToIDLE();
                 }
             }
         }

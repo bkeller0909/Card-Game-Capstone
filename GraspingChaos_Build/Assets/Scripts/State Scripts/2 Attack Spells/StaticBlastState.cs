@@ -848,6 +848,18 @@ public class StaticBlastState : FSMState
                         }
                     }
                 }
+                enemy.ResetHandAnimations();
+                if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                {
+                    enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                    enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                }
+                else
+                {
+                    enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                    enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                }
+                enemy.BackToIDLE();
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
@@ -1380,6 +1392,18 @@ public class StaticBlastState : FSMState
                         }
                     }
                 }
+                enemy.ResetHandAnimations();
+                if ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4)
+                {
+                    enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                    enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                }
+                else
+                {
+                    enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                    enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                }
+                enemy.BackToIDLE();
             }
 
         }

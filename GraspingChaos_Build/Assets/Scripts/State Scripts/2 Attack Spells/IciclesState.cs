@@ -143,6 +143,24 @@ public class IciclesState : FSMState
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
 
+                    enemy.ResetHandAnimations();
+                    if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
                 }
@@ -162,6 +180,24 @@ public class IciclesState : FSMState
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
@@ -206,6 +242,24 @@ public class IciclesState : FSMState
                             enemy.health.DamageFinger(randomFinger2);
                         }
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                     if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
@@ -242,6 +296,24 @@ public class IciclesState : FSMState
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
 
+                    enemy.ResetHandAnimations();
+                    if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
+
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
                 }
@@ -261,6 +333,24 @@ public class IciclesState : FSMState
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
@@ -305,6 +395,24 @@ public class IciclesState : FSMState
                             enemy.health.DamageFinger(randomFinger2);
                         }
                     }
+
+                    enemy.ResetHandAnimations();
+                    if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                    {
+                        enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                    }
+                    else if ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                    {
+                        enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                    }
+                    else
+                    {
+                        enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                        enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                    }
+                    enemy.BackToIDLE();
 
                     if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
