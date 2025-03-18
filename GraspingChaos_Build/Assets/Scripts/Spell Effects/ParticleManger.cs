@@ -153,7 +153,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
-                StartCoroutine(DisableSpell(2.5f, 2, playerCasting));
+                StartCoroutine(DisableSpell(6f, 2, playerCasting));
                 break;
 
             case SpellNames.LefteousEnvy:
@@ -171,7 +171,7 @@ public class ParticleManger : MonoBehaviour
                     EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                 }
                 FullEffects[2].Play();
-                StartCoroutine(DisableSpell(2.5f, 2, playerCasting));
+                StartCoroutine(DisableSpell(6f, 2, playerCasting));
                 break;
 
             case SpellNames.Icicles:

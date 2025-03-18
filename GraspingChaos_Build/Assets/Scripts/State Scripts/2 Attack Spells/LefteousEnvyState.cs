@@ -182,23 +182,23 @@ public class LefteousEnvyState : FSMState
                             enemy.health.DamageFinger(randomFinger2);
                         }
 
-                        //enemy.ResetHandAnimations();
-                        //if ((int)randomFinger >= 0 && (int)randomFinger <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
-                        //{
-                        //    enemy.PlayerHands.SetTrigger("LeftHandDamaged");
-                        //    enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
-                        //}
-                        //else if ((int)randomFinger >= 5 && (int)randomFinger <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
-                        //{
-                        //    enemy.PlayerHands.SetTrigger("RightHandDamaged");
-                        //    enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
-                        //}
-                        //else
-                        //{
-                        //    enemy.PlayerHands.SetTrigger("BothHandsDamaged");
-                        //    enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
-                        //}
-                        //enemy.BackToIDLE();
+                        enemy.ResetHandAnimations();
+                        if ((int)randomFinger >= 0 && (int)randomFinger <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                        {
+                            enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                            enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                        }
+                        else if ((int)randomFinger >= 5 && (int)randomFinger <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                        {
+                            enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                            enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                        }
+                        else
+                        {
+                            enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                            enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                        }
+                        enemy.BackToIDLE();
 
                         if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
@@ -291,23 +291,23 @@ public class LefteousEnvyState : FSMState
                             enemy.health.DamageFinger(randomFinger2);
                         }
 
-                        //enemy.ResetHandAnimations();
-                        //if ((int)randomFinger >= 0 && (int)randomFinger <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
-                        //{
-                        //    enemy.PlayerHands.SetTrigger("LeftHandDamaged");
-                        //    enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
-                        //}
-                        //else if ((int)randomFinger >= 5 && (int)randomFinger <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
-                        //{
-                        //    enemy.PlayerHands.SetTrigger("RightHandDamaged");
-                        //    enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
-                        //}
-                        //else
-                        //{
-                        //    enemy.PlayerHands.SetTrigger("BothHandsDamaged");
-                        //    enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
-                        //}
-                        //enemy.BackToIDLE();
+                        enemy.ResetHandAnimations();
+                        if ((int)randomFinger >= 0 && (int)randomFinger <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
+                        {
+                            enemy.PlayerHands.SetTrigger("LeftHandDamaged");
+                            enemy.PlayerFakeHands.SetTrigger("LeftHandDamaged");
+                        }
+                        else if ((int)randomFinger >= 5 && (int)randomFinger <= 9 && (int)randomFinger2 >= 5 && (int)randomFinger2 <= 9)
+                        {
+                            enemy.PlayerHands.SetTrigger("RightHandDamaged");
+                            enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
+                        }
+                        else
+                        {
+                            enemy.PlayerHands.SetTrigger("BothHandsDamaged");
+                            enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
+                        }
+                        enemy.BackToIDLE();
 
                         if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
