@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 //----------------------------------------------------------------
 //  Author:       Keller
@@ -16,6 +17,8 @@ using UnityEngine;
 public class SoundFXManager : MonoBehaviour
 {
     public static SoundFXManager Instance;
+    public AudioMixer soundFXMixer;
+
     [SerializeField] private AudioSource soundObject;
 
     public AudioClip[] boneDamage;

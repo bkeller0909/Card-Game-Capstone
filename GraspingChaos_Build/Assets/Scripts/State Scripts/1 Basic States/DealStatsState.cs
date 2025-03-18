@@ -500,6 +500,8 @@ public class DealStatsState : FSMState
 
                         card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.CollectorsCurse);
                         enemy.spellHand.playerSpells.Add(card);
+
+                        SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", 1f);
                     }
 
                     // narrator says good luck when you ready up
