@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -70,29 +68,13 @@ public class DialogueEvent : MonoBehaviour
     public void StartDialogue(int dialogueIndex)
     {
         isTalking = true;
-        currentMessage = dialogueIndex;
 
         dialogueBoxP1.SetActive(isTalking);
-        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = dialogueText[currentMessage];
+        dialogueBoxP1.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
 
         dialogueBoxP2.SetActive(isTalking);
-        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[currentMessage];
+        dialogueBoxP2.GetComponentInChildren<TMP_Text>().text = dialogueText[dialogueIndex];
     }
-
-    //public void NextDialogueButton(PlayerManager player)
-    //{
-    //    if (player.playerInput.actions["Next"].WasPressedThisFrame())
-    //    {
-    //        if (numOfMessages > 1)
-    //        {
-    //            NextDialogue();
-    //        }
-    //        else
-    //        {
-    //            EndDialogue(player);
-    //        }
-    //    }
-    //}
 
     /// <summary>
     /// Increments the dialogue index and changes the text to the next message.

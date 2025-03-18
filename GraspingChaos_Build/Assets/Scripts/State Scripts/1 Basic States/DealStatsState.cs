@@ -5,8 +5,6 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
-using UnityEngine.Playables;
-
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -98,7 +96,7 @@ public class DealStatsState : FSMState
         else // the scripted game
         {
             // ScriptedGame(player);
-            ScriptedTutorial(player);
+            ScriptedTutorial(player, enemy);
         }
 
         //Once both players have been delt enough cards so they each have 5, the game moves on
@@ -350,13 +348,13 @@ public class DealStatsState : FSMState
         }
     }
 
-    public void ScriptedTutorial(PlayerManager player)
+    public void ScriptedTutorial(PlayerManager player, PlayerManager enemy)
     {
         if (GameManager.Instance.whatRound == 0)
         {
-            if(player.spellHand.amtOfSpellsInHand < 5)
+            if (player.spellHand.amtOfSpellsInHand < 5)
             {
-                if(player == GameManager.Instance.player1)
+                if (player == GameManager.Instance.player1)
                 {
                     // TODO - tutorial section
 
@@ -368,37 +366,61 @@ public class DealStatsState : FSMState
                     // players load in from book
                     // they have no cards
                     // dialogue will appear
-                    if(playerState.tutorialEvent.isStep1 == true)
+                    if (playerState.tutorialEvent.isStep1 == true)
                     {
                         playerState.tutorialEvent.TutorialStep1(player);
+                        playerState.tutorialEvent.TutorialStep1(enemy);
                     }
 
                     // STEP 2
                     // force hands into up position while dialogue explains health
-                    if(playerState.tutorialEvent.isStep1Complete == true)
+                    if (playerState.tutorialEvent.isStep1Complete == true)
                     {
                         playerState.tutorialEvent.TutorialStep2(player);
+                        playerState.tutorialEvent.TutorialStep2(enemy);
                         playerState.tutorialEvent.isStep1Complete = false;
                     }
-                    // move the player hands back down
                     if (playerState.tutorialEvent.isStep2Complete == true)
                     {
-                        playerState.tutorialEvent.TutorialStep3(player);
+                        playerState.tutorialEvent.TutorialStep21();
                         playerState.tutorialEvent.isStep2Complete = false;
                     }
 
+                    // move the hands up
+                    if (playerState.tutorialEvent.isStep21Complete == true)
+                    {
+                        if (player == GameManager.Instance.player1)
+                        {
+                            playerState.tutorialEvent.TutorialStep22(player);
+                        }
+                        if (enemy == GameManager.Instance.player2)
+                        {
+                            playerState.tutorialEvent.TutorialStep22(enemy);
+                        }
+                        playerState.tutorialEvent.isStep21Complete = false;
+                    }
+
+                    // move the player hands back down
+                    if (playerState.tutorialEvent.isStep22Complete == true)
+                    {
+                        playerState.tutorialEvent.TutorialStep3(player);
+                        playerState.tutorialEvent.TutorialStep3(enemy);
+                        playerState.tutorialEvent.isStep22Complete = false;
+                    }
+
                     // force player to mana bottle view
-                    if(playerState.tutorialEvent.isStep3Complete == true)
+                    if (playerState.tutorialEvent.isStep3Complete == true)
                     {
                         playerState.tutorialEvent.TutorialStep4(player);
+                        playerState.tutorialEvent.TutorialStep4(enemy);
                         playerState.tutorialEvent.isStep3Complete = false;
                     }
                     // they are instructed that they will be dealt 5 cards
-                
+
                     // performs the card dealing
-                    if(playerState.tutorialEvent.isStep4Complete == true)
+                    if (playerState.tutorialEvent.isStep4Complete == true)
                     {
-                        if(player.spellHand.amtOfSpellsInHand < 3)
+                        if (player.spellHand.amtOfSpellsInHand < 3)
                         {
                             card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
                             player.spellHand.playerSpells.Add(card);
@@ -409,13 +431,26 @@ public class DealStatsState : FSMState
                             card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.GuardiansTouch);
                             player.spellHand.playerSpells.Add(card);
                         }
+
+                        if (enemy.spellHand.amtOfSpellsInHand < 3)
+                        {
+                            card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.FireBolt);
+                            enemy.spellHand.playerSpells.Add(card);
+
+                            card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.QuickHeal);
+                            enemy.spellHand.playerSpells.Add(card);
+
+                            card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.GuardiansTouch);
+                            enemy.spellHand.playerSpells.Add(card);
+                        }
                     }
 
                     // force player to card camera view
                     // dialogue explains cards
-                    if(playerState.tutorialEvent.isStep4Complete == true)
+                    if (playerState.tutorialEvent.isStep4Complete == true)
                     {
                         playerState.tutorialEvent.TutorialStep5(player);
+                        playerState.tutorialEvent.TutorialStep5(enemy);
                         playerState.tutorialEvent.isStep4Complete = false;
                     }
 
@@ -446,6 +481,7 @@ public class DealStatsState : FSMState
                     if (playerState.tutorialEvent.isStep9Complete == true)
                     {
                         playerState.tutorialEvent.TutorialStep10(player);
+                        playerState.tutorialEvent.TutorialStep10(enemy);
                         playerState.tutorialEvent.isStep9Complete = false;
                     }
 
@@ -458,6 +494,12 @@ public class DealStatsState : FSMState
 
                         card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
                         player.spellHand.playerSpells.Add(card);
+
+                        card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.Icicles);
+                        enemy.spellHand.playerSpells.Add(card);
+
+                        card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.CollectorsCurse);
+                        enemy.spellHand.playerSpells.Add(card);
                     }
 
                     // narrator says good luck when you ready up

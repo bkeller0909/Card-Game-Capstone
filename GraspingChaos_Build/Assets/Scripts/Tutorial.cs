@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -35,6 +34,8 @@ public class Tutorial : MonoBehaviour
 
     [HideInInspector] public bool isStep1Complete = false;
     [HideInInspector] public bool isStep2Complete = false;
+    [HideInInspector] public bool isStep21Complete = false; // step 2.1
+    [HideInInspector] public bool isStep22Complete = false; // step 2.2
     [HideInInspector] public bool isStep3Complete = false;
     [HideInInspector] public bool isStep4Complete = false;
     [HideInInspector] public bool isStep5Complete = false;
@@ -58,13 +59,13 @@ public class Tutorial : MonoBehaviour
     public void ResetAnims(PlayerManager player)
     {
         //reset animation triggers
-        if(player.playerNum == PlayerType.PLAYER1)
+        if (player.playerNum == PlayerType.PLAYER1)
         {
             player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("IDLE");
             player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsUp");
             player.skullHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsDown");
         }
-        else if(player.playerNum == PlayerType.PLAYER2)
+        else if (player.playerNum == PlayerType.PLAYER2)
         {
             player.stagHands.gameObject.GetComponent<Animator>().ResetTrigger("IDLE");
             player.stagHands.gameObject.GetComponent<Animator>().ResetTrigger("HandsUp");
@@ -81,6 +82,18 @@ public class Tutorial : MonoBehaviour
     public void TutorialStep2(PlayerManager player)
     {
         StartCoroutine(DoTutorialStep2(player));
+    }
+
+    // step 2.1
+    public void TutorialStep21()
+    {
+        StartCoroutine(DoTutorialStep21());
+    }
+
+    // step 2.2
+    public void TutorialStep22(PlayerManager player)
+    {
+        StartCoroutine(DoTutorialStep22(player));
     }
 
     public void TutorialStep3(PlayerManager player)
@@ -143,6 +156,7 @@ public class Tutorial : MonoBehaviour
         if (isStep1)
         {
             player.playerInput.currentActionMap.Disable();
+            player.playerCameras.GetInputForced(0);
             dialogueEvent.StartDialogue(0);
             //dialogueEvent.PlayDialogueAudio();
 
@@ -160,48 +174,64 @@ public class Tutorial : MonoBehaviour
     private IEnumerator DoTutorialStep2(PlayerManager player)
     {
         dialogueEvent.NextDialogue(1);
-        isStep2 = true;
-        if(isStep2)
+        ResetAnims(player);
+        if (player == GameManager.Instance.player1)
         {
-            ResetAnims(player);
-            if(player == GameManager.Instance.player1)
-            {
-                player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
-
-                yield return new WaitForSeconds(5f);
-                dialogueEvent.NextDialogue(2);
-                yield return new WaitForSeconds(5f);
-                player.health.DamageFinger(PlayerFingers.RH_Index);
-                yield return new WaitForSeconds(5f);
-                player.health.DamageFinger(PlayerFingers.LH_Index);
-                yield return new WaitForSeconds(5f);
-                dialogueEvent.NextDialogue(3);
-                yield return new WaitForSeconds(5f);
-
-                player.health.HealFinger(PlayerFingers.RH_Index);
-                player.health.HealFinger(PlayerFingers.LH_Index);
-            }
-            else if(player == GameManager.Instance.player2)
-            {
-                player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
-
-                yield return new WaitForSeconds(5f);
-                //dialogueEvent.NextDialogue(2);
-                yield return new WaitForSeconds(5f);
-                player.health.DamageFinger(PlayerFingers.RH_Index);
-                yield return new WaitForSeconds(5f);
-                player.health.DamageFinger(PlayerFingers.LH_Index);
-                yield return new WaitForSeconds(5f);
-                //dialogueEvent.NextDialogue(3);
-                yield return new WaitForSeconds(5f);
-
-                player.health.HealFinger(PlayerFingers.RH_Index);
-                player.health.HealFinger(PlayerFingers.LH_Index);
-            }
-            yield return new WaitForSeconds(2f);
-            isStep2Complete = true;
-            isStep2 = false;
+            player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
         }
+        if (player == GameManager.Instance.player2)
+        {
+            player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+        }
+
+        //yield return new WaitForSeconds(5f);
+        //dialogueEvent.EndDialogue();
+        //dialogueEvent.StartDialogue(2);
+        //yield return new WaitForSeconds(5f);
+        //player.health.DamageFinger(PlayerFingers.RH_Index);
+        //yield return new WaitForSeconds(5f);
+        //player.health.DamageFinger(PlayerFingers.LH_Index);
+        //yield return new WaitForSeconds(5f);
+        //dialogueEvent.NextDialogue(3);
+        //yield return new WaitForSeconds(5f);
+
+        //player.health.HealFinger(PlayerFingers.RH_Index);
+        //player.health.HealFinger(PlayerFingers.LH_Index);
+        //yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(7f);
+        isStep2Complete = true;
+
+    }
+
+    // step 2.1
+    private IEnumerator DoTutorialStep21()
+    {
+        dialogueEvent.NextDialogue(2);
+        yield return new WaitForSeconds(7f);
+        isStep21Complete = true;
+    }
+
+    // step 2.2
+    private IEnumerator DoTutorialStep22(PlayerManager player)
+    {
+        //dialogueEvent.NextDialogue(1);
+        //ResetAnims(player);
+        //player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+        //player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("HandsUp");
+
+        //yield return new WaitForSeconds(5f);
+        //dialogueEvent.NextDialogue(2);
+        dialogueEvent.NextDialogue(3);
+        player.health.DamageFinger(PlayerFingers.RH_Index);
+        yield return new WaitForSeconds(7f);
+        player.health.DamageFinger(PlayerFingers.LH_Index);
+        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(7f);
+
+        player.health.HealFinger(PlayerFingers.RH_Index);
+        player.health.HealFinger(PlayerFingers.LH_Index);
+        yield return new WaitForSeconds(2f);
+        isStep22Complete = true;
     }
 
     /// <summary>
@@ -212,22 +242,17 @@ public class Tutorial : MonoBehaviour
     private IEnumerator DoTutorialStep3(PlayerManager player)
     {
         dialogueEvent.EndDialogue();
-        isStep3 = true;
-        if (isStep3)
+        ResetAnims(player);
+        if (player == GameManager.Instance.player1)
         {
-            ResetAnims(player);
-            if (player == GameManager.Instance.player1)
-            {
-                player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
-            }
-            else if (player == GameManager.Instance.player2)
-            {
-                player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
-            }
-            yield return new WaitForSeconds(5f);
-            isStep3Complete = true;
-            isStep3 = false;
+            player.skullHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
         }
+        else if (player == GameManager.Instance.player2)
+        {
+            player.stagHands.gameObject.GetComponent<Animator>().SetTrigger("IDLE");
+        }
+        yield return new WaitForSeconds(7f);
+        isStep3Complete = true;
     }
 
     /// <summary>
@@ -243,8 +268,8 @@ public class Tutorial : MonoBehaviour
         {
             player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
             yield return new WaitForSeconds(10f);
-            player.playerCameras.GetInputForced(0);
             dialogueEvent.EndDialogue();
+            player.playerCameras.GetInputForced(0);
             yield return new WaitForSeconds(10f);
             isStep4Complete = true;
             isStep4 = false;
@@ -261,10 +286,9 @@ public class Tutorial : MonoBehaviour
         isStep5 = true;
         if (isStep5)
         {
-            yield return new WaitForSeconds(5f);
             player.playerCameras.GetInputForced(1);
             dialogueEvent.StartDialogue(5);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
             isStep5Complete = true;
             isStep5 = false;
         }
@@ -276,7 +300,7 @@ public class Tutorial : MonoBehaviour
         if (isStep6)
         {
             dialogueEvent.NextDialogue(6);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
             isStep6Complete = true;
             isStep6 = false;
         }
@@ -288,7 +312,7 @@ public class Tutorial : MonoBehaviour
         if (isStep7)
         {
             dialogueEvent.NextDialogue(7);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
             isStep7Complete = true;
             isStep7 = false;
         }
@@ -300,7 +324,7 @@ public class Tutorial : MonoBehaviour
         if (isStep8)
         {
             dialogueEvent.NextDialogue(8);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
             isStep8Complete = true;
             isStep8 = false;
         }
@@ -312,7 +336,7 @@ public class Tutorial : MonoBehaviour
         if (isStep9)
         {
             dialogueEvent.NextDialogue(9);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
             isStep9Complete = true;
             isStep9 = false;
         }
@@ -326,9 +350,7 @@ public class Tutorial : MonoBehaviour
             dialogueEvent.NextDialogue(10);
             yield return new WaitForSeconds(5f);
             dialogueEvent.EndDialogue();
-            yield return new WaitForSeconds(5f);
             player.playerCameras.GetInputForced(0);
-            yield return new WaitForSeconds(5f);
             isStep10Complete = true;
             isStep10 = false;
         }
