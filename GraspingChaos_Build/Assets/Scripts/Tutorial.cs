@@ -17,21 +17,9 @@ using UnityEngine;
 /// </summary>
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] public DialogueEvent dialogueEvent;
+    public DialogueEvent dialogueEvent;
 
-    // bools for every step of the tutorial
-    [HideInInspector] public bool isStep1 = true;
-    [HideInInspector] public bool isStep2 = false;
-    [HideInInspector] public bool isStep3 = false;
-    [HideInInspector] public bool isStep4 = false;
-    [HideInInspector] public bool isStep5 = false;
-    [HideInInspector] public bool isStep6 = false;
-    [HideInInspector] public bool isStep7 = false;
-    [HideInInspector] public bool isStep8 = false;
-    [HideInInspector] public bool isStep9 = false;
-    [HideInInspector] public bool isStep10 = false;
-    [HideInInspector] public bool isStep11 = false;
-
+    [HideInInspector] public bool isSetupComplete = true;
     [HideInInspector] public bool isStep1Complete = false;
     [HideInInspector] public bool isStep2Complete = false;
     [HideInInspector] public bool isStep21Complete = false; // step 2.1
@@ -150,10 +138,10 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
+        bool isStep1 = true;
         SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", -20f);
 
         //dialogueEvent.PlayDialogueAudio();
-        isStep1 = true;
         if (isStep1)
         {
             player.playerInput.currentActionMap.Disable();
@@ -162,7 +150,6 @@ public class Tutorial : MonoBehaviour
 
             yield return new WaitForSeconds(7f);
             isStep1Complete = true;
-            isStep1 = false;
         }
     }
 
@@ -201,25 +188,36 @@ public class Tutorial : MonoBehaviour
     {
         dialogueEvent.NextDialogue(3);
         yield return new WaitForSeconds(7f);
-        player.health.DamageFinger(PlayerFingers.RH_Index);
-        player.health.DamageFinger(PlayerFingers.RH_Middle);
-        player.health.DamageFinger(PlayerFingers.RH_Ring);
-        player.health.DamageFinger(PlayerFingers.RH_Pinky);
-        player.health.DamageFinger(PlayerFingers.LH_Index);
-        player.health.DamageFinger(PlayerFingers.LH_Middle);
-        player.health.DamageFinger(PlayerFingers.LH_Ring);
-        player.health.DamageFinger(PlayerFingers.LH_Pinky);
-        yield return new WaitForSeconds(7f);
 
-        player.health.HealFinger(PlayerFingers.RH_Index);
-        player.health.HealFinger(PlayerFingers.RH_Middle);
-        player.health.HealFinger(PlayerFingers.RH_Ring);
-        player.health.HealFinger(PlayerFingers.RH_Pinky);
-        player.health.HealFinger(PlayerFingers.LH_Index);
-        player.health.HealFinger(PlayerFingers.LH_Middle);
-        player.health.HealFinger(PlayerFingers.LH_Ring);
-        player.health.HealFinger(PlayerFingers.LH_Pinky);
-        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < 3; i++)
+        {
+            player.health.DamageFinger(PlayerFingers.RH_Index);
+            player.health.DamageFinger(PlayerFingers.RH_Middle);
+            player.health.DamageFinger(PlayerFingers.RH_Ring);
+            player.health.DamageFinger(PlayerFingers.RH_Pinky);
+            player.health.DamageFinger(PlayerFingers.RH_Thumb);
+            player.health.DamageFinger(PlayerFingers.LH_Thumb);
+            player.health.DamageFinger(PlayerFingers.LH_Index);
+            player.health.DamageFinger(PlayerFingers.LH_Middle);
+            player.health.DamageFinger(PlayerFingers.LH_Ring);
+            player.health.DamageFinger(PlayerFingers.LH_Pinky);
+            yield return new WaitForSeconds(3f);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            player.health.HealFinger(PlayerFingers.RH_Index);
+            player.health.HealFinger(PlayerFingers.RH_Middle);
+            player.health.HealFinger(PlayerFingers.RH_Ring);
+            player.health.HealFinger(PlayerFingers.RH_Pinky);
+            player.health.HealFinger(PlayerFingers.RH_Thumb);
+            player.health.HealFinger(PlayerFingers.LH_Thumb);
+            player.health.HealFinger(PlayerFingers.LH_Index);
+            player.health.HealFinger(PlayerFingers.LH_Middle);
+            player.health.HealFinger(PlayerFingers.LH_Ring);
+            player.health.HealFinger(PlayerFingers.LH_Pinky);
+            yield return new WaitForSeconds(2f);
+        }
         isStep22Complete = true;
     }
 
@@ -251,10 +249,11 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep4(PlayerManager player)
     {
+        bool isStep4 = true;
+
         player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
         yield return new WaitForSeconds(3f);
         dialogueEvent.StartDialogue(4);
-        isStep4 = true;
         if (isStep4)
         {
             yield return new WaitForSeconds(7f);
@@ -262,7 +261,6 @@ public class Tutorial : MonoBehaviour
             player.playerCameras.GetInputForced(0);
             yield return new WaitForSeconds(3f);
             isStep4Complete = true;
-            isStep4 = false;
         }
     }
 
@@ -273,7 +271,8 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep5(PlayerManager player)
     {
-        isStep5 = true;
+        bool isStep5 = true;
+
         if (isStep5)
         {
             yield return new WaitForSeconds(2f);
@@ -281,71 +280,72 @@ public class Tutorial : MonoBehaviour
             dialogueEvent.StartDialogue(5);
             yield return new WaitForSeconds(7f);
             isStep5Complete = true;
-            isStep5 = false;
         }
     }
 
     private IEnumerator DoTutorialStep6(PlayerManager player)
     {
+        bool isStep6 = true;
+
         dialogueEvent.manaIconP1.enabled = true;
         dialogueEvent.manaIconP2.enabled = true;
-        isStep6 = true;
         if (isStep6)
         {
             dialogueEvent.NextDialogue(6);
             yield return new WaitForSeconds(7f);
             isStep6Complete = true;
-            isStep6 = false;
         }
     }
 
     private IEnumerator DoTutorialStep7(PlayerManager player)
     {
+        bool isStep7 = true;
+
         dialogueEvent.manaIconP1.enabled = false;
         dialogueEvent.manaIconP2.enabled = false;
 
         dialogueEvent.qteIconP1.enabled = true;
         dialogueEvent.qteIconP2.enabled = true;
-        isStep7 = true;
+
         if (isStep7)
         {
             dialogueEvent.NextDialogue(7);
             yield return new WaitForSeconds(7f);
             isStep7Complete = true;
-            isStep7 = false;
         }
     }
 
     private IEnumerator DoTutorialStep8(PlayerManager player)
     {
-        isStep8 = true;
+        bool isStep8 = true;
+
         if (isStep8)
         {
             dialogueEvent.NextDialogue(8);
             yield return new WaitForSeconds(7f);
             isStep8Complete = true;
-            isStep8 = false;
         }
     }
 
     private IEnumerator DoTutorialStep9(PlayerManager player)
     {
+        bool isStep9 = true;
+
         dialogueEvent.qteIconP1.enabled = false;
         dialogueEvent.qteIconP2.enabled = false;
 
-        isStep9 = true;
         if (isStep9)
         {
             dialogueEvent.NextDialogue(9);
             yield return new WaitForSeconds(7f);
             isStep9Complete = true;
-            isStep9 = false;
         }
     }
 
     private IEnumerator DoTutorialStep10(PlayerManager player)
     {
-        isStep10 = true;
+        bool isStep10 = true;
+
         if (isStep10)
         {
             dialogueEvent.NextDialogue(10);
@@ -353,17 +353,16 @@ public class Tutorial : MonoBehaviour
             dialogueEvent.EndDialogue();
             player.playerCameras.GetInputForced(0);
             isStep10Complete = true;
-            isStep10 = false;
         }
     }
 
     private IEnumerator DoTutorialStep11(PlayerManager player)
     {
-        isStep11 = true;
+        bool isStep11 = true;
+
         if (isStep11)
         {
             isStep11Complete = true;
-            isStep11 = false;
         }
         yield return null;
     }

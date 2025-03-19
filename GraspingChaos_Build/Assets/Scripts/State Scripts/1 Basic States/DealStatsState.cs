@@ -380,10 +380,11 @@ public class DealStatsState : FSMState
                     // players load in from book
                     // they have no cards
                     // dialogue will appear
-                    if (playerState.tutorialEvent.isStep1 == true)
+                    if (playerState.tutorialEvent.isSetupComplete == true)
                     {
                         playerState.tutorialEvent.TutorialStep1(player);
                         playerState.tutorialEvent.TutorialStep1(enemy);
+                        playerState.tutorialEvent.isSetupComplete = false;
                     }
 
                     // STEP 2
