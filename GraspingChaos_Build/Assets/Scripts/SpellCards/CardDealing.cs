@@ -304,17 +304,17 @@ public class CardDealing : MonoBehaviour
                 int fourManaChance = Random.Range(0, fourManaCards.Count);
                 return fourManaCards[fourManaChance];
             }
-            else if (cardChance >= 36 && cardChance <= 60) // 5 mana
+            else if (cardChance >= 36 && cardChance <= 64) // 5 mana
             {
                 int fiveManaChance = Random.Range(0, fiveManaCards.Count);
                 return fiveManaCards[fiveManaChance];
             }
-            else if (cardChance >= 61 && cardChance <= 80) // 6 mana
+            else if (cardChance >= 65 && cardChance <= 84) // 6 mana
             {
                 int sixManaChance = Random.Range(0, sixManaCards.Count);
                 return sixManaCards[sixManaChance];
             }
-            else if (cardChance >= 81 && cardChance <= 90) // 7 mana
+            else if (cardChance >= 85 && cardChance <= 90) // 7 mana
             {
                 int sevenManaChance = Random.Range(0, sevenManaCards.Count);
                 return sevenManaCards[sevenManaChance];
@@ -360,7 +360,7 @@ public class CardDealing : MonoBehaviour
                 int fiveManaChance = Random.Range(0, fiveManaCards.Count);
                 return fiveManaCards[fiveManaChance];
             }
-            else if (cardChance >= 56 && cardChance <= 75) // 6 mana
+            else if (cardChance >= 56 && cardChance <= 81) // 6 mana
             {
                 int sixManaChance = Random.Range(0, sixManaCards.Count);
                 if (sixManaCards[sixManaChance].subType != SpellSubType.MANA)
@@ -368,12 +368,12 @@ public class CardDealing : MonoBehaviour
                     return sixManaCards[sixManaChance];
                 }
             }
-            else if (cardChance >= 76 && cardChance <= 90) // 7 mana   
+            else if (cardChance >= 82 && cardChance <= 89) // 7 mana   
             {
                 int sevenManaChance = Random.Range(0, sevenManaCards.Count);
                 return sevenManaCards[sevenManaChance];
             }
-            else if (cardChance >= 91 && cardChance <= 98) // 8 mana
+            else if (cardChance >= 90 && cardChance <= 98) // 8 mana
             {
                 int eightManaChance = Random.Range(0, eightManaCards.Count);
                 return eightManaCards[eightManaChance];
@@ -413,12 +413,12 @@ public class CardDealing : MonoBehaviour
                 int fiveManaChance = Random.Range(0, fiveManaCards.Count);
                 return fiveManaCards[fiveManaChance];
             }
-            else if (cardChance >= 56 && cardChance <= 60)   // 6 mana
+            else if (cardChance >= 56 && cardChance <= 70)   // 6 mana
             {
                 int sixManaChance = Random.Range(0, sixManaCards.Count);
                 return sixManaCards[sixManaChance];
             }
-            else if (cardChance >= 61 && cardChance <= 80)   // 7 mana
+            else if (cardChance >= 71 && cardChance <= 80)   // 7 mana
             {
                 int sevenManaChance = Random.Range(0, sevenManaCards.Count);
                 return sevenManaCards[sevenManaChance];
@@ -463,12 +463,12 @@ public class CardDealing : MonoBehaviour
                 int fiveManaChance = Random.Range(0, fiveManaCards.Count);
                 return fiveManaCards[fiveManaChance];
             }
-            else if (cardChance >= 51 && cardChance <= 55)      // 6 mana
+            else if (cardChance >= 51 && cardChance <= 65)      // 6 mana
             {
                 int sixManaChance = Random.Range(0, sixManaCards.Count);
                 return sixManaCards[sixManaChance];
             }
-            else if (cardChance >= 56 && cardChance <= 80)     // 7 mana
+            else if (cardChance >= 66 && cardChance <= 80)     // 7 mana
             {
                 int sevenManaChance = Random.Range(0, sevenManaCards.Count);
                 return sevenManaCards[sevenManaChance];
@@ -493,32 +493,32 @@ public class CardDealing : MonoBehaviour
                 int oneManaChance = Random.Range(0, oneManaCards.Count);
                 return oneManaCards[oneManaChance];
             }
-            else if (cardChance >= 6 && cardChance <= 11)  // 2 mana
+            else if (cardChance >= 6 && cardChance <= 14)  // 2 mana
             {
                 int twoManaChance = Random.Range(0, twoManaCards.Count);
                 return twoManaCards[twoManaChance];
             }
-            else if (cardChance >= 12 && cardChance <= 14)     // 3 mana
+            else if (cardChance >= 15 && cardChance <= 18)     // 3 mana
             {
                 int threeManaChance = Random.Range(0, threeManaCards.Count);
                 return threeManaCards[threeManaChance];
             }
-            else if (cardChance >= 15 && cardChance <= 19)    // 4 mana
+            else if (cardChance >= 19 && cardChance <= 23)    // 4 mana
             {
                 int fourManaChance = Random.Range(0, fourManaCards.Count);
                 return fourManaCards[fourManaChance];
             }
-            else if (cardChance >= 20 && cardChance <= 39)       // 5 mana
+            else if (cardChance >= 24 && cardChance <= 43)       // 5 mana
             {
                 int fiveManaChance = Random.Range(0, fiveManaCards.Count);
                 return fiveManaCards[fiveManaChance];
             }
-            else if (cardChance >= 40 && cardChance <= 44)      // 6 mana
+            else if (cardChance >= 44 && cardChance <= 54)      // 6 mana
             {
                 int sixManaChance = Random.Range(0, sixManaCards.Count);
                 return sixManaCards[sixManaChance];
             }
-            else if (cardChance >= 45 && cardChance <= 69)     // 7 mana
+            else if (cardChance >= 55 && cardChance <= 69)     // 7 mana
             {
                 int sevenManaChance = Random.Range(0, sevenManaCards.Count);
                 return sevenManaCards[sevenManaChance];
