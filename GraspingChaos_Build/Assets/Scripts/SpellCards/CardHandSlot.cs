@@ -302,14 +302,71 @@ public class CardHandSlot : MonoBehaviour
 
     public void HoverIndexFix()
     {
-        for(int i = 0; i < cards.Count; i++)
+        if ((currentHoverIndex + 1) < cards.Count && currentHoverIndex > 0)
         {
-            if (!cards[i].isSelected)
+            if (!cards[currentHoverIndex + 1].isSelected)
             {
-                currentHoverIndex = i;
-                SetHoveredCard(i);
-                break;
+                currentHoverIndex = currentHoverIndex + 1;
+                SetHoveredCard(currentHoverIndex);
+            }
+            else if (!cards[currentHoverIndex - 1].isSelected)
+            {
+                currentHoverIndex = currentHoverIndex - 1;
+                SetHoveredCard(currentHoverIndex);
+            }
+            else
+            {
+                for (int i = 0; i < cards.Count; i++)
+                {
+                    if (!cards[i].isSelected)
+                    {
+                        currentHoverIndex = i;
+                        SetHoveredCard(i);
+                        break;
+                    }
+                }
             }
         }
+        else if (currentHoverIndex == cards.Count -1)
+        {
+            if (!cards[currentHoverIndex - 1].isSelected)
+            {
+                currentHoverIndex = currentHoverIndex - 1;
+                SetHoveredCard(currentHoverIndex);
+            }
+            else
+            {
+                for (int i = 0; i < cards.Count; i++)
+                {
+                    if (!cards[i].isSelected)
+                    {
+                        currentHoverIndex = i;
+                        SetHoveredCard(i);
+                        break;
+                    }
+                }
+            }
+        }
+        else if(currentHoverIndex == 0)
+        {
+            if (!cards[currentHoverIndex + 1].isSelected)
+            {
+                currentHoverIndex = currentHoverIndex + 1;
+                SetHoveredCard(currentHoverIndex);
+            }
+            else
+            {
+                for (int i = 0; i < cards.Count; i++)
+                {
+                    if (!cards[i].isSelected)
+                    {
+                        currentHoverIndex = i;
+                        SetHoveredCard(i);
+                        break;
+                    }
+                }
+            }
+        }
+
     }
 }
