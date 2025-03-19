@@ -119,7 +119,7 @@ public class PlayerControlHandler : MonoBehaviour
                     playerInput.selectFinger = false;                   // no longer selecting a finger
                     playerInput.Abtn = false;                           // idk
                     pickFinger.DeselectOnPick();                        // highlight of the finger is removed once selected
-                    pickCards.HoverIndexFix();
+                    //pickCards.HoverIndexFix();
                 }
             }
 
