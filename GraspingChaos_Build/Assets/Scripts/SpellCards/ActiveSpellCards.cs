@@ -263,6 +263,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 12:
                     spell.spellName = SpellNames.ForTheCause;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.MANA;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -280,6 +281,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 13:
                     spell.spellName = SpellNames.QuickHeal;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.HEALING;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -297,6 +299,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 14:
                     spell.spellName = SpellNames.ThumbsUp;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.HEALING;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 2;
@@ -314,6 +317,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 15:
                     spell.spellName = SpellNames.LifeDrain;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.HEALING;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -331,6 +335,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 16:
                     spell.spellName = SpellNames.CursedConversion;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.MANA;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 0;
@@ -348,6 +353,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 17:
                     spell.spellName = SpellNames.GreenThumb;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.HEALING;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -365,6 +371,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 18:
                     spell.spellName = SpellNames.Materialise;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.HEALING;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -382,6 +389,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 19:
                     spell.spellName = SpellNames.EchoingMana;
                     spell.type = SpellType.RESTORATION;
+                    spell.subType = SpellSubType.MANA;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 0;

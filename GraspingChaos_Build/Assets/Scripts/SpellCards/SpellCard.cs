@@ -42,6 +42,7 @@ public class SpellCard : MonoBehaviour
 
     //Type of Spell (global spell type enum)
     public SpellType type;
+    public SpellSubType subType;
 
     public KeyCode debugTester;
 
