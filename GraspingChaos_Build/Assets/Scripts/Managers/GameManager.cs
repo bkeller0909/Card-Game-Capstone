@@ -279,14 +279,14 @@ public class GameManager : MonoBehaviour
 
         if (levelName == ln_Duelscene)
         {
-            MusicManager.Instance.PlayMusic("GC_Game", MusicManager.Instance.gameMusic); // TODO - change this later
+            MusicManager.Instance.PlayMusic(levelName, MusicManager.Instance.gameMusic); // TODO - change this later
             GameObject tempObj = GameObject.FindGameObjectWithTag("CardObjectPool");
             cardPool = tempObj.GetComponent<CardsObjectPool>();
             hasDuelStarted = true;
         }
         else if (levelName == ln_MainMenuName)
         {
-            MusicManager.Instance.PlayMusic("GC_MainMenu", MusicManager.Instance.mainMenuMusic);    // TODO - change this later
+            MusicManager.Instance.PlayMusic(levelName, MusicManager.Instance.mainMenuMusic);    // TODO - change this later
             tempEndScreenSkullWins1.SetActive(false);
             tempEndScreenSkullWins2.SetActive(false);
             tempEndScreenStagWins1.SetActive(false);
