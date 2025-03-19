@@ -272,7 +272,7 @@ public class PlayerControlHandler : MonoBehaviour
                 changeCameras.GetInput();
             }
 
-            
+
             if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
                 if (player.playerInput.actions["CameraViewButton"].WasPressedThisFrame())
@@ -291,6 +291,13 @@ public class PlayerControlHandler : MonoBehaviour
             CardsObjectPool.Instance.cardsCurrentlyInHandP2.Clear();
             CardsObjectPool.Instance.cardsCurrentlyInHand.Clear();
             CardsObjectPool.Instance.ResetPoolDistributionValues();
+            if (GameManager.Instance.player1)
+            {
+                foreach (GameObject card in CardsObjectPool.Instance.objPoolCards)
+                {
+                    card.transform.position = GameManager.Instance.player1.cardSpawnTransform.position;
+                }
+            }
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
 
@@ -304,7 +311,7 @@ public class PlayerControlHandler : MonoBehaviour
         {
             SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", 0f);
             GameManager.Instance.manualCards = false;
-            gameObject.GetComponent<PlayerState>().dialogueEvent.EndDialogue();
+            // gameObject.GetComponent<PlayerState>().dialogueEvent.EndDialogue();
             StopAllCoroutines();
         }
 
