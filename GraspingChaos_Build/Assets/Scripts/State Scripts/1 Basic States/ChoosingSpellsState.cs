@@ -297,6 +297,7 @@ public class ChoosingSpellsState : FSMState
                 spellsChosen[amtOfSpells] == SpellNames.LifeDrain || spellsChosen[amtOfSpells] == SpellNames.ThumbsUp || spellsChosen[amtOfSpells] == SpellNames.EchoingMana ||
                 spellsChosen[amtOfSpells] == SpellNames.CursedConversion)
             {
+                player.playerCameras.GetInputForced(0);
                 playerState.currentFingerName = PlayerFingers.none;
                 amtOfSpells++;
             }
@@ -314,6 +315,7 @@ public class ChoosingSpellsState : FSMState
                         player.playerCameras.GetInputForced(2);
                         resetAnims();
                         enemyHands.SetTrigger("HandsDown");
+                        playerState.fingerSelected = false;
                         //enemy.FlameHandLeft.Stop();
                         //enemy.FlameHandRight.Stop();
                     }
@@ -326,6 +328,7 @@ public class ChoosingSpellsState : FSMState
                         player.playerCameras.GetInputForced(2);
                         resetAnims();
                         enemyHands.SetTrigger("HandsDown");
+                        playerState.fingerSelected = false;
                         //enemy.FlameHandLeft.Stop();
                         //enemy.FlameHandRight.Stop();
                     }
@@ -343,6 +346,7 @@ public class ChoosingSpellsState : FSMState
                         player.playerCameras.GetInputForced(0);
                         resetAnims();
                         playerHands.SetTrigger("HandsUp");
+                        playerState.fingerSelected = false;
                         player.FlameHandLeft.Stop();
                         player.FlameHandRight.Stop();
                     }
@@ -356,6 +360,7 @@ public class ChoosingSpellsState : FSMState
                         player.playerCameras.GetInputForced(0);
                         resetAnims();
                         playerHands.SetTrigger("HandsUp");
+                        playerState.fingerSelected = false;
                         player.FlameHandLeft.Stop();
                         player.FlameHandRight.Stop();
                     }
@@ -371,6 +376,7 @@ public class ChoosingSpellsState : FSMState
             if (amtOfSpells == 1 || amtOfSpells == 2 || amtOfSpells == 3)
             {
                 player.GetMana(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[playerState.playerHand.selectedCards.Count - 1]].manaCost);
+                Debug.Log(ActiveSpellCards.Instance.spellCards[(int)spellsChosen[playerState.playerHand.selectedCards.Count - 1]].manaCost);
                 SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.manaRefill, 1);
                 CardSelect card = playerState.playerHand.selectedCards[playerState.playerHand.selectedCards.Count - 1];
                 playerState.playerHand.selectedCards.Remove(card);

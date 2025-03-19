@@ -244,9 +244,11 @@ public class CardHandSlot : MonoBehaviour
                 {
                     player.playerInput.SwitchCurrentActionMap("Player");
                 }
+                HoverIndexFix();
             }
         }
     }
+
 
     public void DeselectCard()
     {
@@ -261,7 +263,7 @@ public class CardHandSlot : MonoBehaviour
 
         if (selectedCards.Contains(card))
         {
-            playerState.currentSpellName = SpellNames.none;
+            //playerState.currentSpellName = SpellNames.none;
             // Deselect the card if it's already selected.
             //selectedCards.Remove(card);
             if (card.hasAFingerBonus)
@@ -295,6 +297,19 @@ public class CardHandSlot : MonoBehaviour
         else
         {
             return true;
+        }
+    }
+
+    public void HoverIndexFix()
+    {
+        for(int i = 0; i < cards.Count; i++)
+        {
+            if (!cards[i].isSelected)
+            {
+                currentHoverIndex = i;
+                SetHoveredCard(i);
+                break;
+            }
         }
     }
 }

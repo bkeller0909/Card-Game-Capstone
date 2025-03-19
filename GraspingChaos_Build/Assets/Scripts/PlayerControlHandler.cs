@@ -25,6 +25,7 @@ public class PlayerControlHandler : MonoBehaviour
     public Animator playerHands, playerFakeHands;
     public bool EmergencyCameraPush;
     public bool atBottle;
+    public bool buttonShiled = false;
 
     private void Start()
     {
@@ -105,16 +106,21 @@ public class PlayerControlHandler : MonoBehaviour
                 }
             }
 
-            if (player.playerInput.actions["SelectFinger"].WasPressedThisFrame())
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                // CONTROLS
-                pickFinger.SelectFinger();                          // selects the finger
-                stateHandler.FingerHasBeenSelected();               // changes state to the finger is selected
-                player.playerInput.SwitchCurrentActionMap("Card");  // switches controls to card controls
-                changeCameras.GetInputForced(0);                    // changes camera back to default
-                playerInput.selectFinger = false;                   // no longer selecting a finger
-                playerInput.Abtn = false;                           // idk
-                pickFinger.DeselectOnPick();                        // highlight of the finger is removed once selected
+                if (player.playerInput.actions["SelectFinger"].WasPressedThisFrame())
+                {
+                    StartCoroutine(TrackAnimation());
+                    // CONTROLS
+                    pickFinger.SelectFinger();                          // selects the finger
+                    stateHandler.FingerHasBeenSelected();               // changes state to the finger is selected
+                    player.playerInput.SwitchCurrentActionMap("Card");  // switches controls to card controls
+                    changeCameras.GetInputForced(0);                    // changes camera back to default
+                    playerInput.selectFinger = false;                   // no longer selecting a finger
+                    playerInput.Abtn = false;                           // idk
+                    pickFinger.DeselectOnPick();                        // highlight of the finger is removed once selected
+                    pickCards.HoverIndexFix();
+                }
             }
 
             if (player.playerInput.actions["Cancel"].WasPressedThisFrame())
@@ -142,6 +148,7 @@ public class PlayerControlHandler : MonoBehaviour
                 // Selecting a card
                 if (player.playerInput.actions["Select"].WasPressedThisFrame())
                 {
+                    StartCoroutine(TrackAnimation());
                     pickCards.SelectedCard();   // the card that is hovered is now selected
                     if (ActiveSpellCards.Instance.spellCards[(int)pickCards.whatCard.spellName].manaCost <= player.Mana)
                     {
@@ -158,6 +165,7 @@ public class PlayerControlHandler : MonoBehaviour
             // Deselect the selected card
             if (player.playerInput.actions["Deselect"].WasPressedThisFrame())
             {
+                StartCoroutine(TrackAnimation());
                 if (pickCards.selectedCards.Count > 0)
                 {
                     pickCards.DeselectCard();                   // sets the card from selected to hovered
@@ -216,47 +224,55 @@ public class PlayerControlHandler : MonoBehaviour
                     SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelectComplete, 1);
                     resetAnims();
                     playerHands.SetTrigger("HandsGrasp");
+                    changeCameras.GetInputForced(0);
                     //playerFakeHands.SetTrigger("HandsGrasp");
                 }
             }
 
-            //lock Controls
-            if (player.playerInput.actions["UnConfirm"].WasPressedThisFrame())
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
-                player.GetComponent<PlayerState>().readyToCast = false;
-                player.READYTOGO = false;
-                playerInput.finishSelection = false;
-                player.cardsAmountSelected = 0;
-                player.playerInput.SwitchCurrentActionMap("Card");
-                Debug.Log(player.playerInput.currentActionMap.ToString());
-                if (player == GameManager.Instance.player1)
+                //lock Controls
+                if (player.playerInput.actions["UnConfirm"].WasPressedThisFrame())
                 {
+                    player.GetComponent<PlayerState>().readyToCast = false;
+                    player.READYTOGO = false;
+                    playerInput.finishSelection = false;
+                    player.cardsAmountSelected = 0;
+                    player.playerInput.SwitchCurrentActionMap("Card");
+                    Debug.Log(player.playerInput.currentActionMap.ToString());
+                    if (player == GameManager.Instance.player1)
                     {
-                        GameManager.Instance.nextStateP1 = false;
-                        player.eyes.Stop();
-                        player.FlameHandLeft.Stop();
-                        player.FlameHandRight.Stop();
+                        {
+                            GameManager.Instance.nextStateP1 = false;
+                            player.eyes.Stop();
+                            player.FlameHandLeft.Stop();
+                            player.FlameHandRight.Stop();
+                        }
                     }
-                }
-                else if (player == GameManager.Instance.player2)
-                {
+                    else if (player == GameManager.Instance.player2)
                     {
-                        GameManager.Instance.nextStateP2 = false;
-                        player.eyes.Stop();
-                        player.FlameHandLeft.Stop();
-                        player.FlameHandRight.Stop();
+                        {
+                            GameManager.Instance.nextStateP2 = false;
+                            player.eyes.Stop();
+                            player.FlameHandLeft.Stop();
+                            player.FlameHandRight.Stop();
+                        }
                     }
-                }
 
-                StartCoroutine(ButtonCheckUnConfirm());
-                resetAnims();
-                playerHands.SetTrigger("IDLE");
-                //playerFakeHands.SetTrigger("IDLE");
+                    StartCoroutine(ButtonCheckUnConfirm());
+                    resetAnims();
+                    playerHands.SetTrigger("IDLE");
+                    //playerFakeHands.SetTrigger("IDLE");
+                }
             }
 
             //Camera Movement
-            changeCameras.GetInput();
+            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
+            {
+                changeCameras.GetInput();
+            }
 
+            
             if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
             {
                 if (player.playerInput.actions["CameraViewButton"].WasPressedThisFrame())
@@ -286,7 +302,9 @@ public class PlayerControlHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", 0f);
             GameManager.Instance.manualCards = false;
+            gameObject.GetComponent<PlayerState>().dialogueEvent.EndDialogue();
             StopAllCoroutines();
         }
 
@@ -316,5 +334,13 @@ public class PlayerControlHandler : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         GameManager.Instance.player1.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
         GameManager.Instance.player2.gameObject.GetComponentInChildren<CameraPositionChange>().GetInputForced(0);
+    }
+
+    IEnumerator TrackAnimation()
+    {
+        buttonShiled = true;
+        yield return new WaitForSeconds(1);
+        buttonShiled = false;
+
     }
 }
