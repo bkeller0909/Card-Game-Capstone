@@ -38,8 +38,9 @@ public enum SpellType
 
 public enum SpellSubType
 {
-    HEALING = 0,
-    MANA = 1
+    NONE = 0,
+    HEALING = 1,
+    MANA = 2
 }
 
 public enum PlayerType

@@ -59,6 +59,7 @@ public class ActiveSpellCards : MonoBehaviour
                     // spell.name = "FireBolt";
                     spell.spellName = SpellNames.FireBolt;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -76,6 +77,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 1:
                     spell.spellName = SpellNames.Rockthrow;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -93,6 +95,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 2:
                     spell.spellName = SpellNames.RighteousEnvy;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 0;
@@ -110,6 +113,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 3:
                     spell.spellName = SpellNames.LefteousEnvy;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 0;
@@ -127,6 +131,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 4:
                     spell.spellName = SpellNames.Icicles;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = true;
                     spell.amtOfFingers = 2;
@@ -144,6 +149,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 5:
                     spell.spellName = SpellNames.CollectorsCurse;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -161,6 +167,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 6:
                     spell.spellName = SpellNames.StaticBlast;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -178,6 +185,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 7:
                     spell.spellName = SpellNames.Quake;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 3;
@@ -195,6 +203,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 8:
                     spell.spellName = SpellNames.RightingBolt;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 2;
@@ -212,6 +221,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 9:
                     spell.spellName = SpellNames.LeftningBolt;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 2;
@@ -229,6 +239,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 10:
                     spell.spellName = SpellNames.TidalWave;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 3;
@@ -246,6 +257,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 11:
                     spell.spellName = SpellNames.PointerOfDeath;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -407,6 +419,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 20:
                     spell.spellName = SpellNames.ThornsOfAgony;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = true;
                     spell.amtOfFingers = 1;
@@ -424,6 +437,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 21:
                     spell.spellName = SpellNames.GuardiansTouch;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -441,6 +455,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 22:
                     spell.spellName = SpellNames.SpectralChain;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -458,6 +473,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 23:
                     spell.spellName = SpellNames.ManaMerchant;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -475,6 +491,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 24:
                     spell.spellName = SpellNames.VengefulMirror;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -492,6 +509,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 25:
                     spell.spellName = SpellNames.VampiricSurge;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -509,6 +527,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 26:
                     spell.spellName = SpellNames.VeilOfFortitude;
                     spell.type = SpellType.RING;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = true;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = 1;
@@ -526,6 +545,7 @@ public class ActiveSpellCards : MonoBehaviour
                 case 27:
                     spell.spellName = SpellNames.none;
                     spell.type = SpellType.ATTACK;
+                    spell.subType = SpellSubType.NONE;
                     spell.targetSelf = false;
                     spell.TargetRandomFinger = false;
                     spell.amtOfFingers = -100;

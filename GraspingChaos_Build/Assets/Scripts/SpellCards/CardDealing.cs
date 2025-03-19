@@ -49,18 +49,34 @@ public class CardDealing : MonoBehaviour
             else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 2)
             {
                 twoManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                if (ActiveSpellCards.Instance.spellCards[i].subType == SpellSubType.HEALING)
+                {
+                    twoManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
             }
             else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 3)
             {
                 threeManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                if (ActiveSpellCards.Instance.spellCards[i].subType == SpellSubType.HEALING)
+                {
+                    threeManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
             }
             else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 4)
             {
                 fourManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                if (ActiveSpellCards.Instance.spellCards[i].subType == SpellSubType.HEALING)
+                {
+                    fourManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
             }
             else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 5)
             {
                 fiveManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                if (ActiveSpellCards.Instance.spellCards[i].subType == SpellSubType.HEALING)
+                {
+                    fiveManaCards.Add(ActiveSpellCards.Instance.spellCards[i]);
+                }
             }
             else if (ActiveSpellCards.Instance.spellCards[i].manaCost == 6)
             {
@@ -316,7 +332,10 @@ public class CardDealing : MonoBehaviour
             if (cardChance >= 1 && cardChance <= 10)  // 1 mana
             {
                 int oneManaChance = Random.Range(0, oneManaCards.Count);
-                return oneManaCards[oneManaChance];
+                if (oneManaCards[oneManaChance].subType != SpellSubType.MANA)
+                {
+                    return oneManaCards[oneManaChance];
+                }
             }
             else if (cardChance >= 11 && cardChance <= 20)   // 2 mana
             {
@@ -331,7 +350,10 @@ public class CardDealing : MonoBehaviour
             else if (cardChance >= 31 && cardChance <= 35)  // 4 mana
             {
                 int fourManaChance = Random.Range(0, fourManaCards.Count);
-                return fourManaCards[fourManaChance];
+                if (fourManaCards[fourManaChance].subType != SpellSubType.MANA)
+                {
+                    return fourManaCards[fourManaChance];
+                }
             }
             else if (cardChance >= 36 && cardChance <= 55) // 5 mana
             {
@@ -341,7 +363,10 @@ public class CardDealing : MonoBehaviour
             else if (cardChance >= 56 && cardChance <= 75) // 6 mana
             {
                 int sixManaChance = Random.Range(0, sixManaCards.Count);
-                return sixManaCards[sixManaChance];
+                if (sixManaCards[sixManaChance].subType != SpellSubType.MANA)
+                {
+                    return sixManaCards[sixManaChance];
+                }
             }
             else if (cardChance >= 76 && cardChance <= 90) // 7 mana   
             {
