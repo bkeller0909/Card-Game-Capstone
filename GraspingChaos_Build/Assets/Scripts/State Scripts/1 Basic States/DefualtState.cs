@@ -1,6 +1,9 @@
+using UnityEngine;
+
 public class DefualtState : FSMState
 {
     PlayerState playerState;
+    CardsObjectPool cardPool;
     CameraPositionChange posChange;
     bool animPlayed;
 
@@ -14,6 +17,14 @@ public class DefualtState : FSMState
         GameManager.Instance.moveOn = false;
         GameManager.Instance.whatRound = 0;
         GameManager.Instance.manaPerTurn = 3;
+
+        if (playerState == GameManager.Instance.player1)
+        {
+            foreach (GameObject card in cardPool.objPoolCards)
+            {
+                card.transform.position = GameManager.Instance.player1.cardSpawnTransform.position;
+            }
+        }
     }
 
     //Reason

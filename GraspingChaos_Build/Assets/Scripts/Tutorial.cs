@@ -201,7 +201,7 @@ public class Tutorial : MonoBehaviour
             player.health.DamageFinger(PlayerFingers.LH_Middle);
             player.health.DamageFinger(PlayerFingers.LH_Ring);
             player.health.DamageFinger(PlayerFingers.LH_Pinky);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
         }
 
         for (int i = 0; i < 3; i++)
@@ -216,7 +216,7 @@ public class Tutorial : MonoBehaviour
             player.health.HealFinger(PlayerFingers.LH_Middle);
             player.health.HealFinger(PlayerFingers.LH_Ring);
             player.health.HealFinger(PlayerFingers.LH_Pinky);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
         isStep22Complete = true;
     }
