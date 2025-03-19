@@ -36,6 +36,12 @@ public enum SpellType
     RING = 2
 }
 
+public enum SpellSubType
+{
+    HEALING = 0,
+    MANA = 1
+}
+
 public enum PlayerType
 {
     PLAYER1 = 0,
