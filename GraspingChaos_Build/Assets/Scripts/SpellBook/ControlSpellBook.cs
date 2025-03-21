@@ -25,7 +25,7 @@ public class ControlSpellBook : MonoBehaviour
 
     public Animator[] animators;
 
-    public float delayTime = 30.0f;
+    public float delayTime = 1.0f;
 
     [HideInInspector]
     public bool isFlipping = false;
@@ -127,8 +127,9 @@ public class ControlSpellBook : MonoBehaviour
 
         for (int i = 0; i < pagesToFlip.Length; i++)
         {
-
+            animators[i].speed = 0.0f;
             animators[i].Play("PageFlipMotion", 0, 0.0f);
+            animators[i].speed = 0.8f;
 
             yield return new WaitForSeconds(delayTime);
         }
