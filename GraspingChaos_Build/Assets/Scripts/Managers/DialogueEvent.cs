@@ -25,11 +25,11 @@ public class DialogueEvent : MonoBehaviour
 
     [Header("UI GameObjects")]
     public GameObject dialoguePrefabP1;                                // the text box that will display the dialogue text for player 1
-    public Image qteIconP1;
-    public Image manaIconP1;
+    public GameObject qteIconP1;
+    public GameObject manaIconP1;
     public GameObject dialoguePrefabP2;                                // the text box that will display the dialogue text for player 2
-    public Image qteIconP2;
-    public Image manaIconP2;
+    public GameObject qteIconP2;
+    public GameObject manaIconP2;
 
     private bool isTalking;                                         // is dialogue current happening
 

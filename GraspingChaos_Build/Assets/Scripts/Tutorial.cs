@@ -287,8 +287,8 @@ public class Tutorial : MonoBehaviour
     {
         bool isStep6 = true;
 
-        dialogueEvent.manaIconP1.enabled = true;
-        dialogueEvent.manaIconP2.enabled = true;
+        dialogueEvent.manaIconP1.SetActive(true);
+        dialogueEvent.manaIconP2.SetActive(true);
         if (isStep6)
         {
             dialogueEvent.NextDialogue(6);
@@ -301,11 +301,11 @@ public class Tutorial : MonoBehaviour
     {
         bool isStep7 = true;
 
-        dialogueEvent.manaIconP1.enabled = false;
-        dialogueEvent.manaIconP2.enabled = false;
+        dialogueEvent.manaIconP1.SetActive(false);
+        dialogueEvent.manaIconP2.SetActive(false);
 
-        dialogueEvent.qteIconP1.enabled = true;
-        dialogueEvent.qteIconP2.enabled = true;
+        dialogueEvent.qteIconP1.SetActive(true);
+        dialogueEvent.qteIconP2.SetActive(true);
 
         if (isStep7)
         {
@@ -331,8 +331,8 @@ public class Tutorial : MonoBehaviour
     {
         bool isStep9 = true;
 
-        dialogueEvent.qteIconP1.enabled = false;
-        dialogueEvent.qteIconP2.enabled = false;
+        dialogueEvent.qteIconP1.SetActive(false);
+        dialogueEvent.qteIconP2.SetActive(false);
 
         if (isStep9)
         {
