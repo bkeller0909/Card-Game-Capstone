@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 //----------------------------------------------------------------
 //  Author: Sebastian
@@ -26,6 +27,13 @@ public class PlayerControlHandler : MonoBehaviour
     public bool EmergencyCameraPush;
     public bool atBottle;
     public bool buttonShiled = false;
+
+    [Header("UI Tooltips")]
+    public GameObject manaViewIcon;
+    public GameObject cardViewIcon;
+    public GameObject cardNavIcon;
+    public GameObject cardSelectIcon;
+    public GameObject readyIcon;
 
     private void Start()
     {
@@ -309,7 +317,8 @@ public class PlayerControlHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", 0f);
+            SoundFXManager.Instance.soundFXMixer.SetFloat("SoundFXVolume", 0f);
+            SoundFXManager.Instance.soundFXMixer.SetFloat("MusicVolume", 0f);
             GameManager.Instance.manualCards = false;
             // gameObject.GetComponent<PlayerState>().dialogueEvent.EndDialogue();
             StopAllCoroutines();

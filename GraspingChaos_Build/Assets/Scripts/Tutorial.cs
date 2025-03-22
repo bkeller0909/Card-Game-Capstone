@@ -139,7 +139,8 @@ public class Tutorial : MonoBehaviour
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
         bool isStep1 = true;
-        SoundFXManager.Instance.soundFXMixer.SetFloat("MainVolume", -20f);
+        SoundFXManager.Instance.soundFXMixer.SetFloat("SoundFXVolume", -20f);
+        SoundFXManager.Instance.soundFXMixer.SetFloat("MusicVolume", -10f);
 
         //dialogueEvent.PlayDialogueAudio();
         if (isStep1)
