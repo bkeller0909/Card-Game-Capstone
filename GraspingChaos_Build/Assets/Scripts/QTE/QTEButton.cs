@@ -148,6 +148,7 @@ public class QTEButton : MonoBehaviour
                     pressed = true; //set the button to pressed
                     correctPress = false; //set the button to incorrect input
                     gameObject.GetComponent<SpriteRenderer>().sprite = FindIncorrectSprite(AssignedBTN); // set the new sprite
+                    RumbleManager.Instance.ControllerRumble(1f, 1f, 0.2f, playerQTE.gamepad);
                 }
             }
         }

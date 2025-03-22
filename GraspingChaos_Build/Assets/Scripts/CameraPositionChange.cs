@@ -58,6 +58,7 @@ public class CameraPositionChange : MonoBehaviour
                 cameraInputPressed = true;
                 cameraIndex--;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
+                player.GetComponent<PlayerControlHandler>().cardViewIcon.SetActive(true);
 
                 //Lock player input till move is complete
                 canInput = false;
@@ -67,6 +68,7 @@ public class CameraPositionChange : MonoBehaviour
                 cameraInputPressed = true;
                 cameraIndex++;
                 StartCoroutine(MoveCameratoNewPosition(cameraIndex));
+                player.GetComponent<PlayerControlHandler>().cardViewIcon.SetActive(false);
 
                 //Lock player input till move is complete
                 canInput = false;

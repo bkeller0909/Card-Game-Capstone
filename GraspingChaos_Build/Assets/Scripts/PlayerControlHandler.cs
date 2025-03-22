@@ -192,6 +192,7 @@ public class PlayerControlHandler : MonoBehaviour
                     if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
                     {
                         changeCameras.NewCamPos(changeCameras.bottleCamPos);
+                        manaViewIcon.SetActive(false);
                         atBottle = true;
                     }
                 }
@@ -204,6 +205,7 @@ public class PlayerControlHandler : MonoBehaviour
                     if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
                     {
                         changeCameras.GetInputForced(0);
+                        manaViewIcon.SetActive(true);
                         atBottle = false;
                     }
                 }
