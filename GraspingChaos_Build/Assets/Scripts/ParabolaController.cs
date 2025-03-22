@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+// This code is openly sourced from [MathParabola] (https://gist.github.com/ditzel/68be36987d8e7c83d48f497294c66e08)
+// Original license: MIT License
+// Copyright (c) [2019] [Ditzel https://github.com/ditzel]
 public class ParabolaController : MonoBehaviour
 {
     /// <summary>
