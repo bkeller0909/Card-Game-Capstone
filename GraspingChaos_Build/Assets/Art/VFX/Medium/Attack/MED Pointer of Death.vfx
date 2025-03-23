@@ -16,10 +16,10 @@ MonoBehaviour:
   - title: Trail
     position:
       serializedVersion: 2
-      x: 1535.6295
-      y: -55.06241
+      x: 1501
+      y: -246
       width: 478
-      height: 1115
+      height: 1501
     contents:
     - model: {fileID: 8926484042661614874}
       id: 0
@@ -30,6 +30,9 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614901}
       id: 0
       isStickyNote: 0
+    - model: {fileID: 8926484042661614903}
+      id: 0
+      isStickyNote: 0
   stickyNoteInfos: []
   categories: []
   uiBounds:
@@ -37,7 +40,7 @@ MonoBehaviour:
     x: 415
     y: -279
     width: 5148
-    height: 3906
+    height: 3926
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,7 +211,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pointer of Death
+  m_Name: MED Pointer of Death
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -3678,7 +3681,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614891}
   - {fileID: 8926484042661614893}
   - {fileID: 8926484042661614895}
-  m_UIPosition: {x: 1561.6295, y: 330.9376}
+  m_UIPosition: {x: 1527, y: 140}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -3854,9 +3857,9 @@ MonoBehaviour:
   - {fileID: 8926484042661614901}
   - {fileID: 8926484042661614903}
   dataType: 1
-  capacity: 10000
+  capacity: 20000
   stripCapacity: 100
-  particlePerStripCount: 100
+  particlePerStripCount: 200
   needsComputeBounds: 1
   boundsMode: 2
   m_Space: 0
@@ -4154,7 +4157,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1564.6295, y: 3.9375916}
+  m_UIPosition: {x: 1530, y: -187}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4239,7 +4242,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1560.6295, y: 882.9376}
+  m_UIPosition: {x: 1526, y: 692}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -4275,7 +4278,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661614919}
-  m_UIPosition: {x: 1562.6295, y: 1106.9376}
+  m_UIPosition: {x: 1526, y: 852}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4408,7 +4411,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.3921568691730499,"g":0.19607843458652497,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.2156777381896973,"g":0.641355037689209,"b":2.9960780143737795,"a":1.0},"time":0.09706263989210129},{"color":{"r":5.992156982421875,"g":1.2862745523452759,"b":4.581033229827881,"a":1.0},"time":0.2500038146972656},{"color":{"r":47.937255859375,"g":10.290196418762207,"b":11.7493314743042,"a":1.0},"time":0.5382314920425415},{"color":{"r":95.87451934814453,"g":7.529412269592285,"b":7.529412269592285,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.09117265790700913},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.3921568691730499,"g":0.19607843458652497,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.2156777381896973,"g":0.641355037689209,"b":2.9960780143737795,"a":1.0},"time":0.09706263989210129},{"color":{"r":5.992156982421875,"g":1.2862745523452759,"b":4.581033229827881,"a":1.0},"time":0.2500038146972656},{"color":{"r":11.98431396484375,"g":2.5725491046905519,"b":2.93733286857605,"a":1.0},"time":0.5382314920425415},{"color":{"r":23.968629837036134,"g":1.8823530673980713,"b":1.8823530673980713,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.09117265790700913},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -4506,7 +4509,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":0.05000000074505806,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":1.0,"value":0.05000000074505806,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -5262,7 +5265,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.5
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: Lifetime
@@ -12216,7 +12219,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 50
+      m_SerializableObject: 25
     m_Space: 2147483647
   m_Property:
     name: Rate
