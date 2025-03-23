@@ -48,4 +48,9 @@ public class MenuManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(optionsButtonSelected);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
