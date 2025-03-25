@@ -462,7 +462,7 @@ public class ParticleManger : MonoBehaviour
                     //Attack Spells |=========================================
 
                     case SpellNames.RightingBolt:
-                        FullEffects[7].gameObject.SetActive(true);
+                        FullEffects[0].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = P1ForcedPosition.position;
@@ -477,12 +477,12 @@ public class ParticleManger : MonoBehaviour
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
                         }
-                        FullEffects[7].Play();
+                        FullEffects[0].Play();
                         StartCoroutine(DisableSpell(1.6f, 7, playerCasting));
                         break;
 
                     case SpellNames.LeftningBolt:
-                        FullEffects[7].gameObject.SetActive(true);
+                        FullEffects[0].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = P1ForcedPosition.position;
@@ -497,12 +497,12 @@ public class ParticleManger : MonoBehaviour
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
                         }
-                        FullEffects[7].Play();
+                        FullEffects[0].Play();
                         StartCoroutine(DisableSpell(1.6f, 7, playerCasting));
                         break;
 
                     case SpellNames.PointerOfDeath:
-                        FullEffects[9].gameObject.SetActive(true);
+                        FullEffects[1].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = P1ForcedPosition.position;
@@ -513,14 +513,14 @@ public class ParticleManger : MonoBehaviour
                             PlayerPosition.position = P2ForcedPosition.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
-                        FullEffects[9].Play();
+                        FullEffects[1].Play();
                         StartCoroutine(DisableSpell(4.5f, 9, playerCasting));
                         break;
 
                     //Restoration Spells |=========================================
 
                     case SpellNames.ForTheCause:
-                        FullEffects[10].gameObject.SetActive(true);
+                        FullEffects[2].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
@@ -531,12 +531,12 @@ public class ParticleManger : MonoBehaviour
                             PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
-                        FullEffects[10].Play();
+                        FullEffects[2].Play();
                         StartCoroutine(DisableSpell(1.8f, 10, playerCasting));
                         break;
 
                     case SpellNames.Materialise:
-                        FullEffects[16].gameObject.SetActive(true);
+                        FullEffects[3].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
