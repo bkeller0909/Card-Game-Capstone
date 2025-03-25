@@ -113,6 +113,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
@@ -123,6 +138,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
@@ -133,6 +163,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
@@ -143,6 +188,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
@@ -153,6 +213,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
@@ -163,6 +238,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
@@ -173,6 +263,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
@@ -183,6 +288,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 1.1f);
+                        }
                     }
                 }
             }
@@ -211,6 +331,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
@@ -221,6 +356,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
@@ -231,6 +381,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
@@ -241,6 +406,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
@@ -251,6 +431,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
@@ -261,6 +456,21 @@ public class CardSelect : MonoBehaviour
                     {
                         // fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
@@ -271,6 +481,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
@@ -281,6 +506,21 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
+
+                        SkinnedMeshRenderer renderer;
+                        if (player == GameManager.Instance.player1)
+                        {
+                            renderer = player.skullHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+                        else
+                        {
+                            renderer = player.stagHands.GetComponent<SkinnedMeshRenderer>();
+                        }
+
+                        if (renderer != null)
+                        {
+                            renderer.material.SetFloat("_BonusColourOn", 0.0f);
+                        }
                     }
                 }
             }
