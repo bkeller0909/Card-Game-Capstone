@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -16,11 +17,21 @@ using UnityEngine.UI;
 /// </summary>
 public class MenuManager : MonoBehaviour
 {
+    [Header("UI GameObjects")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButtonSelected;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject optionsButtonSelected;
     [SerializeField] private GameObject btnArrow;
+
+    [Header("Options UI")]
+    [SerializeField] private AudioMixerGroup mainVolumeMixer;
+    [SerializeField] private AudioMixerGroup musicVolumeMixer;
+    [SerializeField] private AudioMixerGroup soundFXVolumeMixer;
+
+    [SerializeField] private Slider mainVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider soundFXVolumeSlider;
 
     bool isPaused = false;
 
@@ -74,6 +85,6 @@ public class MenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
     }
 }
