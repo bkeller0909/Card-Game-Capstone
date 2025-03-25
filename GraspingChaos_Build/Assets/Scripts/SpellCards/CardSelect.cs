@@ -115,24 +115,28 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
-                        {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
 
-                        if (rendererL != null)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
                         {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -146,25 +150,29 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
                     }
                 }
                 else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
@@ -177,24 +185,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -208,24 +219,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -239,24 +253,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -270,24 +287,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Ring].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Ring].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Ring].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Ring].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -301,24 +321,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -332,24 +355,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(true);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
+                            }
                         }
                     }
                 }
@@ -381,24 +407,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -412,24 +441,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -443,24 +475,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -474,24 +509,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -505,24 +543,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -536,24 +577,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Ring].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Ring].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Ring].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Ring].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -567,24 +611,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
@@ -598,24 +645,27 @@ public class CardSelect : MonoBehaviour
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
-                        if (player == GameManager.Instance.player1)
+                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
                         {
-                            rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
-                        else
-                        {
-                            rendererL = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                            rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].GetComponent<SkinnedMeshRenderer>();
-                        }
+                            if (player == GameManager.Instance.player1)
+                            {
+                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
+                            else
+                            {
+                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                            }
 
-                        if (rendererL != null)
-                        {
-                            rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                        }
-                        if (rendererR != null)
-                        {
-                            rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            if (rendererL != null)
+                            {
+                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
+                            if (rendererR != null)
+                            {
+                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
+                            }
                         }
                     }
                 }
