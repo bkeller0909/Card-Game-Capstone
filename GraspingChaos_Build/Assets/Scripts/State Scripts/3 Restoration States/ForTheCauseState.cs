@@ -63,15 +63,15 @@ public class ForTheCauseState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -80,15 +80,15 @@ public class ForTheCauseState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.ForTheCause, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                 }
                 GameManager.Instance.particleP2Done = true;
             }

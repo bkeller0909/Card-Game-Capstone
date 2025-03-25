@@ -63,21 +63,21 @@ public class CursedConversionState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     //track damage taken of each turn
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.SucessfulCursedConversion = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                     //track damage taken of each turn
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.SucessfulCursedConversion = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     //track damage taken of each turn
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.SucessfulCursedConversion = true;
@@ -89,21 +89,21 @@ public class CursedConversionState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     //track damage taken of each turn
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.SucessfulCursedConversion = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                     //track damage taken of each turn
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.SucessfulCursedConversion = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CursedConversion, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     //track damage taken of each turn
                     //make function for mana gain and ensure that it cant go beyond 12
                     player.SucessfulCursedConversion = true;

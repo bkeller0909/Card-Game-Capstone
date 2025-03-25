@@ -76,19 +76,19 @@ public class IciclesState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
                 GameManager.Instance.particleP1Done = true;
@@ -99,19 +99,19 @@ public class IciclesState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Icicles, randomFinger1, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
                 GameManager.Instance.particleP2Done = true;

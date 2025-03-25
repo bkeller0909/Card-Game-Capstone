@@ -68,18 +68,18 @@ public class LifeDrainState : FSMState
                 {
                     //does nothing
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player, 1);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player, 1);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player, 3);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -89,18 +89,18 @@ public class LifeDrainState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player, 1);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player, 1);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     randomFinger1 = enemy.GetRandomFinger(PlayerFingers.none);
-                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LifeDrain, randomFinger1, player, 3);
                 }
                 GameManager.Instance.particleP2Done = true;
             }

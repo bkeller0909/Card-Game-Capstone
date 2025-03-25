@@ -64,18 +64,20 @@ public class LefteousEnvyState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     //do nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //do nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 3);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -85,18 +87,20 @@ public class LefteousEnvyState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     //do nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //do nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 3);
                 }
                 GameManager.Instance.particleP2Done = true;
             }

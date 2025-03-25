@@ -64,19 +64,19 @@ public class CollectorsCurseState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, enemy.gamepad);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, enemy.gamepad);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, enemy.gamepad);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, player.gamepad);
                 }
@@ -88,19 +88,19 @@ public class CollectorsCurseState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, enemy.gamepad);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, enemy.gamepad);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.CollectorsCurse, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, enemy.gamepad);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.3f, player.gamepad);
                 }

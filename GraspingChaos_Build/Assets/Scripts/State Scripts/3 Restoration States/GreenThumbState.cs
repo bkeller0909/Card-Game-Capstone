@@ -64,7 +64,7 @@ public class GreenThumbState : FSMState
                 (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
                 (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
             {
-               hasBonus = true;
+                hasBonus = true;
             }
 
 
@@ -74,17 +74,17 @@ public class GreenThumbState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 GameManager.Instance.particleP1Done = true;
@@ -94,17 +94,17 @@ public class GreenThumbState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 GameManager.Instance.particleP2Done = true;

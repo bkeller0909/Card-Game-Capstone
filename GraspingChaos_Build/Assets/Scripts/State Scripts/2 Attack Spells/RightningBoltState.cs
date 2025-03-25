@@ -63,21 +63,21 @@ public class RightningBoltState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1.5f);
@@ -89,21 +89,21 @@ public class RightningBoltState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1.5f);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.LeftningBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.2f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(0.5f, 1f, 0.2f, 1.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.03f, 1.5f);

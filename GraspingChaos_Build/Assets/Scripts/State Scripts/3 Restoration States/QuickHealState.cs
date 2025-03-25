@@ -63,19 +63,19 @@ public class QuickHealState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    //does nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    //does nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     GameManager.Instance.coroutineWaitP1 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 1f, player.gamepad);
                 }
                 GameManager.Instance.particleP1Done = true;
@@ -85,19 +85,19 @@ public class QuickHealState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    //does nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    //does nothing
+                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     GameManager.Instance.coroutineWaitP2 = true;
                     GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.QuickHeal, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 1f, player.gamepad);
                 }
                 GameManager.Instance.particleP2Done = true;

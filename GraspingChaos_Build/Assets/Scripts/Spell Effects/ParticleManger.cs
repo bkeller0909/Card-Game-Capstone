@@ -817,29 +817,6 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[17].Play();
                         StartCoroutine(DisableSpell(4f, 17, playerCasting));
                         break;
-
-                    //Ring Spells |=========================================
-
-                    case SpellNames.ThornsOfAgony:
-                        break;
-
-                    case SpellNames.GuardiansTouch:
-                        break;
-
-                    case SpellNames.SpectralChain:
-                        break;
-
-                    case SpellNames.ManaMerchant:
-                        break;
-
-                    case SpellNames.VengefulMirror:
-                        break;
-
-                    case SpellNames.VampiricSurge:
-                        break;
-
-                    case SpellNames.VeilOfFortitude:
-                        break;
                 }
                 break;
 
@@ -1185,29 +1162,6 @@ public class ParticleManger : MonoBehaviour
                         }
                         FullEffects[17].Play();
                         StartCoroutine(DisableSpell(4f, 17, playerCasting));
-                        break;
-
-                    //Ring Spells |=========================================
-
-                    case SpellNames.ThornsOfAgony:
-                        break;
-
-                    case SpellNames.GuardiansTouch:
-                        break;
-
-                    case SpellNames.SpectralChain:
-                        break;
-
-                    case SpellNames.ManaMerchant:
-                        break;
-
-                    case SpellNames.VengefulMirror:
-                        break;
-
-                    case SpellNames.VampiricSurge:
-                        break;
-
-                    case SpellNames.VeilOfFortitude:
                         break;
                 }
                 break;

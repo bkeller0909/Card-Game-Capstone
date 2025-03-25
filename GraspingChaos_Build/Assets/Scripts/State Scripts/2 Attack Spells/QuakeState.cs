@@ -6,10 +6,6 @@
 //  Purpose:       Spell State for Quake Spell
 //  Instance?      no
 //-----------------------------------------------------------------
-using System;
-using Unity.Properties;
-using UnityEngine;
-
 /// <summary>
 /// </summary>
 public class QuakeState : FSMState
@@ -68,7 +64,7 @@ public class QuakeState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
                     player.cameraHandler.CameraShake(0.01f, 1.5f);
@@ -76,7 +72,7 @@ public class QuakeState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
                     player.cameraHandler.CameraShake(0.01f, 1.5f);
@@ -84,7 +80,7 @@ public class QuakeState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
                     player.cameraHandler.CameraShake(0.01f, 1.5f);
@@ -97,7 +93,7 @@ public class QuakeState : FSMState
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
                     player.cameraHandler.CameraShake(0.01f, 1.5f);
@@ -105,7 +101,7 @@ public class QuakeState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
                     player.cameraHandler.CameraShake(0.01f, 1.5f);
@@ -113,7 +109,7 @@ public class QuakeState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player);
+                    ParticleManger.Instance.StartParticle(SpellNames.Quake, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.PulseRumble(0.2f, 0.2f, 0.5f, 1.5f, player.gamepad);
                     RumbleManager.Instance.PulseRumble(1f, 0.5f, 0.5f, 1.5f, enemy.gamepad);
                     player.cameraHandler.CameraShake(0.01f, 1.5f);
@@ -282,13 +278,13 @@ public class QuakeState : FSMState
                                     player.ringHandler.EffectVengFulMirror(player, 2);
                                 }
                             }
-                            
+
                         }
                         indexVeil++;
                         enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     }
 
-                    if(indexVeil >= 3)
+                    if (indexVeil >= 3)
                     {
                         if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
