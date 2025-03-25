@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 //----------------------------------------------------------------
@@ -18,6 +20,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject pauseButtonSelected;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject optionsButtonSelected;
+    [SerializeField] private GameObject btnArrow;
 
     bool isPaused = false;
 
@@ -47,6 +50,26 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(optionsButtonSelected);
         }
+    }
+
+    public IEnumerator MoveArrows(Button btn, Transform topPos)
+    {
+        float moveTimer = 0.3f;
+        float time = 0.0f;
+
+        while (time < moveTimer)
+        {
+            time += Time.deltaTime;
+
+            Vector3 lerpPosTop = Vector3.Lerp(btnArrow.transform.position, topPos.position, (time / moveTimer));
+
+            btnArrow.transform.position = lerpPosTop;
+
+            yield return null;
+        }
+
+        btn.interactable = true;
+        yield return null;
     }
 
     public void QuitGame()
