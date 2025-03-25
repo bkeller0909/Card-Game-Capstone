@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 //----------------------------------------------------------------
 //  Author: Sebastian
@@ -194,6 +193,10 @@ public class PlayerControlHandler : MonoBehaviour
                         changeCameras.NewCamPos(changeCameras.bottleCamPos);
                         manaViewIcon.SetActive(false);
                         atBottle = true;
+
+                        player.playerInput.actions["CameraUp"].Disable();
+                        player.playerInput.actions["CameraDown"].Disable();
+                        player.playerInput.actions["CameraViewButton"].Disable();
                     }
                 }
             }
@@ -207,6 +210,10 @@ public class PlayerControlHandler : MonoBehaviour
                         changeCameras.GetInputForced(0);
                         manaViewIcon.SetActive(true);
                         atBottle = false;
+
+                        player.playerInput.actions["CameraUp"].Enable();
+                        player.playerInput.actions["CameraDown"].Enable();
+                        player.playerInput.actions["CameraViewButton"].Enable();
                     }
                 }
             }
