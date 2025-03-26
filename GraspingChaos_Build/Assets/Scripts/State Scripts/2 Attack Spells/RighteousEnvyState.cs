@@ -64,14 +64,10 @@ public class RighteousEnvyState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, PlayerFingers.RH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP1 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, PlayerFingers.RH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP1 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -85,14 +81,10 @@ public class RighteousEnvyState : FSMState
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, PlayerFingers.RH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP2 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.RighteousEnvy, PlayerFingers.RH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP2 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {

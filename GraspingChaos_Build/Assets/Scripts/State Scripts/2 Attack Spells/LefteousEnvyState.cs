@@ -65,15 +65,11 @@ public class LefteousEnvyState : FSMState
                 {
                     //do nothing
                     ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP1 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //do nothing
                     ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP1 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
@@ -88,15 +84,11 @@ public class LefteousEnvyState : FSMState
                 {
                     //do nothing
                     ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP2 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     //do nothing
                     ParticleManger.Instance.StartParticle(SpellNames.LefteousEnvy, PlayerFingers.LH_Middle, player, 1);
-                    GameManager.Instance.coroutineWaitP2 = true;
-                    GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
