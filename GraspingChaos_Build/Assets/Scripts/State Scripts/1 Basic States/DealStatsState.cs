@@ -5,6 +5,8 @@
 //  Instance:     No
 //-----------------------------------------------------------------
 
+using UnityEngine;
+
 /// <summary>
 /// The State in which all the stats are assigned to the player at the start of each round
 /// </summary>
@@ -57,6 +59,12 @@ public class DealStatsState : FSMState
 
     public override void EnterStateInit()
     {
+        foreach (GameObject card in CardsObjectPool.Instance.objPoolCards)
+        {
+            CardSelect cardSelect = card.GetComponent<CardSelect>();
+            cardSelect.OffHoverCard(playerState.player);
+        }
+
         playerState.spellBook.startFlipping(true);
         cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();  // init the cards into lists by mana cost
@@ -64,7 +72,6 @@ public class DealStatsState : FSMState
         gainedMana = false;
         stateChange = false;
         playerState.playerHand.KeepCardPos();
-
     }
 
     //Reason

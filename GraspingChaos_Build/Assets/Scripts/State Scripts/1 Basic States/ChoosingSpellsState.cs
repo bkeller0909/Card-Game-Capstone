@@ -75,6 +75,11 @@ public class ChoosingSpellsState : FSMState
             SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.roundFinished, 1);
         }
 
+        foreach (GameObject prompt in playerState.prompts)
+        {
+            prompt.SetActive(true);
+        }
+
         for (int i = 0; i < 14; i++)
         {
             for (int j = 0; j < 10; j++)
@@ -218,6 +223,11 @@ public class ChoosingSpellsState : FSMState
                         playerState.playerHand.FullRemove();
                     }
                 }
+            }
+
+            foreach (GameObject prompt in playerState.prompts)
+            {
+                prompt.SetActive(false);
             }
 
             playerState.finishedCastingImage.SetActive(false);

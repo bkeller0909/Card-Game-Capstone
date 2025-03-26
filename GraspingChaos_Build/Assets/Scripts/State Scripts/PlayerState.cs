@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -30,6 +31,8 @@ public class PlayerState : AdvancedFSM
     [SerializeField] public Canvas howToPlay;
 
     [SerializeField] public ControlSpellBook spellBook;
+
+    [SerializeField] public List<GameObject> prompts;
 
     private string GetStateString()
     {

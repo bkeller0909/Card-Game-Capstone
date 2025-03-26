@@ -27,7 +27,6 @@ public class CardSelect : MonoBehaviour
     [Tooltip("Scale size of the card once it is selected.")]
     [SerializeField, Range(1, 2)] private float scaleAmount = 1.2f;
 
-
     [SerializeField, Tooltip("This is the finger bonus for the cards that have it")]
     public bool hasAFingerBonus;
 
@@ -403,7 +402,6 @@ public class CardSelect : MonoBehaviour
                     (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
                     (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
                     {
-                        //fadeInOutBonus(false);
                         fingerBonus.gameObject.SetActive(false);
 
                         SkinnedMeshRenderer rendererL, rendererR;
