@@ -223,7 +223,7 @@ public class DealStatsState : FSMState
                     (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Ring] != true) &&
                     (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Ring] != true))
                 {
-                    if (player.Mana < 11)
+                    if (player.Mana < 15)
                     {
                         player.Mana += 2;
                     }
@@ -234,9 +234,9 @@ public class DealStatsState : FSMState
             {
                 player.PlayedEchoingMana = false;
                 player.Mana += enemy.TrackMana();
-                if (player.Mana >= 12)
+                if (player.Mana >= GameManager.Instance.MAX_PLAYER_MANA)
                 {
-                    player.Mana = 12;
+                    player.Mana = GameManager.Instance.MAX_PLAYER_MANA;
                 }
             }
             player.ManaTrackedPerTurn = 0;

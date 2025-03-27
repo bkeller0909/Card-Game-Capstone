@@ -101,6 +101,16 @@ public class PlayerManager : MonoBehaviour
     public Animator PlayerHands;
     public Animator PlayerFakeHands;
 
+    public bool BonusActiveRockThrow;
+    public bool BonusActiveIcicles;
+    public bool BonusActiveStaticBlast;
+    public bool BonusActiveTidalWave;
+    public bool BonusActivePointerOfDeath;
+    public bool BonusActiveThumbsUp;
+    public bool BonusActiveCursedConversion;
+    public bool BonusActiveGreenThumb;
+    public bool BonusActiveMaterialise;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -198,9 +208,9 @@ public class PlayerManager : MonoBehaviour
     {
         ManaTrackedPerTurn -= manaAmount;
         Mana += manaAmount;
-        if (Mana > 12)
+        if (Mana > GameManager.Instance.MAX_PLAYER_MANA)
         {
-            Mana = 12;
+            Mana = GameManager.Instance.MAX_PLAYER_MANA;
         }
     }
 
@@ -236,18 +246,18 @@ public class PlayerManager : MonoBehaviour
             //anything but success
             DamageTrackedPerTurn = DamageTrackedPerTurn / 2;
             Mana += DamageTrackedPerTurn;
-            if (Mana > 12)
+            if (Mana > GameManager.Instance.MAX_PLAYER_MANA)
             {
-                Mana = 12;
+                Mana = GameManager.Instance.MAX_PLAYER_MANA;
             }
         }
         else
         {
             //on success
             Mana += DamageTrackedPerTurn;
-            if (Mana > 12)
+            if (Mana > GameManager.Instance.MAX_PLAYER_MANA)
             {
-                Mana = 12;
+                Mana = GameManager.Instance.MAX_PLAYER_MANA;
             }
         }
     }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -127,6 +128,10 @@ public class GameManager : MonoBehaviour
     public float P1QTESpeed;
     [Tooltip("The speed that player 2 finished there QTE")]
     public float P2QTESpeed;
+
+    [Tooltip("The Max amount of mana each player is allowed to reach")]
+    [ReadOnly(true)]
+    public int MAX_PLAYER_MANA = 16;
 
     [HideInInspector, Tooltip("The Object pool for each of the cards")]
     public CardsObjectPool cardPool;

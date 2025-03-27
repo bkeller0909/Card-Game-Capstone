@@ -28,8 +28,8 @@ public class ManaVisual : MonoBehaviour
     /// </summary>
     /// 
 
-    const int MAX_MANA_AMOUNT = 12;
-    const int MIN_MANA_AMOUNT = 0;
+    static int MAX_MANA_AMOUNT = GameManager.Instance.MAX_PLAYER_MANA;
+    static int MIN_MANA_AMOUNT = 0;
 
     public Material manaMaterial;
 
