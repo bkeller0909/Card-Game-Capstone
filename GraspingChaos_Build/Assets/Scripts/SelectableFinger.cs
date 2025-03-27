@@ -276,7 +276,7 @@ public class SelectableFinger : MonoBehaviour
                     SetObjectColor(GameManager.Instance.player1.visualFingers[currentFingerIndexP1].fingerJoints[i], GameManager.Instance.defaultColorP2);
                 }
             }
-
+            DeselectForFake();
             if (toggleFullFingerSelect)
             {
                 // highlight the entire finger
@@ -363,6 +363,21 @@ public class SelectableFinger : MonoBehaviour
                 {
                     SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], GameManager.Instance.defaultColorP2);
                 }
+            }
+        }
+    }
+
+    public void DeselectForFake()
+    {
+        for (int i = 0; i < GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints.Count; i++)
+        {
+            if (GameManager.Instance.player1 == player)
+            {
+                SetObjectColor(GameManager.Instance.player1.fingers[currentFingerIndexP1].fingerJoints[i], GameManager.Instance.defaultColorP1);
+            }
+            else if (GameManager.Instance.player2 == player)
+            {
+                SetObjectColor(GameManager.Instance.player1.visualFingers[currentFingerIndexP1].fingerJoints[i], GameManager.Instance.defaultColorP1);
             }
         }
     }
