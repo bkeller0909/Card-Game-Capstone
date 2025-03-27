@@ -1445,6 +1445,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Credits"",
+            ""id"": ""d98228c0-1343-4e1d-8c4e-e12ddd71b2f2"",
+            ""actions"": [
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""705f0282-3287-4b50-9f61-95ac4b3bee7c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a8c4e4a0-03b9-40f3-8599-2c250c8f3f0f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1566,6 +1594,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Tutorial
         m_Tutorial = asset.FindActionMap("Tutorial", throwIfNotFound: true);
         m_Tutorial_Next = m_Tutorial.FindAction("Next", throwIfNotFound: true);
+        // Credits
+        m_Credits = asset.FindActionMap("Credits", throwIfNotFound: true);
+        m_Credits_Back = m_Credits.FindAction("Back", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -1576,6 +1607,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Card.enabled, "This will cause a leak and performance issues, PlayerControls.Card.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_QTEWait.enabled, "This will cause a leak and performance issues, PlayerControls.QTEWait.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Tutorial.enabled, "This will cause a leak and performance issues, PlayerControls.Tutorial.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Credits.enabled, "This will cause a leak and performance issues, PlayerControls.Credits.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -2213,6 +2245,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public TutorialActions @Tutorial => new TutorialActions(this);
+
+    // Credits
+    private readonly InputActionMap m_Credits;
+    private List<ICreditsActions> m_CreditsActionsCallbackInterfaces = new List<ICreditsActions>();
+    private readonly InputAction m_Credits_Back;
+    public struct CreditsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public CreditsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Back => m_Wrapper.m_Credits_Back;
+        public InputActionMap Get() { return m_Wrapper.m_Credits; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CreditsActions set) { return set.Get(); }
+        public void AddCallbacks(ICreditsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CreditsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CreditsActionsCallbackInterfaces.Add(instance);
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
+        }
+
+        private void UnregisterCallbacks(ICreditsActions instance)
+        {
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
+        }
+
+        public void RemoveCallbacks(ICreditsActions instance)
+        {
+            if (m_Wrapper.m_CreditsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICreditsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CreditsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CreditsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CreditsActions @Credits => new CreditsActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -2319,5 +2397,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface ITutorialActions
     {
         void OnNext(InputAction.CallbackContext context);
+    }
+    public interface ICreditsActions
+    {
+        void OnBack(InputAction.CallbackContext context);
     }
 }
