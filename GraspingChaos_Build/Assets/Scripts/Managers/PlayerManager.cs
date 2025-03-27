@@ -101,16 +101,6 @@ public class PlayerManager : MonoBehaviour
     public Animator PlayerHands;
     public Animator PlayerFakeHands;
 
-    public bool BonusActiveRockThrow;
-    public bool BonusActiveIcicles;
-    public bool BonusActiveStaticBlast;
-    public bool BonusActiveTidalWave;
-    public bool BonusActivePointerOfDeath;
-    public bool BonusActiveThumbsUp;
-    public bool BonusActiveCursedConversion;
-    public bool BonusActiveGreenThumb;
-    public bool BonusActiveMaterialise;
-
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
