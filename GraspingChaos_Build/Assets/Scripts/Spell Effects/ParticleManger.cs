@@ -46,6 +46,13 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] private List<Transform> player1FingerPositions;
     [SerializeField] private List<Transform> player2FingerPositions;
 
+    //Custom colors and gradients for select spells
+
+    [SerializeField] private Gradient cursedConversionP1Gradient;
+    [SerializeField] private Gradient cursedConversionExplosionP1Gradient;
+
+    [SerializeField] private Gradient cursedConversionP2Gradient;
+    [SerializeField] private Gradient cursedConversionExplosionP2Gradient;
 
     [Header("End Position for the particles")]
     [SerializeField] Transform EnemyPosition;
@@ -396,10 +403,14 @@ public class ParticleManger : MonoBehaviour
 
                         if (playerCasting == GameManager.Instance.player1)
                         {
+                            lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionP1Gradient);
+                            lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP1Gradient);
                             ManaBottle.position = p1ManaBottleCache.position;
                         }
                         else
                         {
+                            lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionP2Gradient);
+                            lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP2Gradient);
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
                         lowEffects[14].Play();

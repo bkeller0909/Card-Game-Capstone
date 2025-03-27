@@ -78,6 +78,7 @@ public class RockThrowState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     ParticleManger.Instance.StartParticle(SpellNames.Rockthrow, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
+                    RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.5f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
