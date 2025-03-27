@@ -1,4 +1,3 @@
-/// <summary>
 //----------------------------------------------------------------
 //  OG Author:     Sebastian
 //  other Authors: Wyatt
@@ -7,6 +6,9 @@
 //  Purpose:       QTE State check
 //  Instance?      no
 //-----------------------------------------------------------------
+using UnityEngine;
+
+/// <summary>
 /// </summary>
 public class QTEState : FSMState
 {
@@ -32,6 +34,14 @@ public class QTEState : FSMState
         //make sure both players values fro their qte sequence is reset
         GameManager.Instance.player2FinishedQTE = false;
         GameManager.Instance.player1FinishedQTE = false;
+
+        foreach (Fingers playerFingers in playerState.player.GetComponentInChildren<HandsHandler>().fingers)
+        {
+            foreach (SkinnedMeshRenderer fingerRender in playerFingers.GetComponentsInChildren<SkinnedMeshRenderer>())
+            {
+                fingerRender.material.SetFloat("_BonusColourOn", 0.0f);
+            }
+        }
     }
 
     //Reason
