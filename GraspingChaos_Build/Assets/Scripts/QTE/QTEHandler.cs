@@ -142,12 +142,17 @@ public class QTEHandler : MonoBehaviour
                 startTimer = false;
                 DisableQTEButtonsTimer();
                 QTEHasStarted = false;
+                ResetTriggers(Player1Anim);
+                ResetTriggers(Player2Anim);
+                ResetTriggers(Player1Fake);
+                ResetTriggers(Player2Fake);
                 Player1Anim.SetTrigger("IDLE");
                 Player2Anim.SetTrigger("IDLE");
                 Player1Fake.SetTrigger("IDLE");
                 Player2Fake.SetTrigger("IDLE");
                 //EvauateQTEResults();
                 timeisDone = true;
+                StartCoroutine(EmergencyIdle());
                 //checkTieRace();
             }
         }
@@ -692,6 +697,19 @@ public class QTEHandler : MonoBehaviour
             HandAnimations.Remove(storedHandAnim);
             return storedHandAnim;
         }
+    }
+
+    IEnumerator EmergencyIdle()
+    {
+        yield return new WaitForSeconds(1);
+        ResetTriggers(Player1Anim);
+        ResetTriggers(Player2Anim);
+        ResetTriggers(Player1Fake);
+        ResetTriggers(Player2Fake);
+        Player1Anim.SetTrigger("IDLE");
+        Player2Anim.SetTrigger("IDLE");
+        Player1Fake.SetTrigger("IDLE");
+        Player2Fake.SetTrigger("IDLE");
     }
 
     private void ResetTriggers(Animator whatYouNeed)
