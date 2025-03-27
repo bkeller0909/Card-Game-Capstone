@@ -121,6 +121,7 @@ public class PlayerControlHandler : MonoBehaviour
                     // CONTROLS
                     pickFinger.SelectFinger();                          // selects the finger
                     stateHandler.FingerHasBeenSelected();               // changes state to the finger is selected
+                    pickCards.HoverIndexFix();
                     player.playerInput.SwitchCurrentActionMap("Card");  // switches controls to card controls
                     changeCameras.GetInputForced(0);                    // changes camera back to default
                     playerInput.selectFinger = false;                   // no longer selecting a finger

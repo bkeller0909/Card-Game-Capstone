@@ -389,7 +389,7 @@ public class CardSelect : MonoBehaviour
         // card is no longer hovered
         isHovered = false;
         //StartCoroutine(AdjustCard(isHovered));
-        CardGlow(isHovered);
+        //CardGlow(isHovered);
 
         if (hasAFingerBonus)
         {
@@ -680,6 +680,7 @@ public class CardSelect : MonoBehaviour
         cardGlowRender.material.SetColor("_GlowColour", Color.grey);
         cardGlowRender.material.SetFloat("_GlowMultiplier", 50f);
         //StartCoroutine(AdjustCard(isSelected));
+
         CardGlow(isSelected);
         SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelect, 0.25f);
     }

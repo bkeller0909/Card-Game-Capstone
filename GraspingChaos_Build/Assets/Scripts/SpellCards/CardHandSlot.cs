@@ -170,6 +170,7 @@ public class CardHandSlot : MonoBehaviour
         if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
             cards[currentHoverIndex].OffHoverCard(player);
+            cards[currentHoverIndex].CardGlow(false);
         }
 
         // Update the current hover index.
@@ -179,6 +180,7 @@ public class CardHandSlot : MonoBehaviour
         if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
             cards[currentHoverIndex].OnHoverCard(player);
+            cards[currentHoverIndex].CardGlow(true);
         }
     }
 
@@ -238,6 +240,7 @@ public class CardHandSlot : MonoBehaviour
             {
                 selectedCards.Add(card);
                 card.SelectCard();
+                card.OffHoverCard(player);
                 if (whatCard.spellName != SpellNames.Icicles && whatCard.spellName != SpellNames.LefteousEnvy && whatCard.spellName != SpellNames.RighteousEnvy &&
                whatCard.spellName != SpellNames.LifeDrain && whatCard.spellName != SpellNames.ThumbsUp && whatCard.spellName != SpellNames.EchoingMana &&
                whatCard.spellName != SpellNames.CursedConversion)
@@ -245,7 +248,7 @@ public class CardHandSlot : MonoBehaviour
                     player.playerInput.SwitchCurrentActionMap("Player");
                     playerState.playerControlHandler.pickFinger.UpdateSelection();
                 }
-                HoverIndexFix();
+                //HoverIndexFix();
             }
         }
     }

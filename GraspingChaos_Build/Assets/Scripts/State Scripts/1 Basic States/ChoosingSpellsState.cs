@@ -309,6 +309,7 @@ public class ChoosingSpellsState : FSMState
             {
                 player.playerCameras.GetInputForced(0);
                 playerState.currentFingerName = PlayerFingers.none;
+                playerState.playerControlHandler.pickCards.HoverIndexFix();
                 amtOfSpells++;
             }
             // if the spells require the player to chose the opposing players finger
