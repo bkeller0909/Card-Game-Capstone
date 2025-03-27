@@ -17,8 +17,6 @@ public class Credits : MonoBehaviour
 
     public void MoveCreditsUp()
     {
-        float time = Time.deltaTime;
-
-        rb.AddForce(Vector3.up * time * speed);
+        rb.velocity = Vector3.up * speed;
     }
 }

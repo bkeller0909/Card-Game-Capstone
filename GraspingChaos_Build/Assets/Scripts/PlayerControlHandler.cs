@@ -197,6 +197,9 @@ public class PlayerControlHandler : MonoBehaviour
                         player.playerInput.actions["CameraUp"].Disable();
                         player.playerInput.actions["CameraDown"].Disable();
                         player.playerInput.actions["CameraViewButton"].Disable();
+                        player.playerInput.actions["NavCardLeft"].Disable();
+                        player.playerInput.actions["NavCardRight"].Disable();
+                        player.playerInput.actions["Select"].Disable();
                     }
                 }
             }
@@ -214,6 +217,9 @@ public class PlayerControlHandler : MonoBehaviour
                         player.playerInput.actions["CameraUp"].Enable();
                         player.playerInput.actions["CameraDown"].Enable();
                         player.playerInput.actions["CameraViewButton"].Enable();
+                        player.playerInput.actions["NavCardLeft"].Enable();
+                        player.playerInput.actions["NavCardRight"].Enable();
+                        player.playerInput.actions["Select"].Enable();
                     }
                 }
             }
