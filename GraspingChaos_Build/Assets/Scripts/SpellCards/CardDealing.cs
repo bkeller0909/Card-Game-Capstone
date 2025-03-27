@@ -486,7 +486,7 @@ public class CardDealing : MonoBehaviour
         }
 
         // Player mana is 12
-        else if (player.Mana == 12)
+        else if (player.Mana >= 12)
         {
             if (cardChance >= 1 && cardChance <= 5)  // 1 mana
             {
