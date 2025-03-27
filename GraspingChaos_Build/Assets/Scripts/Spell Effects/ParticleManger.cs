@@ -39,20 +39,33 @@ public class ParticleManger : MonoBehaviour
         }
     }
 
+    //Private Variables
+    //==============================================================================================================
+
+    //List of different spell varients
+    //==============================================================================================================
+
     [SerializeField] private List<VisualEffect> FullEffects;
     [SerializeField] private List<VisualEffect> medEffects;
     [SerializeField] private List<VisualEffect> lowEffects;
 
-    [SerializeField] private List<Transform> player1FingerPositions;
-    [SerializeField] private List<Transform> player2FingerPositions;
 
     //Custom colors and gradients for select spells
+    //==============================================================================================================
 
     [SerializeField] private Gradient cursedConversionP1Gradient;
     [SerializeField] private Gradient cursedConversionExplosionP1Gradient;
+    [SerializeField] private Color cursedConversionP1Color;
 
     [SerializeField] private Gradient cursedConversionP2Gradient;
     [SerializeField] private Gradient cursedConversionExplosionP2Gradient;
+    [SerializeField] private Color cursedConversionP2Color;
+
+    //Particle Positioning variables
+    //==============================================================================================================
+
+    [SerializeField] private List<Transform> player1FingerPositions;
+    [SerializeField] private List<Transform> player2FingerPositions;
 
     [Header("End Position for the particles")]
     [SerializeField] Transform EnemyPosition;
@@ -78,6 +91,7 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] private Transform p2ManaBottleCache;
 
     //Public Variables
+    //==============================================================================================================
 
     public bool spawnExtra1;
     public bool spawnExtra2;
@@ -341,11 +355,13 @@ public class ParticleManger : MonoBehaviour
 
                         if (playerCasting == GameManager.Instance.player1)
                         {
+                            lowEffects[10].SetGradient("Particle Color Gradient", cursedConversionP1Gradient);
                             PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p1ManaBottleCache.position;
                         }
                         else
                         {
+                            lowEffects[10].SetGradient("Particle Color Gradient", cursedConversionP2Gradient);
                             PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
@@ -405,12 +421,14 @@ public class ParticleManger : MonoBehaviour
                         {
                             lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionP1Gradient);
                             lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP1Gradient);
+                            lowEffects[14].SetVector4("Orb Color", cursedConversionP1Color);
                             ManaBottle.position = p1ManaBottleCache.position;
                         }
                         else
                         {
                             lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionP2Gradient);
                             lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP2Gradient);
+                            lowEffects[14].SetVector4("Orb Color", cursedConversionP2Color);
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
                         lowEffects[14].Play();
@@ -534,11 +552,13 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[2].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
+                            medEffects[2].SetGradient("Particle Color Gradient", cursedConversionP1Gradient);
                             PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p1ManaBottleCache.position;
                         }
                         else
                         {
+                            medEffects[2].SetGradient("Particle Color Gradient", cursedConversionP2Gradient);
                             PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
@@ -787,11 +807,13 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[10].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
+                            FullEffects[10].SetGradient("Particle Color Gradient", cursedConversionP1Gradient);
                             PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p1ManaBottleCache.position;
                         }
                         else
                         {
+                            FullEffects[10].SetGradient("Particle Color Gradient", cursedConversionP2Gradient);
                             PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
@@ -849,11 +871,18 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[14].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
+
                             ManaBottle.position = p1ManaBottleCache.position;
+                            FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionP1Gradient);
+                            FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP1Gradient);
+                            FullEffects[14].SetVector4("Orb Color", cursedConversionP1Color);
                         }
                         else
                         {
                             ManaBottle.position = p2ManaBottleCache.position;
+                            FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionP2Gradient);
+                            FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP2Gradient);
+                            FullEffects[14].SetVector4("Orb Color", cursedConversionP2Color);
                         }
                         FullEffects[14].Play();
                         StartCoroutine(DisableSpell(6.5f, 14, playerCasting));
