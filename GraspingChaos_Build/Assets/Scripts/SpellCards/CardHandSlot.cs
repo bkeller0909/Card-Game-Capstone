@@ -243,6 +243,7 @@ public class CardHandSlot : MonoBehaviour
                whatCard.spellName != SpellNames.CursedConversion)
                 {
                     player.playerInput.SwitchCurrentActionMap("Player");
+                    playerState.playerControlHandler.pickFinger.UpdateSelection();
                 }
                 HoverIndexFix();
             }
@@ -327,7 +328,7 @@ public class CardHandSlot : MonoBehaviour
                 }
             }
         }
-        else if (currentHoverIndex == cards.Count -1)
+        else if (currentHoverIndex == cards.Count - 1)
         {
             if (!cards[currentHoverIndex - 1].isSelected)
             {
@@ -347,7 +348,7 @@ public class CardHandSlot : MonoBehaviour
                 }
             }
         }
-        else if(currentHoverIndex == 0)
+        else if (currentHoverIndex == 0)
         {
             if (!cards[currentHoverIndex + 1].isSelected)
             {

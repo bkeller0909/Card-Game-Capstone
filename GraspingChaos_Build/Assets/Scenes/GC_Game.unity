@@ -10271,6 +10271,18 @@ MonoBehaviour:
   wasPressed: 0
   pressed: 0
   correctPress: 0
+--- !u!114 &995793893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328186024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcdc958557ee404bba88852ce867333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1000175287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3339502163525828565, guid: 61b05e254dcdce240bdc3c60db7ef8a8,
@@ -14952,6 +14964,11 @@ PrefabInstance:
       propertyPath: prompts.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: playerControlHandler
+      value: 
+      objectReference: {fileID: 995793893}
     - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: prompts.Array.data[0]
@@ -23735,6 +23752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
+      propertyPath: playerControlHandler
+      value: 
+      objectReference: {fileID: 1732102752}
+    - target: {fileID: 2844247077668704164, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
       propertyPath: prompts.Array.data[0]
       value: 
       objectReference: {fileID: 105746394}
@@ -27190,6 +27212,18 @@ MonoBehaviour:
   wasPressed: 0
   pressed: 0
   correctPress: 0
+--- !u!114 &1732102752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693830825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcdc958557ee404bba88852ce867333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1736774703
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -216,7 +216,6 @@ public class CardSelect : MonoBehaviour
                     {
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
-
                         SkinnedMeshRenderer rendererL, rendererR;
                         for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
                         {

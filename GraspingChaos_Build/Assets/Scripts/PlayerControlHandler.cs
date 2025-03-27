@@ -15,7 +15,7 @@ using UnityEngine;
 public class PlayerControlHandler : MonoBehaviour
 {
     PlayerManager player;
-    SelectableFinger pickFinger;
+    public SelectableFinger pickFinger;
     PlayerState stateHandler;
     private InputHandler playerInput;
     [SerializeField] public CardHandSlot pickCards;

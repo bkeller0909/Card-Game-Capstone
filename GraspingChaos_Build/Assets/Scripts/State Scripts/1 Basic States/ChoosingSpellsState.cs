@@ -347,6 +347,7 @@ public class ChoosingSpellsState : FSMState
             // If the player has to chose there finger
             else
             {
+                playerState.playerControlHandler.pickFinger.UnToggleEnemyHands(player);
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = true;

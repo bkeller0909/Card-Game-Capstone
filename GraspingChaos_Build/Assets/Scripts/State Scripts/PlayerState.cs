@@ -34,6 +34,8 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public List<GameObject> prompts;
 
+    [SerializeField] public PlayerControlHandler playerControlHandler;
+
     private string GetStateString()
     {
         string state = "NONE";

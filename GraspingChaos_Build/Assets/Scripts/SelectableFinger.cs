@@ -23,7 +23,7 @@ public class SelectableFinger : MonoBehaviour
     public Color selectedColor = Color.red;
     public Color deselect = Color.white;
 
-    private int currentFingerIndexP1 = 0;         // columns
+    public int currentFingerIndexP1 = 0;         // columns
     private int currentFingerJointIndexP1 = 0;    // rows
 
     //used for enemy as of now for testing, likely will be altered for specific situations or maybe deleted depending on game loop
@@ -214,7 +214,7 @@ public class SelectableFinger : MonoBehaviour
     /// <summary>
     /// Visually updates the finger for if the entire finger is selected or just the joint.
     /// </summary>
-    private void UpdateSelection()
+    public void UpdateSelection()
     {
         if (player.playerOneHands)
         {
@@ -362,6 +362,30 @@ public class SelectableFinger : MonoBehaviour
                 else if (GameManager.Instance.player2 == player)
                 {
                     SetObjectColor(GameManager.Instance.player2.fingers[currentFingerIndexP2].fingerJoints[i], GameManager.Instance.defaultColorP2);
+                }
+            }
+        }
+    }
+
+    public void UnToggleEnemyHands(PlayerManager player)
+    {
+        if (player == GameManager.Instance.player1)
+        {
+            for (int i = 0; i < GameManager.Instance.player2.fingers.Count; i++)
+            {
+                for (int w = 0; w < GameManager.Instance.player2.fingers[i].fingerJoints.Count; w++)
+                {
+                    SetObjectColor(GameManager.Instance.player2.visualFingers[i].fingerJoints[w], GameManager.Instance.defaultColorP2);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GameManager.Instance.player1.fingers.Count; i++)
+            {
+                for (int w = 0; w < GameManager.Instance.player1.fingers[i].fingerJoints.Count; w++)
+                {
+                    SetObjectColor(GameManager.Instance.player1.visualFingers[i].fingerJoints[w], GameManager.Instance.defaultColorP1);
                 }
             }
         }
