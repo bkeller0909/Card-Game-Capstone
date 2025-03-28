@@ -321,6 +321,7 @@ public class ChoosingSpellsState : FSMState
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = false;
+                    playerState.playerControlHandler.pickFinger.UpdateSelection();
                     if (amtOfSpells < 3)
                     {
                         player.playerCameras.GetInputForced(2);
@@ -334,6 +335,7 @@ public class ChoosingSpellsState : FSMState
                 else
                 {
                     player.playerOneHands = true;
+                    playerState.playerControlHandler.pickFinger.UpdateSelection();
                     if (amtOfSpells < 3)
                     {
                         player.playerCameras.GetInputForced(2);
@@ -352,6 +354,7 @@ public class ChoosingSpellsState : FSMState
                 if (player == GameManager.Instance.player1)
                 {
                     player.playerOneHands = true;
+                    playerState.playerControlHandler.pickFinger.UpdateSelection();
                     //healing
                     if (amtOfSpells < 3)
                     {
@@ -366,6 +369,7 @@ public class ChoosingSpellsState : FSMState
                 else
                 {
                     player.playerOneHands = false;
+                    playerState.playerControlHandler.pickFinger.UpdateSelection();
                     //healing
                     if (amtOfSpells < 3)
                     {
