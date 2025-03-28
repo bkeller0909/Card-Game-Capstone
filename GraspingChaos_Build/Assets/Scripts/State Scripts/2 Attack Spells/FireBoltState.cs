@@ -150,6 +150,10 @@ public class FireBoltState : FSMState
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                     //enemy.BackToIDLE();
                 }
+                else
+                {
+                    player.endStall = true;
+                }
             }
 
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
@@ -183,9 +187,13 @@ public class FireBoltState : FSMState
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
                     //enemy.BackToIDLE();
                 }
+                else
+                {
+                    player.endStall = true;
+                }
             }
 
-            if(player.endStall)
+            if (player.endStall)
             {
                 nextState = "Deciding";
                 GameManager.Instance.playedSpells++;
