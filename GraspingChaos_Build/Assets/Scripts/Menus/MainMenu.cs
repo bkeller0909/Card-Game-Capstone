@@ -18,8 +18,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField, Tooltip("")]
     Button[] buttons;
 
-    [SerializeField]
-    CanvasGroup titles, btns, arrows;
+    public CanvasGroup titles, btns, arrows;
 
     [SerializeField]
     GameObject topArrow, botArrow;
@@ -103,20 +102,28 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     /// <param name="duration"></param>
     /// <returns></returns>
-    IEnumerator FadeInTitle(float duration)
+    public IEnumerator FadeInTitle(float duration)
     {
-        while (titles.alpha < 1)
+        yield return new WaitForSeconds(3f);
+
+        float elapsedTime = 0f;
+        float startAlpha = titles.alpha; // start everything with with same alpha
+
+        while (elapsedTime < duration)
         {
-            yield return new WaitForSeconds(duration);
-            titles.alpha += 0.05f;
-            btns.alpha += 0.05f;
-            arrows.alpha += 0.05f;
+            elapsedTime += Time.deltaTime;
+            float normalizedTime = elapsedTime / duration;
+
+            titles.alpha = Mathf.Lerp(startAlpha, 1f, normalizedTime);
+            btns.alpha = Mathf.Lerp(startAlpha, 1f, normalizedTime);
+            arrows.alpha = Mathf.Lerp(startAlpha, 1f, normalizedTime);
+
+            yield return null;
         }
+
         titles.alpha = 1;
         btns.alpha = 1;
         btns.interactable = true;
-
-        yield return null;
     }
 
     /// <summary>
