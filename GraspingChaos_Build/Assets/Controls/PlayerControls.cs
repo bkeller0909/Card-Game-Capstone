@@ -1127,7 +1127,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""CameraViewButton"",
+                    ""name"": ""InspectCard"",
                     ""type"": ""Button"",
                     ""id"": ""8d0c833a-6a0f-4717-91aa-d9796fca5170"",
                     ""expectedControlType"": ""Button"",
@@ -1353,7 +1353,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""CameraViewButton"",
+                    ""action"": ""InspectCard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1586,7 +1586,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Card_SetFinal = m_Card.FindAction("SetFinal", throwIfNotFound: true);
         m_Card_Pause = m_Card.FindAction("Pause", throwIfNotFound: true);
         m_Card_ManaView = m_Card.FindAction("ManaView", throwIfNotFound: true);
-        m_Card_CameraViewButton = m_Card.FindAction("CameraViewButton", throwIfNotFound: true);
+        m_Card_InspectCard = m_Card.FindAction("InspectCard", throwIfNotFound: true);
         // QTEWait
         m_QTEWait = asset.FindActionMap("QTEWait", throwIfNotFound: true);
         m_QTEWait_Pause = m_QTEWait.FindAction("Pause", throwIfNotFound: true);
@@ -2040,7 +2040,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Card_SetFinal;
     private readonly InputAction m_Card_Pause;
     private readonly InputAction m_Card_ManaView;
-    private readonly InputAction m_Card_CameraViewButton;
+    private readonly InputAction m_Card_InspectCard;
     public struct CardActions
     {
         private @PlayerControls m_Wrapper;
@@ -2054,7 +2054,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @SetFinal => m_Wrapper.m_Card_SetFinal;
         public InputAction @Pause => m_Wrapper.m_Card_Pause;
         public InputAction @ManaView => m_Wrapper.m_Card_ManaView;
-        public InputAction @CameraViewButton => m_Wrapper.m_Card_CameraViewButton;
+        public InputAction @InspectCard => m_Wrapper.m_Card_InspectCard;
         public InputActionMap Get() { return m_Wrapper.m_Card; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2091,9 +2091,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ManaView.started += instance.OnManaView;
             @ManaView.performed += instance.OnManaView;
             @ManaView.canceled += instance.OnManaView;
-            @CameraViewButton.started += instance.OnCameraViewButton;
-            @CameraViewButton.performed += instance.OnCameraViewButton;
-            @CameraViewButton.canceled += instance.OnCameraViewButton;
+            @InspectCard.started += instance.OnInspectCard;
+            @InspectCard.performed += instance.OnInspectCard;
+            @InspectCard.canceled += instance.OnInspectCard;
         }
 
         private void UnregisterCallbacks(ICardActions instance)
@@ -2125,9 +2125,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ManaView.started -= instance.OnManaView;
             @ManaView.performed -= instance.OnManaView;
             @ManaView.canceled -= instance.OnManaView;
-            @CameraViewButton.started -= instance.OnCameraViewButton;
-            @CameraViewButton.performed -= instance.OnCameraViewButton;
-            @CameraViewButton.canceled -= instance.OnCameraViewButton;
+            @InspectCard.started -= instance.OnInspectCard;
+            @InspectCard.performed -= instance.OnInspectCard;
+            @InspectCard.canceled -= instance.OnInspectCard;
         }
 
         public void RemoveCallbacks(ICardActions instance)
@@ -2387,7 +2387,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSetFinal(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnManaView(InputAction.CallbackContext context);
-        void OnCameraViewButton(InputAction.CallbackContext context);
+        void OnInspectCard(InputAction.CallbackContext context);
     }
     public interface IQTEWaitActions
     {

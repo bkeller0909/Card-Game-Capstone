@@ -25,7 +25,10 @@ public class PlayerControlHandler : MonoBehaviour
     public Animator playerHands, playerFakeHands;
     public bool EmergencyCameraPush;
     public bool atBottle;
+    public bool inspectCard = false;
     public bool buttonShiled = false;
+
+    public Transform inspectCardPos;
 
     [Header("UI Tooltips")]
     public GameObject manaViewIcon;
@@ -197,7 +200,7 @@ public class PlayerControlHandler : MonoBehaviour
 
                         player.playerInput.actions["CameraUp"].Disable();
                         player.playerInput.actions["CameraDown"].Disable();
-                        player.playerInput.actions["CameraViewButton"].Disable();
+                        player.playerInput.actions["InspectCard"].Disable();
                         player.playerInput.actions["NavCardLeft"].Disable();
                         player.playerInput.actions["NavCardRight"].Disable();
                         player.playerInput.actions["Select"].Disable();
@@ -217,7 +220,7 @@ public class PlayerControlHandler : MonoBehaviour
 
                         player.playerInput.actions["CameraUp"].Enable();
                         player.playerInput.actions["CameraDown"].Enable();
-                        player.playerInput.actions["CameraViewButton"].Enable();
+                        player.playerInput.actions["InspectCard"].Enable();
                         player.playerInput.actions["NavCardLeft"].Enable();
                         player.playerInput.actions["NavCardRight"].Enable();
                         player.playerInput.actions["Select"].Enable();
@@ -296,14 +299,38 @@ public class PlayerControlHandler : MonoBehaviour
                 changeCameras.GetInput();
             }
 
+            //if (inspectCard == false)
+            //{
+            //    if (player.playerInput.actions["InspectCard"].WasPressedThisFrame())
+            //    {
+            //        inspectCard = true;
+            //        InspectCard(inspectCardPos);
+            //        player.playerInput.actions["CameraUp"].Disable();
+            //        player.playerInput.actions["CameraDown"].Disable();
+            //        player.playerInput.actions["NavCardLeft"].Disable();
+            //        player.playerInput.actions["NavCardRight"].Disable();
+            //        player.playerInput.actions["Select"].Disable();
+            //        player.playerInput.actions["ManaView"].Disable();
+            //        player.playerInput.actions["SetFinal"].Disable();
+            //    }
+            //}
 
-            if (!player.GetComponentInChildren<CameraPositionChange>().noButtonUsage)
-            {
-                if (player.playerInput.actions["CameraViewButton"].WasPressedThisFrame())
-                {
-                    changeCameras.ChangeCameraCards();
-                }
-            }
+            //if (inspectCard == true)
+            //{
+            //    if (player.playerInput.actions["InspectCard"].WasPressedThisFrame())
+            //    {
+            //        inspectCard = false;
+            //        InspectCard(inspectCardPos);
+            //        player.playerInput.actions["CameraUp"].Enable();
+            //        player.playerInput.actions["CameraDown"].Enable();
+            //        player.playerInput.actions["NavCardLeft"].Enable();
+            //        player.playerInput.actions["NavCardRight"].Enable();
+            //        player.playerInput.actions["Select"].Enable();
+            //        player.playerInput.actions["ManaView"].Enable();
+            //        player.playerInput.actions["SetFinal"].Enable();
+            //    }
+            //}
+
         }
 
         // Once the pause button is pressed just load us back to the main menu
@@ -374,5 +401,22 @@ public class PlayerControlHandler : MonoBehaviour
         yield return new WaitForSeconds(1);
         buttonShiled = false;
 
+    }
+
+    public void InspectCard(Transform cardEndPos)
+    {
+        for(int i = 0; i < pickCards.cards.Count; i++)
+        {
+            Transform cardStartPos = pickCards.cards[i].transform;
+                
+            if (pickCards.cards[i].isHovered == true && inspectCard == false)
+            {
+                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, pickCards.cards[i].transform, cardEndPos);
+            }
+            else if (pickCards.cards[i].isHovered == true && inspectCard == true)
+            {
+                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, cardEndPos, cardStartPos);
+            }
+        }
     }
 }

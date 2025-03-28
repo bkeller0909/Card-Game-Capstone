@@ -10726,6 +10726,12 @@ Transform:
   - {fileID: 124721786}
   m_Father: {fileID: 479487192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1048553046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150548275848238489, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328186024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1062481989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3344926505897337010, guid: aa139f9ca81e90b4a9f7f90eea93ad03,
@@ -16710,6 +16716,11 @@ PrefabInstance:
       propertyPath: manaViewIcon
       value: 
       objectReference: {fileID: 371684291}
+    - target: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
+      propertyPath: inspectCardPos
+      value: 
+      objectReference: {fileID: 1048553046}
     - target: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: playerFakeHands
@@ -25402,6 +25413,11 @@ PrefabInstance:
       objectReference: {fileID: 631978620}
     - target: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
+      propertyPath: inspectCardPos
+      value: 
+      objectReference: {fileID: 2117459757}
+    - target: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+        type: 3}
       propertyPath: playerFakeHands
       value: 
       objectReference: {fileID: 188581780}
@@ -30985,6 +31001,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4949171c012c9d6459cb8040fbe5fb4d, type: 3}
+--- !u!4 &2117459757 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150548275848238489, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693830825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &82149302666583887
 PrefabInstance:
   m_ObjectHideFlags: 0

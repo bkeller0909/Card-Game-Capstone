@@ -867,6 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselect: {r: 1, g: 1, b: 1, a: 1}
+  currentFingerIndexP1: 0
   playerOneHands: 1
 --- !u!114 &6021311753385111915
 MonoBehaviour:
@@ -889,6 +890,11 @@ MonoBehaviour:
   QTESpriteRightInput: {fileID: 21300000, guid: a9a1818aba90a2643b4fc10f175b1e00,
     type: 3}
   QTESpriteUpInput: {fileID: 21300000, guid: f11980dae841a7f4a8eb5c775a70a12b, type: 3}
+  countDown3: {fileID: 0}
+  countDown2: {fileID: 0}
+  countDown1: {fileID: 0}
+  countDownStart: {fileID: 0}
+  countDownObject: {fileID: 0}
   p1: {fileID: 0}
   p2: {fileID: 0}
   Buttons:
@@ -956,6 +962,8 @@ MonoBehaviour:
   playerHand: {fileID: 2811401304770170630}
   howToPlay: {fileID: 8440605282143477674}
   spellBook: {fileID: 0}
+  prompts: []
+  playerControlHandler: {fileID: 0}
 --- !u!114 &5770387762574175508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcdc958557ee404bba88852ce867333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickFinger: {fileID: 0}
   pickCards: {fileID: 2811401304770170630}
   changeCameras: {fileID: 3297726804860651693}
   deconfirm: 0
@@ -976,7 +985,9 @@ MonoBehaviour:
   playerFakeHands: {fileID: 0}
   EmergencyCameraPush: 0
   atBottle: 0
+  inspectCard: 0
   buttonShiled: 0
+  inspectCardPos: {fileID: 0}
   manaViewIcon: {fileID: 5609508165602861406}
   cardViewIcon: {fileID: 0}
   cardNavIcon: {fileID: 3023532453487132347}
@@ -1450,7 +1461,8 @@ Transform:
   m_LocalPosition: {x: 0.40199995, y: 0.5349999, z: 1.0030001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4150548275848238489}
   m_Father: {fileID: 3758168651206314053}
   m_LocalEulerAnglesHint: {x: 3.901, y: 180, z: 0}
 --- !u!20 &1128161581497501664
@@ -1739,6 +1751,37 @@ MonoBehaviour:
   m_Property:
     m_Name: StartPos
   Target: {fileID: 9106289297776437146}
+--- !u!1 &1705820361014720596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4150548275848238489}
+  m_Layer: 0
+  m_Name: CardInspectView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4150548275848238489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705820361014720596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.025738455, y: -0, z: -0, w: 0.9996688}
+  m_LocalPosition: {x: 0, y: -0.026, z: 0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5686260682958659029}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1940599744865381956
 GameObject:
   m_ObjectHideFlags: 0
