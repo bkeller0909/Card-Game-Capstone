@@ -38,6 +38,8 @@ public class CardSelect : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 startScale;
 
+    [SerializeField] private Color cardSelectColor;
+
     [Header("States of the cards")]
     public bool isHovered = false;
     public bool isSelected = false;
@@ -677,7 +679,7 @@ public class CardSelect : MonoBehaviour
     {
         isHovered = false;
         isSelected = true;
-        cardGlowRender.material.SetColor("_GlowColour", Color.grey);
+        cardGlowRender.material.SetColor("_GlowColour", cardSelectColor);
         cardGlowRender.material.SetFloat("_GlowMultiplier", 50f);
         //StartCoroutine(AdjustCard(isSelected));
 
