@@ -54,7 +54,8 @@ public class BtnIsSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
         btnImage.color = defualtCol;
         isSelected = false;
         menu = FindAnyObjectByType<MainMenu>();
-        text = this.gameObject.GetComponentInChildren<TMP_Text>();
+        text = gameObject.GetComponentInChildren<TMP_Text>();
+        text.color = defualtCol;
     }
 
     /// <summary>
@@ -63,9 +64,8 @@ public class BtnIsSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void BtnSelected()
     {
         isSelected = true;
-        btnImage.color = selectedCol;
-        text.color = Color.white;
-        StartCoroutine(menu.MoveArrows(this.GetComponent<Button>(), topArrow, bottomArrow));
+        text.color = selectedCol;
+        StartCoroutine(menu.MoveArrows(GetComponent<Button>(), topArrow, bottomArrow));
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class BtnIsSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         isSelected = false;
         btnImage.color = defualtCol;
-        text.color = Color.black;
+        text.color = defualtCol;
     }
 
 }
