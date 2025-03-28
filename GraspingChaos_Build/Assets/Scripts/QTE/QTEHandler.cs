@@ -159,7 +159,7 @@ public class QTEHandler : MonoBehaviour
                 Player2Fake.SetTrigger("IDLE");
                 //EvauateQTEResults();
                 timeisDone = true;
-                StartCoroutine(EmergencyIdle());
+                //StartCoroutine(EmergencyIdle());
                 //checkTieRace();
             }
         }

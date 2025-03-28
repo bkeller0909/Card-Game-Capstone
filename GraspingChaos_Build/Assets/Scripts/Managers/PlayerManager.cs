@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -101,6 +102,9 @@ public class PlayerManager : MonoBehaviour
     public Animator PlayerHands;
     public Animator PlayerFakeHands;
 
+    public bool castAnimDone;
+    public bool endStall;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -115,6 +119,8 @@ public class PlayerManager : MonoBehaviour
         visualFingers = new List<Fingers>();
         healthyFingers = new List<Fingers>();
         READYTOGO = false;
+        castAnimDone = false;
+        endStall = false;
         eyes.Stop();
         FlameHandLeft.Stop();
         FlameHandRight.Stop();
@@ -573,6 +579,16 @@ public class PlayerManager : MonoBehaviour
         PlayerFakeHands.ResetTrigger("LeftHandDamaged");
         PlayerHands.ResetTrigger("RightHandDamaged");
         PlayerFakeHands.ResetTrigger("RightHandDamaged");
+        PlayerHands.ResetTrigger("HandsCast1");
+        PlayerFakeHands.ResetTrigger("HandsCast1");
+        PlayerHands.ResetTrigger("HandsCast2");
+        PlayerFakeHands.ResetTrigger("HandsCast2");
+        PlayerHands.ResetTrigger("HandsCast3");
+        PlayerFakeHands.ResetTrigger("HandsCast3");
+        PlayerHands.ResetTrigger("HandsCastPoint");
+        PlayerFakeHands.ResetTrigger("HandsCastPoint");
+        PlayerHands.ResetTrigger("HandsCastThumb");
+        PlayerFakeHands.ResetTrigger("HandsCastThumb");
     }
 
     public void BackToIDLE()
@@ -586,5 +602,27 @@ public class PlayerManager : MonoBehaviour
         ResetHandAnimations();
         PlayerHands.SetTrigger("IDLE");
         PlayerFakeHands.SetTrigger("IDLE");
+    }
+
+    public void WaitforCastingAnim()
+    {
+        StartCoroutine(ParticleStall());
+    }
+
+    public IEnumerator ParticleStall()
+    {
+        yield return new WaitForSeconds(0.5f);
+        castAnimDone = true;
+    }
+
+    public void ImpactAndLeave()
+    {
+        StartCoroutine(StallImpact());
+    }
+
+    public IEnumerator StallImpact()
+    {
+        yield return new WaitForSeconds(0.5f);
+        endStall = true;
     }
 }
