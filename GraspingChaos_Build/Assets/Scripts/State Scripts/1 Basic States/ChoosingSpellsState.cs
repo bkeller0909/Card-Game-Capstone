@@ -230,6 +230,8 @@ public class ChoosingSpellsState : FSMState
                 prompt.SetActive(false);
             }
 
+
+
             playerState.finishedCastingImage.SetActive(false);
             MoveCardsOutOfPlay(player);
         }
