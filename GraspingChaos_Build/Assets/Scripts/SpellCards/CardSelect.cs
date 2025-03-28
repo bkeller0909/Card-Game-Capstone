@@ -150,6 +150,7 @@ public class CardSelect : MonoBehaviour
                         //fadeInOutBonus(true);
                         fingerBonus.gameObject.SetActive(true);
 
+
                         SkinnedMeshRenderer rendererL, rendererR;
                         for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
                         {
@@ -749,7 +750,7 @@ public class CardSelect : MonoBehaviour
         yield return null;
     }
 
-    //DONT DELEATE THIS KELLER THIS HELPS RESET THE VALUES OF THE CARDS WHEN THEY GO BACK INTO THE OBJECT POOL
+    //DONT DELETE THIS KELLER THIS HELPS RESET THE VALUES OF THE CARDS WHEN THEY GO BACK INTO THE OBJECT POOL
     public void OnDisable()
     {
         isHovered = false;

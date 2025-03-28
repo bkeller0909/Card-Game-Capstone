@@ -1,18 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-
-
+using UnityEngine.UI;
 
 
 
 public class BonusDissolve : MonoBehaviour
 {
 
-    CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
     ControlDissolve dissolveScript;
-
+    public GameObject leftHand;
+    public GameObject rightHand;
 
     [SerializeField]
     float dissolveTime = 1.0f;
@@ -22,10 +20,9 @@ public class BonusDissolve : MonoBehaviour
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-
-        dissolveScript = GetComponent<ControlDissolve>();
-
-
+        dissolveScript = GetComponentInParent<ControlDissolve>();
+        leftHand.GetComponent<Image>().material.SetFloat("_Alpha", 1);
+        rightHand.GetComponent<Image>().material.SetFloat("_Alpha", 1);
     }
 
     // Update is called once per frame
@@ -36,7 +33,7 @@ public class BonusDissolve : MonoBehaviour
 
     public void BonusFade()
     {
-        if(dissolveScript.dissolveCard)
+        if (dissolveScript.dissolveCard)
         {
             StartCoroutine(DissolveBonusEffect(dissolveTime));
         }
@@ -47,14 +44,16 @@ public class BonusDissolve : MonoBehaviour
     {
         float timeElapsed = 0f;
 
-        while(timeElapsed < dissolveTime)
+        while (timeElapsed < dissolveTime)
         {
             timeElapsed += Time.deltaTime;
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0f, timeElapsed / dissolveTime);
+            leftHand.GetComponent<Image>().material.SetFloat("_Alpha", canvasGroup.alpha);
+            rightHand.GetComponent<Image>().material.SetFloat("_Alpha", canvasGroup.alpha);
+
             yield return null;
         }
 
 
-        yield return null;
     }
 }

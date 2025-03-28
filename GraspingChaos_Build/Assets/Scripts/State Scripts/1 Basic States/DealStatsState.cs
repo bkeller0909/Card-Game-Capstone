@@ -63,6 +63,13 @@ public class DealStatsState : FSMState
         {
             CardSelect cardSelect = card.GetComponent<CardSelect>();
             cardSelect.OffHoverCard(playerState.player);
+            //if (cardSelect.hasAFingerBonus)
+            //{
+            //    CanvasGroup canvasGroup = cardSelect.GetComponentInChildren<BonusDissolve>().canvasGroup;
+            //    canvasGroup.alpha = 1f;
+            //    cardSelect.GetComponentInChildren<BonusDissolve>().leftHand.GetComponent<Image>().material.SetFloat("_Alpha", 1);
+            //    cardSelect.GetComponentInChildren<BonusDissolve>().rightHand.GetComponent<Image>().material.SetFloat("_Alpha", 1);
+            //}
         }
 
         if (playerState.player == GameManager.Instance.player1)
