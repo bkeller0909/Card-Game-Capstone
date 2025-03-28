@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -422,16 +421,16 @@ public class PlayerControlHandler : MonoBehaviour
 
     public void InspectCard(Transform cardEndPos)
     {
-        for(int i = 0; i < pickCards.cards.Count; i++)
-        { 
+        for (int i = 0; i < pickCards.cards.Count; i++)
+        {
             if (pickCards.cards[i].isHovered == true && inspectCard == false)
             {
                 cardStartPos = pickCards.cards[i].transform;
-                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, cardStartPos, cardEndPos);
+                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.00f, 0.3f, 0.3f, cardStartPos, cardEndPos);
             }
             else if (pickCards.cards[i].isHovered == true && inspectCard == true)
             {
-                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, cardEndPos, origianlPositions[i]);
+                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.00f, 0.3f, 0.3f, cardEndPos, origianlPositions[i]);
             }
         }
     }
