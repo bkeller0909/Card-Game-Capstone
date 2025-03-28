@@ -494,6 +494,7 @@ public class PlayerState : AdvancedFSM
 
     IEnumerator QTECreation(int currentQTEAmount, PlayerManager player)
     {
+        yield return new WaitForSecondsRealtime(1);
         player.playerInput.SwitchCurrentActionMap("QTE");
         player.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
         player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(true);
