@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -105,6 +104,7 @@ public class PlayerManager : MonoBehaviour
     public bool castAnimDone;
     public bool endStall;
 
+    [SerializeField] public ControlSpellBook spellBook;
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)

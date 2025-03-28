@@ -179,6 +179,8 @@ public class GameManager : MonoBehaviour
 
     public int totalSpellsPickedP2;
 
+    [SerializeField] int bookFlipTime = 2;
+
     private void Awake()
     {
         if (instance == null)
@@ -321,6 +323,18 @@ public class GameManager : MonoBehaviour
         {
             currentCaster = player1;
         }
+    }
+
+    public void StartBookFlip()
+    {
+        StartCoroutine(BookFlipTime());
+    }
+
+    IEnumerator BookFlipTime()
+    {
+        player1.spellBook.startFlipping(true);
+        yield return new WaitForSecondsRealtime(bookFlipTime);
+        player1.spellBook.startFlipping(false);
     }
 
 }

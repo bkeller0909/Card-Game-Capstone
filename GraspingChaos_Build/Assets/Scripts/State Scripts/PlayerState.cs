@@ -30,8 +30,6 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public Canvas howToPlay;
 
-    [SerializeField] public ControlSpellBook spellBook;
-
     [SerializeField] public List<GameObject> prompts;
 
     [SerializeField] public PlayerControlHandler playerControlHandler;
