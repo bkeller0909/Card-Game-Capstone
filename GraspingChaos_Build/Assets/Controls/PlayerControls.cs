@@ -1473,6 +1473,54 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Inspect"",
+            ""id"": ""6638e5f9-92f7-4662-860e-62af0a768bb8"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4ab13e0-a407-43e0-a027-9161e81d60f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopInspect"",
+                    ""type"": ""Button"",
+                    ""id"": ""c355a113-4bd9-471c-92f6-b25a048af357"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e4f91a8a-ec88-4e58-920c-e4a693354753"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c726677e-61d9-41ad-b9fe-c319e1c8824a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StopInspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1597,6 +1645,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Credits
         m_Credits = asset.FindActionMap("Credits", throwIfNotFound: true);
         m_Credits_Back = m_Credits.FindAction("Back", throwIfNotFound: true);
+        // Inspect
+        m_Inspect = asset.FindActionMap("Inspect", throwIfNotFound: true);
+        m_Inspect_Newaction = m_Inspect.FindAction("New action", throwIfNotFound: true);
+        m_Inspect_StopInspect = m_Inspect.FindAction("StopInspect", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -1608,6 +1660,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_QTEWait.enabled, "This will cause a leak and performance issues, PlayerControls.QTEWait.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Tutorial.enabled, "This will cause a leak and performance issues, PlayerControls.Tutorial.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Credits.enabled, "This will cause a leak and performance issues, PlayerControls.Credits.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Inspect.enabled, "This will cause a leak and performance issues, PlayerControls.Inspect.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -2291,6 +2344,60 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public CreditsActions @Credits => new CreditsActions(this);
+
+    // Inspect
+    private readonly InputActionMap m_Inspect;
+    private List<IInspectActions> m_InspectActionsCallbackInterfaces = new List<IInspectActions>();
+    private readonly InputAction m_Inspect_Newaction;
+    private readonly InputAction m_Inspect_StopInspect;
+    public struct InspectActions
+    {
+        private @PlayerControls m_Wrapper;
+        public InspectActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Inspect_Newaction;
+        public InputAction @StopInspect => m_Wrapper.m_Inspect_StopInspect;
+        public InputActionMap Get() { return m_Wrapper.m_Inspect; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InspectActions set) { return set.Get(); }
+        public void AddCallbacks(IInspectActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InspectActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InspectActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+            @StopInspect.started += instance.OnStopInspect;
+            @StopInspect.performed += instance.OnStopInspect;
+            @StopInspect.canceled += instance.OnStopInspect;
+        }
+
+        private void UnregisterCallbacks(IInspectActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+            @StopInspect.started -= instance.OnStopInspect;
+            @StopInspect.performed -= instance.OnStopInspect;
+            @StopInspect.canceled -= instance.OnStopInspect;
+        }
+
+        public void RemoveCallbacks(IInspectActions instance)
+        {
+            if (m_Wrapper.m_InspectActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInspectActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InspectActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InspectActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InspectActions @Inspect => new InspectActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -2401,5 +2508,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface ICreditsActions
     {
         void OnBack(InputAction.CallbackContext context);
+    }
+    public interface IInspectActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+        void OnStopInspect(InputAction.CallbackContext context);
     }
 }

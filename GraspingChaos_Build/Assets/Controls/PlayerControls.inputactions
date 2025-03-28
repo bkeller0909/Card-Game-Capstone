@@ -1451,6 +1451,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Inspect",
+            "id": "6638e5f9-92f7-4662-860e-62af0a768bb8",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "d4ab13e0-a407-43e0-a027-9161e81d60f5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StopInspect",
+                    "type": "Button",
+                    "id": "c355a113-4bd9-471c-92f6-b25a048af357",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e4f91a8a-ec88-4e58-920c-e4a693354753",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c726677e-61d9-41ad-b9fe-c319e1c8824a",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StopInspect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -32,6 +32,7 @@ public class CardTravelHandler : MonoBehaviour
         travelCard.travelEndPos = endPos;
         travelCard.enabled = true;
         yield return new WaitForSeconds(travelTimer);
+        travelCard.gameObject.transform.position = endPos.position;
         travelCard.enabled = false;
     }
 

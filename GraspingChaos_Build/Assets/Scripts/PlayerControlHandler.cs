@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //----------------------------------------------------------------
@@ -29,6 +31,10 @@ public class PlayerControlHandler : MonoBehaviour
     public bool buttonShiled = false;
 
     public Transform inspectCardPos;
+    public Transform cardStartPos;
+
+    private Transform poscard1, poscard2, poscard3, poscard4, poscard5;
+    private List<Transform> origianlPositions = new List<Transform>();
 
     [Header("UI Tooltips")]
     public GameObject manaViewIcon;
@@ -58,6 +64,16 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (EmergencyCameraPush)
             {
+                poscard1 = pickCards.cardSlots[0].transform;
+                origianlPositions.Add(poscard1);
+                poscard2 = pickCards.cardSlots[1].transform;
+                origianlPositions.Add(poscard2);
+                poscard3 = pickCards.cardSlots[2].transform;
+                origianlPositions.Add(poscard3);
+                poscard4 = pickCards.cardSlots[3].transform;
+                origianlPositions.Add(poscard4);
+                poscard5 = pickCards.cardSlots[4].transform;
+                origianlPositions.Add(poscard5);
                 StartCoroutine(ReturnToSenderCamera());
                 EmergencyCameraPush = false;
             }
@@ -299,37 +315,38 @@ public class PlayerControlHandler : MonoBehaviour
                 changeCameras.GetInput();
             }
 
-            //if (inspectCard == false)
-            //{
-            //    if (player.playerInput.actions["InspectCard"].WasPressedThisFrame())
-            //    {
-            //        inspectCard = true;
-            //        InspectCard(inspectCardPos);
-            //        player.playerInput.actions["CameraUp"].Disable();
-            //        player.playerInput.actions["CameraDown"].Disable();
-            //        player.playerInput.actions["NavCardLeft"].Disable();
-            //        player.playerInput.actions["NavCardRight"].Disable();
-            //        player.playerInput.actions["Select"].Disable();
-            //        player.playerInput.actions["ManaView"].Disable();
-            //        player.playerInput.actions["SetFinal"].Disable();
-            //    }
-            //}
-
-            //if (inspectCard == true)
-            //{
-            //    if (player.playerInput.actions["InspectCard"].WasPressedThisFrame())
-            //    {
-            //        inspectCard = false;
-            //        InspectCard(inspectCardPos);
-            //        player.playerInput.actions["CameraUp"].Enable();
-            //        player.playerInput.actions["CameraDown"].Enable();
-            //        player.playerInput.actions["NavCardLeft"].Enable();
-            //        player.playerInput.actions["NavCardRight"].Enable();
-            //        player.playerInput.actions["Select"].Enable();
-            //        player.playerInput.actions["ManaView"].Enable();
-            //        player.playerInput.actions["SetFinal"].Enable();
-            //    }
-            //}
+            if (inspectCard == false)
+            {
+                if (player.playerInput.actions["InspectCard"].WasPressedThisFrame())
+                {
+                    player.playerInput.SwitchCurrentActionMap("Inspect");
+                    InspectCard(inspectCardPos);
+                    inspectCard = true;
+                    player.playerInput.actions["CameraUp"].Disable();
+                    player.playerInput.actions["CameraDown"].Disable();
+                    player.playerInput.actions["NavCardLeft"].Disable();
+                    player.playerInput.actions["NavCardRight"].Disable();
+                    player.playerInput.actions["Select"].Disable();
+                    player.playerInput.actions["ManaView"].Disable();
+                    player.playerInput.actions["SetFinal"].Disable();
+                }
+            }
+            else
+            {
+                if (player.playerInput.actions["StopInspect"].WasPressedThisFrame())
+                {
+                    player.playerInput.SwitchCurrentActionMap("Card");
+                    InspectCard(inspectCardPos);
+                    inspectCard = false;
+                    player.playerInput.actions["CameraUp"].Enable();
+                    player.playerInput.actions["CameraDown"].Enable();
+                    player.playerInput.actions["NavCardLeft"].Enable();
+                    player.playerInput.actions["NavCardRight"].Enable();
+                    player.playerInput.actions["Select"].Enable();
+                    player.playerInput.actions["ManaView"].Enable();
+                    player.playerInput.actions["SetFinal"].Enable();
+                }
+            }
 
         }
 
@@ -406,16 +423,15 @@ public class PlayerControlHandler : MonoBehaviour
     public void InspectCard(Transform cardEndPos)
     {
         for(int i = 0; i < pickCards.cards.Count; i++)
-        {
-            Transform cardStartPos = pickCards.cards[i].transform;
-                
+        { 
             if (pickCards.cards[i].isHovered == true && inspectCard == false)
             {
-                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, pickCards.cards[i].transform, cardEndPos);
+                cardStartPos = pickCards.cards[i].transform;
+                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, cardStartPos, cardEndPos);
             }
             else if (pickCards.cards[i].isHovered == true && inspectCard == true)
             {
-                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, cardEndPos, cardStartPos);
+                pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.02f, 0.7f, 0.7f, cardEndPos, origianlPositions[i]);
             }
         }
     }
