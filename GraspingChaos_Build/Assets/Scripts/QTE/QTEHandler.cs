@@ -43,7 +43,6 @@ public class QTEHandler : MonoBehaviour
     [SerializeField] private Sprite countDown2;
     [SerializeField] private Sprite countDown1;
     [SerializeField] private Sprite countDownStart;
-    [SerializeField] public GameObject countDownObject;
 
     #endregion // QTE Sprites
 
@@ -703,26 +702,6 @@ public class QTEHandler : MonoBehaviour
             storedHandAnim = temp;
             HandAnimations.Remove(storedHandAnim);
             return storedHandAnim;
-        }
-    }
-
-    public void CountDownManager(int countdownSprite)
-    {
-        if(countdownSprite == 1)
-        {
-            countDownObject.GetComponent<SpriteRenderer>().sprite = countDown1;
-        }
-        else if(countdownSprite == 2)
-        {
-            countDownObject.GetComponent<SpriteRenderer>().sprite = countDown2;
-        }
-        else if(countdownSprite == 3)
-        {
-            countDownObject.GetComponent<SpriteRenderer>().sprite = countDown3;
-        }
-        else
-        {
-            countDownObject.GetComponent<SpriteRenderer>().sprite = countDownStart;
         }
     }
 

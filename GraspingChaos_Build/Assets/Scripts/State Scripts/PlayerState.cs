@@ -30,7 +30,7 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public GameObject howToPlay;
 
-    [SerializeField] public GameObject countDown;
+    [SerializeField] public TMP_Text countDown;
 
     [SerializeField] public List<GameObject> prompts;
 
@@ -498,16 +498,14 @@ public class PlayerState : AdvancedFSM
         player.playerInput.SwitchCurrentActionMap("QTE");
         player.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
         //player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(true);
-        player.gameObject.GetComponent<QTEHandler>().CountDownManager(3);
-        countDown.GetComponent<TextMeshPro>().text = "3";
+        countDown.gameObject.SetActive(true);
+        countDown.text = "3";
         yield return new WaitForSecondsRealtime(0.5f);
-        player.gameObject.GetComponent<QTEHandler>().CountDownManager(2);
-        countDown.GetComponent<TextMeshPro>().text = "2";
+        countDown.text = "2";
         yield return new WaitForSecondsRealtime(0.5f);
-        player.gameObject.GetComponent<QTEHandler>().CountDownManager(1);
-        countDown.GetComponent<TextMeshPro>().text = "1";
+        countDown.text = "1";
         yield return new WaitForSecondsRealtime(0.5f);
-        player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(false);
+        countDown.gameObject.SetActive(false);
         if (player.gameObject.GetComponent<QTEHandler>().mashing)
         {
             player.gameObject.GetComponent<QTEHandler>().MashingTest(7, player);
