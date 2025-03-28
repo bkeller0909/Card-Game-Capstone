@@ -69,8 +69,8 @@ public class FireBoltState : FSMState
             if (!player.castAnimDone)
             {
                 player.ResetHandAnimations();
-                player.PlayerHands.SetTrigger("HandsCast1");
-                player.PlayerFakeHands.SetTrigger("HandsCast1");
+                player.PlayerHands.SetTrigger("HandsCastPoint");
+                player.PlayerFakeHands.SetTrigger("HandsCastPoint");
                 player.WaitforCastingAnim();
             }
             //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done

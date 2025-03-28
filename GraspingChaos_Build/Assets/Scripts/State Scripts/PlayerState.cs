@@ -30,8 +30,6 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public Canvas howToPlay;
 
-    [SerializeField] public ControlSpellBook spellBook;
-
     [SerializeField] public List<GameObject> prompts;
 
     [SerializeField] public PlayerControlHandler playerControlHandler;
@@ -497,14 +495,12 @@ public class PlayerState : AdvancedFSM
         yield return new WaitForSecondsRealtime(1);
         player.playerInput.SwitchCurrentActionMap("QTE");
         player.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
-        player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(true);
+        //player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(true);
         player.gameObject.GetComponent<QTEHandler>().CountDownManager(3);
         yield return new WaitForSecondsRealtime(0.5f);
         player.gameObject.GetComponent<QTEHandler>().CountDownManager(2);
         yield return new WaitForSecondsRealtime(0.5f);
         player.gameObject.GetComponent<QTEHandler>().CountDownManager(1);
-        yield return new WaitForSecondsRealtime(0.5f);
-        player.gameObject.GetComponent<QTEHandler>().CountDownManager(4);
         yield return new WaitForSecondsRealtime(0.5f);
         player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(false);
         if (player.gameObject.GetComponent<QTEHandler>().mashing)

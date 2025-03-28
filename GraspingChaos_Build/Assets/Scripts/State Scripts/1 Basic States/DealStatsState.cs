@@ -65,7 +65,11 @@ public class DealStatsState : FSMState
             cardSelect.OffHoverCard(playerState.player);
         }
 
-        playerState.spellBook.startFlipping(true);
+        if (playerState.player == GameManager.Instance.player1)
+        {
+            GameManager.Instance.StartBookFlip();
+        }
+
         cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();  // init the cards into lists by mana cost
         cardDealing.InitializeCardTypes();  // init the cards into lists by type

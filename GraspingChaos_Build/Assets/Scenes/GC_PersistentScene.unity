@@ -783,6 +783,7 @@ MonoBehaviour:
   particleWait: 
   P1QTESpeed: 0
   P2QTESpeed: 0
+  MAX_PLAYER_MANA: 16
   cardPool: {fileID: 0}
   player1FinishedQTE: 0
   player2FinishedQTE: 0
@@ -806,6 +807,7 @@ MonoBehaviour:
   isDissolveDone: 0
   totalSpellsPickedP1: 0
   totalSpellsPickedP2: 0
+  bookFlipTime: 10
 --- !u!4 &113710050
 Transform:
   m_ObjectHideFlags: 0
