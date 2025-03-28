@@ -28,7 +28,9 @@ public class PlayerState : AdvancedFSM
 
     [SerializeField] public CardHandSlot playerHand;
 
-    [SerializeField] public Canvas howToPlay;
+    [SerializeField] public GameObject howToPlay;
+
+    [SerializeField] public GameObject countDown;
 
     [SerializeField] public List<GameObject> prompts;
 
@@ -497,10 +499,13 @@ public class PlayerState : AdvancedFSM
         player.GetComponentInChildren<CameraPositionChange>().GetInputForced(3);
         //player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(true);
         player.gameObject.GetComponent<QTEHandler>().CountDownManager(3);
+        countDown.GetComponent<TextMeshPro>().text = "3";
         yield return new WaitForSecondsRealtime(0.5f);
         player.gameObject.GetComponent<QTEHandler>().CountDownManager(2);
+        countDown.GetComponent<TextMeshPro>().text = "2";
         yield return new WaitForSecondsRealtime(0.5f);
         player.gameObject.GetComponent<QTEHandler>().CountDownManager(1);
+        countDown.GetComponent<TextMeshPro>().text = "1";
         yield return new WaitForSecondsRealtime(0.5f);
         player.gameObject.GetComponent<QTEHandler>().countDownObject.SetActive(false);
         if (player.gameObject.GetComponent<QTEHandler>().mashing)
