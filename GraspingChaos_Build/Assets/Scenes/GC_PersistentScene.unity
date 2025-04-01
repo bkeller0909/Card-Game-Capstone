@@ -777,7 +777,7 @@ MonoBehaviour:
   player1IsHere: 0
   player2IsHere: 0
   spellsThatHaveBeenCast: 
-  manualCards: 0
+  manualCards: 1
   whatRound: 0
   whoesOnFirst: 
   particleWait: 
@@ -5946,7 +5946,7 @@ GameObject:
   - component: {fileID: 814528066}
   - component: {fileID: 814528065}
   m_Layer: 0
-  m_Name: SoundFXManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5967,6 +5967,8 @@ MonoBehaviour:
   soundFXMixer: {fileID: 24100000, guid: 7b0d03b39e9b68f4cbfb465449d80127, type: 2}
   soundObject: {fileID: 2180297512485002473, guid: 9fb65dba8afc93949a4567e8d4cce90f,
     type: 3}
+  dialogueAudioObject: {fileID: 2180297512485002473, guid: 02fb48fe719384347897a331b6f69fce,
+    type: 3}
   boneDamage:
   - {fileID: 8300000, guid: c2b0671512d7e5c4cb4de165263b8976, type: 3}
   - {fileID: 8300000, guid: 7ca125a6c3b8f494db20f282306aa077, type: 3}
@@ -5975,6 +5977,7 @@ MonoBehaviour:
   roundFinished: {fileID: 8300000, guid: 1b3b8a0b4d85c5241b9fdd36187ba611, type: 3}
   cardSelect: {fileID: 8300000, guid: 52dcccd787681ca47b9b13f50136893a, type: 3}
   cardSelectComplete: {fileID: 8300000, guid: efa43ccd9921b4e48a1adf151bc7f7f2, type: 3}
+  dialogueAudioClips: []
 --- !u!4 &814528066
 Transform:
   m_ObjectHideFlags: 0

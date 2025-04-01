@@ -141,10 +141,13 @@ public class Tutorial : MonoBehaviour
         bool isStep1 = true;
         SoundFXManager.Instance.soundFXMixer.SetFloat("SoundFXVolume", -20f);
         SoundFXManager.Instance.soundFXMixer.SetFloat("MusicVolume", -10f);
+        player.GetComponent<PlayerControlHandler>().cardViewIcon.SetActive(false);
+        player.GetComponent<PlayerControlHandler>().manaViewIcon.SetActive(false);
 
         //dialogueEvent.PlayDialogueAudio();
         if (isStep1)
         {
+            // SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.dialogueAudioClips, 1, 1.0f);
             player.playerInput.currentActionMap.Disable();
             player.playerCameras.GetInputForced(0);
             dialogueEvent.StartDialogue(0);
@@ -324,6 +327,8 @@ public class Tutorial : MonoBehaviour
         {
             dialogueEvent.NextDialogue(8);
             yield return new WaitForSeconds(7f);
+            dialogueEvent.NextDialogue(11);
+            yield return new WaitForSeconds(7f);
             isStep8Complete = true;
         }
     }
@@ -332,12 +337,18 @@ public class Tutorial : MonoBehaviour
     {
         bool isStep9 = true;
 
-        dialogueEvent.qteIconP1.SetActive(false);
-        dialogueEvent.qteIconP2.SetActive(false);
 
         if (isStep9)
         {
             dialogueEvent.NextDialogue(9);
+            yield return new WaitForSeconds(7f);
+            dialogueEvent.qteIconP1.SetActive(false);
+            dialogueEvent.qteIconP2.SetActive(false);
+            dialogueEvent.EndDialogue();
+            yield return new WaitForSeconds(2f);
+            dialogueEvent.StartDialogue(12);
+            yield return new WaitForSeconds(7f);
+            dialogueEvent.NextDialogue(13);
             yield return new WaitForSeconds(7f);
             isStep9Complete = true;
         }

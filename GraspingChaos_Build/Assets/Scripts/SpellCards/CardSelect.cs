@@ -30,6 +30,9 @@ public class CardSelect : MonoBehaviour
     [SerializeField, Tooltip("This is the finger bonus for the cards that have it")]
     public bool hasAFingerBonus;
 
+    [SerializeField, Tooltip("This is the regular info that will appear on the card")]
+    public GameObject fingerNormal;
+
     [SerializeField, Tooltip("This is the finger bonus for the cards that have it")]
     public GameObject fingerBonus;
 
@@ -104,21 +107,21 @@ public class CardSelect : MonoBehaviour
 
         if (hasAFingerBonus)
         {
-            FingerBonusStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
-            FingerBonusStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 1.0f);
-            FingerBonusStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
-            FingerBonusStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
-            FingerBonusStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
-            FingerBonusStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 1.0f);
-            FingerBonusStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
-            FingerBonusStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky, 1.0f);
         }
     }
 
     /// <summary>
     /// When a card is no longer hovered.
     /// </summary>
-    public void OffHoverCard(PlayerManager player)
+    public void OffHoverCard(PlayerManager player, bool fromDealing)
     {
         // card is no longer hovered
         isHovered = false;
@@ -127,14 +130,26 @@ public class CardSelect : MonoBehaviour
 
         if (hasAFingerBonus)
         {
-            FingerBonusStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
-            FingerBonusStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 0.0f);
-            FingerBonusStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
-            FingerBonusStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
-            FingerBonusStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
-            FingerBonusStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 0.0f);
-            FingerBonusStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
-            FingerBonusStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky, 0.0f);
+
+            if (fromDealing)
+            {
+                FingerBonusCardStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index);
+                FingerBonusCardStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky);
+                FingerBonusCardStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                FingerBonusCardStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index);
+                FingerBonusCardStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                FingerBonusCardStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring);
+                FingerBonusCardStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                FingerBonusCardStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky);
+            }
         }
     }
 
@@ -216,14 +231,14 @@ public class CardSelect : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the current status of the finger bonus highlight. 
+    /// Sets the current status of the finger bonus highlight on fingers. 
     /// </summary>
     /// <param name="player">The player that will be affected.</param>
     /// <param name="spellName">Name of the spell that has a finger bonus.</param>
     /// <param name="fingerWithBonus1">First finger required to have the bonus.</param>
     /// <param name="fingerWithBonus2">Second finger required to have the bonus.</param>
     /// <param name="bonusStatus">If the bonus is turned on or off - 1.0f ON, 0.0f OFF</param>
-    private void FingerBonusStatus(PlayerManager player, SpellNames spellName, PlayerFingers fingerWithBonus1, PlayerFingers fingerWithBonus2, float bonusStatus)
+    private void FingerBonusFingerStatus(PlayerManager player, SpellNames spellName, PlayerFingers fingerWithBonus1, PlayerFingers fingerWithBonus2, float bonusStatus)
     {
         if (gameObject.GetComponent<SpellCard>().spellName == spellName)
         {
@@ -231,9 +246,6 @@ public class CardSelect : MonoBehaviour
         (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
         (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
             {
-                //fadeInOutBonus(false);
-                fingerBonus.gameObject.SetActive(false);
-
                 SkinnedMeshRenderer rendererL, rendererR;
                 for (int i = 0; i < player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints.Count; i++)
                 {
@@ -257,6 +269,33 @@ public class CardSelect : MonoBehaviour
                         rendererR.material.SetFloat("_BonusColourOn", bonusStatus);
                     }
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sets the current status of the finger bonus on card. 
+    /// </summary>
+    /// <param name="player">The player that will be affected.</param>
+    /// <param name="spellName">Name of the spell that has a finger bonus.</param>
+    /// <param name="fingerWithBonus1">First finger required to have the bonus.</param>
+    /// <param name="fingerWithBonus2">Second finger required to have the bonus.</param>
+    /// <param name="bonusStatus">If the bonus is turned on or off true ON, false OFF</param>
+    private void FingerBonusCardStatus(PlayerManager player, SpellNames spellName, PlayerFingers fingerWithBonus1, PlayerFingers fingerWithBonus2)
+    {
+        if (gameObject.GetComponent<SpellCard>().spellName == spellName)
+        {
+            if (player.AreTheseFingersAlive(fingerWithBonus1, fingerWithBonus2) &&
+        (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
+        (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
+            {
+                fingerBonus.gameObject.SetActive(true);
+                fingerNormal.gameObject.SetActive(false);
+            }
+            else
+            {
+                fingerBonus.gameObject.SetActive(false);
+                fingerNormal.gameObject.SetActive(true);
             }
         }
     }

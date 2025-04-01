@@ -1678,12 +1678,6 @@ PrefabInstance:
       addedObject: {fileID: 4014080974760312958}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6953b71fc048cfe4d9965dce48069d68, type: 3}
---- !u!1 &2474565935628768301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6953b71fc048cfe4d9965dce48069d68,
-    type: 3}
-  m_PrefabInstance: {fileID: 3356876389421836668}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2962449599662329495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6953b71fc048cfe4d9965dce48069d68,
@@ -1935,7 +1929,8 @@ MonoBehaviour:
   verticalAdjustAmount: 0.15
   scaleAmount: 1.09
   hasAFingerBonus: 1
-  fingerBonus: {fileID: 2474565935628768301}
+  fingerNormal: {fileID: 4644788429408180911}
+  fingerBonus: {fileID: 1838946832270242959}
   cardSelectColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
   isHovered: 0
   isSelected: 0

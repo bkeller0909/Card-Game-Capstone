@@ -455,7 +455,7 @@ public class DealStatsState : FSMState
                     {
                         if (player.spellHand.amtOfSpellsInHand < 3)
                         {
-                            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.FireBolt);
+                            card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.Rockthrow);
                             player.spellHand.playerSpells.Add(card);
 
                             card = CardsObjectPool.Instance.ScriptedDealing(player, SpellNames.QuickHeal);
@@ -467,7 +467,7 @@ public class DealStatsState : FSMState
 
                         if (enemy.spellHand.amtOfSpellsInHand < 3)
                         {
-                            card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.FireBolt);
+                            card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.Rockthrow);
                             enemy.spellHand.playerSpells.Add(card);
 
                             card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.QuickHeal);
@@ -476,6 +476,9 @@ public class DealStatsState : FSMState
                             card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.GuardiansTouch);
                             enemy.spellHand.playerSpells.Add(card);
                         }
+
+                        player.GetComponent<PlayerControlHandler>().pickCards.SetHoveredCard(0);
+                        enemy.GetComponent<PlayerControlHandler>().pickCards.SetHoveredCard(0);
                     }
 
                     // force player to card camera view
@@ -489,6 +492,8 @@ public class DealStatsState : FSMState
 
                     if (playerState.tutorialEvent.isStep5Complete == true)
                     {
+                        player.GetComponent<PlayerControlHandler>().InspectCard(playerState.playerControlHandler.inspectCardPos);
+                        enemy.GetComponent<PlayerControlHandler>().InspectCard(playerState.playerControlHandler.inspectCardPos);
                         playerState.tutorialEvent.TutorialStep6(player);
                         playerState.tutorialEvent.isStep5Complete = false;
                     }
@@ -531,7 +536,7 @@ public class DealStatsState : FSMState
                         card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.Icicles);
                         enemy.spellHand.playerSpells.Add(card);
 
-                        card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.CollectorsCurse);
+                        card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.FireBolt);
                         enemy.spellHand.playerSpells.Add(card);
                     }
 

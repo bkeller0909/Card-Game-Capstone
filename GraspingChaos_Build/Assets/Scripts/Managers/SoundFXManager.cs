@@ -20,12 +20,18 @@ public class SoundFXManager : MonoBehaviour
     public AudioMixer soundFXMixer;
 
     [SerializeField] private AudioSource soundObject;
+    [SerializeField] private AudioSource dialogueAudioObject;
 
+    [Header("Sound Effects")]
     public AudioClip[] boneDamage;
     public AudioClip manaRefill;
     public AudioClip roundFinished;
     public AudioClip cardSelect;
     public AudioClip cardSelectComplete;
+
+    [Header("Dialogue Audio")]
+    [Tooltip("List of all the dialogue audio for voice lines")]
+    public AudioClip[] dialogueAudioClips;
 
     private void Awake()
     {
@@ -33,6 +39,30 @@ public class SoundFXManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    /// <summary>
+    /// Plays a sound effect.
+    /// </summary>
+    /// <param name="soundClip">Sound clip that will be played.</param>
+    /// <param name="volume">Volume of the sound clip.</param>
+    /// <param name="audioListIndex">Index position of the list of audio.</param>
+    public void PlayAudioFromList(AudioClip[] soundClip, int audioListIndex, float volume)
+    {
+        // spawn in the gameobject
+        AudioSource audioSource = Instantiate(dialogueAudioObject, gameObject.transform.position, Quaternion.identity);
+
+        // sound clip
+        audioSource.clip = soundClip[audioListIndex];
+
+        // sound volume
+        audioSource.volume = volume;
+
+        audioSource.Play();
+
+        float soundClipLength = audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, soundClipLength);
     }
 
     /// <summary>
