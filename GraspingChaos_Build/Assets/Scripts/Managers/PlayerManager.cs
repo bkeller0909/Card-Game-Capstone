@@ -266,6 +266,11 @@ public class PlayerManager : MonoBehaviour
             healthyFingers.Clear();
         }
 
+        if(hurtFingers.Count != 0)
+        {
+            hurtFingers.Clear();
+        }
+
         for (int i = 0; i < fingers.Count; i++)
         {
             if (health.playerHealthStats[i] != 3)
