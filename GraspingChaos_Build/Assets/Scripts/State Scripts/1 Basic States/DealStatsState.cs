@@ -62,7 +62,7 @@ public class DealStatsState : FSMState
         foreach (GameObject card in CardsObjectPool.Instance.objPoolCards)
         {
             CardSelect cardSelect = card.GetComponent<CardSelect>();
-            cardSelect.OffHoverCard(playerState.player);
+            cardSelect.OffHoverCard(playerState.player, true);
             //if (cardSelect.hasAFingerBonus)
             //{
             //    CanvasGroup canvasGroup = cardSelect.GetComponentInChildren<BonusDissolve>().canvasGroup;

@@ -242,10 +242,10 @@ public class CardSelect : MonoBehaviour
     {
         if (gameObject.GetComponent<SpellCard>().spellName == spellName)
         {
-            if (player.AreTheseFingersAlive(fingerWithBonus1, fingerWithBonus2) &&
-        (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
-        (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
-            {
+        //    if (player.AreTheseFingersAlive(fingerWithBonus1, fingerWithBonus2) &&
+        //(player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
+        //(player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
+        //    {
                 SkinnedMeshRenderer rendererL, rendererR;
                 for (int i = 0; i < player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints.Count; i++)
                 {
@@ -269,7 +269,7 @@ public class CardSelect : MonoBehaviour
                         rendererR.material.SetFloat("_BonusColourOn", bonusStatus);
                     }
                 }
-            }
+            //}
         }
     }
 
