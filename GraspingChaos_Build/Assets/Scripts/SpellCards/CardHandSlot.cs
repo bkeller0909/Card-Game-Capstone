@@ -53,6 +53,8 @@ public class CardHandSlot : MonoBehaviour
         playerState = player.gameObject.GetComponent<PlayerState>();
     }
 
+
+
     //stat of removing card
     public void ClearSelected(PlayerManager player)
     {
@@ -169,7 +171,7 @@ public class CardHandSlot : MonoBehaviour
         // Remove hover effect from the previously hovered card if it's not selected.
         if (currentHoverIndex >= 0 && currentHoverIndex < cards.Count && !cards[currentHoverIndex].isSelected)
         {
-            cards[currentHoverIndex].OffHoverCard(player);
+            cards[currentHoverIndex].OffHoverCard(player, false);
             cards[currentHoverIndex].CardGlow(false);
         }
 
@@ -240,7 +242,7 @@ public class CardHandSlot : MonoBehaviour
             {
                 selectedCards.Add(card);
                 card.SelectCard();
-                card.OffHoverCard(player);
+                card.OffHoverCard(player, false);
                 if (whatCard.spellName != SpellNames.Icicles && whatCard.spellName != SpellNames.LefteousEnvy && whatCard.spellName != SpellNames.RighteousEnvy &&
                whatCard.spellName != SpellNames.LifeDrain && whatCard.spellName != SpellNames.ThumbsUp && whatCard.spellName != SpellNames.EchoingMana &&
                whatCard.spellName != SpellNames.CursedConversion)

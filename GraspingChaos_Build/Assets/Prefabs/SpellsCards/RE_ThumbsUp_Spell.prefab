@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &550422955684871913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -648,7 +648,8 @@ MonoBehaviour:
   verticalAdjustAmount: 0.15
   scaleAmount: 1.09
   hasAFingerBonus: 1
-  fingerBonus: {fileID: 1487972692052843345}
+  fingerNormal: {fileID: 5733785486227497130}
+  fingerBonus: {fileID: 51049990156629255}
   cardSelectColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
   isHovered: 0
   isSelected: 0
@@ -917,12 +918,6 @@ PrefabInstance:
       addedObject: {fileID: 6470364005698219986}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6953b71fc048cfe4d9965dce48069d68, type: 3}
---- !u!1 &1487972692052843345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6953b71fc048cfe4d9965dce48069d68,
-    type: 3}
-  m_PrefabInstance: {fileID: 1758442994639808000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2300644429049545195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6953b71fc048cfe4d9965dce48069d68,
