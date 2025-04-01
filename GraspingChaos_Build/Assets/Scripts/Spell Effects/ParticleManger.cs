@@ -168,17 +168,17 @@ public class ParticleManger : MonoBehaviour
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = P1ForcedPosition.position;
-                            Extra.position = player1FingerPositions[Random.Range(5, 9)].position;
+                            Extra.position = player1FingerPositions[Random.Range(5, 3)].position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                         }
                         else
                         {
                             PlayerPosition.position = P2ForcedPosition.position;
-                            Extra.position = player2FingerPositions[Random.Range(5, 9)].position;
+                            Extra.position = player2FingerPositions[Random.Range(5, 3)].position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
                         lowEffects[2].Play();
-                        StartCoroutine(DisableSpell(6f, 2, playerCasting));
+                        StartCoroutine(DisableSpell(3, 3, playerCasting));
                         break;
 
                     case SpellNames.LefteousEnvy:
@@ -196,7 +196,7 @@ public class ParticleManger : MonoBehaviour
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
                         lowEffects[2].Play();
-                        StartCoroutine(DisableSpell(6f, 2, playerCasting));
+                        StartCoroutine(DisableSpell(3, 3, playerCasting));
                         break;
 
                     case SpellNames.Icicles:
@@ -264,7 +264,7 @@ public class ParticleManger : MonoBehaviour
                         break;
 
                     case SpellNames.Quake:
-                        FullEffects[6].gameObject.SetActive(true);
+                        lowEffects[6].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             FullEffects[6].gameObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
@@ -273,7 +273,7 @@ public class ParticleManger : MonoBehaviour
                         {
                             FullEffects[6].gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                         }
-                        FullEffects[6].Play();
+                        lowEffects[6].Play();
                         StartCoroutine(DisableSpell(1.6f, 6, playerCasting));
                         break;
 
@@ -322,12 +322,12 @@ public class ParticleManger : MonoBehaviour
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             PlayerPosition.position = P1ForcedPosition.position;
-                            FullEffects[8].gameObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                            lowEffects[8].gameObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                         }
                         else
                         {
                             PlayerPosition.position = P2ForcedPosition.position;
-                            FullEffects[8].gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                            lowEffects[8].gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                         }
                         lowEffects[8].Play();
                         StartCoroutine(DisableSpell(1.6f, 8, playerCasting));
@@ -346,7 +346,7 @@ public class ParticleManger : MonoBehaviour
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
                         lowEffects[9].Play();
-                        StartCoroutine(DisableSpell(4.5f, 9, playerCasting));
+                        StartCoroutine(DisableSpell(4, 9, playerCasting));
                         break;
 
                     //Restoration Spells |=========================================
@@ -507,7 +507,7 @@ public class ParticleManger : MonoBehaviour
                             halfWay2.position = halfway1Cache.position;
                         }
                         medEffects[0].Play();
-                        StartCoroutine(DisableSpell(1.6f, 7, playerCasting));
+                        StartCoroutine(DisableSpell(2, 7, playerCasting));
                         break;
 
                     case SpellNames.LeftningBolt:
@@ -527,7 +527,7 @@ public class ParticleManger : MonoBehaviour
                             halfWay2.position = halfway1Cache.position;
                         }
                         medEffects[0].Play();
-                        StartCoroutine(DisableSpell(1.6f, 7, playerCasting));
+                        StartCoroutine(DisableSpell(2, 7, playerCasting));
                         break;
 
                     case SpellNames.PointerOfDeath:
