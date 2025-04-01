@@ -104,283 +104,14 @@ public class CardSelect : MonoBehaviour
 
         if (hasAFingerBonus)
         {
-            if (hasAFingerBonus)
-            {
-                if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
-                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
-                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Ring, PlayerFingers.RH_Ring) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Ring] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Ring] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
-                    {
-                        //fadeInOutBonus(true);
-                        fingerBonus.gameObject.SetActive(true);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 1.1f);
-                            }
-                        }
-                    }
-                }
-            }
+            FingerBonusStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
+            FingerBonusStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 1.0f);
+            FingerBonusStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
+            FingerBonusStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 1.0f);
+            FingerBonusStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky, 1.0f);
         }
     }
 
@@ -396,280 +127,14 @@ public class CardSelect : MonoBehaviour
 
         if (hasAFingerBonus)
         {
-            if (hasAFingerBonus)
-            {
-                if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Rockthrow)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
-                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
-                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
-                    {
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Icicles)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
-                    {
-                        //fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.TidalWave)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
-                    {
-                        //fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.PointerOfDeath)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Index, PlayerFingers.RH_Index) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Index] != true) &&
-                                    (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Index] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Index] != true))
-                    {
-                        //fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Index].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.ThumbsUp)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
-                    {
-                        //fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.CursedConversion)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Ring, PlayerFingers.RH_Ring) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Ring] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Ring] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Ring] != true))
-                    {
-                        // fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Ring].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.GreenThumb)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Thumb] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Thumb] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Thumb] != true))
-                    {
-                        //fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Thumb].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-                else if (gameObject.GetComponent<SpellCard>().spellName == SpellNames.Materialise)
-                {
-                    if (player.AreTheseFingersAlive(PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.LH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.LH_Pinky] != true) &&
-                (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)PlayerFingers.RH_Pinky] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)PlayerFingers.RH_Pinky] != true))
-                    {
-                        //fadeInOutBonus(false);
-                        fingerBonus.gameObject.SetActive(false);
-
-                        SkinnedMeshRenderer rendererL, rendererR;
-                        for (int i = 0; i < player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints.Count; i++)
-                        {
-                            if (player == GameManager.Instance.player1)
-                            {
-                                rendererL = player.skullHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.skullHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-                            else
-                            {
-                                rendererL = player.stagHands.fingers[(int)PlayerFingers.LH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                                rendererR = player.stagHands.fingers[(int)PlayerFingers.RH_Pinky].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                            }
-
-                            if (rendererL != null)
-                            {
-                                rendererL.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                            if (rendererR != null)
-                            {
-                                rendererR.material.SetFloat("_BonusColourOn", 0.0f);
-                            }
-                        }
-                    }
-                }
-            }
+            FingerBonusStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
+            FingerBonusStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 0.0f);
+            FingerBonusStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
+            FingerBonusStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 0.0f);
+            FingerBonusStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky, 0.0f);
         }
     }
 
@@ -748,6 +213,52 @@ public class CardSelect : MonoBehaviour
         baseCol.a = 0;
         fingerBonus.gameObject.GetComponent<MeshRenderer>().material.color = baseCol;
         yield return null;
+    }
+
+    /// <summary>
+    /// Sets the current status of the finger bonus highlight. 
+    /// </summary>
+    /// <param name="player">The player that will be affected.</param>
+    /// <param name="spellName">Name of the spell that has a finger bonus.</param>
+    /// <param name="fingerWithBonus1">First finger required to have the bonus.</param>
+    /// <param name="fingerWithBonus2">Second finger required to have the bonus.</param>
+    /// <param name="bonusStatus">If the bonus is turned on or off - 1.0f ON, 0.0f OFF</param>
+    private void FingerBonusStatus(PlayerManager player, SpellNames spellName, PlayerFingers fingerWithBonus1, PlayerFingers fingerWithBonus2, float bonusStatus)
+    {
+        if (gameObject.GetComponent<SpellCard>().spellName == spellName)
+        {
+            if (player.AreTheseFingersAlive(fingerWithBonus1, fingerWithBonus2) &&
+        (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
+        (player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
+            {
+                //fadeInOutBonus(false);
+                fingerBonus.gameObject.SetActive(false);
+
+                SkinnedMeshRenderer rendererL, rendererR;
+                for (int i = 0; i < player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints.Count; i++)
+                {
+                    if (player == GameManager.Instance.player1)
+                    {
+                        rendererL = player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                        rendererR = player.skullHands.fingers[(int)fingerWithBonus2].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                    }
+                    else
+                    {
+                        rendererL = player.stagHands.fingers[(int)fingerWithBonus1].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                        rendererR = player.stagHands.fingers[(int)fingerWithBonus2].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                    }
+
+                    if (rendererL != null)
+                    {
+                        rendererL.material.SetFloat("_BonusColourOn", bonusStatus);
+                    }
+                    if (rendererR != null)
+                    {
+                        rendererR.material.SetFloat("_BonusColourOn", bonusStatus);
+                    }
+                }
+            }
+        }
     }
 
     //DONT DELETE THIS KELLER THIS HELPS RESET THE VALUES OF THE CARDS WHEN THEY GO BACK INTO THE OBJECT POOL
