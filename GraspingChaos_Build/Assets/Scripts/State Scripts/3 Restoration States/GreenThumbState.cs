@@ -99,7 +99,7 @@ public class GreenThumbState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 2);
+                    ParticleManger.Instance.StartParticle(SpellNames.GreenThumb, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 1);
                     RumbleManager.Instance.PulseRumble(0.8f, 0.25f, 0.2f, 1.5f, player.gamepad);
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
