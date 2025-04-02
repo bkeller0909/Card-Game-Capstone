@@ -296,6 +296,16 @@ public class Tutorial : MonoBehaviour
         if (isStep6)
         {
             dialogueEvent.NextDialogue(6);
+            if (player == GameManager.Instance.player1)
+            {
+                player.GetComponent<PlayerControlHandler>().pickCards.cards[0].GetComponent<CardTravelHandler>().CardTravel
+                    (0.00f, 0.3f, 0.3f, player.GetComponent<PlayerControlHandler>().pickCards.cards[0].transform, player.GetComponent<PlayerControlHandler>().inspectCardPos);
+            }
+            else if (player == GameManager.Instance.player2)
+            {
+                player.GetComponent<PlayerControlHandler>().pickCards.cards[0].GetComponent<CardTravelHandler>().CardTravel
+                    (0.00f, 0.3f, 0.3f, player.GetComponent<PlayerControlHandler>().pickCards.cards[0].transform, player.GetComponent<PlayerControlHandler>().inspectCardPos);
+            }
             yield return new WaitForSeconds(7f);
             isStep6Complete = true;
         }
@@ -363,6 +373,17 @@ public class Tutorial : MonoBehaviour
             dialogueEvent.NextDialogue(10);
             yield return new WaitForSeconds(5f);
             dialogueEvent.EndDialogue();
+            if (player == GameManager.Instance.player1)
+            {
+                player.GetComponent<PlayerControlHandler>().pickCards.cards[0].GetComponent<CardTravelHandler>().CardTravel
+                    (0.00f, 0.3f, 0.3f, player.GetComponent<PlayerControlHandler>().inspectCardPos, player.GetComponentInChildren<CardHandSlot>().cardSlots[0].transform);
+            }
+            else if (player == GameManager.Instance.player2)
+            {
+                player.GetComponent<PlayerControlHandler>().pickCards.cards[0].GetComponent<CardTravelHandler>().CardTravel
+                    (0.00f, 0.3f, 0.3f, player.GetComponent<PlayerControlHandler>().inspectCardPos, player.GetComponentInChildren<CardHandSlot>().cardSlots[0].transform);
+            }
+            yield return new WaitForSeconds(1f);
             player.playerCameras.GetInputForced(0);
             isStep10Complete = true;
         }

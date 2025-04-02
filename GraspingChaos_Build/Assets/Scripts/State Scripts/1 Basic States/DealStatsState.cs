@@ -476,9 +476,6 @@ public class DealStatsState : FSMState
                             card = CardsObjectPool.Instance.ScriptedDealing(enemy, SpellNames.GuardiansTouch);
                             enemy.spellHand.playerSpells.Add(card);
                         }
-
-                        player.GetComponent<PlayerControlHandler>().pickCards.SetHoveredCard(0);
-                        enemy.GetComponent<PlayerControlHandler>().pickCards.SetHoveredCard(0);
                     }
 
                     // force player to card camera view
@@ -492,9 +489,8 @@ public class DealStatsState : FSMState
 
                     if (playerState.tutorialEvent.isStep5Complete == true)
                     {
-                        player.GetComponent<PlayerControlHandler>().InspectCard(playerState.playerControlHandler.inspectCardPos);
-                        enemy.GetComponent<PlayerControlHandler>().InspectCard(playerState.playerControlHandler.inspectCardPos);
                         playerState.tutorialEvent.TutorialStep6(player);
+                        playerState.tutorialEvent.TutorialStep6(enemy);
                         playerState.tutorialEvent.isStep5Complete = false;
                     }
 
