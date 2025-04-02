@@ -31,6 +31,14 @@ public class DialogueEvent : MonoBehaviour
     public GameObject qteIconP2;
     public GameObject manaIconP2;
 
+    [Header("Card Helpers")]
+    public GameObject manaArrowP1;
+    public GameObject manaArrowP2;
+    public GameObject qteArrowP1;
+    public GameObject qteArrowP2;
+    public GameObject bonusArrowP1;
+    public GameObject bonusArrowP2;
+
     private bool isTalking;                                         // is dialogue current happening
 
     private void Awake()

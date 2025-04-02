@@ -306,6 +306,9 @@ public class Tutorial : MonoBehaviour
                 player.GetComponent<PlayerControlHandler>().pickCards.cards[0].GetComponent<CardTravelHandler>().CardTravel
                     (0.00f, 0.3f, 0.3f, player.GetComponent<PlayerControlHandler>().pickCards.cards[0].transform, player.GetComponent<PlayerControlHandler>().inspectCardPos);
             }
+
+            dialogueEvent.manaArrowP1.SetActive(true);
+            dialogueEvent.manaArrowP2.SetActive(true);
             yield return new WaitForSeconds(7f);
             isStep6Complete = true;
         }
@@ -318,8 +321,14 @@ public class Tutorial : MonoBehaviour
         dialogueEvent.manaIconP1.SetActive(false);
         dialogueEvent.manaIconP2.SetActive(false);
 
+        dialogueEvent.manaArrowP1.SetActive(false);
+        dialogueEvent.manaArrowP2.SetActive(false);
+
         dialogueEvent.qteIconP1.SetActive(true);
         dialogueEvent.qteIconP2.SetActive(true);
+
+        dialogueEvent.qteArrowP1.SetActive(true);
+        dialogueEvent.qteArrowP2.SetActive(true);
 
         if (isStep7)
         {
@@ -354,9 +363,16 @@ public class Tutorial : MonoBehaviour
             yield return new WaitForSeconds(7f);
             dialogueEvent.qteIconP1.SetActive(false);
             dialogueEvent.qteIconP2.SetActive(false);
+
+            dialogueEvent.qteArrowP1.SetActive(false);
+            dialogueEvent.qteArrowP2.SetActive(false);
+
             dialogueEvent.EndDialogue();
             yield return new WaitForSeconds(2f);
             dialogueEvent.StartDialogue(12);
+
+            dialogueEvent.bonusArrowP1.SetActive(true);
+            dialogueEvent.bonusArrowP2.SetActive(true);
             yield return new WaitForSeconds(7f);
             dialogueEvent.NextDialogue(13);
             yield return new WaitForSeconds(7f);
@@ -371,6 +387,8 @@ public class Tutorial : MonoBehaviour
         if (isStep10)
         {
             dialogueEvent.NextDialogue(10);
+            dialogueEvent.bonusArrowP1.SetActive(false);
+            dialogueEvent.bonusArrowP2.SetActive(false);
             yield return new WaitForSeconds(5f);
             dialogueEvent.EndDialogue();
             if (player == GameManager.Instance.player1)
