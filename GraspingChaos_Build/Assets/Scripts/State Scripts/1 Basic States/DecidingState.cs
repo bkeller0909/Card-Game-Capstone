@@ -43,7 +43,6 @@ public class DecidingState : FSMState
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.spellName == SpellNames.none)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerTwoIsFaster;
-                        GameManager.Instance.particleWait[i] = false;
 
                         if (i == 0)
                         {
@@ -53,7 +52,6 @@ public class DecidingState : FSMState
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.spellName == SpellNames.none)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerOneIsFaster;
-                        GameManager.Instance.particleWait[i] = true;
 
                         if (i == 0)
                         {
@@ -67,7 +65,6 @@ public class DecidingState : FSMState
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost < GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerOneIsFaster;
-                        GameManager.Instance.particleWait[i] = true;
 
                         if (i == 0)
                         {
@@ -77,7 +74,6 @@ public class DecidingState : FSMState
                     else if (GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER1].whatSpell.manaCost > GameManager.Instance.spellsBeingCast[i, (int)PlayerType.PLAYER2].whatSpell.manaCost)
                     {
                         GameManager.Instance.whoesOnFirst[i] = Decider.PlayerTwoIsFaster;
-                        GameManager.Instance.particleWait[i] = false;
 
                         if (i == 0)
                         {

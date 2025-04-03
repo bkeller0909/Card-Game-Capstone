@@ -5036,6 +5036,7 @@ MonoBehaviour:
   - {fileID: 4323106015218007276}
   - {fileID: 3390788139714269705}
   ringPlacementParticle: {fileID: 1921697355}
+  ringPlacementParticleFail: {fileID: 1386646530}
   vengfulInpact: {fileID: 2637751469203444435}
   thronsInpact: {fileID: 5418653016257212013}
   vampiricInpact: {fileID: 7914207647946940928}
@@ -19542,6 +19543,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 881898164}
   m_LocalEulerAnglesHint: {x: 13.942, y: 0, z: 0}
+--- !u!1001 &1386646529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520121045912530557, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6551593032040732817, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+        type: 3}
+      propertyPath: m_Name
+      value: RingPlaceFAILVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a634cb27cc0a5a94cb1e7484eafd6f5b, type: 3}
+--- !u!2083052967 &1386646530 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: -2858236668804783234, guid: a634cb27cc0a5a94cb1e7484eafd6f5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1386646529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1399459316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34375,6 +34450,7 @@ SceneRoots:
   - {fileID: 1297078944}
   - {fileID: 479487192}
   - {fileID: 1921697353}
+  - {fileID: 1386646529}
   - {fileID: 881898164}
   - {fileID: 159306856}
   - {fileID: 1891023210}

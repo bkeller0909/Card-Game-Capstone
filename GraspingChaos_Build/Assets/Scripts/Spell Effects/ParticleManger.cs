@@ -49,6 +49,7 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] private List<VisualEffect> medEffects;
     [SerializeField] private List<VisualEffect> lowEffects;
     [SerializeField] private VisualEffect ringPlacementParticle;
+    [SerializeField] private VisualEffect ringPlacementParticleFail;
     [SerializeField] private VisualEffect vengfulInpact;
     [SerializeField] private VisualEffect thronsInpact;
     [SerializeField] private VisualEffect vampiricInpact;
@@ -961,7 +962,31 @@ public class ParticleManger : MonoBehaviour
                             PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
                         }
                         ringPlacementParticle.Play();
-                        StartCoroutine(DisableSpell(2f, 18, playerCasting));
+                        StartCoroutine(DisableSpell(1f, 18, playerCasting));
+                        break;
+                    case SpellNames.GuardiansTouch:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(1f, 19, playerCasting));
+                        break;
+                    case SpellNames.ManaMerchant:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(1f, 20, playerCasting));
                         break;
                 }
                 break;
