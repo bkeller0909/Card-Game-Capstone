@@ -30,6 +30,11 @@ public class BtnIsSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     MainMenu menu;
 
+    public void BtnClick()
+    {
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelectComplete, 1.0f);
+    }
+
     /// <summary>
     /// Event function that is called when the button is selected.
     /// </summary>
@@ -66,6 +71,7 @@ public class BtnIsSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
         isSelected = true;
         text.color = selectedCol;
         StartCoroutine(menu.MoveArrows(GetComponent<Button>(), topArrow, bottomArrow));
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelect, 1.0f);
     }
 
     /// <summary>

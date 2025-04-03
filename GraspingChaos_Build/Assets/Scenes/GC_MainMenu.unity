@@ -8614,6 +8614,41 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0.9607843
       objectReference: {fileID: 0}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1964106782}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: BtnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BtnIsSelected, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060631326345106885, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5177889368795834995, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
         type: 3}
       propertyPath: m_TargetDisplay
@@ -8793,6 +8828,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1964106780}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1964106782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5931047652968334893, guid: dcd25435ee6fcfb4d97e429ffd441a3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1964106780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781100442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d5e048ac5991b41aa6b3ec15913e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2002670305
 GameObject:
   m_ObjectHideFlags: 0
