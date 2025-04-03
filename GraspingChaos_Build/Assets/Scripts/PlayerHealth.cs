@@ -98,6 +98,13 @@ public class PlayerHealth : MonoBehaviour
                 else
                 {
                     player.fingers[(int)whatFinger].fingerShield--;
+                    if (player.fingers[(int)whatFinger].fingerShield <= 0)
+                    {
+                        player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)whatFinger] = false;
+                        player.ToggleRing(false, Rings.GuardiansTouchFull, whatFinger);
+                        player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)whatFinger] = false;
+                        player.ToggleRing(false, Rings.GuardiansTouchFail, whatFinger);
+                    }
                 }
             }
             else
@@ -172,6 +179,13 @@ public class PlayerHealth : MonoBehaviour
                     for (int i = 0; i < 2; i++)
                     {
                         player.fingers[(int)whatFinger].fingerShield--;
+                    }
+                    if (player.fingers[(int)whatFinger].fingerShield <= 0)
+                    {
+                        player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFull, (int)whatFinger] = false;
+                        player.ToggleRing(false, Rings.GuardiansTouchFull, whatFinger);
+                        player.ringHandler.ringsActive[(int)Rings.GuardiansTouchFail, (int)whatFinger] = false;
+                        player.ToggleRing(false, Rings.GuardiansTouchFail, whatFinger);
                     }
                 }
             }

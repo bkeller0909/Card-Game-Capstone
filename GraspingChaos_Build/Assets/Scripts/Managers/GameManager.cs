@@ -181,6 +181,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int bookFlipTime = 2;
 
+    public bool gameIsPaused = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -207,6 +209,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        gameIsPaused = false;
         isDissolveDone = false;
         cardPool = new CardsObjectPool();
         spellsBeingCast = new SpellsBeingCastInfo[3, 2];
