@@ -5035,6 +5035,10 @@ MonoBehaviour:
   - {fileID: 114671940062822593}
   - {fileID: 4323106015218007276}
   - {fileID: 3390788139714269705}
+  ringPlacementParticle: {fileID: 1921697355}
+  vengfulInpact: {fileID: 2637751469203444435}
+  thronsInpact: {fileID: 5418653016257212013}
+  vampiricInpact: {fileID: 7914207647946940928}
   cursedConversionP1Gradient:
     serializedVersion: 2
     key0: {r: 95.87452, g: 0, b: 0, a: 0}
@@ -32690,6 +32694,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 497060b1a52e3154891ed3b1692ebbce, type: 3}
+--- !u!2083052967 &2637751469203444435 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1153788874923895583, guid: 497060b1a52e3154891ed3b1692ebbce,
+    type: 3}
+  m_PrefabInstance: {fileID: 2637751469203444434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2741709234742854271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1280692609025091032, guid: 298e9d790a15ee047859f8abe50dd302,
@@ -33234,6 +33244,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecd645c7c8a2424e968fe90f34add8b, type: 3}
+--- !u!2083052967 &5418653016257212013 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 1939662340665323665, guid: 4ecd645c7c8a2424e968fe90f34add8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5418653016257212012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5436200816181007750
 PrefabInstance:
   m_ObjectHideFlags: 0

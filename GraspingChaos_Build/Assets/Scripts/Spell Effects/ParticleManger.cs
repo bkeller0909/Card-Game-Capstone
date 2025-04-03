@@ -48,7 +48,10 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] private List<VisualEffect> FullEffects;
     [SerializeField] private List<VisualEffect> medEffects;
     [SerializeField] private List<VisualEffect> lowEffects;
-
+    [SerializeField] private VisualEffect ringPlacementParticle;
+    [SerializeField] private VisualEffect vengfulInpact;
+    [SerializeField] private VisualEffect thronsInpact;
+    [SerializeField] private VisualEffect vampiricInpact;
 
     //Custom colors and gradients for select spells
     //==============================================================================================================
@@ -934,6 +937,24 @@ public class ParticleManger : MonoBehaviour
                         }
                         FullEffects[17].Play();
                         StartCoroutine(DisableSpell(4f, 17, playerCasting));
+                        break;
+                }
+                break;
+            //================================================ RING ===========================================================
+            case 4:
+                switch (spellToCast)
+                {
+                    case SpellNames.ThornsOfAgony:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(2f, 18, playerCasting));
                         break;
                 }
                 break;
