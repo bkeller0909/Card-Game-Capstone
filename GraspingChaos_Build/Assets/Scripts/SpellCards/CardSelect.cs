@@ -110,6 +110,7 @@ public class CardSelect : MonoBehaviour
             FingerBonusFingerStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
+            FingerBonusFingerStatus(player, SpellNames.StaticBlast, PlayerFingers.LH_Middle, PlayerFingers.RH_Middle, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 1.0f);
@@ -133,6 +134,7 @@ public class CardSelect : MonoBehaviour
             FingerBonusFingerStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
             FingerBonusFingerStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 0.0f);
             FingerBonusFingerStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
+            FingerBonusFingerStatus(player, SpellNames.StaticBlast, PlayerFingers.LH_Middle, PlayerFingers.RH_Middle, 0.0f);
             FingerBonusFingerStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 0.0f);
             FingerBonusFingerStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 0.0f);
             FingerBonusFingerStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring, 0.0f);
@@ -144,6 +146,7 @@ public class CardSelect : MonoBehaviour
                 FingerBonusCardStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index);
                 FingerBonusCardStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky);
                 FingerBonusCardStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                FingerBonusCardStatus(player, SpellNames.StaticBlast, PlayerFingers.LH_Middle, PlayerFingers.RH_Middle);
                 FingerBonusCardStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index);
                 FingerBonusCardStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
                 FingerBonusCardStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring);
@@ -242,33 +245,33 @@ public class CardSelect : MonoBehaviour
     {
         if (gameObject.GetComponent<SpellCard>().spellName == spellName)
         {
-        //    if (player.AreTheseFingersAlive(fingerWithBonus1, fingerWithBonus2) &&
-        //(player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
-        //(player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
-        //    {
-                SkinnedMeshRenderer rendererL, rendererR;
-                for (int i = 0; i < player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints.Count; i++)
+            //    if (player.AreTheseFingersAlive(fingerWithBonus1, fingerWithBonus2) &&
+            //(player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus1] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus1] != true) &&
+            //(player.ringHandler.ringsActive[(int)Rings.SpectralChainFull, (int)fingerWithBonus2] != true) && (player.ringHandler.ringsActive[(int)Rings.SpectralChainFail, (int)fingerWithBonus2] != true))
+            //    {
+            SkinnedMeshRenderer rendererL, rendererR;
+            for (int i = 0; i < player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints.Count; i++)
+            {
+                if (player == GameManager.Instance.player1)
                 {
-                    if (player == GameManager.Instance.player1)
-                    {
-                        rendererL = player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                        rendererR = player.skullHands.fingers[(int)fingerWithBonus2].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                    }
-                    else
-                    {
-                        rendererL = player.stagHands.fingers[(int)fingerWithBonus1].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                        rendererR = player.stagHands.fingers[(int)fingerWithBonus2].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
-                    }
-
-                    if (rendererL != null)
-                    {
-                        rendererL.material.SetFloat("_BonusColourOn", bonusStatus);
-                    }
-                    if (rendererR != null)
-                    {
-                        rendererR.material.SetFloat("_BonusColourOn", bonusStatus);
-                    }
+                    rendererL = player.skullHands.fingers[(int)fingerWithBonus1].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                    rendererR = player.skullHands.fingers[(int)fingerWithBonus2].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
                 }
+                else
+                {
+                    rendererL = player.stagHands.fingers[(int)fingerWithBonus1].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                    rendererR = player.stagHands.fingers[(int)fingerWithBonus2].fingerJoints[i].GetComponent<SkinnedMeshRenderer>();
+                }
+
+                if (rendererL != null)
+                {
+                    rendererL.material.SetFloat("_BonusColourOn", bonusStatus);
+                }
+                if (rendererR != null)
+                {
+                    rendererR.material.SetFloat("_BonusColourOn", bonusStatus);
+                }
+            }
             //}
         }
     }
