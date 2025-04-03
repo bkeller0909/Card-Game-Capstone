@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void LoadDuelScene()
     {
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.uISelect, 1);
         GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_Duelscene);
         InputManager.Instance.FindPlayers();
     }
@@ -94,6 +95,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void KillSwitch()
     {
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.uISelect, 1);
         Application.Quit();
     }
 

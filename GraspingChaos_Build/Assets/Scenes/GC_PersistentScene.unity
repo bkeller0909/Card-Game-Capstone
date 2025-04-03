@@ -808,6 +808,7 @@ MonoBehaviour:
   totalSpellsPickedP1: 0
   totalSpellsPickedP2: 0
   bookFlipTime: 10
+  gameIsPaused: 0
 --- !u!4 &113710050
 Transform:
   m_ObjectHideFlags: 0
@@ -5977,7 +5978,11 @@ MonoBehaviour:
   roundFinished: {fileID: 8300000, guid: 1b3b8a0b4d85c5241b9fdd36187ba611, type: 3}
   cardSelect: {fileID: 8300000, guid: 52dcccd787681ca47b9b13f50136893a, type: 3}
   cardSelectComplete: {fileID: 8300000, guid: efa43ccd9921b4e48a1adf151bc7f7f2, type: 3}
-  dialogueAudioClips: []
+  uISelect: {fileID: 8300000, guid: 52dcccd787681ca47b9b13f50136893a, type: 3}
+  uIMove: {fileID: 8300000, guid: 48c401d117d11314ab796d7ff1ee6ac5, type: 3}
+  narratorAudioClips: []
+  stagAudioClips: []
+  skullAudioClips: []
 --- !u!4 &814528066
 Transform:
   m_ObjectHideFlags: 0
@@ -6512,6 +6517,7 @@ Transform:
   - {fileID: 2091468837}
   - {fileID: 1509617032}
   - {fileID: 845701190}
+  - {fileID: 1508439645}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &855616587
@@ -11890,12 +11896,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508439643}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0848254, y: 0.537198, z: 5.205534}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0848254, y: 75.337204, z: 5.205534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 855616586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509201729
 GameObject:
@@ -16305,7 +16311,6 @@ SceneRoots:
   - {fileID: 1481140982}
   - {fileID: 814528066}
   - {fileID: 1299180591}
-  - {fileID: 1508439645}
   - {fileID: 855616586}
   - {fileID: 679422704}
   - {fileID: 556995155}

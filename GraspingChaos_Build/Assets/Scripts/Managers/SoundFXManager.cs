@@ -26,6 +26,8 @@ public class SoundFXManager : MonoBehaviour
     public AudioClip roundFinished;
     public AudioClip cardSelect;
     public AudioClip cardSelectComplete;
+    public AudioClip uISelect;
+    public AudioClip uIMove;
 
     [Header("Dialogue Audio")]
     [Tooltip("List of all the dialogue audio for the Narrator")]
