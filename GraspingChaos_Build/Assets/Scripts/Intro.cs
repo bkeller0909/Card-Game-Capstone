@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Video;
 
 public class Intro : MonoBehaviour
@@ -36,8 +37,9 @@ public class Intro : MonoBehaviour
 
     private void SkipIntro()
     {
-        if (InputManager.Instance.players[0].gamepad.buttonSouth.wasPressedThisFrame || InputManager.Instance.players[1].gamepad.buttonSouth.wasPressedThisFrame)
+        if (Gamepad.current.buttonSouth.wasPressedThisFrame)
         {
+            //Gamepad.current
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
     }

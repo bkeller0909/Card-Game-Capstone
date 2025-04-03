@@ -73,6 +73,14 @@ public class ManaMerchantState : FSMState
                     {
                         ParticleManger.Instance.StartParticle(SpellNames.ManaMerchant, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 4);
                     }
+                    else
+                    {
+                        ParticleManger.Instance.StartParticle(SpellNames.ManaMerchant, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
+                    }
+                }
+                else
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ManaMerchant, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -93,6 +101,14 @@ public class ManaMerchantState : FSMState
                     {
                         ParticleManger.Instance.StartParticle(SpellNames.ManaMerchant, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 4);
                     }
+                    else
+                    {
+                        ParticleManger.Instance.StartParticle(SpellNames.ManaMerchant, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
+                    }
+                }
+                else
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ManaMerchant, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -142,7 +158,7 @@ public class ManaMerchantState : FSMState
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
             {
                 GameManager.Instance.ChangeCurrentCaster();
-                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 GameManager.Instance.totalSpellsPickedP2--;
                 GameManager.Instance.coroutineWaitP2 = false;
                 GameManager.Instance.playedSpells++;

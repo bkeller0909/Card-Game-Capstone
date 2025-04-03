@@ -252,7 +252,7 @@ public class ParticleManger : MonoBehaviour
                         {
                             spawnExtra1 = false;
                             spawnExtra2 = false;
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
                             adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
@@ -263,7 +263,7 @@ public class ParticleManger : MonoBehaviour
                         {
                             spawnExtra1 = false;
                             spawnExtra2 = false;
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
                             adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
@@ -532,7 +532,7 @@ public class ParticleManger : MonoBehaviour
                         }
                         else
                         {
-                            PlayerPosition.position = P2RightHand.position;
+                            PlayerPosition.position = P2LeftHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -706,7 +706,7 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[5].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             adjasentPosition1.position = player2FingerPositions[(int)particleAdjacent1].position;
                             adjasentPosition2.position = player2FingerPositions[(int)particleAdjacent2].position;
@@ -715,7 +715,7 @@ public class ParticleManger : MonoBehaviour
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             adjasentPosition1.position = player1FingerPositions[(int)particleAdjacent1].position;
                             adjasentPosition2.position = player1FingerPositions[(int)particleAdjacent2].position;
@@ -987,6 +987,144 @@ public class ParticleManger : MonoBehaviour
                         }
                         ringPlacementParticle.Play();
                         StartCoroutine(DisableSpell(1f, 20, playerCasting));
+                        break;
+                    case SpellNames.SpectralChain:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(1f, 21, playerCasting));
+                        break;
+                    case SpellNames.VampiricSurge:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(1f, 22, playerCasting));
+                        break;
+                    case SpellNames.VengefulMirror:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(1f, 23, playerCasting));
+                        break;
+                    case SpellNames.VeilOfFortitude:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticle.Play();
+                        StartCoroutine(DisableSpell(1f, 24, playerCasting));
+                        break;
+                }
+                break;
+            //================================================ RING FAIL ===========================================================
+            case 5:
+                switch (spellToCast)
+                {
+                    case SpellNames.ThornsOfAgony:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 18, playerCasting));
+                        break;
+                    case SpellNames.GuardiansTouch:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 19, playerCasting));
+                        break;
+                    case SpellNames.ManaMerchant:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 20, playerCasting));
+                        break;
+                    case SpellNames.SpectralChain:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 21, playerCasting));
+                        break;
+                    case SpellNames.VampiricSurge:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 22, playerCasting));
+                        break;
+                    case SpellNames.VengefulMirror:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 23, playerCasting));
+                        break;
+                    case SpellNames.VeilOfFortitude:
+                        if (playerCasting == GameManager.Instance.player1)
+                        {
+                            PlayerPosition.position = player1FingerPositions[(int)targetFinger].position;
+                        }
+                        else
+                        {
+                            PlayerPosition.position = player2FingerPositions[(int)targetFinger].position;
+                        }
+                        ringPlacementParticleFail.Play();
+                        StartCoroutine(DisableSpell(1f, 24, playerCasting));
                         break;
                 }
                 break;

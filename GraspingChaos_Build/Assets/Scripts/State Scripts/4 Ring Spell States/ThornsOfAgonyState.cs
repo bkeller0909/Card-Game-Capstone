@@ -73,6 +73,14 @@ public class ThornsOfAgonyState : FSMState
                     {
                         ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 4);
                     }
+                    else
+                    {
+                        ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
+                    }
+                }
+                else
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
                 }
                 GameManager.Instance.particleP1Done = true;
             }
@@ -93,6 +101,14 @@ public class ThornsOfAgonyState : FSMState
                     {
                         ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 4);
                     }
+                    else
+                    {
+                        ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
+                    }
+                }
+                else
+                {
+                    ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 5);
                 }
                 GameManager.Instance.particleP2Done = true;
             }
@@ -141,7 +157,7 @@ public class ThornsOfAgonyState : FSMState
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
             {
                 GameManager.Instance.ChangeCurrentCaster();
-                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
                 GameManager.Instance.totalSpellsPickedP2--;
                 GameManager.Instance.coroutineWaitP2 = false;
                 GameManager.Instance.playedSpells++;
