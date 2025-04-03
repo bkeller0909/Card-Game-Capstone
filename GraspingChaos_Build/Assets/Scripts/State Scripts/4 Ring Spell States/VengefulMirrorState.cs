@@ -56,37 +56,40 @@ public class VengefulMirrorState : FSMState
         {
             GameManager.Instance.spellInProgress = true;
             bool spotTaken = false;
-
-            for (int i = 0; i < 14; i++)
-            {
-                if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
-                {
-                    spotTaken = true;
-                }
-            }
-
-            if (!spotTaken)
-            {
-                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
-                {
-                    //Turns The Ring on
-                    player.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                    player.ToggleRing(true, Rings.VengefulMirrorFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ApplyVengFulMirror(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFull] = GameManager.Instance.whatRound;
-                }
-                else
-                {
-                    //Turns The Ring on
-                    player.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                    player.ToggleRing(true, Rings.VengefulMirrorFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ApplyVengFulMirror(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFail] = GameManager.Instance.whatRound;
-                }
-            }
-            else // ring dosent get put on the finger
+            if (playerState.HealthyFingerForRing(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger))
             {
 
+                for (int i = 0; i < 14; i++)
+                {
+                    if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                    {
+                        spotTaken = true;
+                    }
+                }
+
+                if (!spotTaken)
+                {
+                    if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                    {
+                        //Turns The Ring on
+                        player.ringHandler.ringsActive[(int)Rings.VengefulMirrorFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                        player.ToggleRing(true, Rings.VengefulMirrorFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        player.ringHandler.ApplyVengFulMirror(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        player.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFull] = GameManager.Instance.whatRound;
+                    }
+                    else
+                    {
+                        //Turns The Ring on
+                        player.ringHandler.ringsActive[(int)Rings.VengefulMirrorFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                        player.ToggleRing(true, Rings.VengefulMirrorFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        player.ringHandler.ApplyVengFulMirror(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                        player.ringHandler.ringStartRound[(int)Rings.VengefulMirrorFail] = GameManager.Instance.whatRound;
+                    }
+                }
+                else // ring dosent get put on the finger
+                {
+
+                }
             }
 
             //temp just for it working
