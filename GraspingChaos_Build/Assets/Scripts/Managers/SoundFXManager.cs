@@ -31,10 +31,10 @@ public class SoundFXManager : MonoBehaviour
     [Tooltip("List of all the dialogue audio for the Narrator")]
     public AudioClip[] narratorAudioClips;
 
-    [Tooltip("List of all the dialogue audio for the Narrator")]
+    [Tooltip("List of all the dialogue audio for the Stag")]
     public AudioClip[] stagAudioClips;
 
-    [Tooltip("List of all the dialogue audio for the Narrator")]
+    [Tooltip("List of all the dialogue audio for the Skull")]
     public AudioClip[] skullAudioClips;
 
     private void Awake()
