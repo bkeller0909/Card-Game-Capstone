@@ -57,54 +57,126 @@ public class ThornsOfAgonyState : FSMState
             GameManager.Instance.spellInProgress = true;
             bool spotTaken = false;
 
-            //if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done
-            for (int i = 0; i < 14; i++)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
-                if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                if (playerState.HealthyFingerForRing(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger))
                 {
-                    spotTaken = true;
+                    for (int i = 0; i < 14; i++)
+                    {
+                        if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                        {
+                            spotTaken = true;
+                        }
+                    }
+
+                    if (!spotTaken)
+                    {
+                        ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 4);
+                    }
                 }
+                GameManager.Instance.particleP1Done = true;
             }
 
-            if (!spotTaken)
+            if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
-                if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                if (playerState.HealthyFingerForRing(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger))
                 {
-                    //Turns The Ring on
-                    player.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                    player.ToggleRing(true, Rings.ThornsOfAgonyFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFull] = GameManager.Instance.whatRound;
-                }
-                else
-                {
-                    //Turns The Ring on
-                    player.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
-                    player.ToggleRing(true, Rings.ThornsOfAgonyFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                    player.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFail] = GameManager.Instance.whatRound;
-                }
-            }
-            else // ring dosent get put on the finger
-            {
+                    for (int i = 0; i < 14; i++)
+                    {
+                        if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                        {
+                            spotTaken = true;
+                        }
+                    }
 
+                    if (!spotTaken)
+                    {
+                        ParticleManger.Instance.StartParticle(SpellNames.ThornsOfAgony, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 4);
+                    }
+                }
+                GameManager.Instance.particleP2Done = true;
             }
 
-            //temp just for it working
-            if (player == GameManager.Instance.player1)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
             {
+                GameManager.Instance.ChangeCurrentCaster();
                 GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
                 GameManager.Instance.totalSpellsPickedP1--;
-            }
-            else if (player == GameManager.Instance.player2)
-            {
-                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
-                GameManager.Instance.totalSpellsPickedP2--;
+                GameManager.Instance.coroutineWaitP1 = false;
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.particleP1Done = false;
+                nextState = "Deciding";
+                if (playerState.HealthyFingerForRing(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger))
+                {
+                    for (int i = 0; i < 14; i++)
+                    {
+                        if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                        {
+                            spotTaken = true;
+                        }
+                    }
+
+                    if (!spotTaken)
+                    {
+                        if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                        {
+                            //Turns The Ring on
+                            player.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                            player.ToggleRing(true, Rings.ThornsOfAgonyFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            player.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFull] = GameManager.Instance.whatRound;
+                        }
+                        else
+                        {
+                            //Turns The Ring on
+                            player.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                            player.ToggleRing(true, Rings.ThornsOfAgonyFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            player.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFail] = GameManager.Instance.whatRound;
+                        }
+                    }
+                }
+
             }
 
-            GameManager.Instance.ChangeCurrentCaster();
-            GameManager.Instance.playedSpells++;
-            GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
-            nextState = "Deciding";
+            if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
+            {
+                GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = false;
+                GameManager.Instance.totalSpellsPickedP2--;
+                GameManager.Instance.coroutineWaitP2 = false;
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
+                GameManager.Instance.particleP2Done = false;
+                nextState = "Deciding";
+                if (playerState.HealthyFingerForRing(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger))
+                {
+                    for (int i = 0; i < 14; i++)
+                    {
+                        if (player.ringHandler.ringsActive[i, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] == true)
+                        {
+                            spotTaken = true;
+                        }
+                    }
+
+                    if (!spotTaken)
+                    {
+                        if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
+                        {
+                            //Turns The Ring on
+                            player.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFull, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                            player.ToggleRing(true, Rings.ThornsOfAgonyFull, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            player.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFull] = GameManager.Instance.whatRound;
+                        }
+                        else
+                        {
+                            //Turns The Ring on
+                            player.ringHandler.ringsActive[(int)Rings.ThornsOfAgonyFail, (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger] = true;
+                            player.ToggleRing(true, Rings.ThornsOfAgonyFail, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
+                            player.ringHandler.ringStartRound[(int)Rings.ThornsOfAgonyFail] = GameManager.Instance.whatRound;
+                        }
+                    }
+                }
+            }
         }
     }
-
 }

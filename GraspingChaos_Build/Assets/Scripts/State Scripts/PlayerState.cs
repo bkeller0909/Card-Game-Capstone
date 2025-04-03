@@ -515,4 +515,23 @@ public class PlayerState : AdvancedFSM
             player.gameObject.GetComponent<QTEHandler>().CreateSequence(currentQTEAmount, player);
         }
     }
+
+    public bool HealthyFingerForRing(PlayerFingers targetFinger)
+    {
+        if (player == GameManager.Instance.player1)
+        {
+            if (player.health.playerHealthStats[(int)targetFinger] > 0)
+                return true;
+            else
+                return false;
+        }
+        else if (player == GameManager.Instance.player2)
+        {
+            if (player.health.playerHealthStats[(int)targetFinger] > 0)
+                return true;
+            else
+                return false;
+        }
+        return true;
+    }
 }
