@@ -78,6 +78,13 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] Transform P1ForcedPosition;
     [SerializeField] Transform P2ForcedPosition;
 
+    [SerializeField] Transform P1LeftHand;
+    [SerializeField] Transform P1RightHand;
+
+    [SerializeField] Transform P2LeftHand;
+    [SerializeField] Transform P2RightHand;
+
+
     [Header("Extra Positions for particles")]
     [SerializeField] Transform adjasentPosition1;
     [SerializeField] Transform adjasentPosition2;
@@ -284,14 +291,14 @@ public class ParticleManger : MonoBehaviour
 
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -304,14 +311,14 @@ public class ParticleManger : MonoBehaviour
 
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1LeftHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2LeftHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -497,14 +504,14 @@ public class ParticleManger : MonoBehaviour
                         medEffects[0].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -517,14 +524,14 @@ public class ParticleManger : MonoBehaviour
                         medEffects[0].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1LeftHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -736,14 +743,14 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[7].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -756,14 +763,14 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[7].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1LeftHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2LeftHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
