@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -30,8 +28,14 @@ public class SoundFXManager : MonoBehaviour
     public AudioClip cardSelectComplete;
 
     [Header("Dialogue Audio")]
-    [Tooltip("List of all the dialogue audio for voice lines")]
-    public AudioClip[] dialogueAudioClips;
+    [Tooltip("List of all the dialogue audio for the Narrator")]
+    public AudioClip[] narratorAudioClips;
+
+    [Tooltip("List of all the dialogue audio for the Narrator")]
+    public AudioClip[] stagAudioClips;
+
+    [Tooltip("List of all the dialogue audio for the Narrator")]
+    public AudioClip[] skullAudioClips;
 
     private void Awake()
     {
