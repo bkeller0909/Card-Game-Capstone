@@ -19,6 +19,11 @@ public class DecidingState : FSMState
         GameManager.Instance.spellInProgress = false;
         roundEnd = false;
 
+        if (playerState.player == GameManager.Instance.player1)
+        {
+
+        }
+        
         if (!GameManager.Instance.roundCheck)
         {
             if (playerState.player == GameManager.Instance.player1)

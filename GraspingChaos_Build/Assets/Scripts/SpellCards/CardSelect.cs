@@ -37,7 +37,7 @@ public class CardSelect : MonoBehaviour
     public GameObject fingerBonus;
 
     [SerializeField, Tooltip("This is the particle system for selecting")]
-    ParticleSystem particle;
+    public ParticleSystem particle;
 
     private readonly float adjustTime = 0.2f;
 
@@ -110,6 +110,7 @@ public class CardSelect : MonoBehaviour
 
         if (hasAFingerBonus)
         {
+            particle.Play();
             FingerBonusFingerStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky, 1.0f);
             FingerBonusFingerStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb, 1.0f);

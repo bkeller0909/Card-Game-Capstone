@@ -257,6 +257,7 @@ public class CardsObjectPool : MonoBehaviour
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 7;
                         pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 7;
+                        pooledCards.GetComponent<CardSelect>().particle.gameObject.layer = 7;
                     }
 
                 }
@@ -269,6 +270,7 @@ public class CardsObjectPool : MonoBehaviour
                     {
                         pooledCards.GetComponent<CardSelect>().fingerBonus.gameObject.layer = 6;
                         pooledCards.GetComponent<CardSelect>().fingerBonus.transform.GetChild(0).gameObject.layer = 6;
+                        pooledCards.GetComponent<CardSelect>().particle.gameObject.layer = 6;
                     }
                 }
                 pooledCards.SetActive(true);

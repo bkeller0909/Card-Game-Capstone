@@ -82,6 +82,11 @@ public class ControlSpellBook : MonoBehaviour
 
     }
 
+    public void flip()
+    {
+        animators[0].Play("PageRig|PageRigAction");
+    }
+
     public void startFlipping(bool isFlipping)
     {
         if (isFlipping)

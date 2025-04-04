@@ -330,7 +330,7 @@ public class GameManager : MonoBehaviour
 
     public void StartBookFlip()
     {
-        StartCoroutine(BookFlipTime());
+        player1.spellBook.flip();
     }
 
     IEnumerator BookFlipTime()
