@@ -71,7 +71,7 @@ public class BtnIsSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
         isSelected = true;
         text.color = selectedCol;
         StartCoroutine(menu.MoveArrows(GetComponent<Button>(), topArrow, bottomArrow));
-        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.cardSelect, 1.0f);
+        SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.uIMove, 1.0f);
     }
 
     /// <summary>
