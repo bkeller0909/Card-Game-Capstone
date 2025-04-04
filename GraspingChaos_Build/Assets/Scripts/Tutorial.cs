@@ -139,7 +139,7 @@ public class Tutorial : MonoBehaviour
     private IEnumerator DoTutorialStep1(PlayerManager player)
     {
         bool isStep1 = true;
-        SoundFXManager.Instance.soundFXMixer.SetFloat("SoundFXVolume", -20f);
+        SoundFXManager.Instance.soundFXMixer.SetFloat("SoundFXVolume", 1f);
         SoundFXManager.Instance.soundFXMixer.SetFloat("MusicVolume", -10f);
         player.GetComponent<PlayerControlHandler>().cardViewIcon.SetActive(false);
         player.GetComponent<PlayerControlHandler>().manaViewIcon.SetActive(false);
@@ -147,7 +147,7 @@ public class Tutorial : MonoBehaviour
         //dialogueEvent.PlayDialogueAudio();
         if (isStep1)
         {
-            // SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.dialogueAudioClips, 1, 1.0f);
+            SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.narratorAudioClips[1], 1);
             player.playerInput.currentActionMap.Disable();
             player.playerCameras.GetInputForced(0);
             dialogueEvent.StartDialogue(0);
@@ -164,6 +164,7 @@ public class Tutorial : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DoTutorialStep2(PlayerManager player)
     {
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 2, 1);
         dialogueEvent.NextDialogue(1);
         ResetAnims(player);
         if (player == GameManager.Instance.player1)
@@ -182,6 +183,7 @@ public class Tutorial : MonoBehaviour
     // step 2.1
     private IEnumerator DoTutorialStep21()
     {
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 3, 1);
         dialogueEvent.NextDialogue(2);
         yield return new WaitForSeconds(7f);
         isStep21Complete = true;
@@ -190,6 +192,7 @@ public class Tutorial : MonoBehaviour
     // step 2.2
     private IEnumerator DoTutorialStep22(PlayerManager player)
     {
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 4, 1);
         dialogueEvent.NextDialogue(3);
         yield return new WaitForSeconds(7f);
 
@@ -257,6 +260,7 @@ public class Tutorial : MonoBehaviour
 
         player.playerCameras.NewCamPos(player.playerCameras.bottleCamPos);
         yield return new WaitForSeconds(3f);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 5, 1);
         dialogueEvent.StartDialogue(4);
         if (isStep4)
         {
@@ -279,10 +283,11 @@ public class Tutorial : MonoBehaviour
 
         if (isStep5)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 6, 1);
             player.playerCameras.GetInputForced(1);
             dialogueEvent.StartDialogue(5);
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(8f);
             isStep5Complete = true;
         }
     }
@@ -295,6 +300,7 @@ public class Tutorial : MonoBehaviour
         dialogueEvent.manaIconP2.SetActive(true);
         if (isStep6)
         {
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 7, 1);
             dialogueEvent.NextDialogue(6);
             if (player == GameManager.Instance.player1)
             {
@@ -332,8 +338,9 @@ public class Tutorial : MonoBehaviour
 
         if (isStep7)
         {
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 8, 1);
             dialogueEvent.NextDialogue(7);
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(8f);
             isStep7Complete = true;
         }
     }
@@ -344,8 +351,10 @@ public class Tutorial : MonoBehaviour
 
         if (isStep8)
         {
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 9, 1);
             dialogueEvent.NextDialogue(8);
             yield return new WaitForSeconds(7f);
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 10, 1);
             dialogueEvent.NextDialogue(11);
             yield return new WaitForSeconds(7f);
             isStep8Complete = true;
@@ -359,6 +368,7 @@ public class Tutorial : MonoBehaviour
 
         if (isStep9)
         {
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 11, 1);
             dialogueEvent.NextDialogue(9);
             yield return new WaitForSeconds(7f);
             dialogueEvent.qteIconP1.SetActive(false);
@@ -369,11 +379,13 @@ public class Tutorial : MonoBehaviour
 
             dialogueEvent.EndDialogue();
             yield return new WaitForSeconds(2f);
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 12, 1);
             dialogueEvent.StartDialogue(12);
 
             dialogueEvent.bonusArrowP1.SetActive(true);
             dialogueEvent.bonusArrowP2.SetActive(true);
             yield return new WaitForSeconds(7f);
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 13, 1);
             dialogueEvent.NextDialogue(13);
             yield return new WaitForSeconds(7f);
             isStep9Complete = true;
@@ -386,6 +398,7 @@ public class Tutorial : MonoBehaviour
 
         if (isStep10)
         {
+            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.narratorAudioClips, 14, 1);
             dialogueEvent.NextDialogue(10);
             dialogueEvent.bonusArrowP1.SetActive(false);
             dialogueEvent.bonusArrowP2.SetActive(false);
