@@ -66,15 +66,9 @@ public class FireBoltState : FSMState
         else
         {
             GameManager.Instance.spellInProgress = true;
-            if (!player.castAnimDone)
-            {
-                player.ResetHandAnimations();
-                player.PlayerHands.SetTrigger("HandsCastPoint");
-                player.PlayerFakeHands.SetTrigger("HandsCastPoint");
-                player.WaitforCastingAnim();
-            }
+
             //check if the player is player 1, if the particle has not been played and if the particle for player 1 is done
-            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done && player.castAnimDone)
+            if (player == GameManager.Instance.player1 && GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP1Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
@@ -92,12 +86,11 @@ public class FireBoltState : FSMState
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
-                player.BackToIDLE();
                 //check if i am the second spell but the first cast
                 GameManager.Instance.particleP1Done = true;
                 //nextState = "Deciding";
             }//check if the player is player 2, if the particle has not been played and if the particle for player 2 is done
-            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done && player.castAnimDone)
+            else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
                 player.GetComponent<QTEHandler>().EvauateQTEResults();
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
@@ -113,7 +106,6 @@ public class FireBoltState : FSMState
                     ParticleManger.Instance.StartParticle(SpellNames.FireBolt, GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger, player, 3);
                     RumbleManager.Instance.ControllerRumble(0.2f, 0.2f, 0.2f, player.gamepad);
                 }
-                player.BackToIDLE();
                 //check if i am the second spell but the first cast
                 GameManager.Instance.particleP2Done = true;
                 //nextState = "Deciding";
@@ -125,6 +117,9 @@ public class FireBoltState : FSMState
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
                 GameManager.Instance.totalSpellsPickedP1--;
                 GameManager.Instance.coroutineWaitP1 = false;
+                nextState = "Deciding";
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.particleP1Done = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -148,11 +143,6 @@ public class FireBoltState : FSMState
                     }
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
-                    //enemy.BackToIDLE();
-                }
-                else
-                {
-                    player.endStall = true;
                 }
             }
 
@@ -162,6 +152,9 @@ public class FireBoltState : FSMState
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
                 GameManager.Instance.totalSpellsPickedP2--;
                 GameManager.Instance.coroutineWaitP2 = false;
+                nextState = "Deciding";
+                GameManager.Instance.playedSpells++;
+                GameManager.Instance.particleP2Done = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -185,22 +178,7 @@ public class FireBoltState : FSMState
                     }
                     RumbleManager.Instance.ControllerRumble(1f, 1f, 0.5f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.05f, 0.5f);
-                    //enemy.BackToIDLE();
                 }
-                else
-                {
-                    player.endStall = true;
-                }
-            }
-
-            if (player.endStall)
-            {
-                nextState = "Deciding";
-                GameManager.Instance.playedSpells++;
-                player.castAnimDone = false;
-                GameManager.Instance.particleP1Done = false;
-                GameManager.Instance.particleP2Done = false;
-                player.endStall = false;
             }
         }
     }
