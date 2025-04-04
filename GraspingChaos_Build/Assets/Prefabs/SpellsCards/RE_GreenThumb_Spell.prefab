@@ -990,10 +990,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6448719364152130217}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3206302447094036363}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
@@ -1007,6 +1003,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5720597164534057861}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6448719364152130217}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94b0e116ee1813845b7bc5bf71134b8a,
         type: 3}
       insertIndex: -1
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   hasAFingerBonus: 1
   fingerNormal: {fileID: 693166226844420437}
   fingerBonus: {fileID: 7952820849380404664}
-  particle: {fileID: 0}
+  particle: {fileID: 3735507856206840545}
   cardSelectColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
   isHovered: 0
   isSelected: 0
@@ -1726,6 +1726,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb47624e6bc9fe248922cedc574f36fb, type: 3}
+--- !u!198 &3735507856206840545 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 885874775696572397, guid: fb47624e6bc9fe248922cedc574f36fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4583664898830810380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6448719364152130217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7413495534339803045, guid: fb47624e6bc9fe248922cedc574f36fb,

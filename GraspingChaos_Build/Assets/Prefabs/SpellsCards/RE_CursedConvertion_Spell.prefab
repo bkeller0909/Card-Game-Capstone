@@ -1062,7 +1062,7 @@ MonoBehaviour:
   hasAFingerBonus: 1
   fingerNormal: {fileID: 2714665589883620342}
   fingerBonus: {fileID: 6861125580717818136}
-  particle: {fileID: 0}
+  particle: {fileID: 6738219216207309747}
   cardSelectColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
   isHovered: 0
   isSelected: 0
@@ -1624,6 +1624,12 @@ PrefabInstance:
 --- !u!4 &3975467015113855995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7413495534339803045, guid: fb47624e6bc9fe248922cedc574f36fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5893440354323010654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6738219216207309747 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 885874775696572397, guid: fb47624e6bc9fe248922cedc574f36fb,
     type: 3}
   m_PrefabInstance: {fileID: 5893440354323010654}
   m_PrefabAsset: {fileID: 0}

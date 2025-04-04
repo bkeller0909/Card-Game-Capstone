@@ -795,6 +795,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb47624e6bc9fe248922cedc574f36fb, type: 3}
+--- !u!198 &7820689393334656 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 885874775696572397, guid: fb47624e6bc9fe248922cedc574f36fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 887361452404328045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7688361870195655112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7413495534339803045, guid: fb47624e6bc9fe248922cedc574f36fb,
@@ -963,7 +969,7 @@ MonoBehaviour:
   hasAFingerBonus: 1
   fingerNormal: {fileID: 4697327957246777586}
   fingerBonus: {fileID: 1848710152006271669}
-  particle: {fileID: 0}
+  particle: {fileID: 7820689393334656}
   cardSelectColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
   isHovered: 0
   isSelected: 0
