@@ -34,6 +34,7 @@ public class CardTravelHandler : MonoBehaviour
         yield return new WaitForSeconds(travelTimer);
         travelCard.gameObject.transform.position = endPos.position;
         travelCard.enabled = false;
+        
     }
 
     public void CardTravel(float travelHeight, float travelTimer, float travelSpeed, Transform startPos, Transform endPos)

@@ -317,8 +317,9 @@ public class PlayerControlHandler : MonoBehaviour
 
             if (inspectCard == false)
             {
-                if (player.playerInput.actions["InspectCard"].WasPressedThisFrame())
+                if (player.playerInput.actions["InspectCard"].WasPressedThisFrame() && player.InspectTimer)
                 {
+                    player.InspectTimer = false;
                     player.playerInput.SwitchCurrentActionMap("Inspect");
                     InspectCard(inspectCardPos);
                     player.GetComponent<PlayerState>().MoveCardsOutOfPlayInspect(player);
@@ -334,8 +335,9 @@ public class PlayerControlHandler : MonoBehaviour
             }
             else
             {
-                if (player.playerInput.actions["StopInspect"].WasPressedThisFrame())
+                if (player.playerInput.actions["StopInspect"].WasPressedThisFrame() && player.InspectTimer)
                 {
+                    player.InspectTimer = false;
                     player.playerInput.SwitchCurrentActionMap("Card");
                     InspectCard(inspectCardPos);
                     player.GetComponent<PlayerState>().playerHand.KeepCardPosInpect();
@@ -436,5 +438,13 @@ public class PlayerControlHandler : MonoBehaviour
                 pickCards.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.00f, 0.3f, 0.3f, cardEndPos, origianlPositions[i]);
             }
         }
+        StartCoroutine(waitforInspect());
     }
+
+    public IEnumerator waitforInspect()
+    {
+        yield return new WaitForSecondsRealtime(0.8f);
+        player.InspectTimer = true;
+    }
+
 }

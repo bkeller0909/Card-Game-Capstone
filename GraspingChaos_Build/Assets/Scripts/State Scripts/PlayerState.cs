@@ -547,5 +547,6 @@ public class PlayerState : AdvancedFSM
                 playerHand.cards[i].gameObject.transform.Rotate(-115f, 0f, 0f);
             }
         }
+        StartCoroutine(gameObject.GetComponent<PlayerControlHandler>().waitforInspect());
     }
 }

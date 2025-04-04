@@ -104,6 +104,8 @@ public class PlayerManager : MonoBehaviour
     public bool castAnimDone;
     public bool endStall;
 
+    public bool InspectTimer;
+
     [SerializeField] public ControlSpellBook spellBook;
     private void Awake()
     {
@@ -124,6 +126,7 @@ public class PlayerManager : MonoBehaviour
         eyes.Stop();
         FlameHandLeft.Stop();
         FlameHandRight.Stop();
+        InspectTimer = true;
     }
 
     // Start is called before the first frame update
