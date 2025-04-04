@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerState : AdvancedFSM
 {

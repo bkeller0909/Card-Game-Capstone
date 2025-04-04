@@ -39,6 +39,8 @@ public class ChoosingSpellsState : FSMState
 
     Animator playerHands, enemyHands;
 
+    bool vaHappened = false;
+
     //Constructor
     public ChoosingSpellsState(PlayerState pS)
     {
@@ -46,6 +48,8 @@ public class ChoosingSpellsState : FSMState
         stateID = FSMStateID.ChoosingSpells;
         spellsChosen = new SpellNames[3];
         fingersChosen = new PlayerFingers[3];
+
+        vaHappened = false;
 
         if (playerState.player.playerNum == PlayerType.PLAYER1)
         {
@@ -62,6 +66,8 @@ public class ChoosingSpellsState : FSMState
     public override void EnterStateInit()
     {
         resetAnims();
+
+        vaHappened = false;
 
         playerState.howToPlay.gameObject.SetActive(true);
 
@@ -230,6 +236,56 @@ public class ChoosingSpellsState : FSMState
             }
 
 
+            if (playerState.player == GameManager.Instance.player1 && !vaHappened)
+            {
+                vaHappened = true;
+
+                int chance = Random.Range(0, 4);
+                 //chance = 0;
+                if (chance == 0)
+                {
+                    int whatLine = Random.Range(0, 12);
+                    switch (whatLine)
+                    {
+                        case 0:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullTauntAudioClips, 0, 1);
+                            break;
+                        case 1:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagTauntAudioClips, 0, 1);
+                            break;
+                        case 2:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullTauntAudioClips, 1, 1);
+                            break;
+                        case 3:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagTauntAudioClips, 1, 1);
+                            break;
+                        case 4:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullTauntAudioClips, 2, 1);
+                            break;
+                        case 5:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagTauntAudioClips, 2, 1);
+                            break;
+                        case 6:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullTauntAudioClips, 3, 1);
+                            break;
+                        case 7:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagTauntAudioClips, 3, 1);
+                            break;
+                        case 8:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullTauntAudioClips, 4, 1);
+                            break;
+                        case 9:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagTauntAudioClips, 4, 1);
+                            break;
+                        case 10:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullTauntAudioClips, 5, 1);
+                            break;
+                        case 11:
+                            SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagTauntAudioClips, 5, 1);
+                            break;
+                    }
+                }
+            }
 
             playerState.finishedCastingImage.SetActive(false);
             MoveCardsOutOfPlay(player);

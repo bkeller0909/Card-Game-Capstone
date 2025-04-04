@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -33,11 +34,17 @@ public class SoundFXManager : MonoBehaviour
     [Tooltip("List of all the dialogue audio for the Narrator")]
     public AudioClip[] narratorAudioClips;
 
-    [Tooltip("List of all the dialogue audio for the Stag")]
-    public AudioClip[] stagAudioClips;
+    [Tooltip("List of all the intro dialogue audio for the Stag")]
+    public AudioClip[] stagIntroAudioClips;
 
-    [Tooltip("List of all the dialogue audio for the Skull")]
-    public AudioClip[] skullAudioClips;
+    [Tooltip("List of all the intro dialogue audio for the Skull")]
+    public AudioClip[] skullIntroAudioClips;
+
+    [Tooltip("List of all the intro dialogue audio for the Stag")]
+    public AudioClip[] stagTauntAudioClips;
+
+    [Tooltip("List of all the intro dialogue audio for the Skull")]
+    public AudioClip[] skullTauntAudioClips;
 
     private void Awake()
     {
@@ -117,5 +124,29 @@ public class SoundFXManager : MonoBehaviour
         float soundClipLength = audioSource.clip.length;
 
         Destroy(audioSource.gameObject, soundClipLength);
+    }
+
+    public void startIntroSkullFirst(int whatIntro, int waitTime)
+    {
+        StartCoroutine(playIntroSkullFirst(whatIntro, waitTime));
+    }
+
+    IEnumerator playIntroSkullFirst(int whatIntro, int waitTime)
+    {
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1);
+        yield return new WaitForSeconds(waitTime);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1);
+    }
+
+    public void startIntroStagFirst(int whatIntro, int waitTime)
+    {
+        StartCoroutine(playIntroStagFirst(whatIntro, waitTime));
+    }
+
+    IEnumerator playIntroStagFirst(int whatIntro, int waitTime)
+    {
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1);
+        yield return new WaitForSeconds(waitTime);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1);
     }
 }
