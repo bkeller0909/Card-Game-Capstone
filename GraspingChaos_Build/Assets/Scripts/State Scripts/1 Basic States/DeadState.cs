@@ -1,12 +1,18 @@
 public class DeadState : FSMState
 {
     PlayerState playerState;
-
+    private bool isDead = false;
     //Constructor
     public DeadState(PlayerState pS)
     {
         playerState = pS;
         stateID = FSMStateID.Dead;
+        isDead = false;
+    }
+
+    public override void EnterStateInit()
+    {
+        isDead = false;
     }
 
     //Reason
@@ -17,15 +23,25 @@ public class DeadState : FSMState
     //Act
     public override void Act(PlayerManager player, PlayerManager enemy)
     {
-        if (GameManager.Instance.player1.entireHP <= 0)
+        if (isDead == false)
         {
-            GameManager.Instance.tempEndScreenStagWins1.SetActive(true);
-            GameManager.Instance.tempEndScreenStagWins2.SetActive(true);
-        }
-        else if (GameManager.Instance.player2.entireHP <= 0)
-        {
-            GameManager.Instance.tempEndScreenSkullWins1.SetActive(true);
-            GameManager.Instance.tempEndScreenSkullWins2.SetActive(true);
+
+
+            isDead = true;
+            if (GameManager.Instance.player1.entireHP <= 0)
+            {
+                GameManager.Instance.SkullWinVideo.SetActive(true);
+                GameManager.Instance.EndScreenSkullVideo1.SetActive(true);
+                GameManager.Instance.EndScreenSkullVideo2.SetActive(true);
+
+            }
+            else if (GameManager.Instance.player2.entireHP <= 0)
+            {
+                GameManager.Instance.StagWinVideo.SetActive(true);
+                GameManager.Instance.EndScreenStagVideo1.SetActive(true);
+                GameManager.Instance.EndScreenStagVideo2.SetActive(true);
+
+            }
         }
     }
 }
