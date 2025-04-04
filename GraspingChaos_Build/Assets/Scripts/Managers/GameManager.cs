@@ -158,8 +158,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector, Tooltip("How many QTES did player 2 get correct")]
     public int raceTieP2;
 
-    [HideInInspector, Tooltip("Temp Canvases for telling who one")]
-    public GameObject tempEndScreenSkullWins1, tempEndScreenSkullWins2, tempEndScreenStagWins1, tempEndScreenStagWins2;
+    [Tooltip("The Video Canvas objects for the endscreen cutscenes")]
+    public GameObject EndScreenSkullVideo1, EndScreenStagVideo1, EndScreenSkullVideo2, EndScreenStagVideo2;
+
+    [Tooltip("The Video gameobjects for the endscreen cutscenes")]
+    public GameObject SkullWinVideo, StagWinVideo;
 
     [HideInInspector, Tooltip("Player 1's aura color")]
     public Color defaultColorP1;
@@ -191,10 +194,12 @@ public class GameManager : MonoBehaviour
         }
         hasDuelStarted = false;
 
-        tempEndScreenSkullWins1.SetActive(false);
-        tempEndScreenSkullWins2.SetActive(false);
-        tempEndScreenStagWins1.SetActive(false);
-        tempEndScreenStagWins2.SetActive(false);
+        EndScreenSkullVideo1.SetActive(false);
+        EndScreenSkullVideo2.SetActive(false);
+        EndScreenStagVideo1.SetActive(false);
+        EndScreenStagVideo2.SetActive(false);
+        SkullWinVideo.SetActive(false);
+        StagWinVideo.SetActive(false);
     }
 
 
@@ -295,10 +300,12 @@ public class GameManager : MonoBehaviour
         else if (levelName == ln_MainMenuName)
         {
             MusicManager.Instance.PlayMusic(levelName, MusicManager.Instance.mainMenuMusic);    // TODO - change this later
-            tempEndScreenSkullWins1.SetActive(false);
-            tempEndScreenSkullWins2.SetActive(false);
-            tempEndScreenStagWins1.SetActive(false);
-            tempEndScreenStagWins2.SetActive(false);
+            EndScreenSkullVideo1.SetActive(false);
+            EndScreenSkullVideo2.SetActive(false);
+            EndScreenStagVideo1.SetActive(false);
+            EndScreenStagVideo2.SetActive(false);
+            SkullWinVideo.SetActive(false);
+            StagWinVideo.SetActive(false);
         }
 
         cameraAssigner.playerOneCamera.targetDisplay = 0;
