@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerState : AdvancedFSM
 {
@@ -533,5 +534,18 @@ public class PlayerState : AdvancedFSM
                 return false;
         }
         return true;
+    }
+
+    public void MoveCardsOutOfPlayInspect(PlayerManager player)
+    {
+        for (int i = 0; i < playerHand.cards.Count; i++)
+        {
+            if (playerHand.cards[playerHand.currentHoverIndex] != playerHand.cards[i])
+            {
+                // playerState.playerHand.cards[i].gameObject.transform.position = playerState.cardPlay.cardsOutOfPlayPos.position;
+                playerHand.cards[i].GetComponent<CardTravelHandler>().CardTravel(0.05f, 0.7f, 0.7f, playerHand.cards[i].gameObject.transform, cardPlay.cardsOutOfPlayPos.transform);
+                playerHand.cards[i].gameObject.transform.Rotate(-115f, 0f, 0f);
+            }
+        }
     }
 }

@@ -36,6 +36,9 @@ public class CardSelect : MonoBehaviour
     [SerializeField, Tooltip("This is the finger bonus for the cards that have it")]
     public GameObject fingerBonus;
 
+    [SerializeField, Tooltip("This is the particle system for selecting")]
+    ParticleSystem particle;
+
     private readonly float adjustTime = 0.2f;
 
     private Vector3 startPosition;

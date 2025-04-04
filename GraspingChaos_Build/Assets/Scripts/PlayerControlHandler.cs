@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 //----------------------------------------------------------------
 //  Author: Sebastian
@@ -320,6 +321,7 @@ public class PlayerControlHandler : MonoBehaviour
                 {
                     player.playerInput.SwitchCurrentActionMap("Inspect");
                     InspectCard(inspectCardPos);
+                    player.GetComponent<PlayerState>().MoveCardsOutOfPlayInspect(player);
                     inspectCard = true;
                     player.playerInput.actions["CameraUp"].Disable();
                     player.playerInput.actions["CameraDown"].Disable();
@@ -336,6 +338,7 @@ public class PlayerControlHandler : MonoBehaviour
                 {
                     player.playerInput.SwitchCurrentActionMap("Card");
                     InspectCard(inspectCardPos);
+                    player.GetComponent<PlayerState>().playerHand.KeepCardPosInpect();
                     inspectCard = false;
                     player.playerInput.actions["CameraUp"].Enable();
                     player.playerInput.actions["CameraDown"].Enable();

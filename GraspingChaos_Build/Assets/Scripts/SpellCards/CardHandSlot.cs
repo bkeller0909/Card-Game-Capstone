@@ -162,6 +162,23 @@ public class CardHandSlot : MonoBehaviour
         }
     }
 
+    public void KeepCardPosInpect()
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (cards[i] != cards[currentHoverIndex])
+            {
+                cards[i].transform.position = cardSlots[i].transform.position;
+                emptySlots[i] = false;
+                cards[i].isHovered = false;
+
+                // move the cards back to the card slots
+                cards[i].gameObject.transform.Rotate(115f, 0f, 0f);
+                cards[i].GetComponent<CardTravelHandler>().CardTravel(0.05f, 0.7f, 0.7f, cards[i].transform, cardSlots[i].transform);
+            }
+        }
+    }
+
     /// <summary>
     /// Sets the hovered card based on the provided index.
     /// </summary>
