@@ -88,7 +88,7 @@ public class FireBoltState : FSMState
                 }
                 //check if i am the second spell but the first cast
                 GameManager.Instance.particleP1Done = true;
-                //nextState = "Deciding";
+
             }//check if the player is player 2, if the particle has not been played and if the particle for player 2 is done
             else if (player == GameManager.Instance.player2 && !GameManager.Instance.particleWait[GameManager.Instance.spellIndex] && !GameManager.Instance.particleP2Done)
             {
@@ -114,12 +114,12 @@ public class FireBoltState : FSMState
             if (player == GameManager.Instance.player1 && GameManager.Instance.particleP1Done && GameManager.Instance.coroutineWaitP1)
             {
                 GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
                 GameManager.Instance.totalSpellsPickedP1--;
-                GameManager.Instance.coroutineWaitP1 = false;
                 nextState = "Deciding";
-                GameManager.Instance.playedSpells++;
                 GameManager.Instance.particleP1Done = false;
+                GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
@@ -149,12 +149,12 @@ public class FireBoltState : FSMState
             if (player == GameManager.Instance.player2 && GameManager.Instance.particleP2Done && GameManager.Instance.coroutineWaitP2)
             {
                 GameManager.Instance.ChangeCurrentCaster();
+                GameManager.Instance.playedSpells++;
                 GameManager.Instance.spellsThatHaveBeenCast[playerIndex] = true;
                 GameManager.Instance.totalSpellsPickedP2--;
-                GameManager.Instance.coroutineWaitP2 = false;
                 nextState = "Deciding";
-                GameManager.Instance.playedSpells++;
                 GameManager.Instance.particleP2Done = false;
+                GameManager.Instance.coroutineWaitP2 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
