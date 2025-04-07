@@ -356,8 +356,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(waitTime);
 
-        //int whatIntro = Random.Range(0, 9);
-        int whatIntro = 8;
+        int whatIntro = Random.Range(0, 9);
+        //int whatIntro = 8;
         switch (whatIntro)
         {
             case 0:
