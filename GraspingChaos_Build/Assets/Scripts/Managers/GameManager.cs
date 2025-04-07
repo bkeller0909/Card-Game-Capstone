@@ -379,7 +379,7 @@ public class GameManager : MonoBehaviour
                 SoundFXManager.Instance.startIntroStagFirst(5, 3.5f);
                 break;
             case 6:
-                SoundFXManager.Instance.startIntroStagFirst(6, 4f);
+                SoundFXManager.Instance.startIntroStagFirst(6, 3.0f);
                 break;
             case 7:
                 SoundFXManager.Instance.startIntroStagFirst(7, 4f);
