@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 /// <summary>
 //----------------------------------------------------------------
 //  OG Author:    Sebastian
@@ -108,6 +107,9 @@ public class QTEHandler : MonoBehaviour
 
     private string storedHandAnim;
 
+    private bool halfParticleDone;
+    private bool fullParticleDone;
+
 
     private void Start()
     {
@@ -126,6 +128,8 @@ public class QTEHandler : MonoBehaviour
         Player2Anim = p2.stagHands.GetComponent<Animator>();
         Player2Fake = p2.skullHands.GetComponent<Animator>();
         counterObject.SetActive(false);
+        halfParticleDone = true;
+        fullParticleDone = true;
         storedHandAnim = "";
     }
 
@@ -407,6 +411,9 @@ public class QTEHandler : MonoBehaviour
         createdBTNIndex = 0;
         //set the timer edning check to false
         timeisDone = false;
+        //reset value
+        halfParticleDone = true;
+        fullParticleDone = true;
         //fill the hand animations
         FillHandAnim();
     }
@@ -538,10 +545,20 @@ public class QTEHandler : MonoBehaviour
         else if (QTEPercent >= 50 && QTEPercent < 99)
         {
             outcome = QTEOUTCOMES.Half;
+            if (halfParticleDone)
+            {
+                ParticleManger.Instance.QTEParticle(false, gameObject.GetComponent<PlayerManager>());
+                halfParticleDone = false;
+            }
         }
         else if (QTEPercent == 100)
         {
             outcome = QTEOUTCOMES.Success;
+            if (fullParticleDone)
+            {
+                ParticleManger.Instance.QTEParticle(true, gameObject.GetComponent<PlayerManager>());
+                fullParticleDone = false;
+            }
         }
     }
 

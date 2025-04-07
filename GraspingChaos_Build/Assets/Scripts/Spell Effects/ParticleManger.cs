@@ -53,6 +53,10 @@ public class ParticleManger : MonoBehaviour
     [SerializeField] private VisualEffect vengfulInpact;
     [SerializeField] private VisualEffect thronsInpact;
     [SerializeField] private VisualEffect vampiricInpact;
+    [SerializeField] private VisualEffect P1QTEHalf;
+    [SerializeField] private VisualEffect P1QTEFull;
+    [SerializeField] private VisualEffect P2QTEHalf;
+    [SerializeField] private VisualEffect P2QTEFull;
 
     //Custom colors and gradients for select spells
     //==============================================================================================================
@@ -84,6 +88,8 @@ public class ParticleManger : MonoBehaviour
 
     [SerializeField] Transform P2LeftHand;
     [SerializeField] Transform P2RightHand;
+
+
 
 
     [Header("Extra Positions for particles")]
@@ -1149,5 +1155,39 @@ public class ParticleManger : MonoBehaviour
             GameManager.Instance.particleWait[GameManager.Instance.spellIndex] = true;
             GameManager.Instance.coroutineWaitP2 = true;
         }
+    }
+
+    public void QTEParticle(bool failOrSuccess, PlayerManager player)
+    {
+        StartCoroutine(RunParticle(failOrSuccess, player));
+    }
+
+    IEnumerator RunParticle(bool failOrSuccess, PlayerManager player)
+    {
+        if (failOrSuccess && player == GameManager.Instance.player1)
+        {
+            P1QTEFull.Play();
+            yield return new WaitForSeconds(1);
+            P1QTEFull.Stop();
+        }
+        else if (failOrSuccess && player == GameManager.Instance.player2)
+        {
+            P2QTEFull.Play();
+            yield return new WaitForSeconds(1);
+            P2QTEFull.Stop();
+        }
+        else if (!failOrSuccess && player == GameManager.Instance.player1)
+        {
+            P1QTEHalf.Play();
+            yield return new WaitForSeconds(1);
+            P1QTEHalf.Stop();
+        }
+        else if (!failOrSuccess && player == GameManager.Instance.player2)
+        {
+            P2QTEHalf.Play();
+            yield return new WaitForSeconds(1);
+            P2QTEHalf.Stop();
+        }
+
     }
 }

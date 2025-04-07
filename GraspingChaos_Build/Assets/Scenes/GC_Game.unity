@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 152254839}
   - component: {fileID: 152254841}
   - component: {fileID: 152254840}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: QTECompllBurst 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1490,8 +1490,8 @@ VisualEffect:
   m_GameObject: {fileID: 152254838}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 9d4af9096e4e1c54aa5178d18df2fafb, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -5181,6 +5181,10 @@ MonoBehaviour:
   vengfulInpact: {fileID: 2637751469203444435}
   thronsInpact: {fileID: 5418653016257212013}
   vampiricInpact: {fileID: 7914207647946940928}
+  P1QTEHalf: {fileID: 617373148}
+  P1QTEFull: {fileID: 152254841}
+  P2QTEHalf: {fileID: 1878835396}
+  P2QTEFull: {fileID: 952581518}
   cursedConversionP1Gradient:
     serializedVersion: 2
     key0: {r: 95.87452, g: 0, b: 0, a: 0}
@@ -6899,7 +6903,7 @@ GameObject:
   - component: {fileID: 617373146}
   - component: {fileID: 617373148}
   - component: {fileID: 617373147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: QTEHalfBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6970,8 +6974,8 @@ VisualEffect:
   m_GameObject: {fileID: 617373145}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 89203cef6c19ab7489fa0ae19baf5831, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -10680,7 +10684,7 @@ GameObject:
   - component: {fileID: 952581516}
   - component: {fileID: 952581518}
   - component: {fileID: 952581517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: QTECompllBurst 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10751,8 +10755,8 @@ VisualEffect:
   m_GameObject: {fileID: 952581515}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 9d4af9096e4e1c54aa5178d18df2fafb, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -30538,7 +30542,7 @@ GameObject:
   - component: {fileID: 1878835394}
   - component: {fileID: 1878835396}
   - component: {fileID: 1878835395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: QTEHalfBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30609,8 +30613,8 @@ VisualEffect:
   m_GameObject: {fileID: 1878835393}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 89203cef6c19ab7489fa0ae19baf5831, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
