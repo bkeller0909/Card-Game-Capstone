@@ -126,7 +126,7 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, soundClipLength);
     }
 
-    public void startIntroSkullFirst(int whatIntro, float waitTime)
+    public void StartIntroSkullFirst(int whatIntro, float waitTime)
     {
         StartCoroutine(playIntroSkullFirst(whatIntro, waitTime));
     }
@@ -138,12 +138,12 @@ public class SoundFXManager : MonoBehaviour
         PlayAudioFromList(stagIntroAudioClips, whatIntro, 2f);
     }
 
-    public void startIntroStagFirst(int whatIntro, float waitTime)
+    public void StartIntroStagFirst(int whatIntro, float waitTime)
     {
-        StartCoroutine(playIntroStagFirst(whatIntro, waitTime));
+        StartCoroutine(PlayIntroStagFirst(whatIntro, waitTime));
     }
 
-    IEnumerator playIntroStagFirst(int whatIntro, float waitTime)
+    IEnumerator PlayIntroStagFirst(int whatIntro, float waitTime)
     {
         PlayAudioFromList(stagIntroAudioClips, whatIntro, 2f);
         yield return new WaitForSeconds(waitTime);
