@@ -357,7 +357,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(waitTime);
 
         //int whatIntro = Random.Range(0, 9);
-        int whatIntro = 6;
+        int whatIntro = 8;
         switch (whatIntro)
         {
             case 0:
@@ -379,13 +379,13 @@ public class GameManager : MonoBehaviour
                 SoundFXManager.Instance.startIntroStagFirst(5, 3.5f);
                 break;
             case 6:
-                SoundFXManager.Instance.startIntroStagFirst(6, 3.0f);
+                SoundFXManager.Instance.startIntroStagFirst(6, 1.8f);
                 break;
             case 7:
-                SoundFXManager.Instance.startIntroStagFirst(7, 4f);
+                SoundFXManager.Instance.startIntroStagFirst(7, 4.1f);
                 break;
             case 8:
-                SoundFXManager.Instance.startIntroStagFirst(8, 4f);
+                SoundFXManager.Instance.startIntroStagFirst(8, 5f);
                 break;
         }
     }

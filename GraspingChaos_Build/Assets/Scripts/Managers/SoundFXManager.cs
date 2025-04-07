@@ -135,7 +135,7 @@ public class SoundFXManager : MonoBehaviour
     {
         SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1.3f);
         yield return new WaitForSeconds(waitTime);
-        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1.8f);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 2f);
     }
 
     public void startIntroStagFirst(int whatIntro, float waitTime)
@@ -145,7 +145,7 @@ public class SoundFXManager : MonoBehaviour
 
     IEnumerator playIntroStagFirst(int whatIntro, float waitTime)
     {
-        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1.8f);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 2f);
         yield return new WaitForSeconds(waitTime);
         SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1.3f);
     }
