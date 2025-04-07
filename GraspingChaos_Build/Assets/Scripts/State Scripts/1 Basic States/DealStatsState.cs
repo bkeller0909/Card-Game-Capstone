@@ -125,41 +125,6 @@ public class DealStatsState : FSMState
         if (player.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize &&
             enemy.spellHand.amtOfSpellsInHand == GameManager.Instance.maxPlayerHandSize)
         {
-            //if (GameManager.Instance.whatRound == 0)
-            //{
-            //    //int whatIntro = Random.Range(0, 9);
-            //    switch (whatIntro)
-            //    {
-            //        case 0:
-            //            SoundFXManager.Instance.startIntroSkullFirst(0, 1);
-            //            break;
-            //        case 1:
-            //            SoundFXManager.Instance.startIntroSkullFirst(1, 1);
-            //            break;
-            //        case 2:
-            //            SoundFXManager.Instance.startIntroSkullFirst(2, 1);
-            //            break;
-            //        case 3:
-            //            SoundFXManager.Instance.startIntroSkullFirst(3, 1);
-            //            break;
-            //        case 4:
-            //            SoundFXManager.Instance.startIntroSkullFirst(4, 1);
-            //            break;
-            //        case 5:
-            //            SoundFXManager.Instance.startIntroStagFirst(5, 1);
-            //            break;
-            //        case 6:
-            //            SoundFXManager.Instance.startIntroStagFirst(6, 1);
-            //            break;
-            //        case 7:
-            //            SoundFXManager.Instance.startIntroStagFirst(7, 1);
-            //            break;
-            //        case 8:
-            //            SoundFXManager.Instance.startIntroStagFirst(8, 1);
-            //            break;
-            //    }
-            //}
-
             stateChange = true;
             GameManager.Instance.checkAvailableCards = true;
         }

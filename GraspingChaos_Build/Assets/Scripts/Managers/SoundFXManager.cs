@@ -126,27 +126,27 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, soundClipLength);
     }
 
-    public void startIntroSkullFirst(int whatIntro, int waitTime)
+    public void startIntroSkullFirst(int whatIntro, float waitTime)
     {
         StartCoroutine(playIntroSkullFirst(whatIntro, waitTime));
     }
 
-    IEnumerator playIntroSkullFirst(int whatIntro, int waitTime)
+    IEnumerator playIntroSkullFirst(int whatIntro, float waitTime)
     {
-        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1.3f);
         yield return new WaitForSeconds(waitTime);
-        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1.8f);
     }
 
-    public void startIntroStagFirst(int whatIntro, int waitTime)
+    public void startIntroStagFirst(int whatIntro, float waitTime)
     {
         StartCoroutine(playIntroStagFirst(whatIntro, waitTime));
     }
 
-    IEnumerator playIntroStagFirst(int whatIntro, int waitTime)
+    IEnumerator playIntroStagFirst(int whatIntro, float waitTime)
     {
-        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.stagIntroAudioClips, whatIntro, 1.8f);
         yield return new WaitForSeconds(waitTime);
-        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1);
+        SoundFXManager.Instance.PlayAudioFromList(SoundFXManager.Instance.skullIntroAudioClips, whatIntro, 1.3f);
     }
 }

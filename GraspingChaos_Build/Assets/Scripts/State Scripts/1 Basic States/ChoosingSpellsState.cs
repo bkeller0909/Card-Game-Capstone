@@ -74,11 +74,17 @@ public class ChoosingSpellsState : FSMState
         //If player one has entered this state then increase the amount of mana gained per a turn and what round it is
         if (playerState.player == GameManager.Instance.player1)
         {
+            SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.roundFinished, 1);
+
+            if (GameManager.Instance.whatRound == 0)
+            {
+                GameManager.Instance.StartIntro(1f);
+            }
+
             // TODO - change this later when audio stuff is fixed
             // MusicManager.Instance.MusicLowHealth();     // if any player's health is 10 or lower play intense music
             GameManager.Instance.whatRound++;
             GameManager.Instance.manaPerTurn++;
-            SoundFXManager.Instance.PlaySoundFX(SoundFXManager.Instance.roundFinished, 1);
         }
 
         foreach (GameObject prompt in playerState.prompts)
@@ -241,7 +247,7 @@ public class ChoosingSpellsState : FSMState
                 vaHappened = true;
 
                 int chance = Random.Range(0, 4);
-                 //chance = 0;
+                //chance = 0;
                 if (chance == 0)
                 {
                     int whatLine = Random.Range(0, 12);

@@ -347,4 +347,46 @@ public class GameManager : MonoBehaviour
         player1.spellBook.startFlipping(false);
     }
 
+    public void StartIntro(float waitTime)
+    {
+        StartCoroutine(PlayIntro(waitTime));
+    }
+
+    IEnumerator PlayIntro(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        //int whatIntro = Random.Range(0, 9);
+        int whatIntro = 6;
+        switch (whatIntro)
+        {
+            case 0:
+                SoundFXManager.Instance.startIntroSkullFirst(0, 4f);
+                break;
+            case 1:
+                SoundFXManager.Instance.startIntroSkullFirst(1, 4f);
+                break;
+            case 2:
+                SoundFXManager.Instance.startIntroSkullFirst(2, 3f);
+                break;
+            case 3:
+                SoundFXManager.Instance.startIntroSkullFirst(3, 2.5f);
+                break;
+            case 4:
+                SoundFXManager.Instance.startIntroSkullFirst(4, 3.2f);
+                break;
+            case 5:
+                SoundFXManager.Instance.startIntroStagFirst(5, 3.5f);
+                break;
+            case 6:
+                SoundFXManager.Instance.startIntroStagFirst(6, 4f);
+                break;
+            case 7:
+                SoundFXManager.Instance.startIntroStagFirst(7, 4f);
+                break;
+            case 8:
+                SoundFXManager.Instance.startIntroStagFirst(8, 4f);
+                break;
+        }
+    }
 }
