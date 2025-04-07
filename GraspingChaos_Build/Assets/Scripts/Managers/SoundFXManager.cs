@@ -128,10 +128,10 @@ public class SoundFXManager : MonoBehaviour
 
     public void StartIntroSkullFirst(int whatIntro, float waitTime)
     {
-        StartCoroutine(playIntroSkullFirst(whatIntro, waitTime));
+        StartCoroutine(PlayIntroSkullFirst(whatIntro, waitTime));
     }
 
-    IEnumerator playIntroSkullFirst(int whatIntro, float waitTime)
+    IEnumerator PlayIntroSkullFirst(int whatIntro, float waitTime)
     {
         PlayAudioFromList(skullIntroAudioClips, whatIntro, 1.3f);
         yield return new WaitForSeconds(waitTime);

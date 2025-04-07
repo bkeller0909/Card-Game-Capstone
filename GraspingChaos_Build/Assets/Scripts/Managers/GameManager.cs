@@ -361,31 +361,31 @@ public class GameManager : MonoBehaviour
         switch (whatIntro)
         {
             case 0:
-                SoundFXManager.Instance.startIntroSkullFirst(0, 4f);
+                SoundFXManager.Instance.StartIntroSkullFirst(0, 4f);
                 break;
             case 1:
-                SoundFXManager.Instance.startIntroSkullFirst(1, 4f);
+                SoundFXManager.Instance.StartIntroSkullFirst(1, 4f);
                 break;
             case 2:
-                SoundFXManager.Instance.startIntroSkullFirst(2, 3f);
+                SoundFXManager.Instance.StartIntroSkullFirst(2, 3f);
                 break;
             case 3:
-                SoundFXManager.Instance.startIntroSkullFirst(3, 2.5f);
+                SoundFXManager.Instance.StartIntroSkullFirst(3, 2.5f);
                 break;
             case 4:
-                SoundFXManager.Instance.startIntroSkullFirst(4, 3.2f);
+                SoundFXManager.Instance.StartIntroSkullFirst(4, 3.2f);
                 break;
             case 5:
-                SoundFXManager.Instance.startIntroStagFirst(5, 3.5f);
+                SoundFXManager.Instance.StartIntroStagFirst(5, 3.5f);
                 break;
             case 6:
-                SoundFXManager.Instance.startIntroStagFirst(6, 1.8f);
+                SoundFXManager.Instance.StartIntroStagFirst(6, 1.8f);
                 break;
             case 7:
-                SoundFXManager.Instance.startIntroStagFirst(7, 4.1f);
+                SoundFXManager.Instance.StartIntroStagFirst(7, 4.1f);
                 break;
             case 8:
-                SoundFXManager.Instance.startIntroStagFirst(8, 5f);
+                SoundFXManager.Instance.StartIntroStagFirst(8, 5f);
                 break;
         }
     }
