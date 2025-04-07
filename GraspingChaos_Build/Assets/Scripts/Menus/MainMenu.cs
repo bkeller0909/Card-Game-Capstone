@@ -31,6 +31,12 @@ public class MainMenu : MonoBehaviour
 
     bool aButtonIsActive;
 
+    [SerializeField]
+    Image P1Tutorial;
+
+    [SerializeField]
+    Image P2Tutorial;
+
     /// <summary>
     /// Loads the game into the duel Scene
     /// </summary>
@@ -54,6 +60,18 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.manualCards)
+        {
+            P1Tutorial.enabled = true;
+            P2Tutorial.enabled = true;
+        }
+        else
+        {
+            P1Tutorial.enabled = false;
+            P2Tutorial.enabled = false;
+        }
+
+
         if (Input.GetKeyDown(KeyCode.BackQuote) && (GameManager.Instance.ln_CurrentLevelName == GameManager.Instance.ln_MainMenuName))
         {
             if (GameManager.Instance.manualCards == false)
