@@ -9915,6 +9915,37 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1328186024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &904452615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904452616}
+  m_Layer: 0
+  m_Name: Burst  Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &904452616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904452615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.6239, y: 1.6881, z: 243.86}
+  m_LocalScale: {x: 0.14363472, y: 0.14363472, z: 0.14363472}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &910155821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35171,3 +35202,4 @@ SceneRoots:
   - {fileID: 933099322}
   - {fileID: 87862841}
   - {fileID: 1318960983}
+  - {fileID: 904452616}
