@@ -53,7 +53,24 @@ public class CardHandSlot : MonoBehaviour
         playerState = player.gameObject.GetComponent<PlayerState>();
     }
 
-
+    public void Update()
+    {
+        foreach (CardSelect card in cards)
+        {
+            if (card.hasAFingerBonus)
+            {
+                card.FingerBonusCardStatus(player, SpellNames.Rockthrow, PlayerFingers.LH_Index, PlayerFingers.RH_Index);
+                card.FingerBonusCardStatus(player, SpellNames.Icicles, PlayerFingers.LH_Pinky, PlayerFingers.LH_Pinky);
+                card.FingerBonusCardStatus(player, SpellNames.TidalWave, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                card.FingerBonusCardStatus(player, SpellNames.StaticBlast, PlayerFingers.LH_Middle, PlayerFingers.RH_Middle);
+                card.FingerBonusCardStatus(player, SpellNames.PointerOfDeath, PlayerFingers.LH_Index, PlayerFingers.RH_Index);
+                card.FingerBonusCardStatus(player, SpellNames.ThumbsUp, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                card.FingerBonusCardStatus(player, SpellNames.CursedConversion, PlayerFingers.LH_Ring, PlayerFingers.RH_Ring);
+                card.FingerBonusCardStatus(player, SpellNames.GreenThumb, PlayerFingers.LH_Thumb, PlayerFingers.RH_Thumb);
+                card.FingerBonusCardStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky);
+            }
+        }
+    }
 
     //stat of removing card
     public void ClearSelected(PlayerManager player)

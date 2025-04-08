@@ -289,7 +289,7 @@ public class CardSelect : MonoBehaviour
     /// <param name="fingerWithBonus1">First finger required to have the bonus.</param>
     /// <param name="fingerWithBonus2">Second finger required to have the bonus.</param>
     /// <param name="bonusStatus">If the bonus is turned on or off true ON, false OFF</param>
-    private void FingerBonusCardStatus(PlayerManager player, SpellNames spellName, PlayerFingers fingerWithBonus1, PlayerFingers fingerWithBonus2)
+    public void FingerBonusCardStatus(PlayerManager player, SpellNames spellName, PlayerFingers fingerWithBonus1, PlayerFingers fingerWithBonus2)
     {
         if (gameObject.GetComponent<SpellCard>().spellName == spellName)
         {
