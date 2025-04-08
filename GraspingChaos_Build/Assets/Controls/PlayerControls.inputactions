@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleUI",
+                    "type": "Button",
+                    "id": "c5641410-cac6-4d7f-80bb-ed76aaaca0a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -210,6 +219,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PlayCards",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3254e720-c29b-4e26-b70f-b570b5918e5c",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1033,6 +1053,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ToggleUI",
+                    "type": "Button",
+                    "id": "ee8fd614-260f-4188-b9bf-d29f43397cf6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Select",
                     "type": "Button",
                     "id": "e9f11fe7-7bb9-4885-b8e2-1c896be1f815",
@@ -1332,6 +1361,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "InspectCard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92b4331d-c39c-40b3-bef7-a07a040f6e2c",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

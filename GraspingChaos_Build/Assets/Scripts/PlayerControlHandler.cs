@@ -37,11 +37,13 @@ public class PlayerControlHandler : MonoBehaviour
     private List<Transform> origianlPositions = new List<Transform>();
 
     [Header("UI Tooltips")]
+    public GameObject uiGroup;
     public GameObject manaViewIcon;
     public GameObject cardViewIcon;
     public GameObject cardNavIcon;
     public GameObject cardSelectIcon;
     public GameObject readyIcon;
+    public bool uiToggle;
 
     private void Start()
     {
@@ -51,6 +53,7 @@ public class PlayerControlHandler : MonoBehaviour
         stateHandler = GetComponent<PlayerState>();
         EmergencyCameraPush = false;
         atBottle = false;
+        uiToggle = true;
     }
 
     // Update is called once per frame
@@ -211,7 +214,10 @@ public class PlayerControlHandler : MonoBehaviour
                     if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
                     {
                         changeCameras.NewCamPos(changeCameras.bottleCamPos);
-                        manaViewIcon.SetActive(false);
+                        if(uiToggle == true)
+                        {
+                            manaViewIcon.SetActive(false);
+                        }
                         atBottle = true;
 
                         player.playerInput.actions["CameraUp"].Disable();
@@ -231,7 +237,10 @@ public class PlayerControlHandler : MonoBehaviour
                     if (player.playerInput.actions["ManaView"].WasPressedThisFrame())
                     {
                         changeCameras.GetInputForced(0);
-                        manaViewIcon.SetActive(true);
+                        if(uiToggle == true)
+                        {
+                            manaViewIcon.SetActive(true);
+                        }
                         atBottle = false;
 
                         player.playerInput.actions["CameraUp"].Enable();
@@ -371,6 +380,27 @@ public class PlayerControlHandler : MonoBehaviour
                 }
             }
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
+        }
+
+        // toggle the ui button inputs for the player to be turned on or off
+        if (player.playerInput.actions["ToggleUI"].WasPressedThisFrame())
+        {
+            // if the UI toggle is ON then turn them OFF
+            if(uiToggle == true)
+            {
+                manaViewIcon.SetActive(false);
+                cardViewIcon.SetActive(false);
+                uiGroup.SetActive(false);
+                uiToggle = false;
+            }
+            // if the UI toggle is turned OFF then turn them ON
+            else if(uiToggle == false)
+            {
+                manaViewIcon.SetActive(true);
+                cardViewIcon.SetActive(true);
+                uiGroup.SetActive(true);
+                uiToggle = true;
+            }
         }
 
         // Kill Switch for killing player 2

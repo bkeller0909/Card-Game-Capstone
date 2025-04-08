@@ -89,6 +89,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5641410-cac6-4d7f-80bb-ed76aaaca0a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PlayCards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3254e720-c29b-4e26-b70f-b570b5918e5c"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1055,6 +1075,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ToggleUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee8fd614-260f-4188-b9bf-d29f43397cf6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""e9f11fe7-7bb9-4885-b8e2-1c896be1f815"",
@@ -1356,6 +1385,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""InspectCard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92b4331d-c39c-40b3-bef7-a07a040f6e2c"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1595,6 +1635,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_SelectFinger = m_Player.FindAction("SelectFinger", throwIfNotFound: true);
         m_Player_DebugHandSwap = m_Player.FindAction("DebugHandSwap", throwIfNotFound: true);
         m_Player_PlayCards = m_Player.FindAction("PlayCards", throwIfNotFound: true);
+        m_Player_ToggleUI = m_Player.FindAction("ToggleUI", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UI_Move = m_UI.FindAction("UI_Move", throwIfNotFound: true);
@@ -1626,6 +1667,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Card
         m_Card = asset.FindActionMap("Card", throwIfNotFound: true);
         m_Card_Deselect = m_Card.FindAction("Deselect", throwIfNotFound: true);
+        m_Card_ToggleUI = m_Card.FindAction("ToggleUI", throwIfNotFound: true);
         m_Card_Select = m_Card.FindAction("Select", throwIfNotFound: true);
         m_Card_NavCardLeft = m_Card.FindAction("NavCardLeft", throwIfNotFound: true);
         m_Card_NavCardRight = m_Card.FindAction("NavCardRight", throwIfNotFound: true);
@@ -1717,6 +1759,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SelectFinger;
     private readonly InputAction m_Player_DebugHandSwap;
     private readonly InputAction m_Player_PlayCards;
+    private readonly InputAction m_Player_ToggleUI;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1728,6 +1771,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @SelectFinger => m_Wrapper.m_Player_SelectFinger;
         public InputAction @DebugHandSwap => m_Wrapper.m_Player_DebugHandSwap;
         public InputAction @PlayCards => m_Wrapper.m_Player_PlayCards;
+        public InputAction @ToggleUI => m_Wrapper.m_Player_ToggleUI;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1758,6 +1802,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PlayCards.started += instance.OnPlayCards;
             @PlayCards.performed += instance.OnPlayCards;
             @PlayCards.canceled += instance.OnPlayCards;
+            @ToggleUI.started += instance.OnToggleUI;
+            @ToggleUI.performed += instance.OnToggleUI;
+            @ToggleUI.canceled += instance.OnToggleUI;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1783,6 +1830,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PlayCards.started -= instance.OnPlayCards;
             @PlayCards.performed -= instance.OnPlayCards;
             @PlayCards.canceled -= instance.OnPlayCards;
+            @ToggleUI.started -= instance.OnToggleUI;
+            @ToggleUI.performed -= instance.OnToggleUI;
+            @ToggleUI.canceled -= instance.OnToggleUI;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -2073,6 +2123,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Card;
     private List<ICardActions> m_CardActionsCallbackInterfaces = new List<ICardActions>();
     private readonly InputAction m_Card_Deselect;
+    private readonly InputAction m_Card_ToggleUI;
     private readonly InputAction m_Card_Select;
     private readonly InputAction m_Card_NavCardLeft;
     private readonly InputAction m_Card_NavCardRight;
@@ -2087,6 +2138,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public CardActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Deselect => m_Wrapper.m_Card_Deselect;
+        public InputAction @ToggleUI => m_Wrapper.m_Card_ToggleUI;
         public InputAction @Select => m_Wrapper.m_Card_Select;
         public InputAction @NavCardLeft => m_Wrapper.m_Card_NavCardLeft;
         public InputAction @NavCardRight => m_Wrapper.m_Card_NavCardRight;
@@ -2108,6 +2160,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Deselect.started += instance.OnDeselect;
             @Deselect.performed += instance.OnDeselect;
             @Deselect.canceled += instance.OnDeselect;
+            @ToggleUI.started += instance.OnToggleUI;
+            @ToggleUI.performed += instance.OnToggleUI;
+            @ToggleUI.canceled += instance.OnToggleUI;
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
@@ -2142,6 +2197,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Deselect.started -= instance.OnDeselect;
             @Deselect.performed -= instance.OnDeselect;
             @Deselect.canceled -= instance.OnDeselect;
+            @ToggleUI.started -= instance.OnToggleUI;
+            @ToggleUI.performed -= instance.OnToggleUI;
+            @ToggleUI.canceled -= instance.OnToggleUI;
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
@@ -2440,6 +2498,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSelectFinger(InputAction.CallbackContext context);
         void OnDebugHandSwap(InputAction.CallbackContext context);
         void OnPlayCards(InputAction.CallbackContext context);
+        void OnToggleUI(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -2474,6 +2533,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface ICardActions
     {
         void OnDeselect(InputAction.CallbackContext context);
+        void OnToggleUI(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnNavCardLeft(InputAction.CallbackContext context);
         void OnNavCardRight(InputAction.CallbackContext context);
