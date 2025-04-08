@@ -69,7 +69,6 @@ public class ChoosingSpellsState : FSMState
 
         vaHappened = false;
 
-        playerState.howToPlay.gameObject.SetActive(true);
 
         //If player one has entered this state then increase the amount of mana gained per a turn and what round it is
         if (playerState.player == GameManager.Instance.player1)

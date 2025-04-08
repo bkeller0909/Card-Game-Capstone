@@ -79,6 +79,11 @@ public class PlayerControlHandler : MonoBehaviour
                 origianlPositions.Add(poscard5);
                 StartCoroutine(ReturnToSenderCamera());
                 EmergencyCameraPush = false;
+                if(uiToggle == false)
+                {
+                    manaViewIcon.SetActive(false);
+                    cardViewIcon.SetActive(false);
+                }
             }
 
             #region Selecing Finger Controls

@@ -6133,6 +6133,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 881898164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &559008422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7332583147083445244, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328186024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &566936908
 GameObject:
   m_ObjectHideFlags: 0
@@ -11132,12 +11138,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1550450979}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1006868526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009168637116132165, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1693830825}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1019035855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12547,12 +12547,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3344926505897337010, guid: aa139f9ca81e90b4a9f7f90eea93ad03,
     type: 3}
   m_PrefabInstance: {fileID: 65211527}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1159483449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009168637116132165, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1328186024}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1161676070
 GameObject:
@@ -18039,7 +18033,7 @@ PrefabInstance:
         type: 3}
       propertyPath: uiGroup
       value: 
-      objectReference: {fileID: 1159483449}
+      objectReference: {fileID: 559008422}
     - target: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: playerHands
@@ -18971,7 +18965,7 @@ PrefabInstance:
     - target: {fileID: 7332583147083445244, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350869248596335936, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
@@ -27470,7 +27464,7 @@ PrefabInstance:
         type: 3}
       propertyPath: uiGroup
       value: 
-      objectReference: {fileID: 1006868526}
+      objectReference: {fileID: 1815180625}
     - target: {fileID: 5770387762574175508, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: playerHands
@@ -28236,7 +28230,7 @@ PrefabInstance:
     - target: {fileID: 7332583147083445244, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350869248596335936, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
         type: 3}
@@ -30469,6 +30463,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1821914548947538912, guid: f85189b8bcc11d3489fc9391464b16ba,
     type: 3}
   m_PrefabInstance: {fileID: 1812977537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1815180625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7332583147083445244, guid: 47f3eb46bdd4d534e83eec2dbb7ff1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693830825}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1819949402
 PrefabInstance:
