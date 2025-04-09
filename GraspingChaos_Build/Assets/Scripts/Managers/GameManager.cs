@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
 
     public bool RoundBasedGame = false;
 
+    public int endRound = 12;
     private void Awake()
     {
         if (instance == null)
