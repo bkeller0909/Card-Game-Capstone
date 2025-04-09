@@ -236,6 +236,7 @@ public class PlayerState : AdvancedFSM
 
         DealStatsState dealStats = new DealStatsState(this);
         dealStats.AddTransition(Transition.StatsGained, FSMStateID.ChoosingSpells);
+        dealStats.AddTransition(Transition.died, FSMStateID.Dead);
 
         #region Deciding State
         DecidingState deciding = new DecidingState(this);
