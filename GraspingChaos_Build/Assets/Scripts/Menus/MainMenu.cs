@@ -37,6 +37,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     Image P2Tutorial;
 
+    [SerializeField]
+    Image P1RoundBased;
+
+    [SerializeField]
+    Image P2RoundBased;
+
     /// <summary>
     /// Loads the game into the duel Scene
     /// </summary>
@@ -69,6 +75,27 @@ public class MainMenu : MonoBehaviour
         {
             P1Tutorial.enabled = false;
             P2Tutorial.enabled = false;
+        }
+
+        if(GameManager.Instance.RoundBasedGame)
+        {
+            P1RoundBased.enabled = true;
+            P2RoundBased.enabled = true;
+        }
+        else
+        {
+            P1RoundBased.enabled = false;
+            P2RoundBased.enabled = false;
+        }
+
+
+        if(Input.GetKeyDown(KeyCode.RightShift) && !GameManager.Instance.RoundBasedGame)
+        {
+            GameManager.Instance.RoundBasedGame = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.RightShift) && GameManager.Instance.RoundBasedGame)
+        {
+            GameManager.Instance.RoundBasedGame = false;
         }
 
 

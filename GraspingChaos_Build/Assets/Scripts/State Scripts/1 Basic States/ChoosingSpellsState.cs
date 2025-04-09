@@ -83,6 +83,7 @@ public class ChoosingSpellsState : FSMState
             // TODO - change this later when audio stuff is fixed
             // MusicManager.Instance.MusicLowHealth();     // if any player's health is 10 or lower play intense music
             GameManager.Instance.whatRound++;
+            GameManager.Instance.player1.currentRound.SetText(GameManager.Instance.whatRound.ToString());
             GameManager.Instance.manaPerTurn++;
         }
 

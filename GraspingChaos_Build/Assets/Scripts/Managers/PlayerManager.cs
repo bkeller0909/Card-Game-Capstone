@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.VFX;
 
 /// <summary>
@@ -107,6 +108,11 @@ public class PlayerManager : MonoBehaviour
     public bool InspectTimer;
 
     [SerializeField] public ControlSpellBook spellBook;
+
+    [SerializeField] public TMP_Text currentRound;
+
+    [SerializeField] public TMP_Text totalRound;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)

@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
     public bool RoundBasedGame = false;
 
     public int endRound = 12;
+
     private void Awake()
     {
         if (instance == null)
@@ -237,6 +238,7 @@ public class GameManager : MonoBehaviour
         StartLoadingLevel(ln_IntroScene);
         pickQTEType = true;
         spellInProgress = false;
+        RoundBasedGame = true;
     }
 
     // Update is called once per frame
