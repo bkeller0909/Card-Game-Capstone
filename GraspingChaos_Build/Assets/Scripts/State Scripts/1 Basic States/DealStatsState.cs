@@ -74,10 +74,32 @@ public class DealStatsState : FSMState
             }
         }
 
-        //if (playerState.player == GameManager.Instance.player1)
-        //{
-        //    GameManager.Instance.StartBookFlip();
-        //}
+        if (GameManager.Instance.whatRound == GameManager.Instance.endRound && GameManager.Instance.player1 == playerState.player 
+            && GameManager.Instance.RoundBasedGame)
+        {
+            if (playerState.player.entireHP == playerState.enemy.entireHP)
+            {
+                GameManager.Instance.endRound = GameManager.Instance.endRound++;
+            }
+            else if (playerState.player.entireHP > playerState.enemy.entireHP) // The Skull / player 1 has won
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    playerState.enemy.health.DamageFinger((PlayerFingers)i);
+                    playerState.enemy.health.DamageFinger((PlayerFingers)i);
+                    playerState.enemy.health.DamageFinger((PlayerFingers)i);
+                }
+            }
+            else if (playerState.player.entireHP < playerState.enemy.entireHP) // The Stag / player 2 has won
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    playerState.player.health.DamageFinger((PlayerFingers)i);
+                    playerState.player.health.DamageFinger((PlayerFingers)i);
+                    playerState.player.health.DamageFinger((PlayerFingers)i);
+                }
+            }
+        }
 
         cardObjPool = GameManager.Instance.cardPool;
         cardDealing.InitializeCardCosts();  // init the cards into lists by mana cost
@@ -90,6 +112,11 @@ public class DealStatsState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
+        if (player.entireHP <= 0 || enemy.entireHP <= 0)
+        {
+            playerState.PerformTransition(Transition.died);
+        }
+
         if (stateChange)
         {
             player.playerCameras.GetInputForced(0);
