@@ -186,6 +186,8 @@ public class GameManager : MonoBehaviour
 
     public bool gameIsPaused = false;
 
+    public bool RoundBasedGame = false;
+
     private void Awake()
     {
         if (instance == null)
