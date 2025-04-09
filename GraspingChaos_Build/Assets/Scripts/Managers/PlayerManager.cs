@@ -113,6 +113,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] public TMP_Text totalRound;
 
+    [SerializeField] public GameObject RoundUI;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -138,6 +140,8 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.endRound = GameManager.Instance.startingEndRound;
+        totalRound.SetText(GameManager.Instance.endRound.ToString());
         playerInput = GetComponent<PlayerInput>();
         gamepad = playerInput.GetDevice<Gamepad>();
         ringHandler = gameObject.GetComponent<RingsHandler>();
@@ -173,6 +177,15 @@ public class PlayerManager : MonoBehaviour
         health.SetUpHealth(this);
 
         entireHP = 28;
+
+        if(GameManager.Instance.RoundBasedGame)
+        {
+            RoundUI.SetActive(true);
+        }
+        else
+        {
+            RoundUI.SetActive(false);
+        }
 
     }
 

@@ -190,6 +190,8 @@ public class GameManager : MonoBehaviour
 
     public int endRound = 12;
 
+    public int startingEndRound;
+
     private void Awake()
     {
         if (instance == null)
@@ -239,6 +241,7 @@ public class GameManager : MonoBehaviour
         pickQTEType = true;
         spellInProgress = false;
         RoundBasedGame = true;
+        startingEndRound = endRound;
     }
 
     // Update is called once per frame

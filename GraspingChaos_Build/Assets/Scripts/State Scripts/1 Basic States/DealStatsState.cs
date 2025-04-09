@@ -79,12 +79,28 @@ public class DealStatsState : FSMState
         {
             if (playerState.player.entireHP == playerState.enemy.entireHP)
             {
-                GameManager.Instance.endRound = GameManager.Instance.endRound++;
+                GameManager.Instance.endRound = GameManager.Instance.endRound + 1;
+                GameManager.Instance.player1.totalRound.SetText(GameManager.Instance.endRound.ToString());
+                GameManager.Instance.player2.totalRound.SetText(GameManager.Instance.endRound.ToString());
             }
             else if (playerState.player.entireHP > playerState.enemy.entireHP) // The Skull / player 1 has won
             {
+                for (int i = 0; i < 14; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        if (playerState.enemy.ringHandler.ringsActive[i, j] == true)
+                        {
+                                playerState.enemy.ringHandler.ringsActive[i, j] = false;
+                                playerState.enemy.ToggleRing(false, (Rings)i, (PlayerFingers)j);
+                        }
+                    }
+                }
+
                 for (int i = 0; i < 10; i++)
                 {
+                    playerState.enemy.health.DamageFinger((PlayerFingers)i);
+                    playerState.enemy.health.DamageFinger((PlayerFingers)i);
                     playerState.enemy.health.DamageFinger((PlayerFingers)i);
                     playerState.enemy.health.DamageFinger((PlayerFingers)i);
                     playerState.enemy.health.DamageFinger((PlayerFingers)i);
@@ -92,8 +108,22 @@ public class DealStatsState : FSMState
             }
             else if (playerState.player.entireHP < playerState.enemy.entireHP) // The Stag / player 2 has won
             {
+                for (int i = 0; i < 14; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        if (playerState.player.ringHandler.ringsActive[i, j] == true)
+                        {
+                            playerState.player.ringHandler.ringsActive[i, j] = false;
+                            playerState.player.ToggleRing(false, (Rings)i, (PlayerFingers)j);
+                        }
+                    }
+                }
+
                 for (int i = 0; i < 10; i++)
                 {
+                    playerState.player.health.DamageFinger((PlayerFingers)i);
+                    playerState.player.health.DamageFinger((PlayerFingers)i);
                     playerState.player.health.DamageFinger((PlayerFingers)i);
                     playerState.player.health.DamageFinger((PlayerFingers)i);
                     playerState.player.health.DamageFinger((PlayerFingers)i);
