@@ -236,14 +236,14 @@ public class ParticleManger : MonoBehaviour
 
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1LeftHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2LeftHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -354,12 +354,12 @@ public class ParticleManger : MonoBehaviour
 
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
                         lowEffects[9].Play();
@@ -437,14 +437,14 @@ public class ParticleManger : MonoBehaviour
                         if (playerCasting == GameManager.Instance.player1)
                         {
                             lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionP1Gradient);
-                            lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP1Gradient);
+                            lowEffects[14].SetGradient("Explosion Gradient", cursedConversionExplosionP1Gradient);
                             lowEffects[14].SetVector4("Orb Color", cursedConversionP1Color);
                             ManaBottle.position = p1ManaBottleCache.position;
                         }
                         else
                         {
                             lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionP2Gradient);
-                            lowEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP2Gradient);
+                            lowEffects[14].SetGradient("Explosion Gradient", cursedConversionExplosionP2Gradient);
                             lowEffects[14].SetVector4("Orb Color", cursedConversionP2Color);
                             ManaBottle.position = p2ManaBottleCache.position;
                         }
@@ -551,12 +551,12 @@ public class ParticleManger : MonoBehaviour
                         medEffects[1].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
                         medEffects[1].Play();
@@ -692,14 +692,14 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[4].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1LeftHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway1Cache.position;
                             halfWay2.position = halfway2Cache.position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2LeftHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                             halfWay1.position = halfway2Cache.position;
                             halfWay2.position = halfway1Cache.position;
@@ -806,12 +806,12 @@ public class ParticleManger : MonoBehaviour
                         FullEffects[9].gameObject.SetActive(true);
                         if (playerCasting == GameManager.Instance.player1)
                         {
-                            PlayerPosition.position = P1ForcedPosition.position;
+                            PlayerPosition.position = P1RightHand.position;
                             EnemyPosition.position = player2FingerPositions[(int)targetFinger].position;
                         }
                         else
                         {
-                            PlayerPosition.position = P2ForcedPosition.position;
+                            PlayerPosition.position = P2RightHand.position;
                             EnemyPosition.position = player1FingerPositions[(int)targetFinger].position;
                         }
                         FullEffects[9].Play();
@@ -891,14 +891,14 @@ public class ParticleManger : MonoBehaviour
 
                             ManaBottle.position = p1ManaBottleCache.position;
                             FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionP1Gradient);
-                            FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP1Gradient);
+                            FullEffects[14].SetGradient("Explosion Gradient", cursedConversionExplosionP1Gradient);
                             FullEffects[14].SetVector4("Orb Color", cursedConversionP1Color);
                         }
                         else
                         {
                             ManaBottle.position = p2ManaBottleCache.position;
                             FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionP2Gradient);
-                            FullEffects[14].SetGradient("Spell Color Gradient", cursedConversionExplosionP2Gradient);
+                            FullEffects[14].SetGradient("Explosion Gradient", cursedConversionExplosionP2Gradient);
                             FullEffects[14].SetVector4("Orb Color", cursedConversionP2Color);
                         }
                         FullEffects[14].Play();
