@@ -327,6 +327,7 @@ public class GameDebugger : MonoBehaviour
 
         BetterRingDebuggerP1();
         BetterRingDebuggerP2();
+        ChangetheRoundTimer();
     }
 
 
@@ -1160,6 +1161,25 @@ public class GameDebugger : MonoBehaviour
         player2.ToggleRing(false, Rings.VengefulMirrorFail, RemoveRingOnThisFingerP2);
         player2.ToggleRing(false, Rings.VengefulMirrorFull, RemoveRingOnThisFingerP2);
         RemoveRingP2 = false;
+    }
+
+    private void ChangetheRoundTimer()
+    {
+        if(GameManager.Instance.roundBasedGame)
+        {
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                GameManager.Instance.endRound++;
+                GameManager.Instance.player1.totalRound.SetText(GameManager.Instance.endRound.ToString());
+                GameManager.Instance.player2.totalRound.SetText(GameManager.Instance.endRound.ToString());
+            }
+            else if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                GameManager.Instance.endRound--;
+                GameManager.Instance.player1.totalRound.SetText(GameManager.Instance.endRound.ToString());
+                GameManager.Instance.player2.totalRound.SetText(GameManager.Instance.endRound.ToString());
+            }
+        }
     }
 
 }

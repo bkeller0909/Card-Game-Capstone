@@ -75,7 +75,7 @@ public class DealStatsState : FSMState
         }
 
         if (GameManager.Instance.whatRound == GameManager.Instance.endRound && GameManager.Instance.player1 == playerState.player 
-            && GameManager.Instance.RoundBasedGame)
+            && GameManager.Instance.roundBasedGame)
         {
             if (playerState.player.entireHP == playerState.enemy.entireHP)
             {

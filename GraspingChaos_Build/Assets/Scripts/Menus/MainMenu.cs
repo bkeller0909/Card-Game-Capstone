@@ -77,7 +77,7 @@ public class MainMenu : MonoBehaviour
             P2Tutorial.enabled = false;
         }
 
-        if(GameManager.Instance.RoundBasedGame)
+        if(GameManager.Instance.roundBasedGame)
         {
             P1RoundBased.enabled = true;
             P2RoundBased.enabled = true;
@@ -89,13 +89,13 @@ public class MainMenu : MonoBehaviour
         }
 
 
-        if(Input.GetKeyDown(KeyCode.RightShift) && !GameManager.Instance.RoundBasedGame)
+        if(Input.GetKeyDown(KeyCode.RightShift) && !GameManager.Instance.roundBasedGame)
         {
-            GameManager.Instance.RoundBasedGame = true;
+            GameManager.Instance.roundBasedGame = true;
         }
-        else if(Input.GetKeyDown(KeyCode.RightShift) && GameManager.Instance.RoundBasedGame)
+        else if(Input.GetKeyDown(KeyCode.RightShift) && GameManager.Instance.roundBasedGame)
         {
-            GameManager.Instance.RoundBasedGame = false;
+            GameManager.Instance.roundBasedGame = false;
         }
 
 

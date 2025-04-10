@@ -178,7 +178,7 @@ public class PlayerManager : MonoBehaviour
 
         entireHP = 28;
 
-        if(GameManager.Instance.RoundBasedGame)
+        if(GameManager.Instance.roundBasedGame)
         {
             RoundUI.SetActive(true);
         }

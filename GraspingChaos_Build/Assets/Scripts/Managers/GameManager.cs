@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
 
     public bool gameIsPaused = false;
 
-    public bool RoundBasedGame = false;
+    public bool roundBasedGame = false;
 
     public int endRound = 12;
 
@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
         StartLoadingLevel(ln_IntroScene);
         pickQTEType = true;
         spellInProgress = false;
-        RoundBasedGame = true;
+        roundBasedGame = true;
         startingEndRound = endRound;
     }
 
