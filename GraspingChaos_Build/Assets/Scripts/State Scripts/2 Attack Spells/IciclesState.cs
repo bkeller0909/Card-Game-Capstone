@@ -128,21 +128,21 @@ public class IciclesState : FSMState
                 GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    enemy.health.DamageFinger(randomFinger1);
                     if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
-
+                    enemy.health.DamageFinger(randomFinger1);
+                   
                     randomFinger2 = enemy.GetRandomFinger(randomFinger1);
-                    enemy.health.DamageFinger(randomFinger2);
                     if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
-
+                    enemy.health.DamageFinger(randomFinger2);
+                   
                     enemy.ResetHandAnimations();
                     if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
                     {
@@ -166,20 +166,20 @@ public class IciclesState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    enemy.health.DamageFinger(randomFinger1);
                     if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
-
+                    enemy.health.DamageFinger(randomFinger1);
+                    
                     randomFinger2 = enemy.GetRandomFinger(randomFinger1);
-                    enemy.health.DamageFinger(randomFinger2);
                     if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(randomFinger2);
 
                     enemy.ResetHandAnimations();
                     if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
@@ -207,6 +207,12 @@ public class IciclesState : FSMState
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
 
+                    if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 2);
+                    }
+
                     for (int i = 0; i < 2; i++)
                     {
                         if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
@@ -221,14 +227,14 @@ public class IciclesState : FSMState
                         }
                     }
 
-                    if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    randomFinger2 = player.GetRandomFinger(randomFinger1);
+
+                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 2);
                     }
 
-
-                    randomFinger2 = player.GetRandomFinger(randomFinger1);
                     for (int s = 0; s < 2; s++)
                     {
                         if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
@@ -260,12 +266,6 @@ public class IciclesState : FSMState
                         enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
                     }
                     enemy.BackToIDLE();
-
-                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
-                    {
-                        player.ringHandler.EffectVengFulMirror(player, 2);
-                    }
 
                 }
             }
@@ -281,20 +281,20 @@ public class IciclesState : FSMState
                 GameManager.Instance.coroutineWaitP2 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    enemy.health.DamageFinger(randomFinger1);
                     if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(randomFinger1);
 
                     randomFinger2 = enemy.GetRandomFinger(randomFinger1);
-                    enemy.health.DamageFinger(randomFinger2);
                     if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(randomFinger2);
 
                     enemy.ResetHandAnimations();
                     if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
@@ -319,20 +319,20 @@ public class IciclesState : FSMState
                 }
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
-                    enemy.health.DamageFinger(randomFinger1);
                     if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(randomFinger1);
 
                     randomFinger2 = enemy.GetRandomFinger(randomFinger1);
-                    enemy.health.DamageFinger(randomFinger2);
                     if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(randomFinger2);
 
                     enemy.ResetHandAnimations();
                     if ((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4 && (int)randomFinger2 >= 0 && (int)randomFinger2 <= 4)
@@ -360,6 +360,12 @@ public class IciclesState : FSMState
                     RumbleManager.Instance.ControllerRumble(0.75f, 0.75f, 0.8f, enemy.gamepad);
                     enemy.cameraHandler.CameraShake(0.02f, 0.8f);
 
+                    if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    {
+                        player.ringHandler.EffectVengFulMirror(player, 2);
+                    }
+
                     for (int i = 0; i < 2; i++)
                     {
                         if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
@@ -374,14 +380,13 @@ public class IciclesState : FSMState
                         }
                     }
 
-                    if ((((int)randomFinger1 >= 0 && (int)randomFinger1 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger1 >= 5 && (int)randomFinger1 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                    randomFinger2 = player.GetRandomFinger(randomFinger1);
+                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 2);
                     }
 
-
-                    randomFinger2 = player.GetRandomFinger(randomFinger1);
                     for (int s = 0; s < 2; s++)
                     {
                         if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.veilOfFortitudeLeftFail == true) ||
@@ -413,12 +418,6 @@ public class IciclesState : FSMState
                         enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
                     }
                     enemy.BackToIDLE();
-
-                    if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
-                    {
-                        player.ringHandler.EffectVengFulMirror(player, 2);
-                    }
 
                 }
             }

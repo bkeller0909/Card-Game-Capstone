@@ -124,12 +124,13 @@ public class LeftningBoltState : FSMState
                 GameManager.Instance.coroutineWaitP1 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
@@ -140,14 +141,14 @@ public class LeftningBoltState : FSMState
                         }
                         else
                         {
-                            PlayerFingers fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                            enemy.health.DamageFinger(fingerToTheRight);
 
+                            PlayerFingers fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                             if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                             {
                                 player.ringHandler.EffectVengFulMirror(player, 1);
                             }
+                            enemy.health.DamageFinger(fingerToTheRight);
                         }
                     }
                     else
@@ -172,12 +173,12 @@ public class LeftningBoltState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     PlayerFingers fingerToTheRight;
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
@@ -189,22 +190,22 @@ public class LeftningBoltState : FSMState
                         else
                         {
                             fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                            enemy.health.DamageFinger(fingerToTheRight);
                             if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                             {
                                 player.ringHandler.EffectVengFulMirror(player, 1);
                             }
+                            enemy.health.DamageFinger(fingerToTheRight);
 
                             if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                             {
                                 fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                enemy.health.DamageFinger(fingerToTheRight);
                                 if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                                 {
                                     player.ringHandler.EffectVengFulMirror(player, 1);
                                 }
+                                enemy.health.DamageFinger(fingerToTheRight);
                             }
                         }
                     }
@@ -230,22 +231,22 @@ public class LeftningBoltState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     PlayerFingers fingerToTheRight;
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
                         fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(fingerToTheRight);
                         if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                             ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, 1);
                         }
+                        enemy.health.DamageFinger(fingerToTheRight);
 
                         if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                         {
@@ -257,22 +258,22 @@ public class LeftningBoltState : FSMState
                             else
                             {
                                 fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                enemy.health.DamageFinger(fingerToTheRight);
                                 if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                                 {
                                     player.ringHandler.EffectVengFulMirror(player, 1);
                                 }
+                                enemy.health.DamageFinger(fingerToTheRight);
 
                                 if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                                 {
                                     fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                    enemy.health.DamageFinger(fingerToTheRight);
                                     if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                         ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                                     {
                                         player.ringHandler.EffectVengFulMirror(player, 1);
                                     }
+                                    enemy.health.DamageFinger(fingerToTheRight);
 
                                 }
                             }
@@ -309,12 +310,12 @@ public class LeftningBoltState : FSMState
                 GameManager.Instance.coroutineWaitP2 = false;
                 if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Failure)
                 {
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
@@ -326,13 +327,12 @@ public class LeftningBoltState : FSMState
                         else
                         {
                             PlayerFingers fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                            enemy.health.DamageFinger(fingerToTheRight);
-
                             if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                             {
                                 player.ringHandler.EffectVengFulMirror(player, 1);
                             }
+                            enemy.health.DamageFinger(fingerToTheRight);
                         }
                     }
                     else
@@ -356,12 +356,12 @@ public class LeftningBoltState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Half)
                 {
                     PlayerFingers fingerToTheRight;
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
@@ -373,22 +373,22 @@ public class LeftningBoltState : FSMState
                         else
                         {
                             fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                            enemy.health.DamageFinger(fingerToTheRight);
                             if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                             {
                                 player.ringHandler.EffectVengFulMirror(player, 1);
                             }
+                            enemy.health.DamageFinger(fingerToTheRight);
 
                             if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                             {
                                 fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                enemy.health.DamageFinger(fingerToTheRight);
                                 if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                                 {
                                     player.ringHandler.EffectVengFulMirror(player, 1);
                                 }
+                                enemy.health.DamageFinger(fingerToTheRight);
                             }
                         }
                     }
@@ -414,22 +414,22 @@ public class LeftningBoltState : FSMState
                 else if (player.GetComponent<QTEHandler>().outcome == QTEOUTCOMES.Success)
                 {
                     PlayerFingers fingerToTheRight;
-                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
                     if ((((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 0 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger >= 5 && (int)GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                     {
                         player.ringHandler.EffectVengFulMirror(player, 1);
                     }
+                    enemy.health.DamageFinger(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
 
                     if (GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.RH_Pinky && GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger != PlayerFingers.LH_Thumb)
                     {
                         fingerToTheRight = enemy.GetAdjacentFingerRight(GameManager.Instance.spellsBeingCast[GameManager.Instance.spellIndex, playerIndex].whatFinger);
-                        enemy.health.DamageFinger(fingerToTheRight);
                         if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                             ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, 1);
                         }
+                        enemy.health.DamageFinger(fingerToTheRight);
 
                         if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                         {
@@ -441,22 +441,22 @@ public class LeftningBoltState : FSMState
                             else
                             {
                                 fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                enemy.health.DamageFinger(fingerToTheRight);
                                 if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                 ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                                 {
                                     player.ringHandler.EffectVengFulMirror(player, 1);
                                 }
+                                enemy.health.DamageFinger(fingerToTheRight);
 
                                 if (fingerToTheRight != PlayerFingers.RH_Pinky && fingerToTheRight != PlayerFingers.LH_Thumb)
                                 {
                                     fingerToTheRight = enemy.GetAdjacentFingerRight(fingerToTheRight);
-                                    enemy.health.DamageFinger(fingerToTheRight);
                                     if ((((int)fingerToTheRight >= 0 && (int)fingerToTheRight <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                                         ((int)fingerToTheRight >= 5 && (int)fingerToTheRight <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                                     {
                                         player.ringHandler.EffectVengFulMirror(player, 1);
                                     }
+                                    enemy.health.DamageFinger(fingerToTheRight);
 
                                 }
                             }

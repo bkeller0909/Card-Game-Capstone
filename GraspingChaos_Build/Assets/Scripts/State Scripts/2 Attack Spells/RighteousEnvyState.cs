@@ -108,6 +108,11 @@ public class RighteousEnvyState : FSMState
                     if (totalDamage == 1)
                     {
                         PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
+                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                         enemy.health.DamageFinger(randomFinger);
                         enemy.ResetHandAnimations();
                         if ((int)randomFinger >= 0 && (int)randomFinger <= 4)
@@ -121,11 +126,6 @@ public class RighteousEnvyState : FSMState
                             enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
                         }
                         enemy.BackToIDLE();
-                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
-                        {
-                            player.ringHandler.EffectVengFulMirror(player, 1);
-                        }
                     }
                     else if (totalDamage == 0)
                     {
@@ -145,15 +145,15 @@ public class RighteousEnvyState : FSMState
                             }
                         }
 
-                        for (int i = 0; i < partDamage; i++)
-                        {
-                            enemy.health.DamageFinger(randomFinger);
-                        }
-
                         if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, partDamage);
+                        }
+
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
                         }
 
                         partDamage = totalDamage - savedPartDamage;
@@ -167,6 +167,12 @@ public class RighteousEnvyState : FSMState
                             {
                                 partDamage = savedPartDamage / 2;
                             }
+                        }
+
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, partDamage);
                         }
 
                         for (int i = 0; i < partDamage; i++)
@@ -191,12 +197,6 @@ public class RighteousEnvyState : FSMState
                             enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
                         }
                         enemy.BackToIDLE();
-
-                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
-                        {
-                            player.ringHandler.EffectVengFulMirror(player, partDamage);
-                        }
                     }
                 }
             }
@@ -216,6 +216,11 @@ public class RighteousEnvyState : FSMState
                     if (totalDamage == 1)
                     {
                         PlayerFingers randomFinger = enemy.GetRandomFinger(PlayerFingers.none);
+                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, 1);
+                        }
                         enemy.health.DamageFinger(randomFinger);
                         enemy.ResetHandAnimations();
                         if ((int)randomFinger >= 0 && (int)randomFinger <= 4)
@@ -229,11 +234,6 @@ public class RighteousEnvyState : FSMState
                             enemy.PlayerFakeHands.SetTrigger("RightHandDamaged");
                         }
                         enemy.BackToIDLE();
-                        if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
-                        {
-                            player.ringHandler.EffectVengFulMirror(player, 1);
-                        }
                     }
                     else if (totalDamage == 0)
                     {
@@ -253,16 +253,17 @@ public class RighteousEnvyState : FSMState
                             }
                         }
 
-                        for (int i = 0; i < partDamage; i++)
-                        {
-                            enemy.health.DamageFinger(randomFinger);
-                        }
-
                         if ((((int)randomFinger >= 0 && (int)randomFinger <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
                        ((int)randomFinger >= 5 && (int)randomFinger <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
                         {
                             player.ringHandler.EffectVengFulMirror(player, partDamage);
                         }
+
+                        for (int i = 0; i < partDamage; i++)
+                        {
+                            enemy.health.DamageFinger(randomFinger);
+                        }
+
 
                         partDamage = totalDamage - savedPartDamage;
                         savedPartDamage = partDamage;
@@ -275,6 +276,12 @@ public class RighteousEnvyState : FSMState
                             {
                                 partDamage = savedPartDamage / 2;
                             }
+                        }
+
+                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
+                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
+                        {
+                            player.ringHandler.EffectVengFulMirror(player, partDamage);
                         }
 
                         for (int i = 0; i < partDamage; i++)
@@ -299,12 +306,6 @@ public class RighteousEnvyState : FSMState
                             enemy.PlayerFakeHands.SetTrigger("BothHandsDamaged");
                         }
                         enemy.BackToIDLE();
-
-                        if ((((int)randomFinger2 >= 0 && (int)randomFinger2 <= 4) && enemy.ringHandler.vengfulMirrorLeft == true) ||
-                       ((int)randomFinger2 >= 5 && (int)randomFinger2 <= 9) && enemy.ringHandler.vengfulMirrorRight == true)
-                        {
-                            player.ringHandler.EffectVengFulMirror(player, partDamage);
-                        }
                     }
                 }
             }
