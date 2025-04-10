@@ -49,6 +49,8 @@ public class DealStatsState : FSMState
     bool firstDealingP1 = true;
     bool firstDealingP2 = true;
 
+    bool deathHasBeenReached = false;
+
     //Constructor
     public DealStatsState(PlayerState pS)
     {
@@ -57,6 +59,7 @@ public class DealStatsState : FSMState
         cardDealing = new CardDealing();
         tutorial = new Tutorial();
         cardObjPool = GameManager.Instance.cardPool;
+        deathHasBeenReached = false;
     }
 
     public override void EnterStateInit()
@@ -85,6 +88,8 @@ public class DealStatsState : FSMState
             }
             else if (playerState.player.entireHP > playerState.enemy.entireHP) // The Skull / player 1 has won
             {
+                deathHasBeenReached = true;
+
                 for (int i = 0; i < 14; i++)
                 {
                     for (int j = 0; j < 10; j++)
@@ -108,6 +113,8 @@ public class DealStatsState : FSMState
             }
             else if (playerState.player.entireHP < playerState.enemy.entireHP) // The Stag / player 2 has won
             {
+                deathHasBeenReached = true;
+
                 for (int i = 0; i < 14; i++)
                 {
                     for (int j = 0; j < 10; j++)
@@ -142,7 +149,7 @@ public class DealStatsState : FSMState
     //Reason
     public override void Reason(PlayerManager player, PlayerManager enemy)
     {
-        if (player.entireHP <= 0 || enemy.entireHP <= 0)
+        if ((player.entireHP <= 0 || enemy.entireHP <= 0) && deathHasBeenReached)
         {
             playerState.PerformTransition(Transition.died);
         }

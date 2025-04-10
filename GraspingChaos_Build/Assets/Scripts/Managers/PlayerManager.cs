@@ -115,6 +115,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] public GameObject RoundUI;
 
+    public int savedManaValue = 0;
+
     private void Awake()
     {
         if (playerNum == PlayerType.PLAYER1)
@@ -194,6 +196,15 @@ public class PlayerManager : MonoBehaviour
     {
         manaVisual.desiredManaStep = Mana;
         manaText.text = Mana.ToString();
+
+        if (savedManaValue != Mana)
+        {
+            if (Mana < -10 || Mana > 17)
+            {
+                Mana = savedManaValue;
+            }
+        }
+
     }
 
     public void HealthReset()

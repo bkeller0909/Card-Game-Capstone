@@ -69,6 +69,7 @@ public class ChoosingSpellsState : FSMState
 
         vaHappened = false;
 
+        playerState.player.savedManaValue = playerState.player.Mana;
 
         //If player one has entered this state then increase the amount of mana gained per a turn and what round it is
         if (playerState.player == GameManager.Instance.player1)
@@ -351,18 +352,21 @@ public class ChoosingSpellsState : FSMState
             if (amtOfSpells == 0)
             {
                 spellsChosen[0] = playerState.currentSpellName;
+                player.savedManaValue = player.Mana;
                 player.LoseMana(ActiveSpellCards.Instance.spellCards[(int)playerState.currentSpellName].manaCost);
                 playerState.canChooseFinger = true;
             }
             else if (amtOfSpells == 1)
             {
                 spellsChosen[1] = playerState.currentSpellName;
+                player.savedManaValue = player.Mana;
                 player.LoseMana(ActiveSpellCards.Instance.spellCards[(int)playerState.currentSpellName].manaCost);
                 playerState.canChooseFinger = true;
             }
             else if (amtOfSpells == 2)
             {
                 spellsChosen[2] = playerState.currentSpellName;
+                player.savedManaValue = player.Mana;
                 player.LoseMana(ActiveSpellCards.Instance.spellCards[(int)playerState.currentSpellName].manaCost);
                 playerState.canChooseFinger = true;
             }
