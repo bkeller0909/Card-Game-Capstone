@@ -164,6 +164,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("The Video gameobjects for the endscreen cutscenes")]
     public GameObject SkullWinVideo, StagWinVideo;
 
+    [Tooltip("The Gameobject that will fade out after the video starts")]
+    public GameObject FadeImage1, FadeImage2;
+
     [HideInInspector, Tooltip("Player 1's aura color")]
     public Color defaultColorP1;
     [HideInInspector, Tooltip("Player 1's aura color")]

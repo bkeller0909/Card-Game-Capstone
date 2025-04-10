@@ -663,6 +663,8 @@ MonoBehaviour:
   EndScreenStagVideo2: {fileID: 778394011}
   SkullWinVideo: {fileID: 2005538873}
   StagWinVideo: {fileID: 748154669}
+  FadeImage1: {fileID: 1904566219}
+  FadeImage2: {fileID: 1593410947}
   defaultColorP1: {r: 0, g: 0, b: 0, a: 0}
   defaultColorP2: {r: 0, g: 0, b: 0, a: 0}
   checkAvailableCards: 0
@@ -673,7 +675,7 @@ MonoBehaviour:
   totalSpellsPickedP2: 0
   bookFlipTime: 10
   gameIsPaused: 0
-  RoundBasedGame: 1
+  roundBasedGame: 0
   endRound: 12
   startingEndRound: 0
 --- !u!4 &113710050
@@ -12009,14 +12011,14 @@ GameObject:
   - component: {fileID: 1593410948}
   - component: {fileID: 1593410951}
   - component: {fileID: 1593410950}
-  - component: {fileID: 1593410949}
+  - component: {fileID: 1593410952}
   m_Layer: 5
   m_Name: FadeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1593410948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12036,22 +12038,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1593410949
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593410947}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 1edb4e63078b6714189bd3a293675dff, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 1edb4e63078b6714189bd3a293675dff, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &1593410950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12090,6 +12076,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593410947}
   m_CullTransparentMesh: 1
+--- !u!95 &1593410952
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593410947}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e84903dc510db4843b2c02f63b240703, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1606843150
 GameObject:
   m_ObjectHideFlags: 0
@@ -13873,14 +13880,14 @@ GameObject:
   - component: {fileID: 1904566220}
   - component: {fileID: 1904566223}
   - component: {fileID: 1904566222}
-  - component: {fileID: 1904566221}
+  - component: {fileID: 1904566224}
   m_Layer: 5
   m_Name: FadeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1904566220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13900,22 +13907,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.000030517578}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1904566221
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904566219}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 1edb4e63078b6714189bd3a293675dff, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 1edb4e63078b6714189bd3a293675dff, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &1904566222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13954,6 +13945,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904566219}
   m_CullTransparentMesh: 1
+--- !u!95 &1904566224
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904566219}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e84903dc510db4843b2c02f63b240703, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1907743291
 PrefabInstance:
   m_ObjectHideFlags: 0

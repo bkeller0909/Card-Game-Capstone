@@ -26,6 +26,8 @@ public class DeadState : FSMState
         if (isDead == false)
         {
 
+            GameManager.Instance.FadeImage1.SetActive(true);
+            GameManager.Instance.FadeImage2.SetActive(true);
 
             isDead = true;
             if (GameManager.Instance.player1.entireHP <= 0)
