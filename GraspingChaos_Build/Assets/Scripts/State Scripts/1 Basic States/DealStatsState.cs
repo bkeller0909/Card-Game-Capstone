@@ -64,6 +64,25 @@ public class DealStatsState : FSMState
 
     public override void EnterStateInit()
     {
+
+        if (GameManager.Instance.UIisOnP1)
+        {
+            GameManager.Instance.player1.gameObject.GetComponent<PlayerState>().howToPlay.gameObject.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.player1.gameObject.GetComponent<PlayerState>().howToPlay.gameObject.SetActive(false);
+        }
+
+        if(GameManager.Instance.UIisOnP2)
+        {
+            GameManager.Instance.player2.gameObject.GetComponent<PlayerState>().howToPlay.gameObject.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.player2.gameObject.GetComponent<PlayerState>().howToPlay.gameObject.SetActive(false);
+        }
+
         foreach (GameObject card in CardsObjectPool.Instance.objPoolCards)
         {
             CardSelect cardSelect = card.GetComponent<CardSelect>();

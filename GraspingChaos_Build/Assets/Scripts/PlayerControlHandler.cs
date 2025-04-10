@@ -387,20 +387,37 @@ public class PlayerControlHandler : MonoBehaviour
             GameManager.Instance.StartLoadingLevel(GameManager.Instance.ln_MainMenuName);
         }
 
-        // toggle the ui button inputs for the player to be turned on or off
+        //// toggle the ui button inputs for the player to be turned on or off
         if (player.playerInput.actions["ToggleUI"].WasPressedThisFrame())
         {
             // if the UI toggle is ON then turn them OFF
-            if(uiToggle == true)
+            if (uiToggle == true)
             {
+                if(GameManager.Instance.player1 == player)
+                {
+                    GameManager.Instance.UIisOnP1 = false;
+                }
+                else if (GameManager.Instance.player2 == player)
+                {
+                    GameManager.Instance.UIisOnP2 = false;
+                }
+
                 manaViewIcon.SetActive(false);
                 cardViewIcon.SetActive(false);
                 uiGroup.SetActive(false);
                 uiToggle = false;
             }
             // if the UI toggle is turned OFF then turn them ON
-            else if(uiToggle == false)
+            else if (uiToggle == false)
             {
+                if (GameManager.Instance.player1 == player)
+                {
+                    GameManager.Instance.UIisOnP1 = true;
+                }
+                else if (GameManager.Instance.player2 == player)
+                {
+                    GameManager.Instance.UIisOnP2 = true;
+                }
                 manaViewIcon.SetActive(true);
                 cardViewIcon.SetActive(true);
                 uiGroup.SetActive(true);

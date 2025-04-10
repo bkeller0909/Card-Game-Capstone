@@ -195,6 +195,10 @@ public class GameManager : MonoBehaviour
 
     public int startingEndRound;
 
+    public bool UIisOnP1;
+
+    public bool UIisOnP2;
+
     private void Awake()
     {
         if (instance == null)
@@ -245,6 +249,8 @@ public class GameManager : MonoBehaviour
         spellInProgress = false;
         roundBasedGame = true;
         startingEndRound = endRound;
+        UIisOnP1 = true;
+        UIisOnP2 = true;
     }
 
     // Update is called once per frame
