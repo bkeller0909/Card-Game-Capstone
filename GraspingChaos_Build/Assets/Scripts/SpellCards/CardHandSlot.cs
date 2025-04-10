@@ -70,6 +70,7 @@ public class CardHandSlot : MonoBehaviour
                 card.FingerBonusCardStatus(player, SpellNames.Materialise, PlayerFingers.LH_Pinky, PlayerFingers.RH_Pinky);
             }
         }
+
     }
 
     //stat of removing card
