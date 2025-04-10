@@ -130,7 +130,18 @@ public class CardSelect : MonoBehaviour
         // card is no longer hovered
         isHovered = false;
         //StartCoroutine(AdjustCard(isHovered));
-        //CardGlow(isHovered);
+
+        bool selected;
+        if (isSelected)
+        {
+            selected = true;
+        }
+        else
+        {
+            selected = false;
+        }
+
+        CardGlow(selected);
 
         if (hasAFingerBonus)
         {
