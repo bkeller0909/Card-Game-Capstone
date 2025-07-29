@@ -22,13 +22,13 @@ Use a **controller** to navigate your hand and select **1–3 cards per round** 
 ![Gameplay GIF](https://github.com/bkeller0909/Card-Game-Capstone/blob/main/images/Look_Cards.gif)
 
 🟥 **Attack Cards**  
-> Deal direct damage to your opponent's fingers.
+- Deal direct damage to your opponent's fingers.
 
 🟩 **Restoration Cards**  
-> Restore your own Health or Mana.
+- Restore your own Health or Mana.
 
 🟪 **Ring Cards**  
-> Equip Rings to your fingers for powerful buffs or curse your opponent’s!
+- Equip Rings to your fingers for powerful buffs or curse your opponent’s!
 
 ---
 
