@@ -1,15 +1,15 @@
-# 💀 Grasping Chaos
+# Grasping Chaos
 
-**Grasping Chaos** is a **strategic, round-based action card game** where players duel as skeletal mages — each trying to shatter the other's life force.
+**Grasping Chaos** is a **strategic, round-based action card game** where players duel as skeletal mages with each trying to shatter the other's life force.
 
-> Your life force? Your **fingers**. Lose a bone, and lose your grip on victory! ☠️  
-> Outsmart your opponent using spell cards, mind games, and magical rings to emerge victorious in the skeletal standoff.
+Your life force? Your **fingers**. Lose a bone, and lose your grip on victory! ☠️  
+Outsmart your opponent using spell cards, mind games, and magical rings to emerge victorious in the skeletal standoff.
 
 ![Grasping Chaos Banner](https://github.com/bkeller0909/Card-Game-Capstone/blob/main/images/GraspingChaosCardTitle.png)
 
 ---
 
-## 🎮 How to Play
+## How to Play
 
 Each player begins with:
 - 🃏 **5 Cards**
@@ -17,7 +17,7 @@ Each player begins with:
 
 Use a **controller** to navigate your hand and select **1–3 cards per round** to cast.
 
-### 🔻 Card Types
+### Card Types
 
 ![Gameplay GIF](https://github.com/bkeller0909/Card-Game-Capstone/blob/main/images/Look_Cards.gif)
 
@@ -28,11 +28,11 @@ Use a **controller** to navigate your hand and select **1–3 cards per round** 
 > Restore your own Health or Mana.
 
 🟪 **Ring Cards**  
-> Equip Rings to your fingers for powerful buffs — or curse your opponent’s!
+> Equip Rings to your fingers for powerful buffs or curse your opponent’s!
 
 ---
 
-## 🧠 Strategy Meets Reflex
+## Strategy Meets Reflex
 
 Choose wisely — your card combos and timing can turn the tide. Rings grant passive bonuses, so play offensively or defensively based on the state of the duel.
 
@@ -40,7 +40,7 @@ Choose wisely — your card combos and timing can turn the tide. Rings grant pas
 
 ---
 
-## 🛠️ About the Project
+## About the Project
 
 This game was built over **4 months** as a capstone project by a team of student developers from Niagara College.  
 It was developed using **Unity** with full controller support, custom gameplay systems, and a modular spell architecture.
@@ -49,7 +49,7 @@ It was developed using **Unity** with full controller support, custom gameplay s
 
 ---
 
-## 🔗 Play Now
+## Play Now
 
 🎮 [Play Grasping Chaos on Itch.io](https://pack-rats-studio.itch.io/grasping-chaos)
 
